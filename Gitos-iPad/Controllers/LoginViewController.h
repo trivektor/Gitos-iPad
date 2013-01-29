@@ -12,10 +12,9 @@
 
 @interface LoginViewController : UIViewController <UITableViewDataSource, UITableViewDelegate, UITextFieldDelegate>
 {
-    
+    __weak IBOutlet UITableView *loginTable;
     __weak IBOutlet UITextField *usernameField;
     __weak IBOutlet UITextField *passwordField;
-    __weak IBOutlet UITableView *loginTable;
 }
 
 @property(nonatomic, strong) IBOutlet UITableViewCell *usernameCell;

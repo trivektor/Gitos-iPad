@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="40" height="60" viewBox="0, 0, 40, 60">
+  <g id="Layer 1">
+    <g>
+      <image xlink:href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACgAAAA7CAYAAAAJvMhYAAADCUlEQVRoBe2a31LaQBTGv01CAAWFFkv9L4itts7UB/A5e9cn8DF61Yve2FarOCgYjIi21VEhQbI9K2VQiy3NJkid7E3YTfacX77ds2eTwDjnGOSiDDKcYAsAZUcoUPCxK6gM+hDzAPCxz8FgoZYd4UDBQEFpBWQNDPpCHQSJ7AgHCgYKSisgayBYZgIFZRWQ7f8fzMGjUhbY0GXv1K/+CpqhMCojL/1yIGtXwdZWHg1EcXAwLWvMj/7s+v1goTCKiLaMS/sTcrkzPxy5tdkKkmz2FKxpIBYWQ626NeZHv04Uj2eKUJgFs/jCD0dubXYAhYWz+hYcJFDde+7WoNf9bgPmchagbYPrWZjmkNfO3Ni7DSgsTE6egDlHQGMJa2sPPh9/BxSQb98VAHr9v7q6IKoPWVrLTDcCw4hCZytQnCJS0wfdLulHW3cFheepqRqaSh42z2BnZ6QfMN183A8orh4fP8YVTMQjS9h4mHz9Z0ABOTOzC4YaRodeUY2Jpn6WvwNStGC/sglV01Eu9z1o7g+SuzJVqzE0am/gKHs0P8t3T/tV70XBlu+xsXOojTxUJ4NSKekX0F27vQOKnun5Iyi8jIi62KdM4+I7SXp2F07zDM36su+RbRjhf1Owrf/7D1+hKldIDL/2NR2GQvHeg6QN1znqODRWaJ2sUdB8pmbvv4xXjZw7BVuQNljoC6XDGA5LSx1uj36trw+D9lYygBQ06QucWxu0h0zSRtdbyHQyA8c5kQMUYonHhZiySUnmKUX2IrXIZxvTnCU4nbLYd3lAATky9Q2OSpCNFK2RIiW6t2vuzpKdaVictnx0t57+68PcToFH6MFLu4Rtb2Juri6c9FTMj0O4epaFRtOF23uYmN8X/bwFFBZPKctccJqPjNFesow6Du8Bpamwo6MSH4VlpRDCE9EdXCtiYuIaTlS9BxRWKxSBTlIETVRUyWuXJYhu4FbRLhC1CkjM/bjZ7A9gywOj3c8kqSieEH+B3nDNuYMms6E0ThHXj6/n8Y3T7Z9+ArZ9SB1/AqX+6DwHmYTNAAAAAElFTkSuQmCC" preserveAspectRatio="none" x="0.016" y="1.989" width="40" height="59"/>
+      <path d="M25.097,0 L29.903,0 C35.48,0 40,4.531 40,10.119 L40,47.881 C40,53.469 35.48,58 29.903,58 L25.097,58 C19.52,58 0.016,30.062 0.016,30.062 C0.016,30.062 19.52,0 25.097,0 z" fill="url(#Gradient_1)"/>
+      <path d="M25.097,0 L29.903,0 C35.48,0 40,4.531 40,10.119 L40,47.881 C40,53.469 35.48,58 29.903,58 L25.097,58 C19.52,58 0.016,30.062 0.016,30.062 C0.016,30.062 19.52,0 25.097,0 z" fill="url(#Gradient_2)"/>
+      <image xlink:href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACgAAAA7CAYAAAAJvMhYAAADGUlEQVRoBe2aW2/TQBBGk9JyjwBR1JarikD8/7/DMyDxhqCFtrlxjtmx3Na5+BLHQllpZNfdmT35ZmY3STucz+eDTY3hcHhI7CPsXskaLnyF/cJ+wPGzZM5guAlAwA5Y7BR7lBZdpsKQOdof7As8AuejdUDg7hP9A3YHmySbci0bezx0Xpg/fwPye0zej5s2rgnuY4r1m6uqXGCC3lRR1QRT7buYZaCdEGcQkK0BEtRFVG6GCXeertbZKgWFFO5hsmPinQN51kqKCaYSnzBVOcOsIyHH2IyFbqrH438DX31MrWJZHo+T6fa5sYJpgfcEDTi7MYNjAdVcOqRgwpQ4zlXp8BnxbNQYkIBvMNNrSkO5q7Qwj9YbzgdIQOs2mmfkTe1BwBc4P8FUTDghx1Xh8MlG8hPSxjLmQW1A4KyVY8xXbN0FXKSIR9VHgrTrL7FZLUDg7Lp3KUgoZ1obwREvhnFssHFlQOBshlPMVIRyly3CuQdmjVMLEKe3mM1lSgW8IJ6wbQ9VnFZSEPGe4zTCLOAMziDYpsZ8bUDg3ERPsGiK2OsWbsJtUK8FmOrOpvDYUrlO4HyBawEy73Waa91prTYF8RaOlYCo9wzv2IxVL9ufFkZs+RdLAYHzCHuJRd1lb53SNtAySnm4pYC4uKW4YXZad0XUhYCod8RETwwbwrpr86Qg3HqjFBC4B7gfYpHaTuuuiH4LEDiPMlMrlMoJOemy7lgvH7cA+Y1NIaSp7Wy/Y63ScQ0Q8TzGnmJRd53td6V0PMwBgfP+FeZWEqnd5DnLMqtHDshUU+u5GnBbq7sidgaYUhunhendypZSBIv7vUJq7VbVM8VbT20OyI1117vUFgG9jy2lN6ktAn7lBz/4bO20CJiy6z4nxIw6zL6b29ZpUQYWz7IuFpIHG33rHgtWveb7YB/V88XkgFVfWVfzd4BNld4puFOwqQJN/Xc1uFOwqQJN/Xc1+L8ruP5XwE2VqOnfe8BJ35uk+h9yaqaqjpt/Ku6ngnyI89s1Pyf19y1/+iC3mf/6qJPPRT59b5L+pjgU7b2CfwFfNz/2JB3KDQAAAABJRU5ErkJggg==" preserveAspectRatio="none" x="0.016" y="-0.011" width="40" height="59"/>
+    </g>
+    <path d="M25.159,58 C19.583,58 0,30.016 0,30.016 C0,30.016 19.583,0 25.159,0 L29.966,0 C35.542,0 40.062,4.531 40.062,10.119 L40.062,47.881 C40.062,53.469 35.542,58 29.966,58 z M26.149,56 L28.976,56 C33.994,56 38.062,51.782 38.062,46.579 L38.062,11.421 C38.062,6.218 33.994,2 28.976,2 L26.149,2 C21.131,2 3,30.016 3,30.016 C3,30.016 21.131,56 26.149,56 z" fill="#0A0000" fill-opacity="0.23"/>
+  </g>
+  <defs>
+    <linearGradient id="Gradient_1" gradientUnits="userSpaceOnUse" x1="20.008" y1="0" x2="20.008" y2="58">
+      <stop offset="0" stop-color="#1E0000" stop-opacity="0.1"/>
+      <stop offset="1" stop-color="#020000" stop-opacity="0.2"/>
+    </linearGradient>
+    <linearGradient id="Gradient_2" gradientUnits="userSpaceOnUse" x1="20.008" y1="0" x2="20.008" y2="58">
+      <stop offset="0" stop-color="#FFFFFF" stop-opacity="0.08"/>
+      <stop offset="1" stop-color="#FFFFFF" stop-opacity="0"/>
+    </linearGradient>
+  </defs>
+</svg>

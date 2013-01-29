@@ -17,13 +17,13 @@
 
 @implementation UINavigationController (autorotate)
 
-- (NSUInteger)supportedInterfaceOrientations
-{
-    return UIInterfaceOrientationPortrait;
-}
+-(NSUInteger)application:(UIApplication *)application supportedInterfaceOrientationsForWindow:(UIWindow *)window
 
--(BOOL) shouldAutorotate {
-    return NO;
+{
+    if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad)
+        return UIInterfaceOrientationMaskAll;
+    else  /* iphone */
+        return UIInterfaceOrientationMaskAllButUpsideDown;
 }
 
 @end
@@ -52,7 +52,11 @@
     [[UIBarButtonItem appearanceWhenContainedIn:[UINavigationBar class], nil] setBackgroundImage:buttonImage forState:UIControlStateNormal barMetrics:UIBarMetricsDefault];
     
     [[UINavigationBar appearance] setBackgroundImage:[UIImage imageNamed:@"header_bg.png"] forBarMetrics:UIBarMetricsDefault];
-    
+
+    [[UINavigationBar appearance] setTitleTextAttributes:
+     [NSDictionary dictionaryWithObjectsAndKeys:
+      [UIColor whiteColor],UITextAttributeTextColor,nil]];
+
     //[[UIApplication sharedApplication] registerForRemoteNotificationTypes:(UIRemoteNotificationTypeAlert | UIRemoteNotificationTypeBadge | UIRemoteNotificationTypeSound)];
     
     [self validateAuthenticationToken];

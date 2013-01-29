@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="40" height="60" viewBox="0, 0, 40, 60">
+  <g id="Layer 1">
+    <g>
+      <image xlink:href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACgAAAA7CAYAAAAJvMhYAAABhklEQVRoBe2azW6CUBCF595CqX+Arl0Yd659AR/dFzBx5864cC1Sf6jFeMtAaWmapgkHWkyGDYKcmXO/OdwVyhhDTT50k82xNzGITkgIVkFQoUVq1CsecZP3GSMZRMcvBIUgSgDVSwaFIEoA1UsGhSBKANVLBoUgSgDVSwaFIEoA1UsGhSBKANVLBoUgSgDVSwaFIEoA1UsGhSBKANXfQQbncwtdZW36xJumwcCprQFaOPF2BwZ5lYuFjS62cv27J35JIvL9fuUN0IKZp0jTcBiRZT3QcumjNSvTsxf2lHjLthljAnJdl9Zrr7ImZQuxB/bCnpJDfXz1sdu5FIZ9ut0i2u8Dmk7jsj1K6ThzPFatW+R5QbK7PH81yFcZwYwiG+31zrRaXWg2u5Zq+puI9+DJxKHDoZ0ay54PaTwOc+knwfzOZvNESjHJx/zWn5y1fk3HOhq9FPt9N5j/u9226HhsU6fjUBxbielqPx3gbNn2lU6nC3W75/RlzXsXzj8bLDz0nz/fAJyiZDlcxxd+AAAAAElFTkSuQmCC" preserveAspectRatio="none" x="0" y="2" width="40" height="59"/>
+      <path d="M10.097,0 L29.903,0 C35.48,0 40,4.531 40,10.119 L40,47.881 C40,53.469 35.48,58 29.903,58 L10.097,58 C4.52,58 0,53.469 0,47.881 L0,10.119 C0,4.531 4.52,0 10.097,0 z" fill="url(#Gradient_1)"/>
+      <path d="M10.097,0 L29.903,0 C35.48,0 40,4.531 40,10.119 L40,47.881 C40,53.469 35.48,58 29.903,58 L10.097,58 C4.52,58 0,53.469 0,47.881 L0,10.119 C0,4.531 4.52,0 10.097,0 z" fill="url(#Gradient_2)"/>
+      <image xlink:href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACgAAAA7CAYAAAAJvMhYAAAB4UlEQVRoBe2awU7DMBAFCZSCAPH/X8kBUQkobXhj/CI35MSG1oe1tIrrxM5kdsMhZhjH8WqpDcNwp/F7xVZxoxgUazZufFB8Kt7F8bG0+DAHFBhAz4qNgkWWn0AnVmo8OPGleBUPwFM7ARTck848KoA6Nkd1Vwd1Rq61Nn0fd4J844Y0LJUmOMAeFGh3GPI/TNqc4Sgj4kEsYhx36v8A1rQCh2bgfGwBNbyaRdszJPaAQ5gh96TbBkktYHuF4fj9yxyPpvE/N8kwnNcwJDKIlullU+1xMXCE0wtLCIZF521hzbFCW4bveQsbtLy1Tiv2jlqEJzlbq9CAck8A6ZD2rXPvtJ4dThBTq2KQY2E3AEI8pXW6+nKdEx4AXZyYdv4vhlcZ4ChcNsjAxeEaK+YZW8DmfBfdAmnALogWIIpBxruoPwM2dVj+1ni8yyMp7rolYDQ9aTANRg1E52cNpsGogej8rME0GDUQnZ81mAajBqLzswbTYNRAdH7WYBqMGojOzxpMg1ED0flZg2sY7Onr/vx5yjdq9iPYLptv8s0vPtvvygLPkRpkl6nXdrjWF/VuAWHzWwxkNymuLEVcAfS+RA91WBlAKi+vDZadnF4K0XDwnPzXRy+ALcdksB3sqd894DdjesgUU0AwkgAAAABJRU5ErkJggg==" preserveAspectRatio="none" x="0" y="0" width="40" height="59"/>
+    </g>
+    <path d="M10.097,58 C4.52,58 0,53.469 0,47.881 L0,10.119 C0,4.531 4.52,0 10.097,0 L29.903,0 C35.48,0 40,4.531 40,10.119 L40,47.881 C40,53.469 35.48,58 29.903,58 z M11.087,56 L28.913,56 C33.932,56 38,51.782 38,46.579 L38,11.421 C38,6.218 33.932,2 28.913,2 L11.087,2 C6.068,2 2,6.218 2,11.421 L2,46.579 C2,51.782 6.068,56 11.087,56 z" fill="#0A0000" fill-opacity="0.1"/>
+  </g>
+  <defs>
+    <linearGradient id="Gradient_1" gradientUnits="userSpaceOnUse" x1="20" y1="0" x2="20" y2="58">
+      <stop offset="0" stop-color="#140000" stop-opacity="0.05"/>
+      <stop offset="1" stop-color="#020000" stop-opacity="0.1"/>
+    </linearGradient>
+    <linearGradient id="Gradient_2" gradientUnits="userSpaceOnUse" x1="20" y1="0" x2="20" y2="58">
+      <stop offset="0" stop-color="#FFFFFF"/>
+      <stop offset="0" stop-color="#FFFFFF" stop-opacity="0.05"/>
+      <stop offset="1" stop-color="#FFFFFF" stop-opacity="0"/>
+    </linearGradient>
+  </defs>
+</svg>
