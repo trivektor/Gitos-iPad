@@ -77,8 +77,8 @@
 - (void)prepareTableView
 {
     // Load 'NewsFeed' nib
-    UINib *nib = [UINib nibWithNibName:@"NewsFeed" bundle:nil];
-    [newsFeedTable registerNib:nib forCellReuseIdentifier:@"NewsFeed"];
+    UINib *nib = [UINib nibWithNibName:@"NewsFeedCell" bundle:nil];
+    [newsFeedTable registerNib:nib forCellReuseIdentifier:@"NewsFeedCell"];
     
     // Auto resize
     [newsFeedTable setAutoresizingMask:(UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight)];
@@ -96,6 +96,7 @@
 
 - (void)getUserInfoAndNewsFeed
 {
+    NSLog(@"getting user info");
     NSString *accessToken = [SSKeychain passwordForService:@"access_token" account:@"gitos"];
     
     NSURL *userUrl = [NSURL URLWithString:@"https://api.github.com/user"];
@@ -120,8 +121,9 @@
          self.user = [[User alloc] initWithOptions:json];
          [self getUserNewsFeed:self.currentPage++];
      }
-                                     failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-                                     }];
+     failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+         NSLog(@"%@", error);
+     }];
     
     [operation start];
 }
@@ -136,12 +138,17 @@
     return self.newsFeed.count;
 }
 
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    return 57;
+}
+
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    NewsFeedCell *cell = [newsFeedTable dequeueReusableCellWithIdentifier:@"NewsFeed"];
+    NewsFeedCell *cell = [newsFeedTable dequeueReusableCellWithIdentifier:@"NewsFeedCell"];
     
     if (!cell) {
-        cell = [[NewsFeedCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"NewsFeed"];
+        cell = [[NewsFeedCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"NewsFeedCell"];
     }
     cell.event = [self.newsFeed objectAtIndex:indexPath.row];
     [cell displayEvent];
