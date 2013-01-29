@@ -18,6 +18,76 @@
 		B55D90B516B7AA27009CB90F /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B55D90B416B7AA27009CB90F /* Default@2x.png */; };
 		B55D90B716B7AA27009CB90F /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B55D90B616B7AA27009CB90F /* Default-568h@2x.png */; };
 		B55D90BA16B7AA27009CB90F /* Gitos_iPad.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = B55D90B816B7AA27009CB90F /* Gitos_iPad.xcdatamodeld */; };
+		B55D90C316B7AA3C009CB90F /* SVPullToRefresh.m in Sources */ = {isa = PBXBuildFile; fileRef = B55D90C216B7AA3C009CB90F /* SVPullToRefresh.m */; };
+		B55D90DA16B7AA48009CB90F /* AFHTTPClient.m in Sources */ = {isa = PBXBuildFile; fileRef = B55D90C616B7AA48009CB90F /* AFHTTPClient.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		B55D90DB16B7AA48009CB90F /* AFHTTPRequestOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = B55D90C816B7AA48009CB90F /* AFHTTPRequestOperation.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		B55D90DC16B7AA48009CB90F /* AFImageRequestOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = B55D90CA16B7AA48009CB90F /* AFImageRequestOperation.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		B55D90DD16B7AA48009CB90F /* AFJSONRequestOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = B55D90CC16B7AA48009CB90F /* AFJSONRequestOperation.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		B55D90DE16B7AA48009CB90F /* AFJSONUtilities.m in Sources */ = {isa = PBXBuildFile; fileRef = B55D90CE16B7AA48009CB90F /* AFJSONUtilities.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		B55D90DF16B7AA48009CB90F /* AFNetworkActivityIndicatorManager.m in Sources */ = {isa = PBXBuildFile; fileRef = B55D90D016B7AA48009CB90F /* AFNetworkActivityIndicatorManager.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		B55D90E016B7AA48009CB90F /* AFPropertyListRequestOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = B55D90D316B7AA48009CB90F /* AFPropertyListRequestOperation.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		B55D90E116B7AA48009CB90F /* AFURLConnectionOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = B55D90D516B7AA48009CB90F /* AFURLConnectionOperation.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		B55D90E216B7AA48009CB90F /* AFXMLRequestOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = B55D90D716B7AA48009CB90F /* AFXMLRequestOperation.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		B55D90E316B7AA48009CB90F /* UIImageView+AFNetworking.m in Sources */ = {isa = PBXBuildFile; fileRef = B55D90D916B7AA48009CB90F /* UIImageView+AFNetworking.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		B55D90EA16B7AB4D009CB90F /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B55D90E916B7AB4D009CB90F /* QuartzCore.framework */; };
+		B55D90EC16B7AB5A009CB90F /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B55D90EB16B7AB5A009CB90F /* Security.framework */; };
+		B55D90EE16B7AB67009CB90F /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B55D90ED16B7AB67009CB90F /* MessageUI.framework */; };
+		B55D90F516B7ABE2009CB90F /* AppConfig.m in Sources */ = {isa = PBXBuildFile; fileRef = B55D90F416B7ABE2009CB90F /* AppConfig.m */; };
+		B55D90F816B7AC11009CB90F /* AppInitialization.m in Sources */ = {isa = PBXBuildFile; fileRef = B55D90F716B7AC11009CB90F /* AppInitialization.m */; };
+		B55D90FB16B7AC4C009CB90F /* SSKeychain.m in Sources */ = {isa = PBXBuildFile; fileRef = B55D90FA16B7AC4C009CB90F /* SSKeychain.m */; };
+		B55D90FE16B7AC8B009CB90F /* Branch.m in Sources */ = {isa = PBXBuildFile; fileRef = B55D90FD16B7AC8A009CB90F /* Branch.m */; };
+		B55D910116B7ACC9009CB90F /* Gist.m in Sources */ = {isa = PBXBuildFile; fileRef = B55D910016B7ACC8009CB90F /* Gist.m */; };
+		B55D910416B7ACEF009CB90F /* GistFile.m in Sources */ = {isa = PBXBuildFile; fileRef = B55D910316B7ACEF009CB90F /* GistFile.m */; };
+		B55D910716B7AD2B009CB90F /* RelativeDateDescriptor.m in Sources */ = {isa = PBXBuildFile; fileRef = B55D910616B7AD2B009CB90F /* RelativeDateDescriptor.m */; };
+		B55D910A16B7AD47009CB90F /* Repo.m in Sources */ = {isa = PBXBuildFile; fileRef = B55D910916B7AD46009CB90F /* Repo.m */; };
+		B55D910D16B7AD79009CB90F /* RepoTreeNode.m in Sources */ = {isa = PBXBuildFile; fileRef = B55D910C16B7AD78009CB90F /* RepoTreeNode.m */; };
+		B55D911016B7ADAA009CB90F /* SpinnerView.m in Sources */ = {isa = PBXBuildFile; fileRef = B55D910F16B7ADA9009CB90F /* SpinnerView.m */; };
+		B55D911316B7ADCE009CB90F /* TimelineEvent.m in Sources */ = {isa = PBXBuildFile; fileRef = B55D911216B7ADCD009CB90F /* TimelineEvent.m */; };
+		B55D911616B7ADF0009CB90F /* User.m in Sources */ = {isa = PBXBuildFile; fileRef = B55D911516B7ADEE009CB90F /* User.m */; };
+		B55D911D16B7AE48009CB90F /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B55D911B16B7AE48009CB90F /* LoginViewController.m */; };
+		B55D911E16B7AE48009CB90F /* LoginViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B55D911C16B7AE48009CB90F /* LoginViewController.xib */; };
+		B55D912216B7AE9B009CB90F /* NewsfeedViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B55D912016B7AE9A009CB90F /* NewsfeedViewController.m */; };
+		B55D912316B7AE9B009CB90F /* NewsfeedViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B55D912116B7AE9A009CB90F /* NewsfeedViewController.xib */; };
+		B55D912716B7AED1009CB90F /* ReposViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B55D912516B7AED0009CB90F /* ReposViewController.m */; };
+		B55D912816B7AED1009CB90F /* ReposViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B55D912616B7AED0009CB90F /* ReposViewController.xib */; };
+		B55D912C16B7AF09009CB90F /* GistsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B55D912A16B7AF08009CB90F /* GistsViewController.m */; };
+		B55D912D16B7AF09009CB90F /* GistsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B55D912B16B7AF08009CB90F /* GistsViewController.xib */; };
+		B55D913116B7AF37009CB90F /* StarredViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B55D912F16B7AF36009CB90F /* StarredViewController.m */; };
+		B55D913216B7AF37009CB90F /* StarredViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B55D913016B7AF36009CB90F /* StarredViewController.xib */; };
+		B55D913616B7AF86009CB90F /* GistCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B55D913516B7AF86009CB90F /* GistCell.m */; };
+		B55D913816B7AFAA009CB90F /* GistCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B55D913716B7AFAA009CB90F /* GistCell.xib */; };
+		B55D913B16B7AFF4009CB90F /* RepoCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B55D913A16B7AFF4009CB90F /* RepoCell.m */; };
+		B55D913D16B7B01A009CB90F /* RepoCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B55D913C16B7B019009CB90F /* RepoCell.xib */; };
+		B55D914116B7B0A0009CB90F /* RepoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B55D913F16B7B09F009CB90F /* RepoViewController.m */; };
+		B55D914216B7B0A0009CB90F /* RepoViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B55D914016B7B0A0009CB90F /* RepoViewController.xib */; };
+		B55D914616B7B0E3009CB90F /* NewsfeedDetailsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B55D914416B7B0E0009CB90F /* NewsfeedDetailsViewController.m */; };
+		B55D914716B7B0E3009CB90F /* NewsfeedDetailsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B55D914516B7B0E1009CB90F /* NewsfeedDetailsViewController.xib */; };
+		B55D914B16B7B19D009CB90F /* GistViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B55D914916B7B199009CB90F /* GistViewController.m */; };
+		B55D914C16B7B19D009CB90F /* GistViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B55D914A16B7B19B009CB90F /* GistViewController.xib */; };
+		B55D914F16B7B1FF009CB90F /* NewsFeedCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B55D914E16B7B1FE009CB90F /* NewsFeedCell.m */; };
+		B55D915116B7B265009CB90F /* NewsFeedCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B55D915016B7B265009CB90F /* NewsFeedCell.xib */; };
+		B55D915416B7B2F4009CB90F /* RepoDetailsCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B55D915316B7B2F3009CB90F /* RepoDetailsCell.m */; };
+		B55D915616B7B321009CB90F /* RepoDetailsCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B55D915516B7B321009CB90F /* RepoDetailsCell.xib */; };
+		B55D915A16B7B38D009CB90F /* RepoTreeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B55D915816B7B38A009CB90F /* RepoTreeViewController.m */; };
+		B55D915B16B7B38D009CB90F /* RepoTreeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B55D915916B7B38C009CB90F /* RepoTreeViewController.xib */; };
+		B55D915E16B7B423009CB90F /* GistDetailsCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B55D915D16B7B422009CB90F /* GistDetailsCell.m */; };
+		B55D916016B7B446009CB90F /* GistDetailsCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B55D915F16B7B445009CB90F /* GistDetailsCell.xib */; };
+		B55D916416B7B49A009CB90F /* RawFileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B55D916216B7B495009CB90F /* RawFileViewController.m */; };
+		B55D916516B7B49A009CB90F /* RawFileViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B55D916316B7B497009CB90F /* RawFileViewController.xib */; };
+		B55D916916B7B4F0009CB90F /* GistRawFileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B55D916716B7B4EA009CB90F /* GistRawFileViewController.m */; };
+		B55D916A16B7B4F0009CB90F /* GistRawFileViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B55D916816B7B4EE009CB90F /* GistRawFileViewController.xib */; };
+		B55D916D16B7B563009CB90F /* RepoTreeCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B55D916C16B7B562009CB90F /* RepoTreeCell.m */; };
+		B55D916F16B7B590009CB90F /* RepoTreeCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B55D916E16B7B58F009CB90F /* RepoTreeCell.xib */; };
+		B55D917316B7B5C5009CB90F /* OthersViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B55D917116B7B5C0009CB90F /* OthersViewController.m */; };
+		B55D917416B7B5C5009CB90F /* OthersViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B55D917216B7B5C2009CB90F /* OthersViewController.xib */; };
+		B55D917816B7B61B009CB90F /* ProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B55D917616B7B613009CB90F /* ProfileViewController.m */; };
+		B55D917916B7B61B009CB90F /* ProfileViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B55D917716B7B618009CB90F /* ProfileViewController.xib */; };
+		B55D917D16B7B65C009CB90F /* RepoSearchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B55D917B16B7B653009CB90F /* RepoSearchViewController.m */; };
+		B55D917E16B7B65C009CB90F /* RepoSearchViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B55D917C16B7B658009CB90F /* RepoSearchViewController.xib */; };
+		B55D918116B7B6AE009CB90F /* RepoSearchResultCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B55D918016B7B6AC009CB90F /* RepoSearchResultCell.m */; };
+		B55D918316B7B6D4009CB90F /* RepoSearchResultCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B55D918216B7B6D2009CB90F /* RepoSearchResultCell.xib */; };
+		B55D918616B7B6E9009CB90F /* ProfileCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B55D918516B7B6E7009CB90F /* ProfileCell.m */; };
+		B55D918816B7B70D009CB90F /* ProfileCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B55D918716B7B70B009CB90F /* ProfileCell.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -36,6 +106,122 @@
 		B55D90B416B7AA27009CB90F /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.png"; sourceTree = "<group>"; };
 		B55D90B616B7AA27009CB90F /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
 		B55D90B916B7AA27009CB90F /* Gitos_iPad.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Gitos_iPad.xcdatamodel; sourceTree = "<group>"; };
+		B55D90C116B7AA3C009CB90F /* SVPullToRefresh.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SVPullToRefresh.h; sourceTree = "<group>"; };
+		B55D90C216B7AA3C009CB90F /* SVPullToRefresh.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SVPullToRefresh.m; sourceTree = "<group>"; };
+		B55D90C516B7AA48009CB90F /* AFHTTPClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFHTTPClient.h; sourceTree = "<group>"; };
+		B55D90C616B7AA48009CB90F /* AFHTTPClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFHTTPClient.m; sourceTree = "<group>"; };
+		B55D90C716B7AA48009CB90F /* AFHTTPRequestOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFHTTPRequestOperation.h; sourceTree = "<group>"; };
+		B55D90C816B7AA48009CB90F /* AFHTTPRequestOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFHTTPRequestOperation.m; sourceTree = "<group>"; };
+		B55D90C916B7AA48009CB90F /* AFImageRequestOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFImageRequestOperation.h; sourceTree = "<group>"; };
+		B55D90CA16B7AA48009CB90F /* AFImageRequestOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFImageRequestOperation.m; sourceTree = "<group>"; };
+		B55D90CB16B7AA48009CB90F /* AFJSONRequestOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFJSONRequestOperation.h; sourceTree = "<group>"; };
+		B55D90CC16B7AA48009CB90F /* AFJSONRequestOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFJSONRequestOperation.m; sourceTree = "<group>"; };
+		B55D90CD16B7AA48009CB90F /* AFJSONUtilities.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFJSONUtilities.h; sourceTree = "<group>"; };
+		B55D90CE16B7AA48009CB90F /* AFJSONUtilities.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFJSONUtilities.m; sourceTree = "<group>"; };
+		B55D90CF16B7AA48009CB90F /* AFNetworkActivityIndicatorManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFNetworkActivityIndicatorManager.h; sourceTree = "<group>"; };
+		B55D90D016B7AA48009CB90F /* AFNetworkActivityIndicatorManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFNetworkActivityIndicatorManager.m; sourceTree = "<group>"; };
+		B55D90D116B7AA48009CB90F /* AFNetworking.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFNetworking.h; sourceTree = "<group>"; };
+		B55D90D216B7AA48009CB90F /* AFPropertyListRequestOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFPropertyListRequestOperation.h; sourceTree = "<group>"; };
+		B55D90D316B7AA48009CB90F /* AFPropertyListRequestOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFPropertyListRequestOperation.m; sourceTree = "<group>"; };
+		B55D90D416B7AA48009CB90F /* AFURLConnectionOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFURLConnectionOperation.h; sourceTree = "<group>"; };
+		B55D90D516B7AA48009CB90F /* AFURLConnectionOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFURLConnectionOperation.m; sourceTree = "<group>"; };
+		B55D90D616B7AA48009CB90F /* AFXMLRequestOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFXMLRequestOperation.h; sourceTree = "<group>"; };
+		B55D90D716B7AA48009CB90F /* AFXMLRequestOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFXMLRequestOperation.m; sourceTree = "<group>"; };
+		B55D90D816B7AA48009CB90F /* UIImageView+AFNetworking.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImageView+AFNetworking.h"; sourceTree = "<group>"; };
+		B55D90D916B7AA48009CB90F /* UIImageView+AFNetworking.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImageView+AFNetworking.m"; sourceTree = "<group>"; };
+		B55D90E916B7AB4D009CB90F /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		B55D90EB16B7AB5A009CB90F /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
+		B55D90ED16B7AB67009CB90F /* MessageUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MessageUI.framework; path = System/Library/Frameworks/MessageUI.framework; sourceTree = SDKROOT; };
+		B55D90F316B7ABE2009CB90F /* AppConfig.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppConfig.h; sourceTree = "<group>"; };
+		B55D90F416B7ABE2009CB90F /* AppConfig.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppConfig.m; sourceTree = "<group>"; };
+		B55D90F616B7AC11009CB90F /* AppInitialization.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppInitialization.h; sourceTree = "<group>"; };
+		B55D90F716B7AC11009CB90F /* AppInitialization.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppInitialization.m; sourceTree = "<group>"; };
+		B55D90F916B7AC4B009CB90F /* SSKeychain.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SSKeychain.h; sourceTree = "<group>"; };
+		B55D90FA16B7AC4C009CB90F /* SSKeychain.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SSKeychain.m; sourceTree = "<group>"; };
+		B55D90FC16B7AC8A009CB90F /* Branch.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Branch.h; sourceTree = "<group>"; };
+		B55D90FD16B7AC8A009CB90F /* Branch.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Branch.m; sourceTree = "<group>"; };
+		B55D90FF16B7ACC8009CB90F /* Gist.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Gist.h; sourceTree = "<group>"; };
+		B55D910016B7ACC8009CB90F /* Gist.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Gist.m; sourceTree = "<group>"; };
+		B55D910216B7ACEE009CB90F /* GistFile.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GistFile.h; sourceTree = "<group>"; };
+		B55D910316B7ACEF009CB90F /* GistFile.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GistFile.m; sourceTree = "<group>"; };
+		B55D910516B7AD2A009CB90F /* RelativeDateDescriptor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RelativeDateDescriptor.h; sourceTree = "<group>"; };
+		B55D910616B7AD2B009CB90F /* RelativeDateDescriptor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RelativeDateDescriptor.m; sourceTree = "<group>"; };
+		B55D910816B7AD46009CB90F /* Repo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Repo.h; sourceTree = "<group>"; };
+		B55D910916B7AD46009CB90F /* Repo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Repo.m; sourceTree = "<group>"; };
+		B55D910B16B7AD77009CB90F /* RepoTreeNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RepoTreeNode.h; sourceTree = "<group>"; };
+		B55D910C16B7AD78009CB90F /* RepoTreeNode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RepoTreeNode.m; sourceTree = "<group>"; };
+		B55D910E16B7ADA8009CB90F /* SpinnerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SpinnerView.h; sourceTree = "<group>"; };
+		B55D910F16B7ADA9009CB90F /* SpinnerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SpinnerView.m; sourceTree = "<group>"; };
+		B55D911116B7ADCC009CB90F /* TimelineEvent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TimelineEvent.h; sourceTree = "<group>"; };
+		B55D911216B7ADCD009CB90F /* TimelineEvent.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TimelineEvent.m; sourceTree = "<group>"; };
+		B55D911416B7ADED009CB90F /* User.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = User.h; sourceTree = "<group>"; };
+		B55D911516B7ADEE009CB90F /* User.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = User.m; sourceTree = "<group>"; };
+		B55D911A16B7AE48009CB90F /* LoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginViewController.h; sourceTree = "<group>"; };
+		B55D911B16B7AE48009CB90F /* LoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginViewController.m; sourceTree = "<group>"; };
+		B55D911C16B7AE48009CB90F /* LoginViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LoginViewController.xib; sourceTree = "<group>"; };
+		B55D911F16B7AE9A009CB90F /* NewsfeedViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NewsfeedViewController.h; sourceTree = "<group>"; };
+		B55D912016B7AE9A009CB90F /* NewsfeedViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NewsfeedViewController.m; sourceTree = "<group>"; };
+		B55D912116B7AE9A009CB90F /* NewsfeedViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NewsfeedViewController.xib; sourceTree = "<group>"; };
+		B55D912416B7AECF009CB90F /* ReposViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ReposViewController.h; sourceTree = "<group>"; };
+		B55D912516B7AED0009CB90F /* ReposViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ReposViewController.m; sourceTree = "<group>"; };
+		B55D912616B7AED0009CB90F /* ReposViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ReposViewController.xib; sourceTree = "<group>"; };
+		B55D912916B7AF07009CB90F /* GistsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GistsViewController.h; sourceTree = "<group>"; };
+		B55D912A16B7AF08009CB90F /* GistsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GistsViewController.m; sourceTree = "<group>"; };
+		B55D912B16B7AF08009CB90F /* GistsViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GistsViewController.xib; sourceTree = "<group>"; };
+		B55D912E16B7AF35009CB90F /* StarredViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StarredViewController.h; sourceTree = "<group>"; };
+		B55D912F16B7AF36009CB90F /* StarredViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StarredViewController.m; sourceTree = "<group>"; };
+		B55D913016B7AF36009CB90F /* StarredViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = StarredViewController.xib; sourceTree = "<group>"; };
+		B55D913416B7AF86009CB90F /* GistCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GistCell.h; sourceTree = "<group>"; };
+		B55D913516B7AF86009CB90F /* GistCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GistCell.m; sourceTree = "<group>"; };
+		B55D913716B7AFAA009CB90F /* GistCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GistCell.xib; sourceTree = "<group>"; };
+		B55D913916B7AFF3009CB90F /* RepoCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RepoCell.h; sourceTree = "<group>"; };
+		B55D913A16B7AFF4009CB90F /* RepoCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RepoCell.m; sourceTree = "<group>"; };
+		B55D913C16B7B019009CB90F /* RepoCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RepoCell.xib; sourceTree = "<group>"; };
+		B55D913E16B7B09E009CB90F /* RepoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RepoViewController.h; sourceTree = "<group>"; };
+		B55D913F16B7B09F009CB90F /* RepoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RepoViewController.m; sourceTree = "<group>"; };
+		B55D914016B7B0A0009CB90F /* RepoViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RepoViewController.xib; sourceTree = "<group>"; };
+		B55D914316B7B0DF009CB90F /* NewsfeedDetailsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NewsfeedDetailsViewController.h; sourceTree = "<group>"; };
+		B55D914416B7B0E0009CB90F /* NewsfeedDetailsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NewsfeedDetailsViewController.m; sourceTree = "<group>"; };
+		B55D914516B7B0E1009CB90F /* NewsfeedDetailsViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NewsfeedDetailsViewController.xib; sourceTree = "<group>"; };
+		B55D914816B7B197009CB90F /* GistViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GistViewController.h; sourceTree = "<group>"; };
+		B55D914916B7B199009CB90F /* GistViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GistViewController.m; sourceTree = "<group>"; };
+		B55D914A16B7B19B009CB90F /* GistViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GistViewController.xib; sourceTree = "<group>"; };
+		B55D914D16B7B1FE009CB90F /* NewsFeedCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NewsFeedCell.h; sourceTree = "<group>"; };
+		B55D914E16B7B1FE009CB90F /* NewsFeedCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NewsFeedCell.m; sourceTree = "<group>"; };
+		B55D915016B7B265009CB90F /* NewsFeedCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NewsFeedCell.xib; sourceTree = "<group>"; };
+		B55D915216B7B2F3009CB90F /* RepoDetailsCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RepoDetailsCell.h; sourceTree = "<group>"; };
+		B55D915316B7B2F3009CB90F /* RepoDetailsCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RepoDetailsCell.m; sourceTree = "<group>"; };
+		B55D915516B7B321009CB90F /* RepoDetailsCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RepoDetailsCell.xib; sourceTree = "<group>"; };
+		B55D915716B7B388009CB90F /* RepoTreeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RepoTreeViewController.h; sourceTree = "<group>"; };
+		B55D915816B7B38A009CB90F /* RepoTreeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RepoTreeViewController.m; sourceTree = "<group>"; };
+		B55D915916B7B38C009CB90F /* RepoTreeViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RepoTreeViewController.xib; sourceTree = "<group>"; };
+		B55D915C16B7B421009CB90F /* GistDetailsCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GistDetailsCell.h; sourceTree = "<group>"; };
+		B55D915D16B7B422009CB90F /* GistDetailsCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GistDetailsCell.m; sourceTree = "<group>"; };
+		B55D915F16B7B445009CB90F /* GistDetailsCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GistDetailsCell.xib; sourceTree = "<group>"; };
+		B55D916116B7B493009CB90F /* RawFileViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RawFileViewController.h; sourceTree = "<group>"; };
+		B55D916216B7B495009CB90F /* RawFileViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RawFileViewController.m; sourceTree = "<group>"; };
+		B55D916316B7B497009CB90F /* RawFileViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RawFileViewController.xib; sourceTree = "<group>"; };
+		B55D916616B7B4E9009CB90F /* GistRawFileViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GistRawFileViewController.h; sourceTree = "<group>"; };
+		B55D916716B7B4EA009CB90F /* GistRawFileViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GistRawFileViewController.m; sourceTree = "<group>"; };
+		B55D916816B7B4EE009CB90F /* GistRawFileViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GistRawFileViewController.xib; sourceTree = "<group>"; };
+		B55D916B16B7B560009CB90F /* RepoTreeCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RepoTreeCell.h; sourceTree = "<group>"; };
+		B55D916C16B7B562009CB90F /* RepoTreeCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RepoTreeCell.m; sourceTree = "<group>"; };
+		B55D916E16B7B58F009CB90F /* RepoTreeCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RepoTreeCell.xib; sourceTree = "<group>"; };
+		B55D917016B7B5BD009CB90F /* OthersViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OthersViewController.h; sourceTree = "<group>"; };
+		B55D917116B7B5C0009CB90F /* OthersViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OthersViewController.m; sourceTree = "<group>"; };
+		B55D917216B7B5C2009CB90F /* OthersViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = OthersViewController.xib; sourceTree = "<group>"; };
+		B55D917516B7B611009CB90F /* ProfileViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProfileViewController.h; sourceTree = "<group>"; };
+		B55D917616B7B613009CB90F /* ProfileViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProfileViewController.m; sourceTree = "<group>"; };
+		B55D917716B7B618009CB90F /* ProfileViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ProfileViewController.xib; sourceTree = "<group>"; };
+		B55D917A16B7B650009CB90F /* RepoSearchViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RepoSearchViewController.h; sourceTree = "<group>"; };
+		B55D917B16B7B653009CB90F /* RepoSearchViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RepoSearchViewController.m; sourceTree = "<group>"; };
+		B55D917C16B7B658009CB90F /* RepoSearchViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RepoSearchViewController.xib; sourceTree = "<group>"; };
+		B55D917F16B7B6AB009CB90F /* RepoSearchResultCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RepoSearchResultCell.h; sourceTree = "<group>"; };
+		B55D918016B7B6AC009CB90F /* RepoSearchResultCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RepoSearchResultCell.m; sourceTree = "<group>"; };
+		B55D918216B7B6D2009CB90F /* RepoSearchResultCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RepoSearchResultCell.xib; sourceTree = "<group>"; };
+		B55D918416B7B6E5009CB90F /* ProfileCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProfileCell.h; sourceTree = "<group>"; };
+		B55D918516B7B6E7009CB90F /* ProfileCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProfileCell.m; sourceTree = "<group>"; };
+		B55D918716B7B70B009CB90F /* ProfileCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ProfileCell.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -43,6 +229,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B55D90EE16B7AB67009CB90F /* MessageUI.framework in Frameworks */,
+				B55D90EC16B7AB5A009CB90F /* Security.framework in Frameworks */,
+				B55D90EA16B7AB4D009CB90F /* QuartzCore.framework in Frameworks */,
 				B55D909F16B7AA27009CB90F /* UIKit.framework in Frameworks */,
 				B55D90A116B7AA27009CB90F /* Foundation.framework in Frameworks */,
 				B55D90A316B7AA27009CB90F /* CoreGraphics.framework in Frameworks */,
@@ -56,6 +245,11 @@
 		B55D908F16B7AA27009CB90F = {
 			isa = PBXGroup;
 			children = (
+				B55D90ED16B7AB67009CB90F /* MessageUI.framework */,
+				B55D90EB16B7AB5A009CB90F /* Security.framework */,
+				B55D90E916B7AB4D009CB90F /* QuartzCore.framework */,
+				B55D90C416B7AA48009CB90F /* AFNetworking */,
+				B55D90C016B7AA3C009CB90F /* SVPullToRefresh */,
 				B55D90A616B7AA27009CB90F /* Gitos-iPad */,
 				B55D909D16B7AA27009CB90F /* Frameworks */,
 				B55D909B16B7AA27009CB90F /* Products */,
@@ -85,6 +279,9 @@
 			isa = PBXGroup;
 			children = (
 				B55D90AF16B7AA27009CB90F /* AppDelegate.h */,
+				B55D913316B7AF65009CB90F /* Cells */,
+				B55D90F216B7ABD6009CB90F /* Classes */,
+				B55D90F116B7ABC9009CB90F /* Controllers */,
 				B55D90B016B7AA27009CB90F /* AppDelegate.m */,
 				B55D90B816B7AA27009CB90F /* Gitos_iPad.xcdatamodeld */,
 				B55D90A716B7AA27009CB90F /* Supporting Files */,
@@ -104,6 +301,154 @@
 				B55D90B616B7AA27009CB90F /* Default-568h@2x.png */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		B55D90C016B7AA3C009CB90F /* SVPullToRefresh */ = {
+			isa = PBXGroup;
+			children = (
+				B55D90C116B7AA3C009CB90F /* SVPullToRefresh.h */,
+				B55D90C216B7AA3C009CB90F /* SVPullToRefresh.m */,
+			);
+			path = SVPullToRefresh;
+			sourceTree = "<group>";
+		};
+		B55D90C416B7AA48009CB90F /* AFNetworking */ = {
+			isa = PBXGroup;
+			children = (
+				B55D90C516B7AA48009CB90F /* AFHTTPClient.h */,
+				B55D90C616B7AA48009CB90F /* AFHTTPClient.m */,
+				B55D90C716B7AA48009CB90F /* AFHTTPRequestOperation.h */,
+				B55D90C816B7AA48009CB90F /* AFHTTPRequestOperation.m */,
+				B55D90C916B7AA48009CB90F /* AFImageRequestOperation.h */,
+				B55D90CA16B7AA48009CB90F /* AFImageRequestOperation.m */,
+				B55D90CB16B7AA48009CB90F /* AFJSONRequestOperation.h */,
+				B55D90CC16B7AA48009CB90F /* AFJSONRequestOperation.m */,
+				B55D90CD16B7AA48009CB90F /* AFJSONUtilities.h */,
+				B55D90CE16B7AA48009CB90F /* AFJSONUtilities.m */,
+				B55D90CF16B7AA48009CB90F /* AFNetworkActivityIndicatorManager.h */,
+				B55D90D016B7AA48009CB90F /* AFNetworkActivityIndicatorManager.m */,
+				B55D90D116B7AA48009CB90F /* AFNetworking.h */,
+				B55D90D216B7AA48009CB90F /* AFPropertyListRequestOperation.h */,
+				B55D90D316B7AA48009CB90F /* AFPropertyListRequestOperation.m */,
+				B55D90D416B7AA48009CB90F /* AFURLConnectionOperation.h */,
+				B55D90D516B7AA48009CB90F /* AFURLConnectionOperation.m */,
+				B55D90D616B7AA48009CB90F /* AFXMLRequestOperation.h */,
+				B55D90D716B7AA48009CB90F /* AFXMLRequestOperation.m */,
+				B55D90D816B7AA48009CB90F /* UIImageView+AFNetworking.h */,
+				B55D90D916B7AA48009CB90F /* UIImageView+AFNetworking.m */,
+			);
+			path = AFNetworking;
+			sourceTree = "<group>";
+		};
+		B55D90F116B7ABC9009CB90F /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				B55D911A16B7AE48009CB90F /* LoginViewController.h */,
+				B55D911B16B7AE48009CB90F /* LoginViewController.m */,
+				B55D911C16B7AE48009CB90F /* LoginViewController.xib */,
+				B55D911F16B7AE9A009CB90F /* NewsfeedViewController.h */,
+				B55D912016B7AE9A009CB90F /* NewsfeedViewController.m */,
+				B55D912116B7AE9A009CB90F /* NewsfeedViewController.xib */,
+				B55D912416B7AECF009CB90F /* ReposViewController.h */,
+				B55D912516B7AED0009CB90F /* ReposViewController.m */,
+				B55D912616B7AED0009CB90F /* ReposViewController.xib */,
+				B55D912916B7AF07009CB90F /* GistsViewController.h */,
+				B55D912A16B7AF08009CB90F /* GistsViewController.m */,
+				B55D912B16B7AF08009CB90F /* GistsViewController.xib */,
+				B55D912E16B7AF35009CB90F /* StarredViewController.h */,
+				B55D912F16B7AF36009CB90F /* StarredViewController.m */,
+				B55D913016B7AF36009CB90F /* StarredViewController.xib */,
+				B55D913E16B7B09E009CB90F /* RepoViewController.h */,
+				B55D913F16B7B09F009CB90F /* RepoViewController.m */,
+				B55D914016B7B0A0009CB90F /* RepoViewController.xib */,
+				B55D914316B7B0DF009CB90F /* NewsfeedDetailsViewController.h */,
+				B55D914416B7B0E0009CB90F /* NewsfeedDetailsViewController.m */,
+				B55D914516B7B0E1009CB90F /* NewsfeedDetailsViewController.xib */,
+				B55D914816B7B197009CB90F /* GistViewController.h */,
+				B55D914916B7B199009CB90F /* GistViewController.m */,
+				B55D914A16B7B19B009CB90F /* GistViewController.xib */,
+				B55D915716B7B388009CB90F /* RepoTreeViewController.h */,
+				B55D915816B7B38A009CB90F /* RepoTreeViewController.m */,
+				B55D915916B7B38C009CB90F /* RepoTreeViewController.xib */,
+				B55D916116B7B493009CB90F /* RawFileViewController.h */,
+				B55D916216B7B495009CB90F /* RawFileViewController.m */,
+				B55D916316B7B497009CB90F /* RawFileViewController.xib */,
+				B55D916616B7B4E9009CB90F /* GistRawFileViewController.h */,
+				B55D916716B7B4EA009CB90F /* GistRawFileViewController.m */,
+				B55D916816B7B4EE009CB90F /* GistRawFileViewController.xib */,
+				B55D917016B7B5BD009CB90F /* OthersViewController.h */,
+				B55D917116B7B5C0009CB90F /* OthersViewController.m */,
+				B55D917216B7B5C2009CB90F /* OthersViewController.xib */,
+				B55D917516B7B611009CB90F /* ProfileViewController.h */,
+				B55D917616B7B613009CB90F /* ProfileViewController.m */,
+				B55D917716B7B618009CB90F /* ProfileViewController.xib */,
+				B55D917A16B7B650009CB90F /* RepoSearchViewController.h */,
+				B55D917B16B7B653009CB90F /* RepoSearchViewController.m */,
+				B55D917C16B7B658009CB90F /* RepoSearchViewController.xib */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
+		B55D90F216B7ABD6009CB90F /* Classes */ = {
+			isa = PBXGroup;
+			children = (
+				B55D90F316B7ABE2009CB90F /* AppConfig.h */,
+				B55D90F416B7ABE2009CB90F /* AppConfig.m */,
+				B55D90F616B7AC11009CB90F /* AppInitialization.h */,
+				B55D90F716B7AC11009CB90F /* AppInitialization.m */,
+				B55D90F916B7AC4B009CB90F /* SSKeychain.h */,
+				B55D90FA16B7AC4C009CB90F /* SSKeychain.m */,
+				B55D90FC16B7AC8A009CB90F /* Branch.h */,
+				B55D90FD16B7AC8A009CB90F /* Branch.m */,
+				B55D90FF16B7ACC8009CB90F /* Gist.h */,
+				B55D910016B7ACC8009CB90F /* Gist.m */,
+				B55D910216B7ACEE009CB90F /* GistFile.h */,
+				B55D910316B7ACEF009CB90F /* GistFile.m */,
+				B55D910516B7AD2A009CB90F /* RelativeDateDescriptor.h */,
+				B55D910616B7AD2B009CB90F /* RelativeDateDescriptor.m */,
+				B55D910816B7AD46009CB90F /* Repo.h */,
+				B55D910916B7AD46009CB90F /* Repo.m */,
+				B55D910B16B7AD77009CB90F /* RepoTreeNode.h */,
+				B55D910C16B7AD78009CB90F /* RepoTreeNode.m */,
+				B55D910E16B7ADA8009CB90F /* SpinnerView.h */,
+				B55D910F16B7ADA9009CB90F /* SpinnerView.m */,
+				B55D911116B7ADCC009CB90F /* TimelineEvent.h */,
+				B55D911216B7ADCD009CB90F /* TimelineEvent.m */,
+				B55D911416B7ADED009CB90F /* User.h */,
+				B55D911516B7ADEE009CB90F /* User.m */,
+			);
+			path = Classes;
+			sourceTree = "<group>";
+		};
+		B55D913316B7AF65009CB90F /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				B55D913416B7AF86009CB90F /* GistCell.h */,
+				B55D913516B7AF86009CB90F /* GistCell.m */,
+				B55D913716B7AFAA009CB90F /* GistCell.xib */,
+				B55D913916B7AFF3009CB90F /* RepoCell.h */,
+				B55D913A16B7AFF4009CB90F /* RepoCell.m */,
+				B55D913C16B7B019009CB90F /* RepoCell.xib */,
+				B55D914D16B7B1FE009CB90F /* NewsFeedCell.h */,
+				B55D914E16B7B1FE009CB90F /* NewsFeedCell.m */,
+				B55D915016B7B265009CB90F /* NewsFeedCell.xib */,
+				B55D915216B7B2F3009CB90F /* RepoDetailsCell.h */,
+				B55D915316B7B2F3009CB90F /* RepoDetailsCell.m */,
+				B55D915516B7B321009CB90F /* RepoDetailsCell.xib */,
+				B55D915C16B7B421009CB90F /* GistDetailsCell.h */,
+				B55D915D16B7B422009CB90F /* GistDetailsCell.m */,
+				B55D915F16B7B445009CB90F /* GistDetailsCell.xib */,
+				B55D916B16B7B560009CB90F /* RepoTreeCell.h */,
+				B55D916C16B7B562009CB90F /* RepoTreeCell.m */,
+				B55D916E16B7B58F009CB90F /* RepoTreeCell.xib */,
+				B55D917F16B7B6AB009CB90F /* RepoSearchResultCell.h */,
+				B55D918016B7B6AC009CB90F /* RepoSearchResultCell.m */,
+				B55D918216B7B6D2009CB90F /* RepoSearchResultCell.xib */,
+				B55D918416B7B6E5009CB90F /* ProfileCell.h */,
+				B55D918516B7B6E7009CB90F /* ProfileCell.m */,
+				B55D918716B7B70B009CB90F /* ProfileCell.xib */,
+			);
+			path = Cells;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -161,6 +506,28 @@
 				B55D90B316B7AA27009CB90F /* Default.png in Resources */,
 				B55D90B516B7AA27009CB90F /* Default@2x.png in Resources */,
 				B55D90B716B7AA27009CB90F /* Default-568h@2x.png in Resources */,
+				B55D911E16B7AE48009CB90F /* LoginViewController.xib in Resources */,
+				B55D912316B7AE9B009CB90F /* NewsfeedViewController.xib in Resources */,
+				B55D912816B7AED1009CB90F /* ReposViewController.xib in Resources */,
+				B55D912D16B7AF09009CB90F /* GistsViewController.xib in Resources */,
+				B55D913216B7AF37009CB90F /* StarredViewController.xib in Resources */,
+				B55D913816B7AFAA009CB90F /* GistCell.xib in Resources */,
+				B55D913D16B7B01A009CB90F /* RepoCell.xib in Resources */,
+				B55D914216B7B0A0009CB90F /* RepoViewController.xib in Resources */,
+				B55D914716B7B0E3009CB90F /* NewsfeedDetailsViewController.xib in Resources */,
+				B55D914C16B7B19D009CB90F /* GistViewController.xib in Resources */,
+				B55D915116B7B265009CB90F /* NewsFeedCell.xib in Resources */,
+				B55D915616B7B321009CB90F /* RepoDetailsCell.xib in Resources */,
+				B55D915B16B7B38D009CB90F /* RepoTreeViewController.xib in Resources */,
+				B55D916016B7B446009CB90F /* GistDetailsCell.xib in Resources */,
+				B55D916516B7B49A009CB90F /* RawFileViewController.xib in Resources */,
+				B55D916A16B7B4F0009CB90F /* GistRawFileViewController.xib in Resources */,
+				B55D916F16B7B590009CB90F /* RepoTreeCell.xib in Resources */,
+				B55D917416B7B5C5009CB90F /* OthersViewController.xib in Resources */,
+				B55D917916B7B61B009CB90F /* ProfileViewController.xib in Resources */,
+				B55D917E16B7B65C009CB90F /* RepoSearchViewController.xib in Resources */,
+				B55D918316B7B6D4009CB90F /* RepoSearchResultCell.xib in Resources */,
+				B55D918816B7B70D009CB90F /* ProfileCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -174,6 +541,51 @@
 				B55D90AD16B7AA27009CB90F /* main.m in Sources */,
 				B55D90B116B7AA27009CB90F /* AppDelegate.m in Sources */,
 				B55D90BA16B7AA27009CB90F /* Gitos_iPad.xcdatamodeld in Sources */,
+				B55D90C316B7AA3C009CB90F /* SVPullToRefresh.m in Sources */,
+				B55D90DA16B7AA48009CB90F /* AFHTTPClient.m in Sources */,
+				B55D90DB16B7AA48009CB90F /* AFHTTPRequestOperation.m in Sources */,
+				B55D90DC16B7AA48009CB90F /* AFImageRequestOperation.m in Sources */,
+				B55D90DD16B7AA48009CB90F /* AFJSONRequestOperation.m in Sources */,
+				B55D90DE16B7AA48009CB90F /* AFJSONUtilities.m in Sources */,
+				B55D90DF16B7AA48009CB90F /* AFNetworkActivityIndicatorManager.m in Sources */,
+				B55D90E016B7AA48009CB90F /* AFPropertyListRequestOperation.m in Sources */,
+				B55D90E116B7AA48009CB90F /* AFURLConnectionOperation.m in Sources */,
+				B55D90E216B7AA48009CB90F /* AFXMLRequestOperation.m in Sources */,
+				B55D90E316B7AA48009CB90F /* UIImageView+AFNetworking.m in Sources */,
+				B55D90F516B7ABE2009CB90F /* AppConfig.m in Sources */,
+				B55D90F816B7AC11009CB90F /* AppInitialization.m in Sources */,
+				B55D90FB16B7AC4C009CB90F /* SSKeychain.m in Sources */,
+				B55D90FE16B7AC8B009CB90F /* Branch.m in Sources */,
+				B55D910116B7ACC9009CB90F /* Gist.m in Sources */,
+				B55D910416B7ACEF009CB90F /* GistFile.m in Sources */,
+				B55D910716B7AD2B009CB90F /* RelativeDateDescriptor.m in Sources */,
+				B55D910A16B7AD47009CB90F /* Repo.m in Sources */,
+				B55D910D16B7AD79009CB90F /* RepoTreeNode.m in Sources */,
+				B55D911016B7ADAA009CB90F /* SpinnerView.m in Sources */,
+				B55D911316B7ADCE009CB90F /* TimelineEvent.m in Sources */,
+				B55D911616B7ADF0009CB90F /* User.m in Sources */,
+				B55D911D16B7AE48009CB90F /* LoginViewController.m in Sources */,
+				B55D912216B7AE9B009CB90F /* NewsfeedViewController.m in Sources */,
+				B55D912716B7AED1009CB90F /* ReposViewController.m in Sources */,
+				B55D912C16B7AF09009CB90F /* GistsViewController.m in Sources */,
+				B55D913116B7AF37009CB90F /* StarredViewController.m in Sources */,
+				B55D913616B7AF86009CB90F /* GistCell.m in Sources */,
+				B55D913B16B7AFF4009CB90F /* RepoCell.m in Sources */,
+				B55D914116B7B0A0009CB90F /* RepoViewController.m in Sources */,
+				B55D914616B7B0E3009CB90F /* NewsfeedDetailsViewController.m in Sources */,
+				B55D914B16B7B19D009CB90F /* GistViewController.m in Sources */,
+				B55D914F16B7B1FF009CB90F /* NewsFeedCell.m in Sources */,
+				B55D915416B7B2F4009CB90F /* RepoDetailsCell.m in Sources */,
+				B55D915A16B7B38D009CB90F /* RepoTreeViewController.m in Sources */,
+				B55D915E16B7B423009CB90F /* GistDetailsCell.m in Sources */,
+				B55D916416B7B49A009CB90F /* RawFileViewController.m in Sources */,
+				B55D916916B7B4F0009CB90F /* GistRawFileViewController.m in Sources */,
+				B55D916D16B7B563009CB90F /* RepoTreeCell.m in Sources */,
+				B55D917316B7B5C5009CB90F /* OthersViewController.m in Sources */,
+				B55D917816B7B61B009CB90F /* ProfileViewController.m in Sources */,
+				B55D917D16B7B65C009CB90F /* RepoSearchViewController.m in Sources */,
+				B55D918116B7B6AE009CB90F /* RepoSearchResultCell.m in Sources */,
+				B55D918616B7B6E9009CB90F /* ProfileCell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

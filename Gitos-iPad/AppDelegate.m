@@ -7,6 +7,26 @@
 //
 
 #import "AppDelegate.h"
+#import "LoginViewController.h"
+#import "SSKeychain.h"
+#import "AppInitialization.h"
+
+@interface UINavigationController (autorotate)
+
+@end
+
+@implementation UINavigationController (autorotate)
+
+- (NSUInteger)supportedInterfaceOrientations
+{
+    return UIInterfaceOrientationPortrait;
+}
+
+-(BOOL) shouldAutorotate {
+    return NO;
+}
+
+@end
 
 @implementation AppDelegate
 
@@ -20,6 +40,22 @@
     // Override point for customization after application launch.
     self.window.backgroundColor = [UIColor whiteColor];
     [self.window makeKeyAndVisible];
+    
+    // Styling the 'Back' button in the entire app
+    UIImage *backButtonImage = [[UIImage imageNamed:@"barButtonBack.png"] resizableImageWithCapInsets:UIEdgeInsetsMake(0, 14, 0, 5)];
+    
+    [[UIBarButtonItem appearanceWhenContainedIn:[UINavigationBar class], nil] setBackButtonBackgroundImage:backButtonImage forState:UIControlStateNormal barMetrics:UIBarMetricsDefault];
+    
+    // Styling the right bar button in the entire app
+    UIImage *buttonImage = [[UIImage imageNamed:@"barButton.png"] resizableImageWithCapInsets:UIEdgeInsetsMake(0, 14, 0, 5)];
+    
+    [[UIBarButtonItem appearanceWhenContainedIn:[UINavigationBar class], nil] setBackgroundImage:buttonImage forState:UIControlStateNormal barMetrics:UIBarMetricsDefault];
+    
+    [[UINavigationBar appearance] setBackgroundImage:[UIImage imageNamed:@"header_bg.png"] forBarMetrics:UIBarMetricsDefault];
+    
+    //[[UIApplication sharedApplication] registerForRemoteNotificationTypes:(UIRemoteNotificationTypeAlert | UIRemoteNotificationTypeBadge | UIRemoteNotificationTypeSound)];
+    
+    [self validateAuthenticationToken];
     return YES;
 }
 
@@ -31,7 +67,7 @@
 
 - (void)applicationDidEnterBackground:(UIApplication *)application
 {
-    // Use this method to release shared resources, save user data, invalidate timers, and store enough application state information to restore your application to its current state in case it is terminated later. 
+    // Use this method to release shared resources, save user data, invalidate timers, and store enough application state information to restore your application to its current state in case it is terminated later.
     // If your application supports background execution, this method is called instead of applicationWillTerminate: when the user quits.
 }
 
@@ -57,12 +93,42 @@
     NSManagedObjectContext *managedObjectContext = self.managedObjectContext;
     if (managedObjectContext != nil) {
         if ([managedObjectContext hasChanges] && ![managedObjectContext save:&error]) {
-             // Replace this implementation with code to handle the error appropriately.
-             // abort() causes the application to generate a crash log and terminate. You should not use this function in a shipping application, although it may be useful during development. 
+            // Replace this implementation with code to handle the error appropriately.
+            // abort() causes the application to generate a crash log and terminate. You should not use this function in a shipping application, although it may be useful during development.
             NSLog(@"Unresolved error %@, %@", error, [error userInfo]);
             abort();
-        } 
+        }
     }
+}
+
+- (void)application:(UIApplication *)application didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken
+{
+    [self sendDeviceTokenToServer:deviceToken];
+}
+
+- (void)application:(UIApplication *)application didFailToRegisterForRemoteNotificationsWithError:(NSError *)error
+{
+    NSLog(@"failed to register for remote notification");
+    NSLog(@"%@", error);
+}
+
+- (void)sendDeviceTokenToServer:(NSData *)deviceToken
+{
+    NSLog(@"%@", [self stringWithDeviceToken:deviceToken]);
+}
+
+// http://stackoverflow.com/questions/1959600/how-to-use-objective-c-to-send-device-token-for-push-notifications-and-other-use
+- (NSString *)stringWithDeviceToken:(NSData *)deviceToken
+{
+    const char* data = [deviceToken bytes];
+    
+    NSMutableString* token = [NSMutableString string];
+    
+    for (int i = 0; i < [deviceToken length]; i++) {
+        [token appendFormat:@"%02.2hhX", data[i]];
+    }
+    
+    return [token copy];
 }
 
 #pragma mark - Core Data stack
@@ -90,7 +156,7 @@
     if (_managedObjectModel != nil) {
         return _managedObjectModel;
     }
-    NSURL *modelURL = [[NSBundle mainBundle] URLForResource:@"Gitos_iPad" withExtension:@"momd"];
+    NSURL *modelURL = [[NSBundle mainBundle] URLForResource:@"Gitos" withExtension:@"momd"];
     _managedObjectModel = [[NSManagedObjectModel alloc] initWithContentsOfURL:modelURL];
     return _managedObjectModel;
 }
@@ -103,7 +169,7 @@
         return _persistentStoreCoordinator;
     }
     
-    NSURL *storeURL = [[self applicationDocumentsDirectory] URLByAppendingPathComponent:@"Gitos_iPad.sqlite"];
+    NSURL *storeURL = [[self applicationDocumentsDirectory] URLByAppendingPathComponent:@"Gitos.sqlite"];
     
     NSError *error = nil;
     _persistentStoreCoordinator = [[NSPersistentStoreCoordinator alloc] initWithManagedObjectModel:[self managedObjectModel]];
@@ -111,7 +177,7 @@
         /*
          Replace this implementation with code to handle the error appropriately.
          
-         abort() causes the application to generate a crash log and terminate. You should not use this function in a shipping application, although it may be useful during development. 
+         abort() causes the application to generate a crash log and terminate. You should not use this function in a shipping application, although it may be useful during development.
          
          Typical reasons for an error here include:
          * The persistent store is not accessible;
@@ -133,7 +199,7 @@
          */
         NSLog(@"Unresolved error %@, %@", error, [error userInfo]);
         abort();
-    }    
+    }
     
     return _persistentStoreCoordinator;
 }
@@ -146,4 +212,20 @@
     return [[[NSFileManager defaultManager] URLsForDirectory:NSDocumentDirectory inDomains:NSUserDomainMask] lastObject];
 }
 
+- (void)validateAuthenticationToken
+{
+    //NSString *authToken = [KeychainHelper getAuthenticationToken];
+    NSString *authToken = [SSKeychain passwordForService:@"access_token" account:@"gitos"];
+    
+    NSLog(@"authToken when app starts is %@", authToken);
+    
+    if (authToken != nil && authToken != @"") {
+        [AppInitialization run:(self.window)];
+    } else {
+        LoginViewController *loginController = [[LoginViewController alloc] init];
+        UINavigationController *navController = [[UINavigationController alloc] initWithRootViewController:loginController];
+        [self.window setRootViewController:navController];
+    }
+    
+}
 @end
