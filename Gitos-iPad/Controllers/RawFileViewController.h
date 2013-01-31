@@ -12,10 +12,8 @@
 #import "SpinnerView.h"
 
 @interface RawFileViewController : UIViewController <UIWebViewDelegate, NSURLConnectionDataDelegate>
-{
-    __weak IBOutlet UIWebView *fileWebView;
-}
 
+@property (nonatomic, weak) IBOutlet UIWebView *fileWebView;
 @property (nonatomic, strong) Repo *repo;
 @property (nonatomic, strong) Branch *branch;
 @property (nonatomic, strong) NSString *fileName;

@@ -19,7 +19,7 @@
 
 @implementation RawFileViewController
 
-@synthesize repo, branch, fileName, mimeType, rawFileUrl, rawFileRequest;
+@synthesize repo, branch, fileName, mimeType, rawFileUrl, rawFileRequest, fileWebView;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -108,17 +108,17 @@
         NSURL *baseURL = [NSURL fileURLWithPath:path];
         
         NSString *htmlString = [NSString stringWithFormat:@" \
-                                <!DOCTYPE html> \
-                                <html> \
-                                <head> \
-                                <link rel='stylesheet' href='prettify.css'></link> \
-                                <link rel='stylesheet' href='sunburst.css'></link> \
-                                <script src='prettify.js'></script> \
-                                </head> \
-                                <body onload='prettyPrint()'> \
-                                <pre class='prettyprint'><code>%@</code></pre> \
-                                </body> \
-                                </html>", content];
+        <!DOCTYPE html> \
+        <html> \
+        <head> \
+        <link rel='stylesheet' href='prettify.css'></link> \
+        <link rel='stylesheet' href='sunburst.css'></link> \
+        <script src='prettify.js'></script> \
+        </head> \
+        <body onload='prettyPrint()'> \
+        <pre class='prettyprint'><code>%@</code></pre> \
+        </body> \
+        </html>", content];
         
         [fileWebView loadHTMLString:htmlString baseURL:baseURL];
         
