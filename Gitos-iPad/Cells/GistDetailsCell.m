@@ -10,7 +10,7 @@
 
 @implementation GistDetailsCell
 
-@synthesize gist;
+@synthesize gist, fieldLabel, fieldValue;
 
 - (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
 {
