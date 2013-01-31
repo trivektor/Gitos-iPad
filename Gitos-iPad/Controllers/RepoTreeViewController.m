@@ -22,7 +22,7 @@
 
 @implementation RepoTreeViewController
 
-@synthesize accessToken, accessTokenParams, branchUrl, branch, repo, node;
+@synthesize accessToken, accessTokenParams, treeTable, branchUrl, branch, repo, node;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -91,10 +91,10 @@
          [treeTable reloadData];
          [self.spinnerView setHidden:YES];
      }
-                                     failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-                                         NSLog(@"%@", error);
-                                         [self.spinnerView setHidden:YES];
-                                     }];
+     failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+         NSLog(@"%@", error);
+         [self.spinnerView setHidden:YES];
+     }];
     
     [operation start];
 }
@@ -126,10 +126,10 @@
          [treeTable reloadData];
          [self.spinnerView setHidden:YES];
      }
-                                     failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-                                         NSLog(@"%@", error);
-                                         [self.spinnerView setHidden:YES];
-                                     }];
+     failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+         NSLog(@"%@", error);
+         [self.spinnerView setHidden:YES];
+     }];
     
     [operation start];
 }

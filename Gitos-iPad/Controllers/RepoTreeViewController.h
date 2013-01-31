@@ -13,10 +13,8 @@
 #import "SpinnerView.h"
 
 @interface RepoTreeViewController : UIViewController <UITableViewDataSource, UITableViewDelegate>
-{
-    __weak IBOutlet UITableView *treeTable;
-}
 
+@property (nonatomic, weak) IBOutlet UITableView *treeTable;
 @property (nonatomic, strong) NSString *accessToken;
 @property (nonatomic, strong) NSMutableDictionary *accessTokenParams;
 @property (nonatomic, strong) NSMutableArray *treeNodes;
