@@ -183,7 +183,7 @@
              [self.repoBranches addObject:branch];
          }
          
-         [branchesTable setFrame:CGRectMake(0, 277, 1024, 460)];
+         [branchesTable setFrame:CGRectMake(0, 258, 1024, [self.repoBranches count]*44 + 125)];
          [branchesTable reloadData];
          [self.spinnerView setHidden:YES];
          [self adjustFrameHeight];
