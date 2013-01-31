@@ -12,11 +12,9 @@
 #import "SpinnerView.h"
 
 @interface GistViewController : UIViewController <UITableViewDataSource, UITableViewDelegate>
-{
-    __weak IBOutlet UITableView *detailsTable;
-    __weak IBOutlet UITableView *filesTable;
-}
 
+@property (nonatomic, strong) IBOutlet UITableView *detailsTable;
+@property (nonatomic, strong) IBOutlet UITableView *filesTable;
 @property (nonatomic, strong) Gist *gist;
 @property (nonatomic, strong) User *user;
 @property (nonatomic, strong) NSString *accessToken;

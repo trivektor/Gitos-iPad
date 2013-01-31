@@ -21,7 +21,7 @@
 
 @implementation GistViewController
 
-@synthesize gist, user, spinnerView;
+@synthesize gist, user, spinnerView, detailsTable, filesTable;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
