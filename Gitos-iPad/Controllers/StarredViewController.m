@@ -23,7 +23,7 @@
 
 @implementation StarredViewController
 
-@synthesize accessToken, user, starredRepos, currentPage, spinnerView;
+@synthesize accessToken, user, starredRepos, currentPage, spinnerView, starredReposTable;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -87,9 +87,9 @@
          self.user = [[User alloc] initWithOptions:json];
          [self getStarredReposForPage:self.currentPage++];
      }
-                                     failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-                                         NSLog(@"error 1");
-                                     }];
+     failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+         NSLog(@"%@", error);
+     }];
     
     [operation start];
 }
@@ -128,10 +128,9 @@
          
          [self.spinnerView setHidden:YES];
      }
-                                     failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-                                         NSLog(@"%@", error.localizedDescription);
-                                         [self.spinnerView setHidden:YES];
-                                     }];
+     failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+         [self.spinnerView setHidden:YES];
+     }];
     
     [operation start];
     
@@ -145,6 +144,11 @@
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     return self.starredRepos.count;
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    return 77;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
