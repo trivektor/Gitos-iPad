@@ -11,10 +11,8 @@
 #import "GistFile.h"
 
 @interface GistRawFileViewController : UIViewController <UIWebViewDelegate, NSURLConnectionDelegate>
-{
-    __weak IBOutlet UIWebView *fileWebView;
-}
 
+@property (nonatomic, weak) IBOutlet UIWebView *fileWebView;
 @property (nonatomic, strong) SpinnerView *spinnerView;
 @property (nonatomic, strong) GistFile *gistFile;
 
