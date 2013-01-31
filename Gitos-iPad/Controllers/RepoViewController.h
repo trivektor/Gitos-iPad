@@ -12,16 +12,14 @@
 
 @interface RepoViewController : UIViewController
 <UITableViewDataSource, UITableViewDelegate>
-{
-    __weak IBOutlet UITableView *detailsTable;
-    __weak IBOutlet UITableView *branchesTable;
-    __weak IBOutlet UIScrollView *repoScrollView;
-}
 
-@property(nonatomic, strong) NSString *accessToken;
-@property(nonatomic, strong) Repo *repo;
-@property(nonatomic, strong) NSMutableArray *repoBranches;
-@property(nonatomic, strong) SpinnerView *spinnerView;
+@property (nonatomic, weak) IBOutlet UITableView *detailsTable;
+@property (nonatomic, weak) IBOutlet UITableView *branchesTable;
+@property (nonatomic, weak) IBOutlet UIScrollView *repoScrollView;
+@property (nonatomic, strong) NSString *accessToken;
+@property (nonatomic, strong) Repo *repo;
+@property (nonatomic, strong) NSMutableArray *repoBranches;
+@property (nonatomic, strong) SpinnerView *spinnerView;
 
 - (void)performHouseKeepingTasks;
 - (UITableViewCell *)cellForDetailsTableAtIndexPath:(NSIndexPath *)indexPath;

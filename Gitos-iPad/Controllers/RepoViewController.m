@@ -21,7 +21,7 @@
 
 @implementation RepoViewController
 
-@synthesize repo, spinnerView;
+@synthesize repo, spinnerView, repoScrollView, detailsTable, branchesTable;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -53,7 +53,7 @@
         scrollViewHeight += view.frame.size.height;
     }
     
-    [repoScrollView setContentSize:(CGSizeMake(320, scrollViewHeight + 35))];
+    [repoScrollView setContentSize:(CGSizeMake(1024, scrollViewHeight + 35))];
 }
 
 - (void)didReceiveMemoryWarning
@@ -183,15 +183,15 @@
              [self.repoBranches addObject:branch];
          }
          
-         [branchesTable setFrame:CGRectMake(0, 228, 320, self.repoBranches.count * 44 + 10)];
+         [branchesTable setFrame:CGRectMake(0, 277, 1024, 460)];
          [branchesTable reloadData];
          [self.spinnerView setHidden:YES];
          [self adjustFrameHeight];
      }
-                                     failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-                                         NSLog(@"%@", error);
-                                         [self.spinnerView setHidden:YES];
-                                     }];    
+     failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+         NSLog(@"%@", error);
+         [self.spinnerView setHidden:YES];
+     }];
     [operation start];
 }
 
