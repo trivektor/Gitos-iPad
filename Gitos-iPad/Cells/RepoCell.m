@@ -71,6 +71,8 @@
                                       watchersSize.width,
                                       watchersSize.height);
     
+    self.descriptionLabel.text = [self.repo getDescription];
+
     self.backgroundColor = [UIColor whiteColor];
     self.selectionStyle = UITableViewCellSelectionStyleNone;
 }

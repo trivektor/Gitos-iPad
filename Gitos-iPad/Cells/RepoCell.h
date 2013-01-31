@@ -15,6 +15,7 @@
 @property (nonatomic, weak) IBOutlet UILabel *repoNameLabel;
 @property (nonatomic, weak) IBOutlet UILabel *forkLabel;
 @property (nonatomic, weak) IBOutlet UILabel *starLabel;
+@property (nonatomic, weak) IBOutlet UILabel *descriptionLabel;
 
 - (void)render;
 

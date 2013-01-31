@@ -88,8 +88,9 @@
          self.user = [[User alloc] initWithOptions:json];
          [self getUserRepos];
      }
-                                     failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-                                     }];
+    failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        NSLog(@"%@", error);
+    }];
     
     [operation start];
 }
@@ -136,7 +137,7 @@
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    return 50;
+    return 77;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
