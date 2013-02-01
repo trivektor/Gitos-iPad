@@ -8,6 +8,7 @@
 
 #import "NewsfeedDetailsViewController.h"
 #import "AppConfig.h"
+#import "SSKeychain.h"
 
 @interface NewsfeedDetailsViewController ()
 
@@ -15,13 +16,14 @@
 
 @implementation NewsfeedDetailsViewController
 
-@synthesize event, currentPage, username;
+@synthesize accessToken, event, currentPage, username, webView;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
         // Custom initialization
+        self.accessToken = [SSKeychain passwordForService:@"access_token" account:@"gitos"];
     }
     return self;
 }
@@ -54,15 +56,14 @@
 {
     self.spinnerView = [SpinnerView loadSpinnerIntoView:self.view];
     NSString *urlString = [AppConfig getConfigValue:@"GitosHost"];
-    urlString = [urlString stringByAppendingFormat:@"/events/%d?page=%d&username=%@",
+    urlString = [urlString stringByAppendingFormat:@"/events/%d?page=%d&username=%@&access_token=%@",
                  self.event.eventId,
                  self.currentPage,
-                 self.username];
+                 self.username,
+                 self.accessToken];
     
     NSURL *url = [NSURL URLWithString:urlString];
-    
-    NSLog(@"%@", urlString);
-    
+
     NSURLRequest *request = [NSURLRequest requestWithURL:url];
     
     [webView loadRequest:request];

@@ -11,14 +11,13 @@
 #import "SpinnerView.h"
 
 @interface NewsfeedDetailsViewController : UIViewController <UIWebViewDelegate>
-{
-    __weak IBOutlet UIWebView *webView;
-}
 
-@property(nonatomic, strong) TimelineEvent *event;
-@property(nonatomic) int currentPage;
-@property(nonatomic, strong) NSString *username;
-@property(nonatomic, strong) SpinnerView *spinnerView;
+@property (nonatomic, strong) NSString *accessToken;
+@property (nonatomic, weak) IBOutlet UIWebView *webView;
+@property (nonatomic, strong) TimelineEvent *event;
+@property (nonatomic) int currentPage;
+@property (nonatomic, strong) NSString *username;
+@property (nonatomic, strong) SpinnerView *spinnerView;
 
 - (void)performHouseKeepingTasks;
 - (void)loadNewsfeedDetails;
