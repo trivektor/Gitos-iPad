@@ -84,6 +84,9 @@
         NSString *action = [self.payload valueForKey:@"action"];
         NSInteger pullRequestNumber = [[self.payload valueForKey:@"number"] integerValue];
         return [NSString stringWithFormat:@"%@ %@ pull request %@/%i", actorName, action, repoName, pullRequestNumber];
+    } else if ([eventType isEqualToString:@"PublicEvent"]) {
+        // Public Event
+        return [NSString stringWithFormat:@"%@ open sourced %@", actorName, repoName];
     }
     
     return @"";
