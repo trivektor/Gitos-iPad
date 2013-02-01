@@ -20,7 +20,7 @@
 
 @implementation ProfileViewController
 
-@synthesize user, spinnerView;
+@synthesize accessToken, user, spinnerView, avatar, profileTable, nameLabel, loginLabel, scrollView;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -28,6 +28,7 @@
     if (self) {
         // Custom initialization
         self.user = nil;
+        self.accessToken = [SSKeychain passwordForService:@"access_token" account:@"gitos"];
     }
     return self;
 }
@@ -81,14 +82,12 @@
 
 - (void)getUserInfo
 {
-    NSString *accessToken = [SSKeychain passwordForService:@"access_token" account:@"gitos"];
-    
     NSURL *userUrl = [NSURL URLWithString:[NSString stringWithFormat:@"%@/user", [AppConfig getConfigValue:@"GithubApiHost"]]];
     
     AFHTTPClient *httpClient = [[AFHTTPClient alloc] initWithBaseURL:userUrl];
     
     NSMutableDictionary *params = [NSMutableDictionary dictionaryWithObjectsAndKeys:
-                                   accessToken, @"access_token",
+                                   self.accessToken, @"access_token",
                                    @"bearer", @"token_type",
                                    nil];
     
@@ -106,11 +105,12 @@
          [self displayUsernameAndAvatar];
          [profileTable reloadData];
          
-         [self.spinnerView removeFromSuperview];
+         [self.spinnerView setHidden:YES];
      }
-                                     failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-                                         
-                                     }];
+     failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+         NSLog(@"%@", error);
+         [self.spinnerView setHidden:YES];
+     }];
     
     [operation start];
 }
@@ -123,6 +123,11 @@
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     return 7;
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    return 51;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
