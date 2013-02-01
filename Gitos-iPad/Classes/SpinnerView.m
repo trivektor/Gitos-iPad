@@ -29,7 +29,7 @@
  */
 
 + (SpinnerView *)loadSpinnerIntoView:(UIView *)superView{
-    CGRect frame = CGRectMake(500, 250, 60, 60);
+    CGRect frame = CGRectMake(superView.frame.size.width/2 - 30, 250, 60, 60);
     // Create a new view with the same frame size as the superView
     SpinnerView *spinnerView = [[SpinnerView alloc] initWithFrame:frame];
     // If something's gone wrong, abort!
