@@ -11,6 +11,7 @@
 #import "SpinnerView.h"
 #import "RelativeDateDescriptor.h"
 #import "TimelineEvent.h"
+#import "MasterViewController.h"
 
 @interface NewsfeedViewController : UIViewController <UITableViewDataSource, UITableViewDelegate>
 {

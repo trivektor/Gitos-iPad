@@ -187,6 +187,9 @@
 		B5BC451E16BA5DFD00434848 /* prettify.css in Resources */ = {isa = PBXBuildFile; fileRef = B5BC451B16BA5DFD00434848 /* prettify.css */; };
 		B5BC452016BA5DFD00434848 /* sunburst.css in Resources */ = {isa = PBXBuildFile; fileRef = B5BC451D16BA5DFD00434848 /* sunburst.css */; };
 		B5BC452116BA5E3F00434848 /* prettify.js in Resources */ = {isa = PBXBuildFile; fileRef = B5BC451C16BA5DFD00434848 /* prettify.js */; };
+		B5BC452516BCEE7100434848 /* MasterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B5BC452316BCEE7000434848 /* MasterViewController.m */; };
+		B5BC452616BCEE7100434848 /* MasterViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B5BC452416BCEE7000434848 /* MasterViewController.xib */; };
+		B5BC452C16BD04C500434848 /* DetailsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B5BC452B16BD04C400434848 /* DetailsViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -420,6 +423,11 @@
 		B5BC451B16BA5DFD00434848 /* prettify.css */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.css; path = prettify.css; sourceTree = "<group>"; };
 		B5BC451C16BA5DFD00434848 /* prettify.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = prettify.js; sourceTree = "<group>"; };
 		B5BC451D16BA5DFD00434848 /* sunburst.css */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.css; path = sunburst.css; sourceTree = "<group>"; };
+		B5BC452216BCEE6F00434848 /* MasterViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MasterViewController.h; sourceTree = "<group>"; };
+		B5BC452316BCEE7000434848 /* MasterViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MasterViewController.m; sourceTree = "<group>"; };
+		B5BC452416BCEE7000434848 /* MasterViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MasterViewController.xib; sourceTree = "<group>"; };
+		B5BC452A16BD04C400434848 /* DetailsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DetailsViewController.h; sourceTree = "<group>"; };
+		B5BC452B16BD04C400434848 /* DetailsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DetailsViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -704,6 +712,11 @@
 				B55D917A16B7B650009CB90F /* RepoSearchViewController.h */,
 				B55D917B16B7B653009CB90F /* RepoSearchViewController.m */,
 				B55D917C16B7B658009CB90F /* RepoSearchViewController.xib */,
+				B5BC452216BCEE6F00434848 /* MasterViewController.h */,
+				B5BC452316BCEE7000434848 /* MasterViewController.m */,
+				B5BC452416BCEE7000434848 /* MasterViewController.xib */,
+				B5BC452A16BD04C400434848 /* DetailsViewController.h */,
+				B5BC452B16BD04C400434848 /* DetailsViewController.m */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -956,6 +969,7 @@
 				B516545B16B7C558003F0DFA /* AppConfig.plist in Resources */,
 				B5BC451E16BA5DFD00434848 /* prettify.css in Resources */,
 				B5BC452016BA5DFD00434848 /* sunburst.css in Resources */,
+				B5BC452616BCEE7100434848 /* MasterViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1014,6 +1028,8 @@
 				B55D917D16B7B65C009CB90F /* RepoSearchViewController.m in Sources */,
 				B55D918116B7B6AE009CB90F /* RepoSearchResultCell.m in Sources */,
 				B55D918616B7B6E9009CB90F /* ProfileCell.m in Sources */,
+				B5BC452516BCEE7100434848 /* MasterViewController.m in Sources */,
+				B5BC452C16BD04C500434848 /* DetailsViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

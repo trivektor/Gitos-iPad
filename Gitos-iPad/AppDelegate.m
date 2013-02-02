@@ -223,7 +223,7 @@
     
     NSLog(@"authToken when app starts is %@", authToken);
     
-    if (authToken != nil && authToken != @"") {
+    if (authToken != nil && ![authToken isEqualToString:@""]) {
         [AppInitialization run:(self.window)];
     } else {
         LoginViewController *loginController = [[LoginViewController alloc] init];

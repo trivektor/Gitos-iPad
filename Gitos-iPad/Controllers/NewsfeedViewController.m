@@ -233,4 +233,10 @@
     [self getUserNewsFeed:self.currentPage++];
 }
 
+//- (void)masterViewController:(MasterViewController *)controller loadController:(UIViewController *)loadedController
+//{
+//    UINavigationController *navController = [[UINavigationController alloc] initWithRootViewController:loadedController];
+//    [self.view.window setRootViewController:navController];
+//}
+
 @end
