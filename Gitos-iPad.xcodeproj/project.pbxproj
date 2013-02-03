@@ -191,6 +191,12 @@
 		B5BC452616BCEE7100434848 /* MasterViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B5BC452416BCEE7000434848 /* MasterViewController.xib */; };
 		B5BC456C16BD996200434848 /* DetailsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B5BC456A16BD996200434848 /* DetailsViewController.m */; };
 		B5BC456D16BD996200434848 /* DetailsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B5BC456B16BD996200434848 /* DetailsViewController.xib */; };
+		B5BC457516BE6C1A00434848 /* magma_border.png in Resources */ = {isa = PBXBuildFile; fileRef = B5BC457416BE6C1A00434848 /* magma_border.png */; };
+		B5BC457716BE6C4500434848 /* magma.png in Resources */ = {isa = PBXBuildFile; fileRef = B5BC457616BE6C4500434848 /* magma.png */; };
+		B5BC457B16BEE21700434848 /* FontAwesome.ttf in Resources */ = {isa = PBXBuildFile; fileRef = B5BC457A16BEE21700434848 /* FontAwesome.ttf */; };
+		B5BC457E16BEE28900434848 /* NSString+FontAwesome.m in Sources */ = {isa = PBXBuildFile; fileRef = B5BC457D16BEE28900434848 /* NSString+FontAwesome.m */; };
+		B5BC458116BEE55100434848 /* MasterControllerCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B5BC458016BEE55100434848 /* MasterControllerCell.m */; };
+		B5BC458316BEE56000434848 /* MasterControllerCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B5BC458216BEE56000434848 /* MasterControllerCell.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -430,6 +436,14 @@
 		B5BC456916BD996200434848 /* DetailsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DetailsViewController.h; sourceTree = "<group>"; };
 		B5BC456A16BD996200434848 /* DetailsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DetailsViewController.m; sourceTree = "<group>"; };
 		B5BC456B16BD996200434848 /* DetailsViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DetailsViewController.xib; sourceTree = "<group>"; };
+		B5BC457416BE6C1A00434848 /* magma_border.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = magma_border.png; sourceTree = "<group>"; };
+		B5BC457616BE6C4500434848 /* magma.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = magma.png; sourceTree = "<group>"; };
+		B5BC457A16BEE21700434848 /* FontAwesome.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = FontAwesome.ttf; sourceTree = "<group>"; };
+		B5BC457C16BEE28900434848 /* NSString+FontAwesome.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+FontAwesome.h"; sourceTree = "<group>"; };
+		B5BC457D16BEE28900434848 /* NSString+FontAwesome.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+FontAwesome.m"; sourceTree = "<group>"; };
+		B5BC457F16BEE55100434848 /* MasterControllerCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MasterControllerCell.h; sourceTree = "<group>"; };
+		B5BC458016BEE55100434848 /* MasterControllerCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MasterControllerCell.m; sourceTree = "<group>"; };
+		B5BC458216BEE56000434848 /* MasterControllerCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MasterControllerCell.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -463,7 +477,9 @@
 				B51653A116B7C1B9003F0DFA /* 12-eye@2x.png */,
 				B51653A216B7C1B9003F0DFA /* 28-star_w.png */,
 				B51653A316B7C1B9003F0DFA /* 28-star_w@2x.png */,
+				B5BC457416BE6C1A00434848 /* magma_border.png */,
 				B51653A416B7C1B9003F0DFA /* 28-star.png */,
+				B5BC457616BE6C4500434848 /* magma.png */,
 				B51653A516B7C1B9003F0DFA /* 28-star@2x.png */,
 				B51653A616B7C1B9003F0DFA /* 33-cabinet.png */,
 				B51653A716B7C1B9003F0DFA /* 33-cabinet@2x.png */,
@@ -735,6 +751,8 @@
 				B55D90FA16B7AC4C009CB90F /* SSKeychain.m */,
 				B55D90FC16B7AC8A009CB90F /* Branch.h */,
 				B55D90FD16B7AC8A009CB90F /* Branch.m */,
+				B5BC457C16BEE28900434848 /* NSString+FontAwesome.h */,
+				B5BC457D16BEE28900434848 /* NSString+FontAwesome.m */,
 				B55D90FF16B7ACC8009CB90F /* Gist.h */,
 				B55D910016B7ACC8009CB90F /* Gist.m */,
 				B55D910216B7ACEE009CB90F /* GistFile.h */,
@@ -782,6 +800,9 @@
 				B55D918416B7B6E5009CB90F /* ProfileCell.h */,
 				B55D918516B7B6E7009CB90F /* ProfileCell.m */,
 				B55D918716B7B70B009CB90F /* ProfileCell.xib */,
+				B5BC457F16BEE55100434848 /* MasterControllerCell.h */,
+				B5BC458016BEE55100434848 /* MasterControllerCell.m */,
+				B5BC458216BEE56000434848 /* MasterControllerCell.xib */,
 			);
 			path = Cells;
 			sourceTree = "<group>";
@@ -790,6 +811,7 @@
 			isa = PBXGroup;
 			children = (
 				B5BC451B16BA5DFD00434848 /* prettify.css */,
+				B5BC457A16BEE21700434848 /* FontAwesome.ttf */,
 				B5BC451C16BA5DFD00434848 /* prettify.js */,
 				B5BC451D16BA5DFD00434848 /* sunburst.css */,
 			);
@@ -974,6 +996,10 @@
 				B5BC452016BA5DFD00434848 /* sunburst.css in Resources */,
 				B5BC452616BCEE7100434848 /* MasterViewController.xib in Resources */,
 				B5BC456D16BD996200434848 /* DetailsViewController.xib in Resources */,
+				B5BC457516BE6C1A00434848 /* magma_border.png in Resources */,
+				B5BC457716BE6C4500434848 /* magma.png in Resources */,
+				B5BC457B16BEE21700434848 /* FontAwesome.ttf in Resources */,
+				B5BC458316BEE56000434848 /* MasterControllerCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1034,6 +1060,8 @@
 				B55D918616B7B6E9009CB90F /* ProfileCell.m in Sources */,
 				B5BC452516BCEE7100434848 /* MasterViewController.m in Sources */,
 				B5BC456C16BD996200434848 /* DetailsViewController.m in Sources */,
+				B5BC457E16BEE28900434848 /* NSString+FontAwesome.m in Sources */,
+				B5BC458116BEE55100434848 /* MasterControllerCell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

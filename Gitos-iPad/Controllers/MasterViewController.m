@@ -12,6 +12,7 @@
 #import "GistsViewController.h"
 #import "StarredViewController.h"
 #import "OthersViewController.h"
+#import "MasterControllerCell.h"
 
 @interface MasterViewController ()
 
@@ -34,8 +35,17 @@
 {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
+    [self performHouseKeepingTasks];
+}
+
+- (void)performHouseKeepingTasks
+{
     self.navigationItem.title = @"Gitos";
     [menuTable setScrollEnabled:NO];
+
+    UINib *nib = [UINib nibWithNibName:@"MasterControllerCell" bundle:nil];
+
+    [menuTable registerNib:nib forCellReuseIdentifier:@"MasterControllerCell"];
 }
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
@@ -45,27 +55,19 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return 5;
+    return 4;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    static NSString *cellIdentifier = @"Cell";
-    UITableViewCell *cell = [menuTable dequeueReusableCellWithIdentifier:cellIdentifier];
+    static NSString *cellIdentifier = @"MasterControllerCell";
+    MasterControllerCell *cell = [menuTable dequeueReusableCellWithIdentifier:cellIdentifier];
 
     if (!cell) {
-        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellIdentifier];
+        cell = [[MasterControllerCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellIdentifier];
     }
 
-    if (indexPath.row == 0) {
-        cell.textLabel.text = @"News Feed";
-    } else if (indexPath.row == 1) {
-        cell.textLabel.text = @"Repositories";
-    } else if (indexPath.row == 2) {
-        cell.textLabel.text = @"Watched";
-    } else if (indexPath.row == 3) {
-        cell.textLabel.text = @"Gists";
-    }
+    [cell renderForIndexPath:indexPath];
 
     return cell;
 }

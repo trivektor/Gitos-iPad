@@ -16,6 +16,8 @@
 @property (nonatomic, weak) IBOutlet UITableView *menuTable;
 @property (nonatomic, strong) id<MasterViewControllerDelegate> delegate;
 
+- (void)performHouseKeepingTasks;
+
 @end
 
 @protocol MasterViewControllerDelegate <NSObject>
