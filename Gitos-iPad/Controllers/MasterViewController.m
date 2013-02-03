@@ -35,6 +35,7 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
     self.navigationItem.title = @"Gitos";
+    [menuTable setScrollEnabled:NO];
 }
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView

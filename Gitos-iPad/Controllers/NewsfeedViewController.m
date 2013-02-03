@@ -150,12 +150,16 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    NewsFeedCell *cell = [newsFeedTable dequeueReusableCellWithIdentifier:@"NewsFeedCell"];
-    
+    static NSString *cellIdentifier = @"NewsFeedCell";
+
+    NewsFeedCell *cell = [newsFeedTable dequeueReusableCellWithIdentifier:cellIdentifier];
+
     if (!cell) {
-        cell = [[NewsFeedCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"NewsFeedCell"];
+        cell = [[NewsFeedCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellIdentifier];
     }
+
     cell.event = [self.newsFeed objectAtIndex:indexPath.row];
+    cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
     [cell displayEvent];
     
     return  cell;

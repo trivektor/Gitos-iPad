@@ -37,6 +37,7 @@
     }
     self.textLabel.font = [UIFont fontWithName:@"Arial" size:13.0];
     self.textLabel.text = [self.node path];
+    self.accessoryType  = UITableViewCellAccessoryDisclosureIndicator;
 }
 
 @end
