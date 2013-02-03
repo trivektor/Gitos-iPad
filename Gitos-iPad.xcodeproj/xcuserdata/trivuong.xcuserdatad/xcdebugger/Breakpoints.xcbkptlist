@@ -8,11 +8,11 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "Gitos-iPad/Controllers/MasterViewController.h"
-         timestampString = "381521342.276933"
+         timestampString = "381545421.299694"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "13"
-         endingLineNumber = "13"
+         startingLineNumber = "14"
+         endingLineNumber = "14"
          landmarkName = "@interface MasterViewController"
          landmarkType = "2">
       </FileBreakpoint>

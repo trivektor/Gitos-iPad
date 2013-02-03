@@ -65,6 +65,11 @@
     [self getUserInfoAndNewsFeed];
 }
 
+- (void)viewWillAppear:(BOOL)animated
+{
+    self.navigationItem.hidesBackButton = YES;
+}
+
 - (void)performHouseKeepingTasks
 {
     self.navigationItem.title = @"News Feed";
