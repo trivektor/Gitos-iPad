@@ -32,7 +32,7 @@
 
 - (void)displayByIndexPath:(NSIndexPath *)indexPath forUser:(User *)user
 {
-    self.fontAwesomeLabel.font = [UIFont fontWithName:kFontAwesomeFamilyName size:20];
+    self.fontAwesomeLabel.font = [UIFont fontWithName:kFontAwesomeFamilyName size:19];
 
     NSString *detailsText, *fontAwesome;
 
