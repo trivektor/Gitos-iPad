@@ -125,26 +125,44 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     if (tableView == detailsTable) {
-        static NSString *cellIdentifier = @"GistDetailsCell";
-        GistDetailsCell *cell = [detailsTable dequeueReusableCellWithIdentifier:cellIdentifier];
-        if (!cell) {
-            cell = [[GistDetailsCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellIdentifier];
-        }
-        [cell setGist:self.gist];
-        [cell renderForIndexPath:indexPath];
-        [cell setSelectionStyle:UITableViewCellSelectionStyleNone];
-        return cell;
+        return [self cellForDetailsTableAtIndexPath:indexPath];
     } else {
-        UITableViewCell *cell = [filesTable dequeueReusableCellWithIdentifier:@"Cell"];
-        if (!cell) {
-            cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"Cell"];
-        }
-        GistFile *file = [self.files objectAtIndex:indexPath.row];
-        cell.textLabel.text = [file getName];
-        cell.textLabel.font = [UIFont fontWithName:@"Arial" size:12.0];
-        
-        return cell;
+        return [self cellForBranchesTableAtIndexPath:indexPath];
     }
+}
+
+- (UITableViewCell *)cellForDetailsTableAtIndexPath:(NSIndexPath *)indexPath
+{
+    static NSString *cellIdentifier = @"GistDetailsCell";
+
+    GistDetailsCell *cell = [detailsTable dequeueReusableCellWithIdentifier:cellIdentifier];
+
+    if (!cell) {
+        cell = [[GistDetailsCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellIdentifier];
+    }
+
+    [cell setGist:self.gist];
+    [cell renderForIndexPath:indexPath];
+    [cell setSelectionStyle:UITableViewCellSelectionStyleNone];
+
+    return cell;
+}
+
+- (UITableViewCell *)cellForBranchesTableAtIndexPath:(NSIndexPath *)indexPath
+{
+    static NSString *cellIdentifier = @"Cell";
+
+    UITableViewCell *cell = [filesTable dequeueReusableCellWithIdentifier:cellIdentifier];
+
+    if (!cell) {
+        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellIdentifier];
+    }
+
+    GistFile *file = [self.files objectAtIndex:indexPath.row];
+    cell.textLabel.text = [file getName];
+    cell.textLabel.font = [UIFont fontWithName:@"Arial" size:12.0];
+
+    return cell;
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath

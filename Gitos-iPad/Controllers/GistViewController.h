@@ -25,5 +25,7 @@
 - (void)performHouseKeepingTasks;
 - (void)getGistStats;
 - (void)setGistStats:(NSDictionary *)stats;
+- (UITableViewCell *)cellForDetailsTableAtIndexPath:(NSIndexPath *)indexPath;
+- (UITableViewCell *)cellForBranchesTableAtIndexPath:(NSIndexPath *)indexPath;
 
 @end
