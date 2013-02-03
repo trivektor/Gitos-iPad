@@ -8,10 +8,11 @@
 
 #import "ProfileCell.h"
 #import "RelativeDateDescriptor.h"
+#import "NSString+FontAwesome.h"
 
 @implementation ProfileCell
 
-@synthesize fieldIcon, fieldDetails;
+@synthesize fieldIcon, fieldDetails, fontAwesomeLabel;
 
 - (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
 {
@@ -31,44 +32,46 @@
 
 - (void)displayByIndexPath:(NSIndexPath *)indexPath forUser:(User *)user
 {
-    UIImage *image;
-    NSString *detailsText;
-    
+    self.fontAwesomeLabel.font = [UIFont fontWithName:kFontAwesomeFamilyName size:20];
+
+    NSString *detailsText, *fontAwesome;
+
     if (indexPath.row == 0) {
-        image       = [UIImage imageNamed:@"07-map-marker.png"];
+        fontAwesome = [NSString fontAwesomeIconStringForIconIdentifier:@"icon-map-marker"];
         detailsText = [NSString stringWithFormat:@"Location: %@", user.location];
     } else if (indexPath.row == 1) {
-        image       = [UIImage imageNamed:@"71-compass.png"];
+        fontAwesome = [NSString fontAwesomeIconStringForIconIdentifier:@"icon-globe"];
         detailsText = [NSString stringWithFormat:@"Website: %@", user.blog];
     } else if (indexPath.row == 2) {
-        image       = [UIImage imageNamed:@"287-at.png"];
+        fontAwesome = [NSString fontAwesomeIconStringForIconIdentifier:@"icon-envelope"];
         detailsText = [NSString stringWithFormat:@"Email: %@", user.email];
     } else if (indexPath.row == 3) {
-        image       = [UIImage imageNamed:@"112-group.png"];
+        fontAwesome = [NSString fontAwesomeIconStringForIconIdentifier:@"icon-group"];
         detailsText = [NSString stringWithFormat:@"%i followers", user.followers];
     } else if (indexPath.row == 4) {
-        image       = [UIImage imageNamed:@"112-group.png"];
+        fontAwesome = [NSString fontAwesomeIconStringForIconIdentifier:@"icon-group"];
         detailsText = [NSString stringWithFormat:@"%i following", user.following];
     } else if (indexPath.row == 5) {
-        image       = [UIImage imageNamed:@"37-suitcase.png"];
+        fontAwesome = [NSString fontAwesomeIconStringForIconIdentifier:@"icon-briefcase"];
         detailsText = [NSString stringWithFormat:@"Company: %@", user.company];
     } else if (indexPath.row == 6) {
-        image       = [UIImage imageNamed:@"351-bankers-box.png"];
+        fontAwesome = [NSString fontAwesomeIconStringForIconIdentifier:@"icon-folder-open"];
         detailsText = [NSString stringWithFormat:@"Repos: %i", user.publicRepos];
     } else if (indexPath.row == 7) {
         NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
         [dateFormatter setDateFormat:@"yyyy-MM-dd'T'HH:mm:ssZZ"];
         NSDate *date  = [dateFormatter dateFromString:user.createdAt];
-        
+
         RelativeDateDescriptor *relativeDateDescriptor = [[RelativeDateDescriptor alloc] initWithPriorDateDescriptionFormat:@"%@ ago" postDateDescriptionFormat:@"in %@"];
         
-        image       = [UIImage imageNamed:@"83-calendar.png"];
+        fontAwesome = [NSString fontAwesomeIconStringForIconIdentifier:@"icon-calendar"];
         detailsText = [NSString stringWithFormat:@"Joined: %@", [relativeDateDescriptor describeDate:date relativeTo:[NSDate date]]];
     }
     
-    self.fieldIcon.image        = image;
+    //self.fieldIcon.image        = image;
+    self.fontAwesomeLabel.text  = fontAwesome;
     self.fieldDetails.text      = detailsText;
-    self.fieldIcon.contentMode  = UIViewContentModeScaleAspectFit;
+    //self.fieldIcon.contentMode  = UIViewContentModeScaleAspectFit;
     self.selectionStyle         = UITableViewCellSelectionStyleNone;
     self.backgroundColor        = [UIColor clearColor];
 }
