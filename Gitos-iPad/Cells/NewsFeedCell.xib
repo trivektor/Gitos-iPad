@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <archive type="com.apple.InterfaceBuilder3.CocoaTouch.iPad.XIB" version="8.00">
 	<data>
-		<int key="IBDocument.SystemTarget">1536</int>
+		<int key="IBDocument.SystemTarget">1552</int>
 		<string key="IBDocument.SystemVersion">11G63</string>
-		<string key="IBDocument.InterfaceBuilderVersion">2843</string>
+		<string key="IBDocument.InterfaceBuilderVersion">3084</string>
 		<string key="IBDocument.AppKitVersion">1138.51</string>
 		<string key="IBDocument.HIToolboxVersion">569.00</string>
 		<object class="NSMutableDictionary" key="IBDocument.PluginVersions">
 			<string key="NS.key.0">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
-			<string key="NS.object.0">1929</string>
+			<string key="NS.object.0">2083</string>
 		</object>
 		<array key="IBDocument.IntegratedClassDependencies">
 			<string>IBProxyObject</string>
@@ -42,7 +42,7 @@
 							<object class="IBUILabel" id="369998574">
 								<reference key="NSNextResponder" ref="744880170"/>
 								<int key="NSvFlags">292</int>
-								<string key="NSFrame">{{20, 7}, {984, 21}}</string>
+								<string key="NSFrame">{{20, 7}, {663, 21}}</string>
 								<reference key="NSSuperview" ref="744880170"/>
 								<reference key="NSWindow"/>
 								<reference key="NSNextKeyView" ref="119184221"/>
@@ -78,9 +78,10 @@
 							<object class="IBUILabel" id="119184221">
 								<reference key="NSNextResponder" ref="744880170"/>
 								<int key="NSvFlags">292</int>
-								<string key="NSFrame">{{20, 28}, {984, 21}}</string>
+								<string key="NSFrame">{{20, 28}, {663, 21}}</string>
 								<reference key="NSSuperview" ref="744880170"/>
 								<reference key="NSWindow"/>
+								<reference key="NSNextKeyView"/>
 								<string key="NSReuseIdentifierKey">_NS:9</string>
 								<bool key="IBUIOpaque">NO</bool>
 								<bool key="IBUIClipsSubviews">YES</bool>
@@ -108,7 +109,7 @@
 								<bool key="IBUIAdjustsFontSizeToFit">NO</bool>
 							</object>
 						</array>
-						<string key="NSFrameSize">{1024, 56}</string>
+						<string key="NSFrameSize">{703, 56}</string>
 						<reference key="NSSuperview" ref="565886830"/>
 						<reference key="NSWindow"/>
 						<reference key="NSNextKeyView" ref="369998574"/>
@@ -124,7 +125,7 @@
 						<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
 					</object>
 				</array>
-				<string key="NSFrameSize">{1024, 57}</string>
+				<string key="NSFrameSize">{703, 57}</string>
 				<reference key="NSSuperview"/>
 				<reference key="NSWindow"/>
 				<reference key="NSNextKeyView" ref="744880170"/>
@@ -239,6 +240,6 @@
 		<string key="IBDocument.TargetRuntimeIdentifier">IBIPadFramework</string>
 		<bool key="IBDocument.PluginDeclaredDependenciesTrackSystemTargetVersion">YES</bool>
 		<int key="IBDocument.defaultPropertyAccessControl">3</int>
-		<string key="IBCocoaTouchPluginVersion">1929</string>
+		<string key="IBCocoaTouchPluginVersion">2083</string>
 	</data>
 </archive>
