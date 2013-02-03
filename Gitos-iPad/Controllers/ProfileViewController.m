@@ -143,6 +143,11 @@
     return cell;
 }
 
+- (void)viewWillAppear:(BOOL)animated
+{
+    self.navigationItem.hidesBackButton = YES;
+}
+
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     if (indexPath.row == 2) {

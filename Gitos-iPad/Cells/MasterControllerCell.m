@@ -45,6 +45,9 @@
     } else if (indexPath.row == 3) {
         fontAwesome      = [NSString fontAwesomeIconStringForIconIdentifier:@"icon-file-alt"];
         optionLabelText  = @"Gists";
+    } else if (indexPath.row == 4) {
+        fontAwesome      = [NSString fontAwesomeIconStringForIconIdentifier:@"icon-user"];
+        optionLabelText  = @"Profile";
     }
 
     self.fontAwesomeLabel.text = fontAwesome;

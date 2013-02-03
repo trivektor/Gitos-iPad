@@ -13,6 +13,7 @@
 #import "StarredViewController.h"
 #import "OthersViewController.h"
 #import "MasterControllerCell.h"
+#import "ProfileViewController.h"
 
 @interface MasterViewController ()
 
@@ -55,7 +56,7 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return 4;
+    return 5;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -82,6 +83,8 @@
         [self.delegate didSelectViewController:[[StarredViewController alloc] init]];
     } else if (indexPath.row == 3) {
         [self.delegate didSelectViewController:[[GistsViewController alloc] init]];
+    } else if (indexPath.row == 4) {
+        [self.delegate didSelectViewController:[[ProfileViewController alloc] init]];
     }
 }
 
