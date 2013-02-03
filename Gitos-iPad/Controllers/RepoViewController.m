@@ -40,7 +40,7 @@
     // Do any additional setup after loading the view from its nib.
     [self.navigationItem setTitle:[self.repo getName]];
     [self performHouseKeepingTasks];
-    [self adjustFrameHeight];
+    //[self adjustFrameHeight];
     [self getRepoBranches];
 }
 
@@ -53,7 +53,7 @@
         scrollViewHeight += view.frame.size.height;
     }
     
-    [repoScrollView setContentSize:(CGSizeMake(1024, scrollViewHeight + 35))];
+    [repoScrollView setContentSize:(CGSizeMake(self.view.frame.size.width, scrollViewHeight + 35))];
 }
 
 - (void)didReceiveMemoryWarning
@@ -130,7 +130,8 @@
 - (UITableViewCell *)cellForBranchesTableAtIndexPath:(NSIndexPath *)indexPath
 {
     static NSString *cellIdentifier = @"Cell";
-    UITableViewCell *cell = [detailsTable dequeueReusableCellWithIdentifier:cellIdentifier];
+    UITableViewCell *cell = [branchesTable dequeueReusableCellWithIdentifier:cellIdentifier];
+
     if (!cell) {
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellIdentifier];
     }
@@ -183,7 +184,7 @@
              [self.repoBranches addObject:branch];
          }
          
-         [branchesTable setFrame:CGRectMake(0, 258, 1024, [self.repoBranches count]*44 + 125)];
+         [branchesTable setFrame:CGRectMake(0, 249, self.view.frame.size.width, [self.repoBranches count]*44 + 125)];
          [branchesTable reloadData];
          [self.spinnerView setHidden:YES];
          [self adjustFrameHeight];
