@@ -13,14 +13,13 @@
 #import "StarredViewController.h"
 #import "OthersViewController.h"
 
-
 @interface MasterViewController ()
 
 @end
 
 @implementation MasterViewController
 
-@synthesize menuTable, detailsViewController, parentViewController;
+@synthesize menuTable, parentViewController;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -35,6 +34,7 @@
 {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
+    self.navigationItem.title = @"Gitos";
 }
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
@@ -49,14 +49,13 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    UITableViewCell *cell = [menuTable dequeueReusableCellWithIdentifier:@"Cell"];
+    static NSString *cellIdentifier = @"Cell";
+    UITableViewCell *cell = [menuTable dequeueReusableCellWithIdentifier:cellIdentifier];
 
     if (!cell) {
-        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"Cell"];
+        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellIdentifier];
     }
-    
-    cell.textLabel.font = [UIFont fontWithName:@"Arial" size:12.0];
-    
+
     if (indexPath.row == 0) {
         cell.textLabel.text = @"News Feed";
     } else if (indexPath.row == 1) {
@@ -72,24 +71,15 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    NSMutableArray *viewControllers = [[NSMutableArray alloc] initWithArray:[self.parentViewController viewControllers]];
-    UINavigationController *navController;
-
     if (indexPath.row == 0) {
-        NewsfeedViewController *newsfeedController = [[NewsfeedViewController alloc] init];
-        navController = [[UINavigationController alloc] initWithRootViewController:newsfeedController];
+        [self.delegate didSelectViewController:[[NewsfeedViewController alloc] init]];
     } else if (indexPath.row == 1) {
-        ReposViewController *reposController = [[ReposViewController alloc] init];
-        navController = [[UINavigationController alloc] initWithRootViewController:reposController];
+        [self.delegate didSelectViewController:[[ReposViewController alloc] init]];
     } else if (indexPath.row == 2) {
-        StarredViewController *starredController = [[StarredViewController alloc] init];
-        navController = [[UINavigationController alloc] initWithRootViewController:starredController];
+        [self.delegate didSelectViewController:[[StarredViewController alloc] init]];
     } else if (indexPath.row == 3) {
-        GistsViewController *gistsController = [[GistsViewController alloc] init];
-        navController = [[UINavigationController alloc] initWithRootViewController:gistsController];
+        [self.delegate didSelectViewController:[[GistsViewController alloc] init]];
     }
-    [viewControllers replaceObjectAtIndex:1 withObject:navController];
-    [self.parentViewController setViewControllers:viewControllers];
 }
 
 - (void)didReceiveMemoryWarning

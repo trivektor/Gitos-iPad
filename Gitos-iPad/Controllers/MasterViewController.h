@@ -7,12 +7,19 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "DetailsViewController.h"
+
+@protocol MasterViewControllerDelegate;
 
 @interface MasterViewController : UIViewController <UITableViewDataSource, UITableViewDelegate>
 
-@property (nonatomic, strong) DetailsViewController *detailsViewController;
 @property (nonatomic, strong) UISplitViewController *parentViewController;
 @property (nonatomic, weak) IBOutlet UITableView *menuTable;
+@property (nonatomic, strong) id<MasterViewControllerDelegate> delegate;
+
+@end
+
+@protocol MasterViewControllerDelegate <NSObject>
+
+- (void) didSelectViewController:(UIViewController *)controller;
 
 @end

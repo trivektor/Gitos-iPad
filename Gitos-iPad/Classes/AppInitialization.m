@@ -25,10 +25,12 @@
     UINavigationController *detailsNavController = [[UINavigationController alloc] initWithRootViewController:detailsController];
     
     MasterViewController *masterController = [[MasterViewController alloc] init];
-    masterController.detailsViewController = detailsController;
     masterController.parentViewController = splitController;
+    masterController.delegate = detailsController;
 
-    NSMutableArray *viewControllers = [[NSMutableArray alloc] initWithObjects:masterController, detailsNavController, nil];
+    UINavigationController *masterNavController = [[UINavigationController alloc] initWithRootViewController:masterController];
+
+    NSMutableArray *viewControllers = [[NSMutableArray alloc] initWithObjects:masterNavController, detailsNavController, nil];
     
     [splitController setViewControllers:viewControllers];
     [window setRootViewController:splitController];
