@@ -17,6 +17,7 @@
 #import "RelativeDateDescriptor.h"
 #import "SVPullToRefresh.h"
 #import "TimelineEvent.h"
+#import "NSString+FontAwesome.h"
 
 @interface NewsfeedViewController ()
 
@@ -74,8 +75,9 @@
 {
     self.navigationItem.title = @"News Feed";
     self.spinnerView = [SpinnerView loadSpinnerIntoView:self.view];
-    
-    UIBarButtonItem *reloadButton = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"glyphicons_081_refresh"] landscapeImagePhone:nil style:UIBarButtonItemStyleBordered target:self action:@selector(reloadNewsfeed)];
+
+    UIBarButtonItem *reloadButton = [[UIBarButtonItem alloc] initWithTitle:[NSString fontAwesomeIconStringForIconIdentifier:@"icon-repeat"] style:UIBarButtonItemStyleBordered target:self action:@selector(reloadNewsfeed)];
+    [reloadButton setTitleTextAttributes:[NSDictionary dictionaryWithObjectsAndKeys:[UIFont fontWithName:kFontAwesomeFamilyName size:19], UITextAttributeFont, nil] forState:UIControlStateNormal];
     [self.navigationItem setRightBarButtonItem:reloadButton];
 }
 
