@@ -11,6 +11,7 @@
 
 @interface NewsFeedCell : UITableViewCell
 
+@property (nonatomic, weak) IBOutlet UILabel *fontAwesomeLabel;
 @property (nonatomic, weak) IBOutlet UILabel *actionDescription;
 @property (nonatomic, weak) IBOutlet UILabel *actionDate;
 @property (nonatomic, strong) TimelineEvent *event;

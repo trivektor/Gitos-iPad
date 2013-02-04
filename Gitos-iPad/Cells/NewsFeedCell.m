@@ -7,10 +7,11 @@
 //
 
 #import "NewsFeedCell.h"
+#import "NSString+FontAwesome.h"
 
 @implementation NewsFeedCell
 
-@synthesize actionDescription, actionDate, event;
+@synthesize fontAwesomeLabel, actionDescription, actionDate, event;
 
 - (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
 {
@@ -30,10 +31,11 @@
 
 - (void)displayEvent
 {
-    self.actionDescription.text = [self.event toString];
-    self.actionDate.text = [self.event toDateString];
-    self.backgroundColor = [UIColor clearColor];
-    self.selectionStyle = UITableViewCellSelectionStyleNone;
+    self.actionDescription.text = self.event.descriptionText;
+    self.actionDate.text        = [self.event toDateString];
+    self.backgroundColor        = [UIColor clearColor];
+    self.fontAwesomeLabel.font  = [UIFont fontWithName:kFontAwesomeFamilyName size:16.0];
+    self.fontAwesomeLabel.text  = [NSString fontAwesomeIconStringForIconIdentifier:self.event.fontAwesomeIcon];
 }
 
 @end

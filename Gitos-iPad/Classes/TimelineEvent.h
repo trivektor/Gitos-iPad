@@ -20,9 +20,11 @@
 @property(nonatomic, strong) NSDateFormatter *dateFormatter;
 @property(nonatomic, strong) NSDate *todayDate;
 @property(nonatomic, strong) RelativeDateDescriptor *relativeDateDescriptor;
+@property(nonatomic, strong) NSString *fontAwesomeIcon;
+@property(nonatomic, strong) NSString *descriptionText;
 
 - (id)initWithOptions:(NSDictionary *)options;
-- (NSString *)toString;
+- (void)stringify;
 - (NSString *)toDateString;
 
 @end
