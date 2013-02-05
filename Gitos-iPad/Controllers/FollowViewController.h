@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import "User.h"
+#import "SpinnerView.h"
 
 @interface FollowViewController : UIViewController <UITableViewDataSource, UITableViewDelegate>
 
@@ -19,6 +20,7 @@
 @property (nonatomic, strong) NSString *controllerTitle;
 
 @property (nonatomic, strong) NSString *usersUrl;
+@property (nonatomic, strong) SpinnerView *spinnerView;
 
 - (void)fetchFollows;
 

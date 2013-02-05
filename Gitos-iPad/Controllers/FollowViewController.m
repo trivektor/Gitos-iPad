@@ -36,6 +36,7 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
     self.navigationItem.title = self.controllerTitle;
+    self.spinnerView = [SpinnerView loadSpinnerIntoView:self.view];
     [self fetchFollows];
 }
 
@@ -102,11 +103,11 @@
              [self.users addObject:[[User alloc] initWithOptions:[json objectAtIndex:i]]];
          }
          [usersTable reloadData];
-         //[self.spinnerView setHidden:YES];
+         [self.spinnerView setHidden:YES];
      }
      failure:^(AFHTTPRequestOperation *operation, NSError *error) {
          NSLog(@"%@", error);
-         //[self.spinnerView setHidden:YES];
+         [self.spinnerView setHidden:YES];
      }];
     
     [operation start];
