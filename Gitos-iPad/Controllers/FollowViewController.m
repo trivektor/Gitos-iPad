@@ -67,8 +67,12 @@
 
     User *u = [self.users objectAtIndex:indexPath.row];
 
+    cell.accessoryType  = UITableViewCellAccessoryDisclosureIndicator;
     cell.textLabel.text = u.login;
     cell.textLabel.font = [UIFont fontWithName:@"Arial" size:12.0];
+
+    NSData *userImageData = [NSData dataWithContentsOfURL:[NSURL URLWithString:u.avatarUrl]];
+    cell.imageView.image = [UIImage imageWithData:userImageData];
 
     return cell;
 }
