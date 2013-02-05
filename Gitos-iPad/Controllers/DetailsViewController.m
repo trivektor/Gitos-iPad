@@ -37,6 +37,7 @@
 
 - (void)didSelectViewController:(UIViewController *)controller
 {
+    [self.navigationController popToRootViewControllerAnimated:NO];
     [self.navigationController pushViewController:controller animated:NO];
 }
 

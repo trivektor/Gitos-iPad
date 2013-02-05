@@ -14,6 +14,7 @@
 #import "OthersViewController.h"
 #import "MasterControllerCell.h"
 #import "ProfileViewController.h"
+#import "RepoSearchViewController.h"
 
 @interface MasterViewController ()
 
@@ -56,7 +57,7 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return 5;
+    return 6;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -85,6 +86,8 @@
         [self.delegate didSelectViewController:[[GistsViewController alloc] init]];
     } else if (indexPath.row == 4) {
         [self.delegate didSelectViewController:[[ProfileViewController alloc] init]];
+    } else if (indexPath.row == 5) {
+        [self.delegate didSelectViewController:[[RepoSearchViewController alloc] init]];
     }
 }
 

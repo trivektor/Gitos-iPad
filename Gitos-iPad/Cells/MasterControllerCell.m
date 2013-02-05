@@ -48,6 +48,9 @@
     } else if (indexPath.row == 4) {
         fontAwesome      = [NSString fontAwesomeIconStringForIconIdentifier:@"icon-user"];
         optionLabelText  = @"Profile";
+    } else if (indexPath.row == 5) {
+        fontAwesome      = [NSString fontAwesomeIconStringForIconIdentifier:@"icon-search"];
+        optionLabelText  = @"Search";
     }
 
     self.fontAwesomeLabel.text = fontAwesome;
