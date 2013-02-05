@@ -161,7 +161,6 @@
     }
 
     cell.event = [self.newsFeed objectAtIndex:indexPath.row];
-    cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
     [cell displayEvent];
     
     return  cell;
