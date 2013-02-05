@@ -7,6 +7,7 @@
 //
 
 #import "ProfileViewController.h"
+#import "FollowViewController.h"
 #import "SSKeychain.h"
 #import "AFHTTPClient.h"
 #import "AFHTTPRequestOperation.h"
@@ -162,6 +163,16 @@
         }
     } else if (indexPath.row == 1) {
         [[UIApplication sharedApplication] openURL:[NSURL URLWithString:self.user.blog]];
+    } else if (indexPath.row == 3) {
+        FollowViewController *followController = [[FollowViewController alloc] init];
+        followController.usersUrl = self.user.followersUrl;
+        followController.controllerTitle = @"Followers";
+        [self.navigationController pushViewController:followController animated:YES];
+    } else if (indexPath.row == 4) {
+        FollowViewController *followController = [[FollowViewController alloc] init];
+        followController.usersUrl = self.user.followingUrl;
+        followController.controllerTitle = @"Following";
+        [self.navigationController pushViewController:followController animated:YES];
     }
 }
 

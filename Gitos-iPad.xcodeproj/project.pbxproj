@@ -103,6 +103,8 @@
 		B516545816B7C1B9003F0DFA /* barButtonPressed.svg in Resources */ = {isa = PBXBuildFile; fileRef = B51653F916B7C1B9003F0DFA /* barButtonPressed.svg */; };
 		B516545916B7C1B9003F0DFA /* Untitled-2.png in Resources */ = {isa = PBXBuildFile; fileRef = B51653FA16B7C1B9003F0DFA /* Untitled-2.png */; };
 		B516545B16B7C558003F0DFA /* AppConfig.plist in Resources */ = {isa = PBXBuildFile; fileRef = B516545A16B7C558003F0DFA /* AppConfig.plist */; };
+		B5167A0F16C0EFA0000D952F /* FollowViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B5167A0D16C0EFA0000D952F /* FollowViewController.m */; };
+		B5167A1016C0EFA0000D952F /* FollowViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B5167A0E16C0EFA0000D952F /* FollowViewController.xib */; };
 		B55D909F16B7AA27009CB90F /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B55D909E16B7AA27009CB90F /* UIKit.framework */; };
 		B55D90A116B7AA27009CB90F /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B55D90A016B7AA27009CB90F /* Foundation.framework */; };
 		B55D90A316B7AA27009CB90F /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B55D90A216B7AA27009CB90F /* CoreGraphics.framework */; };
@@ -296,6 +298,9 @@
 		B51653F916B7C1B9003F0DFA /* barButtonPressed.svg */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = barButtonPressed.svg; sourceTree = "<group>"; };
 		B51653FA16B7C1B9003F0DFA /* Untitled-2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Untitled-2.png"; sourceTree = "<group>"; };
 		B516545A16B7C558003F0DFA /* AppConfig.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = AppConfig.plist; sourceTree = "<group>"; };
+		B5167A0C16C0EFA0000D952F /* FollowViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FollowViewController.h; sourceTree = "<group>"; };
+		B5167A0D16C0EFA0000D952F /* FollowViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FollowViewController.m; sourceTree = "<group>"; };
+		B5167A0E16C0EFA0000D952F /* FollowViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FollowViewController.xib; sourceTree = "<group>"; };
 		B55D909A16B7AA27009CB90F /* Gitos-iPad.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Gitos-iPad.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		B55D909E16B7AA27009CB90F /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		B55D90A016B7AA27009CB90F /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -736,6 +741,9 @@
 				B5BC456916BD996200434848 /* DetailsViewController.h */,
 				B5BC456A16BD996200434848 /* DetailsViewController.m */,
 				B5BC456B16BD996200434848 /* DetailsViewController.xib */,
+				B5167A0C16C0EFA0000D952F /* FollowViewController.h */,
+				B5167A0D16C0EFA0000D952F /* FollowViewController.m */,
+				B5167A0E16C0EFA0000D952F /* FollowViewController.xib */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -1000,6 +1008,7 @@
 				B5BC457716BE6C4500434848 /* magma.png in Resources */,
 				B5BC457B16BEE21700434848 /* FontAwesome.ttf in Resources */,
 				B5BC458316BEE56000434848 /* MasterControllerCell.xib in Resources */,
+				B5167A1016C0EFA0000D952F /* FollowViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1062,6 +1071,7 @@
 				B5BC456C16BD996200434848 /* DetailsViewController.m in Sources */,
 				B5BC457E16BEE28900434848 /* NSString+FontAwesome.m in Sources */,
 				B5BC458116BEE55100434848 /* MasterControllerCell.m in Sources */,
+				B5167A0F16C0EFA0000D952F /* FollowViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

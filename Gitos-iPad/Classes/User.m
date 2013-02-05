@@ -12,7 +12,7 @@
 
 @implementation User
 
-@synthesize name, login, url, receivedEventsUrl, followingUrl, avatarUrl, htmlUrl, starredUrl, reposUrl, gistsUrl,
+@synthesize data, name, login, url, receivedEventsUrl, followingUrl, followersUrl, avatarUrl, htmlUrl, starredUrl, reposUrl, gistsUrl,
 location, publicGists, privateGists, email, followers, following, blog, createdAt, company, bio, publicRepos;
 
 - (id)initWithOptions:(NSDictionary *)options
@@ -20,7 +20,8 @@ location, publicGists, privateGists, email, followers, following, blog, createdA
     self.name               = [options valueForKey:@"name"];
     self.login              = [options valueForKey:@"login"];
     self.url                = [options valueForKey:@"url"];
-    self.followingUrl       = [options valueForKey:@"follwowing_url"];
+    self.followingUrl       = [options valueForKey:@"following_url"];
+    self.followersUrl       = [options valueForKey:@"followers_url"];
     self.receivedEventsUrl  = [options valueForKey:@"received_events_url"];
     self.avatarUrl          = [options valueForKey:@"avatar_url"];
     self.starredUrl         = [self.url stringByAppendingString:@"/starred"];
@@ -41,6 +42,15 @@ location, publicGists, privateGists, email, followers, following, blog, createdA
     
     return self;
 }
+
+- (id)initWithData:(NSDictionary *)userData
+{
+    self = [super init];
+    self.data = userData;
+    return self;
+}
+
+
 
 - (void)handleNullValues
 {
