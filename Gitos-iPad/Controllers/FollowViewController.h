@@ -7,7 +7,19 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "User.h"
 
-@interface FollowViewController : UIViewController
+@interface FollowViewController : UIViewController <UITableViewDataSource, UITableViewDelegate>
+
+@property (nonatomic, strong) User *user;
+
+@property (nonatomic, weak) IBOutlet UITableView *usersTable;
+@property (nonatomic, strong) NSMutableArray *users;
+@property (nonatomic, strong) NSString *accessToken;
+@property (nonatomic, strong) NSString *controllerTitle;
+
+@property (nonatomic, strong) NSString *usersUrl;
+
+- (void)fetchFollows;
 
 @end
