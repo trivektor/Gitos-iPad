@@ -1,20 +1,20 @@
 //
-//  ProfileWebsiteViewController.m
+//  WebsiteViewController.m
 //  Gitos-iPad
 //
 //  Created by Tri Vuong on 2/5/13.
 //  Copyright (c) 2013 Crafted By Tri. All rights reserved.
 //
 
-#import "ProfileWebsiteViewController.h"
+#import "WebsiteViewController.h"
 
-@interface ProfileWebsiteViewController ()
+@interface WebsiteViewController ()
 
 @end
 
-@implementation ProfileWebsiteViewController
+@implementation WebsiteViewController
 
-@synthesize user, profileWebView;
+@synthesize requestedUrl, websiteView, spinnerView;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -30,7 +30,7 @@
     [super viewDidLoad];
     self.spinnerView = [SpinnerView loadSpinnerIntoView:self.view];
     // Do any additional setup after loading the view from its nib.
-    [self loadWebPage];
+    [self loadWebsite];
 }
 
 - (void)didReceiveMemoryWarning
@@ -39,20 +39,22 @@
     // Dispose of any resources that can be recreated.
 }
 
-- (void)loadWebPage
+- (void)loadWebsite
 {
-    NSURL *url = [NSURL URLWithString:[self.user getWebsite]];
-
-    NSURLRequest *request = [NSURLRequest requestWithURL:url];
-
-    [profileWebView loadRequest:request];
+    NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:self.requestedUrl]];
+    
+    [websiteView loadRequest:request];
 }
 
 - (void)webViewDidFinishLoad:(UIWebView *)webView
 {
     [self.spinnerView setHidden:YES];
-    NSString* title = [webView stringByEvaluatingJavaScriptFromString: @"document.title"];
-    [self.navigationItem setTitle:title];
+    self.navigationItem.title = [websiteView stringByEvaluatingJavaScriptFromString:@"document.title"];
+}
+
+- (void)webView:(UIWebView *)webView didFailLoadWithError:(NSError *)error
+{
+    [self.spinnerView setHidden:YES];
 }
 
 @end
