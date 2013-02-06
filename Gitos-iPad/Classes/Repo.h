@@ -33,5 +33,6 @@
 - (NSString *)getCreatedAt;
 - (NSString *)getUpdatedAt;
 - (NSString *)getAuthorName;
+- (NSString *)convertToRelativeDate:(NSString *)originalDateString;
 
 @end

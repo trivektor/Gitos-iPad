@@ -10,12 +10,6 @@
 #import "AppConfig.h"
 #import "RelativeDateDescriptor.h"
 
-@interface Repo()
-
-- (NSString *)convertToRelativeDate:(NSString *)originalDateString;
-
-@end
-
 @implementation Repo
 
 @synthesize data, relativeDateDescriptor, dateFormatter;
