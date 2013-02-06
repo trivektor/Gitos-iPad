@@ -119,6 +119,8 @@
 		B54603A616C101FD007D4FB3 /* ImageIO.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B54603A516C101FD007D4FB3 /* ImageIO.framework */; };
 		B54603AF16C225FC007D4FB3 /* WebsiteViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B54603AD16C225FC007D4FB3 /* WebsiteViewController.m */; };
 		B54603B016C225FC007D4FB3 /* WebsiteViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B54603AE16C225FC007D4FB3 /* WebsiteViewController.xib */; };
+		B54603B416C24003007D4FB3 /* RecentActivityViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B54603B216C24002007D4FB3 /* RecentActivityViewController.m */; };
+		B54603B516C24003007D4FB3 /* RecentActivityViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B54603B316C24002007D4FB3 /* RecentActivityViewController.xib */; };
 		B55D909F16B7AA27009CB90F /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B55D909E16B7AA27009CB90F /* UIKit.framework */; };
 		B55D90A116B7AA27009CB90F /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B55D90A016B7AA27009CB90F /* Foundation.framework */; };
 		B55D90A316B7AA27009CB90F /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B55D90A216B7AA27009CB90F /* CoreGraphics.framework */; };
@@ -341,6 +343,9 @@
 		B54603AC16C225FC007D4FB3 /* WebsiteViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WebsiteViewController.h; sourceTree = "<group>"; };
 		B54603AD16C225FC007D4FB3 /* WebsiteViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WebsiteViewController.m; sourceTree = "<group>"; };
 		B54603AE16C225FC007D4FB3 /* WebsiteViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WebsiteViewController.xib; sourceTree = "<group>"; };
+		B54603B116C24001007D4FB3 /* RecentActivityViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RecentActivityViewController.h; sourceTree = "<group>"; };
+		B54603B216C24002007D4FB3 /* RecentActivityViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RecentActivityViewController.m; sourceTree = "<group>"; };
+		B54603B316C24002007D4FB3 /* RecentActivityViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RecentActivityViewController.xib; sourceTree = "<group>"; };
 		B55D909A16B7AA27009CB90F /* Gitos-iPad.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Gitos-iPad.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		B55D909E16B7AA27009CB90F /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		B55D90A016B7AA27009CB90F /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -820,6 +825,9 @@
 				B54603AC16C225FC007D4FB3 /* WebsiteViewController.h */,
 				B54603AD16C225FC007D4FB3 /* WebsiteViewController.m */,
 				B54603AE16C225FC007D4FB3 /* WebsiteViewController.xib */,
+				B54603B116C24001007D4FB3 /* RecentActivityViewController.h */,
+				B54603B216C24002007D4FB3 /* RecentActivityViewController.m */,
+				B54603B316C24002007D4FB3 /* RecentActivityViewController.xib */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -1086,6 +1094,7 @@
 				B5BC458316BEE56000434848 /* MasterControllerCell.xib in Resources */,
 				B5167A1016C0EFA0000D952F /* FollowViewController.xib in Resources */,
 				B54603B016C225FC007D4FB3 /* WebsiteViewController.xib in Resources */,
+				B54603B516C24003007D4FB3 /* RecentActivityViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1160,6 +1169,7 @@
 				B54603A116C0FFA8007D4FB3 /* UIButton+WebCache.m in Sources */,
 				B54603A216C0FFA8007D4FB3 /* UIImageView+WebCache.m in Sources */,
 				B54603AF16C225FC007D4FB3 /* WebsiteViewController.m in Sources */,
+				B54603B416C24003007D4FB3 /* RecentActivityViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

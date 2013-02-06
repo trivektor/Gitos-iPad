@@ -39,7 +39,7 @@
 - (NSString *)getEventsUrl
 {
     NSString *eventsUrl = [self.data valueForKey:@"events_url"];
-    return [eventsUrl stringByReplacingOccurrencesOfString:@"{/privary}" withString:@""];
+    return [eventsUrl stringByReplacingOccurrencesOfString:@"{/privacy}" withString:@""];
 }
 
 - (NSString *)getStarredUrl

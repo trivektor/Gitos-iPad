@@ -60,6 +60,9 @@
     } else if (indexPath.row == 7) {
         fontAwesome = [NSString fontAwesomeIconStringForIconIdentifier:@"icon-calendar"];
         detailsText = [NSString stringWithFormat:@"Joined: %@", [user getCreatedAt]];
+    } else if (indexPath.row == 8) {
+        fontAwesome = [NSString fontAwesomeIconStringForIconIdentifier:@"icon-rss"];
+        detailsText = @"Recent Activity";
     }
     
     //self.fieldIcon.image        = image;

@@ -14,6 +14,7 @@
 #import "AFHTTPRequestOperation.h"
 #import "ProfileCell.h"
 #import "AppConfig.h"
+#import "RecentActivityViewController.h"
 
 @interface ProfileViewController ()
 
@@ -136,7 +137,7 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return 7;
+    return 9;
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -185,6 +186,10 @@
         followController.usersUrl = [self.user getFollowingUrl];
         followController.controllerTitle = @"Following";
         [self.navigationController pushViewController:followController animated:YES];
+    } else if (indexPath.row == 8) {
+        RecentActivityViewController *recentActivityController = [[RecentActivityViewController alloc] init];
+        recentActivityController.user = self.user;
+        [self.navigationController pushViewController:recentActivityController animated:YES];
     }
 }
 
@@ -201,7 +206,7 @@
     avatar.layer.cornerRadius = 5.0;
     avatar.layer.masksToBounds = YES;
     
-    if ([self.user getName] == (id)[NSNull null]) {
+    if ([self.user getName] == (id)[NSNull null] || [self.user getName] == nil) {
         nameLabel.text = [self.user getLogin];
         loginLabel.hidden = YES;
     } else {
