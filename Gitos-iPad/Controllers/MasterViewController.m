@@ -85,7 +85,9 @@
     } else if (indexPath.row == 3) {
         [self.delegate didSelectViewController:[[GistsViewController alloc] init]];
     } else if (indexPath.row == 4) {
-        [self.delegate didSelectViewController:[[ProfileViewController alloc] init]];
+        ProfileViewController *profileController = [[ProfileViewController alloc] init];
+        profileController.hideBackButton = YES;
+        [self.delegate didSelectViewController:profileController];
     } else if (indexPath.row == 5) {
         [self.delegate didSelectViewController:[[RepoSearchViewController alloc] init]];
     }

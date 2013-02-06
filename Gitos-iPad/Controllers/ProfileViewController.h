@@ -22,6 +22,7 @@
 @property (nonatomic, strong) NSString *accessToken;
 @property (nonatomic, strong) User *user;
 @property (nonatomic, strong) SpinnerView *spinnerView;
+@property (nonatomic) Boolean hideBackButton;
 
 - (void)performHouseKeepingTasks;
 - (void)prepareProfileTable;

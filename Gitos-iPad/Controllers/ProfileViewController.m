@@ -8,7 +8,7 @@
 
 #import "ProfileViewController.h"
 #import "FollowViewController.h"
-#import "ProfileWebsiteViewController.h"
+#import "WebsiteViewController.h"
 #import "SSKeychain.h"
 #import "AFHTTPClient.h"
 #import "AFHTTPRequestOperation.h"
@@ -21,7 +21,7 @@
 
 @implementation ProfileViewController
 
-@synthesize accessToken, user, spinnerView, avatar, profileTable, nameLabel, loginLabel, scrollView;
+@synthesize accessToken, user, spinnerView, avatar, profileTable, nameLabel, loginLabel, scrollView, hideBackButton;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -30,6 +30,7 @@
         // Custom initialization
         self.user = nil;
         self.accessToken = [SSKeychain passwordForService:@"access_token" account:@"gitos"];
+        self.hideBackButton = NO;
     }
     return self;
 }
@@ -41,6 +42,11 @@
     [self performHouseKeepingTasks];
     [self prepareProfileTable];
     [self getUserInfo];
+}
+
+- (void)viewWillAppear:(BOOL)animated
+{
+    self.navigationItem.hidesBackButton = self.hideBackButton;
 }
 
 - (void)performHouseKeepingTasks
@@ -151,11 +157,6 @@
     return cell;
 }
 
-- (void)viewWillAppear:(BOOL)animated
-{
-    self.navigationItem.hidesBackButton = YES;
-}
-
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     if (indexPath.row == 2) {
@@ -169,9 +170,9 @@
             [self presentViewController:mailViewController animated:YES completion:nil];
         }
     } else if (indexPath.row == 1) {
-        ProfileWebsiteViewController *profileWebController = [[ProfileWebsiteViewController alloc] init];
-        profileWebController.user = self.user;
-        [self.navigationController pushViewController:profileWebController animated:YES];
+        WebsiteViewController *websiteController = [[WebsiteViewController alloc] init];
+        websiteController.requestedUrl = [self.user getWebsite];
+        [self.navigationController pushViewController:websiteController animated:NO];
     } else if (indexPath.row == 3) {
         FollowViewController *followController = [[FollowViewController alloc] init];
         followController.usersUrl = [self.user getFollowersUrl];
