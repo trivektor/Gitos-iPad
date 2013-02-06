@@ -41,11 +41,13 @@
         self.fieldValue.text = [NSString stringWithFormat:@"%i", [self.repo getWatchers]];
     } else if (indexPath.row == 3) {
         self.fieldLabel.text = @"Language";
-        if ([self.repo getLanguage] == (id)[NSNull null]) {
-            self.fieldValue.text = @"n/a";
-        } else {
-            self.fieldValue.text = [self.repo getLanguage];
-        }
+        self.fieldValue.text = [self.repo getLanguage];
+    } else if (indexPath.row == 4) {
+        self.fieldLabel.text = @"Created";
+        self.fieldValue.text = [self.repo getCreatedAt];
+    } else if (indexPath.row == 5) {
+        self.fieldLabel.text = @"Last Updated";
+        self.fieldValue.text = [self.repo getUpdatedAt];
     }
     self.selectionStyle = UITableViewCellSelectionStyleNone;
 }

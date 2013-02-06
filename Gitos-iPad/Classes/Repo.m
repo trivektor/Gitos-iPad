@@ -27,7 +27,8 @@
     self.data = _data;
     self.relativeDateDescriptor = [[RelativeDateDescriptor alloc] initWithPriorDateDescriptionFormat:@"%@ ago" postDateDescriptionFormat:@"in %@"];
     self.dateFormatter = [[NSDateFormatter alloc] init];
-    
+    self.dateFormatter.dateFormat = @"yyyy-MM-dd'T'HH:mm:ssZZ";
+
     return self;
 }
 
@@ -60,6 +61,7 @@
 
 - (NSString *)getLanguage
 {
+    if ([self.data valueForKey:@"language"] == nil) return @"n/a";
     return [self.data valueForKey:@"language"];
 }
 
