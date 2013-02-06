@@ -32,5 +32,6 @@
 - (NSString *)getIssuesUrl;
 - (NSString *)getCreatedAt;
 - (NSString *)getUpdatedAt;
+- (NSString *)getAuthorName;
 
 @end

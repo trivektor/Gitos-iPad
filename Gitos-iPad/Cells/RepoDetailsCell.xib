@@ -80,10 +80,9 @@
 							<object class="IBUILabel" id="491140852">
 								<reference key="NSNextResponder" ref="1030391321"/>
 								<int key="NSvFlags">292</int>
-								<string key="NSFrame">{{203, 10}, {784, 21}}</string>
+								<string key="NSFrame">{{203, 11}, {784, 21}}</string>
 								<reference key="NSSuperview" ref="1030391321"/>
 								<reference key="NSWindow"/>
-								<reference key="NSNextKeyView"/>
 								<string key="NSReuseIdentifierKey">_NS:9</string>
 								<bool key="IBUIOpaque">NO</bool>
 								<bool key="IBUIClipsSubviews">YES</bool>
@@ -93,7 +92,7 @@
 								<string key="IBUIText">Label</string>
 								<object class="NSColor" key="IBUITextColor">
 									<int key="NSColorSpace">1</int>
-									<bytes key="NSRGB">MC42ODI5MzYwNjUxIDAuNjgyOTM2MDY1MSAwLjY4MjkzNjA2NTEAA</bytes>
+									<bytes key="NSRGB">MC40MzQ4ODkxOTAxIDAuNDEyNzg4MjQwMiAwLjQyMjU3MzQ1NDYAA</bytes>
 								</object>
 								<reference key="IBUIHighlightedColor" ref="589319003"/>
 								<int key="IBUIBaselineAdjustment">0</int>

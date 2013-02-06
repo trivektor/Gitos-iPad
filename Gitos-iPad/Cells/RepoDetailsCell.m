@@ -48,6 +48,9 @@
     } else if (indexPath.row == 5) {
         self.fieldLabel.text = @"Last Updated";
         self.fieldValue.text = [self.repo getUpdatedAt];
+    } else if (indexPath.row == 6) {
+        self.fieldLabel.text = @"Author";
+        self.fieldValue.text = [self.repo getAuthorName];
     }
     self.selectionStyle = UITableViewCellSelectionStyleNone;
 }

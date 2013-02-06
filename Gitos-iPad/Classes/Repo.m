@@ -122,6 +122,11 @@
     return [self.data valueForKey:@"issues_url"];
 }
 
+- (NSString *)getAuthorName
+{
+    return [[self.data valueForKey:@"owner"] valueForKey:@"login"];
+}
+
 - (NSString *)getCreatedAt
 {
     return [self convertToRelativeDate:[self.data valueForKey:@"created_at"]];

@@ -95,7 +95,7 @@
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     if (tableView == detailsTable) {
-        return 6;
+        return 7;
     } else if (tableView == branchesTable) {
         return [self.repoBranches count];
     } else {
@@ -184,7 +184,7 @@
              [self.repoBranches addObject:branch];
          }
          
-         [branchesTable setFrame:CGRectMake(0, self.detailsTable.frame.size.height + 20, self.view.frame.size.width, [self.repoBranches count]*44 + 125)];
+         [branchesTable setFrame:CGRectMake(0, self.detailsTable.frame.size.height + 46, self.view.frame.size.width, [self.repoBranches count]*44 + 155)];
          [branchesTable reloadData];
          [self.spinnerView setHidden:YES];
          [self adjustFrameHeight];
