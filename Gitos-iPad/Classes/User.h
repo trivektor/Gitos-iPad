@@ -20,6 +20,8 @@
 - (NSString *)getEventsUrl;
 - (NSString *)getStarredUrl;
 - (NSString *)getReposUrl;
+- (NSString *)getOrganizationsUrl;
+- (NSString *)getSubscriptionsUrl;
 - (NSString *)getFollowersUrl;
 - (NSString *)getFollowingUrl;
 - (NSString *)getLogin;

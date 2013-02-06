@@ -63,6 +63,16 @@
     return [self.data valueForKey:@"repos_url"];
 }
 
+- (NSString *)getOrganizationsUrl
+{
+    return [self.data valueForKey:@"organizations_url"];
+}
+
+- (NSString *)getSubscriptionsUrl
+{
+    return [self.data valueForKey:@"subscriptions_url"];
+}
+
 - (NSString *)getLogin
 {
     return [self.data valueForKey:@"login"];
