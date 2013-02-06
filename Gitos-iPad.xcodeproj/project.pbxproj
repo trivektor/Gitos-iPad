@@ -117,6 +117,8 @@
 		B54603A216C0FFA8007D4FB3 /* UIImageView+WebCache.m in Sources */ = {isa = PBXBuildFile; fileRef = B546039816C0FFA8007D4FB3 /* UIImageView+WebCache.m */; };
 		B54603A416C101CC007D4FB3 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B54603A316C101CC007D4FB3 /* MapKit.framework */; };
 		B54603A616C101FD007D4FB3 /* ImageIO.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B54603A516C101FD007D4FB3 /* ImageIO.framework */; };
+		B54603AA16C21F9C007D4FB3 /* ProfileWebsiteViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B54603A816C21F9B007D4FB3 /* ProfileWebsiteViewController.m */; };
+		B54603AB16C21F9C007D4FB3 /* ProfileWebsiteViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B54603A916C21F9C007D4FB3 /* ProfileWebsiteViewController.xib */; };
 		B55D909F16B7AA27009CB90F /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B55D909E16B7AA27009CB90F /* UIKit.framework */; };
 		B55D90A116B7AA27009CB90F /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B55D90A016B7AA27009CB90F /* Foundation.framework */; };
 		B55D90A316B7AA27009CB90F /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B55D90A216B7AA27009CB90F /* CoreGraphics.framework */; };
@@ -336,6 +338,9 @@
 		B546039816C0FFA8007D4FB3 /* UIImageView+WebCache.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImageView+WebCache.m"; sourceTree = "<group>"; };
 		B54603A316C101CC007D4FB3 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		B54603A516C101FD007D4FB3 /* ImageIO.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ImageIO.framework; path = System/Library/Frameworks/ImageIO.framework; sourceTree = SDKROOT; };
+		B54603A716C21F9B007D4FB3 /* ProfileWebsiteViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProfileWebsiteViewController.h; sourceTree = "<group>"; };
+		B54603A816C21F9B007D4FB3 /* ProfileWebsiteViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProfileWebsiteViewController.m; sourceTree = "<group>"; };
+		B54603A916C21F9C007D4FB3 /* ProfileWebsiteViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ProfileWebsiteViewController.xib; sourceTree = "<group>"; };
 		B55D909A16B7AA27009CB90F /* Gitos-iPad.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Gitos-iPad.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		B55D909E16B7AA27009CB90F /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		B55D90A016B7AA27009CB90F /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -812,6 +817,9 @@
 				B5167A0C16C0EFA0000D952F /* FollowViewController.h */,
 				B5167A0D16C0EFA0000D952F /* FollowViewController.m */,
 				B5167A0E16C0EFA0000D952F /* FollowViewController.xib */,
+				B54603A716C21F9B007D4FB3 /* ProfileWebsiteViewController.h */,
+				B54603A816C21F9B007D4FB3 /* ProfileWebsiteViewController.m */,
+				B54603A916C21F9C007D4FB3 /* ProfileWebsiteViewController.xib */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -1077,6 +1085,7 @@
 				B5BC457B16BEE21700434848 /* FontAwesome.ttf in Resources */,
 				B5BC458316BEE56000434848 /* MasterControllerCell.xib in Resources */,
 				B5167A1016C0EFA0000D952F /* FollowViewController.xib in Resources */,
+				B54603AB16C21F9C007D4FB3 /* ProfileWebsiteViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1150,6 +1159,7 @@
 				B54603A016C0FFA8007D4FB3 /* SDWebImagePrefetcher.m in Sources */,
 				B54603A116C0FFA8007D4FB3 /* UIButton+WebCache.m in Sources */,
 				B54603A216C0FFA8007D4FB3 /* UIImageView+WebCache.m in Sources */,
+				B54603AA16C21F9C007D4FB3 /* ProfileWebsiteViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

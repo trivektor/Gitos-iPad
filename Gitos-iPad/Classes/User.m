@@ -27,7 +27,8 @@
 
 - (NSString *)getGistsUrl
 {
-    return [self.data valueForKey:@"gists_url"];
+    NSString *gistsUrl = [self.data valueForKey:@"gists_url"];
+    return [gistsUrl stringByReplacingOccurrencesOfString:@"{/gist_id}" withString:@""];
 }
 
 - (NSString *)getReceivedEventsUrl
@@ -35,9 +36,16 @@
     return [self.data valueForKey:@"received_events_url"];
 }
 
+- (NSString *)getEventsUrl
+{
+    NSString *eventsUrl = [self.data valueForKey:@"events_url"];
+    return [eventsUrl stringByReplacingOccurrencesOfString:@"{/privary}" withString:@""];
+}
+
 - (NSString *)getStarredUrl
 {
-    return [self.data valueForKey:@"starred_url"];
+    NSString *starredUrl = [self.data valueForKey:@"starred_url"];
+    return [starredUrl stringByReplacingOccurrencesOfString:@"{/owner}{/repo}" withString:@""];
 }
 
 - (NSString *)getFollowingUrl

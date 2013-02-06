@@ -17,6 +17,7 @@
 - (NSString *)getAvatarUrl;
 - (NSString *)getGistsUrl;
 - (NSString *)getReceivedEventsUrl;
+- (NSString *)getEventsUrl;
 - (NSString *)getStarredUrl;
 - (NSString *)getReposUrl;
 - (NSString *)getFollowersUrl;
