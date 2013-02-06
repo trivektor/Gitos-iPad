@@ -20,5 +20,6 @@
 
 - (void)fetchActivities;
 - (void)performHouseKeepingTasks;
+- (void)reloadActivities;
 
 @end

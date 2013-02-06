@@ -51,6 +51,11 @@
     UINib *nib = [UINib nibWithNibName:@"NewsFeedCell" bundle:nil];
     
     [activityTable registerNib:nib forCellReuseIdentifier:@"NewsFeedCell"];
+
+    UIBarButtonItem *reloadButton = [[UIBarButtonItem alloc] initWithTitle:[NSString fontAwesomeIconStringForIconIdentifier:@"icon-repeat"] style:UIBarButtonItemStyleBordered target:self action:@selector(reloadActivities)];
+    [reloadButton setTitleTextAttributes:[NSDictionary dictionaryWithObjectsAndKeys:[UIFont fontWithName:kFontAwesomeFamilyName size:17], UITextAttributeFont, nil] forState:UIControlStateNormal];
+    [self.navigationItem setRightBarButtonItem:reloadButton];
+
 }
 
 - (void)didReceiveMemoryWarning
@@ -122,6 +127,13 @@
      ];
     
     [operation start];
+}
+
+- (void)reloadActivities
+{
+    [self.spinnerView setHidden:NO];
+    [self.activities removeAllObjects];
+    [self fetchActivities];
 }
 
 @end
