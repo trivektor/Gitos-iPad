@@ -53,7 +53,6 @@
 {
     [scrollView setContentSize:self.view.frame.size];
     [self adjustFrameHeight];
-    self.navigationItem.title = @"Profile";
     self.spinnerView = [SpinnerView loadSpinnerIntoView:self.view];
 }
 
@@ -116,6 +115,7 @@
          NSDictionary *json = [NSJSONSerialization JSONObjectWithData:[response dataUsingEncoding:NSUTF8StringEncoding] options:NSJSONReadingMutableContainers error:nil];
          
          self.user = [[User alloc] initWithData:json];
+         self.navigationItem.title = [self.user getLogin];
          [self displayUsernameAndAvatar];
          [profileTable reloadData];
          
