@@ -141,19 +141,19 @@
          
          NSDictionary *json = [NSJSONSerialization JSONObjectWithData:[response dataUsingEncoding:NSUTF8StringEncoding] options:NSJSONReadingMutableContainers error:nil];
          
-         self.user = [[User alloc] initWithOptions:json];
+         self.user = [[User alloc] initWithData:json];
          [self getUserGists:self.currentPage++];
      }
-                                     failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-                                         NSLog(@"%@", error);
-                                     }];
+     failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+         NSLog(@"%@", error);
+     }];
     
     [operation start];
 }
 
 - (void)getUserGists:(NSInteger)page
 {
-    NSURL *gistsUrl = [NSURL URLWithString:self.user.gistsUrl];
+    NSURL *gistsUrl = [NSURL URLWithString:[self.user getGistsUrl]];
     
     AFHTTPClient *httpClient = [[AFHTTPClient alloc] initWithBaseURL:gistsUrl];
     
@@ -182,10 +182,10 @@
          [gistsTable reloadData];
          [self.spinnerView setHidden:YES];
      }
-                                     failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-                                         NSLog(@"%@", error);
-                                         [self.spinnerView setHidden:YES];
-                                     }];
+     failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+         NSLog(@"%@", error);
+         [self.spinnerView setHidden:YES];
+     }];
     
     [operation start];
 }

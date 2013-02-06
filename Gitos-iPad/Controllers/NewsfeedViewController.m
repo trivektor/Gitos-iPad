@@ -125,7 +125,7 @@
          
          NSDictionary *json = [NSJSONSerialization JSONObjectWithData:[response dataUsingEncoding:NSUTF8StringEncoding] options:NSJSONReadingMutableContainers error:nil];
          
-         self.user = [[User alloc] initWithOptions:json];
+         self.user = [[User alloc] initWithData:json];
          [self getUserNewsFeed:self.currentPage++];
      }
      failure:^(AFHTTPRequestOperation *operation, NSError *error) {
@@ -171,7 +171,7 @@
     NewsfeedDetailsViewController *newsfeedDetailsController = [[NewsfeedDetailsViewController alloc] init];
     newsfeedDetailsController.event = [self.newsFeed objectAtIndex:indexPath.row];
     newsfeedDetailsController.currentPage = (indexPath.row / 30) + 1;
-    newsfeedDetailsController.username = self.user.login;
+    newsfeedDetailsController.username = [self.user getLogin];
     
     UIBarButtonItem *backButton = [[UIBarButtonItem alloc] initWithTitle:@"Back" style:UIBarButtonItemStyleBordered target:nil action:nil];
     [backButton setTintColor:[UIColor colorWithRed:209/255.0 green:0 blue:0 alpha:1]];
@@ -191,13 +191,13 @@
 
 - (void)getUserNewsFeed:(NSInteger)page
 {
-    AFHTTPClient *httpClient = [[AFHTTPClient alloc] initWithBaseURL:[NSURL URLWithString:self.user.receivedEventsUrl]];
+    AFHTTPClient *httpClient = [[AFHTTPClient alloc] initWithBaseURL:[NSURL URLWithString:[self.user getReceivedEventsUrl]]];
     
     NSMutableDictionary *params = [NSMutableDictionary dictionaryWithObjectsAndKeys:
                                    [NSString stringWithFormat:@"%i", page], @"page",
                                    nil];
     
-    NSMutableURLRequest *getRequest = [httpClient requestWithMethod:@"GET" path:self.user.receivedEventsUrl parameters:params];
+    NSMutableURLRequest *getRequest = [httpClient requestWithMethod:@"GET" path:[self.user getReceivedEventsUrl] parameters:params];
     
     AFHTTPRequestOperation *operation = [[AFHTTPRequestOperation alloc] initWithRequest:getRequest];
     

@@ -83,7 +83,14 @@
 
 - (void)getUserInfo
 {
-    NSURL *userUrl = [NSURL URLWithString:[NSString stringWithFormat:@"%@/user", [AppConfig getConfigValue:@"GithubApiHost"]]];
+    NSURL *userUrl;
+    NSString *githubApiHost = [AppConfig getConfigValue:@"GithubApiHost"];
+
+    if (self.user == nil) {
+        userUrl = [NSURL URLWithString:[NSString stringWithFormat:@"%@/user", githubApiHost]];
+    } else {
+        userUrl = [NSURL URLWithString:[NSString stringWithFormat:@"%@/users/%@", githubApiHost, [self.user getLogin]]];
+    }
     
     AFHTTPClient *httpClient = [[AFHTTPClient alloc] initWithBaseURL:userUrl];
     
@@ -102,7 +109,7 @@
          
          NSDictionary *json = [NSJSONSerialization JSONObjectWithData:[response dataUsingEncoding:NSUTF8StringEncoding] options:NSJSONReadingMutableContainers error:nil];
          
-         self.user = [[User alloc] initWithOptions:json];
+         self.user = [[User alloc] initWithData:json];
          [self displayUsernameAndAvatar];
          [profileTable reloadData];
          
@@ -158,19 +165,19 @@
             MFMailComposeViewController *mailViewController = [[MFMailComposeViewController alloc] init];
             mailViewController.mailComposeDelegate = self;
             [mailViewController setSubject:@"Hello"];
-            [mailViewController setToRecipients:[NSArray arrayWithObject:self.user.email]];
+            [mailViewController setToRecipients:[NSArray arrayWithObject:[self.user getEmail]]];
             [self presentViewController:mailViewController animated:YES completion:nil];
         }
     } else if (indexPath.row == 1) {
-        [[UIApplication sharedApplication] openURL:[NSURL URLWithString:self.user.blog]];
+        [[UIApplication sharedApplication] openURL:[NSURL URLWithString:[self.user getWebsite]]];
     } else if (indexPath.row == 3) {
         FollowViewController *followController = [[FollowViewController alloc] init];
-        followController.usersUrl = self.user.followersUrl;
+        followController.usersUrl = [self.user getFollowersUrl];
         followController.controllerTitle = @"Followers";
         [self.navigationController pushViewController:followController animated:YES];
     } else if (indexPath.row == 4) {
         FollowViewController *followController = [[FollowViewController alloc] init];
-        followController.usersUrl = self.user.followingUrl;
+        followController.usersUrl = [self.user getFollowingUrl];
         followController.controllerTitle = @"Following";
         [self.navigationController pushViewController:followController animated:YES];
     }
@@ -183,18 +190,18 @@
 
 - (void)displayUsernameAndAvatar
 {
-    NSData *avatarData = [[NSData alloc] initWithContentsOfURL:[NSURL URLWithString:self.user.avatarUrl]];
+    NSData *avatarData = [[NSData alloc] initWithContentsOfURL:[NSURL URLWithString:[self.user getAvatarUrl]]];
     
     avatar.image = [UIImage imageWithData:avatarData];
     avatar.layer.cornerRadius = 5.0;
     avatar.layer.masksToBounds = YES;
     
-    if (self.user.name == (id)[NSNull null]) {
-        nameLabel.text = self.user.login;
+    if ([self.user getName] == (id)[NSNull null]) {
+        nameLabel.text = [self.user getLogin];
         loginLabel.hidden = YES;
     } else {
-        nameLabel.text  = self.user.name;
-        loginLabel.text = self.user.login;
+        nameLabel.text  = [self.user getName];
+        loginLabel.text = [self.user getLogin];
     }
 }
 

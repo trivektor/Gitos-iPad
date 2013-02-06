@@ -38,34 +38,28 @@
 
     if (indexPath.row == 0) {
         fontAwesome = [NSString fontAwesomeIconStringForIconIdentifier:@"icon-map-marker"];
-        detailsText = [NSString stringWithFormat:@"Location: %@", user.location];
+        detailsText = [NSString stringWithFormat:@"Location: %@", [user getLocation]];
     } else if (indexPath.row == 1) {
         fontAwesome = [NSString fontAwesomeIconStringForIconIdentifier:@"icon-globe"];
-        detailsText = [NSString stringWithFormat:@"Website: %@", user.blog];
+        detailsText = [NSString stringWithFormat:@"Website: %@", [user getWebsite]];
     } else if (indexPath.row == 2) {
         fontAwesome = [NSString fontAwesomeIconStringForIconIdentifier:@"icon-envelope"];
-        detailsText = [NSString stringWithFormat:@"Email: %@", user.email];
+        detailsText = [NSString stringWithFormat:@"Email: %@", [user getEmail]];
     } else if (indexPath.row == 3) {
         fontAwesome = [NSString fontAwesomeIconStringForIconIdentifier:@"icon-group"];
-        detailsText = [NSString stringWithFormat:@"%i followers", user.followers];
+        detailsText = [NSString stringWithFormat:@"%i followers", [user getFollowers]];
     } else if (indexPath.row == 4) {
         fontAwesome = [NSString fontAwesomeIconStringForIconIdentifier:@"icon-group"];
-        detailsText = [NSString stringWithFormat:@"%i following", user.following];
+        detailsText = [NSString stringWithFormat:@"%i following", [user getFollowing]];
     } else if (indexPath.row == 5) {
         fontAwesome = [NSString fontAwesomeIconStringForIconIdentifier:@"icon-briefcase"];
-        detailsText = [NSString stringWithFormat:@"Company: %@", user.company];
+        detailsText = [NSString stringWithFormat:@"Company: %@", [user getCompany]];
     } else if (indexPath.row == 6) {
         fontAwesome = [NSString fontAwesomeIconStringForIconIdentifier:@"icon-folder-open"];
-        detailsText = [NSString stringWithFormat:@"Repos: %i", user.publicRepos];
+        detailsText = [NSString stringWithFormat:@"Repos: %i", [user getNumberOfRepos]];
     } else if (indexPath.row == 7) {
-        NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
-        [dateFormatter setDateFormat:@"yyyy-MM-dd'T'HH:mm:ssZZ"];
-        NSDate *date  = [dateFormatter dateFromString:user.createdAt];
-
-        RelativeDateDescriptor *relativeDateDescriptor = [[RelativeDateDescriptor alloc] initWithPriorDateDescriptionFormat:@"%@ ago" postDateDescriptionFormat:@"in %@"];
-        
         fontAwesome = [NSString fontAwesomeIconStringForIconIdentifier:@"icon-calendar"];
-        detailsText = [NSString stringWithFormat:@"Joined: %@", [relativeDateDescriptor describeDate:date relativeTo:[NSDate date]]];
+        detailsText = [NSString stringWithFormat:@"Joined: %@", [user getCreatedAt]];
     }
     
     //self.fieldIcon.image        = image;

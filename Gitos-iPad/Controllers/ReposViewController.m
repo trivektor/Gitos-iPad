@@ -90,7 +90,7 @@
          
          NSDictionary *json = [NSJSONSerialization JSONObjectWithData:[response dataUsingEncoding:NSUTF8StringEncoding] options:NSJSONReadingMutableContainers error:nil];
          
-         self.user = [[User alloc] initWithOptions:json];
+         self.user = [[User alloc] initWithData:json];
          [self getUserRepos];
      }
     failure:^(AFHTTPRequestOperation *operation, NSError *error) {
@@ -102,11 +102,11 @@
 
 - (void)getUserRepos
 {
-    NSURL *reposURL = [NSURL URLWithString:self.user.reposUrl];
+    NSURL *reposURL = [NSURL URLWithString:[self.user getReposUrl]];
     
     AFHTTPClient *httpClient = [[AFHTTPClient alloc] initWithBaseURL:reposURL];
     
-    NSMutableURLRequest *getRequest = [httpClient requestWithMethod:@"GET" path:self.user.reposUrl parameters:nil];
+    NSMutableURLRequest *getRequest = [httpClient requestWithMethod:@"GET" path:reposURL.absoluteString parameters:nil];
     
     AFHTTPRequestOperation *operation = [[AFHTTPRequestOperation alloc] initWithRequest:getRequest];
     

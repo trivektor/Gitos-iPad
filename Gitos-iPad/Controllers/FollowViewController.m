@@ -7,6 +7,7 @@
 //
 
 #import "FollowViewController.h"
+#import "ProfileViewController.h"
 #import "SSKeychain.h"
 #import "AFHTTPClient.h"
 #import "AFHTTPRequestOperation.h"
@@ -38,7 +39,7 @@
     // Do any additional setup after loading the view from its nib.
     self.navigationItem.title = self.controllerTitle;
     self.spinnerView = [SpinnerView loadSpinnerIntoView:self.view];
-    [self fetchFollows];
+    [self fetchUsers];
 }
 
 - (void)didReceiveMemoryWarning
@@ -69,14 +70,21 @@
 
     User *u = [self.users objectAtIndex:indexPath.row];
 
-    [cell.imageView setImageWithURL:[NSURL URLWithString:u.avatarUrl] placeholderImage:nil];
+    [cell.imageView setImageWithURL:[NSURL URLWithString:[u getAvatarUrl]] placeholderImage:nil];
     cell.accessoryType  = UITableViewCellAccessoryDisclosureIndicator;
-    cell.textLabel.text = u.login;
+    cell.textLabel.text = [u getLogin];
     cell.textLabel.font = [UIFont fontWithName:@"Arial" size:12.0];
     return cell;
 }
 
-- (void)fetchFollows
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    ProfileViewController *profileController = [[ProfileViewController alloc] init];
+    profileController.user = [self.users objectAtIndex:indexPath.row];
+    [self.navigationController pushViewController:profileController animated:YES];
+}
+
+- (void)fetchUsers
 {
     NSURL *fetchUrl = [NSURL URLWithString:self.usersUrl];
 
@@ -98,7 +106,7 @@
          NSArray *json = [NSJSONSerialization JSONObjectWithData:[response dataUsingEncoding:NSUTF8StringEncoding] options:NSJSONReadingMutableContainers error:nil];
 
          for (int i=0; i < json.count; i++) {
-             [self.users addObject:[[User alloc] initWithOptions:[json objectAtIndex:i]]];
+             [self.users addObject:[[User alloc] initWithData:[json objectAtIndex:i]]];
          }
          [usersTable reloadData];
          [self.spinnerView setHidden:YES];

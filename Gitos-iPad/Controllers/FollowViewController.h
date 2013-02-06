@@ -22,6 +22,6 @@
 @property (nonatomic, strong) NSString *usersUrl;
 @property (nonatomic, strong) SpinnerView *spinnerView;
 
-- (void)fetchFollows;
+- (void)fetchUsers;
 
 @end

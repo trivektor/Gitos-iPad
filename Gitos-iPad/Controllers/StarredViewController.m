@@ -89,7 +89,7 @@
          
          NSDictionary *json = [NSJSONSerialization JSONObjectWithData:[response dataUsingEncoding:NSUTF8StringEncoding] options:NSJSONReadingMutableContainers error:nil];
          
-         self.user = [[User alloc] initWithOptions:json];
+         self.user = [[User alloc] initWithData:json];
          [self getStarredReposForPage:self.currentPage++];
      }
      failure:^(AFHTTPRequestOperation *operation, NSError *error) {
@@ -101,7 +101,7 @@
 
 - (void)getStarredReposForPage:(NSInteger)page
 {
-    NSURL *starredReposUrl = [NSURL URLWithString:self.user.starredUrl];
+    NSURL *starredReposUrl = [NSURL URLWithString:[self.user getStarredUrl]];
     
     AFHTTPClient *httpClient = [[AFHTTPClient alloc] initWithBaseURL:starredReposUrl];
     
