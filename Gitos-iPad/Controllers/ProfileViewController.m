@@ -146,10 +146,12 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    ProfileCell *cell = [profileTable dequeueReusableCellWithIdentifier:@"ProfileCell"];
+    static NSString *cellIdentifier = @"ProfileCell";
+
+    ProfileCell *cell = [profileTable dequeueReusableCellWithIdentifier:cellIdentifier];
     
     if (!cell) {
-        cell = [[ProfileCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"ProfileCell"];
+        cell = [[ProfileCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellIdentifier];
     }
     
     [cell displayByIndexPath:indexPath forUser:self.user];
