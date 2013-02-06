@@ -7,41 +7,11 @@
 //
 
 #import "User.h"
-#import "AFHTTPClient.h"
-#import "AFHTTPRequestOperation.h"
+#import "RelativeDateDescriptor.h"
 
 @implementation User
 
-@synthesize data, name, login, url, receivedEventsUrl, followingUrl, followersUrl, avatarUrl, htmlUrl, starredUrl, reposUrl, gistsUrl,
-location, publicGists, privateGists, email, followers, following, blog, createdAt, company, bio, publicRepos;
-
-- (id)initWithOptions:(NSDictionary *)options
-{
-    self.name               = [options valueForKey:@"name"];
-    self.login              = [options valueForKey:@"login"];
-    self.url                = [options valueForKey:@"url"];
-    self.followingUrl       = [options valueForKey:@"following_url"];
-    self.followersUrl       = [options valueForKey:@"followers_url"];
-    self.receivedEventsUrl  = [options valueForKey:@"received_events_url"];
-    self.avatarUrl          = [options valueForKey:@"avatar_url"];
-    self.starredUrl         = [self.url stringByAppendingString:@"/starred"];
-    self.gistsUrl           = [self.url stringByAppendingString:@"/gists"];
-    self.htmlUrl            = [options valueForKey:@"html_url"];
-    self.reposUrl           = [options valueForKey:@"repos_url"];
-    self.location           = [options valueForKey:@"location"];
-    self.publicGists        = [options valueForKey:@"public_gists"];
-    self.privateGists       = [options valueForKey:@"private_gists"];
-    self.email              = [options valueForKey:@"email"];
-    self.followers          = [[options valueForKey:@"followers"] integerValue];
-    self.following          = [[options valueForKey:@"following"] integerValue];
-    self.publicRepos        = [[options valueForKey:@"public_repos"] integerValue];
-    self.createdAt          = [options valueForKey:@"created_at"];
-    self.blog               = [options valueForKey:@"blog"];
-    self.company            = [options valueForKey:@"company"];
-    [self handleNullValues];
-    
-    return self;
-}
+@synthesize data;
 
 - (id)initWithData:(NSDictionary *)userData
 {
@@ -50,14 +20,99 @@ location, publicGists, privateGists, email, followers, following, blog, createdA
     return self;
 }
 
-
-
-- (void)handleNullValues
+- (NSString *)getAvatarUrl
 {
-    if (self.email == (id)[NSNull null] || self.email.length == 0) self.email = @"n/a";
-    if (self.blog == (id)[NSNull null]) self.blog = @"n/a";
-    if (self.location == (id)[NSNull null]) self.location = @"n/a";
-    if (self.company == (id)[NSNull null]) self.company = @"n/a";
+    return [self.data valueForKey:@"avatar_url"];
+}
+
+- (NSString *)getGistsUrl
+{
+    return [self.data valueForKey:@"gists_url"];
+}
+
+- (NSString *)getReceivedEventsUrl
+{
+    return [self.data valueForKey:@"received_events_url"];
+}
+
+- (NSString *)getStarredUrl
+{
+    return [self.data valueForKey:@"starred_url"];
+}
+
+- (NSString *)getFollowingUrl
+{
+    return [self.data valueForKey:@"following_url"];
+}
+
+- (NSString *)getFollowersUrl
+{
+    return [self.data valueForKey:@"followers_url"];
+}
+
+- (NSString *)getReposUrl
+{
+    return [self.data valueForKey:@"repos_url"];
+}
+
+- (NSString *)getLogin
+{
+    return [self.data valueForKey:@"login"];
+}
+
+- (NSString *)getName
+{
+    return [self.data valueForKey:@"name"];
+}
+
+- (NSString *)getLocation
+{
+    if ([self.data valueForKey:@"location"] == (id)[NSNull null]) return @"n/a";
+    return [self.data valueForKey:@"location"];
+}
+
+- (NSString *)getWebsite
+{
+    if ([self.data valueForKey:@"blog"] == (id)[NSNull null]) return @"n/a";
+    return [self.data valueForKey:@"blog"];
+}
+
+- (NSString *)getEmail
+{
+    if ([self.data valueForKey:@"email"] == (id)[NSNull null]) return @"n/a";
+    return [self.data valueForKey:@"email"];
+}
+
+- (NSInteger)getFollowers
+{
+    return [[self.data valueForKey:@"followers"] integerValue];
+}
+
+- (NSInteger)getFollowing
+{
+    return [[self.data valueForKey:@"following"] integerValue];
+}
+
+- (NSString *)getCompany
+{
+    if ([self.data valueForKey:@"company"] == (id)[NSNull null]) return @"n/a";
+    return [self.data valueForKey:@"company"];
+}
+
+- (NSInteger)getNumberOfRepos
+{
+    return [[self.data valueForKey:@"public_repos"] integerValue];
+}
+
+- (NSString *)getCreatedAt
+{
+    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+    [dateFormatter setDateFormat:@"yyyy-MM-dd'T'HH:mm:ssZZ"];
+    NSDate *date  = [dateFormatter dateFromString:[self.data valueForKey:@"created_at"]];
+
+    RelativeDateDescriptor *relativeDateDescriptor = [[RelativeDateDescriptor alloc] initWithPriorDateDescriptionFormat:@"%@ ago" postDateDescriptionFormat:@"in %@"];
+
+    return [relativeDateDescriptor describeDate:date relativeTo:[NSDate date]];
 }
 
 @end
