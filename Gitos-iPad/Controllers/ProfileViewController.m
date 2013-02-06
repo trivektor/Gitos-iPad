@@ -8,11 +8,11 @@
 
 #import "ProfileViewController.h"
 #import "FollowViewController.h"
+#import "ProfileWebsiteViewController.h"
 #import "SSKeychain.h"
 #import "AFHTTPClient.h"
 #import "AFHTTPRequestOperation.h"
 #import "ProfileCell.h"
-#import "RelativeDateDescriptor.h"
 #import "AppConfig.h"
 
 @interface ProfileViewController ()
@@ -169,7 +169,9 @@
             [self presentViewController:mailViewController animated:YES completion:nil];
         }
     } else if (indexPath.row == 1) {
-        [[UIApplication sharedApplication] openURL:[NSURL URLWithString:[self.user getWebsite]]];
+        ProfileWebsiteViewController *profileWebController = [[ProfileWebsiteViewController alloc] init];
+        profileWebController.user = self.user;
+        [self.navigationController pushViewController:profileWebController animated:YES];
     } else if (indexPath.row == 3) {
         FollowViewController *followController = [[FollowViewController alloc] init];
         followController.usersUrl = [self.user getFollowersUrl];

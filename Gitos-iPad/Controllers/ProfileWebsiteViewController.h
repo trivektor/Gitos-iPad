@@ -7,7 +7,15 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "User.h"
+#import "SpinnerView.h"
 
-@interface ProfileWebsiteViewController : UIViewController
+@interface ProfileWebsiteViewController : UIViewController <UIWebViewDelegate>
+
+@property (nonatomic, weak) IBOutlet UIWebView *profileWebView;
+@property (nonatomic, strong) SpinnerView *spinnerView;
+@property (nonatomic, strong) User *user;
+
+- (void)loadWebPage;
 
 @end
