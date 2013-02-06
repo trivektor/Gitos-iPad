@@ -15,6 +15,7 @@
 - (id)initWithData:(NSDictionary *)userData;
 
 - (NSString *)getAvatarUrl;
+- (NSString *)getGravatarId;
 - (NSString *)getGistsUrl;
 - (NSString *)getReceivedEventsUrl;
 - (NSString *)getEventsUrl;

@@ -25,6 +25,11 @@
     return [self.data valueForKey:@"avatar_url"];
 }
 
+- (NSString *)getGravatarId
+{
+    return [self.data valueForKey:@"gravatar_id"];
+}
+
 - (NSString *)getGistsUrl
 {
     NSString *gistsUrl = [self.data valueForKey:@"gists_url"];

@@ -8,16 +8,25 @@
 
 #import "Repo.h"
 #import "AppConfig.h"
+#import "RelativeDateDescriptor.h"
+
+@interface Repo()
+
+- (NSString *)convertToRelativeDate:(NSString *)originalDateString;
+
+@end
 
 @implementation Repo
 
-@synthesize data;
+@synthesize data, relativeDateDescriptor, dateFormatter;
 
 - (id)initWithData:(NSDictionary *)_data
 {
     self = [super init];
     
     self.data = _data;
+    self.relativeDateDescriptor = [[RelativeDateDescriptor alloc] initWithPriorDateDescriptionFormat:@"%@ ago" postDateDescriptionFormat:@"in %@"];
+    self.dateFormatter = [[NSDateFormatter alloc] init];
     
     return self;
 }
@@ -93,6 +102,38 @@
 - (NSString *)getDescription
 {
     return [self.data valueForKey:@"description"];
+}
+
+- (NSString *)getHomepage
+{
+    if ([[self.data valueForKey:@"homepage"] length] == 0) return @"n/a";
+    return [self.data valueForKey:@"homepage"];
+}
+
+- (NSInteger)getOpenIssues
+{
+    return [self.data valueForKey:@"open_issues"];
+}
+
+- (NSString *)getIssuesUrl
+{
+    return [self.data valueForKey:@"issues_url"];
+}
+
+- (NSString *)getCreatedAt
+{
+    return [self convertToRelativeDate:[self.data valueForKey:@"created_at"]];
+}
+
+- (NSString *)getUpdatedAt
+{
+    return [self convertToRelativeDate:[self.data valueForKey:@"updated_at"]];
+}
+
+- (NSString *)convertToRelativeDate:(NSString *)originalDateString
+{
+    NSDate *date  = [self.dateFormatter dateFromString:originalDateString];
+    return [self.relativeDateDescriptor describeDate:date relativeTo:[NSDate date]];
 }
 
 @end

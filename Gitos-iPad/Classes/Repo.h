@@ -7,10 +7,13 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "RelativeDateDescriptor.h"
 
 @interface Repo : NSObject
 
-@property(nonatomic, strong) NSDictionary *data;
+@property (nonatomic, strong) NSDictionary *data;
+@property (nonatomic, strong) NSDateFormatter *dateFormatter;
+@property (nonatomic, strong) RelativeDateDescriptor *relativeDateDescriptor;
 
 - (id)initWithData:(NSDictionary *)data;
 
@@ -24,5 +27,10 @@
 - (NSInteger)getSize;
 - (NSString *)getPushedAt;
 - (NSString *)getDescription;
+- (NSString *)getHomepage;
+- (NSInteger)getOpenIssues;
+- (NSString *)getIssuesUrl;
+- (NSString *)getCreatedAt;
+- (NSString *)getUpdatedAt;
 
 @end
