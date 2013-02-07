@@ -29,6 +29,7 @@
         // Custom initialization
         self.users = [[NSMutableArray alloc] initWithCapacity:0];
         self.accessToken = [SSKeychain passwordForService:@"access_token" account:@"gitos"];
+        self.currentPage = 1;
     }
     return self;
 }
@@ -39,7 +40,7 @@
     // Do any additional setup after loading the view from its nib.
     self.navigationItem.title = self.controllerTitle;
     self.spinnerView = [SpinnerView loadSpinnerIntoView:self.view];
-    [self fetchUsers];
+    [self fetchUsers:self.currentPage++];
 }
 
 - (void)didReceiveMemoryWarning
@@ -84,7 +85,7 @@
     [self.navigationController pushViewController:profileController animated:YES];
 }
 
-- (void)fetchUsers
+- (void)fetchUsers:(NSInteger)page
 {
     NSURL *fetchUrl = [NSURL URLWithString:self.usersUrl];
 
@@ -92,7 +93,7 @@
 
     NSMutableDictionary *params = [NSMutableDictionary dictionaryWithObjectsAndKeys:
                                    self.accessToken, @"access_token",
-                                   @"bearer", @"token_type",
+                                   [NSString stringWithFormat:@"%i", page], @"page",
                                    nil];
 
     NSMutableURLRequest *getRequest = [httpClient requestWithMethod:@"GET" path:fetchUrl.absoluteString parameters:params];
@@ -117,6 +118,15 @@
      }];
     
     [operation start];
+}
+
+- (void)scrollViewDidScroll:(UIScrollView *)scrollView
+{
+    if (([scrollView contentOffset].y + scrollView.frame.size.height) == scrollView.contentSize.height) {
+        // Bottom of UITableView reached
+        [self.spinnerView setHidden:NO];
+        [self fetchUsers:self.currentPage++];
+    }
 }
 
 @end

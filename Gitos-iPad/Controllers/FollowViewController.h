@@ -21,7 +21,8 @@
 
 @property (nonatomic, strong) NSString *usersUrl;
 @property (nonatomic, strong) SpinnerView *spinnerView;
+@property (nonatomic) NSInteger currentPage;
 
-- (void)fetchUsers;
+- (void)fetchUsers:(NSInteger)page;
 
 @end
