@@ -34,73 +34,80 @@
     NSString *eventType = self.type;
     NSString *actorName = [self.actor valueForKey:@"login"];
     NSString *repoName  = [self.repo valueForKey:@"name"];
+    NSString *fontAwesome = @"icon-bullhorn";
+    NSString *text = @"";
     
     // REFACTOR
     if ([eventType isEqualToString:@"ForkEvent"]) {
         // Fork Event
-        self.descriptionText = [NSString stringWithFormat:@"%@ forked %@", actorName, repoName];
-        self.fontAwesomeIcon = @"icon-sitemap";
+        text = [NSString stringWithFormat:@"%@ forked %@", actorName, repoName];
+        fontAwesome = @"icon-sitemap";
     } else if ([eventType isEqualToString:@"WatchEvent"]) {
         // Watch Event
-        self.descriptionText = [NSString stringWithFormat:@"%@ starred %@", actorName, repoName];
-        self.fontAwesomeIcon = @"icon-star";
+        text = [NSString stringWithFormat:@"%@ starred %@", actorName, repoName];
+        fontAwesome = @"icon-star";
     } else if ([eventType isEqualToString:@"CreateEvent"]) {
         // Create Event
-        self.descriptionText = [NSString stringWithFormat:@"%@ created %@", actorName, repoName];
-        self.fontAwesomeIcon = @"icon-plus";
+        text = [NSString stringWithFormat:@"%@ created %@", actorName, repoName];
+        fontAwesome = @"icon-plus";
     } else if ([eventType isEqualToString:@"FollowEvent"]) {
         // Follow Event
         NSString *target = [[self.payload valueForKey:@"target"] valueForKey:@"login"];
-        self.descriptionText = [NSString stringWithFormat:@"%@ started following %@", actorName, target];
-        self.fontAwesomeIcon = @"icon-user";
+        text = [NSString stringWithFormat:@"%@ started following %@", actorName, target];
+        fontAwesome = @"icon-user";
     } else if ([eventType isEqualToString:@"GistEvent"]) {
         // Gist Event
         NSString *action = [self.payload valueForKey:@"action"];
         NSString *gist = [[self.payload valueForKey:@"gist"] valueForKey:@"id"];
-        self.descriptionText = [NSString stringWithFormat:@"%@ %@ gist:%@", actorName, action, gist];
-        self.fontAwesomeIcon = @"icon-file-alt";
+        text = [NSString stringWithFormat:@"%@ %@ gist:%@", actorName, action, gist];
+        fontAwesome = @"icon-file-alt";
     } else if ([eventType isEqualToString:@"IssuesEvent"]) {
         // Issues Event
         NSDictionary *issue = [self.payload valueForKey:@"issue"];
         NSString *action = [self.payload valueForKey:@"action"];
         NSInteger issueNumber = [[issue valueForKey:@"number"] intValue];
         NSString *issueName = [NSString stringWithFormat:@"%@#%d", repoName, issueNumber];
-        self.descriptionText = [NSString stringWithFormat:@"%@ %@ issue %@", actorName, action, issueName];
-        self.fontAwesomeIcon = @"icon-warning-sign";
+        text = [NSString stringWithFormat:@"%@ %@ issue %@", actorName, action, issueName];
+        fontAwesome = @"icon-warning-sign";
     } else if ([eventType isEqualToString:@"MemberEvent"]) {
         // Member Event
         NSString *member = [[self.payload valueForKey:@"member"] valueForKey:@"login"];
-        self.descriptionText = [NSString stringWithFormat:@"%@ added %@ to %@", actorName, member, repoName];
-        self.fontAwesomeIcon = @"icon-user-md";
+        text = [NSString stringWithFormat:@"%@ added %@ to %@", actorName, member, repoName];
+        fontAwesome = @"icon-user-md";
     } else if ([eventType isEqualToString:@"IssueCommentEvent"]) {
-        // IssueCommentEvent
+        // Issue Comment Event
         NSString *user = [[[self.payload valueForKey:@"comment"] valueForKey:@"user"] valueForKey:@"login"];
         NSDictionary *issue = [self.payload valueForKey:@"issue"];
-        //NSString *action = [self.payload valueForKey:@"action"];
         NSInteger issueNumber = [[issue valueForKey:@"number"] intValue];
         NSString *issueName = [NSString stringWithFormat:@"%@#%d", repoName, issueNumber];
-        self.descriptionText = [NSString stringWithFormat:@"%@ commented on issue %@", user, issueName];
-        self.fontAwesomeIcon = @"icon-comment-alt";
+        text = [NSString stringWithFormat:@"%@ commented on issue %@", user, issueName];
+        fontAwesome = @"icon-comment-alt";
     } else if ([eventType isEqualToString:@"PushEvent"]) {
         // Push Event
         NSArray *ref = [[self.payload valueForKey:@"ref"] componentsSeparatedByString:@"/"];
         NSString *branch = [ref lastObject];
-        self.descriptionText = [NSString stringWithFormat:@"%@ pushed to %@ at %@", actorName, branch, repoName];
-        self.fontAwesomeIcon = @"icon-upload-alt";
+        text = [NSString stringWithFormat:@"%@ pushed to %@ at %@", actorName, branch, repoName];
+        fontAwesome = @"icon-upload-alt";
     } else if ([eventType isEqualToString:@"PullRequestEvent"]) {
         // Pull Request Event
         NSString *action = [self.payload valueForKey:@"action"];
         NSInteger pullRequestNumber = [[self.payload valueForKey:@"number"] integerValue];
-        self.descriptionText = [NSString stringWithFormat:@"%@ %@ pull request %@/%i", actorName, action, repoName, pullRequestNumber];
-        self.fontAwesomeIcon = @"icon-retweet";
+        text = [NSString stringWithFormat:@"%@ %@ pull request %@/%i", actorName, action, repoName, pullRequestNumber];
+        fontAwesome = @"icon-retweet";
     } else if ([eventType isEqualToString:@"PublicEvent"]) {
         // Public Event
-        self.descriptionText = [NSString stringWithFormat:@"%@ open sourced %@", actorName, repoName];
-        self.fontAwesomeIcon = @"icon-folder-open-alt";
-    } else {
-        self.descriptionText = @"";
-        self.fontAwesomeIcon = @"icon-bullhorn";
+        text = [NSString stringWithFormat:@"%@ open sourced %@", actorName, repoName];
+        fontAwesome = @"icon-folder-open-alt";
+    } else if ([eventType isEqualToString:@"CommitCommentEvent"]) {
+        // Commit Comment Event
+        NSDictionary *comment = [payload valueForKey:@"comment"];
+        NSString *commitId    = [comment valueForKey:@"commit_id"];
+        text  = [NSString stringWithFormat:@"%@ commented on commit %@@%@", actorName, repoName, [commitId substringToIndex:9]];
+        fontAwesome = @"icon-comments";
     }
+
+    self.fontAwesomeIcon = fontAwesome;
+    self.descriptionText = text;
 }
 
 - (NSString *)toDateString
