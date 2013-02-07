@@ -15,6 +15,7 @@
 #import "ProfileCell.h"
 #import "AppConfig.h"
 #import "RecentActivityViewController.h"
+#import "OrganizationsViewController.h"
 
 @interface ProfileViewController ()
 
@@ -137,7 +138,7 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return 9;
+    return 10;
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -187,6 +188,10 @@
         followController.controllerTitle = @"Following";
         [self.navigationController pushViewController:followController animated:YES];
     } else if (indexPath.row == 8) {
+        OrganizationsViewController *organizationsController = [[OrganizationsViewController alloc] init];
+        organizationsController.user = self.user;
+        [self.navigationController pushViewController:organizationsController animated:YES];
+    } else if (indexPath.row == 9) {
         RecentActivityViewController *recentActivityController = [[RecentActivityViewController alloc] init];
         recentActivityController.user = self.user;
         [self.navigationController pushViewController:recentActivityController animated:YES];

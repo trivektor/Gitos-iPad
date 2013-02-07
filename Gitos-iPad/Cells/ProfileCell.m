@@ -61,6 +61,9 @@
         fontAwesome = [NSString fontAwesomeIconStringForIconIdentifier:@"icon-calendar"];
         detailsText = [NSString stringWithFormat:@"Joined: %@", [user getCreatedAt]];
     } else if (indexPath.row == 8) {
+        fontAwesome = [NSString fontAwesomeIconStringForIconIdentifier:@"icon-sitemap"];
+        detailsText = @"Organizations";
+    } else if (indexPath.row == 9) {
         fontAwesome = [NSString fontAwesomeIconStringForIconIdentifier:@"icon-rss"];
         detailsText = @"Recent Activity";
     }
