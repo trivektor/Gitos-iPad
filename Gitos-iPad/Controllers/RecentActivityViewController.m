@@ -22,7 +22,7 @@
 
 @implementation RecentActivityViewController
 
-@synthesize activityTable, user, activities, spinnerView;
+@synthesize activityTable, user, activities, spinnerView, currentPage;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -30,7 +30,8 @@
     if (self) {
         // Custom initialization
         self.activities  = [[NSMutableArray alloc] initWithCapacity:0];
-        self.accessToken = [SSKeychain passwordForService:@"access_token" account:@"gitos"];;
+        self.accessToken = [SSKeychain passwordForService:@"access_token" account:@"gitos"];
+        self.currentPage = 1;
     }
     return self;
 }
@@ -41,21 +42,24 @@
     // Do any additional setup after loading the view from its nib.
     self.spinnerView = [SpinnerView loadSpinnerIntoView:self.view];
     [self performHouseKeepingTasks];
-    [self fetchActivities];
+    [self fetchActivities:self.currentPage++];
 }
 
 - (void)performHouseKeepingTasks
 {
     self.navigationItem.title = @"Recent Activity";
-    
-    UINib *nib = [UINib nibWithNibName:@"NewsFeedCell" bundle:nil];
-    
-    [activityTable registerNib:nib forCellReuseIdentifier:@"NewsFeedCell"];
-
     UIBarButtonItem *reloadButton = [[UIBarButtonItem alloc] initWithTitle:[NSString fontAwesomeIconStringForIconIdentifier:@"icon-repeat"] style:UIBarButtonItemStyleBordered target:self action:@selector(reloadActivities)];
     [reloadButton setTitleTextAttributes:[NSDictionary dictionaryWithObjectsAndKeys:[UIFont fontWithName:kFontAwesomeFamilyName size:17], UITextAttributeFont, nil] forState:UIControlStateNormal];
     [self.navigationItem setRightBarButtonItem:reloadButton];
 
+    [self registerNib];
+    [self setupPullToRefresh];
+}
+
+- (void)registerNib
+{
+    UINib *nib = [UINib nibWithNibName:@"NewsFeedCell" bundle:nil];
+    [activityTable registerNib:nib forCellReuseIdentifier:@"NewsFeedCell"];
 }
 
 - (void)didReceiveMemoryWarning
@@ -95,12 +99,13 @@
     return cell;
 }
 
-- (void)fetchActivities
+- (void)fetchActivities:(NSInteger)page
 {
     AFHTTPClient *httpClient = [[AFHTTPClient alloc] initWithBaseURL:[NSURL URLWithString:[self.user getEventsUrl]]];
     
     NSMutableDictionary *params = [NSMutableDictionary dictionaryWithObjectsAndKeys:
                                    self.accessToken, @"access_token",
+                                   [NSString stringWithFormat:@"%i", page], @"page",
                                    nil];
     
     NSMutableURLRequest *getRequest = [httpClient requestWithMethod:@"GET" path:[self.user getEventsUrl] parameters:params];
@@ -117,12 +122,14 @@
              [self.activities addObject:[[TimelineEvent alloc] initWithOptions:[json objectAtIndex:i]]];
          }
          
+         [activityTable.pullToRefreshView stopAnimating];
          [self.spinnerView setHidden:YES];
          [activityTable reloadData];
      }
      failure:^(AFHTTPRequestOperation *operation, NSError *error) {
          NSLog(@"%@", error);
          [self.spinnerView setHidden:YES];
+         [activityTable.pullToRefreshView stopAnimating];
      }
      ];
     
@@ -131,9 +138,27 @@
 
 - (void)reloadActivities
 {
+    self.currentPage = 1;
     [self.spinnerView setHidden:NO];
     [self.activities removeAllObjects];
-    [self fetchActivities];
+    [self fetchActivities:self.currentPage];
+}
+
+- (void)setupPullToRefresh
+{
+    self.currentPage = 1;
+    [activityTable addPullToRefreshWithActionHandler:^{
+        [self fetchActivities:self.currentPage++];
+    }];
+}
+
+- (void)scrollViewDidScroll:(UIScrollView *)scrollView
+{
+    if (([scrollView contentOffset].y + scrollView.frame.size.height) == scrollView.contentSize.height) {
+        // Bottom of UITableView reached
+        [self.spinnerView setHidden:NO];
+        [self fetchActivities:self.currentPage++];
+    }
 }
 
 @end

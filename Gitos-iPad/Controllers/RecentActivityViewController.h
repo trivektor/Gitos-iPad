@@ -17,9 +17,12 @@
 @property (nonatomic, strong) User *user;
 @property (nonatomic, strong) SpinnerView *spinnerView;
 @property (nonatomic, strong) NSString *accessToken;
+@property (nonatomic) NSInteger currentPage;
 
-- (void)fetchActivities;
+- (void)fetchActivities:(NSInteger)page;
 - (void)performHouseKeepingTasks;
+- (void)registerNib;
 - (void)reloadActivities;
+- (void)setupPullToRefresh;
 
 @end
