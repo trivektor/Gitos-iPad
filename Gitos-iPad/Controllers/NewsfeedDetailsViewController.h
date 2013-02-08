@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import "TimelineEvent.h"
-#import "SpinnerView.h"
+#import "MBProgressHUD.h"
 
 @interface NewsfeedDetailsViewController : UIViewController <UIWebViewDelegate>
 
@@ -17,7 +17,7 @@
 @property (nonatomic, strong) TimelineEvent *event;
 @property (nonatomic) int currentPage;
 @property (nonatomic, strong) NSString *username;
-@property (nonatomic, strong) SpinnerView *spinnerView;
+@property (nonatomic, strong) MBProgressHUD *hud;
 
 - (void)performHouseKeepingTasks;
 - (void)loadNewsfeedDetails;

@@ -20,7 +20,7 @@
 
 @implementation ReposViewController
 
-@synthesize user, reposTable, repos, spinnerView;
+@synthesize user, reposTable, repos, hud;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -37,19 +37,10 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
     self.navigationItem.title = @"Repositories";
-    
-    UINib *nib = [UINib nibWithNibName:@"RepoCell" bundle:nil];
-    [reposTable registerNib:nib forCellReuseIdentifier:@"RepoCell"];
-    [reposTable setDelegate:self];
-    [reposTable setDataSource:self];
-    [reposTable setAutoresizingMask:(UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight)];
-    [reposTable setBackgroundView:nil];
-    [reposTable setSeparatorStyle:UITableViewCellSeparatorStyleSingleLine];
-    [reposTable setSeparatorColor:[UIColor colorWithRed:206/255.0 green:206/255.0 blue:206/255.0 alpha:0.8]];
-    [self.view setBackgroundColor:[UIColor colorWithRed:229/255.0 green:229/255.0 blue:229/255.0 alpha:1.0]];
-    
-    self.spinnerView = [SpinnerView loadSpinnerIntoView:self.view];
-    
+    self.hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+    self.hud.mode = MBProgressHUDAnimationFade;
+    self.hud.labelText = @"Loading";
+    [self registerNib];
     [self getUserInfoAndRepos];
 }
 
@@ -62,6 +53,19 @@
 {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+- (void)registerNib
+{
+    UINib *nib = [UINib nibWithNibName:@"RepoCell" bundle:nil];
+    [reposTable registerNib:nib forCellReuseIdentifier:@"RepoCell"];
+    [reposTable setDelegate:self];
+    [reposTable setDataSource:self];
+    [reposTable setAutoresizingMask:(UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight)];
+    [reposTable setBackgroundView:nil];
+    [reposTable setSeparatorStyle:UITableViewCellSeparatorStyleSingleLine];
+    [reposTable setSeparatorColor:[UIColor colorWithRed:206/255.0 green:206/255.0 blue:206/255.0 alpha:0.8]];
+    [self.view setBackgroundColor:[UIColor colorWithRed:229/255.0 green:229/255.0 blue:229/255.0 alpha:1.0]];
 }
 
 - (void)getUserInfoAndRepos
@@ -120,11 +124,10 @@
         }
         
         [reposTable reloadData];
-        
-        [self.spinnerView removeFromSuperview];
-        
+        [self.hud hide:YES];
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-        
+        [self.hud hide:YES];
+        NSLog(@"%@", error);
     }];
     
     [operation start];

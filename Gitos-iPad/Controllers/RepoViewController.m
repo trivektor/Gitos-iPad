@@ -22,7 +22,7 @@
 
 @implementation RepoViewController
 
-@synthesize repo, spinnerView, repoScrollView, detailsTable, branchesTable;
+@synthesize repo, hud, repoScrollView, detailsTable, branchesTable;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -65,6 +65,13 @@
 
 - (void)performHouseKeepingTasks
 {
+    self.hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+    self.hud.mode = MBProgressHUDAnimationFade;
+    self.hud.labelText = @"Loading";
+}
+
+- (void)registerNib
+{
     UINib *repoDetailsCellNib = [UINib nibWithNibName:@"RepoDetailsCell" bundle:nil];
     [detailsTable registerNib:repoDetailsCellNib forCellReuseIdentifier:@"RepoDetailsCell"];
     
@@ -83,9 +90,6 @@
         [table setSeparatorStyle:UITableViewCellSeparatorStyleSingleLine];
         [table setSeparatorColor:[UIColor colorWithRed:206/255.0 green:206/255.0 blue:206/255.0 alpha:0.8]];
     }
-    
-    self.spinnerView = [SpinnerView loadSpinnerIntoView:self.view];
-    self.spinnerView.hidden = NO;
 }
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
@@ -195,12 +199,12 @@
          
          [branchesTable setFrame:CGRectMake(0, self.detailsTable.frame.size.height + 46, self.view.frame.size.width, [self.repoBranches count]*44 + 155)];
          [branchesTable reloadData];
-         [self.spinnerView setHidden:YES];
+         [self.hud hide:YES];
          [self adjustFrameHeight];
      }
      failure:^(AFHTTPRequestOperation *operation, NSError *error) {
          NSLog(@"%@", error);
-         [self.spinnerView setHidden:YES];
+         [self.hud hide:YES];
      }];
     [operation start];
 }

@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import "Repo.h"
-#import "SpinnerView.h"
+#import "MBProgressHUD.h"
 
 @interface RepoViewController : UIViewController
 <UITableViewDataSource, UITableViewDelegate>
@@ -19,9 +19,10 @@
 @property (nonatomic, strong) NSString *accessToken;
 @property (nonatomic, strong) Repo *repo;
 @property (nonatomic, strong) NSMutableArray *repoBranches;
-@property (nonatomic, strong) SpinnerView *spinnerView;
+@property (nonatomic, strong) MBProgressHUD *hud;
 
 - (void)performHouseKeepingTasks;
+- (void)registerNib;
 - (UITableViewCell *)cellForDetailsTableAtIndexPath:(NSIndexPath *)indexPath;
 - (UITableViewCell *)cellForBranchesTableAtIndexPath:(NSIndexPath *)indexPath;
 - (void)getRepoBranches;

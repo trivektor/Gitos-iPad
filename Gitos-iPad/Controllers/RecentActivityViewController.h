@@ -8,14 +8,14 @@
 
 #import <UIKit/UIKit.h>
 #import "User.h"
-#import "SpinnerView.h"
+#import "MBProgressHUD.h"
 
 @interface RecentActivityViewController : UIViewController <UITableViewDataSource, UITableViewDelegate>
 
 @property (nonatomic, weak) IBOutlet UITableView *activityTable;
 @property (nonatomic, strong) NSMutableArray *activities;
 @property (nonatomic, strong) User *user;
-@property (nonatomic, strong) SpinnerView *spinnerView;
+@property (nonatomic, strong) MBProgressHUD *hud;
 @property (nonatomic, strong) NSString *accessToken;
 @property (nonatomic) NSInteger currentPage;
 

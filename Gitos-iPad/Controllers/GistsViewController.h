@@ -7,7 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "SpinnerView.h"
+#import "MBProgressHUD.h"
 #import "User.h"
 #import "RelativeDateDescriptor.h"
 
@@ -15,13 +15,14 @@
 
 @property (nonatomic, weak) IBOutlet UITableView *gistsTable;
 @property (nonatomic, strong) NSString *accessToken;
-@property (nonatomic, strong) SpinnerView *spinnerView;
+@property (nonatomic, strong) MBProgressHUD *hud;
 @property (nonatomic) NSInteger currentPage;
 @property (nonatomic, strong) NSMutableArray *gists;
 @property (nonatomic, strong) User *user;
 @property (nonatomic, strong) RelativeDateDescriptor *relativeDateDescriptor;
 @property (nonatomic, strong) NSDateFormatter *dateFormatter;
 
+- (void)registerNib;
 - (void)getUserInfo;
 - (void)getUserGists:(NSInteger)page;
 - (void)setupPullToRefresh;

@@ -8,13 +8,13 @@
 
 #import <UIKit/UIKit.h>
 #import "Organization.h"
-#import "SpinnerView.h"
+#import "MBProgressHUD.h"
 
 @interface OrganizationViewController : UIViewController <UITableViewDataSource, UITableViewDelegate>
 
 @property (nonatomic, weak) IBOutlet UITableView *organizationTable;
 @property (nonatomic, strong) NSString *accessToken;
-@property (nonatomic, strong) SpinnerView *spinnerView;
+@property (nonatomic, strong) MBProgressHUD *hud;
 @property (nonatomic, strong) Organization *organization;
 
 - (void)performHouseKeepingTasks;

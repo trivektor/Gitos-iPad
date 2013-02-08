@@ -14,7 +14,7 @@
 
 @implementation WebsiteViewController
 
-@synthesize requestedUrl, websiteView, spinnerView;
+@synthesize requestedUrl, websiteView, hud;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -28,7 +28,9 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    self.spinnerView = [SpinnerView loadSpinnerIntoView:self.view];
+    self.hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+    self.hud.mode = MBProgressHUDAnimationFade;
+    self.hud.labelText = @"Loading";
     // Do any additional setup after loading the view from its nib.
     [self loadWebsite];
 }
@@ -48,13 +50,13 @@
 
 - (void)webViewDidFinishLoad:(UIWebView *)webView
 {
-    [self.spinnerView setHidden:YES];
+    [self.hud hide:YES];
     self.navigationItem.title = [websiteView stringByEvaluatingJavaScriptFromString:@"document.title"];
 }
 
 - (void)webView:(UIWebView *)webView didFailLoadWithError:(NSError *)error
 {
-    [self.spinnerView setHidden:YES];
+    [self.hud hide:YES];
 }
 
 @end

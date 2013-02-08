@@ -8,10 +8,10 @@
 
 #import <UIKit/UIKit.h>
 #import "User.h"
-#import "SpinnerView.h"
 #import "RelativeDateDescriptor.h"
 #import "TimelineEvent.h"
 #import "MasterViewController.h"
+#import "MBProgressHUD.h"
 
 @interface NewsfeedViewController : UIViewController <UITableViewDataSource, UITableViewDelegate>
 {
@@ -20,8 +20,8 @@
 
 @property (nonatomic, strong) NSMutableArray *newsFeed;
 @property (nonatomic, strong) User *user;
-@property (nonatomic, strong) SpinnerView *spinnerView;
 @property (nonatomic) NSInteger currentPage;
+@property (nonatomic, strong) MBProgressHUD *hud;
 
 - (void)performHouseKeepingTasks;
 - (void)prepareTableView;

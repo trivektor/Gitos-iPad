@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "Gist.h"
 #import "User.h"
-#import "SpinnerView.h"
+#import "MBProgressHUD.h"
 
 @interface GistViewController : UIViewController <UITableViewDataSource, UITableViewDelegate>
 
@@ -20,9 +20,10 @@
 @property (nonatomic, strong) NSString *accessToken;
 @property (nonatomic, strong) NSDictionary *accessTokenParams;
 @property (nonatomic, strong) NSMutableArray *files;
-@property (nonatomic, strong) SpinnerView *spinnerView;
+@property (nonatomic, strong) MBProgressHUD *hud;
 
 - (void)performHouseKeepingTasks;
+- (void)registerNib;
 - (void)getGistStats;
 - (void)setGistStats:(NSDictionary *)stats;
 - (UITableViewCell *)cellForDetailsTableAtIndexPath:(NSIndexPath *)indexPath;

@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 #import <QuartzCore/QuartzCore.h>
 #import <MessageUI/MessageUI.h>
-#import "SpinnerView.h"
+#import "MBProgressHUD.h"
 #import "User.h"
 
 @interface ProfileViewController : UIViewController <UITableViewDataSource, UITableViewDelegate, MFMailComposeViewControllerDelegate>
@@ -21,7 +21,7 @@
 @property (nonatomic, weak) IBOutlet UILabel *loginLabel;
 @property (nonatomic, strong) NSString *accessToken;
 @property (nonatomic, strong) User *user;
-@property (nonatomic, strong) SpinnerView *spinnerView;
+@property (nonatomic, strong) MBProgressHUD *hud;
 @property (nonatomic) Boolean hideBackButton;
 
 - (void)performHouseKeepingTasks;

@@ -7,16 +7,17 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "SpinnerView.h"
 #import "User.h"
+#import "MBProgressHUD.h"
 
 @interface ReposViewController : UIViewController <UITableViewDataSource, UITableViewDelegate>
 
 @property (nonatomic, strong) User *user;
 @property (nonatomic, weak) IBOutlet UITableView *reposTable;
 @property (nonatomic, strong) NSMutableArray *repos;
-@property (nonatomic, strong) SpinnerView *spinnerView;
+@property (nonatomic, strong) MBProgressHUD *hud;
 
+- (void)registerNib;
 - (void)getUserInfoAndRepos;
 - (void)getUserRepos;
 

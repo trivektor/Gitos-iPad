@@ -23,7 +23,7 @@
 
 @implementation StarredViewController
 
-@synthesize accessToken, user, starredRepos, currentPage, spinnerView, starredReposTable;
+@synthesize accessToken, user, starredRepos, currentPage, starredReposTable, hud;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -42,17 +42,10 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
     [self.navigationItem setTitle:@"Starred Repositories"];
-    
-    UINib *nib = [UINib nibWithNibName:@"RepoCell" bundle:nil];
-    [starredReposTable registerNib:nib forCellReuseIdentifier:@"RepoCell"];
-    [starredReposTable setAutoresizingMask:(UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight)];
-    [starredReposTable setBackgroundView:nil];
-    [starredReposTable setSeparatorStyle:UITableViewCellSeparatorStyleSingleLine];
-    [starredReposTable setSeparatorColor:[UIColor colorWithRed:206/255.0 green:206/255.0 blue:206/255.0 alpha:0.8]];
-    [self.view setBackgroundColor:[UIColor colorWithRed:229/255.0 green:229/255.0 blue:229/255.0 alpha:1.0]];
-    
-    self.spinnerView = [SpinnerView loadSpinnerIntoView:self.view];
-    
+    self.hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+    self.hud.mode = MBProgressHUDAnimationFade;
+    self.hud.labelText = @"Loading";
+    [self registerNib];
     [self setupPullToRefresh];
     [self getUserInfo];
 }
@@ -66,6 +59,17 @@
 {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+- (void)registerNib
+{
+    UINib *nib = [UINib nibWithNibName:@"RepoCell" bundle:nil];
+    [starredReposTable registerNib:nib forCellReuseIdentifier:@"RepoCell"];
+    [starredReposTable setAutoresizingMask:(UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight)];
+    [starredReposTable setBackgroundView:nil];
+    [starredReposTable setSeparatorStyle:UITableViewCellSeparatorStyleSingleLine];
+    [starredReposTable setSeparatorColor:[UIColor colorWithRed:206/255.0 green:206/255.0 blue:206/255.0 alpha:0.8]];
+    [self.view setBackgroundColor:[UIColor colorWithRed:229/255.0 green:229/255.0 blue:229/255.0 alpha:1.0]];
 }
 
 - (void)getUserInfo
@@ -130,11 +134,11 @@
          
          [starredReposTable.pullToRefreshView stopAnimating];
          [starredReposTable reloadData];
-         
-         [self.spinnerView setHidden:YES];
+         [self.hud hide:YES];
      }
      failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-         [self.spinnerView setHidden:YES];
+         [self.hud hide:YES];
+         NSLog(@"%@", error);
      }];
     
     [operation start];
@@ -161,11 +165,11 @@
     static NSString *cellIdentifier = @"RepoCell";
     
     RepoCell *cell = [starredReposTable dequeueReusableCellWithIdentifier:cellIdentifier];
-    
+
     if (!cell) {
         cell = [[RepoCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:cellIdentifier];
     }
-    
+
     cell.repo = [self.starredRepos objectAtIndex:indexPath.row];
     [cell render];
     
@@ -183,7 +187,7 @@
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView
 {
     if (([scrollView contentOffset].y + scrollView.frame.size.height) == scrollView.contentSize.height) {
-        [self.spinnerView setHidden:NO];
+        [self.hud show:YES];
         [self getStarredReposForPage:self.currentPage++];
     }
 }

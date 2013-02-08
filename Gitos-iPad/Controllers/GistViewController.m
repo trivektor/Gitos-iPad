@@ -21,7 +21,7 @@
 
 @implementation GistViewController
 
-@synthesize gist, user, spinnerView, detailsTable, filesTable;
+@synthesize gist, user, hud, detailsTable, filesTable;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -49,6 +49,14 @@
 
 - (void)performHouseKeepingTasks
 {
+    [self registerNib];
+    self.hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+    self.hud.mode = MBProgressHUDAnimationFade;
+    self.hud.labelText = @"Loading";
+}
+
+- (void)registerNib
+{
     UINib *nib = [UINib nibWithNibName:@"GistDetailsCell" bundle:nil];
     
     NSArray *tables = [[NSArray alloc] initWithObjects:detailsTable, filesTable, nil];
@@ -65,7 +73,6 @@
     }
     
     [self.view setBackgroundColor:[UIColor colorWithRed:229/255.0 green:229/255.0 blue:229/255.0 alpha:1.0]];
-    self.spinnerView = [SpinnerView loadSpinnerIntoView:self.view];
 }
 
 - (void)getGistStats
@@ -88,10 +95,10 @@
         
         [self setGistStats:json];
         [detailsTable reloadData];
-        [self.spinnerView setHidden:YES];
+        [self.hud hide:YES];
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
         NSLog(@"%@", error);
-        [self.spinnerView setHidden:YES];
+        [self.hud hide:YES];
     }];
     [operation start];
 }

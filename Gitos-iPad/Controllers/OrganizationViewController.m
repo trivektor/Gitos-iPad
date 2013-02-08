@@ -18,7 +18,7 @@
 
 @implementation OrganizationViewController
 
-@synthesize organization, organizationTable, accessToken, spinnerView;
+@synthesize organization, organizationTable, accessToken, hud;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -40,7 +40,9 @@
 
 - (void)performHouseKeepingTasks
 {
-    self.spinnerView = [SpinnerView loadSpinnerIntoView:self.view];
+    self.hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+    self.hud.mode = MBProgressHUDAnimationFade;
+    self.hud.labelText = @"Loading";
     [organizationTable setAutoresizingMask:(UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight)];
     [organizationTable setBackgroundView:nil];
     [organizationTable setSeparatorStyle:UITableViewCellSeparatorStyleSingleLine];
@@ -71,11 +73,11 @@
          self.organization = [[Organization alloc] initWithData:json];
          self.navigationItem.title = [self.organization getName];
          [organizationTable reloadData];
-         [self.spinnerView setHidden:YES];
+         [self.hud hide:YES];
      }
      failure:^(AFHTTPRequestOperation *operation, NSError *error) {
          NSLog(@"%@", error);
-         [self.spinnerView setHidden:YES];
+         [self.hud hide:YES];
      }];
     
     [operation start];

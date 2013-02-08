@@ -39,7 +39,9 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
     self.navigationItem.title = self.controllerTitle;
-    self.spinnerView = [SpinnerView loadSpinnerIntoView:self.view];
+    self.hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+    self.hud.mode = MBProgressHUDAnimationFade;
+    self.hud.labelText = @"Loading";
     [self fetchUsers:self.currentPage++];
 }
 
@@ -110,11 +112,11 @@
              [self.users addObject:[[User alloc] initWithData:[json objectAtIndex:i]]];
          }
          [usersTable reloadData];
-         [self.spinnerView setHidden:YES];
+         [self.hud hide:YES];
      }
      failure:^(AFHTTPRequestOperation *operation, NSError *error) {
          NSLog(@"%@", error);
-         [self.spinnerView setHidden:YES];
+         [self.hud hide:YES];
      }];
     
     [operation start];
@@ -124,7 +126,7 @@
 {
     if (([scrollView contentOffset].y + scrollView.frame.size.height) == scrollView.contentSize.height) {
         // Bottom of UITableView reached
-        [self.spinnerView setHidden:NO];
+         [self.hud hide:NO];
         [self fetchUsers:self.currentPage++];
     }
 }

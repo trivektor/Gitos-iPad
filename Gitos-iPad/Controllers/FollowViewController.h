@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import "User.h"
-#import "SpinnerView.h"
+#import "MBProgressHUD.h"
 
 @interface FollowViewController : UIViewController <UITableViewDataSource, UITableViewDelegate>
 
@@ -20,7 +20,7 @@
 @property (nonatomic, strong) NSString *controllerTitle;
 
 @property (nonatomic, strong) NSString *usersUrl;
-@property (nonatomic, strong) SpinnerView *spinnerView;
+@property (nonatomic, strong) MBProgressHUD *hud;
 @property (nonatomic) NSInteger currentPage;
 
 - (void)fetchUsers:(NSInteger)page;

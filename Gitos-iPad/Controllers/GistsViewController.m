@@ -24,7 +24,7 @@
 
 @implementation GistsViewController
 
-@synthesize currentPage, spinnerView, user, accessToken, gistsTable;
+@synthesize currentPage, hud, user, accessToken, gistsTable;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -45,17 +45,10 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
     self.navigationItem.title = @"Gists";
-    
-    UINib *nib = [UINib nibWithNibName:@"GistCell" bundle:nil];
-    [gistsTable registerNib:nib forCellReuseIdentifier:@"GistCell"];
-    [gistsTable setAutoresizingMask:(UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight)];
-    [gistsTable setBackgroundView:nil];
-    [gistsTable setSeparatorStyle:UITableViewCellSeparatorStyleSingleLine];
-    [gistsTable setSeparatorColor:[UIColor colorWithRed:206/255.0 green:206/255.0 blue:206/255.0 alpha:0.8]];
-    [self.view setBackgroundColor:[UIColor colorWithRed:229/255.0 green:229/255.0 blue:229/255.0 alpha:1.0]];
-    
-    self.spinnerView = [SpinnerView loadSpinnerIntoView:self.view];
-    
+    self.hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+    self.hud.mode = MBProgressHUDAnimationFade;
+    self.hud.labelText = @"Loading";
+    [self registerNib];
     [self setupPullToRefresh];
     [self getUserInfo];
 }
@@ -69,6 +62,17 @@
 {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+- (void)registerNib
+{
+    UINib *nib = [UINib nibWithNibName:@"GistCell" bundle:nil];
+    [gistsTable registerNib:nib forCellReuseIdentifier:@"GistCell"];
+    [gistsTable setAutoresizingMask:(UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight)];
+    [gistsTable setBackgroundView:nil];
+    [gistsTable setSeparatorStyle:UITableViewCellSeparatorStyleSingleLine];
+    [gistsTable setSeparatorColor:[UIColor colorWithRed:206/255.0 green:206/255.0 blue:206/255.0 alpha:0.8]];
+    [self.view setBackgroundColor:[UIColor colorWithRed:229/255.0 green:229/255.0 blue:229/255.0 alpha:1.0]];
 }
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
@@ -114,7 +118,7 @@
 {
     if (([scrollView contentOffset].y + scrollView.frame.size.height) == scrollView.contentSize.height) {
         // Bottom of UITableView reached
-        [self.spinnerView setHidden:NO];
+        [self.hud show:YES];
         [self getUserGists:self.currentPage++];
     }
 }
@@ -180,11 +184,11 @@
          
          [gistsTable.pullToRefreshView stopAnimating];
          [gistsTable reloadData];
-         [self.spinnerView setHidden:YES];
+         [self.hud hide:YES];
      }
      failure:^(AFHTTPRequestOperation *operation, NSError *error) {
          NSLog(@"%@", error);
-         [self.spinnerView setHidden:YES];
+         [self.hud hide:YES];
      }];
     
     [operation start];
@@ -192,6 +196,7 @@
 
 - (void)setupPullToRefresh
 {
+    [self.hud show:YES];
     self.currentPage = 1;
     [gistsTable addPullToRefreshWithActionHandler:^{
         [self getUserGists:self.currentPage];

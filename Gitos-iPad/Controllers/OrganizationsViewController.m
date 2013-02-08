@@ -20,7 +20,7 @@
 
 @implementation OrganizationsViewController
 
-@synthesize organizationsTable, spinnerView, accessToken, user, organizations;
+@synthesize organizationsTable, hud, accessToken, user, organizations;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -45,7 +45,9 @@
 - (void)performHouseKeepingTasks
 {
     self.navigationItem.title = @"Organizations";
-    self.spinnerView = [SpinnerView loadSpinnerIntoView:self.view];
+    self.hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+    self.hud.mode = MBProgressHUDAnimationFade;
+    self.hud.labelText = @"Loading";
 }
 
 - (void)fetchOrganizations
@@ -72,11 +74,11 @@
              [self.organizations addObject:[[Organization alloc] initWithData:[json objectAtIndex:i]]];
          }
          [organizationsTable reloadData];
-         [self.spinnerView setHidden:YES];
+         [self.hud hide:YES];
      }
      failure:^(AFHTTPRequestOperation *operation, NSError *error) {
          NSLog(@"%@", error);
-         [self.spinnerView setHidden:YES];
+         [self.hud hide:YES];
      }];
     
     [operation start];

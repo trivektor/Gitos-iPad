@@ -13,11 +13,11 @@
 #import "SSKeychain.h"
 #import "User.h"
 #import "NewsFeedCell.h"
-#import "SpinnerView.h"
 #import "RelativeDateDescriptor.h"
 #import "SVPullToRefresh.h"
 #import "TimelineEvent.h"
 #import "NSString+FontAwesome.h"
+#import "MBProgressHUD.h"
 
 @interface NewsfeedViewController ()
 
@@ -43,7 +43,7 @@
 
 @implementation NewsfeedViewController
 
-@synthesize newsFeed, user, spinnerView, currentPage;
+@synthesize newsFeed, user, currentPage, hud;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -74,11 +74,14 @@
 - (void)performHouseKeepingTasks
 {
     self.navigationItem.title = @"News Feed";
-    self.spinnerView = [SpinnerView loadSpinnerIntoView:self.view];
 
     UIBarButtonItem *reloadButton = [[UIBarButtonItem alloc] initWithTitle:[NSString fontAwesomeIconStringForIconIdentifier:@"icon-repeat"] style:UIBarButtonItemStyleBordered target:self action:@selector(reloadNewsfeed)];
     [reloadButton setTitleTextAttributes:[NSDictionary dictionaryWithObjectsAndKeys:[UIFont fontWithName:kFontAwesomeFamilyName size:17], UITextAttributeFont, nil] forState:UIControlStateNormal];
     [self.navigationItem setRightBarButtonItem:reloadButton];
+    
+    self.hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+    self.hud.mode = MBProgressHUDAnimationFade;
+    self.hud.labelText = @"Loading";
 }
 
 - (void)prepareTableView
@@ -184,7 +187,6 @@
 {
     if (([scrollView contentOffset].y + scrollView.frame.size.height) == scrollView.contentSize.height) {
         // Bottom of UITableView reached
-        [self.spinnerView setHidden:NO];
         [self getUserNewsFeed:self.currentPage++];
     }
 }
@@ -210,16 +212,15 @@
          for (int i=0; i < newsfeed.count; i++) {
              [self.newsFeed addObject:[[TimelineEvent alloc] initWithOptions:[newsfeed objectAtIndex:i]]];
          }
-         
-         [self.spinnerView setHidden:YES];
-         
+
          [newsFeedTable.pullToRefreshView stopAnimating];
          [newsFeedTable reloadData];
+         [self.hud hide:YES];
      }
-                                     failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-                                         [self.spinnerView setHidden:YES];
-                                         [newsFeedTable.pullToRefreshView stopAnimating];
-                                     }
+     failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+         [newsFeedTable.pullToRefreshView stopAnimating];
+         [self.hud hide:YES];
+     }
      ];
     
     [operation start];
@@ -236,7 +237,7 @@
 
 - (void)reloadNewsfeed
 {
-    [self.spinnerView setHidden:NO];
+    [self.hud show:YES];
     self.currentPage = 1;
     [self.newsFeed removeAllObjects];
     [newsFeedTable reloadData];

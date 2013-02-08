@@ -8,8 +8,8 @@
 
 
 #import <UIKit/UIKit.h>
-#import "SpinnerView.h"
 #import "User.h"
+#import "MBProgressHUD.h"
 
 @interface StarredViewController : UIViewController <UITableViewDataSource, UITableViewDelegate>
 
@@ -18,8 +18,9 @@
 @property (nonatomic, strong) User *user;
 @property (nonatomic, strong) NSMutableArray *starredRepos;
 @property (nonatomic) NSInteger currentPage;
-@property (nonatomic, strong) SpinnerView *spinnerView;
+@property (nonatomic, strong) MBProgressHUD *hud;
 
+- (void)registerNib;
 - (void)getUserInfo;
 - (void)getStarredReposForPage:(NSInteger)page;
 - (void)setupPullToRefresh;

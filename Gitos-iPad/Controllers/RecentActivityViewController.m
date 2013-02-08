@@ -22,7 +22,7 @@
 
 @implementation RecentActivityViewController
 
-@synthesize activityTable, user, activities, spinnerView, currentPage;
+@synthesize activityTable, user, activities, hud, currentPage;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -40,7 +40,6 @@
 {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
-    self.spinnerView = [SpinnerView loadSpinnerIntoView:self.view];
     [self performHouseKeepingTasks];
     [self fetchActivities:self.currentPage++];
 }
@@ -51,6 +50,10 @@
     UIBarButtonItem *reloadButton = [[UIBarButtonItem alloc] initWithTitle:[NSString fontAwesomeIconStringForIconIdentifier:@"icon-repeat"] style:UIBarButtonItemStyleBordered target:self action:@selector(reloadActivities)];
     [reloadButton setTitleTextAttributes:[NSDictionary dictionaryWithObjectsAndKeys:[UIFont fontWithName:kFontAwesomeFamilyName size:17], UITextAttributeFont, nil] forState:UIControlStateNormal];
     [self.navigationItem setRightBarButtonItem:reloadButton];
+    
+    self.hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+    self.hud.mode = MBProgressHUDAnimationFade;
+    self.hud.labelText = @"Loading";
 
     [self registerNib];
     [self setupPullToRefresh];
@@ -123,12 +126,12 @@
          }
          
          [activityTable.pullToRefreshView stopAnimating];
-         [self.spinnerView setHidden:YES];
          [activityTable reloadData];
+         [self.hud hide:YES];
      }
      failure:^(AFHTTPRequestOperation *operation, NSError *error) {
          NSLog(@"%@", error);
-         [self.spinnerView setHidden:YES];
+         [self.hud hide:YES];
          [activityTable.pullToRefreshView stopAnimating];
      }
      ];
@@ -139,7 +142,7 @@
 - (void)reloadActivities
 {
     self.currentPage = 1;
-    [self.spinnerView setHidden:NO];
+    [self.hud show:YES];
     [self.activities removeAllObjects];
     [self fetchActivities:self.currentPage];
 }
@@ -156,7 +159,7 @@
 {
     if (([scrollView contentOffset].y + scrollView.frame.size.height) == scrollView.contentSize.height) {
         // Bottom of UITableView reached
-        [self.spinnerView setHidden:NO];
+        [self.hud show:YES];
         [self fetchActivities:self.currentPage++];
     }
 }

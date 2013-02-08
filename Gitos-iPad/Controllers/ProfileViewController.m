@@ -23,7 +23,7 @@
 
 @implementation ProfileViewController
 
-@synthesize accessToken, user, spinnerView, avatar, profileTable, nameLabel, loginLabel, scrollView, hideBackButton;
+@synthesize accessToken, user, hud, avatar, profileTable, nameLabel, loginLabel, scrollView, hideBackButton;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -55,7 +55,9 @@
 {
     [scrollView setContentSize:self.view.frame.size];
     [self adjustFrameHeight];
-    self.spinnerView = [SpinnerView loadSpinnerIntoView:self.view];
+    self.hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+    self.hud.mode = MBProgressHUDAnimationFade;
+    self.hud.labelText = @"Loading";
 }
 
 - (void)prepareProfileTable
@@ -120,12 +122,11 @@
          self.navigationItem.title = [self.user getLogin];
          [self displayUsernameAndAvatar];
          [profileTable reloadData];
-         
-         [self.spinnerView setHidden:YES];
+         [self.hud hide:YES];
      }
      failure:^(AFHTTPRequestOperation *operation, NSError *error) {
          NSLog(@"%@", error);
-         [self.spinnerView setHidden:YES];
+         [self.hud hide:YES];
      }];
     
     [operation start];

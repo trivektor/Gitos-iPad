@@ -16,7 +16,7 @@
 
 @implementation NewsfeedDetailsViewController
 
-@synthesize accessToken, event, currentPage, username, webView;
+@synthesize accessToken, event, currentPage, username, webView, hud;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -48,13 +48,17 @@
     [webView setDelegate:self];
     
     UIBarButtonItem *reloadButton = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"glyphicons_081_refresh"] landscapeImagePhone:nil style:UIBarButtonItemStyleBordered target:self action:@selector(reloadNewsfeedDetails)];
-    
+
     [self.navigationItem setRightBarButtonItem:reloadButton];
+
+    self.hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+    self.hud.mode = MBProgressHUDAnimationFade;
+    self.hud.labelText = @"Loading";
 }
 
 - (void)loadNewsfeedDetails
 {
-    self.spinnerView = [SpinnerView loadSpinnerIntoView:self.view];
+    [self.hud show:YES];
     NSString *urlString = [AppConfig getConfigValue:@"GitosHost"];
     urlString = [urlString stringByAppendingFormat:@"/events/%d?page=%d&username=%@&access_token=%@",
                  self.event.eventId,
@@ -71,13 +75,13 @@
 
 - (void)reloadNewsfeedDetails
 {
-    [self.spinnerView setHidden:NO];
+    [self.hud hide:NO];
     [webView reload];
 }
 
 - (void)webViewDidFinishLoad:(UIWebView *)webView
 {
-    [self.spinnerView setHidden:YES];
+    [self.hud hide:YES];
 }
 
 @end
