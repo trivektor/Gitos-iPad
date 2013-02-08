@@ -49,7 +49,11 @@
 
 - (void)performHouseKeepingTasks
 {
-    self.navigationItem.title = [self.branch name];
+    if (self.node == (id)[NSNull null]) {
+        self.navigationItem.title = [self.branch name];
+    } else if ([self.node isTree]) {
+        self.navigationItem.title = self.node.path;
+    }
     self.spinnerView = [SpinnerView loadSpinnerIntoView:self.view];
 }
 
