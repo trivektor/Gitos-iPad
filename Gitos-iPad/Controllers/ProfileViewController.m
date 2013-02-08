@@ -177,7 +177,7 @@
     } else if (indexPath.row == 1) {
         WebsiteViewController *websiteController = [[WebsiteViewController alloc] init];
         websiteController.requestedUrl = [self.user getWebsite];
-        [self.navigationController pushViewController:websiteController animated:NO];
+        [self.navigationController pushViewController:websiteController animated:YES];
     } else if (indexPath.row == 3) {
         FollowViewController *followController = [[FollowViewController alloc] init];
         followController.usersUrl = [self.user getFollowersUrl];

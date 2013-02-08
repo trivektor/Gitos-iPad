@@ -68,6 +68,7 @@
     self.hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
     self.hud.mode = MBProgressHUDAnimationFade;
     self.hud.labelText = @"Loading";
+    [self registerNib];
 }
 
 - (void)registerNib
@@ -159,12 +160,13 @@
         
         [self.navigationController pushViewController:repoTreeController animated:YES];
     } else if (tableView == detailsTable) {
-        NSString *url = [self.repo getHomepage];
-
-        if (url != nil) {
-            WebsiteViewController *websiteController = [[WebsiteViewController alloc] init];
-            websiteController.requestedUrl = url;
-            [self.navigationController pushViewController:websiteController animated:YES];
+        if (indexPath.row == 1) {
+            NSString *url = [self.repo getHomepage];
+            if (url != nil) {
+                WebsiteViewController *websiteController = [[WebsiteViewController alloc] init];
+                websiteController.requestedUrl = url;
+                [self.navigationController pushViewController:websiteController animated:YES];
+            }
         }
     }
 }
