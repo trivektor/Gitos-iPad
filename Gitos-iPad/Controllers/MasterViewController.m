@@ -15,6 +15,8 @@
 #import "MasterControllerCell.h"
 #import "ProfileViewController.h"
 #import "RepoSearchViewController.h"
+#import "LoginViewController.h"
+#import "SSKeychain.h"
 
 @interface MasterViewController ()
 
@@ -57,7 +59,7 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return 6;
+    return 7;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -90,8 +92,24 @@
         [self.delegate didSelectViewController:profileController];
     } else if (indexPath.row == 5) {
         [self.delegate didSelectViewController:[[RepoSearchViewController alloc] init]];
+    } else if (indexPath.row == 6) {
+        UIActionSheet *actionSheet = [[UIActionSheet alloc] initWithTitle:@"Are you sure?" delegate:self cancelButtonTitle:@"Cancel" destructiveButtonTitle:@"Go ahead, make my day" otherButtonTitles:nil];
+        actionSheet.actionSheetStyle = UIActionSheetStyleBlackTranslucent;
+        [actionSheet showInView:[UIApplication sharedApplication].keyWindow];
     }
 }
+
+- (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex
+{
+    // 'OK' was clicked
+    if (buttonIndex == 0) {
+        [SSKeychain deletePasswordForService:@"access_token" account:@"gitos"];
+        LoginViewController *loginController = [[LoginViewController alloc] init];
+        UINavigationController *navController = [[UINavigationController alloc] initWithRootViewController:loginController];
+        [self.view.window setRootViewController:navController];
+    }
+}
+
 
 - (void)didReceiveMemoryWarning
 {

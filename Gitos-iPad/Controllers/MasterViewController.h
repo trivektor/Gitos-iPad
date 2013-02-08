@@ -10,7 +10,7 @@
 
 @protocol MasterViewControllerDelegate;
 
-@interface MasterViewController : UIViewController <UITableViewDataSource, UITableViewDelegate>
+@interface MasterViewController : UIViewController <UITableViewDataSource, UITableViewDelegate, UIActionSheetDelegate>
 
 @property (nonatomic, strong) UISplitViewController *parentViewController;
 @property (nonatomic, weak) IBOutlet UITableView *menuTable;
