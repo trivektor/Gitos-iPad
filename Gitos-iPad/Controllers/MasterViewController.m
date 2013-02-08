@@ -93,8 +93,8 @@
     } else if (indexPath.row == 5) {
         [self.delegate didSelectViewController:[[RepoSearchViewController alloc] init]];
     } else if (indexPath.row == 6) {
-        UIActionSheet *actionSheet = [[UIActionSheet alloc] initWithTitle:@"Are you sure?" delegate:self cancelButtonTitle:@"Cancel" destructiveButtonTitle:@"Go ahead, make my day" otherButtonTitles:nil];
-        actionSheet.actionSheetStyle = UIActionSheetStyleBlackTranslucent;
+        UIActionSheet *actionSheet = [[UIActionSheet alloc] initWithTitle:@"Are you sure?" delegate:self cancelButtonTitle:@"Cancel" destructiveButtonTitle:@"Sign out" otherButtonTitles:nil];
+        actionSheet.actionSheetStyle = UIActionSheetStyleBlackOpaque;
         [actionSheet showInView:[UIApplication sharedApplication].keyWindow];
     }
 }
