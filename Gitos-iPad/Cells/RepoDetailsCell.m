@@ -30,28 +30,47 @@
 
 - (void)renderForIndexPath:(NSIndexPath *)indexPath
 {
-    if (indexPath.row == 0) {
-        self.fieldLabel.text = @"Name";
-        self.fieldValue.text = [self.repo getName];
-    } else if (indexPath.row == 1) {
-        self.fieldLabel.text = @"Forks";
-        self.fieldValue.text = [NSString stringWithFormat:@"%i", [self.repo getForks]];
-    } else if (indexPath.row == 2) {
-        self.fieldLabel.text = @"Watchers";
-        self.fieldValue.text = [NSString stringWithFormat:@"%i", [self.repo getWatchers]];
-    } else if (indexPath.row == 3) {
-        self.fieldLabel.text = @"Language";
-        self.fieldValue.text = [self.repo getLanguage];
-    } else if (indexPath.row == 4) {
-        self.fieldLabel.text = @"Created";
-        self.fieldValue.text = [self.repo getCreatedAt];
-    } else if (indexPath.row == 5) {
-        self.fieldLabel.text = @"Last Updated";
-        self.fieldValue.text = [self.repo getUpdatedAt];
-    } else if (indexPath.row == 6) {
-        self.fieldLabel.text = @"Author";
-        self.fieldValue.text = [self.repo getAuthorName];
+    NSString *fieldLabelText = @"", *fieldValueText = @"";
+
+    switch (indexPath.row) {
+        case 0:
+            fieldLabelText = @"Name";
+            fieldValueText = [self.repo getName];
+            break;
+        case 1:
+            fieldLabelText = @"Website";
+            fieldValueText = [self.repo getHomepage];
+            break;
+        case 2:
+            fieldLabelText = @"Watchers";
+            fieldValueText = [NSString stringWithFormat:@"%i", [self.repo getWatchers]];
+            break;
+        case 3:
+            fieldLabelText = @"Forks";
+            fieldValueText = [NSString stringWithFormat:@"%i", [self.repo getForks]];
+            break;
+        case 4:
+            fieldLabelText = @"Language";
+            fieldValueText = [self.repo getLanguage];
+            break;
+        case 5:
+            fieldLabelText = @"Created";
+            fieldValueText = [self.repo getCreatedAt];
+            break;
+        case 6:
+            fieldLabelText = @"Last Updated";
+            fieldValueText = [self.repo getUpdatedAt];
+            break;
+        case 7:
+            fieldLabelText = @"Author";
+            fieldValueText = [self.repo getAuthorName];
+            break;
+        default:
+            break;
     }
+
+    self.fieldLabel.text = fieldLabelText;
+    self.fieldValue.text = fieldValueText;
     self.selectionStyle = UITableViewCellSelectionStyleNone;
 }
 

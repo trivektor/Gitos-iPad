@@ -44,7 +44,7 @@
 							<object class="IBUITableView" id="706630801">
 								<reference key="NSNextResponder" ref="737185003"/>
 								<int key="NSvFlags">292</int>
-								<string key="NSFrameSize">{703, 347}</string>
+								<string key="NSFrameSize">{703, 398}</string>
 								<reference key="NSSuperview" ref="737185003"/>
 								<reference key="NSWindow"/>
 								<reference key="NSNextKeyView" ref="286138785"/>
@@ -68,7 +68,7 @@
 							<object class="IBUITableView" id="150029749">
 								<reference key="NSNextResponder" ref="737185003"/>
 								<int key="NSvFlags">292</int>
-								<string key="NSFrame">{{0, 508}, {703, 232}}</string>
+								<string key="NSFrame">{{0, 495}, {703, 245}}</string>
 								<reference key="NSSuperview" ref="737185003"/>
 								<reference key="NSWindow"/>
 								<string key="NSReuseIdentifierKey">_NS:9</string>
@@ -87,7 +87,7 @@
 							<object class="IBUILabel" id="286138785">
 								<reference key="NSNextResponder" ref="737185003"/>
 								<int key="NSvFlags">292</int>
-								<string key="NSFrame">{{0, 368}, {703, 24}}</string>
+								<string key="NSFrame">{{0, 413}, {703, 24}}</string>
 								<reference key="NSSuperview" ref="737185003"/>
 								<reference key="NSWindow"/>
 								<string key="NSReuseIdentifierKey">_NS:9</string>

@@ -14,6 +14,7 @@
 #import "SSKeychain.h"
 #import "RepoTreeViewController.h"
 #import "Branch.h"
+#import "WebsiteViewController.h"
 
 @interface RepoViewController ()
 
@@ -95,7 +96,7 @@
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     if (tableView == detailsTable) {
-        return 7;
+        return 8;
     } else if (tableView == branchesTable) {
         return [self.repoBranches count];
     } else {
@@ -153,6 +154,14 @@
         repoTreeController.node = (id)[NSNull null];
         
         [self.navigationController pushViewController:repoTreeController animated:YES];
+    } else if (tableView == detailsTable) {
+        NSString *url = [self.repo getHomepage];
+
+        if (url != nil) {
+            WebsiteViewController *websiteController = [[WebsiteViewController alloc] init];
+            websiteController.requestedUrl = url;
+            [self.navigationController pushViewController:websiteController animated:YES];
+        }
     }
 }
 
