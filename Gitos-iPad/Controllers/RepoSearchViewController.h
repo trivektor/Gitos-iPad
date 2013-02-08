@@ -9,16 +9,14 @@
 #import <UIKit/UIKit.h>
 #import <QuartzCore/QuartzCore.h>
 #import "User.h"
-#import "SpinnerView.h"
+#import "MBProgressHUD.h"
 
 @interface RepoSearchViewController : UIViewController <UISearchBarDelegate, UITableViewDataSource, UITableViewDelegate>
-{
-    __weak IBOutlet UISearchBar *searchBar;
-    __weak IBOutlet UITableView *searchResultsTable;
-}
 
+@property(nonatomic, weak) IBOutlet UISearchBar *searchBar;
+@property(nonatomic, weak) IBOutlet UITableView *searchResultsTable;
 @property(nonatomic, strong) NSString *accessToken;
-@property(nonatomic, strong) SpinnerView *spinnerView;
+@property(nonatomic, strong) MBProgressHUD *hud;
 @property(nonatomic, strong) NSMutableArray *searchResults;
 @property(nonatomic, strong) User *user;
 

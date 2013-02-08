@@ -21,7 +21,7 @@
 
 @implementation RepoSearchViewController
 
-@synthesize accessToken, user, searchResults, spinnerView;
+@synthesize accessToken, user, searchBar, searchResultsTable, hud;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -56,13 +56,11 @@
 - (void)performHouseKeepingTasks
 {
     [self.navigationItem setTitle:@"Search"];
-    self.spinnerView = [SpinnerView loadSpinnerIntoView:self.view];
-    [self.spinnerView setHidden:YES];
     [searchResultsTable setContentInset:UIEdgeInsetsMake(0, 0, 48, 0)];
     [searchResultsTable setScrollIndicatorInsets:UIEdgeInsetsMake(0, 0, 48, 0)];
     CGRect frame = [searchResultsTable frame];
     frame.size.height = frame.size.height - self.tabBarController.tabBar.frame.size.height - searchBar.frame.size.height - self.navigationController.navigationBar.frame.size.height + 4;
-    [searchResultsTable setFrame:frame];
+    //[searchResultsTable setFrame:frame];
     [searchBar setTintColor:[UIColor colorWithRed:220/255.0 green:220/255.0 blue:220/255.0 alpha:1]];
     
     for (UIView *v in searchBar.subviews) {
@@ -79,7 +77,6 @@
             break;
         }
     }
-    
 }
 
 - (void)prepareTableView
@@ -128,7 +125,12 @@
 
 - (void)searchBarSearchButtonClicked:(UISearchBar *)_searchBar
 {
-    [self.spinnerView setHidden:NO];
+    if (self.hud == nil) {
+        self.hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+        self.hud.mode = MBProgressHUDAnimationFade;
+        self.hud.labelText = @"Searching";
+    }
+    [self.hud show:YES];
     [searchBar resignFirstResponder];
     NSString *term = [_searchBar text];
     
@@ -154,22 +156,18 @@
          NSDictionary *json = [NSJSONSerialization JSONObjectWithData:[response dataUsingEncoding:NSUTF8StringEncoding] options:NSJSONReadingMutableContainers error:nil];
          
          NSArray *repos = [json valueForKey:@"repositories"];
-         
-         Repo *r;
-         
+         [self.searchResults removeAllObjects];
          for (int i=0; i < repos.count; i++) {
-             r = [[Repo alloc] initWithData:[repos objectAtIndex:i]];
-             [self.searchResults addObject:r];
+             [self.searchResults addObject:[[Repo alloc] initWithData:[repos objectAtIndex:i]]];
          }
-         
          [searchResultsTable reloadData];
          [searchBar resignFirstResponder];
-         [self.spinnerView setHidden:YES];
+         [self.hud hide:YES];
      }
-                                     failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-                                         NSLog(@"%@", error);
-                                         [self.spinnerView setHidden:YES];
-                                     }];
+     failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+         NSLog(@"%@", error);
+         [self.hud hide:YES];
+     }];
     
     [operation start];
 }

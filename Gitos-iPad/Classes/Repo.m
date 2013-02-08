@@ -118,7 +118,17 @@
 
 - (NSString *)getAuthorName
 {
-    return [[self.data valueForKey:@"owner"] valueForKey:@"login"];
+    if ([self.data valueForKey:@"owner"] != (id)[NSNull null]) {
+        if ([[self.data valueForKey:@"owner"] isKindOfClass:[NSDictionary class]]) {
+            return [[self.data valueForKey:@"owner"] valueForKey:@"login"];
+        } else {
+            return [self.data valueForKey:@"owner"];
+        }
+    } else if ([self.data valueForKey:@"username"]) {
+        return [self.data valueForKey:@"username"];
+    } else {
+        return @"";
+    }
 }
 
 - (NSString *)getCreatedAt
