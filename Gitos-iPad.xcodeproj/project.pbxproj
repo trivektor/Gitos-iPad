@@ -126,6 +126,8 @@
 		B54603BF16C37D53007D4FB3 /* Organization.m in Sources */ = {isa = PBXBuildFile; fileRef = B54603BE16C37D52007D4FB3 /* Organization.m */; };
 		B54603C316C37FB4007D4FB3 /* OrganizationsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B54603C116C37FB1007D4FB3 /* OrganizationsViewController.m */; };
 		B54603C416C37FB4007D4FB3 /* OrganizationsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B54603C216C37FB2007D4FB3 /* OrganizationsViewController.xib */; };
+		B54603C816C388D2007D4FB3 /* OrganizationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B54603C616C388CF007D4FB3 /* OrganizationViewController.m */; };
+		B54603C916C388D2007D4FB3 /* OrganizationViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B54603C716C388D0007D4FB3 /* OrganizationViewController.xib */; };
 		B55D909F16B7AA27009CB90F /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B55D909E16B7AA27009CB90F /* UIKit.framework */; };
 		B55D90A116B7AA27009CB90F /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B55D90A016B7AA27009CB90F /* Foundation.framework */; };
 		B55D90A316B7AA27009CB90F /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B55D90A216B7AA27009CB90F /* CoreGraphics.framework */; };
@@ -358,6 +360,9 @@
 		B54603C016C37FB0007D4FB3 /* OrganizationsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OrganizationsViewController.h; sourceTree = "<group>"; };
 		B54603C116C37FB1007D4FB3 /* OrganizationsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OrganizationsViewController.m; sourceTree = "<group>"; };
 		B54603C216C37FB2007D4FB3 /* OrganizationsViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = OrganizationsViewController.xib; sourceTree = "<group>"; };
+		B54603C516C388CF007D4FB3 /* OrganizationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OrganizationViewController.h; sourceTree = "<group>"; };
+		B54603C616C388CF007D4FB3 /* OrganizationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OrganizationViewController.m; sourceTree = "<group>"; };
+		B54603C716C388D0007D4FB3 /* OrganizationViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = OrganizationViewController.xib; sourceTree = "<group>"; };
 		B55D909A16B7AA27009CB90F /* Gitos-iPad.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Gitos-iPad.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		B55D909E16B7AA27009CB90F /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		B55D90A016B7AA27009CB90F /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -845,6 +850,9 @@
 				B54603C016C37FB0007D4FB3 /* OrganizationsViewController.h */,
 				B54603C116C37FB1007D4FB3 /* OrganizationsViewController.m */,
 				B54603C216C37FB2007D4FB3 /* OrganizationsViewController.xib */,
+				B54603C516C388CF007D4FB3 /* OrganizationViewController.h */,
+				B54603C616C388CF007D4FB3 /* OrganizationViewController.m */,
+				B54603C716C388D0007D4FB3 /* OrganizationViewController.xib */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -1117,6 +1125,7 @@
 				B54603BA16C37B14007D4FB3 /* icon.png in Resources */,
 				B54603BC16C37B60007D4FB3 /* icon@2x.png in Resources */,
 				B54603C416C37FB4007D4FB3 /* OrganizationsViewController.xib in Resources */,
+				B54603C916C388D2007D4FB3 /* OrganizationViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1194,6 +1203,7 @@
 				B54603B416C24003007D4FB3 /* RecentActivityViewController.m in Sources */,
 				B54603BF16C37D53007D4FB3 /* Organization.m in Sources */,
 				B54603C316C37FB4007D4FB3 /* OrganizationsViewController.m in Sources */,
+				B54603C816C388D2007D4FB3 /* OrganizationViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -12,6 +12,7 @@
 #import "AppConfig.h"
 #import "SSKeychain.h"
 #import "Organization.h"
+#import "OrganizationViewController.h"
 
 @interface OrganizationsViewController ()
 
@@ -50,8 +51,6 @@
 - (void)fetchOrganizations
 {
     NSURL *organizationsUrl = [NSURL URLWithString:[self.user getOrganizationsUrl]];
-    
-    NSLog(@"%@", organizationsUrl.absoluteString);
 
     AFHTTPClient *httpClient = [[AFHTTPClient alloc] initWithBaseURL:organizationsUrl];
 
@@ -111,10 +110,20 @@
 
     Organization *org = [self.organizations objectAtIndex:indexPath.row];
 
+    NSData *data = [NSData dataWithContentsOfURL:[NSURL URLWithString:[org getAvatarUrl]]];
+
+    cell.imageView.image = [UIImage imageWithData:data];
     cell.textLabel.text = [org getLogin];
     cell.textLabel.font = [UIFont fontWithName:@"Arial" size:12.0];
     
     return cell;
+}
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    OrganizationViewController *organizationController = [[OrganizationViewController alloc] init];
+    organizationController.organization = [self.organizations objectAtIndex:indexPath.row];
+    [self.navigationController pushViewController:organizationController animated:YES];
 }
 
 @end
