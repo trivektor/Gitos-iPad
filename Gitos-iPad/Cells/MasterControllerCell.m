@@ -31,26 +31,39 @@
 {
     self.fontAwesomeLabel.font = [UIFont fontWithName:kFontAwesomeFamilyName size:20];
 
-    NSString *fontAwesome, *optionLabelText;
+    NSString *fontAwesome = @"", *optionLabelText = @"";
 
-    if (indexPath.row == 0) {
-        fontAwesome      = [NSString fontAwesomeIconStringForIconIdentifier:@"icon-rss"];
-        optionLabelText  = @"News Feed";
-    } else if (indexPath.row == 1) {
-        fontAwesome      = [NSString fontAwesomeIconStringForIconIdentifier:@"icon-github"];
-        optionLabelText  = @"Repositories";
-    } else if (indexPath.row == 2) {
-        fontAwesome      = [NSString fontAwesomeIconStringForIconIdentifier:@"icon-star"];
-        optionLabelText  = @"Watched";
-    } else if (indexPath.row == 3) {
-        fontAwesome      = [NSString fontAwesomeIconStringForIconIdentifier:@"icon-file-alt"];
-        optionLabelText  = @"Gists";
-    } else if (indexPath.row == 4) {
-        fontAwesome      = [NSString fontAwesomeIconStringForIconIdentifier:@"icon-user"];
-        optionLabelText  = @"Profile";
-    } else if (indexPath.row == 5) {
-        fontAwesome      = [NSString fontAwesomeIconStringForIconIdentifier:@"icon-search"];
-        optionLabelText  = @"Search";
+    switch (indexPath.row) {
+        case 0:
+            fontAwesome      = [NSString fontAwesomeIconStringForIconIdentifier:@"icon-rss"];
+            optionLabelText  = @"News Feed";
+            break;
+        case 1:
+            fontAwesome      = [NSString fontAwesomeIconStringForIconIdentifier:@"icon-github"];
+            optionLabelText  = @"Repositories";
+            break;
+        case 2:
+            fontAwesome      = [NSString fontAwesomeIconStringForIconIdentifier:@"icon-star"];
+            optionLabelText  = @"Watched";
+            break;
+        case 3:
+            fontAwesome      = [NSString fontAwesomeIconStringForIconIdentifier:@"icon-file-alt"];
+            optionLabelText  = @"Gists";
+            break;
+        case 4:
+            fontAwesome      = [NSString fontAwesomeIconStringForIconIdentifier:@"icon-user"];
+            optionLabelText  = @"Profile";
+            break;
+        case 5:
+            fontAwesome      = [NSString fontAwesomeIconStringForIconIdentifier:@"icon-search"];
+            optionLabelText  = @"Search";
+            break;
+        case 6:
+            fontAwesome      = [NSString fontAwesomeIconStringForIconIdentifier:@"icon-signout"];
+            optionLabelText  = @"Sign out";
+            break;
+        default:
+            break;
     }
 
     self.fontAwesomeLabel.text = fontAwesome;
