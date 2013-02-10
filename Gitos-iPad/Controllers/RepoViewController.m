@@ -7,6 +7,8 @@
 //
 
 #import "RepoViewController.h"
+#import "WebsiteViewController.h"
+#import "IssuesViewController.h"
 #import "RepoDetailsCell.h"
 #import "AppConfig.h"
 #import "AFHTTPClient.h"
@@ -14,7 +16,6 @@
 #import "SSKeychain.h"
 #import "RepoTreeViewController.h"
 #import "Branch.h"
-#import "WebsiteViewController.h"
 
 @interface RepoViewController ()
 
@@ -165,6 +166,10 @@
                 websiteController.requestedUrl = url;
                 [self.navigationController pushViewController:websiteController animated:YES];
             }
+        } else if (indexPath.row == 8) {
+            IssuesViewController *issuesController = [[IssuesViewController alloc] init];
+            issuesController.repo = self.repo;
+            [self.navigationController pushViewController:issuesController animated:YES];
         }
     }
 }

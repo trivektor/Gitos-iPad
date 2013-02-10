@@ -115,7 +115,7 @@
 
 - (NSString *)getIssuesUrl
 {
-    return [self.data valueForKey:@"issues_url"];
+    return [[self.data valueForKey:@"issues_url"] stringByReplacingOccurrencesOfString:@"{/number}" withString:@""];
 }
 
 - (NSString *)getAuthorName

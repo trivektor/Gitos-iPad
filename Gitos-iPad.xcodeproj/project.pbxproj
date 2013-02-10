@@ -129,6 +129,9 @@
 		B54603C816C388D2007D4FB3 /* OrganizationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B54603C616C388CF007D4FB3 /* OrganizationViewController.m */; };
 		B54603C916C388D2007D4FB3 /* OrganizationViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B54603C716C388D0007D4FB3 /* OrganizationViewController.xib */; };
 		B54603CC16C4D0DD007D4FB3 /* MBProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = B54603CB16C4D0DD007D4FB3 /* MBProgressHUD.m */; };
+		B552947D16C7A22E0010D56A /* IssuesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B552947B16C7A22E0010D56A /* IssuesViewController.m */; };
+		B552947E16C7A22E0010D56A /* IssuesViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B552947C16C7A22E0010D56A /* IssuesViewController.xib */; };
+		B552948116C7A23D0010D56A /* Issue.m in Sources */ = {isa = PBXBuildFile; fileRef = B552948016C7A23D0010D56A /* Issue.m */; };
 		B55D909F16B7AA27009CB90F /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B55D909E16B7AA27009CB90F /* UIKit.framework */; };
 		B55D90A116B7AA27009CB90F /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B55D90A016B7AA27009CB90F /* Foundation.framework */; };
 		B55D90A316B7AA27009CB90F /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B55D90A216B7AA27009CB90F /* CoreGraphics.framework */; };
@@ -366,6 +369,11 @@
 		B54603C716C388D0007D4FB3 /* OrganizationViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = OrganizationViewController.xib; sourceTree = "<group>"; };
 		B54603CA16C4D0DD007D4FB3 /* MBProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MBProgressHUD.h; sourceTree = "<group>"; };
 		B54603CB16C4D0DD007D4FB3 /* MBProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MBProgressHUD.m; sourceTree = "<group>"; };
+		B552947A16C7A22E0010D56A /* IssuesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IssuesViewController.h; sourceTree = "<group>"; };
+		B552947B16C7A22E0010D56A /* IssuesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IssuesViewController.m; sourceTree = "<group>"; };
+		B552947C16C7A22E0010D56A /* IssuesViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = IssuesViewController.xib; sourceTree = "<group>"; };
+		B552947F16C7A23D0010D56A /* Issue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Issue.h; sourceTree = "<group>"; };
+		B552948016C7A23D0010D56A /* Issue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Issue.m; sourceTree = "<group>"; };
 		B55D909A16B7AA27009CB90F /* Gitos-iPad.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Gitos-iPad.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		B55D909E16B7AA27009CB90F /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		B55D90A016B7AA27009CB90F /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -856,6 +864,9 @@
 				B54603C516C388CF007D4FB3 /* OrganizationViewController.h */,
 				B54603C616C388CF007D4FB3 /* OrganizationViewController.m */,
 				B54603C716C388D0007D4FB3 /* OrganizationViewController.xib */,
+				B552947A16C7A22E0010D56A /* IssuesViewController.h */,
+				B552947B16C7A22E0010D56A /* IssuesViewController.m */,
+				B552947C16C7A22E0010D56A /* IssuesViewController.xib */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -893,6 +904,8 @@
 				B55D911516B7ADEE009CB90F /* User.m */,
 				B54603BD16C37D52007D4FB3 /* Organization.h */,
 				B54603BE16C37D52007D4FB3 /* Organization.m */,
+				B552947F16C7A23D0010D56A /* Issue.h */,
+				B552948016C7A23D0010D56A /* Issue.m */,
 			);
 			path = Classes;
 			sourceTree = "<group>";
@@ -1131,6 +1144,7 @@
 				B54603BC16C37B60007D4FB3 /* icon@2x.png in Resources */,
 				B54603C416C37FB4007D4FB3 /* OrganizationsViewController.xib in Resources */,
 				B54603C916C388D2007D4FB3 /* OrganizationViewController.xib in Resources */,
+				B552947E16C7A22E0010D56A /* IssuesViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1210,6 +1224,8 @@
 				B54603C316C37FB4007D4FB3 /* OrganizationsViewController.m in Sources */,
 				B54603C816C388D2007D4FB3 /* OrganizationViewController.m in Sources */,
 				B54603CC16C4D0DD007D4FB3 /* MBProgressHUD.m in Sources */,
+				B552947D16C7A22E0010D56A /* IssuesViewController.m in Sources */,
+				B552948116C7A23D0010D56A /* Issue.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
