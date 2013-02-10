@@ -18,8 +18,10 @@
 @property (nonatomic, weak) IBOutlet UITableView *issuesTable;
 @property (nonatomic, strong) NSMutableArray *issues;
 @property (nonatomic) NSInteger *currentPage;
+@property (nonatomic, strong) MBProgressHUD *hud;
 
 - (void)performHouseKeepingTasks;
+- (void)registerNib;
 - (void)fetchIssues:(NSInteger)page;
 
 @end

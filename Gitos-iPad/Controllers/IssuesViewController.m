@@ -11,6 +11,7 @@
 #import "AFHTTPClient.h"
 #import "AFHTTPRequestOperation.h"
 #import "SSKeychain.h"
+#import "IssueCell.h"
 
 @interface IssuesViewController ()
 
@@ -18,7 +19,7 @@
 
 @implementation IssuesViewController
 
-@synthesize issuesTable, repo;
+@synthesize issuesTable, repo, hud;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -43,6 +44,16 @@
 - (void)performHouseKeepingTasks
 {
     self.navigationItem.title = @"Issues";
+    [self registerNib];
+    self.hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+    self.hud.mode = MBProgressHUDAnimationFade;
+    self.hud.labelText = @"Loading";
+}
+
+- (void)registerNib
+{
+    UINib *nib = [UINib nibWithNibName:@"IssueCell" bundle:nil];
+    [issuesTable registerNib:nib forCellReuseIdentifier:@"IssueCell"];
 }
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
@@ -55,21 +66,22 @@
     return [self.issues count];
 }
 
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    return 57;
+}
+
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    static NSString *cellIdentifier = @"Cell";
-    UITableViewCell *cell = [issuesTable dequeueReusableCellWithIdentifier:cellIdentifier];
+    static NSString *cellIdentifier = @"IssueCell";
+    IssueCell *cell = [issuesTable dequeueReusableCellWithIdentifier:cellIdentifier];
 
     if (!cell) {
-        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:cellIdentifier];
+        cell = [[IssueCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:cellIdentifier];
     }
 
-    Issue *issue = [self.issues objectAtIndex:indexPath.row];
-    User *user = [issue getUser];
-
-    cell.textLabel.font = [UIFont fontWithName:@"Arial" size:14.0];
-    cell.textLabel.text = [issue getTitle];
-    cell.detailTextLabel.text = [NSString stringWithFormat:@"by %@ %@", [user getLogin], [issue getCreatedAt]];
+    cell.issue = [self.issues objectAtIndex:indexPath.row];
+    [cell render];
 
     return cell;
 }
@@ -98,11 +110,11 @@
              [self.issues addObject:[[Issue alloc] initWithData:[json objectAtIndex:i]]];
          }
          [issuesTable reloadData];
-         //[self.hud hide:YES];
+         [self.hud hide:YES];
      }
      failure:^(AFHTTPRequestOperation *operation, NSError *error) {
          NSLog(@"%@", error);
-         //[self.hud hide:YES];
+         [self.hud hide:YES];
      }];
     
     [operation start];

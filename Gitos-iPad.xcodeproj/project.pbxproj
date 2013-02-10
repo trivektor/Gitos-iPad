@@ -132,6 +132,8 @@
 		B552947D16C7A22E0010D56A /* IssuesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B552947B16C7A22E0010D56A /* IssuesViewController.m */; };
 		B552947E16C7A22E0010D56A /* IssuesViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B552947C16C7A22E0010D56A /* IssuesViewController.xib */; };
 		B552948116C7A23D0010D56A /* Issue.m in Sources */ = {isa = PBXBuildFile; fileRef = B552948016C7A23D0010D56A /* Issue.m */; };
+		B552948416C818DC0010D56A /* IssueCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B552948316C818DC0010D56A /* IssueCell.m */; };
+		B552948616C818F50010D56A /* IssueCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B552948516C818F50010D56A /* IssueCell.xib */; };
 		B55D909F16B7AA27009CB90F /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B55D909E16B7AA27009CB90F /* UIKit.framework */; };
 		B55D90A116B7AA27009CB90F /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B55D90A016B7AA27009CB90F /* Foundation.framework */; };
 		B55D90A316B7AA27009CB90F /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B55D90A216B7AA27009CB90F /* CoreGraphics.framework */; };
@@ -374,6 +376,9 @@
 		B552947C16C7A22E0010D56A /* IssuesViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = IssuesViewController.xib; sourceTree = "<group>"; };
 		B552947F16C7A23D0010D56A /* Issue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Issue.h; sourceTree = "<group>"; };
 		B552948016C7A23D0010D56A /* Issue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Issue.m; sourceTree = "<group>"; };
+		B552948216C818DC0010D56A /* IssueCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IssueCell.h; sourceTree = "<group>"; };
+		B552948316C818DC0010D56A /* IssueCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IssueCell.m; sourceTree = "<group>"; };
+		B552948516C818F50010D56A /* IssueCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = IssueCell.xib; sourceTree = "<group>"; };
 		B55D909A16B7AA27009CB90F /* Gitos-iPad.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Gitos-iPad.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		B55D909E16B7AA27009CB90F /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		B55D90A016B7AA27009CB90F /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -940,6 +945,9 @@
 				B5BC457F16BEE55100434848 /* MasterControllerCell.h */,
 				B5BC458016BEE55100434848 /* MasterControllerCell.m */,
 				B5BC458216BEE56000434848 /* MasterControllerCell.xib */,
+				B552948216C818DC0010D56A /* IssueCell.h */,
+				B552948316C818DC0010D56A /* IssueCell.m */,
+				B552948516C818F50010D56A /* IssueCell.xib */,
 			);
 			path = Cells;
 			sourceTree = "<group>";
@@ -1145,6 +1153,7 @@
 				B54603C416C37FB4007D4FB3 /* OrganizationsViewController.xib in Resources */,
 				B54603C916C388D2007D4FB3 /* OrganizationViewController.xib in Resources */,
 				B552947E16C7A22E0010D56A /* IssuesViewController.xib in Resources */,
+				B552948616C818F50010D56A /* IssueCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1226,6 +1235,7 @@
 				B54603CC16C4D0DD007D4FB3 /* MBProgressHUD.m in Sources */,
 				B552947D16C7A22E0010D56A /* IssuesViewController.m in Sources */,
 				B552948116C7A23D0010D56A /* Issue.m in Sources */,
+				B552948416C818DC0010D56A /* IssueCell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

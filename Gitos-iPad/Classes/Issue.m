@@ -63,6 +63,11 @@
     return [[User alloc] initWithData:[self.data valueForKey:@"assignee"]];
 }
 
+- (NSInteger)getNumberOfComments
+{
+    return [[self.data valueForKey:@"comments"] integerValue];
+}
+
 - (NSString *)getCreatedAt
 {
     return [self convertToRelativeDate:[self.data valueForKey:@"created_at"]];

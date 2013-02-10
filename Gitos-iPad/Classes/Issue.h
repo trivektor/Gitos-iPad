@@ -26,6 +26,7 @@
 - (User *)getUser;
 - (NSString *)getState;
 - (User *)getAssignee;
+- (NSInteger)getNumberOfComments;
 - (NSString *)getCreatedAt;
 - (NSString *)getUpdatedAt;
 - (NSString *)getClosedAt;
