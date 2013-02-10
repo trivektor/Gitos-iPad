@@ -7,7 +7,18 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "Issue.h"
 
 @interface IssueCell : UITableViewCell
+
+@property (nonatomic, strong) Issue *issue;
+
+@property (nonatomic, strong) IBOutlet UILabel *titleLabel;
+
+@property (nonatomic, strong) IBOutlet UILabel *overviewLabel;
+
+@property (nonatomic, strong) IBOutlet UILabel *commentsLabel;
+
+- (void) render;
 
 @end

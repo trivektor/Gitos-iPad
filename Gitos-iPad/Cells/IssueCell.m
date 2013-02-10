@@ -7,8 +7,11 @@
 //
 
 #import "IssueCell.h"
+#import "NSString+FontAwesome.h"
 
 @implementation IssueCell
+
+@synthesize issue;
 
 - (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
 {
@@ -24,6 +27,17 @@
     [super setSelected:selected animated:animated];
 
     // Configure the view for the selected state
+}
+
+- (void)render
+{
+    User *user = [self.issue getUser];
+
+    NSString *title = [[issue getTitle] stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceCharacterSet]];
+
+    self.titleLabel.text = [NSString stringWithFormat:@"#%i %@", [issue getNumber], title];
+    self.overviewLabel.text = [NSString stringWithFormat:@"by %@ %@", [user getLogin], [issue getCreatedAt]];
+    self.commentsLabel.text = [NSString stringWithFormat:@"%i comments", [self.issue getNumberOfComments]];
 }
 
 @end
