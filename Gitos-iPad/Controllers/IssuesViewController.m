@@ -7,6 +7,7 @@
 //
 
 #import "IssuesViewController.h"
+#import "IssueDetailsViewController.h"
 #import "Issue.h"
 #import "AFHTTPClient.h"
 #import "AFHTTPRequestOperation.h"
@@ -84,6 +85,13 @@
     [cell render];
 
     return cell;
+}
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    IssueDetailsViewController *issueDetailsController = [[IssueDetailsViewController alloc] init];
+    issueDetailsController.issue = [self.issues objectAtIndex:indexPath.row];
+    [self.navigationController pushViewController:issueDetailsController animated:YES];
 }
 
 - (void)fetchIssues:(NSInteger)page
