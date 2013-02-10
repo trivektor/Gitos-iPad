@@ -97,18 +97,20 @@
 
 - (NSString *)getDescription
 {
+    if ([self.data valueForKey:@"description"] == (id)[NSNull null]) return @"n/a";
     return [self.data valueForKey:@"description"];
 }
 
 - (NSString *)getHomepage
 {
+    if ([self.data valueForKey:@"homepage"] == (id)[NSNull null]) return @"n/a";
     if ([[self.data valueForKey:@"homepage"] length] == 0) return @"n/a";
     return [self.data valueForKey:@"homepage"];
 }
 
 - (NSInteger)getOpenIssues
 {
-    return [self.data valueForKey:@"open_issues"];
+    return [[self.data valueForKey:@"open_issues"] integerValue];
 }
 
 - (NSString *)getIssuesUrl
