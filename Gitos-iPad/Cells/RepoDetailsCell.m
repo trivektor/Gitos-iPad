@@ -65,6 +65,9 @@
             fieldLabelText = @"Author";
             fieldValueText = [self.repo getAuthorName];
             break;
+        case 8:
+            fieldLabelText = @"Issues";
+            fieldValueText = [NSString stringWithFormat:@"%i", [self.repo getOpenIssues]];
         default:
             break;
     }

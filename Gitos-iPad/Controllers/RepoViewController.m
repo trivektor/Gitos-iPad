@@ -84,8 +84,6 @@
     
     for (int i=0; i < [tables count]; i++) {
         table = [tables objectAtIndex:i];
-        [table setDelegate:self];
-        [table setDataSource:self];
         [table setScrollEnabled:NO];
         [table setBackgroundView:nil];
         [table setSeparatorStyle:UITableViewCellSeparatorStyleSingleLine];
@@ -101,7 +99,7 @@
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     if (tableView == detailsTable) {
-        return 8;
+        return 9;
     } else if (tableView == branchesTable) {
         return [self.repoBranches count];
     } else {
