@@ -1,3 +1,7 @@
+html, body {
+    width: 100%
+}
+
 #issue-comments-table .avatar {
     float: left;
     width: 40px;
@@ -13,4 +17,12 @@
 
 #issue-comments-table .comment-details {
     margin-left: 50px
+}
+
+table {
+    width: 100%
+}
+
+table td, table th {
+    word-wrap: break-word;
 }
