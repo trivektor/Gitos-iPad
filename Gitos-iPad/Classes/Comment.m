@@ -7,6 +7,7 @@
 //
 
 #import "Comment.h"
+#import "User.h"
 
 @implementation Comment
 
@@ -18,6 +19,11 @@
     self.dateFormatter = [[NSDateFormatter alloc] init];
     self.dateFormatter.dateFormat = @"yyyy-MM-dd'T'HH:mm:ssZZ";
     return self;
+}
+
+- (User *)getUser
+{
+    return [[User alloc] initWithData:[self.data valueForKey:@"user"]];
 }
 
 - (NSString *)getBody

@@ -55,7 +55,7 @@
 
 - (NSString *)getLanguage
 {
-    if ([self.data valueForKey:@"language"] == nil) return @"n/a";
+    if ([self.data valueForKey:@"language"] == (id)[NSNull null]) return @"n/a";
     return [self.data valueForKey:@"language"];
 }
 

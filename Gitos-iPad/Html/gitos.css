@@ -1,0 +1,16 @@
+#issue-comments-table .avatar {
+    float: left;
+    width: 40px;
+    margin-right: 10px;
+    border-radius: 5px
+}
+
+#issue-comments-table h3 {
+    font-size: 15px;
+    line-height: normal;
+    margin-bottom: 10px
+}
+
+#issue-comments-table .comment-details {
+    margin-left: 50px
+}
