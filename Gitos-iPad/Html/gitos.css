@@ -2,11 +2,30 @@ html, body {
     width: 100%
 }
 
+table {
+    width: 100%
+}
+
+table td, table th {
+    word-wrap: break-word;
+}
+
 #issue-comments-table .avatar {
+    display: block;
     float: left;
     width: 40px;
     margin-right: 10px;
+}
+
+#issue-comments-table .avatar img {
     border-radius: 5px
+}
+
+#issue-comments-table .avatar .label {
+    display: block;
+    margin-top: 5px;
+    line-height: normal;
+    text-align: center;
 }
 
 #issue-comments-table h3 {
@@ -16,13 +35,6 @@ html, body {
 }
 
 #issue-comments-table .comment-details {
-    margin-left: 50px
-}
-
-table {
-    width: 100%
-}
-
-table td, table th {
-    word-wrap: break-word;
+    margin-left: 50px;
+    max-width: 91%;
 }

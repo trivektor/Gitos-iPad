@@ -103,7 +103,7 @@
     
     NSString *issueDetailsPath = [[NSBundle mainBundle] pathForResource:@"issue_details" ofType:@"html"];
     NSString *issueDetails = [NSString stringWithContentsOfFile:issueDetailsPath encoding:NSUTF8StringEncoding error:nil];
-    NSString *contentHtml = [NSString stringWithFormat:issueDetails, [owner getAvatarUrl], [owner getLogin], [self.issue getCreatedAt], [self.issue getTitle], [self.issue getBody], commentHtmlString];
+    NSString *contentHtml = [NSString stringWithFormat:issueDetails, [owner getAvatarUrl], [self.issue getState], [owner getLogin], [self.issue getCreatedAt], [self.issue getTitle], [self.issue getBody], commentHtmlString];
     NSURL *baseUrl = [NSURL fileURLWithPath:[[NSBundle mainBundle] bundlePath]];
     [self.detailsView loadHTMLString:contentHtml baseURL:baseUrl];
 }

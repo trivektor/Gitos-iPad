@@ -102,12 +102,13 @@
     
     NSMutableDictionary *params = [NSMutableDictionary dictionaryWithObjectsAndKeys:
                                    self.accessToken, @"access_token",
+                                   [NSString stringWithFormat:@"%i", page], @"page",
                                    nil];
-    
+
     NSMutableURLRequest *getRequest = [httpClient requestWithMethod:@"GET" path:issuesUrl.absoluteString parameters:params];
-    
+
     AFHTTPRequestOperation *operation = [[AFHTTPRequestOperation alloc] initWithRequest:getRequest];
-    
+
     [operation setCompletionBlockWithSuccess:
      ^(AFHTTPRequestOperation *operation, id responseObject){
          NSString *response = [operation responseString];
@@ -124,8 +125,16 @@
          NSLog(@"%@", error);
          [self.hud hide:YES];
      }];
-    
+
     [operation start];
+}
+
+- (void)scrollViewDidScroll:(UIScrollView *)scrollView
+{
+    if (([scrollView contentOffset].y + scrollView.frame.size.height) == scrollView.contentSize.height) {
+        [self.hud show:YES];
+        [self fetchIssues:self.currentPage++];
+    }
 }
 
 - (void)didReceiveMemoryWarning
