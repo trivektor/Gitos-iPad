@@ -105,6 +105,13 @@
 		B516545B16B7C558003F0DFA /* AppConfig.plist in Resources */ = {isa = PBXBuildFile; fileRef = B516545A16B7C558003F0DFA /* AppConfig.plist */; };
 		B5167A0F16C0EFA0000D952F /* FollowViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B5167A0D16C0EFA0000D952F /* FollowViewController.m */; };
 		B5167A1016C0EFA0000D952F /* FollowViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B5167A0E16C0EFA0000D952F /* FollowViewController.xib */; };
+		B542274216CCB15D0020F300 /* Commit.m in Sources */ = {isa = PBXBuildFile; fileRef = B542274116CCB15D0020F300 /* Commit.m */; };
+		B542274616CCB75A0020F300 /* CommitViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B542274416CCB75A0020F300 /* CommitViewController.m */; };
+		B542274716CCB75A0020F300 /* CommitViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B542274516CCB75A0020F300 /* CommitViewController.xib */; };
+		B542274B16CCBA240020F300 /* CommitsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B542274916CCBA240020F300 /* CommitsViewController.m */; };
+		B542274C16CCBA240020F300 /* CommitsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B542274A16CCBA240020F300 /* CommitsViewController.xib */; };
+		B542274F16CCBBD30020F300 /* CommitCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B542274E16CCBBD30020F300 /* CommitCell.m */; };
+		B542275116CCBBDF0020F300 /* CommitCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B542275016CCBBDF0020F300 /* CommitCell.xib */; };
 		B546039916C0FFA8007D4FB3 /* MKAnnotationView+WebCache.m in Sources */ = {isa = PBXBuildFile; fileRef = B546038516C0FFA8007D4FB3 /* MKAnnotationView+WebCache.m */; };
 		B546039A16C0FFA8007D4FB3 /* SDImageCache.m in Sources */ = {isa = PBXBuildFile; fileRef = B546038716C0FFA8007D4FB3 /* SDImageCache.m */; };
 		B546039B16C0FFA8007D4FB3 /* SDWebImageCompat.m in Sources */ = {isa = PBXBuildFile; fileRef = B546038916C0FFA8007D4FB3 /* SDWebImageCompat.m */; };
@@ -336,6 +343,17 @@
 		B5167A0C16C0EFA0000D952F /* FollowViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FollowViewController.h; sourceTree = "<group>"; };
 		B5167A0D16C0EFA0000D952F /* FollowViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FollowViewController.m; sourceTree = "<group>"; };
 		B5167A0E16C0EFA0000D952F /* FollowViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FollowViewController.xib; sourceTree = "<group>"; };
+		B542274016CCB15D0020F300 /* Commit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Commit.h; sourceTree = "<group>"; };
+		B542274116CCB15D0020F300 /* Commit.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Commit.m; sourceTree = "<group>"; };
+		B542274316CCB75A0020F300 /* CommitViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CommitViewController.h; sourceTree = "<group>"; };
+		B542274416CCB75A0020F300 /* CommitViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CommitViewController.m; sourceTree = "<group>"; };
+		B542274516CCB75A0020F300 /* CommitViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CommitViewController.xib; sourceTree = "<group>"; };
+		B542274816CCBA240020F300 /* CommitsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CommitsViewController.h; sourceTree = "<group>"; };
+		B542274916CCBA240020F300 /* CommitsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CommitsViewController.m; sourceTree = "<group>"; };
+		B542274A16CCBA240020F300 /* CommitsViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CommitsViewController.xib; sourceTree = "<group>"; };
+		B542274D16CCBBD30020F300 /* CommitCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CommitCell.h; sourceTree = "<group>"; };
+		B542274E16CCBBD30020F300 /* CommitCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CommitCell.m; sourceTree = "<group>"; };
+		B542275016CCBBDF0020F300 /* CommitCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CommitCell.xib; sourceTree = "<group>"; };
 		B546038416C0FFA8007D4FB3 /* MKAnnotationView+WebCache.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "MKAnnotationView+WebCache.h"; sourceTree = "<group>"; };
 		B546038516C0FFA8007D4FB3 /* MKAnnotationView+WebCache.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "MKAnnotationView+WebCache.m"; sourceTree = "<group>"; };
 		B546038616C0FFA8007D4FB3 /* SDImageCache.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SDImageCache.h; sourceTree = "<group>"; };
@@ -889,6 +907,12 @@
 				B552948716C827AC0010D56A /* IssueDetailsViewController.h */,
 				B552948816C827AC0010D56A /* IssueDetailsViewController.m */,
 				B552948916C827AC0010D56A /* IssueDetailsViewController.xib */,
+				B542274316CCB75A0020F300 /* CommitViewController.h */,
+				B542274416CCB75A0020F300 /* CommitViewController.m */,
+				B542274516CCB75A0020F300 /* CommitViewController.xib */,
+				B542274816CCBA240020F300 /* CommitsViewController.h */,
+				B542274916CCBA240020F300 /* CommitsViewController.m */,
+				B542274A16CCBA240020F300 /* CommitsViewController.xib */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -930,6 +954,8 @@
 				B552948016C7A23D0010D56A /* Issue.m */,
 				B552949516C862FD0010D56A /* Comment.h */,
 				B552949616C862FD0010D56A /* Comment.m */,
+				B542274016CCB15D0020F300 /* Commit.h */,
+				B542274116CCB15D0020F300 /* Commit.m */,
 			);
 			path = Classes;
 			sourceTree = "<group>";
@@ -967,6 +993,9 @@
 				B552948216C818DC0010D56A /* IssueCell.h */,
 				B552948316C818DC0010D56A /* IssueCell.m */,
 				B552948516C818F50010D56A /* IssueCell.xib */,
+				B542274D16CCBBD30020F300 /* CommitCell.h */,
+				B542274E16CCBBD30020F300 /* CommitCell.m */,
+				B542275016CCBBDF0020F300 /* CommitCell.xib */,
 			);
 			path = Cells;
 			sourceTree = "<group>";
@@ -1180,6 +1209,9 @@
 				B552949416C85FEB0010D56A /* bootstrap.css in Resources */,
 				B552949916C866380010D56A /* issue_details.html in Resources */,
 				B552949B16C8705B0010D56A /* gitos.css in Resources */,
+				B542274716CCB75A0020F300 /* CommitViewController.xib in Resources */,
+				B542274C16CCBA240020F300 /* CommitsViewController.xib in Resources */,
+				B542275116CCBBDF0020F300 /* CommitCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1264,6 +1296,10 @@
 				B552948416C818DC0010D56A /* IssueCell.m in Sources */,
 				B552948A16C827AC0010D56A /* IssueDetailsViewController.m in Sources */,
 				B552949716C862FD0010D56A /* Comment.m in Sources */,
+				B542274216CCB15D0020F300 /* Commit.m in Sources */,
+				B542274616CCB75A0020F300 /* CommitViewController.m in Sources */,
+				B542274B16CCBA240020F300 /* CommitsViewController.m in Sources */,
+				B542274F16CCBBD30020F300 /* CommitCell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -8,6 +8,7 @@
 
 #import "RepoTreeViewController.h"
 #import "RawFileViewController.h"
+#import "CommitsViewController.h"
 #import "RepoTreeCell.h"
 #import "AppConfig.h"
 #import "SSKeychain.h"
@@ -55,6 +56,9 @@
         self.navigationItem.title = self.node.path;
     }
     self.spinnerView = [SpinnerView loadSpinnerIntoView:self.view];
+
+    UIBarButtonItem *commitButton = [[UIBarButtonItem alloc] initWithTitle:@"Commit" style:UIBarButtonItemStyleBordered target:self action:@selector(showCommitForBranch)];
+    [self.navigationItem setRightBarButtonItem:commitButton];
 }
 
 - (void)fetchData
@@ -195,6 +199,13 @@
         repoTreeController.node = selectedNode;
         [self.navigationController pushViewController:repoTreeController animated:YES];
     }
+}
+
+- (void)showCommitForBranch
+{
+    CommitsViewController *commitsController = [[CommitsViewController alloc] init];
+    commitsController.branch = self.branch.name;
+    [self.navigationController pushViewController:commitsController animated:YES];
 }
 
 @end

@@ -29,5 +29,6 @@
 - (void)fetchTopLayer;
 - (void)fetchTree;
 - (void)fetchBlob;
+- (void)showCommitForBranch;
 
 @end
