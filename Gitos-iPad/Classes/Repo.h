@@ -30,6 +30,7 @@
 - (NSString *)getHomepage;
 - (NSInteger)getOpenIssues;
 - (NSString *)getIssuesUrl;
+- (NSString *)getCommitsUrl;
 - (NSString *)getCreatedAt;
 - (NSString *)getUpdatedAt;
 - (NSString *)getAuthorName;

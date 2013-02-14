@@ -7,10 +7,13 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "RelativeDateDescriptor.h"
 
 @interface Commit : NSObject
 
 @property (nonatomic, strong) NSDictionary *data;
+@property (nonatomic, strong) RelativeDateDescriptor *relativeDateDescriptor;
+@property (nonatomic, strong) NSDateFormatter *dateFormatter;
 
 - (id)initWithData:(NSDictionary *)commitData;
 - (NSString *)getSha;
@@ -23,5 +26,7 @@
 - (NSString *)getParentUrl;
 - (NSDictionary *)getStats;
 - (NSArray *)getFiles;
+- (NSDictionary *)getAuthor;
+- (NSString *)getCommittedAt;
 
 @end

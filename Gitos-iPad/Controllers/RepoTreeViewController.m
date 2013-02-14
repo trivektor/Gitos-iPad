@@ -205,6 +205,7 @@
 {
     CommitsViewController *commitsController = [[CommitsViewController alloc] init];
     commitsController.branch = self.branch.name;
+    commitsController.repo = self.repo;
     [self.navigationController pushViewController:commitsController animated:YES];
 }
 

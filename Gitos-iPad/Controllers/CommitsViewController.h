@@ -7,16 +7,22 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "Repo.h"
+#import "MBProgressHUD.h"
 
-@interface CommitsViewController : UIViewController <UITableViewDataSource, UITableViewDelegate>
+@interface CommitsViewController : UIViewController <UITableViewDataSource, UITableViewDelegate, UIScrollViewDelegate>
 
+@property (nonatomic, strong) Repo *repo;
+@property (nonatomic, strong) MBProgressHUD *hud;
 @property (nonatomic, strong) NSString *branch;
 @property (nonatomic, strong) NSString *accessToken;
 @property (nonatomic, strong) NSMutableArray *commits;
+@property (nonatomic) NSInteger currentPage;
 
 @property (nonatomic, weak) IBOutlet UITableView *commitsTable;
 
 - (void)performHouseKeepingTasks;
 - (void)registerNib;
+- (void)fetchCommitsForPage:(NSInteger)page;
 
 @end

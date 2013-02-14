@@ -15,6 +15,7 @@
     self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
     if (self) {
         // Initialization code
+
     }
     return self;
 }
@@ -28,7 +29,9 @@
 
 - (void)render
 {
-    
+    self.commentLabel.text  = [self.commit getMessage];
+    self.dateLabel.text     = [self.commit getCommittedAt];
+    self.shaLabel.text      = [[self.commit getSha] substringToIndex:10];
 }
 
 @end

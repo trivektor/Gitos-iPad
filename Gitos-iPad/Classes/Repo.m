@@ -118,6 +118,11 @@
     return [[self.data valueForKey:@"issues_url"] stringByReplacingOccurrencesOfString:@"{/number}" withString:@""];
 }
 
+- (NSString *)getCommitsUrl
+{
+    return [[self.data valueForKey:@"commits_url"] stringByReplacingOccurrencesOfString:@"{/sha}" withString:@""];
+}
+
 - (NSString *)getAuthorName
 {
     if ([self.data valueForKey:@"owner"] != (id)[NSNull null]) {

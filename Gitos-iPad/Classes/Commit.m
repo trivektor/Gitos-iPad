@@ -14,6 +14,9 @@
 {
     self = [super init];
     self.data = commitData;
+    self.relativeDateDescriptor = [[RelativeDateDescriptor alloc] initWithPriorDateDescriptionFormat:@"%@ ago" postDateDescriptionFormat:@"in %@"];
+    self.dateFormatter = [[NSDateFormatter alloc] init];
+    self.dateFormatter.dateFormat = @"yyyy-MM-dd'T'HH:mm:ssZZ";
     return self;
 }
 
@@ -68,6 +71,20 @@
 - (NSArray *)getFiles
 {
     return [self.data valueForKey:@"files"];
+}
+
+- (NSDictionary *)getAuthor
+{
+    NSDictionary *details = [self getDetails];
+    return [details valueForKey:@"author"];
+}
+
+- (NSString *)getCommittedAt
+{
+    NSDictionary *author = [self getAuthor];
+    NSString *dateString = [author valueForKey:@"date"];
+    NSDate *date  = [self.dateFormatter dateFromString:dateString];
+    return [self.relativeDateDescriptor describeDate:date relativeTo:[NSDate date]];
 }
 
 @end

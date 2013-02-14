@@ -25,6 +25,7 @@
         // Custom initialization
         self.accessToken = [SSKeychain passwordForService:@"access_token" account:@"gitos"];
         self.commits = [[NSMutableArray alloc] initWithCapacity:0];
+        self.currentPage = 1;
     }
     return self;
 }
@@ -35,11 +36,15 @@
     // Do any additional setup after loading the view from its nib.
     [self performHouseKeepingTasks];
     [self registerNib];
+    [self fetchCommitsForPage:self.currentPage++];
 }
 
 - (void)performHouseKeepingTasks
 {
     self.navigationItem.title = @"Commits";
+    self.hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+    self.hud.mode = MBProgressHUDAnimationFade;
+    self.hud.labelText = @"Loading";
 }
 
 - (void)registerNib
@@ -58,6 +63,11 @@
     return [self.commits count];
 }
 
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    return 57;
+}
+
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     static NSString *cellIdentifier = @"CommitCell";
@@ -72,6 +82,49 @@
     [cell render];
 
     return cell;
+}
+
+- (void)fetchCommitsForPage:(NSInteger)page
+{
+    NSURL *commitsUrl = [NSURL URLWithString:[self.repo getCommitsUrl]];
+
+    AFHTTPClient *httpClient = [[AFHTTPClient alloc] initWithBaseURL:commitsUrl];
+
+    NSMutableDictionary *params = [NSMutableDictionary dictionaryWithObjectsAndKeys:
+                                   self.accessToken, @"access_token",
+                                   nil];
+
+    NSMutableURLRequest *getRequest = [httpClient requestWithMethod:@"GET" path:commitsUrl.absoluteString parameters:params];
+
+    AFHTTPRequestOperation *operation = [[AFHTTPRequestOperation alloc] initWithRequest:getRequest];
+
+    [operation setCompletionBlockWithSuccess:
+     ^(AFHTTPRequestOperation *operation, id responseObject){
+         NSString *response = [operation responseString];
+
+         NSArray *json = [NSJSONSerialization JSONObjectWithData:[response dataUsingEncoding:NSUTF8StringEncoding] options:NSJSONReadingMutableContainers error:nil];
+
+         for (int i=0; i < json.count; i++) {
+             [self.commits addObject:[[Commit alloc] initWithData:[json objectAtIndex:i]]];
+         }
+
+         [self.commitsTable reloadData];
+         [self.hud hide:YES];
+     }
+     failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+         NSLog(@"%@", error);
+         [self.hud hide:YES];
+     }];
+
+    [operation start];
+}
+
+- (void)scrollViewDidScroll:(UIScrollView *)scrollView
+{
+    if (([scrollView contentOffset].y + scrollView.frame.size.height) == scrollView.contentSize.height) {
+        [self.hud show:YES];
+        [self fetchCommitsForPage:self.currentPage++];
+    }
 }
 
 - (void)didReceiveMemoryWarning
