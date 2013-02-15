@@ -2,6 +2,18 @@ html, body {
     width: 100%
 }
 
+.commit-stats {
+    text-align: right;
+}
+
+.commit-stats .label {
+    margin-left: 5px
+}
+
+.label {
+    margin-left: 5px
+}
+
 table {
     width: 100%
 }
@@ -10,10 +22,9 @@ table td, table th {
     word-wrap: break-word;
 }
 
-#issue-comments-table .avatar {
+.avatar {
     display: block;
     float: left;
-    width: 40px;
     margin-right: 10px;
 }
 
@@ -38,3 +49,8 @@ table td, table th {
     margin-left: 50px;
     max-width: 91%;
 }
+
+#commit-table .avatar {
+    width: 25px;
+}
+

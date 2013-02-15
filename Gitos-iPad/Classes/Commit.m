@@ -73,15 +73,15 @@
     return [self.data valueForKey:@"files"];
 }
 
-- (NSDictionary *)getAuthor
+- (User *)getAuthor
 {
-    NSDictionary *details = [self getDetails];
-    return [details valueForKey:@"author"];
+    return [[User alloc] initWithData:[self.data valueForKey:@"author"]];
 }
 
 - (NSString *)getCommittedAt
 {
-    NSDictionary *author = [self getAuthor];
+    NSDictionary *details = [self getDetails];
+    NSDictionary *author = [details valueForKey:@"author"];
     NSString *dateString = [author valueForKey:@"date"];
     NSDate *date  = [self.dateFormatter dateFromString:dateString];
     return [self.relativeDateDescriptor describeDate:date relativeTo:[NSDate date]];

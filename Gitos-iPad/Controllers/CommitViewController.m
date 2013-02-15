@@ -11,6 +11,7 @@
 #import "AFHTTPRequestOperation.h"
 #import "SSKeychain.h"
 #import "CommitFile.h"
+#import "User.h"
 
 @interface CommitViewController ()
 
@@ -76,6 +77,22 @@
 {
     NSString *commitHtmlString = @"";
     NSArray *files = [self.commit getFiles];
+    User *author = [self.commit getAuthor];
+
+    NSString *commitMessageString = [NSString stringWithFormat:@" \
+    <tr> \
+        <td> \
+            <h4>%@</h4> \
+            <p> \
+                <img src='%@' class='avatar' /> \
+                authored %@ \
+            </p> \
+        </td> \
+    </tr>",
+    [self.commit getMessage],
+    [author getAvatarUrl],
+    [self.commit getCommittedAt]];
+
     NSString *markupString = @" \
     <tr> \
         <td> \
@@ -87,9 +104,7 @@
                     <label class='label label-success'>%@</label> \
                 </span> \
             </div> \
-            <div> \
-                <pre><code>%@</code></pre> \
-            </div> \
+            <pre><code>%@</code></pre> \
         </td> \
     </tr>";
 
@@ -107,7 +122,7 @@
 
     NSString *commitDetailsPath = [[NSBundle mainBundle] pathForResource:@"commit_details" ofType:@"html"];
     NSString *commitDetails = [NSString stringWithContentsOfFile:commitDetailsPath encoding:NSUTF8StringEncoding error:nil];
-    NSString *contentHtml = [NSString stringWithFormat:commitDetails, commitHtmlString];
+    NSString *contentHtml = [NSString stringWithFormat:commitDetails, commitMessageString, commitHtmlString];
     NSURL *baseUrl = [NSURL fileURLWithPath:[[NSBundle mainBundle] bundlePath]];
     [self.commitView loadHTMLString:contentHtml baseURL:baseUrl];
 }

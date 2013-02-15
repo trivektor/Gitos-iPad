@@ -8,6 +8,7 @@
 
 #import <Foundation/Foundation.h>
 #import "RelativeDateDescriptor.h"
+#import "User.h"
 
 @interface Commit : NSObject
 
@@ -26,7 +27,7 @@
 - (NSString *)getParentUrl;
 - (NSDictionary *)getStats;
 - (NSArray *)getFiles;
-- (NSDictionary *)getAuthor;
+- (User *)getAuthor;
 - (NSString *)getCommittedAt;
 
 @end
