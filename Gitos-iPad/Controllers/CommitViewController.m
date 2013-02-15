@@ -24,7 +24,6 @@
     if (self) {
         // Custom initialization
         self.accessToken = [SSKeychain passwordForService:@"access_token" account:@"gitos"];
-        self.files = [[NSMutableArray alloc] initWithCapacity:0];
     }
     return self;
 }
@@ -77,10 +76,33 @@
 {
     NSString *commitHtmlString = @"";
     NSArray *files = [self.commit getFiles];
+    NSString *markupString = @" \
+    <tr> \
+        <td> \
+            <div class='clearfix'> \
+                <b class='pull-left'>%@</b> \
+                <span class='pull-right commit-stats'> \
+                    <b>%@</b> \
+                    <label class='label label-important'>%@</label> \
+                    <label class='label label-success'>%@</label> \
+                </span> \
+            </div> \
+            <div> \
+                <pre><code>%@</code></pre> \
+            </div> \
+        </td> \
+    </tr>";
 
     for (int i=0; i < files.count; i++) {
         CommitFile *file = [[CommitFile alloc] initWithData:[files objectAtIndex:i]];
-        commitHtmlString = [commitHtmlString stringByAppendingFormat:@"<tr><td><b>%@</b><div><pre><code>%@</code></pre></div></td></tr>", [file getFileName], [file getPatch]];
+        NSInteger additions = [file getAdditions], deletions = [file getDeletions];
+
+        commitHtmlString = [commitHtmlString stringByAppendingFormat:markupString,
+                            [file getFileName],
+                            [NSString stringWithFormat:@"%i", (additions + deletions)],
+                            [NSString stringWithFormat:@"%i additions", additions],
+                            [NSString stringWithFormat:@"%i deletions", deletions],
+                            [file getPatch]];
     }
 
     NSString *commitDetailsPath = [[NSBundle mainBundle] pathForResource:@"commit_details" ofType:@"html"];

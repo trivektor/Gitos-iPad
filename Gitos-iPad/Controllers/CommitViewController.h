@@ -16,7 +16,6 @@
 @property (nonatomic, strong) NSString *branch;
 @property (nonatomic, strong) Commit *commit;
 @property (nonatomic, strong) MBProgressHUD *hud;
-@property (nonatomic, strong) NSMutableArray *files;
 @property (nonatomic, weak) IBOutlet UIWebView *commitView;
 
 - (void)performHouseKeepingTasks;

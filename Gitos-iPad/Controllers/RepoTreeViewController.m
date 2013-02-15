@@ -57,7 +57,7 @@
     }
     self.spinnerView = [SpinnerView loadSpinnerIntoView:self.view];
 
-    UIBarButtonItem *commitButton = [[UIBarButtonItem alloc] initWithTitle:@"Commit" style:UIBarButtonItemStyleBordered target:self action:@selector(showCommitForBranch)];
+    UIBarButtonItem *commitButton = [[UIBarButtonItem alloc] initWithTitle:@"Commits" style:UIBarButtonItemStyleBordered target:self action:@selector(showCommitForBranch)];
     [self.navigationItem setRightBarButtonItem:commitButton];
 }
 
