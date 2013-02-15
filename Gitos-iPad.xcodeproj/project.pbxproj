@@ -112,6 +112,11 @@
 		B542274C16CCBA240020F300 /* CommitsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B542274A16CCBA240020F300 /* CommitsViewController.xib */; };
 		B542274F16CCBBD30020F300 /* CommitCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B542274E16CCBBD30020F300 /* CommitCell.m */; };
 		B542275116CCBBDF0020F300 /* CommitCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B542275016CCBBDF0020F300 /* CommitCell.xib */; };
+		B542275316CCC8D00020F300 /* commit_details.html in Resources */ = {isa = PBXBuildFile; fileRef = B542275216CCC8D00020F300 /* commit_details.html */; };
+		B542275616CDEA580020F300 /* CommitFile.m in Sources */ = {isa = PBXBuildFile; fileRef = B542275516CDEA580020F300 /* CommitFile.m */; };
+		B542275B16CDF86E0020F300 /* diff.js in Resources */ = {isa = PBXBuildFile; fileRef = B542275916CDF86E0020F300 /* diff.js */; };
+		B542275C16CDF86E0020F300 /* highlight.js in Resources */ = {isa = PBXBuildFile; fileRef = B542275A16CDF86E0020F300 /* highlight.js */; };
+		B542275E16CDFB390020F300 /* github.css in Resources */ = {isa = PBXBuildFile; fileRef = B542275D16CDFB390020F300 /* github.css */; };
 		B546039916C0FFA8007D4FB3 /* MKAnnotationView+WebCache.m in Sources */ = {isa = PBXBuildFile; fileRef = B546038516C0FFA8007D4FB3 /* MKAnnotationView+WebCache.m */; };
 		B546039A16C0FFA8007D4FB3 /* SDImageCache.m in Sources */ = {isa = PBXBuildFile; fileRef = B546038716C0FFA8007D4FB3 /* SDImageCache.m */; };
 		B546039B16C0FFA8007D4FB3 /* SDWebImageCompat.m in Sources */ = {isa = PBXBuildFile; fileRef = B546038916C0FFA8007D4FB3 /* SDWebImageCompat.m */; };
@@ -354,6 +359,12 @@
 		B542274D16CCBBD30020F300 /* CommitCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CommitCell.h; sourceTree = "<group>"; };
 		B542274E16CCBBD30020F300 /* CommitCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CommitCell.m; sourceTree = "<group>"; };
 		B542275016CCBBDF0020F300 /* CommitCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CommitCell.xib; sourceTree = "<group>"; };
+		B542275216CCC8D00020F300 /* commit_details.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = commit_details.html; sourceTree = "<group>"; };
+		B542275416CDEA580020F300 /* CommitFile.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CommitFile.h; sourceTree = "<group>"; };
+		B542275516CDEA580020F300 /* CommitFile.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CommitFile.m; sourceTree = "<group>"; };
+		B542275916CDF86E0020F300 /* diff.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = diff.js; sourceTree = "<group>"; };
+		B542275A16CDF86E0020F300 /* highlight.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = highlight.js; sourceTree = "<group>"; };
+		B542275D16CDFB390020F300 /* github.css */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.css; path = github.css; sourceTree = "<group>"; };
 		B546038416C0FFA8007D4FB3 /* MKAnnotationView+WebCache.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "MKAnnotationView+WebCache.h"; sourceTree = "<group>"; };
 		B546038516C0FFA8007D4FB3 /* MKAnnotationView+WebCache.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "MKAnnotationView+WebCache.m"; sourceTree = "<group>"; };
 		B546038616C0FFA8007D4FB3 /* SDImageCache.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SDImageCache.h; sourceTree = "<group>"; };
@@ -956,6 +967,8 @@
 				B552949616C862FD0010D56A /* Comment.m */,
 				B542274016CCB15D0020F300 /* Commit.h */,
 				B542274116CCB15D0020F300 /* Commit.m */,
+				B542275416CDEA580020F300 /* CommitFile.h */,
+				B542275516CDEA580020F300 /* CommitFile.m */,
 			);
 			path = Classes;
 			sourceTree = "<group>";
@@ -1006,10 +1019,14 @@
 				B5BC451B16BA5DFD00434848 /* prettify.css */,
 				B5BC457A16BEE21700434848 /* FontAwesome.ttf */,
 				B5BC451C16BA5DFD00434848 /* prettify.js */,
+				B542275916CDF86E0020F300 /* diff.js */,
+				B542275A16CDF86E0020F300 /* highlight.js */,
 				B5BC451D16BA5DFD00434848 /* sunburst.css */,
 				B552949316C85FEB0010D56A /* bootstrap.css */,
 				B552949816C866380010D56A /* issue_details.html */,
 				B552949A16C8705B0010D56A /* gitos.css */,
+				B542275216CCC8D00020F300 /* commit_details.html */,
+				B542275D16CDFB390020F300 /* github.css */,
 			);
 			path = Html;
 			sourceTree = "<group>";
@@ -1066,6 +1083,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				B5BC452116BA5E3F00434848 /* prettify.js in Resources */,
+				B542275B16CDF86E0020F300 /* diff.js in Resources */,
+				B542275C16CDF86E0020F300 /* highlight.js in Resources */,
 				B55D90AB16B7AA27009CB90F /* InfoPlist.strings in Resources */,
 				B55D90B316B7AA27009CB90F /* Default.png in Resources */,
 				B55D90B516B7AA27009CB90F /* Default@2x.png in Resources */,
@@ -1212,6 +1231,8 @@
 				B542274716CCB75A0020F300 /* CommitViewController.xib in Resources */,
 				B542274C16CCBA240020F300 /* CommitsViewController.xib in Resources */,
 				B542275116CCBBDF0020F300 /* CommitCell.xib in Resources */,
+				B542275316CCC8D00020F300 /* commit_details.html in Resources */,
+				B542275E16CDFB390020F300 /* github.css in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1300,6 +1321,7 @@
 				B542274616CCB75A0020F300 /* CommitViewController.m in Sources */,
 				B542274B16CCBA240020F300 /* CommitsViewController.m in Sources */,
 				B542274F16CCBBD30020F300 /* CommitCell.m in Sources */,
+				B542275616CDEA580020F300 /* CommitFile.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

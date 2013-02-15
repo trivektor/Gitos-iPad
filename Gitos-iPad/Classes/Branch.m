@@ -16,15 +16,19 @@
 - (id)initWithData:(NSDictionary *)data
 {
     self = [super init];
-    
     self.name = [data valueForKey:@"name"];
-    
+    self.sha = [data valueForKey:@"sha"];
     return self;
 }
 
 - (NSString *)getUrl
 {
     return @"";
+}
+
+- (NSString *)getSha
+{
+    return self.sha;
 }
 
 @end

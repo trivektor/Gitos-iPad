@@ -15,6 +15,7 @@
 @property (nonatomic, strong) Repo *repo;
 @property (nonatomic, strong) MBProgressHUD *hud;
 @property (nonatomic, strong) NSString *branch;
+@property (nonatomic, strong) NSString *sha;
 @property (nonatomic, strong) NSString *accessToken;
 @property (nonatomic, strong) NSMutableArray *commits;
 @property (nonatomic) NSInteger currentPage;

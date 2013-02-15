@@ -7,6 +7,7 @@
 //
 
 #import "CommitsViewController.h"
+#import "CommitViewController.h"
 #import "AFHTTPClient.h"
 #import "AFHTTPRequestOperation.h"
 #import "SSKeychain.h"
@@ -84,6 +85,13 @@
     return cell;
 }
 
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    CommitViewController *commitController = [[CommitViewController alloc] init];
+    commitController.commit = [self.commits objectAtIndex:indexPath.row];
+    [self.navigationController pushViewController:commitController animated:YES];
+}
+
 - (void)fetchCommitsForPage:(NSInteger)page
 {
     NSURL *commitsUrl = [NSURL URLWithString:[self.repo getCommitsUrl]];
@@ -91,6 +99,8 @@
     AFHTTPClient *httpClient = [[AFHTTPClient alloc] initWithBaseURL:commitsUrl];
 
     NSMutableDictionary *params = [NSMutableDictionary dictionaryWithObjectsAndKeys:
+                                   self.sha, @"sha",
+                                   @"100", @"per_page",
                                    self.accessToken, @"access_token",
                                    nil];
 

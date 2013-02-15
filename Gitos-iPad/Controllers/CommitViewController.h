@@ -7,11 +7,20 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "Commit.h"
+#import "MBProgressHUD.h"
 
-@interface CommitViewController : UIViewController
+@interface CommitViewController : UIViewController <UIWebViewDelegate>
 
+@property (nonatomic, strong) NSString *accessToken;
 @property (nonatomic, strong) NSString *branch;
+@property (nonatomic, strong) Commit *commit;
+@property (nonatomic, strong) MBProgressHUD *hud;
+@property (nonatomic, strong) NSMutableArray *files;
+@property (nonatomic, weak) IBOutlet UIWebView *commitView;
 
 - (void)performHouseKeepingTasks;
+- (void)fetchCommitDetails;
+- (void)displayCommitDetails;
 
 @end
