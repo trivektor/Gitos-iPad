@@ -26,15 +26,23 @@ table td, table th {
     display: block;
     float: left;
     margin-right: 10px;
+    border-radius: 3px
 }
 
-#issue-comments-table .avatar img {
-    border-radius: 5px
+#issue-comments-table .avatar {
+    float: none;
+    margin-right: 0;
 }
 
-#issue-comments-table .avatar .label {
+#issue-comments-table .issue-creator {
+    float: left;
+    width: 40px;
+}
+
+#issue-comments-table .issue-creator .label {
     display: block;
     margin-top: 5px;
+    margin-left: 0;
     line-height: normal;
     text-align: center;
 }
