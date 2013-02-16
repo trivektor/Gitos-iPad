@@ -13,22 +13,27 @@
 
 @synthesize name;
 
-- (id)initWithData:(NSDictionary *)data
+- (id)initWithData:(NSDictionary *)branchData
 {
     self = [super init];
-    self.name = [data valueForKey:@"name"];
-    self.sha = [data valueForKey:@"sha"];
+    self.data = branchData;
     return self;
 }
 
-- (NSString *)getUrl
+- (NSString *)getName
 {
-    return @"";
+    return [self.data valueForKey:@"name"];
 }
 
 - (NSString *)getSha
 {
-    return self.sha;
+    NSDictionary *commit = [self getCommit];
+    return [commit valueForKey:@"sha"];
+}
+
+- (NSDictionary *)getCommit
+{
+    return [self.data valueForKey:@"commit"];
 }
 
 @end

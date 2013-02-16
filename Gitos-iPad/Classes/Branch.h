@@ -11,12 +11,14 @@
 
 @interface Branch : NSObject
 
+@property (nonatomic, strong) NSDictionary *data;
 @property (nonatomic, strong) NSString *name;
 @property (nonatomic, strong) NSString *sha;
 
-- (id)initWithData:(NSDictionary *)data;
+- (id)initWithData:(NSDictionary *)branchData;
 
-- (NSString *)getUrl;
+- (NSString *)getName;
+- (NSDictionary *)getCommit;
 - (NSString *)getSha;
 
 @end
