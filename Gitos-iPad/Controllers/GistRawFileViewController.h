@@ -7,13 +7,16 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "SpinnerView.h"
+#import "MBProgressHUD.h"
 #import "GistFile.h"
 
 @interface GistRawFileViewController : UIViewController <UIWebViewDelegate, NSURLConnectionDelegate>
 
 @property (nonatomic, weak) IBOutlet UIWebView *fileWebView;
-@property (nonatomic, strong) SpinnerView *spinnerView;
+@property (nonatomic, strong) MBProgressHUD *hud;
 @property (nonatomic, strong) GistFile *gistFile;
+
+- (void)performHouseKeepingTasks;
+- (NSString *)encodeHtmlEntities:(NSString *)rawHtmlString;
 
 @end

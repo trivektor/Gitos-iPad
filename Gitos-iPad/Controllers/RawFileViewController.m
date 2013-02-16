@@ -35,8 +35,10 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
     [self.navigationItem setTitle:self.fileName];
+    self.hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+    self.hud.mode = MBProgressHUDAnimationFade;
+    self.hud.labelText = @"Loading";
     [self fetchRawFile];
-    self.spinnerView = [SpinnerView loadSpinnerIntoView:self.view];
 }
 
 - (void)didReceiveMemoryWarning
@@ -49,7 +51,7 @@
 {
     NSString *githubRawHost = [AppConfig getConfigValue:@"GithubRawHost"];
     NSString *repoFullName = [self.repo getFullName];
-    NSString *branchName = self.branch.name;
+    NSString *branchName = [self.branch getName];
     
     NSArray *viewControllers = self.navigationController.viewControllers;
     NSMutableArray *blobPaths = [[NSMutableArray alloc] initWithCapacity:0];
@@ -84,7 +86,7 @@
     
     NSURLConnection *rawFileConnection = [NSURLConnection connectionWithRequest:self.rawFileRequest delegate:self];
     [rawFileConnection start];
-    [self.spinnerView setHidden:NO];
+    [self.hud show:YES];
 }
 
 - (void)connection:(NSURLConnection *)connection didReceiveResponse:(NSURLResponse *)response
@@ -94,40 +96,32 @@
 
 - (void)connection:(NSURLConnection *)connection didReceiveData:(NSData *)data
 {
-    [self.spinnerView setHidden:YES];
-    
     UIImage *image = [UIImage imageWithData:data];
     
     if (image != nil) {
         // Raw file is an image
         [fileWebView loadRequest:self.rawFileRequest];
     } else if ([self.mimeType isEqualToString:@"text/plain"]) {
+        NSString *rawFilePath = [[NSBundle mainBundle] pathForResource:@"raw_file" ofType:@"html"];
+        NSString *rawFileContent = [NSString stringWithContentsOfFile:rawFilePath encoding:NSUTF8StringEncoding error:nil];
         NSString *content = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
-        
-        NSString *path = [[NSBundle mainBundle] bundlePath];
-        NSURL *baseURL = [NSURL fileURLWithPath:path];
-        
-        NSString *htmlString = [NSString stringWithFormat:@" \
-        <!DOCTYPE html> \
-        <html> \
-        <head> \
-        <link rel='stylesheet' href='prettify.css'></link> \
-        <link rel='stylesheet' href='sunburst.css'></link> \
-        <script src='prettify.js'></script> \
-        </head> \
-        <body onload='prettyPrint()'> \
-        <pre class='prettyprint'><code>%@</code></pre> \
-        </body> \
-        </html>", content];
-        
+        NSURL *baseURL = [NSURL fileURLWithPath:[[NSBundle mainBundle] bundlePath]];
+        NSString *htmlString = [NSString stringWithFormat:rawFileContent, [self encodeHtmlEntities:content]];
         [fileWebView loadHTMLString:htmlString baseURL:baseURL];
-        
     }
+    [self.hud hide:YES];
+}
+
+- (NSString *)encodeHtmlEntities:(NSString *)rawHtmlString
+{
+    return [[rawHtmlString
+             stringByReplacingOccurrencesOfString: @">" withString: @"&#62;"]
+            stringByReplacingOccurrencesOfString: @"<" withString: @"&#60;"];
 }
 
 - (void)webViewDidFinishLoad:(UIWebView *)webView
 {
-    [self.spinnerView setHidden:YES];
+    [self.hud hide:YES];
 }
 
 @end

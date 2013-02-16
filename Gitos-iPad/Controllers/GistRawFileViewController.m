@@ -29,42 +29,43 @@
 {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
-    self.spinnerView = [SpinnerView loadSpinnerIntoView:self.view];
-    [self.navigationItem setTitle:[self.gistFile getName]];
+    [self performHouseKeepingTasks];
     NSURL *fileUrl = [NSURL URLWithString:[self.gistFile getRawUrl]];
     NSURLRequest *fileRequest = [NSURLRequest requestWithURL:fileUrl];
     NSURLConnection *fileConnection = [NSURLConnection connectionWithRequest:fileRequest delegate:self];
     [fileConnection start];
 }
 
+- (void)performHouseKeepingTasks
+{
+    [self.navigationItem setTitle:[self.gistFile getName]];
+    self.hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+    self.hud.mode = MBProgressHUDAnimationFade;
+    self.hud.labelText = @"Loading";
+}
+
 - (void)connection:(NSURLConnection *)connection didReceiveData:(NSData *)data
 {
-    [self.spinnerView setHidden:YES];
-    
+    NSString *rawFilePath = [[NSBundle mainBundle] pathForResource:@"raw_file" ofType:@"html"];
+    NSString *rawFileContent = [NSString stringWithContentsOfFile:rawFilePath encoding:NSUTF8StringEncoding error:nil];
     NSString *content = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
-    
-    NSString *path = [[NSBundle mainBundle] bundlePath];
-    NSURL *baseURL = [NSURL fileURLWithPath:path];
-    
-    NSString *htmlString = [NSString stringWithFormat:@" \
-                            <!DOCTYPE html> \
-                            <html> \
-                            <head> \
-                            <link rel='stylesheet' href='prettify.css'></link> \
-                            <link rel='stylesheet' href='sunburst.css'></link> \
-                            <script src='prettify.js'></script> \
-                            </head> \
-                            <body onload='prettyPrint()'> \
-                            <pre class='prettyprint'><code>%@</code></pre> \
-                            </body> \
-                            </html>", content];
-    
+    NSURL *baseURL = [NSURL fileURLWithPath:[[NSBundle mainBundle] bundlePath]];
+    NSString *htmlString = [NSString stringWithFormat:rawFileContent, [self encodeHtmlEntities:content]];
     [fileWebView loadHTMLString:htmlString baseURL:baseURL];
+    [fileWebView loadHTMLString:htmlString baseURL:baseURL];
+    [self.hud hide:YES];
+}
+
+- (NSString *)encodeHtmlEntities:(NSString *)rawHtmlString
+{
+    return [[rawHtmlString
+             stringByReplacingOccurrencesOfString: @">" withString: @"&#62;"]
+            stringByReplacingOccurrencesOfString: @"<" withString: @"&#60;"];
 }
 
 - (void)webViewDidFinishLoad:(UIWebView *)webView
 {
-    [self.spinnerView setHidden:YES];
+    [self.hud hide:YES];
 }
 
 - (void)didReceiveMemoryWarning

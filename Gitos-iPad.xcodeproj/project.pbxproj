@@ -117,6 +117,7 @@
 		B542275B16CDF86E0020F300 /* diff.js in Resources */ = {isa = PBXBuildFile; fileRef = B542275916CDF86E0020F300 /* diff.js */; };
 		B542275C16CDF86E0020F300 /* highlight.js in Resources */ = {isa = PBXBuildFile; fileRef = B542275A16CDF86E0020F300 /* highlight.js */; };
 		B542275E16CDFB390020F300 /* github.css in Resources */ = {isa = PBXBuildFile; fileRef = B542275D16CDFB390020F300 /* github.css */; };
+		B542276616CF6F980020F300 /* raw_file.html in Resources */ = {isa = PBXBuildFile; fileRef = B542276516CF6F980020F300 /* raw_file.html */; };
 		B546039916C0FFA8007D4FB3 /* MKAnnotationView+WebCache.m in Sources */ = {isa = PBXBuildFile; fileRef = B546038516C0FFA8007D4FB3 /* MKAnnotationView+WebCache.m */; };
 		B546039A16C0FFA8007D4FB3 /* SDImageCache.m in Sources */ = {isa = PBXBuildFile; fileRef = B546038716C0FFA8007D4FB3 /* SDImageCache.m */; };
 		B546039B16C0FFA8007D4FB3 /* SDWebImageCompat.m in Sources */ = {isa = PBXBuildFile; fileRef = B546038916C0FFA8007D4FB3 /* SDWebImageCompat.m */; };
@@ -365,6 +366,7 @@
 		B542275916CDF86E0020F300 /* diff.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = diff.js; sourceTree = "<group>"; };
 		B542275A16CDF86E0020F300 /* highlight.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = highlight.js; sourceTree = "<group>"; };
 		B542275D16CDFB390020F300 /* github.css */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.css; path = github.css; sourceTree = "<group>"; };
+		B542276516CF6F980020F300 /* raw_file.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = raw_file.html; sourceTree = "<group>"; };
 		B546038416C0FFA8007D4FB3 /* MKAnnotationView+WebCache.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "MKAnnotationView+WebCache.h"; sourceTree = "<group>"; };
 		B546038516C0FFA8007D4FB3 /* MKAnnotationView+WebCache.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "MKAnnotationView+WebCache.m"; sourceTree = "<group>"; };
 		B546038616C0FFA8007D4FB3 /* SDImageCache.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SDImageCache.h; sourceTree = "<group>"; };
@@ -1027,6 +1029,7 @@
 				B552949A16C8705B0010D56A /* gitos.css */,
 				B542275216CCC8D00020F300 /* commit_details.html */,
 				B542275D16CDFB390020F300 /* github.css */,
+				B542276516CF6F980020F300 /* raw_file.html */,
 			);
 			path = Html;
 			sourceTree = "<group>";
@@ -1233,6 +1236,7 @@
 				B542275116CCBBDF0020F300 /* CommitCell.xib in Resources */,
 				B542275316CCC8D00020F300 /* commit_details.html in Resources */,
 				B542275E16CDFB390020F300 /* github.css in Resources */,
+				B542276616CF6F980020F300 /* raw_file.html in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
