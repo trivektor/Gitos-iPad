@@ -80,11 +80,11 @@
     User *author = [self.commit getAuthor];
 
     NSString *commitMessageString = [NSString stringWithFormat:@" \
-    <tr> \
+    <tr id='commit-overview'> \
         <td> \
             <h4>%@</h4> \
             <p> \
-                <img src='%@' class='avatar' /> \
+                <img src='%@' class='avatar pull-left' /> \
                 authored %@ \
             </p> \
         </td> \
@@ -93,6 +93,13 @@
     [author getAvatarUrl],
     [self.commit getCommittedAt]];
 
+    commitMessageString = [commitMessageString stringByAppendingFormat:@" \
+    <tr> \
+        <td>Showing %i changed %@</td> \
+    </tr>",
+    [files count],
+    [files count] > 1 ? @"files" : @"file"];
+
     NSString *markupString = @" \
     <tr> \
         <td> \
@@ -100,8 +107,8 @@
                 <b class='pull-left'>%@</b> \
                 <span class='pull-right commit-stats'> \
                     <b>%@</b> \
-                    <label class='label label-important'>%@</label> \
                     <label class='label label-success'>%@</label> \
+                    <label class='label label-important'>%@</label> \
                 </span> \
             </div> \
             <pre><code>%@</code></pre> \
@@ -113,11 +120,11 @@
         NSInteger additions = [file getAdditions], deletions = [file getDeletions];
 
         commitHtmlString = [commitHtmlString stringByAppendingFormat:markupString,
-                            [file getFileName],
-                            [NSString stringWithFormat:@"%i", (additions + deletions)],
-                            [NSString stringWithFormat:@"%i additions", additions],
-                            [NSString stringWithFormat:@"%i deletions", deletions],
-                            [file getPatch]];
+            [file getFileName],
+            [NSString stringWithFormat:@"%i", (additions + deletions)],
+            [NSString stringWithFormat:@"%i %@", additions, additions > 1 ? @"additions" : @"addition"],
+            [NSString stringWithFormat:@"%i %@", deletions, deletions > 1 ? @"deletions" : @"deletion"],
+            [file getPatch]];
     }
 
     NSString *commitDetailsPath = [[NSBundle mainBundle] pathForResource:@"commit_details" ofType:@"html"];

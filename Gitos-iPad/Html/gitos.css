@@ -24,18 +24,12 @@ table td, table th {
 
 .avatar {
     display: block;
-    float: left;
     margin-right: 10px;
-    border-radius: 3px
-}
-
-#issue-comments-table .avatar {
-    float: none;
-    margin-right: 0;
+    border-radius: 3px;
+    max-width: 40px;
 }
 
 #issue-comments-table .issue-creator {
-    float: left;
     width: 40px;
 }
 
@@ -62,3 +56,10 @@ table td, table th {
     width: 25px;
 }
 
+#commit-overview {
+    background: #f5f5f5
+}
+
+#commit-overview h4 {
+    margin-top: 0
+}
