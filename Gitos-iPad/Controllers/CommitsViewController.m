@@ -19,6 +19,8 @@
 
 @implementation CommitsViewController
 
+static NSInteger PER_PAGE = 100;
+
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
@@ -37,7 +39,7 @@
     // Do any additional setup after loading the view from its nib.
     [self performHouseKeepingTasks];
     [self registerNib];
-    [self fetchCommitsForPage:self.currentPage++];
+    [self fetchCommits];
 }
 
 - (void)performHouseKeepingTasks
@@ -92,15 +94,26 @@
     [self.navigationController pushViewController:commitController animated:YES];
 }
 
-- (void)fetchCommitsForPage:(NSInteger)page
+- (void)fetchCommits
 {
     NSURL *commitsUrl = [NSURL URLWithString:[self.repo getCommitsUrl]];
 
     AFHTTPClient *httpClient = [[AFHTTPClient alloc] initWithBaseURL:commitsUrl];
 
+    NSString *sha;
+    NSInteger *startIndex;
+
+    if (self.endSha == (id)[NSNull null]) {
+        sha = self.sha;
+        startIndex = 0;
+    } else {
+        sha = self.endSha;
+        startIndex = 1;
+    }
+
     NSMutableDictionary *params = [NSMutableDictionary dictionaryWithObjectsAndKeys:
-                                   self.sha, @"sha",
-                                   @"100", @"per_page",
+                                   sha, @"sha",
+                                   [NSString stringWithFormat:@"%i", PER_PAGE], @"per_page",
                                    self.accessToken, @"access_token",
                                    nil];
 
@@ -114,9 +127,12 @@
 
          NSArray *json = [NSJSONSerialization JSONObjectWithData:[response dataUsingEncoding:NSUTF8StringEncoding] options:NSJSONReadingMutableContainers error:nil];
 
-         for (int i=0; i < json.count; i++) {
+         for (int i=startIndex; i < json.count; i++) {
              [self.commits addObject:[[Commit alloc] initWithData:[json objectAtIndex:i]]];
          }
+
+         Commit *lastCommit = [self.commits lastObject];
+         self.endSha = [lastCommit getSha];
 
          [self.commitsTable reloadData];
          [self.hud hide:YES];
@@ -133,7 +149,7 @@
 {
     if (([scrollView contentOffset].y + scrollView.frame.size.height) == scrollView.contentSize.height) {
         [self.hud show:YES];
-        [self fetchCommitsForPage:self.currentPage++];
+        [self fetchCommits];
     }
 }
 
