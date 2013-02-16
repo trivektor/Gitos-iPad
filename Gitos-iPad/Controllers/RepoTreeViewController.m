@@ -23,7 +23,7 @@
 
 @implementation RepoTreeViewController
 
-@synthesize accessToken, accessTokenParams, treeTable, branchUrl, branch, repo, node;
+@synthesize accessToken, accessTokenParams, treeTable, repo, node;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -51,7 +51,7 @@
 - (void)performHouseKeepingTasks
 {
     if (self.node == (id)[NSNull null]) {
-        self.navigationItem.title = [self.branch name];
+        self.navigationItem.title = [self.branch getName];
     } else if ([self.node isTree]) {
         self.navigationItem.title = self.node.path;
     }
@@ -72,7 +72,7 @@
 
 - (void)fetchTopLayer
 {
-    NSString *treeUrl = [[self.repo getTreeUrl] stringByAppendingString:self.branch.name];
+    NSString *treeUrl = [[self.repo getTreeUrl] stringByAppendingString:[self.branch getName]];
     
     NSURL *repoTreeUrl = [NSURL URLWithString:treeUrl];
     
@@ -204,8 +204,7 @@
 - (void)showCommitForBranch
 {
     CommitsViewController *commitsController = [[CommitsViewController alloc] init];
-    commitsController.branch = self.branch.name;
-    commitsController.sha = self.branch.sha;
+    commitsController.branch = self.branch;
     commitsController.repo = self.repo;
     [self.navigationController pushViewController:commitsController animated:YES];
 }

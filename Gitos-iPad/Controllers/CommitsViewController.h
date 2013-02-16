@@ -9,13 +9,13 @@
 #import <UIKit/UIKit.h>
 #import "Repo.h"
 #import "MBProgressHUD.h"
+#import "Branch.h"
 
 @interface CommitsViewController : UIViewController <UITableViewDataSource, UITableViewDelegate, UIScrollViewDelegate>
 
 @property (nonatomic, strong) Repo *repo;
 @property (nonatomic, strong) MBProgressHUD *hud;
-@property (nonatomic, strong) NSString *branch;
-@property (nonatomic, strong) NSString *sha;
+@property (nonatomic, strong) Branch *branch;
 @property (nonatomic, strong) NSString *endSha;
 @property (nonatomic, strong) NSString *accessToken;
 @property (nonatomic, strong) NSMutableArray *commits;

@@ -144,7 +144,7 @@
     Branch *branch = [self.repoBranches objectAtIndex:indexPath.row];
     
     cell.textLabel.font = [UIFont fontWithName:@"Arial" size:14.0];
-    cell.textLabel.text = [branch name];
+    cell.textLabel.text = [branch getName];
     
     return cell;
 }

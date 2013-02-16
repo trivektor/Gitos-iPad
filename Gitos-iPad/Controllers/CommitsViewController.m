@@ -103,8 +103,8 @@ static NSInteger PER_PAGE = 100;
     NSString *sha;
     NSInteger *startIndex;
 
-    if (self.endSha == (id)[NSNull null]) {
-        sha = self.sha;
+    if (self.endSha == (id)[NSNull null] || self.endSha == nil) {
+        sha = [self.branch getSha];
         startIndex = 0;
     } else {
         sha = self.endSha;
