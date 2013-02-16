@@ -63,3 +63,7 @@ table td, table th {
 #commit-overview h4 {
     margin-top: 0
 }
+
+#commit-overview p {
+    margin-bottom: 0
+}

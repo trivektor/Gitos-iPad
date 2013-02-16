@@ -21,5 +21,6 @@
 - (void)performHouseKeepingTasks;
 - (void)fetchCommitDetails;
 - (void)displayCommitDetails;
+- (NSString *)encodeHtmlEntities:(NSString *)rawHtmlString;
 
 @end

@@ -124,7 +124,7 @@
             [NSString stringWithFormat:@"%i", (additions + deletions)],
             [NSString stringWithFormat:@"%i %@", additions, additions > 1 ? @"additions" : @"addition"],
             [NSString stringWithFormat:@"%i %@", deletions, deletions > 1 ? @"deletions" : @"deletion"],
-            [file getPatch]];
+            [self encodeHtmlEntities:[file getPatch]]];
     }
 
     NSString *commitDetailsPath = [[NSBundle mainBundle] pathForResource:@"commit_details" ofType:@"html"];
@@ -132,6 +132,13 @@
     NSString *contentHtml = [NSString stringWithFormat:commitDetails, commitMessageString, commitHtmlString];
     NSURL *baseUrl = [NSURL fileURLWithPath:[[NSBundle mainBundle] bundlePath]];
     [self.commitView loadHTMLString:contentHtml baseURL:baseUrl];
+}
+
+- (NSString *)encodeHtmlEntities:(NSString *)rawHtmlString
+{
+    return [[rawHtmlString
+      stringByReplacingOccurrencesOfString: @">" withString: @"&#62;"]
+     stringByReplacingOccurrencesOfString: @"<" withString: @"&#60;"];
 }
 
 - (void)didReceiveMemoryWarning
