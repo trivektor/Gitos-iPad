@@ -13,6 +13,7 @@
 
 @property (nonatomic, weak) IBOutlet UIImageView *fieldIcon;
 @property (nonatomic, weak) IBOutlet UILabel *fontAwesomeLabel;
+@property (nonatomic, weak) IBOutlet UILabel *fieldLabel;
 @property (nonatomic, weak) IBOutlet UILabel *fieldDetails;
 
 - (void)displayByIndexPath:(NSIndexPath *)indexPath forUser:(User *)user;

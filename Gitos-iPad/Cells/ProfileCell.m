@@ -34,42 +34,53 @@
 {
     self.fontAwesomeLabel.font = [UIFont fontWithName:kFontAwesomeFamilyName size:19];
 
-    NSString *detailsText, *fontAwesome;
+    NSString *labelText, *detailsText, *fontAwesome;
 
     if (indexPath.row == 0) {
         fontAwesome = [NSString fontAwesomeIconStringForIconIdentifier:@"icon-map-marker"];
-        detailsText = [NSString stringWithFormat:@"Location: %@", [user getLocation]];
+        labelText   = @"Location";
+        detailsText = [user getLocation] == (id)[NSNull null] ? @"n/a" : [user getLocation];
     } else if (indexPath.row == 1) {
         fontAwesome = [NSString fontAwesomeIconStringForIconIdentifier:@"icon-globe"];
-        detailsText = [NSString stringWithFormat:@"Website: %@", [user getWebsite]];
+        labelText   = @"Website";
+        detailsText = [user getWebsite] == (id)[NSNull null] ? @"n/a" : [user getWebsite];
     } else if (indexPath.row == 2) {
         fontAwesome = [NSString fontAwesomeIconStringForIconIdentifier:@"icon-envelope"];
-        detailsText = [NSString stringWithFormat:@"Email: %@", [user getEmail]];
+        labelText   = @"Email";
+        detailsText = [user getEmail] == (id)[NSNull null] ? @"n/a" : [user getEmail];
     } else if (indexPath.row == 3) {
         fontAwesome = [NSString fontAwesomeIconStringForIconIdentifier:@"icon-group"];
-        detailsText = [NSString stringWithFormat:@"%i followers", [user getFollowers]];
+        labelText   = @"Followers";
+        detailsText = [NSString stringWithFormat:@"%i", [user getFollowers]];
     } else if (indexPath.row == 4) {
         fontAwesome = [NSString fontAwesomeIconStringForIconIdentifier:@"icon-group"];
-        detailsText = [NSString stringWithFormat:@"%i following", [user getFollowing]];
+        labelText   = @"Following";
+        detailsText = [NSString stringWithFormat:@"%i", [user getFollowing]];
     } else if (indexPath.row == 5) {
         fontAwesome = [NSString fontAwesomeIconStringForIconIdentifier:@"icon-briefcase"];
-        detailsText = [NSString stringWithFormat:@"Company: %@", [user getCompany]];
+        labelText   = @"Company";
+        detailsText = [user getCompany] == (id)[NSNull null] ? @"n/a" : [user getCompany];
     } else if (indexPath.row == 6) {
         fontAwesome = [NSString fontAwesomeIconStringForIconIdentifier:@"icon-folder-open"];
-        detailsText = [NSString stringWithFormat:@"Repos: %i", [user getNumberOfRepos]];
+        labelText   = @"Repos";
+        detailsText = [NSString stringWithFormat:@"%i", [user getNumberOfRepos]];
     } else if (indexPath.row == 7) {
         fontAwesome = [NSString fontAwesomeIconStringForIconIdentifier:@"icon-calendar"];
-        detailsText = [NSString stringWithFormat:@"Joined: %@", [user getCreatedAt]];
+        labelText   = @"Joined";
+        detailsText = [user getCreatedAt];
     } else if (indexPath.row == 8) {
         fontAwesome = [NSString fontAwesomeIconStringForIconIdentifier:@"icon-sitemap"];
-        detailsText = @"Organizations";
+        labelText   = @"Organizations";
+        detailsText = @"view all";
     } else if (indexPath.row == 9) {
         fontAwesome = [NSString fontAwesomeIconStringForIconIdentifier:@"icon-rss"];
-        detailsText = @"Recent Activity";
+        labelText   = @"Recent Activity";
+        detailsText = @"view all";
     }
     
     //self.fieldIcon.image        = image;
     self.fontAwesomeLabel.text  = fontAwesome;
+    self.fieldLabel.text        = labelText;
     self.fieldDetails.text      = detailsText;
     //self.fieldIcon.contentMode  = UIViewContentModeScaleAspectFit;
     self.selectionStyle         = UITableViewCellSelectionStyleNone;
