@@ -15,7 +15,7 @@
 @property (nonatomic, strong) MBProgressHUD *hud;
 @property (nonatomic, strong) NSMutableArray *results;
 @property (nonatomic, weak) IBOutlet UISearchBar *searchBar;
-@property (nonatomic, weak) IBOutlet UISegmentedControl *searchCriteria;
+@property (nonatomic, strong) UISegmentedControl *searchCriteria;
 @property (nonatomic, weak) IBOutlet UITableView *resultsTable;
 
 - (void)performHouseKeepingTasks;
@@ -24,5 +24,7 @@
 - (BOOL)isRepoSearch;
 - (void)searchUsers:(NSString *)term;
 - (void)searchRepos:(NSString *)term;
+- (void)fetchUserAtIndexPath:(NSIndexPath *)indexPath;
+- (void)fetchRepoAtIndexPath:(NSIndexPath *)indexPath;
 
 @end

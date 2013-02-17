@@ -35,5 +35,6 @@
 - (NSString *)getUpdatedAt;
 - (NSString *)getAuthorName;
 - (NSString *)convertToRelativeDate:(NSString *)originalDateString;
+- (NSString *)getOwner;
 
 @end

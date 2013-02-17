@@ -154,4 +154,9 @@
     return [self.relativeDateDescriptor describeDate:date relativeTo:[NSDate date]];
 }
 
+- (NSString *)getOwner
+{
+    return [self.data valueForKey:@"owner"];
+}
+
 @end

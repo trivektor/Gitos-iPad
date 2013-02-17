@@ -9,6 +9,8 @@
 #import "SearchViewController.h"
 #import "RepoSearchResultCell.h"
 #import "UserSearchResultCell.h"
+#import "RepoViewController.h"
+#import "ProfileViewController.h"
 #import "User.h"
 #import "Repo.h"
 
@@ -35,11 +37,28 @@
     // Do any additional setup after loading the view from its nib.
     [self performHouseKeepingTasks];
     [self prepareSearchBar];
+    self.hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+    self.hud.mode = MBProgressHUDAnimationFade;
+    self.hud.labelText = @"Loading";
+    [self.hud hide:YES];
+}
+
+- (void)viewWillAppear:(BOOL)animated
+{
+    self.navigationItem.hidesBackButton = YES;
 }
 
 - (void)performHouseKeepingTasks
 {
     self.navigationItem.title = @"Search";
+    NSArray *criteria = [[NSArray alloc] initWithObjects:@"Repo", @"User", nil];
+    self.searchCriteria = [[UISegmentedControl alloc] initWithItems:criteria];
+    self.searchCriteria.segmentedControlStyle = UISegmentedControlStyleBar;
+    self.searchCriteria.momentary = NO;
+    [self.searchCriteria addTarget:self action:nil forControlEvents:UIControlEventValueChanged];
+
+    UIBarButtonItem *criteriaButton = [[UIBarButtonItem alloc] initWithCustomView:self.searchCriteria];
+    self.navigationItem.rightBarButtonItem = criteriaButton;
 }
 
 - (void)prepareSearchBar
@@ -82,11 +101,6 @@
     return self.results.count;
 }
 
-//- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
-//{
-//    return 68;
-//}
-
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     UITableViewCell *cell = [self.resultsTable dequeueReusableCellWithIdentifier:@"Cell"];
@@ -114,9 +128,19 @@
     return cell;
 }
 
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    if (self.isRepoSearch) {
+        [self fetchRepoAtIndexPath:indexPath];
+    } else {
+        [self fetchUserAtIndexPath:indexPath];
+    }
+}
+
 - (void)searchBarSearchButtonClicked:(UISearchBar *)searchBar
 {
     [searchBar resignFirstResponder];
+    [self.hud show:YES];
 
     NSString *term = [searchBar text];
 
@@ -160,9 +184,11 @@
 
          [self.resultsTable reloadData];
          [self.searchBar resignFirstResponder];
+         [self.hud hide:YES];
      }
      failure:^(AFHTTPRequestOperation *operation, NSError *error) {
          NSLog(@"%@", error);
+         [self.hud hide:YES];
      }];
     
     [operation start];
@@ -202,9 +228,11 @@
 
          [self.resultsTable reloadData];
          [self.searchBar resignFirstResponder];
+         [self.hud hide:YES];
      }
      failure:^(AFHTTPRequestOperation *operation, NSError *error) {
          NSLog(@"%@", error);
+         [self.hud hide:YES];
      }];
 
     [operation start];
@@ -232,6 +260,80 @@
 - (void)searchBarCancelButtonClicked:(UISearchBar *)searchBar
 {
     [searchBar resignFirstResponder];
+}
+
+- (void)fetchRepoAtIndexPath:(NSIndexPath *)indexPath
+{
+    Repo *repo = [self.results objectAtIndex:indexPath.row];
+
+    NSURL *searchUrl = [NSURL URLWithString:[AppConfig getConfigValue:@"GithubApiHost"]];
+    
+    AFHTTPClient *httpClient = [[AFHTTPClient alloc] initWithBaseURL:searchUrl];
+    
+    NSMutableDictionary *params = [NSMutableDictionary dictionaryWithObjectsAndKeys:
+                                   self.accessToken, @"access_token",
+                                   nil];
+    
+    NSMutableURLRequest *getRequest = [httpClient requestWithMethod:@"GET"
+                           path:[NSString stringWithFormat:@"repos/%@/%@", [repo getOwner], [repo getName]]
+                     parameters:params];
+    
+    AFHTTPRequestOperation *operation = [[AFHTTPRequestOperation alloc] initWithRequest:getRequest];
+    
+    [operation setCompletionBlockWithSuccess:
+     ^(AFHTTPRequestOperation *operation, id responseObject){
+         [self.hud hide:YES];
+         NSString *response = [operation responseString];
+
+         NSDictionary *json = [NSJSONSerialization JSONObjectWithData:[response dataUsingEncoding:NSUTF8StringEncoding] options:NSJSONReadingMutableContainers error:nil];
+
+         RepoViewController *repoController = [[RepoViewController alloc] init];
+         repoController.repo = [[Repo alloc] initWithData:json];
+         [self.navigationController pushViewController:repoController animated:YES];
+     }
+     failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+         NSLog(@"%@", error);
+         [self.hud hide:YES];
+     }];
+
+    [operation start];
+}
+
+- (void)fetchUserAtIndexPath:(NSIndexPath *)indexPath
+{
+    User *user = [self.results objectAtIndex:indexPath.row];
+
+    NSURL *searchUrl = [NSURL URLWithString:[AppConfig getConfigValue:@"GithubApiHost"]];
+
+    AFHTTPClient *httpClient = [[AFHTTPClient alloc] initWithBaseURL:searchUrl];
+
+    NSMutableDictionary *params = [NSMutableDictionary dictionaryWithObjectsAndKeys:
+                                   self.accessToken, @"access_token",
+                                   nil];
+
+    NSMutableURLRequest *getRequest = [httpClient requestWithMethod:@"GET"
+                       path:[NSString stringWithFormat:@"/users/%@", [user getLogin]]
+                 parameters:params];
+
+    AFHTTPRequestOperation *operation = [[AFHTTPRequestOperation alloc] initWithRequest:getRequest];
+
+    [operation setCompletionBlockWithSuccess:
+     ^(AFHTTPRequestOperation *operation, id responseObject){
+         [self.hud hide:YES];
+         NSString *response = [operation responseString];
+
+         NSDictionary *json = [NSJSONSerialization JSONObjectWithData:[response dataUsingEncoding:NSUTF8StringEncoding] options:NSJSONReadingMutableContainers error:nil];
+
+         ProfileViewController *profileController = [[ProfileViewController alloc] init];
+         profileController.user = [[User alloc] initWithData:json];
+         [self.navigationController pushViewController:profileController animated:YES];
+     }
+     failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+         NSLog(@"%@", error);
+         [self.hud hide:YES];
+     }];
+
+    [operation start];
 }
 
 - (void)didReceiveMemoryWarning
