@@ -16,6 +16,7 @@
 #import "ProfileViewController.h"
 #import "RepoSearchViewController.h"
 #import "LoginViewController.h"
+#import "SearchViewController.h"
 #import "SSKeychain.h"
 
 @interface MasterViewController ()
@@ -91,7 +92,7 @@
         profileController.hideBackButton = YES;
         [self.delegate didSelectViewController:profileController];
     } else if (indexPath.row == 5) {
-        [self.delegate didSelectViewController:[[RepoSearchViewController alloc] init]];
+        [self.delegate didSelectViewController:[[SearchViewController alloc] init]];
     } else if (indexPath.row == 6) {
         UIActionSheet *actionSheet = [[UIActionSheet alloc] initWithTitle:@"Are you sure?" delegate:self cancelButtonTitle:@"Cancel" destructiveButtonTitle:@"Sign out" otherButtonTitles:nil];
         actionSheet.actionSheetStyle = UIActionSheetStyleBlackOpaque;

@@ -12,4 +12,8 @@
     #import <UIKit/UIKit.h>
     #import <Foundation/Foundation.h>
     #import <CoreData/CoreData.h>
+    #import "AFHTTPClient.h"
+    #import "AFHTTPRequestOperation.h"
+    #import "SSKeychain.h"
+    #import "MBProgressHUD.h"
 #endif
