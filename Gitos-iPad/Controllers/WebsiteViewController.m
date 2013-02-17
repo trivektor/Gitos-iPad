@@ -7,6 +7,7 @@
 //
 
 #import "WebsiteViewController.h"
+#import "NSString+FontAwesome.h"
 
 @interface WebsiteViewController ()
 
@@ -28,11 +29,23 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    // Do any additional setup after loading the view from its nib.
+    [self performHouseKeepingTasks];
+    [self loadWebsite];
+}
+
+- (void)performHouseKeepingTasks
+{
     self.hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
     self.hud.mode = MBProgressHUDAnimationFade;
     self.hud.labelText = @"Loading";
-    // Do any additional setup after loading the view from its nib.
-    [self loadWebsite];
+}
+
+- (void)showOptions
+{
+    UIActionSheet *actionSheet = [[UIActionSheet alloc] initWithTitle:@"Options" delegate:self cancelButtonTitle:@"Cancel" destructiveButtonTitle:nil otherButtonTitles:@"Open in Safari", @"Mail link", @"Copy link", nil];
+    actionSheet.actionSheetStyle = UIActionSheetStyleBlackOpaque;
+    [actionSheet showInView:[UIApplication sharedApplication].keyWindow];
 }
 
 - (void)didReceiveMemoryWarning
@@ -52,11 +65,49 @@
 {
     [self.hud hide:YES];
     self.navigationItem.title = [websiteView stringByEvaluatingJavaScriptFromString:@"document.title"];
+    UIBarButtonItem *optionsButton = [[UIBarButtonItem alloc] initWithTitle:@"Options" style:UIBarButtonItemStyleBordered target:self action:@selector(showOptions)];
+    self.navigationItem.rightBarButtonItem = optionsButton;
 }
 
 - (void)webView:(UIWebView *)webView didFailLoadWithError:(NSError *)error
 {
     [self.hud hide:YES];
+}
+
+- (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex
+{
+    if (buttonIndex == 0) {
+        [self openInSafari];
+    } else if (buttonIndex == 1) {
+        [self mailLink];
+    } else if (buttonIndex == 2) {
+        [self copyLink];
+    }
+}
+
+- (void)mailComposeController:(MFMailComposeViewController *)controller didFinishWithResult:(MFMailComposeResult)result error:(NSError *)error
+{
+    [self dismissViewControllerAnimated:YES completion:nil];
+}
+
+- (void)openInSafari
+{
+    [[UIApplication sharedApplication] openURL:[NSURL URLWithString:self.requestedUrl]];
+}
+
+- (void)mailLink
+{
+    MFMailComposeViewController *mailViewController = [[MFMailComposeViewController alloc] init];
+    mailViewController.mailComposeDelegate = self;
+    [mailViewController setSubject:@"Profile website link"];
+    [mailViewController setMessageBody:self.requestedUrl isHTML:YES];
+    [self presentViewController:mailViewController animated:YES completion:nil];
+}
+
+- (void)copyLink
+{
+    UIPasteboard *pasteboard = [UIPasteboard generalPasteboard];
+    pasteboard.string = self.requestedUrl;
 }
 
 @end

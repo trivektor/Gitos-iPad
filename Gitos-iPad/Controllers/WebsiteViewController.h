@@ -7,14 +7,19 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "MBProgressHUD.h"
+#import <QuartzCore/QuartzCore.h>
 
-@interface WebsiteViewController : UIViewController <UIWebViewDelegate>
+@interface WebsiteViewController : UIViewController <UIWebViewDelegate, UIActionSheetDelegate, MFMailComposeViewControllerDelegate>
 
 @property (nonatomic, strong) NSString *requestedUrl;
 @property (nonatomic, weak) IBOutlet UIWebView *websiteView;
 @property (nonatomic, strong) MBProgressHUD *hud;
 
+- (void)performHouseKeepingTasks;
 - (void)loadWebsite;
+- (void)showOptions;
+- (void)openInSafari;
+- (void)mailLink;
+- (void)copyLink;
 
 @end

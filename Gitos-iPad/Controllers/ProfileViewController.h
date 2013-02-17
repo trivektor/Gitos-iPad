@@ -8,8 +8,6 @@
 
 #import <UIKit/UIKit.h>
 #import <QuartzCore/QuartzCore.h>
-#import <MessageUI/MessageUI.h>
-#import "MBProgressHUD.h"
 #import "User.h"
 
 @interface ProfileViewController : UIViewController <UITableViewDataSource, UITableViewDelegate, MFMailComposeViewControllerDelegate>
