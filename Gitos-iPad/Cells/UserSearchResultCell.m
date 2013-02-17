@@ -26,4 +26,12 @@
     // Configure the view for the selected state
 }
 
+- (void)render
+{
+    NSData *data = [NSData dataWithContentsOfURL:[NSURL URLWithString:[self.user getAvatarUrl]]];
+    self.avatar.image = [UIImage imageWithData:data];
+    self.name.text = [self.user getName];
+    self.username.text = [self.user getLogin];
+}
+
 @end

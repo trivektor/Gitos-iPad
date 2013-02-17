@@ -45,7 +45,7 @@
 								<string key="NSFrame">{{20, 3}, {663, 21}}</string>
 								<reference key="NSSuperview" ref="944088973"/>
 								<reference key="NSWindow"/>
-								<reference key="NSNextKeyView"/>
+								<reference key="NSNextKeyView" ref="1070276913"/>
 								<string key="NSReuseIdentifierKey">_NS:9</string>
 								<bool key="IBUIOpaque">NO</bool>
 								<bool key="IBUIClipsSubviews">YES</bool>
@@ -82,6 +82,7 @@
 								<string key="NSFrame">{{20, 25}, {663, 21}}</string>
 								<reference key="NSSuperview" ref="944088973"/>
 								<reference key="NSWindow"/>
+								<reference key="NSNextKeyView" ref="542616599"/>
 								<string key="NSReuseIdentifierKey">_NS:9</string>
 								<bool key="IBUIOpaque">NO</bool>
 								<bool key="IBUIClipsSubviews">YES</bool>
@@ -114,6 +115,7 @@
 								<string key="NSFrame">{{20, 46}, {663, 21}}</string>
 								<reference key="NSSuperview" ref="944088973"/>
 								<reference key="NSWindow"/>
+								<reference key="NSNextKeyView"/>
 								<string key="NSReuseIdentifierKey">_NS:9</string>
 								<bool key="IBUIOpaque">NO</bool>
 								<bool key="IBUIClipsSubviews">YES</bool>
@@ -155,6 +157,7 @@
 				<string key="NSReuseIdentifierKey">_NS:9</string>
 				<string key="targetRuntimeIdentifier">IBIPadFramework</string>
 				<reference key="IBUIContentView" ref="944088973"/>
+				<string key="IBUIReuseIdentifier">RepoSearchResultCell</string>
 			</object>
 		</array>
 		<object class="IBObjectContainer" key="IBDocument.Objects">

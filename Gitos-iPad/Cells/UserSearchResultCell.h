@@ -7,7 +7,15 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "User.h"
 
 @interface UserSearchResultCell : UITableViewCell
+
+@property (nonatomic, weak) IBOutlet UILabel *name;
+@property (nonatomic, weak) IBOutlet UILabel *username;
+@property (nonatomic, weak) IBOutlet UIImageView *avatar;
+@property (nonatomic, strong) User *user;
+
+- (void)render;
 
 @end

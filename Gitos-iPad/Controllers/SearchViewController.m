@@ -64,12 +64,12 @@
 
 - (BOOL)isUserSearch
 {
-    return self.searchCriteria.selectedSegmentIndex == 0;
+    return self.searchCriteria.selectedSegmentIndex == 1;
 }
 
 - (BOOL)isRepoSearch
 {
-    return self.searchCriteria.selectedSegmentIndex == 1;
+    return self.searchCriteria.selectedSegmentIndex == 0;
 }
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
@@ -82,26 +82,36 @@
     return self.results.count;
 }
 
+//- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+//{
+//    return 68;
+//}
+
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    NSLog(@"constructing cells");
-    if ([self isRepoSearch]) {
-        RepoSearchResultCell *cell = [self.resultsTable dequeueReusableCellWithIdentifier:@"RepoSearchResultCell"];
+    UITableViewCell *cell = [self.resultsTable dequeueReusableCellWithIdentifier:@"Cell"];
 
-        if (!cell) {
-            cell = [[RepoSearchResultCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"RepoSearchResultCell"];
-        }
-
-        return cell;
-    } else {
-        UserSearchResultCell *cell = [self.resultsTable dequeueReusableCellWithIdentifier:@"UserSearchResultCell"];
-
-        if (!cell) {
-            cell = [[UserSearchResultCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"UserSearchResultCell"];
-        }
-
-        return cell;
+    if (!cell) {
+        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:@"Cell"];
     }
+
+    cell.textLabel.font       = [UIFont fontWithName:@"Arial-BoldMT" size:14.0];
+    cell.detailTextLabel.font = [UIFont fontWithName:@"Arial" size:12.0];
+    cell.accessoryType        = UITableViewCellAccessoryDisclosureIndicator;
+
+    if ([self isRepoSearch]) {
+        Repo *repo = [self.results objectAtIndex:indexPath.row];
+        cell.textLabel.text = [repo getName];
+        cell.detailTextLabel.text = [repo getDescription];
+    } else {
+        User *user = [self.results objectAtIndex:indexPath.row];
+        if ([user getName] != (id)[NSNull null]) {
+            cell.textLabel.text = [user getName];
+        }
+        cell.detailTextLabel.text = [user getLogin];
+    }
+
+    return cell;
 }
 
 - (void)searchBarSearchButtonClicked:(UISearchBar *)searchBar
@@ -142,11 +152,10 @@
 
          NSArray *users = [json valueForKey:@"users"];
 
-         User *u;
+         [self.results removeAllObjects];
 
          for (int i=0; i < users.count; i++) {
-             u = [[User alloc] initWithData:[users objectAtIndex:i]];
-             [self.results addObject:u];
+             [self.results addObject:[[User alloc] initWithData:[users objectAtIndex:i]]];
          }
 
          [self.resultsTable reloadData];
@@ -185,11 +194,10 @@
 
          NSArray *repos = [json valueForKey:@"repositories"];
 
-         Repo *r;
+         [self.results removeAllObjects];
 
          for (int i=0; i < repos.count; i++) {
-             r = [[Repo alloc] initWithData:[repos objectAtIndex:i]];
-             [self.results addObject:r];
+             [self.results addObject:[[Repo alloc] initWithData:[repos objectAtIndex:i]]];
          }
 
          [self.resultsTable reloadData];
