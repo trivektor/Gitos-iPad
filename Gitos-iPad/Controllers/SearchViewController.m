@@ -8,6 +8,9 @@
 
 #import "SearchViewController.h"
 #import "RepoSearchResultCell.h"
+#import "UserSearchResultCell.h"
+#import "User.h"
+#import "Repo.h"
 
 @interface SearchViewController ()
 
@@ -59,6 +62,16 @@
     }
 }
 
+- (BOOL)isUserSearch
+{
+    return self.searchCriteria.selectedSegmentIndex == 0;
+}
+
+- (BOOL)isRepoSearch
+{
+    return self.searchCriteria.selectedSegmentIndex == 1;
+}
+
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
     return 1;
@@ -71,7 +84,146 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    NSLog(@"constructing cells");
+    if ([self isRepoSearch]) {
+        RepoSearchResultCell *cell = [self.resultsTable dequeueReusableCellWithIdentifier:@"RepoSearchResultCell"];
+
+        if (!cell) {
+            cell = [[RepoSearchResultCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"RepoSearchResultCell"];
+        }
+
+        return cell;
+    } else {
+        UserSearchResultCell *cell = [self.resultsTable dequeueReusableCellWithIdentifier:@"UserSearchResultCell"];
+
+        if (!cell) {
+            cell = [[UserSearchResultCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"UserSearchResultCell"];
+        }
+
+        return cell;
+    }
+}
+
+- (void)searchBarSearchButtonClicked:(UISearchBar *)searchBar
+{
+    [searchBar resignFirstResponder];
+
+    NSString *term = [searchBar text];
+
+    if ([self isRepoSearch]) {
+        [self searchRepos:term];
+    } else if ([self isUserSearch]) {
+        [self searchUsers:term];
+    }
+}
+
+- (void)searchUsers:(NSString *)term
+{
+    NSURL *searchUrl = [NSURL URLWithString:[AppConfig getConfigValue:@"GithubApiHost"]];
+
+    AFHTTPClient *httpClient = [[AFHTTPClient alloc] initWithBaseURL:searchUrl];
+
+    NSMutableDictionary *params = [NSMutableDictionary dictionaryWithObjectsAndKeys:
+                                   self.accessToken, @"access_token",
+                                   @"bearer", @"token_type",
+                                   nil];
+
+    NSMutableURLRequest *getRequest = [httpClient requestWithMethod:@"GET"
+                       path:[NSString stringWithFormat:@"legacy/user/search/%@", term]
+                 parameters:params];
+
+    AFHTTPRequestOperation *operation = [[AFHTTPRequestOperation alloc] initWithRequest:getRequest];
+
+    [operation setCompletionBlockWithSuccess:
+     ^(AFHTTPRequestOperation *operation, id responseObject){
+         NSString *response = [operation responseString];
+
+         NSDictionary *json = [NSJSONSerialization JSONObjectWithData:[response dataUsingEncoding:NSUTF8StringEncoding] options:NSJSONReadingMutableContainers error:nil];
+
+         NSArray *users = [json valueForKey:@"users"];
+
+         User *u;
+
+         for (int i=0; i < users.count; i++) {
+             u = [[User alloc] initWithData:[users objectAtIndex:i]];
+             [self.results addObject:u];
+         }
+
+         [self.resultsTable reloadData];
+         [self.searchBar resignFirstResponder];
+     }
+     failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+         NSLog(@"%@", error);
+     }];
     
+    [operation start];
+
+}
+
+- (void)searchRepos:(NSString *)term
+{
+    NSURL *searchUrl = [NSURL URLWithString:[AppConfig getConfigValue:@"GithubApiHost"]];
+
+    AFHTTPClient *httpClient = [[AFHTTPClient alloc] initWithBaseURL:searchUrl];
+
+    NSMutableDictionary *params = [NSMutableDictionary dictionaryWithObjectsAndKeys:
+                                   self.accessToken, @"access_token",
+                                   @"bearer", @"token_type",
+                                   nil];
+
+    NSMutableURLRequest *getRequest = [httpClient requestWithMethod:@"GET"
+               path:[NSString stringWithFormat:@"legacy/repos/search/%@", term]
+         parameters:params];
+
+    AFHTTPRequestOperation *operation = [[AFHTTPRequestOperation alloc] initWithRequest:getRequest];
+
+    [operation setCompletionBlockWithSuccess:
+     ^(AFHTTPRequestOperation *operation, id responseObject){
+         NSString *response = [operation responseString];
+
+         NSDictionary *json = [NSJSONSerialization JSONObjectWithData:[response dataUsingEncoding:NSUTF8StringEncoding] options:NSJSONReadingMutableContainers error:nil];
+
+         NSArray *repos = [json valueForKey:@"repositories"];
+
+         Repo *r;
+
+         for (int i=0; i < repos.count; i++) {
+             r = [[Repo alloc] initWithData:[repos objectAtIndex:i]];
+             [self.results addObject:r];
+         }
+
+         [self.resultsTable reloadData];
+         [self.searchBar resignFirstResponder];
+     }
+     failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+         NSLog(@"%@", error);
+     }];
+
+    [operation start];
+}
+
+- (BOOL)searchBarShouldBeginEditing:(UISearchBar *)searchBar
+{
+    searchBar.showsCancelButton = YES;
+    for (UIView *v in searchBar.subviews) {
+        if ([v isKindOfClass:[UIButton class]]) {
+            UIButton *cancelButton = (UIButton *)v;
+            [cancelButton setTintColor:[UIColor colorWithRed:143/255.0 green:143/255.0 blue:143/255.0 alpha:1]];
+            break;
+        }
+    }
+    return YES;
+}
+
+- (BOOL)searchBarShouldEndEditing:(UISearchBar *)searchBar
+{
+    searchBar.showsCancelButton = NO;
+    return YES;
+}
+
+- (void)searchBarCancelButtonClicked:(UISearchBar *)searchBar
+{
+    [searchBar resignFirstResponder];
 }
 
 - (void)didReceiveMemoryWarning

@@ -18,8 +18,11 @@
 @property (nonatomic, weak) IBOutlet UISegmentedControl *searchCriteria;
 @property (nonatomic, weak) IBOutlet UITableView *resultsTable;
 
-
 - (void)performHouseKeepingTasks;
 - (void)prepareSearchBar;
+- (BOOL)isUserSearch;
+- (BOOL)isRepoSearch;
+- (void)searchUsers:(NSString *)term;
+- (void)searchRepos:(NSString *)term;
 
 @end

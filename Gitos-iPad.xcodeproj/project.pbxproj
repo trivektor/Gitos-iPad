@@ -120,6 +120,8 @@
 		B542276616CF6F980020F300 /* raw_file.html in Resources */ = {isa = PBXBuildFile; fileRef = B542276516CF6F980020F300 /* raw_file.html */; };
 		B542276A16D032300020F300 /* SearchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B542276816D0322E0020F300 /* SearchViewController.m */; };
 		B542276B16D032300020F300 /* SearchViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B542276916D0322F0020F300 /* SearchViewController.xib */; };
+		B542276E16D06A3D0020F300 /* UserSearchResultCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B542276D16D06A3D0020F300 /* UserSearchResultCell.m */; };
+		B542277016D06A4D0020F300 /* UserSearchResultCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B542276F16D06A4D0020F300 /* UserSearchResultCell.xib */; };
 		B546039916C0FFA8007D4FB3 /* MKAnnotationView+WebCache.m in Sources */ = {isa = PBXBuildFile; fileRef = B546038516C0FFA8007D4FB3 /* MKAnnotationView+WebCache.m */; };
 		B546039A16C0FFA8007D4FB3 /* SDImageCache.m in Sources */ = {isa = PBXBuildFile; fileRef = B546038716C0FFA8007D4FB3 /* SDImageCache.m */; };
 		B546039B16C0FFA8007D4FB3 /* SDWebImageCompat.m in Sources */ = {isa = PBXBuildFile; fileRef = B546038916C0FFA8007D4FB3 /* SDWebImageCompat.m */; };
@@ -372,6 +374,9 @@
 		B542276716D0322D0020F300 /* SearchViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SearchViewController.h; sourceTree = "<group>"; };
 		B542276816D0322E0020F300 /* SearchViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SearchViewController.m; sourceTree = "<group>"; };
 		B542276916D0322F0020F300 /* SearchViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SearchViewController.xib; sourceTree = "<group>"; };
+		B542276C16D06A3D0020F300 /* UserSearchResultCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserSearchResultCell.h; sourceTree = "<group>"; };
+		B542276D16D06A3D0020F300 /* UserSearchResultCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserSearchResultCell.m; sourceTree = "<group>"; };
+		B542276F16D06A4D0020F300 /* UserSearchResultCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = UserSearchResultCell.xib; sourceTree = "<group>"; };
 		B546038416C0FFA8007D4FB3 /* MKAnnotationView+WebCache.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "MKAnnotationView+WebCache.h"; sourceTree = "<group>"; };
 		B546038516C0FFA8007D4FB3 /* MKAnnotationView+WebCache.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "MKAnnotationView+WebCache.m"; sourceTree = "<group>"; };
 		B546038616C0FFA8007D4FB3 /* SDImageCache.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SDImageCache.h; sourceTree = "<group>"; };
@@ -1019,6 +1024,9 @@
 				B542274D16CCBBD30020F300 /* CommitCell.h */,
 				B542274E16CCBBD30020F300 /* CommitCell.m */,
 				B542275016CCBBDF0020F300 /* CommitCell.xib */,
+				B542276C16D06A3D0020F300 /* UserSearchResultCell.h */,
+				B542276D16D06A3D0020F300 /* UserSearchResultCell.m */,
+				B542276F16D06A4D0020F300 /* UserSearchResultCell.xib */,
 			);
 			path = Cells;
 			sourceTree = "<group>";
@@ -1246,6 +1254,7 @@
 				B542275E16CDFB390020F300 /* github.css in Resources */,
 				B542276616CF6F980020F300 /* raw_file.html in Resources */,
 				B542276B16D032300020F300 /* SearchViewController.xib in Resources */,
+				B542277016D06A4D0020F300 /* UserSearchResultCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1336,6 +1345,7 @@
 				B542274F16CCBBD30020F300 /* CommitCell.m in Sources */,
 				B542275616CDEA580020F300 /* CommitFile.m in Sources */,
 				B542276A16D032300020F300 /* SearchViewController.m in Sources */,
+				B542276E16D06A3D0020F300 /* UserSearchResultCell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
