@@ -65,7 +65,7 @@
             break;
         case 8:
             fieldLabelText = @"Issues";
-            fieldValueText = [NSString stringWithFormat:@"%i", [self.repo getOpenIssues]];
+            fieldValueText = [NSNumberFormatter localizedStringFromNumber:@([self.repo getOpenIssues]) numberStyle:NSNumberFormatterDecimalStyle];
         default:
             break;
     }

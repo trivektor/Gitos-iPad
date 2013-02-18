@@ -122,7 +122,7 @@
 {
     if (([scrollView contentOffset].y + scrollView.frame.size.height) == scrollView.contentSize.height) {
         // Bottom of UITableView reached
-         [self.hud hide:NO];
+        [self.hud show:YES];
         [self fetchUsers:self.currentPage++];
     }
 }

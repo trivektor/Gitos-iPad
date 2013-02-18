@@ -10,8 +10,6 @@
 
 @implementation GistDetailsCell
 
-@synthesize gist, fieldLabel, fieldValue;
-
 - (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
 {
     self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
@@ -31,14 +29,14 @@
 - (void)renderForIndexPath:(NSIndexPath *)indexPath
 {
     if (indexPath.row == 0) {
-        [fieldLabel setText:@"Files"];
-        [fieldValue setText:[NSString stringWithFormat:@"%i", [self.gist getNumberOfFiles]]];
+        [self.fieldLabel setText:@"Files"];
+        [self.fieldValue setText:[NSString stringWithFormat:@"%i", [self.gist getNumberOfFiles]]];
     } else if (indexPath.row == 1) {
-        [fieldLabel setText:@"Forks"];
-        [fieldValue setText:[NSString stringWithFormat:@"%i", [self.gist getNumberOfForks]]];
+        [self.fieldLabel setText:@"Forks"];
+        [self.fieldValue setText:[NSNumberFormatter localizedStringFromNumber:@([self.gist getNumberOfForks]) numberStyle:NSNumberFormatterDecimalStyle]];
     } else if (indexPath.row == 2) {
-        [fieldLabel setText:@"Comments"];
-        [fieldValue setText:[NSString stringWithFormat:@"%i", [self.gist getNumberOfComments]]];
+        [self.fieldLabel setText:@"Comments"];
+        [self.fieldValue setText:[NSString stringWithFormat:@"%i", [self.gist getNumberOfComments]]];
     }
 }
 
