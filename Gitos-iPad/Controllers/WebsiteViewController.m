@@ -65,7 +65,8 @@
 {
     [self.hud hide:YES];
     self.navigationItem.title = [websiteView stringByEvaluatingJavaScriptFromString:@"document.title"];
-    UIBarButtonItem *optionsButton = [[UIBarButtonItem alloc] initWithTitle:@"Options" style:UIBarButtonItemStyleBordered target:self action:@selector(showOptions)];
+    UIBarButtonItem *optionsButton = [[UIBarButtonItem alloc] initWithTitle:@"" style:UIBarButtonItemStyleBordered target:self action:@selector(showOptions)];
+    optionsButton.image = [UIImage imageNamed:@"211-action.png"];
     self.navigationItem.rightBarButtonItem = optionsButton;
 }
 

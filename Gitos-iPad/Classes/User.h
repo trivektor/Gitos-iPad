@@ -35,5 +35,6 @@
 - (NSString *)getCompany;
 - (NSInteger)getNumberOfRepos;
 - (NSString *)getCreatedAt;
+- (NSString *)getHtmlUrl;
 
 @end

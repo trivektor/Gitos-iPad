@@ -90,6 +90,7 @@
     } else if (indexPath.row == 4) {
         ProfileViewController *profileController = [[ProfileViewController alloc] init];
         profileController.hideBackButton = YES;
+        profileController.hideOptionsButton = YES;
         [self.delegate didSelectViewController:profileController];
     } else if (indexPath.row == 5) {
         [self.delegate didSelectViewController:[[SearchViewController alloc] init]];

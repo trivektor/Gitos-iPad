@@ -9,11 +9,7 @@
 #import "ProfileViewController.h"
 #import "FollowViewController.h"
 #import "WebsiteViewController.h"
-#import "SSKeychain.h"
-#import "AFHTTPClient.h"
-#import "AFHTTPRequestOperation.h"
 #import "ProfileCell.h"
-#import "AppConfig.h"
 #import "RecentActivityViewController.h"
 #import "OrganizationsViewController.h"
 
@@ -32,6 +28,9 @@
         // Custom initialization
         self.user = nil;
         self.accessToken = [SSKeychain passwordForService:@"access_token" account:@"gitos"];
+        self.accessTokenParams = [NSMutableDictionary dictionaryWithObjectsAndKeys:
+                                       self.accessToken, @"access_token",
+                                       nil];
         self.hideBackButton = NO;
     }
     return self;
@@ -58,6 +57,13 @@
     self.hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
     self.hud.mode = MBProgressHUDAnimationFade;
     self.hud.labelText = @"Loading";
+}
+
+- (void)addOptionsButton
+{
+    UIBarButtonItem *optionsButton = [[UIBarButtonItem alloc] initWithTitle:@"" style:UIBarButtonItemStyleBordered target:self action:@selector(showProfileOptions)];
+    optionsButton.image = [UIImage imageNamed:@"211-action.png"];
+    self.navigationItem.rightBarButtonItem = optionsButton;
 }
 
 - (void)prepareProfileTable
@@ -100,28 +106,26 @@
     } else {
         userUrl = [NSURL URLWithString:[NSString stringWithFormat:@"%@/users/%@", githubApiHost, [self.user getLogin]]];
     }
-    
+
     AFHTTPClient *httpClient = [[AFHTTPClient alloc] initWithBaseURL:userUrl];
-    
-    NSMutableDictionary *params = [NSMutableDictionary dictionaryWithObjectsAndKeys:
-                                   self.accessToken, @"access_token",
-                                   @"bearer", @"token_type",
-                                   nil];
-    
-    NSMutableURLRequest *getRequest = [httpClient requestWithMethod:@"GET" path:userUrl.absoluteString parameters:params];
-    
+
+    NSMutableURLRequest *getRequest = [httpClient requestWithMethod:@"GET" path:userUrl.absoluteString parameters:self.accessTokenParams];
+
     AFHTTPRequestOperation *operation = [[AFHTTPRequestOperation alloc] initWithRequest:getRequest];
-    
+
     [operation setCompletionBlockWithSuccess:
      ^(AFHTTPRequestOperation *operation, id responseObject){
          NSString *response = [operation responseString];
-         
+
          NSDictionary *json = [NSJSONSerialization JSONObjectWithData:[response dataUsingEncoding:NSUTF8StringEncoding] options:NSJSONReadingMutableContainers error:nil];
-         
+
          self.user = [[User alloc] initWithData:json];
          self.navigationItem.title = [self.user getLogin];
          [self displayUsernameAndAvatar];
          [profileTable reloadData];
+         if (!self.hideOptionsButton) {
+             [self addOptionsButton];
+         }
          [self.hud hide:YES];
      }
      failure:^(AFHTTPRequestOperation *operation, NSError *error) {
@@ -167,17 +171,13 @@
     if (indexPath.row == 2) {
         // Popup the mail composer when clicking on email
         // http://stackoverflow.com/questions/9024994/open-mail-and-safari-from-uitableviewcell
-        if ([MFMailComposeViewController canSendMail]) {
-            MFMailComposeViewController *mailViewController = [[MFMailComposeViewController alloc] init];
-            mailViewController.mailComposeDelegate = self;
-            [mailViewController setSubject:@"Hello"];
-            [mailViewController setToRecipients:[NSArray arrayWithObject:[self.user getEmail]]];
-            [self presentViewController:mailViewController animated:YES completion:nil];
+        if ([self.user getEmail] != (id)[NSNull null]) {
+            [self mailProfileToEmail:[self.user getEmail] WithSubject:@"Hello"];
         }
     } else if (indexPath.row == 1) {
-        WebsiteViewController *websiteController = [[WebsiteViewController alloc] init];
-        websiteController.requestedUrl = [self.user getWebsite];
-        [self.navigationController pushViewController:websiteController animated:YES];
+        if ([self.user getWebsite] != (id)[NSNull null]) {
+            [self loadWebsiteWithUrl:[self.user getWebsite]];
+        }
     } else if (indexPath.row == 3) {
         FollowViewController *followController = [[FollowViewController alloc] init];
         followController.usersUrl = [self.user getFollowersUrl];
@@ -219,6 +219,153 @@
         nameLabel.text  = [self.user getName];
         loginLabel.text = [self.user getLogin];
     }
+}
+
+- (void)showProfileOptions
+{
+//    NSString *githubApiHost = [AppConfig getConfigValue:@"GithubApiHost"];
+//    NSURL *url = [NSURL URLWithString:[githubApiHost stringByAppendingFormat:@"/user/following/%@", [self.user getLogin]]];
+//
+//    AFHTTPClient *httpClient = [[AFHTTPClient alloc] initWithBaseURL:url];
+//
+//    NSMutableURLRequest *getRequest = [httpClient requestWithMethod:@"GET" path:url.absoluteString parameters:self.accessTokenParams];
+//
+//    AFHTTPRequestOperation *operation = [[AFHTTPRequestOperation alloc] initWithRequest:getRequest];
+//
+//    [operation setCompletionBlockWithSuccess:
+//     ^(AFHTTPRequestOperation *operation, id responseObject){
+//         if (!self.hideOptionsButton) {
+//             self.isFollowing = true;
+//             [self displayFollowOptions];
+//         }
+//         [self.hud hide:YES];
+//     }
+//     failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+//         NSLog(@"%@", error);
+//         if (!self.hideOptionsButton) {
+//             self.isFollowing = false;
+//             [self displayFollowOptions];
+//         }
+//         [self.hud hide:YES];
+//     }];
+//
+//    [operation start];
+    self.optionsActionSheet = [[UIActionSheet alloc] initWithTitle:@"Options" delegate:self cancelButtonTitle:@"Cancel" destructiveButtonTitle:nil otherButtonTitles:@"View on Github", @"Mail profile", @"Copy profile", nil];
+    self.optionsActionSheet.actionSheetStyle = UIActionSheetStyleBlackOpaque;
+    [self.optionsActionSheet showInView:[UIApplication sharedApplication].keyWindow];
+}
+
+- (void)displayFollowOptions
+{
+    NSString *otherButtonTitles;
+
+    if (self.isFollowing) {
+        otherButtonTitles = @"Unfollow";
+    } else if (!self.isFollowing) {
+        otherButtonTitles = @"Follow";
+    }
+
+    self.optionsActionSheet = [[UIActionSheet alloc] initWithTitle:@"Options" delegate:self cancelButtonTitle:@"Cancel" destructiveButtonTitle:nil otherButtonTitles:otherButtonTitles, nil];
+    self.optionsActionSheet.actionSheetStyle = UIActionSheetStyleBlackOpaque;
+    [self.optionsActionSheet showInView:[UIApplication sharedApplication].keyWindow];
+}
+
+- (void)follow
+{
+    NSString *githubApiHost = [AppConfig getConfigValue:@"GithubApiHost"];
+    NSURL *url = [NSURL URLWithString:[githubApiHost stringByAppendingFormat:@"/user/following/%@", [self.user getLogin]]];
+
+    AFHTTPClient *httpClient = [[AFHTTPClient alloc] initWithBaseURL:url];
+
+    NSMutableURLRequest *putRequest = [httpClient requestWithMethod:@"PUT" path:url.absoluteString parameters:self.accessTokenParams];
+
+    AFHTTPRequestOperation *operation = [[AFHTTPRequestOperation alloc] initWithRequest:putRequest];
+
+    [operation setCompletionBlockWithSuccess:
+     ^(AFHTTPRequestOperation *operation, id responseObject){
+         self.isFollowing = true;
+         [self.hud hide:YES];
+         UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Alert" message:[NSString stringWithFormat:@"You are now following %@", [self.user getLogin]] delegate:self cancelButtonTitle:nil otherButtonTitles:nil];
+         [alert show];
+     }
+     failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+         NSLog(@"%@", error);
+         [self.hud hide:YES];
+     }];
+
+    [operation start];
+}
+
+- (void)unfollow
+{
+    NSString *githubApiHost = [AppConfig getConfigValue:@"GithubApiHost"];
+    NSURL *url = [NSURL URLWithString:[githubApiHost stringByAppendingFormat:@"/user/following/%@", [self.user getLogin]]];
+
+    AFHTTPClient *httpClient = [[AFHTTPClient alloc] initWithBaseURL:url];
+
+    NSMutableURLRequest *deleteRequest = [httpClient requestWithMethod:@"PUT" path:url.absoluteString parameters:self.accessTokenParams];
+
+    AFHTTPRequestOperation *operation = [[AFHTTPRequestOperation alloc] initWithRequest:deleteRequest];
+
+    [operation setCompletionBlockWithSuccess:
+     ^(AFHTTPRequestOperation *operation, id responseObject){
+         self.isFollowing = true;
+         [self.hud hide:YES];
+         UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Alert" message:[NSString stringWithFormat:@"You are now following %@", [self.user getLogin]] delegate:self cancelButtonTitle:nil otherButtonTitles:nil];
+         [alert show];
+     }
+     failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+         NSLog(@"%@", error);
+         [self.hud hide:YES];
+     }];
+
+    [operation start];
+}
+
+- (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex
+{
+    if (buttonIndex == 0) {
+        [self viewProfileOnGithub];
+    } else if (buttonIndex == 1) {
+        [self mailProfile];
+    } else {
+        [self copyProfile];
+    }
+}
+
+- (void)viewProfileOnGithub
+{
+    if ([self.user getHtmlUrl] != (id)[NSNull null]) {
+        [self loadWebsiteWithUrl:[self.user getHtmlUrl]];
+    }
+}
+
+- (void)mailProfile
+{
+    
+}
+
+- (void)copyProfile
+{
+    
+}
+
+- (void)mailProfileToEmail:(NSString *)email WithSubject:(NSString *)subject
+{
+    if ([MFMailComposeViewController canSendMail]) {
+        MFMailComposeViewController *mailViewController = [[MFMailComposeViewController alloc] init];
+        mailViewController.mailComposeDelegate = self;
+        [mailViewController setSubject:subject];
+        [mailViewController setToRecipients:[NSArray arrayWithObject:email]];
+        [self presentViewController:mailViewController animated:YES completion:nil];
+    }
+}
+
+- (void)loadWebsiteWithUrl:(NSString *)url
+{
+    WebsiteViewController *websiteController = [[WebsiteViewController alloc] init];
+    websiteController.requestedUrl = url;
+    [self.navigationController pushViewController:websiteController animated:YES];
 }
 
 @end

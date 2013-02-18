@@ -146,6 +146,7 @@
 		B54603C816C388D2007D4FB3 /* OrganizationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B54603C616C388CF007D4FB3 /* OrganizationViewController.m */; };
 		B54603C916C388D2007D4FB3 /* OrganizationViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B54603C716C388D0007D4FB3 /* OrganizationViewController.xib */; };
 		B54603CC16C4D0DD007D4FB3 /* MBProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = B54603CB16C4D0DD007D4FB3 /* MBProgressHUD.m */; };
+		B54F69D816D158C300978DD9 /* 211-action@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B54F69D716D158C300978DD9 /* 211-action@2x.png */; };
 		B552947D16C7A22E0010D56A /* IssuesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B552947B16C7A22E0010D56A /* IssuesViewController.m */; };
 		B552947E16C7A22E0010D56A /* IssuesViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B552947C16C7A22E0010D56A /* IssuesViewController.xib */; };
 		B552948116C7A23D0010D56A /* Issue.m in Sources */ = {isa = PBXBuildFile; fileRef = B552948016C7A23D0010D56A /* Issue.m */; };
@@ -418,6 +419,7 @@
 		B54603C716C388D0007D4FB3 /* OrganizationViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = OrganizationViewController.xib; sourceTree = "<group>"; };
 		B54603CA16C4D0DD007D4FB3 /* MBProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MBProgressHUD.h; sourceTree = "<group>"; };
 		B54603CB16C4D0DD007D4FB3 /* MBProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MBProgressHUD.m; sourceTree = "<group>"; };
+		B54F69D716D158C300978DD9 /* 211-action@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "211-action@2x.png"; sourceTree = "<group>"; };
 		B552947A16C7A22E0010D56A /* IssuesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IssuesViewController.h; sourceTree = "<group>"; };
 		B552947B16C7A22E0010D56A /* IssuesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IssuesViewController.m; sourceTree = "<group>"; };
 		B552947C16C7A22E0010D56A /* IssuesViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = IssuesViewController.xib; sourceTree = "<group>"; };
@@ -641,6 +643,7 @@
 				B51653B716B7C1B9003F0DFA /* 151-telescope@2x.png */,
 				B51653B816B7C1B9003F0DFA /* 179-notepad.png */,
 				B51653B916B7C1B9003F0DFA /* 179-notepad@2x.png */,
+				B54F69D716D158C300978DD9 /* 211-action@2x.png */,
 				B51653BA16B7C1B9003F0DFA /* 253-person.png */,
 				B51653BB16B7C1B9003F0DFA /* 253-person@2x.png */,
 				B51653BC16B7C1B9003F0DFA /* 255-box.png */,
@@ -1255,6 +1258,7 @@
 				B542276616CF6F980020F300 /* raw_file.html in Resources */,
 				B542276B16D032300020F300 /* SearchViewController.xib in Resources */,
 				B542277016D06A4D0020F300 /* UserSearchResultCell.xib in Resources */,
+				B54F69D816D158C300978DD9 /* 211-action@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

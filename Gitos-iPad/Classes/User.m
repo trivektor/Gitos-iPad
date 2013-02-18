@@ -103,6 +103,8 @@
 - (NSString *)getEmail
 {
     if ([self.data valueForKey:@"email"] == nil) return @"n/a";
+    if ([self.data valueForKey:@"email"] == (id)[NSNull null]) return @"n/a";
+    if ([[self.data valueForKey:@"email"] isEqualToString:@""]) return @"n/a";
     return [self.data valueForKey:@"email"];
 }
 
@@ -136,6 +138,11 @@
     RelativeDateDescriptor *relativeDateDescriptor = [[RelativeDateDescriptor alloc] initWithPriorDateDescriptionFormat:@"%@ ago" postDateDescriptionFormat:@"in %@"];
 
     return [relativeDateDescriptor describeDate:date relativeTo:[NSDate date]];
+}
+
+- (NSString *)getHtmlUrl
+{
+    return [self.data valueForKey:@"html_url"];
 }
 
 @end
