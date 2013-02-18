@@ -12,6 +12,8 @@
 
 @property (nonatomic, retain) NSDictionary *data;
 @property (nonatomic, retain) NSDictionary *details;
+@property (nonatomic, strong) RelativeDateDescriptor *relativeDateDescriptor;
+@property (nonatomic, strong) NSDateFormatter *dateFormatter;
 
 - (id)initWithData:(NSDictionary *)gistData;
 
@@ -23,5 +25,6 @@
 - (NSInteger)getNumberOfFiles;
 - (NSDictionary *)getFiles;
 - (NSInteger)getNumberOfComments;
+- (NSString *)convertToRelativeDate:(NSString *)originalDateString;
 
 @end

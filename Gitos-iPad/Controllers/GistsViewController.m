@@ -33,8 +33,6 @@
         // Custom initialization
         self.gists = [[NSMutableArray alloc] initWithCapacity:0];
         self.currentPage = 1;
-        self.relativeDateDescriptor = [[RelativeDateDescriptor alloc] initWithPriorDateDescriptionFormat:@"%@" postDateDescriptionFormat:@"in %@"];
-        self.dateFormatter  = [[NSDateFormatter alloc] init];
         self.accessToken = [SSKeychain passwordForService:@"access_token" account:@"gitos"];
     }
     return self;
@@ -87,7 +85,7 @@
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    return 77;
+    return 67;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -99,8 +97,6 @@
     }
     
     cell.gist = [self.gists objectAtIndex:indexPath.row];
-    cell.dateFormatter = self.dateFormatter;
-    cell.relativeDateDescriptor = self.relativeDateDescriptor;
     [cell render];
     return cell;
     

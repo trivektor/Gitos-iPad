@@ -15,9 +15,10 @@
 - (id)initWithData:(NSDictionary *)gistData
 {
     self = [super init];
-    
     self.data = gistData;
-    
+    self.dateFormatter = [[NSDateFormatter alloc] init];
+    [self.dateFormatter setDateFormat:@"yyyy-MM-dd'T'HH:mm:ssZZ"];
+    self.relativeDateDescriptor = [[RelativeDateDescriptor alloc] initWithPriorDateDescriptionFormat:@"%@ ago" postDateDescriptionFormat:@"in %@"];
     return self;
 }
 
@@ -42,7 +43,7 @@
 
 - (NSString *)getCreatedAt
 {
-    return [self.data valueForKey:@"created_at"];
+    return [self convertToRelativeDate:[self.data valueForKey:@"created_at"]];
 }
 
 - (NSInteger)getNumberOfFiles
@@ -65,6 +66,12 @@
 - (NSInteger)getNumberOfComments
 {
     return [[self.details valueForKey:@"comments"] integerValue];
+}
+
+- (NSString *)convertToRelativeDate:(NSString *)originalDateString
+{
+    NSDate *date  = [self.dateFormatter dateFromString:originalDateString];
+    return [self.relativeDateDescriptor describeDate:date relativeTo:[NSDate date]];
 }
 
 @end

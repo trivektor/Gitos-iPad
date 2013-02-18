@@ -11,8 +11,6 @@
 
 @implementation GistCell
 
-@synthesize  gist, dateFormatter, relativeDateDescriptor, gistName, gistDescription, gistCreatedAt;
-
 - (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
 {
     self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
@@ -31,12 +29,11 @@
 
 - (void)render
 {
+    self.fontAwesomeLabel.font = [UIFont fontWithName:kFontAwesomeFamilyName size:15];
+    self.fontAwesomeLabel.text = [NSString fontAwesomeIconStringForIconIdentifier:@"icon-pushpin"];
     self.gistName.text = [self.gist getName];
     self.gistDescription.text = [self.gist getDescription];
-    
-    NSDate *date  = [self.dateFormatter dateFromString:[self.gist getCreatedAt]];
-    
-    self.gistCreatedAt.text = [self.relativeDateDescriptor describeDate:date relativeTo:[NSDate date]];
+    self.gistCreatedAt.text = [self.gist getCreatedAt];
 }
 
 @end

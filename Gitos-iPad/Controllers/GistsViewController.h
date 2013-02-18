@@ -19,8 +19,6 @@
 @property (nonatomic) NSInteger currentPage;
 @property (nonatomic, strong) NSMutableArray *gists;
 @property (nonatomic, strong) User *user;
-@property (nonatomic, strong) RelativeDateDescriptor *relativeDateDescriptor;
-@property (nonatomic, strong) NSDateFormatter *dateFormatter;
 
 - (void)registerNib;
 - (void)getUserInfo;
