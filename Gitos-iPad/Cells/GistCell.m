@@ -31,9 +31,10 @@
 {
     self.fontAwesomeLabel.font = [UIFont fontWithName:kFontAwesomeFamilyName size:15];
     self.fontAwesomeLabel.text = [NSString fontAwesomeIconStringForIconIdentifier:@"icon-pushpin"];
-    self.gistName.text = [self.gist getName];
-    self.gistDescription.text = [self.gist getDescription];
-    self.gistCreatedAt.text = [self.gist getCreatedAt];
+    self.gistName.text         = [self.gist getName];
+    self.gistDescription.text  = [self.gist getDescription];
+    self.gistCreatedAt.text    = [self.gist getCreatedAt];
+    self.accessoryType         = UITableViewCellAccessoryDisclosureIndicator;
 }
 
 @end

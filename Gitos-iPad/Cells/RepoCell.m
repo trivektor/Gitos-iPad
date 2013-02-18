@@ -10,8 +10,6 @@
 
 @implementation RepoCell
 
-@synthesize repo, repoNameLabel, forkLabel, starLabel;
-
 - (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
 {
     self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
@@ -81,7 +79,7 @@
     self.descriptionLabel.text = [self.repo getDescription];
 
     self.backgroundColor = [UIColor whiteColor];
-    self.selectionStyle = UITableViewCellSelectionStyleNone;
+    self.accessoryType   = UITableViewCellAccessoryDisclosureIndicator;
 }
 
 @end
