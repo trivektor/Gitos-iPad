@@ -10,8 +10,6 @@
 
 @implementation RepoDetailsCell
 
-@synthesize fieldLabel, fieldValue, repo;
-
 - (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
 {
     self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
@@ -43,11 +41,11 @@
             break;
         case 2:
             fieldLabelText = @"Watchers";
-            fieldValueText = [NSString stringWithFormat:@"%i", [self.repo getWatchers]];
+            fieldValueText = [NSNumberFormatter localizedStringFromNumber:@([self.repo getWatchers]) numberStyle:NSNumberFormatterDecimalStyle];
             break;
         case 3:
             fieldLabelText = @"Forks";
-            fieldValueText = [NSString stringWithFormat:@"%i", [self.repo getForks]];
+            fieldValueText = [NSNumberFormatter localizedStringFromNumber:@([self.repo getForks]) numberStyle:NSNumberFormatterDecimalStyle];
             break;
         case 4:
             fieldLabelText = @"Language";
