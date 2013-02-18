@@ -36,5 +36,6 @@
 - (NSString *)getAuthorName;
 - (NSString *)convertToRelativeDate:(NSString *)originalDateString;
 - (NSString *)getOwner;
+- (BOOL)isForked;
 
 @end

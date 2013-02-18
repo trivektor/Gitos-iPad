@@ -12,6 +12,7 @@
 @interface RepoCell : UITableViewCell
 
 @property (nonatomic, strong) Repo *repo;
+@property (nonatomic, weak) IBOutlet UILabel *fontAwesomeLabel;
 @property (nonatomic, weak) IBOutlet UILabel *repoNameLabel;
 @property (nonatomic, weak) IBOutlet UILabel *forkLabel;
 @property (nonatomic, weak) IBOutlet UILabel *starLabel;

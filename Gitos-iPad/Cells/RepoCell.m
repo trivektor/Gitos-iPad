@@ -30,6 +30,13 @@
 
 - (void)render
 {
+    self.fontAwesomeLabel.font = [UIFont fontWithName:kFontAwesomeFamilyName size:14];
+
+    if (self.repo.isForked) {
+        self.fontAwesomeLabel.text = [NSString fontAwesomeIconStringForIconIdentifier:@"icon-random"];
+    } else {
+        self.fontAwesomeLabel.text = [NSString fontAwesomeIconStringForIconIdentifier:@"icon-book"];
+    }
     self.repoNameLabel.text = [self.repo getName];
     
     // Float the Forks and Watchers labels side by side

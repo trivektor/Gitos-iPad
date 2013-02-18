@@ -7,7 +7,6 @@
 //
 
 #import "Repo.h"
-#import "AppConfig.h"
 #import "RelativeDateDescriptor.h"
 
 @implementation Repo
@@ -157,6 +156,11 @@
 - (NSString *)getOwner
 {
     return [self.data valueForKey:@"owner"];
+}
+
+- (BOOL)isForked
+{
+    return [[self.data valueForKey:@"fork"] integerValue] == 1;
 }
 
 @end
