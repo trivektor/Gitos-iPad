@@ -7,12 +7,8 @@
 //
 
 #import "ProfileCell.h"
-#import "RelativeDateDescriptor.h"
-#import "NSString+FontAwesome.h"
 
 @implementation ProfileCell
-
-@synthesize fieldIcon, fieldDetails, fontAwesomeLabel;
 
 - (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
 {
@@ -51,11 +47,11 @@
     } else if (indexPath.row == 3) {
         fontAwesome = [NSString fontAwesomeIconStringForIconIdentifier:@"icon-group"];
         labelText   = @"Followers";
-        detailsText = [NSString stringWithFormat:@"%i", [user getFollowers]];
+        detailsText = [NSNumberFormatter localizedStringFromNumber:@([user getFollowers]) numberStyle:NSNumberFormatterDecimalStyle];
     } else if (indexPath.row == 4) {
         fontAwesome = [NSString fontAwesomeIconStringForIconIdentifier:@"icon-group"];
         labelText   = @"Following";
-        detailsText = [NSString stringWithFormat:@"%i", [user getFollowing]];
+        detailsText = [NSNumberFormatter localizedStringFromNumber:@([user getFollowing]) numberStyle:NSNumberFormatterDecimalStyle];
     } else if (indexPath.row == 5) {
         fontAwesome = [NSString fontAwesomeIconStringForIconIdentifier:@"icon-briefcase"];
         labelText   = @"Company";
@@ -78,11 +74,9 @@
         detailsText = @"view all";
     }
     
-    //self.fieldIcon.image        = image;
     self.fontAwesomeLabel.text  = fontAwesome;
     self.fieldLabel.text        = labelText;
     self.fieldDetails.text      = detailsText;
-    //self.fieldIcon.contentMode  = UIViewContentModeScaleAspectFit;
     self.selectionStyle         = UITableViewCellSelectionStyleNone;
     self.backgroundColor        = [UIColor clearColor];
 }

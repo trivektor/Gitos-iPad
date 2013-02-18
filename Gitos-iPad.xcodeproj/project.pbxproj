@@ -149,6 +149,7 @@
 		B54F69D816D158C300978DD9 /* 211-action@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B54F69D716D158C300978DD9 /* 211-action@2x.png */; };
 		B54F69DB16D2C5CA00978DD9 /* 04-squiggle.png in Resources */ = {isa = PBXBuildFile; fileRef = B54F69D916D2C5CA00978DD9 /* 04-squiggle.png */; };
 		B54F69DC16D2C5CA00978DD9 /* 04-squiggle@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B54F69DA16D2C5CA00978DD9 /* 04-squiggle@2x.png */; };
+		B54F69DE16D2DF1E00978DD9 /* avatar-placeholder.png in Resources */ = {isa = PBXBuildFile; fileRef = B54F69DD16D2DF1E00978DD9 /* avatar-placeholder.png */; };
 		B552947D16C7A22E0010D56A /* IssuesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B552947B16C7A22E0010D56A /* IssuesViewController.m */; };
 		B552947E16C7A22E0010D56A /* IssuesViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B552947C16C7A22E0010D56A /* IssuesViewController.xib */; };
 		B552948116C7A23D0010D56A /* Issue.m in Sources */ = {isa = PBXBuildFile; fileRef = B552948016C7A23D0010D56A /* Issue.m */; };
@@ -424,6 +425,7 @@
 		B54F69D716D158C300978DD9 /* 211-action@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "211-action@2x.png"; sourceTree = "<group>"; };
 		B54F69D916D2C5CA00978DD9 /* 04-squiggle.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "04-squiggle.png"; sourceTree = "<group>"; };
 		B54F69DA16D2C5CA00978DD9 /* 04-squiggle@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "04-squiggle@2x.png"; sourceTree = "<group>"; };
+		B54F69DD16D2DF1E00978DD9 /* avatar-placeholder.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "avatar-placeholder.png"; sourceTree = "<group>"; };
 		B552947A16C7A22E0010D56A /* IssuesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IssuesViewController.h; sourceTree = "<group>"; };
 		B552947B16C7A22E0010D56A /* IssuesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IssuesViewController.m; sourceTree = "<group>"; };
 		B552947C16C7A22E0010D56A /* IssuesViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = IssuesViewController.xib; sourceTree = "<group>"; };
@@ -616,6 +618,7 @@
 				B516539A16B7C1B9003F0DFA /* 01-refresh.png */,
 				B516539B16B7C1B9003F0DFA /* 01-refresh@2x.png */,
 				B516539C16B7C1B9003F0DFA /* 06-magnify.png */,
+				B54F69DD16D2DF1E00978DD9 /* avatar-placeholder.png */,
 				B516539D16B7C1B9003F0DFA /* 06-magnify@2x.png */,
 				B54F69D916D2C5CA00978DD9 /* 04-squiggle.png */,
 				B54F69DA16D2C5CA00978DD9 /* 04-squiggle@2x.png */,
@@ -1267,6 +1270,7 @@
 				B54F69D816D158C300978DD9 /* 211-action@2x.png in Resources */,
 				B54F69DB16D2C5CA00978DD9 /* 04-squiggle.png in Resources */,
 				B54F69DC16D2C5CA00978DD9 /* 04-squiggle@2x.png in Resources */,
+				B54F69DE16D2DF1E00978DD9 /* avatar-placeholder.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

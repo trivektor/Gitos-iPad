@@ -8,7 +8,6 @@
 
 #import <UIKit/UIKit.h>
 #import "User.h"
-#import "MBProgressHUD.h"
 
 @interface FollowViewController : UIViewController <UITableViewDataSource, UITableViewDelegate>
 

@@ -8,10 +8,6 @@
 
 #import "FollowViewController.h"
 #import "ProfileViewController.h"
-#import "SSKeychain.h"
-#import "AFHTTPClient.h"
-#import "AFHTTPRequestOperation.h"
-#import "AppConfig.h"
 #import "UIImageView+WebCache.h"
 
 @interface FollowViewController ()
@@ -73,7 +69,7 @@
 
     User *u = [self.users objectAtIndex:indexPath.row];
 
-    [cell.imageView setImageWithURL:[NSURL URLWithString:[u getAvatarUrl]] placeholderImage:nil];
+    [cell.imageView setImageWithURL:[NSURL URLWithString:[u getAvatarUrl]] placeholderImage:[UIImage imageNamed:@"avatar-placeholder.png"]];
     cell.accessoryType  = UITableViewCellAccessoryDisclosureIndicator;
     cell.textLabel.text = [u getLogin];
     cell.textLabel.font = [UIFont fontWithName:@"Arial" size:12.0];
