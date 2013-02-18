@@ -7,7 +7,6 @@
 //
 
 #import "NewsFeedCell.h"
-#import "NSString+FontAwesome.h"
 
 @implementation NewsFeedCell
 
@@ -35,7 +34,7 @@
     self.actionDate.text        = [self.event toDateString];
     self.backgroundColor        = [UIColor clearColor];
     self.accessoryType          = UITableViewCellAccessoryDisclosureIndicator;
-    self.fontAwesomeLabel.font  = [UIFont fontWithName:kFontAwesomeFamilyName size:16.0];
+    self.fontAwesomeLabel.font  = [UIFont fontWithName:kFontAwesomeFamilyName size:15.0];
     self.fontAwesomeLabel.text  = [NSString fontAwesomeIconStringForIconIdentifier:self.event.fontAwesomeIcon];
 }
 

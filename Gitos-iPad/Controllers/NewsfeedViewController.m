@@ -8,16 +8,11 @@
 
 #import "NewsfeedViewController.h"
 #import "NewsfeedDetailsViewController.h"
-#import "AFHTTPClient.h"
-#import "AFHTTPRequestOperation.h"
-#import "SSKeychain.h"
 #import "User.h"
 #import "NewsFeedCell.h"
 #import "RelativeDateDescriptor.h"
 #import "SVPullToRefresh.h"
 #import "TimelineEvent.h"
-#import "NSString+FontAwesome.h"
-#import "MBProgressHUD.h"
 
 @interface NewsfeedViewController ()
 
@@ -50,8 +45,9 @@
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
         // Custom initialization
-        self.newsFeed       = [[NSMutableArray alloc] initWithCapacity:0];
-        self.currentPage    = 1;
+        self.newsFeed     = [[NSMutableArray alloc] initWithCapacity:0];
+        self.currentPage  = 1;
+        self.accessToken  = [SSKeychain passwordForService:@"access_token" account:@"gitos"];
     }
     return self;
 }
@@ -106,18 +102,15 @@
 
 - (void)getUserInfoAndNewsFeed
 {
-    NSLog(@"getting user info");
-    NSString *accessToken = [SSKeychain passwordForService:@"access_token" account:@"gitos"];
-    
-    NSURL *userUrl = [NSURL URLWithString:@"https://api.github.com/user"];
-    
+    NSString *githubApiHost = [AppConfig getConfigValue:@"GithubApiHost"];
+    NSURL *userUrl = [NSURL URLWithString:[githubApiHost stringByAppendingString:@"/user"]];
+
     AFHTTPClient *httpClient = [[AFHTTPClient alloc] initWithBaseURL:userUrl];
-    
+
     NSMutableDictionary *params = [NSMutableDictionary dictionaryWithObjectsAndKeys:
-                                   accessToken, @"access_token",
-                                   @"bearer", @"token_type",
+                                   self.accessToken, @"access_token",
                                    nil];
-    
+
     NSMutableURLRequest *getRequest = [httpClient requestWithMethod:@"GET" path:userUrl.absoluteString parameters:params];
     
     AFHTTPRequestOperation *operation = [[AFHTTPRequestOperation alloc] initWithRequest:getRequest];
@@ -187,6 +180,7 @@
 {
     if (([scrollView contentOffset].y + scrollView.frame.size.height) == scrollView.contentSize.height) {
         // Bottom of UITableView reached
+        [self.hud show:YES];
         [self getUserNewsFeed:self.currentPage++];
     }
 }
@@ -197,6 +191,7 @@
     
     NSMutableDictionary *params = [NSMutableDictionary dictionaryWithObjectsAndKeys:
                                    [NSString stringWithFormat:@"%i", page], @"page",
+                                   self.accessToken, @"access_token",
                                    nil];
     
     NSMutableURLRequest *getRequest = [httpClient requestWithMethod:@"GET" path:[self.user getReceivedEventsUrl] parameters:params];
