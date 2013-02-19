@@ -32,6 +32,7 @@
     self.fontAwesomeLabel.text = [NSString fontAwesomeIconStringForIconIdentifier:@"icon-quote-left"];
     self.titleLabel.text       = [self.notification getTitle];
     self.updatedAtLabel.text   = [self.notification getUpdatedAt];
+    self.accessoryType         = UITableViewCellAccessoryDisclosureIndicator;
 }
 
 @end
