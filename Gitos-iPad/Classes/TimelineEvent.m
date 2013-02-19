@@ -7,117 +7,141 @@
 //
 
 #import "TimelineEvent.h"
+#import "ForkEvent.h"
+#import "WatchEvent.h"
+#import "CreateEvent.h"
+#import "FollowEvent.h"
+#import "GistEvent.h"
+#import "IssueEvent.h"
+#import "IssueCommentEvent.h"
+#import "MemberEvent.h"
+#import "PushEvent.h"
+#import "PullRequestEvent.h"
+#import "PublicEvent.h"
+#import "CommitCommentEvent.h"
+#import "GollumEvent.h"
 
 @implementation TimelineEvent
 
-@synthesize eventId, type, createdAt, actor, payload, repo, todayDate, relativeDateDescriptor, fontAwesomeIcon, descriptionText;
-
-- (id)initWithOptions:(NSDictionary *)options
+- (id)initWithData:(NSDictionary *)eventData
 {
     self = [super init];
-    
-    self.eventId        = [[options valueForKey:@"id"] intValue];
-    self.type           = [options valueForKey:@"type"];
-    self.actor          = [options valueForKey:@"actor"];
-    self.payload        = [options valueForKey:@"payload"];
-    self.createdAt      = [options valueForKey:@"created_at"];
-    self.repo           = [options valueForKey:@"repo"];
-    self.dateFormatter  = [[NSDateFormatter alloc] init];
-    self.todayDate      = [NSDate date];
+    self.data = eventData;
     self.relativeDateDescriptor = [[RelativeDateDescriptor alloc] initWithPriorDateDescriptionFormat:@"%@ ago" postDateDescriptionFormat:@"in %@"];
-    [self stringify];
+    self.dateFormatter = [[NSDateFormatter alloc] init];
+    [self.dateFormatter setDateFormat:@"yyyy-MM-dd'T'HH:mm:ssZZ"];
+    self.fontAwesomeIcons = @{
+        @"ForkEvent"          : @"icon-sitemap",
+        @"WatchEvent"         : @"icon-star",
+        @"CreateEvent"        : @"icon-plus",
+        @"FollowEvent"        : @"icon-user",
+        @"GistEvent"          : @"icon-file-alt",
+        @"IssuesEvent"        : @"icon-warning-sign",
+        @"MemberEvent"        : @"icon-user-md",
+        @"IssueCommentEvent"  : @"icon-comment-alt",
+        @"PushEvent"          : @"icon-upload-alt",
+        @"PullRequestEvent"   : @"icon-retweet",
+        @"PublicEvent"        : @"icon-folder-open-alt",
+        @"CommitCommentEvent" : @"icon-comments",
+        @"GollumnEvent"       : @"icon-book"
+    };
     return self;
 }
 
-- (void)stringify
+- (NSString *)getId
 {
-    NSString *eventType = self.type;
-    NSString *actorName = [self.actor valueForKey:@"login"];
-    NSString *repoName  = [self.repo valueForKey:@"name"];
-    NSString *fontAwesome = @"icon-bullhorn";
-    NSString *text = @"";
-    
-    // REFACTOR
-    if ([eventType isEqualToString:@"ForkEvent"]) {
-        // Fork Event
-        text = [NSString stringWithFormat:@"%@ forked %@", actorName, repoName];
-        fontAwesome = @"icon-sitemap";
-    } else if ([eventType isEqualToString:@"WatchEvent"]) {
-        // Watch Event
-        text = [NSString stringWithFormat:@"%@ starred %@", actorName, repoName];
-        fontAwesome = @"icon-star";
-    } else if ([eventType isEqualToString:@"CreateEvent"]) {
-        // Create Event
-        text = [NSString stringWithFormat:@"%@ created %@", actorName, repoName];
-        fontAwesome = @"icon-plus";
-    } else if ([eventType isEqualToString:@"FollowEvent"]) {
-        // Follow Event
-        NSString *target = [[self.payload valueForKey:@"target"] valueForKey:@"login"];
-        text = [NSString stringWithFormat:@"%@ started following %@", actorName, target];
-        fontAwesome = @"icon-user";
-    } else if ([eventType isEqualToString:@"GistEvent"]) {
-        // Gist Event
-        NSString *action = [self.payload valueForKey:@"action"];
-        NSString *gist = [[self.payload valueForKey:@"gist"] valueForKey:@"id"];
-        text = [NSString stringWithFormat:@"%@ %@ gist:%@", actorName, action, gist];
-        fontAwesome = @"icon-file-alt";
-    } else if ([eventType isEqualToString:@"IssuesEvent"]) {
-        // Issues Event
-        NSDictionary *issue = [self.payload valueForKey:@"issue"];
-        NSString *action = [self.payload valueForKey:@"action"];
-        NSInteger issueNumber = [[issue valueForKey:@"number"] intValue];
-        NSString *issueName = [NSString stringWithFormat:@"%@#%d", repoName, issueNumber];
-        text = [NSString stringWithFormat:@"%@ %@ issue %@", actorName, action, issueName];
-        fontAwesome = @"icon-warning-sign";
-    } else if ([eventType isEqualToString:@"MemberEvent"]) {
-        // Member Event
-        NSString *member = [[self.payload valueForKey:@"member"] valueForKey:@"login"];
-        text = [NSString stringWithFormat:@"%@ added %@ to %@", actorName, member, repoName];
-        fontAwesome = @"icon-user-md";
-    } else if ([eventType isEqualToString:@"IssueCommentEvent"]) {
-        // Issue Comment Event
-        NSString *user = [[[self.payload valueForKey:@"comment"] valueForKey:@"user"] valueForKey:@"login"];
-        NSDictionary *issue = [self.payload valueForKey:@"issue"];
-        NSInteger issueNumber = [[issue valueForKey:@"number"] intValue];
-        NSString *issueName = [NSString stringWithFormat:@"%@#%d", repoName, issueNumber];
-        text = [NSString stringWithFormat:@"%@ commented on issue %@", user, issueName];
-        fontAwesome = @"icon-comment-alt";
-    } else if ([eventType isEqualToString:@"PushEvent"]) {
-        // Push Event
-        NSArray *ref = [[self.payload valueForKey:@"ref"] componentsSeparatedByString:@"/"];
-        NSString *branch = [ref lastObject];
-        text = [NSString stringWithFormat:@"%@ pushed to %@ at %@", actorName, branch, repoName];
-        fontAwesome = @"icon-upload-alt";
-    } else if ([eventType isEqualToString:@"PullRequestEvent"]) {
-        // Pull Request Event
-        NSString *action = [self.payload valueForKey:@"action"];
-        NSInteger pullRequestNumber = [[self.payload valueForKey:@"number"] integerValue];
-        text = [NSString stringWithFormat:@"%@ %@ pull request %@/%i", actorName, action, repoName, pullRequestNumber];
-        fontAwesome = @"icon-retweet";
-    } else if ([eventType isEqualToString:@"PublicEvent"]) {
-        // Public Event
-        text = [NSString stringWithFormat:@"%@ open sourced %@", actorName, repoName];
-        fontAwesome = @"icon-folder-open-alt";
-    } else if ([eventType isEqualToString:@"CommitCommentEvent"]) {
-        // Commit Comment Event
-        NSDictionary *comment = [payload valueForKey:@"comment"];
-        NSString *commitId    = [comment valueForKey:@"commit_id"];
-        text  = [NSString stringWithFormat:@"%@ commented on commit %@@%@", actorName, repoName, [commitId substringToIndex:9]];
-        fontAwesome = @"icon-comments";
-    } else if ([eventType isEqualToString:@"GollumEvent"]) {
-        text = [NSString stringWithFormat:@"%@ created wiki for %@", actorName, repoName];
-        fontAwesome = @"icon-book";
-    }
+    return [self.data valueForKey:@"id"];
+}
 
-    self.fontAwesomeIcon = fontAwesome;
-    self.descriptionText = text;
+- (NSDictionary *)getPayload
+{
+    return [self.data valueForKey:@"payload"];
+}
+
+- (NSDictionary *)getTarget
+{
+    NSDictionary *payload = [self getPayload];
+    return [payload valueForKey:@"target"];
+}
+
+- (NSString *)getType
+{
+    return [self.data valueForKey:@"type"];
+}
+
+- (User *)getActor
+{
+    return [[User alloc] initWithData:[self.data valueForKey:@"actor"]];
+}
+
+- (Repo *)getRepo
+{
+    return [[Repo alloc] initWithData:[self.data valueForKey:@"repo"]];
+}
+
+- (NSString *)toString
+{
+    NSString *eventType = [self getType];
+    // First refactoring effort on Feb 18 (create sub-classes of TimelineEvent)
+    // Next: try to figure out how to initialize these classes dynamically
+    if ([eventType isEqualToString:@"ForkEvent"]) {
+        ForkEvent *forkEvent = [[ForkEvent alloc] initWithData:self.data];
+        return [forkEvent toString];
+    } else if ([eventType isEqualToString:@"WatchEvent"]) {
+        WatchEvent *watchEvent = [[WatchEvent alloc] initWithData:self.data];
+        return [watchEvent toString];
+    } else if ([eventType isEqualToString:@"CreateEvent"]) {
+        CreateEvent *createEvent = [[CreateEvent alloc] initWithData:self.data];
+        return [createEvent toString];
+    } else if ([eventType isEqualToString:@"FollowEvent"]) {
+        FollowEvent *followEvent = [[FollowEvent alloc] initWithData:self.data];
+        return [followEvent toString];
+    } else if ([eventType isEqualToString:@"GistEvent"]) {
+        GistEvent *gistEvent = [[GistEvent alloc] initWithData:self.data];
+        return [gistEvent toString];
+    } else if ([eventType isEqualToString:@"IssuesEvent"]) {
+        IssueEvent *issueEvent = [[IssueEvent alloc] initWithData:self.data];
+        return [issueEvent toString];
+    } else if ([eventType isEqualToString:@"MemberEvent"]) {
+        MemberEvent *memberEvent = [[MemberEvent alloc] initWithData:self.data];
+        return [memberEvent toString];
+    } else if ([eventType isEqualToString:@"IssueCommentEvent"]) {
+        IssueCommentEvent *issueCommentEvent = [[IssueCommentEvent alloc] initWithData:self.data];
+        return [issueCommentEvent toString];
+    } else if ([eventType isEqualToString:@"PushEvent"]) {
+        PushEvent *pushEvent = [[PushEvent alloc] initWithData:self.data];
+        return [pushEvent toString];
+    } else if ([eventType isEqualToString:@"PullRequestEvent"]) {
+        PullRequestEvent *pullRequestEvent = [[PullRequestEvent alloc] initWithData:self.data];
+        return [pullRequestEvent toString];
+    } else if ([eventType isEqualToString:@"PublicEvent"]) {
+        PublicEvent *publicEvent = [[PublicEvent alloc] initWithData:self.data];
+        return [publicEvent toString];
+    } else if ([eventType isEqualToString:@"CommitCommentEvent"]) {
+        CommitCommentEvent *commitCommentEvent = [[CommitCommentEvent alloc] initWithData:self.data];
+        return [commitCommentEvent toString];
+    } else if ([eventType isEqualToString:@"GollumEvent"]) {
+        GollumEvent *gollumEvent = [[GollumEvent alloc] initWithData:self.data];
+        return [gollumEvent toString];
+    } else {
+        return @"";
+    }
+}
+
+- (NSString *)getFontAwesomeIcon
+{
+    return [self.fontAwesomeIcons valueForKey:[self getType]];
+}
+
+- (NSString *)convertToRelativeDate:(NSString *)originalDateString
+{
+    NSDate *date  = [self.dateFormatter dateFromString:originalDateString];
+    return [self.relativeDateDescriptor describeDate:date relativeTo:[NSDate date]];
 }
 
 - (NSString *)toDateString
 {
-    [self.dateFormatter setDateFormat:@"yyyy-MM-dd'T'HH:mm:ssZZ"];
-    NSDate *date  = [self.dateFormatter dateFromString:self.createdAt];
-    return [self.relativeDateDescriptor describeDate:date relativeTo:[NSDate date]];
+    return [self convertToRelativeDate:[self.data valueForKey:@"created_at"]];
 }
 
 @end

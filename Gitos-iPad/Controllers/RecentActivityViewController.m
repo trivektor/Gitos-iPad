@@ -122,7 +122,7 @@
          NSArray *json = [NSJSONSerialization JSONObjectWithData:[response dataUsingEncoding:NSUTF8StringEncoding] options:NSJSONReadingMutableContainers error:nil];
          
          for (int i=0; i < json.count; i++) {
-             [self.activities addObject:[[TimelineEvent alloc] initWithOptions:[json objectAtIndex:i]]];
+             [self.activities addObject:[[TimelineEvent alloc] initWithData:[json objectAtIndex:i]]];
          }
          
          [activityTable.pullToRefreshView stopAnimating];

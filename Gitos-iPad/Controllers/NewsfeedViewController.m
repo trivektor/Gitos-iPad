@@ -203,7 +203,7 @@
          NSArray *newsfeed = [NSJSONSerialization JSONObjectWithData:[response dataUsingEncoding:NSUTF8StringEncoding] options:NSJSONReadingMutableContainers error:nil];
          
          for (int i=0; i < newsfeed.count; i++) {
-             [self.newsFeed addObject:[[TimelineEvent alloc] initWithOptions:[newsfeed objectAtIndex:i]]];
+             [self.newsFeed addObject:[[TimelineEvent alloc] initWithData:[newsfeed objectAtIndex:i]]];
          }
 
          [newsFeedTable.pullToRefreshView stopAnimating];

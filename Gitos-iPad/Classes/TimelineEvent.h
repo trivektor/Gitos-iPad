@@ -7,24 +7,28 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "RelativeDateDescriptor.h"
+#import "User.h"
+#import "Repo.h"
 
 @interface TimelineEvent : NSObject
 
-@property(nonatomic) NSInteger eventId;
-@property(nonatomic, strong) NSString *type;
-@property(nonatomic, strong) NSString *createdAt;
-@property(nonatomic, strong) NSDictionary *actor;
-@property(nonatomic, strong) NSDictionary *payload;
-@property(nonatomic, strong) NSDictionary *repo;
-@property(nonatomic, strong) NSDateFormatter *dateFormatter;
+@property(nonatomic, strong) NSDictionary *data;
 @property(nonatomic, strong) NSDate *todayDate;
+@property(nonatomic, strong) NSDateFormatter *dateFormatter;
 @property(nonatomic, strong) RelativeDateDescriptor *relativeDateDescriptor;
-@property(nonatomic, strong) NSString *fontAwesomeIcon;
 @property(nonatomic, strong) NSString *descriptionText;
+@property(nonatomic, strong) NSDictionary *fontAwesomeIcons;
 
-- (id)initWithOptions:(NSDictionary *)options;
-- (void)stringify;
+- (id)initWithData:(NSDictionary *)eventData;
+- (NSString *)toString;
+- (NSString *)getFontAwesomeIcon;
 - (NSString *)toDateString;
+- (NSDictionary *)getPayload;
+- (NSDictionary *)getTarget;
+- (NSString *)getType;
+- (NSString *)getId;
+- (User *)getActor;
+- (Repo *)getRepo;
+- (NSString *)convertToRelativeDate:(NSString *)originalDateString;
 
 @end

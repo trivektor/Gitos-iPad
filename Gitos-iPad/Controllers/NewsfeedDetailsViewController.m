@@ -60,8 +60,8 @@
 {
     [self.hud show:YES];
     NSString *urlString = [AppConfig getConfigValue:@"GitosHost"];
-    urlString = [urlString stringByAppendingFormat:@"/events/%d?page=%d&username=%@&access_token=%@",
-                 self.event.eventId,
+    urlString = [urlString stringByAppendingFormat:@"/events/%@?page=%d&username=%@&access_token=%@",
+                 [self.event getId],
                  self.currentPage,
                  self.username,
                  self.accessToken];
