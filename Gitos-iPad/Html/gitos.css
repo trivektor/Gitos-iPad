@@ -2,6 +2,10 @@ html, body {
     width: 100%
 }
 
+input[type=text], input[type=email], textarea {
+    -webkit-appearance: none;
+}
+
 .commit-stats {
     text-align: right;
 }
@@ -66,4 +70,8 @@ table td, table th {
 
 #commit-overview p {
     margin-bottom: 0
+}
+
+#feedback-form {
+    padding: 30px
 }

@@ -13,5 +13,6 @@
 @property (nonatomic, weak) IBOutlet UIWebView *formWebView;
 
 - (void)performHouseKeepingTasks;
+- (void)loadFeedbackForm;
 
 @end
