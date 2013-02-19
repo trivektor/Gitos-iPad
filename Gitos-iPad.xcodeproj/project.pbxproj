@@ -169,6 +169,9 @@
 		B54F6A0F16D31C8900978DD9 /* PublicEvent.m in Sources */ = {isa = PBXBuildFile; fileRef = B54F6A0E16D31C8800978DD9 /* PublicEvent.m */; };
 		B54F6A1216D31D4300978DD9 /* CommitCommentEvent.m in Sources */ = {isa = PBXBuildFile; fileRef = B54F6A1116D31D4200978DD9 /* CommitCommentEvent.m */; };
 		B54F6A1516D31DDC00978DD9 /* GollumEvent.m in Sources */ = {isa = PBXBuildFile; fileRef = B54F6A1416D31DDB00978DD9 /* GollumEvent.m */; };
+		B54F6A1916D3605C00978DD9 /* FeedbackViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B54F6A1716D3605900978DD9 /* FeedbackViewController.m */; };
+		B54F6A1A16D3605C00978DD9 /* FeedbackViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B54F6A1816D3605A00978DD9 /* FeedbackViewController.xib */; };
+		B54F6A1C16D3617600978DD9 /* feedback.html in Resources */ = {isa = PBXBuildFile; fileRef = B54F6A1B16D3617600978DD9 /* feedback.html */; };
 		B552947D16C7A22E0010D56A /* IssuesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B552947B16C7A22E0010D56A /* IssuesViewController.m */; };
 		B552947E16C7A22E0010D56A /* IssuesViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B552947C16C7A22E0010D56A /* IssuesViewController.xib */; };
 		B552948116C7A23D0010D56A /* Issue.m in Sources */ = {isa = PBXBuildFile; fileRef = B552948016C7A23D0010D56A /* Issue.m */; };
@@ -480,6 +483,10 @@
 		B54F6A1116D31D4200978DD9 /* CommitCommentEvent.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CommitCommentEvent.m; sourceTree = "<group>"; };
 		B54F6A1316D31DDA00978DD9 /* GollumEvent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GollumEvent.h; sourceTree = "<group>"; };
 		B54F6A1416D31DDB00978DD9 /* GollumEvent.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GollumEvent.m; sourceTree = "<group>"; };
+		B54F6A1616D3605700978DD9 /* FeedbackViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FeedbackViewController.h; sourceTree = "<group>"; };
+		B54F6A1716D3605900978DD9 /* FeedbackViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FeedbackViewController.m; sourceTree = "<group>"; };
+		B54F6A1816D3605A00978DD9 /* FeedbackViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FeedbackViewController.xib; sourceTree = "<group>"; };
+		B54F6A1B16D3617600978DD9 /* feedback.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = feedback.html; sourceTree = "<group>"; };
 		B552947A16C7A22E0010D56A /* IssuesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IssuesViewController.h; sourceTree = "<group>"; };
 		B552947B16C7A22E0010D56A /* IssuesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IssuesViewController.m; sourceTree = "<group>"; };
 		B552947C16C7A22E0010D56A /* IssuesViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = IssuesViewController.xib; sourceTree = "<group>"; };
@@ -1042,6 +1049,9 @@
 				B54F69E416D2F88A00978DD9 /* NotificationsViewController.h */,
 				B54F69E516D2F88A00978DD9 /* NotificationsViewController.m */,
 				B54F69E616D2F88B00978DD9 /* NotificationsViewController.xib */,
+				B54F6A1616D3605700978DD9 /* FeedbackViewController.h */,
+				B54F6A1716D3605900978DD9 /* FeedbackViewController.m */,
+				B54F6A1816D3605A00978DD9 /* FeedbackViewController.xib */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -1155,6 +1165,7 @@
 				B542275216CCC8D00020F300 /* commit_details.html */,
 				B542275D16CDFB390020F300 /* github.css */,
 				B542276516CF6F980020F300 /* raw_file.html */,
+				B54F6A1B16D3617600978DD9 /* feedback.html */,
 			);
 			path = Html;
 			sourceTree = "<group>";
@@ -1371,6 +1382,8 @@
 				B54F69E016D2E94800978DD9 /* avatar-placeholder.png in Resources */,
 				B54F69E816D2F88C00978DD9 /* NotificationsViewController.xib in Resources */,
 				B54F69ED16D2FB4400978DD9 /* NotificationCell.xib in Resources */,
+				B54F6A1A16D3605C00978DD9 /* FeedbackViewController.xib in Resources */,
+				B54F6A1C16D3617600978DD9 /* feedback.html in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1478,6 +1491,7 @@
 				B54F6A0F16D31C8900978DD9 /* PublicEvent.m in Sources */,
 				B54F6A1216D31D4300978DD9 /* CommitCommentEvent.m in Sources */,
 				B54F6A1516D31DDC00978DD9 /* GollumEvent.m in Sources */,
+				B54F6A1916D3605C00978DD9 /* FeedbackViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

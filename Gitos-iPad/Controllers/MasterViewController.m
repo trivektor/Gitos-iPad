@@ -17,6 +17,7 @@
 #import "RepoSearchViewController.h"
 #import "LoginViewController.h"
 #import "SearchViewController.h"
+#import "FeedbackViewController.h"
 #import "NotificationsViewController.h"
 
 @interface MasterViewController ()
@@ -60,7 +61,7 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return 8;
+    return 9;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -97,6 +98,8 @@
     } else if (indexPath.row == 6) {
         [self.delegate didSelectViewController:[[NotificationsViewController alloc] init]];
     } else if (indexPath.row == 7) {
+        [self.delegate didSelectViewController:[[FeedbackViewController alloc] init]];
+    } else if (indexPath.row == 8) {
         [self signout];
     }
 }

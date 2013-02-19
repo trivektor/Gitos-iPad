@@ -62,6 +62,10 @@
             optionLabelText  = @"Notifications";
             break;
         case 7:
+            fontAwesome      = [NSString fontAwesomeIconStringForIconIdentifier:@"icon-thumbs-up"];
+            optionLabelText  = @"Feedback";
+            break;
+        case 8:
             fontAwesome      = [NSString fontAwesomeIconStringForIconIdentifier:@"icon-signout"];
             optionLabelText  = @"Sign out";
             break;
