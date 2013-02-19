@@ -151,6 +151,11 @@
 		B54F69DC16D2C5CA00978DD9 /* 04-squiggle@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B54F69DA16D2C5CA00978DD9 /* 04-squiggle@2x.png */; };
 		B54F69DE16D2DF1E00978DD9 /* avatar-placeholder.png in Resources */ = {isa = PBXBuildFile; fileRef = B54F69DD16D2DF1E00978DD9 /* avatar-placeholder.png */; };
 		B54F69E016D2E94800978DD9 /* avatar-placeholder.png in Resources */ = {isa = PBXBuildFile; fileRef = B54F69DF16D2E94800978DD9 /* avatar-placeholder.png */; };
+		B54F69E316D2F69C00978DD9 /* Notification.m in Sources */ = {isa = PBXBuildFile; fileRef = B54F69E216D2F69C00978DD9 /* Notification.m */; };
+		B54F69E716D2F88C00978DD9 /* NotificationsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B54F69E516D2F88A00978DD9 /* NotificationsViewController.m */; };
+		B54F69E816D2F88C00978DD9 /* NotificationsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B54F69E616D2F88B00978DD9 /* NotificationsViewController.xib */; };
+		B54F69EB16D2FB3600978DD9 /* NotificationCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B54F69EA16D2FB3600978DD9 /* NotificationCell.m */; };
+		B54F69ED16D2FB4400978DD9 /* NotificationCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B54F69EC16D2FB4300978DD9 /* NotificationCell.xib */; };
 		B552947D16C7A22E0010D56A /* IssuesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B552947B16C7A22E0010D56A /* IssuesViewController.m */; };
 		B552947E16C7A22E0010D56A /* IssuesViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B552947C16C7A22E0010D56A /* IssuesViewController.xib */; };
 		B552948116C7A23D0010D56A /* Issue.m in Sources */ = {isa = PBXBuildFile; fileRef = B552948016C7A23D0010D56A /* Issue.m */; };
@@ -428,6 +433,14 @@
 		B54F69DA16D2C5CA00978DD9 /* 04-squiggle@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "04-squiggle@2x.png"; sourceTree = "<group>"; };
 		B54F69DD16D2DF1E00978DD9 /* avatar-placeholder.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "avatar-placeholder.png"; sourceTree = "<group>"; };
 		B54F69DF16D2E94800978DD9 /* avatar-placeholder.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "avatar-placeholder.png"; sourceTree = "<group>"; };
+		B54F69E116D2F69C00978DD9 /* Notification.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Notification.h; sourceTree = "<group>"; };
+		B54F69E216D2F69C00978DD9 /* Notification.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Notification.m; sourceTree = "<group>"; };
+		B54F69E416D2F88A00978DD9 /* NotificationsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NotificationsViewController.h; sourceTree = "<group>"; };
+		B54F69E516D2F88A00978DD9 /* NotificationsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NotificationsViewController.m; sourceTree = "<group>"; };
+		B54F69E616D2F88B00978DD9 /* NotificationsViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NotificationsViewController.xib; sourceTree = "<group>"; };
+		B54F69E916D2FB3500978DD9 /* NotificationCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NotificationCell.h; sourceTree = "<group>"; };
+		B54F69EA16D2FB3600978DD9 /* NotificationCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NotificationCell.m; sourceTree = "<group>"; };
+		B54F69EC16D2FB4300978DD9 /* NotificationCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NotificationCell.xib; sourceTree = "<group>"; };
 		B552947A16C7A22E0010D56A /* IssuesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IssuesViewController.h; sourceTree = "<group>"; };
 		B552947B16C7A22E0010D56A /* IssuesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IssuesViewController.m; sourceTree = "<group>"; };
 		B552947C16C7A22E0010D56A /* IssuesViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = IssuesViewController.xib; sourceTree = "<group>"; };
@@ -954,6 +967,9 @@
 				B542276716D0322D0020F300 /* SearchViewController.h */,
 				B542276816D0322E0020F300 /* SearchViewController.m */,
 				B542276916D0322F0020F300 /* SearchViewController.xib */,
+				B54F69E416D2F88A00978DD9 /* NotificationsViewController.h */,
+				B54F69E516D2F88A00978DD9 /* NotificationsViewController.m */,
+				B54F69E616D2F88B00978DD9 /* NotificationsViewController.xib */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -999,6 +1015,8 @@
 				B542274116CCB15D0020F300 /* Commit.m */,
 				B542275416CDEA580020F300 /* CommitFile.h */,
 				B542275516CDEA580020F300 /* CommitFile.m */,
+				B54F69E116D2F69C00978DD9 /* Notification.h */,
+				B54F69E216D2F69C00978DD9 /* Notification.m */,
 			);
 			path = Classes;
 			sourceTree = "<group>";
@@ -1042,6 +1060,9 @@
 				B542276C16D06A3D0020F300 /* UserSearchResultCell.h */,
 				B542276D16D06A3D0020F300 /* UserSearchResultCell.m */,
 				B542276F16D06A4D0020F300 /* UserSearchResultCell.xib */,
+				B54F69E916D2FB3500978DD9 /* NotificationCell.h */,
+				B54F69EA16D2FB3600978DD9 /* NotificationCell.m */,
+				B54F69EC16D2FB4300978DD9 /* NotificationCell.xib */,
 			);
 			path = Cells;
 			sourceTree = "<group>";
@@ -1275,6 +1296,8 @@
 				B54F69DC16D2C5CA00978DD9 /* 04-squiggle@2x.png in Resources */,
 				B54F69DE16D2DF1E00978DD9 /* avatar-placeholder.png in Resources */,
 				B54F69E016D2E94800978DD9 /* avatar-placeholder.png in Resources */,
+				B54F69E816D2F88C00978DD9 /* NotificationsViewController.xib in Resources */,
+				B54F69ED16D2FB4400978DD9 /* NotificationCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1366,6 +1389,9 @@
 				B542275616CDEA580020F300 /* CommitFile.m in Sources */,
 				B542276A16D032300020F300 /* SearchViewController.m in Sources */,
 				B542276E16D06A3D0020F300 /* UserSearchResultCell.m in Sources */,
+				B54F69E316D2F69C00978DD9 /* Notification.m in Sources */,
+				B54F69E716D2F88C00978DD9 /* NotificationsViewController.m in Sources */,
+				B54F69EB16D2FB3600978DD9 /* NotificationCell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

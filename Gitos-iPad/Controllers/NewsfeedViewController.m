@@ -10,8 +10,6 @@
 #import "NewsfeedDetailsViewController.h"
 #import "User.h"
 #import "NewsFeedCell.h"
-#import "RelativeDateDescriptor.h"
-#import "SVPullToRefresh.h"
 #import "TimelineEvent.h"
 
 @interface NewsfeedViewController ()

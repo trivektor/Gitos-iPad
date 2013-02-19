@@ -34,12 +34,16 @@
     // Do any additional setup after loading the view from its nib.
     [self performHouseKeepingTasks];
     [self registerNib];
+    [self setupPullToRefresh];
     [self fetchNotificationsForPage:self.currentPage++];
 }
 
 - (void)performHouseKeepingTasks
 {
     self.navigationItem.title = @"Notifications";
+    self.hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+    self.hud.mode = MBProgressHUDAnimationFade;
+    self.hud.labelText = @"Loading";
 }
 
 - (void)registerNib
@@ -97,6 +101,8 @@
 
     [operation setCompletionBlockWithSuccess:
      ^(AFHTTPRequestOperation *operation, id responseObject){
+         [self.hud hide:YES];
+         [self.notificationsTable.pullToRefreshView stopAnimating];
          NSString *response = [operation responseString];
 
          NSArray *json = [NSJSONSerialization JSONObjectWithData:[response dataUsingEncoding:NSUTF8StringEncoding] options:NSJSONReadingMutableContainers error:nil];
@@ -108,10 +114,30 @@
          [self.notificationsTable reloadData];
      }
      failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+         [self.hud hide:YES];
+         [self.notificationsTable.pullToRefreshView stopAnimating];
          NSLog(@"%@", error);
      }];
     
     [operation start];
+}
+
+- (void)setupPullToRefresh
+{
+    self.currentPage = 1;
+    [self.notifications removeAllObjects];
+    [self.notificationsTable addPullToRefreshWithActionHandler:^{
+        [self fetchNotificationsForPage:self.currentPage++];
+    }];
+}
+
+- (void)scrollViewDidScroll:(UIScrollView *)scrollView
+{
+    if (([scrollView contentOffset].y + scrollView.frame.size.height) == scrollView.contentSize.height) {
+        // Bottom of UITableView reached
+        [self.hud show:YES];
+        [self fetchNotificationsForPage:self.currentPage++];
+    }
 }
 
 - (void)didReceiveMemoryWarning

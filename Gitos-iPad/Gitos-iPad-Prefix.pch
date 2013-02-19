@@ -20,4 +20,5 @@
     #import "AppConfig.h"
     #import "NSString+FontAwesome.h"
     #import "RelativeDateDescriptor.h"
+    #import "SVPullToRefresh.h"
 #endif

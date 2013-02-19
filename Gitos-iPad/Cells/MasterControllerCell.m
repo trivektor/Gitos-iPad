@@ -7,7 +7,6 @@
 //
 
 #import "MasterControllerCell.h"
-#import "NSString+FontAwesome.h"
 
 @implementation MasterControllerCell
 
@@ -59,6 +58,10 @@
             optionLabelText  = @"Search";
             break;
         case 6:
+            fontAwesome      = [NSString fontAwesomeIconStringForIconIdentifier:@"icon-bullhorn"];
+            optionLabelText  = @"Notifications";
+            break;
+        case 7:
             fontAwesome      = [NSString fontAwesomeIconStringForIconIdentifier:@"icon-signout"];
             optionLabelText  = @"Sign out";
             break;
