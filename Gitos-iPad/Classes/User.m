@@ -129,6 +129,11 @@
     return [[self.data valueForKey:@"public_repos"] integerValue];
 }
 
+- (NSInteger)getNumberOfGists
+{
+    return [[self.data valueForKey:@"public_gists"] integerValue];
+}
+
 - (NSString *)getCreatedAt
 {
     NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];

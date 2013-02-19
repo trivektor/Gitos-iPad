@@ -45,30 +45,34 @@
         labelText   = @"Email";
         detailsText = [user getEmail] == (id)[NSNull null] ? @"n/a" : [user getEmail];
     } else if (indexPath.row == 3) {
-        fontAwesome = [NSString fontAwesomeIconStringForIconIdentifier:@"icon-group"];
-        labelText   = @"Followers";
-        detailsText = [NSNumberFormatter localizedStringFromNumber:@([user getFollowers]) numberStyle:NSNumberFormatterDecimalStyle];
-    } else if (indexPath.row == 4) {
-        fontAwesome = [NSString fontAwesomeIconStringForIconIdentifier:@"icon-group"];
-        labelText   = @"Following";
-        detailsText = [NSNumberFormatter localizedStringFromNumber:@([user getFollowing]) numberStyle:NSNumberFormatterDecimalStyle];
-    } else if (indexPath.row == 5) {
         fontAwesome = [NSString fontAwesomeIconStringForIconIdentifier:@"icon-briefcase"];
         labelText   = @"Company";
         detailsText = [user getCompany] == (id)[NSNull null] ? @"n/a" : [user getCompany];
+    } else if (indexPath.row == 4) {
+        fontAwesome = [NSString fontAwesomeIconStringForIconIdentifier:@"icon-group"];
+        labelText   = @"Followers";
+        detailsText = [NSNumberFormatter localizedStringFromNumber:@([user getFollowers]) numberStyle:NSNumberFormatterDecimalStyle];
+    } else if (indexPath.row == 5) {
+        fontAwesome = [NSString fontAwesomeIconStringForIconIdentifier:@"icon-group"];
+        labelText   = @"Following";
+        detailsText = [NSNumberFormatter localizedStringFromNumber:@([user getFollowing]) numberStyle:NSNumberFormatterDecimalStyle];
     } else if (indexPath.row == 6) {
         fontAwesome = [NSString fontAwesomeIconStringForIconIdentifier:@"icon-folder-open"];
         labelText   = @"Repos";
         detailsText = [NSString stringWithFormat:@"%i", [user getNumberOfRepos]];
     } else if (indexPath.row == 7) {
+        fontAwesome = [NSString fontAwesomeIconStringForIconIdentifier:@"icon-pushpin"];
+        labelText   = @"Gists";
+        detailsText = [NSString stringWithFormat:@"%i", [user getNumberOfGists]];
+    } else if (indexPath.row == 8) {
         fontAwesome = [NSString fontAwesomeIconStringForIconIdentifier:@"icon-calendar"];
         labelText   = @"Joined";
         detailsText = [user getCreatedAt];
-    } else if (indexPath.row == 8) {
+    } else if (indexPath.row == 9) {
         fontAwesome = [NSString fontAwesomeIconStringForIconIdentifier:@"icon-sitemap"];
         labelText   = @"Organizations";
         detailsText = @"view all";
-    } else if (indexPath.row == 9) {
+    } else if (indexPath.row == 10) {
         fontAwesome = [NSString fontAwesomeIconStringForIconIdentifier:@"icon-rss"];
         labelText   = @"Recent Activity";
         detailsText = @"view all";

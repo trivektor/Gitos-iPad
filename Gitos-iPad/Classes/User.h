@@ -34,6 +34,7 @@
 - (NSInteger)getFollowing;
 - (NSString *)getCompany;
 - (NSInteger)getNumberOfRepos;
+- (NSInteger)getNumberOfGists;
 - (NSString *)getCreatedAt;
 - (NSString *)getHtmlUrl;
 

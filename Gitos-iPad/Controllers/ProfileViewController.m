@@ -143,7 +143,7 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return 10;
+    return 11;
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -178,21 +178,21 @@
         if ([self.user getWebsite] != (id)[NSNull null]) {
             [self loadWebsiteWithUrl:[self.user getWebsite]];
         }
-    } else if (indexPath.row == 3) {
+    } else if (indexPath.row == 4) {
         FollowViewController *followController = [[FollowViewController alloc] init];
         followController.usersUrl = [self.user getFollowersUrl];
         followController.controllerTitle = @"Followers";
         [self.navigationController pushViewController:followController animated:YES];
-    } else if (indexPath.row == 4) {
+    } else if (indexPath.row == 5) {
         FollowViewController *followController = [[FollowViewController alloc] init];
         followController.usersUrl = [self.user getFollowingUrl];
         followController.controllerTitle = @"Following";
         [self.navigationController pushViewController:followController animated:YES];
-    } else if (indexPath.row == 8) {
+    } else if (indexPath.row == 9) {
         OrganizationsViewController *organizationsController = [[OrganizationsViewController alloc] init];
         organizationsController.user = self.user;
         [self.navigationController pushViewController:organizationsController animated:YES];
-    } else if (indexPath.row == 9) {
+    } else if (indexPath.row == 10) {
         RecentActivityViewController *recentActivityController = [[RecentActivityViewController alloc] init];
         recentActivityController.user = self.user;
         [self.navigationController pushViewController:recentActivityController animated:YES];
