@@ -21,5 +21,8 @@
 - (NSString *)getTitle;
 - (NSString *)convertToRelativeDate:(NSString *)originalDateString;
 - (NSString *)getUpdatedAt;
+- (BOOL)isUnread;
+- (NSString *)getSubjectUrl;
+- (NSString *)getSubjectType;
 
 @end

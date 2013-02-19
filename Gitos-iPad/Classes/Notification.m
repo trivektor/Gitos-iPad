@@ -47,4 +47,21 @@
     return [self convertToRelativeDate:[self.data valueForKey:@"updated_at"]];
 }
 
+- (BOOL)isUnread
+{
+    return [[self.data valueForKey:@"unread"] integerValue] == 1;
+}
+
+- (NSString *)getSubjectUrl
+{
+    NSDictionary *subjectData = [self getSubjectData];
+    return [subjectData valueForKey:@"url"];
+}
+
+- (NSString *)getSubjectType
+{
+    NSDictionary *subjectData = [self getSubjectData];
+    return [subjectData valueForKey:@"type"];
+}
+
 @end
