@@ -17,7 +17,7 @@
 #import "RepoSearchViewController.h"
 #import "LoginViewController.h"
 #import "SearchViewController.h"
-#import "SSKeychain.h"
+#import "NotificationsViewController.h"
 
 @interface MasterViewController ()
 
@@ -60,7 +60,7 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return 7;
+    return 8;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -95,10 +95,17 @@
     } else if (indexPath.row == 5) {
         [self.delegate didSelectViewController:[[SearchViewController alloc] init]];
     } else if (indexPath.row == 6) {
-        UIActionSheet *actionSheet = [[UIActionSheet alloc] initWithTitle:@"Are you sure?" delegate:self cancelButtonTitle:@"Cancel" destructiveButtonTitle:@"Sign out" otherButtonTitles:nil];
-        actionSheet.actionSheetStyle = UIActionSheetStyleBlackOpaque;
-        [actionSheet showInView:[UIApplication sharedApplication].keyWindow];
+        [self.delegate didSelectViewController:[[NotificationsViewController alloc] init]];
+    } else if (indexPath.row == 7) {
+        [self signout];
     }
+}
+
+- (void)signout
+{
+    UIActionSheet *actionSheet = [[UIActionSheet alloc] initWithTitle:@"Are you sure?" delegate:self cancelButtonTitle:@"Cancel" destructiveButtonTitle:@"Sign out" otherButtonTitles:nil];
+    actionSheet.actionSheetStyle = UIActionSheetStyleBlackOpaque;
+    [actionSheet showInView:[UIApplication sharedApplication].keyWindow];
 }
 
 - (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex

@@ -17,11 +17,12 @@
 @property (nonatomic, strong) id<MasterViewControllerDelegate> delegate;
 
 - (void)performHouseKeepingTasks;
+- (void)signout;
 
 @end
 
 @protocol MasterViewControllerDelegate <NSObject>
 
-- (void) didSelectViewController:(UIViewController *)controller;
+- (void)didSelectViewController:(UIViewController *)controller;
 
 @end
