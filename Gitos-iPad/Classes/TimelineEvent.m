@@ -104,6 +104,9 @@
         NSString *commitId    = [comment valueForKey:@"commit_id"];
         text  = [NSString stringWithFormat:@"%@ commented on commit %@@%@", actorName, repoName, [commitId substringToIndex:9]];
         fontAwesome = @"icon-comments";
+    } else if ([eventType isEqualToString:@"GollumEvent"]) {
+        text = [NSString stringWithFormat:@"%@ created wiki for %@", actorName, repoName];
+        fontAwesome = @"icon-book";
     }
 
     self.fontAwesomeIcon = fontAwesome;
