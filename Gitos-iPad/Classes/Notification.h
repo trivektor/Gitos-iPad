@@ -12,10 +12,14 @@
 @interface Notification : NSObject
 
 @property (nonatomic, strong) NSDictionary *data;
+@property (nonatomic, strong) RelativeDateDescriptor *relativeDateDescriptor;
+@property (nonatomic, strong) NSDateFormatter *dateFormatter;
 
 - (id)initWithData:(NSDictionary *)notificationData;
 - (Repo *)getRepo;
 - (NSDictionary *)getSubjectData;
 - (NSString *)getTitle;
+- (NSString *)convertToRelativeDate:(NSString *)originalDateString;
+- (NSString *)getUpdatedAt;
 
 @end

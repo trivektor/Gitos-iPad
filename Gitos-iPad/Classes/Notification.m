@@ -14,6 +14,9 @@
 {
     self = [super init];
     self.data = notificationData;
+    self.relativeDateDescriptor = [[RelativeDateDescriptor alloc] initWithPriorDateDescriptionFormat:@"%@ ago" postDateDescriptionFormat:@"in %@"];
+    self.dateFormatter = [[NSDateFormatter alloc] init];
+    self.dateFormatter.dateFormat = @"yyyy-MM-dd'T'HH:mm:ssZZ";
     return self;
 }
 
@@ -31,6 +34,17 @@
 - (Repo *)getRepo
 {
     return [[Repo alloc] initWithData:[self.data valueForKey:@"repository"]];
+}
+
+- (NSString *)convertToRelativeDate:(NSString *)originalDateString
+{
+    NSDate *date  = [self.dateFormatter dateFromString:originalDateString];
+    return [self.relativeDateDescriptor describeDate:date relativeTo:[NSDate date]];
+}
+
+- (NSString *)getUpdatedAt
+{
+    return [self convertToRelativeDate:[self.data valueForKey:@"updated_at"]];
 }
 
 @end
