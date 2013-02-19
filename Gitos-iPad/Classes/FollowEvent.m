@@ -10,4 +10,11 @@
 
 @implementation FollowEvent
 
+- (NSString *)toString
+{
+    User *actor = [self getActor];
+    User *target = [[User alloc] initWithData:[self getTarget]];
+    return [NSString stringWithFormat:@"%@ started following %@", [actor getLogin], [target getLogin]];
+}
+
 @end

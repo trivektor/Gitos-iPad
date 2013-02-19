@@ -10,4 +10,6 @@
 
 @interface GistEvent : TimelineEvent
 
+- (NSString *)toString;
+
 @end

@@ -10,4 +10,6 @@
 
 @interface CommitCommentEvent : TimelineEvent
 
+- (NSString *)toString;
+
 @end

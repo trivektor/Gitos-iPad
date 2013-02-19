@@ -10,4 +10,14 @@
 
 @implementation MemberEvent
 
+- (NSString *)toString
+{
+    NSDictionary *payload = [self getPayload];
+    User *actor = [self getActor];
+    Repo *repo = [self getRepo];
+    NSDictionary *member = [payload valueForKey:@"member"];
+    NSString *memberLogin = [member valueForKey:@"login"];
+    return [NSString stringWithFormat:@"%@ added %@ to %@", [actor getName], memberLogin, [repo getName]];
+}
+
 @end

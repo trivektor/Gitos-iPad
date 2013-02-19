@@ -10,4 +10,6 @@
 
 @interface GollumEvent : TimelineEvent
 
+- (NSString *)toString;
+
 @end

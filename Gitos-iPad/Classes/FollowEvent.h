@@ -10,4 +10,6 @@
 
 @interface FollowEvent : TimelineEvent
 
+- (NSString *)toString;
+
 @end

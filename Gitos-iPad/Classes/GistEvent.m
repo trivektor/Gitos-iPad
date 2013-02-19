@@ -10,4 +10,13 @@
 
 @implementation GistEvent
 
+- (NSString *)toString
+{
+    NSDictionary *payload = [self getPayload];
+    User *actor = [self getActor];
+    Gist *gist = [[Gist alloc] initWithData:payload];
+    NSString *action = [payload valueForKey:@"action"];
+    return [NSString stringWithFormat:@"%@ %@ gist:%@", [actor getLogin], action, [gist getId]];
+}
+
 @end

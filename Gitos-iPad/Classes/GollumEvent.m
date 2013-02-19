@@ -10,4 +10,11 @@
 
 @implementation GollumEvent
 
+- (NSString *)toString
+{
+    User *actor = [self getActor];
+    Repo *repo = [self getRepo];
+    return [NSString stringWithFormat:@"%@ created wiki for %@", [actor getName], [repo getName]];
+}
+
 @end

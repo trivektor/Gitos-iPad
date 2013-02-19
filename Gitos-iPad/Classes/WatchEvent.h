@@ -8,6 +8,8 @@
 
 #import <Foundation/Foundation.h>
 
-@interface WatchEvent : NSObject
+@interface WatchEvent : TimelineEvent
+
+- (NSString *)toString;
 
 @end

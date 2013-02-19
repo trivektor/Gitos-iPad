@@ -10,4 +10,6 @@
 
 @interface MemberEvent : TimelineEvent
 
+- (NSString *)toString;
+
 @end
