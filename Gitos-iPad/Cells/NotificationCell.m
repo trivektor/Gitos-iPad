@@ -26,4 +26,12 @@
     // Configure the view for the selected state
 }
 
+- (void)render
+{
+    self.fontAwesomeLabel.font = [UIFont fontWithName:kFontAwesomeFamilyName size:14];
+    self.fontAwesomeLabel.text = [NSString fontAwesomeIconStringForIconIdentifier:@"icon-quote-left"];
+    self.titleLabel.text       = [self.notification getTitle];
+    self.updatedAtLabel.text   = [self.notification getUpdatedAt];
+}
+
 @end

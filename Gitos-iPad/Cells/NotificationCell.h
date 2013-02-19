@@ -7,7 +7,15 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "Notification.h"
 
 @interface NotificationCell : UITableViewCell
+
+@property (nonatomic, weak) IBOutlet UILabel *fontAwesomeLabel;
+@property (nonatomic, weak) IBOutlet UILabel *titleLabel;
+@property (nonatomic, weak) IBOutlet UILabel *updatedAtLabel;
+@property (nonatomic, strong) Notification *notification;
+
+- (void)render;
 
 @end
