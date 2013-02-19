@@ -17,7 +17,7 @@
     NSDictionary *payload = [self getPayload];
     NSString *action = [payload valueForKey:@"action"];
     NSInteger pullRequestNumber = [[payload valueForKey:@"number"] integerValue];
-    return [NSString stringWithFormat:@"%@ %@ pull request %@/%i", [actor getName], action, [repo getName], pullRequestNumber];
+    return [NSString stringWithFormat:@"%@ %@ pull request %@/%i", [actor getLogin], action, [repo getName], pullRequestNumber];
 }
 
 @end

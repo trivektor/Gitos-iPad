@@ -14,9 +14,9 @@
 {
     NSDictionary *payload = [self getPayload];
     User *actor = [self getActor];
-    Gist *gist = [[Gist alloc] initWithData:payload];
+    Gist *gist = [[Gist alloc] initWithData:[payload valueForKey:@"gist"]];
     NSString *action = [payload valueForKey:@"action"];
-    return [NSString stringWithFormat:@"%@ %@ gist:%@", [actor getLogin], action, [gist getId]];
+    return [NSString stringWithFormat:@"%@ %@ %@", [actor getLogin], action, [gist getName]];
 }
 
 @end

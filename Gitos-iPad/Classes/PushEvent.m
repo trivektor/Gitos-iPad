@@ -17,7 +17,7 @@
     Repo *repo = [self getRepo];
     NSArray *ref = [[payload valueForKey:@"ref"] componentsSeparatedByString:@"/"];
     NSString *branch = [ref lastObject];
-    return [NSString stringWithFormat:@"%@ pushed to %@ at %@", [actor getName], branch, [repo getName]];
+    return [NSString stringWithFormat:@"%@ pushed to %@ at %@", [actor getLogin], branch, [repo getName]];
 }
 
 @end
