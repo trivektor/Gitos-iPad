@@ -17,7 +17,7 @@
     Repo *repo = [self getRepo];
     NSDictionary *member = [payload valueForKey:@"member"];
     NSString *memberLogin = [member valueForKey:@"login"];
-    return [NSString stringWithFormat:@"%@ added %@ to %@", [actor getName], memberLogin, [repo getName]];
+    return [NSString stringWithFormat:@"%@ added %@ to %@", [actor getLogin], memberLogin, [repo getName]];
 }
 
 @end

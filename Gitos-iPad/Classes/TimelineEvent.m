@@ -31,7 +31,7 @@
     self.dateFormatter = [[NSDateFormatter alloc] init];
     [self.dateFormatter setDateFormat:@"yyyy-MM-dd'T'HH:mm:ssZZ"];
     self.fontAwesomeIcons = @{
-        @"ForkEvent"          : @"icon-sitemap",
+        @"ForkEvent"          : @"icon-random",
         @"WatchEvent"         : @"icon-star",
         @"CreateEvent"        : @"icon-plus",
         @"FollowEvent"        : @"icon-user",
@@ -39,7 +39,7 @@
         @"IssuesEvent"        : @"icon-warning-sign",
         @"MemberEvent"        : @"icon-user-md",
         @"IssueCommentEvent"  : @"icon-comment-alt",
-        @"PushEvent"          : @"icon-upload-alt",
+        @"PushEvent"          : @"icon-upload",
         @"PullRequestEvent"   : @"icon-retweet",
         @"PublicEvent"        : @"icon-folder-open-alt",
         @"CommitCommentEvent" : @"icon-comments",
