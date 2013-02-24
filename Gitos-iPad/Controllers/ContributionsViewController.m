@@ -28,11 +28,20 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
     [self performHouseKeepingTasks];
+    [self fetchContributions];
 }
 
 - (void)performHouseKeepingTasks
 {
     self.navigationItem.title = [NSString stringWithFormat:@"%@'s contributions", [self.user getLogin]];
+}
+
+- (void)fetchContributions
+{
+    NSString *contributionsFormPath = [[NSBundle mainBundle] pathForResource:@"contributions" ofType:@"html"];
+    NSString *contributionsFormHtml = [NSString stringWithContentsOfFile:contributionsFormPath encoding:NSUTF8StringEncoding error:nil];
+    NSURL *baseUrl = [NSURL fileURLWithPath:[[NSBundle mainBundle] bundlePath]];
+    [self.contributionsView loadHTMLString:[NSString stringWithFormat:contributionsFormHtml, [self.user getLogin]] baseURL:baseUrl];
 }
 
 - (void)didReceiveMemoryWarning

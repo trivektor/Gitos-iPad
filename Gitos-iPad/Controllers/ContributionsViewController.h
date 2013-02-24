@@ -14,5 +14,6 @@
 @property (nonatomic, weak) IBOutlet UIWebView *contributionsView;
 
 - (void)performHouseKeepingTasks;
+- (void)fetchContributions;
 
 @end

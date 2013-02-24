@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <link rel='stylesheet' href='bootstrap.css'></link>
+        <link rel='stylesheet' href='gitos.css'></link>
+        <link rel='stylesheet' href='github.css'></link>
+    </head>
+    <body>
+        <div id='contributions'>
+        </div>
+        <script>
+            var CONTRIBUTIONS_URL = 'https://github.com/users/%@/contributions_calendar_data?_=' + (new Date).getTime();
+            var contrib = {
+                createCORSRequest: function(method, url) {
+                    var xhr = new XMLHttpRequest;
+                    xhr.open(method, url, true);
+                    return xhr;
+                },
+                fetchContributions: function() {
+                    this.request = this.createCORSRequest('GET', CONTRIBUTIONS_URL);
+                    this.request.onload = this.displayContributions.bind(this);
+                    this.request.send();
+                },
+                displayContributions: function() {
+                    var responseText = window.JSON.parse(this.request.responseText);
+                }
+            }
+            
+            contrib.fetchContributions();
+        </script>
+    </body>
+</html>
