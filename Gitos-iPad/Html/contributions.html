@@ -6,8 +6,8 @@
         <link rel='stylesheet' href='github.css'></link>
     </head>
     <body>
-        <table id='contributions' class='table'>
-        </table>
+        <ul id='contributions' class='unstyled'>
+        </ul>
         <script src='underscore.js'></script>
         <script>
             var CONTRIBUTIONS_URL = 'https://github.com/users/%@/contributions_calendar_data?_=' + (new Date).getTime();
@@ -49,35 +49,50 @@
                     // Refactor (use templating)
                     var contributions = this.parseData(),
                         fragment      = document.createDocumentFragment(),
-                        tr, td, year, month, day, html, ul;
+                        li, td, year, month, day, html, num_commits;
 
                     for (year in contributions) {
-                        tr = document.createElement('tr');
-                        td = document.createElement('td');
-                        html = '<label class="label">' + year + '</label>';
-                        ul = document.createElement('ul');
+                        li = document.createElement('li');
                         
-                        for (month in contributions[year]) {
-                            
-                            html += '<p><b>' + month + '</b></p><ul class="clearfix unstyled commits-list">';
+                        html = '';
 
+                        for (month in contributions[year]) {
+                            html += '<div class="month">';
+                            html += '<label class="label label-important">' + month + ' ' + year + '</label>';
+                            html += '<div class="clearfix">';
+                            
                             for (day in contributions[year][month]) {
-                                html += '<li><span class="day">' + day + '</span><span class="num-commits">' + contributions[year][month][day] + '</span></li>';
+                                num_commits = contributions[year][month][day];
+                                html += '<span class="commit-block" style="background:' + this.getColor(num_commits) + '" data-commits="'+ num_commits + '"></span>';
                             }
 
-                            html += '</ul>';
+                            html += '</div>';
+                            html += '</div>';
                         }
-                        
-                        td.innerHTML = html;
-                        tr.appendChild(td);
-                        fragment.appendChild(tr);
+
+                        li.innerHTML = html;
+                        fragment.appendChild(li);
                     }
 
-                    var contributions_table = document.getElementById("contributions");
-                    contributions_table.appendChild(fragment);
+                    var c = document.getElementById("contributions");
+                    c.appendChild(fragment);
+                    this.highlightCommits();
+                },
+                getColor: function(num_commits) {
+                    if (num_commits == 0) {
+                        return '#eee';
+                    } else if (num_commits > 0 && num_commits < 3) {
+                        return '#D6E685';
+                    } else if (num_commits >= 3 && num_commits < 5) {
+                        return '#8CC665';
+                    } else if (num_commits >= 5 && num_commits < 8) {
+                        return '#44A340';
+                    } else if (num_commits >= 8) {
+                        return '#1E6823';
+                    }
                 },
                 parseData: function() {
-                    var days = window.JSON.parse(this.request.responseText);
+                    var days = window.JSON.parse(this.request.responseText).reverse();
                     var commits = 0, dateComponents;
                     var day, month, year;
                     var contributions = {}

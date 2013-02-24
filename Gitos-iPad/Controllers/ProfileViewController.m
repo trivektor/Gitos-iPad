@@ -88,7 +88,7 @@
         scrollViewHeight += view.frame.size.height;
     }
     
-    [scrollView setContentSize:(CGSizeMake(320, scrollViewHeight + 35))];
+    [scrollView setContentSize:(CGSizeMake(320, scrollViewHeight + 75))];
 }
 
 - (void)didReceiveMemoryWarning

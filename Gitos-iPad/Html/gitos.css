@@ -81,29 +81,20 @@ table td, table th {
     margin-top: 0
 }
 
-.commits-list li {
+.commit-block {
     float: left;
-    width: 40px;
+    width: 20px;
+    height: 20px;
     margin: 2px;
-}
-
-.commits-list .day {
-    border-radius: 2px 2px 0 0;
-    display: block;
-    background: #a5c468;
-    color: #fff;
-    text-align: center;
-    font-size: 10px;
-    line-height: normal;
-    padding: 1px 0;
-}
-
-.commits-list .num-commits {
     background: #eee;
-    display: block;
-    text-overflow: ellipsis;
-    text-align: center;
-    padding: 4px 0;
-    font-size: 11px;
-    border-radius: 0 0 2px 2px;
+}
+
+#contributions .label {
+    display: inline-block;
+    margin-bottom: 8px;
+}
+
+#contributions .month {
+    padding: 8px;
+    border-bottom: 1px solid #ddd;
 }
