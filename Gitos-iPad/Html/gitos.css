@@ -75,3 +75,35 @@ table td, table th {
 #feedback-form {
     padding: 30px
 }
+
+.commits-list {
+    width: 100%;
+    margin-top: 0
+}
+
+.commits-list li {
+    float: left;
+    width: 40px;
+    margin: 2px;
+}
+
+.commits-list .day {
+    border-radius: 2px 2px 0 0;
+    display: block;
+    background: #a5c468;
+    color: #fff;
+    text-align: center;
+    font-size: 10px;
+    line-height: normal;
+    padding: 1px 0;
+}
+
+.commits-list .num-commits {
+    background: #eee;
+    display: block;
+    text-overflow: ellipsis;
+    text-align: center;
+    padding: 4px 0;
+    font-size: 11px;
+    border-radius: 0 0 2px 2px;
+}

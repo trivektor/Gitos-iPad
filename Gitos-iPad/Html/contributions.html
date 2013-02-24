@@ -6,10 +6,34 @@
         <link rel='stylesheet' href='github.css'></link>
     </head>
     <body>
-        <div id='contributions'>
-        </div>
+        <table id='contributions' class='table'>
+        </table>
+        <script src='underscore.js'></script>
         <script>
             var CONTRIBUTIONS_URL = 'https://github.com/users/%@/contributions_calendar_data?_=' + (new Date).getTime();
+            var MONTH_MAPPINGS = {
+                "01" : "Jan",
+                "02" : "Feb",
+                "03" : "Mar",
+                "04" : "Apr",
+                "05" : "May",
+                "06" : "Jun",
+                "07" : "Jul",
+                "08" : "Aug",
+                "09" : "Sep",
+                "10" : "Oct",
+                "11" : "Nov",
+                "12" : "Dec"
+            }
+
+//            var TEMPLATE = _.template(" \
+//                <td> \
+//                    <% _.each(contrib, function(year) { %> \
+//                        <label class='label'><%= year %></label> \
+//                    <% }) %> \
+//                </td> \
+//            ");
+
             var contrib = {
                 createCORSRequest: function(method, url) {
                     var xhr = new XMLHttpRequest;
@@ -22,7 +46,59 @@
                     this.request.send();
                 },
                 displayContributions: function() {
-                    var responseText = window.JSON.parse(this.request.responseText);
+                    // Refactor (use templating)
+                    var contributions = this.parseData(),
+                        fragment      = document.createDocumentFragment(),
+                        tr, td, year, month, day, html, ul;
+
+                    for (year in contributions) {
+                        tr = document.createElement('tr');
+                        td = document.createElement('td');
+                        html = '<label class="label">' + year + '</label>';
+                        ul = document.createElement('ul');
+                        
+                        for (month in contributions[year]) {
+                            
+                            html += '<p><b>' + month + '</b></p><ul class="clearfix unstyled commits-list">';
+
+                            for (day in contributions[year][month]) {
+                                html += '<li><span class="day">' + day + '</span><span class="num-commits">' + contributions[year][month][day] + '</span></li>';
+                            }
+
+                            html += '</ul>';
+                        }
+                        
+                        td.innerHTML = html;
+                        tr.appendChild(td);
+                        fragment.appendChild(tr);
+                    }
+
+                    var contributions_table = document.getElementById("contributions");
+                    contributions_table.appendChild(fragment);
+                },
+                parseData: function() {
+                    var days = window.JSON.parse(this.request.responseText);
+                    var commits = 0, dateComponents;
+                    var day, month, year;
+                    var contributions = {}
+
+                    for (var i=0, len=days.length; i < len; i++) {
+                        dateComponents = days[i][0].split("/");
+                        year  = dateComponents[0];
+                        month = MONTH_MAPPINGS[dateComponents[1]];
+                        day   = dateComponents[2];
+                        commits = days[i][1];
+
+                        if (!(year in contributions)) {
+                            contributions[year] = {}
+                        }
+                        if (!(month in contributions[year])) {
+                            contributions[year][month] = {}
+                        }
+                        contributions[year][month][day] = commits;
+                    }
+
+                    return contributions;
                 }
             }
             
