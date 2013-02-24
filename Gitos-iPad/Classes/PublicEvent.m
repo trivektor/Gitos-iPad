@@ -14,7 +14,7 @@
 {
     User *actor = [self getActor];
     Repo *repo = [self getRepo];
-    return [NSString stringWithFormat:@"%@ open sourced %@", [actor getName], [repo getName]];
+    return [NSString stringWithFormat:@"%@ open sourced %@", [actor getLogin], [repo getName]];
 }
 
 @end
