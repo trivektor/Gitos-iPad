@@ -76,6 +76,10 @@
         fontAwesome = [NSString fontAwesomeIconStringForIconIdentifier:@"icon-rss"];
         labelText   = @"Recent Activity";
         detailsText = @"view all";
+    } else if (indexPath.row == 11) {
+        fontAwesome = [NSString fontAwesomeIconStringForIconIdentifier:@"icon-beer"];
+        labelText   = @"Contributions";
+        detailsText = @"view all";
     }
     
     self.fontAwesomeLabel.text  = fontAwesome;

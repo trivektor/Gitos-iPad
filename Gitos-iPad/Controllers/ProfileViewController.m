@@ -12,6 +12,7 @@
 #import "ProfileCell.h"
 #import "RecentActivityViewController.h"
 #import "OrganizationsViewController.h"
+#import "ContributionsViewController.h"
 
 @interface ProfileViewController ()
 
@@ -143,7 +144,7 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return 11;
+    return 12;
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -196,6 +197,10 @@
         RecentActivityViewController *recentActivityController = [[RecentActivityViewController alloc] init];
         recentActivityController.user = self.user;
         [self.navigationController pushViewController:recentActivityController animated:YES];
+    } else if (indexPath.row == 11) {
+        ContributionsViewController *contributionsController = [[ContributionsViewController alloc] init];
+        contributionsController.user = self.user;
+        [self.navigationController pushViewController:contributionsController animated:YES];
     }
 }
 

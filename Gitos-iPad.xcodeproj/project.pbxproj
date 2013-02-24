@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		B511D43416D9A5DA00DD0ED5 /* ContributionsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B511D43216D9A5DA00DD0ED5 /* ContributionsViewController.m */; };
+		B511D43516D9A5DA00DD0ED5 /* ContributionsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B511D43316D9A5DA00DD0ED5 /* ContributionsViewController.xib */; };
 		B51653FB16B7C1B9003F0DFA /* 01-refresh.png in Resources */ = {isa = PBXBuildFile; fileRef = B516539A16B7C1B9003F0DFA /* 01-refresh.png */; };
 		B51653FC16B7C1B9003F0DFA /* 01-refresh@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B516539B16B7C1B9003F0DFA /* 01-refresh@2x.png */; };
 		B51653FD16B7C1B9003F0DFA /* 06-magnify.png in Resources */ = {isa = PBXBuildFile; fileRef = B516539C16B7C1B9003F0DFA /* 06-magnify.png */; };
@@ -280,6 +282,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		B511D43116D9A5DA00DD0ED5 /* ContributionsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ContributionsViewController.h; sourceTree = "<group>"; };
+		B511D43216D9A5DA00DD0ED5 /* ContributionsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ContributionsViewController.m; sourceTree = "<group>"; };
+		B511D43316D9A5DA00DD0ED5 /* ContributionsViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ContributionsViewController.xib; sourceTree = "<group>"; };
 		B516539A16B7C1B9003F0DFA /* 01-refresh.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "01-refresh.png"; sourceTree = "<group>"; };
 		B516539B16B7C1B9003F0DFA /* 01-refresh@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "01-refresh@2x.png"; sourceTree = "<group>"; };
 		B516539C16B7C1B9003F0DFA /* 06-magnify.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "06-magnify.png"; sourceTree = "<group>"; };
@@ -1052,6 +1057,9 @@
 				B54F6A1616D3605700978DD9 /* FeedbackViewController.h */,
 				B54F6A1716D3605900978DD9 /* FeedbackViewController.m */,
 				B54F6A1816D3605A00978DD9 /* FeedbackViewController.xib */,
+				B511D43116D9A5DA00DD0ED5 /* ContributionsViewController.h */,
+				B511D43216D9A5DA00DD0ED5 /* ContributionsViewController.m */,
+				B511D43316D9A5DA00DD0ED5 /* ContributionsViewController.xib */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -1384,6 +1392,7 @@
 				B54F69ED16D2FB4400978DD9 /* NotificationCell.xib in Resources */,
 				B54F6A1A16D3605C00978DD9 /* FeedbackViewController.xib in Resources */,
 				B54F6A1C16D3617600978DD9 /* feedback.html in Resources */,
+				B511D43516D9A5DA00DD0ED5 /* ContributionsViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1492,6 +1501,7 @@
 				B54F6A1216D31D4300978DD9 /* CommitCommentEvent.m in Sources */,
 				B54F6A1516D31DDC00978DD9 /* GollumEvent.m in Sources */,
 				B54F6A1916D3605C00978DD9 /* FeedbackViewController.m in Sources */,
+				B511D43416D9A5DA00DD0ED5 /* ContributionsViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
