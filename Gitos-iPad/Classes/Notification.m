@@ -76,4 +76,14 @@
     return [[User alloc] initWithData:[repository valueForKey:@"owner"]];
 }
 
+- (BOOL)isIssue
+{
+    return [[self getSubjectType] isEqualToString:@"Issue"];
+}
+
+- (BOOL)isPullRequest
+{
+    return [[self getSubjectType] isEqualToString:@"PullRequest"];
+}
+
 @end

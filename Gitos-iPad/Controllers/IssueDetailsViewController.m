@@ -40,7 +40,7 @@
 {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
-    self.navigationItem.title = [NSString stringWithFormat:@"#%i", [self.issue getNumber]];
+    self.navigationItem.title = [self.issue getTitle];
     [self performHouseKeepingTasks];
     [self fetchIssueDetails];
 }

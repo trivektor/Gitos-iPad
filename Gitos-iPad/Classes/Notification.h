@@ -26,5 +26,7 @@
 - (NSString *)getSubjectType;
 - (NSString *)getLatestCommentUrl;
 - (User *)getOwner;
+- (BOOL)isIssue;
+- (BOOL)isPullRequest;
 
 @end

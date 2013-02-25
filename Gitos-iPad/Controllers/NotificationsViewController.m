@@ -88,9 +88,9 @@
 {
     Notification *notification = [self.notifications objectAtIndex:indexPath.row];
 
-    if ([[notification getSubjectType] isEqualToString:@"Issue"]) {
+    if (notification.isIssue) {
         [self fetchIssue:notification];
-    } else if ([[notification getSubjectType] isEqualToString:@"PullRequest"]) {
+    } else if (notification.isPullRequest) {
         [self fetchPullRequest:notification];
     }
 }

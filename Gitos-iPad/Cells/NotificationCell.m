@@ -28,8 +28,14 @@
 
 - (void)render
 {
+    NSString *iconIdentifier;
     self.fontAwesomeLabel.font = [UIFont fontWithName:kFontAwesomeFamilyName size:14];
-    self.fontAwesomeLabel.text = [NSString fontAwesomeIconStringForIconIdentifier:@"icon-quote-left"];
+    if (self.notification.isIssue) {
+        iconIdentifier = @"icon-warning-sign";
+    } else if (self.notification.isPullRequest) {
+        iconIdentifier = @"icon-reply";
+    }
+    self.fontAwesomeLabel.text = [NSString fontAwesomeIconStringForIconIdentifier:iconIdentifier];
     self.titleLabel.text       = [self.notification getTitle];
     self.updatedAtLabel.text   = [self.notification getUpdatedAt];
     self.accessoryType         = UITableViewCellAccessoryDisclosureIndicator;
