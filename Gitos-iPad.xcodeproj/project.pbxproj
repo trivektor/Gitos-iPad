@@ -11,6 +11,7 @@
 		B511D43516D9A5DA00DD0ED5 /* ContributionsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B511D43316D9A5DA00DD0ED5 /* ContributionsViewController.xib */; };
 		B511D43716D9A81C00DD0ED5 /* contributions.html in Resources */ = {isa = PBXBuildFile; fileRef = B511D43616D9A81C00DD0ED5 /* contributions.html */; };
 		B511D43A16D9C6FD00DD0ED5 /* underscore.js in Resources */ = {isa = PBXBuildFile; fileRef = B511D43816D9C6A600DD0ED5 /* underscore.js */; };
+		B511D44216DAF68200DD0ED5 /* DeleteEvent.m in Sources */ = {isa = PBXBuildFile; fileRef = B511D44116DAF68000DD0ED5 /* DeleteEvent.m */; };
 		B51653FB16B7C1B9003F0DFA /* 01-refresh.png in Resources */ = {isa = PBXBuildFile; fileRef = B516539A16B7C1B9003F0DFA /* 01-refresh.png */; };
 		B51653FC16B7C1B9003F0DFA /* 01-refresh@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B516539B16B7C1B9003F0DFA /* 01-refresh@2x.png */; };
 		B51653FD16B7C1B9003F0DFA /* 06-magnify.png in Resources */ = {isa = PBXBuildFile; fileRef = B516539C16B7C1B9003F0DFA /* 06-magnify.png */; };
@@ -289,6 +290,8 @@
 		B511D43316D9A5DA00DD0ED5 /* ContributionsViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ContributionsViewController.xib; sourceTree = "<group>"; };
 		B511D43616D9A81C00DD0ED5 /* contributions.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = contributions.html; sourceTree = "<group>"; };
 		B511D43816D9C6A600DD0ED5 /* underscore.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = underscore.js; sourceTree = "<group>"; };
+		B511D44016DAF67F00DD0ED5 /* DeleteEvent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DeleteEvent.h; sourceTree = "<group>"; };
+		B511D44116DAF68000DD0ED5 /* DeleteEvent.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DeleteEvent.m; sourceTree = "<group>"; };
 		B516539A16B7C1B9003F0DFA /* 01-refresh.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "01-refresh.png"; sourceTree = "<group>"; };
 		B516539B16B7C1B9003F0DFA /* 01-refresh@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "01-refresh@2x.png"; sourceTree = "<group>"; };
 		B516539C16B7C1B9003F0DFA /* 06-magnify.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "06-magnify.png"; sourceTree = "<group>"; };
@@ -864,6 +867,8 @@
 				B54F6A1116D31D4200978DD9 /* CommitCommentEvent.m */,
 				B54F6A1316D31DDA00978DD9 /* GollumEvent.h */,
 				B54F6A1416D31DDB00978DD9 /* GollumEvent.m */,
+				B511D44016DAF67F00DD0ED5 /* DeleteEvent.h */,
+				B511D44116DAF68000DD0ED5 /* DeleteEvent.m */,
 			);
 			name = Events;
 			sourceTree = "<group>";
@@ -1510,6 +1515,7 @@
 				B54F6A1516D31DDC00978DD9 /* GollumEvent.m in Sources */,
 				B54F6A1916D3605C00978DD9 /* FeedbackViewController.m in Sources */,
 				B511D43416D9A5DA00DD0ED5 /* ContributionsViewController.m in Sources */,
+				B511D44216DAF68200DD0ED5 /* DeleteEvent.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -29,9 +29,9 @@
     NSMutableAttributedString *at = [self toAttributedString:@" at "];
 
     [actorLogin insertAttributedString:pushedTo atIndex:actorLogin.length];
-    [actorLogin insertAttributedString:repoName atIndex:actorLogin.length];
-    [actorLogin insertAttributedString:at atIndex:actorLogin.length];
     [actorLogin insertAttributedString:branchName atIndex:actorLogin.length];
+    [actorLogin insertAttributedString:at atIndex:actorLogin.length];
+    [actorLogin insertAttributedString:repoName atIndex:actorLogin.length];
 
     return actorLogin;
 }

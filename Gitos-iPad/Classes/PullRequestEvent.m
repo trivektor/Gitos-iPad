@@ -13,17 +13,18 @@
 - (NSMutableAttributedString *)toString
 {
     User *actor = [self getActor];
+    Repo *repo = [self getRepo];
     NSDictionary *payload = [self getPayload];
-
-    NSInteger pullRequestNumber = [[payload valueForKey:@"number"] integerValue];
 
     NSMutableAttributedString *actorLogin = [self decorateEmphasizedText:[actor getLogin]];
 
-    NSMutableAttributedString *action = [self toAttributedString:[payload valueForKey:@"action"]];
+    NSMutableAttributedString *action = [self toAttributedString:[NSString stringWithFormat:@" %@", [payload valueForKey:@"action"]]];
 
     NSMutableAttributedString *pullRequest = [self toAttributedString:@" pull request "];
 
-    NSMutableAttributedString *pullRequestId = [self decorateEmphasizedText:[NSString stringWithFormat:@"%i", pullRequestNumber]];
+    NSMutableAttributedString *pullRequestId = [self decorateEmphasizedText:[NSString stringWithFormat:@"%@/#%i",
+                                                                             [repo getName],
+                                                                             [[payload valueForKey:@"number"] integerValue]]];
 
     [actorLogin insertAttributedString:action atIndex:actorLogin.length];
     [actorLogin insertAttributedString:pullRequest atIndex:actorLogin.length];

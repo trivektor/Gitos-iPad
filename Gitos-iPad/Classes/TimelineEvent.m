@@ -10,6 +10,7 @@
 #import "ForkEvent.h"
 #import "WatchEvent.h"
 #import "CreateEvent.h"
+#import "DeleteEvent.h"
 #import "FollowEvent.h"
 #import "GistEvent.h"
 #import "IssueEvent.h"
@@ -93,6 +94,9 @@
     } else if ([eventType isEqualToString:@"CreateEvent"]) {
         CreateEvent *createEvent = [[CreateEvent alloc] initWithData:self.data];
         return [createEvent toString];
+    } else if ([eventType isEqualToString:@"DeleteEvent"]) {
+        DeleteEvent *deleteEvent = [[DeleteEvent alloc] initWithData:self.data];
+        return [deleteEvent toString];
     } else if ([eventType isEqualToString:@"FollowEvent"]) {
         FollowEvent *followEvent = [[FollowEvent alloc] initWithData:self.data];
         return [followEvent toString];
