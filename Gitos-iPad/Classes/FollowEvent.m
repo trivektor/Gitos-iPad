@@ -10,11 +10,21 @@
 
 @implementation FollowEvent
 
-- (NSString *)toString
+- (NSMutableAttributedString *)toString
 {
-    User *actor = [self getActor];
+    User *actor  = [self getActor];
     User *target = [[User alloc] initWithData:[self getTarget]];
-    return [NSString stringWithFormat:@"%@ started following %@", [actor getLogin], [target getLogin]];
+
+    NSMutableAttributedString *actorLogin = [self decorateEmphasizedText:[actor getLogin]];
+
+    NSMutableAttributedString *targetLogin = [self decorateEmphasizedText:[target getLogin]];
+
+    NSMutableAttributedString *action = [self toAttributedString:@" started following "];
+
+    [actorLogin insertAttributedString:action atIndex:actorLogin.length];
+    [actorLogin insertAttributedString:targetLogin atIndex:actorLogin.length];
+
+    return actorLogin;
 }
 
 @end

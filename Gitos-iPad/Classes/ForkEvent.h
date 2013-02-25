@@ -10,6 +10,6 @@
 
 @interface ForkEvent : TimelineEvent
 
-- (NSString *)toString;
+- (NSMutableAttributedString *)toString;
 
 @end

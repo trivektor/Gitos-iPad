@@ -10,6 +10,6 @@
 
 @interface PullRequestEvent : TimelineEvent
 
-- (NSString *)toString;
+- (NSMutableAttributedString *)toString;
 
 @end

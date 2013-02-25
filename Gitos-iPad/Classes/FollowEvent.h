@@ -10,6 +10,6 @@
 
 @interface FollowEvent : TimelineEvent
 
-- (NSString *)toString;
+- (NSMutableAttributedString *)toString;
 
 @end

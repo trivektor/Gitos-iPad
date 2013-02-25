@@ -10,16 +10,24 @@
 
 @implementation IssueCommentEvent
 
-- (NSString *)toString
+- (NSMutableAttributedString *)toString
 {
     NSDictionary *payload = [self getPayload];
     NSDictionary *comment = [payload valueForKey:@"comment"];
     User *user = [[User alloc] initWithData:[comment valueForKey:@"user"]];
     Issue *issue = [[Issue alloc] initWithData:[payload valueForKey:@"issue"]];
     Repo *repo = [self getRepo];
-    [payload valueForKey:@"issue"];
-    NSString *issueName = [NSString stringWithFormat:@"%@#%d", [repo getName], [issue getNumber]];
-    return [NSString stringWithFormat:@"%@ commented on issue %@", [user getLogin], issueName];
+
+    NSMutableAttributedString *actorLogin = [self decorateEmphasizedText:[user getLogin]];
+
+    NSMutableAttributedString *commented = [self toAttributedString:@" commented on issue "];
+
+    NSMutableAttributedString *issueName = [self decorateEmphasizedText:[NSString stringWithFormat:@"%@#%d", [repo getName], [issue getNumber]]];
+
+    [actorLogin insertAttributedString:commented atIndex:actorLogin.length];
+    [actorLogin insertAttributedString:issueName atIndex:actorLogin.length];
+
+    return actorLogin;
 }
 
 @end

@@ -10,16 +10,26 @@
 
 @implementation IssueEvent
 
-- (NSString *)toString
+- (NSMutableAttributedString *)toString
 {
     NSDictionary *payload = [self getPayload];
     Issue *issue = [[Issue alloc] initWithData:[payload valueForKey:@"issue"]];
     User *actor = [self getActor];
-    NSString *action = [payload valueForKey:@"action"];
-    NSInteger issueNumber = [issue getNumber];
+
     Repo *repo = [self getRepo];
-    NSString *issueName = [NSString stringWithFormat:@"%@#%d", [repo getName], issueNumber];
-    return [NSString stringWithFormat:@"%@ %@ issue %@", [actor getLogin], action, issueName];
+
+    NSMutableAttributedString *actorLogin = [self decorateEmphasizedText:[actor getLogin]];
+
+    NSMutableAttributedString *action = [self toAttributedString:[payload valueForKey:@"action"]];
+
+    NSMutableAttributedString *issueLabel = [self toAttributedString:@" issue "];
+    NSMutableAttributedString *issueName = [self decorateEmphasizedText:[NSString stringWithFormat:@"%@#%d", [repo getName], [issue getNumber]]];
+
+    [actorLogin insertAttributedString:action atIndex:actorLogin.length];
+    [actorLogin insertAttributedString:issueLabel atIndex:actorLogin.length];
+    [actorLogin insertAttributedString:issueName atIndex:actorLogin.length];
+
+    return actorLogin;
 }
 
 @end

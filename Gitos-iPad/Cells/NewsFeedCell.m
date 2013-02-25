@@ -30,7 +30,7 @@
 
 - (void)displayEvent
 {
-    self.actionDescription.text = [self.event toString];
+    self.actionDescription.attributedText = [self.event toString];
     self.actionDate.text        = [self.event toDateString];
     self.accessoryType          = UITableViewCellAccessoryDisclosureIndicator;
     self.fontAwesomeLabel.font  = [UIFont fontWithName:kFontAwesomeFamilyName size:15.0];

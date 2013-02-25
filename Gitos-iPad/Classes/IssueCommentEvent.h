@@ -10,6 +10,6 @@
 
 @interface IssueCommentEvent : TimelineEvent
 
-- (NSString *)toString;
+- (NSMutableAttributedString *)toString;
 
 @end

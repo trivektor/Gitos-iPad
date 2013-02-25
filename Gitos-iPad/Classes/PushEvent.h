@@ -10,6 +10,6 @@
 
 @interface PushEvent : TimelineEvent
 
-- (NSString *)toString;
+- (NSMutableAttributedString *)toString;
 
 @end

@@ -10,14 +10,26 @@
 
 @implementation PullRequestEvent
 
-- (NSString *)toString
+- (NSMutableAttributedString *)toString
 {
     User *actor = [self getActor];
-    Repo *repo = [self getRepo];
     NSDictionary *payload = [self getPayload];
-    NSString *action = [payload valueForKey:@"action"];
+
     NSInteger pullRequestNumber = [[payload valueForKey:@"number"] integerValue];
-    return [NSString stringWithFormat:@"%@ %@ pull request %@/%i", [actor getLogin], action, [repo getName], pullRequestNumber];
+
+    NSMutableAttributedString *actorLogin = [self decorateEmphasizedText:[actor getLogin]];
+
+    NSMutableAttributedString *action = [self toAttributedString:[payload valueForKey:@"action"]];
+
+    NSMutableAttributedString *pullRequest = [self toAttributedString:@" pull request "];
+
+    NSMutableAttributedString *pullRequestId = [self decorateEmphasizedText:[NSString stringWithFormat:@"%i", pullRequestNumber]];
+
+    [actorLogin insertAttributedString:action atIndex:actorLogin.length];
+    [actorLogin insertAttributedString:pullRequest atIndex:actorLogin.length];
+    [actorLogin insertAttributedString:pullRequestId atIndex:actorLogin.length];
+
+    return actorLogin;
 }
 
 @end

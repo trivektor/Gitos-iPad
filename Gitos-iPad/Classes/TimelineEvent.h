@@ -7,8 +7,8 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "User.h"
 #import "Repo.h"
+#import "User.h"
 
 @interface TimelineEvent : NSObject
 
@@ -20,7 +20,8 @@
 @property(nonatomic, strong) NSDictionary *fontAwesomeIcons;
 
 - (id)initWithData:(NSDictionary *)eventData;
-- (NSString *)toString;
+- (NSMutableAttributedString *)toString;
+- (NSMutableAttributedString *)toActorRepoString:(NSString *)actionName;
 - (NSString *)getFontAwesomeIcon;
 - (NSString *)toDateString;
 - (NSDictionary *)getPayload;
@@ -30,5 +31,7 @@
 - (User *)getActor;
 - (Repo *)getRepo;
 - (NSString *)convertToRelativeDate:(NSString *)originalDateString;
+- (NSMutableAttributedString *)decorateEmphasizedText:(NSString *)rawString;
+- (NSMutableAttributedString *)toAttributedString:(NSString *)rawString;
 
 @end

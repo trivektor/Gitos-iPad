@@ -10,14 +10,29 @@
 
 @implementation MemberEvent
 
-- (NSString *)toString
+- (NSMutableAttributedString *)toString
 {
     NSDictionary *payload = [self getPayload];
     User *actor = [self getActor];
     Repo *repo = [self getRepo];
     NSDictionary *member = [payload valueForKey:@"member"];
-    NSString *memberLogin = [member valueForKey:@"login"];
-    return [NSString stringWithFormat:@"%@ added %@ to %@", [actor getLogin], memberLogin, [repo getName]];
+
+    NSMutableAttributedString *actorLogin = [self decorateEmphasizedText:[actor getLogin]];
+
+    NSMutableAttributedString *added = [self toAttributedString:@" added "];
+
+    NSMutableAttributedString *memberLogin = [self decorateEmphasizedText:[member valueForKey:@"login"]];
+
+    NSMutableAttributedString *to = [self toAttributedString:@" to "];
+
+    NSMutableAttributedString *repoName = [self decorateEmphasizedText:[repo getName]];
+
+    [actorLogin insertAttributedString:added atIndex:actorLogin.length];
+    [actorLogin insertAttributedString:memberLogin atIndex:actorLogin.length];
+    [actorLogin insertAttributedString:to atIndex:actorLogin.length];
+    [actorLogin insertAttributedString:repoName atIndex:actorLogin.length];
+
+    return actorLogin;
 }
 
 @end

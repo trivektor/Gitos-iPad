@@ -10,14 +10,23 @@
 
 @implementation CommitCommentEvent
 
-- (NSString *)toString
+- (NSMutableAttributedString *)toString
 {
     User *actor = [self getActor];
-    Repo *repo = [self getRepo];
     NSDictionary *payload = [self getPayload];
     NSDictionary *comment = [payload valueForKey:@"comment"];
-    NSString *commitId    = [comment valueForKey:@"commit_id"];
-    return [NSString stringWithFormat:@"%@ commented on commit %@@%@", [actor getLogin], [repo getName], [commitId substringToIndex:9]];
+    NSString *commitId    = [[comment valueForKey:@"commit_id"] substringToIndex:9];
+
+    NSMutableAttributedString *actorLogin = [self decorateEmphasizedText:[actor getLogin]];
+
+    NSMutableAttributedString *commented = [self toAttributedString:@" commented on commit "];
+
+    NSMutableAttributedString *commitLabel = [self decorateEmphasizedText:commitId];
+
+    [actorLogin insertAttributedString:commented atIndex:actorLogin.length];
+    [actorLogin insertAttributedString:commitLabel atIndex:actorLogin.length];
+
+    return actorLogin;
 }
 
 @end

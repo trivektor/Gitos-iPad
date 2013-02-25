@@ -79,7 +79,7 @@
     return [[Repo alloc] initWithData:[self.data valueForKey:@"repo"]];
 }
 
-- (NSString *)toString
+- (NSMutableAttributedString *)toString
 {
     NSString *eventType = [self getType];
     // First refactoring effort on Feb 18 (create sub-classes of TimelineEvent)
@@ -124,8 +124,24 @@
         GollumEvent *gollumEvent = [[GollumEvent alloc] initWithData:self.data];
         return [gollumEvent toString];
     } else {
-        return @"";
+        return [[NSMutableAttributedString alloc] initWithString:@""];
     }
+}
+
+- (NSMutableAttributedString *)toActorRepoString:(NSString *)actionName
+{
+    User *actor = [self getActor];
+    Repo *repo = [self getRepo];
+
+    NSMutableAttributedString *actorLogin = [self decorateEmphasizedText:[actor getLogin]];
+
+    NSMutableAttributedString *repoName = [self decorateEmphasizedText:[repo getName]];
+
+    NSMutableAttributedString *action = [self toAttributedString:[NSString stringWithFormat:@" %@ ", actionName]];
+
+    [actorLogin insertAttributedString:action atIndex:actorLogin.length];
+    [actorLogin insertAttributedString:repoName atIndex:actorLogin.length];
+    return actorLogin;
 }
 
 - (NSString *)getFontAwesomeIcon
@@ -142,6 +158,26 @@
 - (NSString *)toDateString
 {
     return [self convertToRelativeDate:[self.data valueForKey:@"created_at"]];
+}
+
+- (NSMutableAttributedString *)decorateEmphasizedText:(NSString *)rawString
+{
+    NSMutableAttributedString *decoratedString = [[NSMutableAttributedString alloc] initWithString:rawString];
+    [decoratedString setAttributes:@{
+               NSFontAttributeName:[UIFont fontWithName:@"Arial-BoldMT" size:13.0],
+     NSForegroundColorAttributeName:[UIColor colorWithRed:63/255.0 green:114/255.0 blue:155/255.0 alpha:1.0]
+     } range:NSMakeRange(0, decoratedString.length)];
+
+    return decoratedString;
+}
+
+- (NSMutableAttributedString *)toAttributedString:(NSString *)rawString
+{
+    NSMutableAttributedString *attributedString = [[NSMutableAttributedString alloc] initWithString:rawString];
+    [attributedString setAttributes:@{
+                NSFontAttributeName:[UIFont fontWithName:@"Arial" size:13.0]
+     } range:NSMakeRange(0, attributedString.length)];
+    return attributedString;
 }
 
 @end

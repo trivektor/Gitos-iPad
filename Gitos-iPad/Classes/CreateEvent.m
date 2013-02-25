@@ -10,12 +10,9 @@
 
 @implementation CreateEvent
 
-- (NSString *)toString
+- (NSMutableAttributedString *)toString
 {
-    User *actor = [self getActor];
-    Repo *repo = [self getRepo];
-
-    return [NSString stringWithFormat:@"%@ created %@", [actor getLogin], [repo getName]];
+    return [self toActorRepoString:@"created"];
 }
 
 @end

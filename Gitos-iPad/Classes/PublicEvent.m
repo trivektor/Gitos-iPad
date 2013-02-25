@@ -10,11 +10,9 @@
 
 @implementation PublicEvent
 
-- (NSString *)toString
+- (NSMutableAttributedString *)toString
 {
-    User *actor = [self getActor];
-    Repo *repo = [self getRepo];
-    return [NSString stringWithFormat:@"%@ open sourced %@", [actor getLogin], [repo getName]];
+    return [self toActorRepoString:@"open sourced"];
 }
 
 @end

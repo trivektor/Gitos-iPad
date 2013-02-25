@@ -10,13 +10,21 @@
 
 @implementation GistEvent
 
-- (NSString *)toString
+- (NSMutableAttributedString *)toString
 {
     NSDictionary *payload = [self getPayload];
     User *actor = [self getActor];
     Gist *gist = [[Gist alloc] initWithData:[payload valueForKey:@"gist"]];
-    NSString *action = [payload valueForKey:@"action"];
-    return [NSString stringWithFormat:@"%@ %@ %@", [actor getLogin], action, [gist getName]];
+
+    NSMutableAttributedString *actorLogin = [self decorateEmphasizedText:[actor getLogin]];
+
+    NSMutableAttributedString *gistName = [self decorateEmphasizedText:[gist getName]];
+
+    NSMutableAttributedString *action = [self toAttributedString:[NSString stringWithFormat:@" %@ ", [payload valueForKey:@"action"]]];
+
+    [actorLogin insertAttributedString:action atIndex:actorLogin.length];
+    [actorLogin insertAttributedString:gistName atIndex:actorLogin.length];
+    return actorLogin;
 }
 
 @end

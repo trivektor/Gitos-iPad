@@ -10,6 +10,6 @@
 
 @interface PublicEvent : TimelineEvent
 
-- (NSString *)toString;
+- (NSMutableAttributedString *)toString;
 
 @end
