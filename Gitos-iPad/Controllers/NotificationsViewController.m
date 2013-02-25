@@ -7,6 +7,7 @@
 //
 
 #import "NotificationsViewController.h"
+#import "NotificationDetailsViewController.h"
 #import "Notification.h"
 #import "NotificationCell.h"
 
@@ -80,6 +81,13 @@
     cell.notification = [self.notifications objectAtIndex:indexPath.row];
     [cell render];
     return cell;
+}
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    NotificationDetailsViewController *notificationDetailsController = [[NotificationDetailsViewController alloc] init];
+    notificationDetailsController.notification = [self.notifications objectAtIndex:indexPath.row];
+    [self.navigationController pushViewController:notificationDetailsController animated:YES];
 }
 
 - (void)fetchNotificationsForPage:(NSInteger)page
