@@ -7,7 +7,8 @@
 //
 
 #import "NotificationsViewController.h"
-#import "NotificationDetailsViewController.h"
+#import "IssueDetailsViewController.h"
+#import "PullRequestDetailsViewController.h"
 #import "Notification.h"
 #import "NotificationCell.h"
 
@@ -85,9 +86,13 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    NotificationDetailsViewController *notificationDetailsController = [[NotificationDetailsViewController alloc] init];
-    notificationDetailsController.notification = [self.notifications objectAtIndex:indexPath.row];
-    [self.navigationController pushViewController:notificationDetailsController animated:YES];
+    Notification *notification = [self.notifications objectAtIndex:indexPath.row];
+
+    if ([[notification getSubjectType] isEqualToString:@"Issue"]) {
+        [self fetchIssue:notification];
+    } else if ([[notification getSubjectType] isEqualToString:@"PullRequest"]) {
+        [self fetchPullRequest:notification];
+    }
 }
 
 - (void)fetchNotificationsForPage:(NSInteger)page
@@ -146,6 +151,74 @@
         [self.hud show:YES];
         [self fetchNotificationsForPage:self.currentPage++];
     }
+}
+
+- (void)fetchIssue:(Notification *)notification
+{
+    NSURL *issueUrl = [NSURL URLWithString:[notification getSubjectUrl]];
+
+    AFHTTPClient *httpClient = [[AFHTTPClient alloc] initWithBaseURL:issueUrl];
+
+    NSMutableDictionary *params = [NSMutableDictionary dictionaryWithObjectsAndKeys:
+                                   self.accessToken, @"access_token",
+                                   nil];
+
+    NSMutableURLRequest *getRequest = [httpClient requestWithMethod:@"GET" path:issueUrl.absoluteString parameters:params];
+
+    AFHTTPRequestOperation *operation = [[AFHTTPRequestOperation alloc] initWithRequest:getRequest];
+
+    [operation setCompletionBlockWithSuccess:
+     ^(AFHTTPRequestOperation *operation, id responseObject){
+         [self.hud hide:YES];
+
+         NSString *response = [operation responseString];
+
+         NSDictionary *json = [NSJSONSerialization JSONObjectWithData:[response dataUsingEncoding:NSUTF8StringEncoding] options:NSJSONReadingMutableContainers error:nil];
+
+         IssueDetailsViewController *issueDetailsController = [[IssueDetailsViewController alloc] init];
+         issueDetailsController.issue = [[Issue alloc] initWithData:json];
+         [self.navigationController pushViewController:issueDetailsController animated:YES];
+     }
+     failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+         [self.hud hide:YES];
+         NSLog(@"%@", error);
+     }];
+
+    [operation start];
+}
+
+- (void)fetchPullRequest:(Notification *)notification
+{
+    NSURL *pullRequestUrl = [NSURL URLWithString:[notification getSubjectUrl]];
+
+    AFHTTPClient *httpClient = [[AFHTTPClient alloc] initWithBaseURL:pullRequestUrl];
+
+    NSMutableDictionary *params = [NSMutableDictionary dictionaryWithObjectsAndKeys:
+                                   self.accessToken, @"access_token",
+                                   nil];
+
+    NSMutableURLRequest *getRequest = [httpClient requestWithMethod:@"GET" path:pullRequestUrl.absoluteString parameters:params];
+
+    AFHTTPRequestOperation *operation = [[AFHTTPRequestOperation alloc] initWithRequest:getRequest];
+
+    [operation setCompletionBlockWithSuccess:
+     ^(AFHTTPRequestOperation *operation, id responseObject){
+         [self.hud hide:YES];
+
+         NSString *response = [operation responseString];
+
+         NSDictionary *json = [NSJSONSerialization JSONObjectWithData:[response dataUsingEncoding:NSUTF8StringEncoding] options:NSJSONReadingMutableContainers error:nil];
+
+         PullRequestDetailsViewController *pullRequestDetailsController = [[PullRequestDetailsViewController alloc] init];
+         pullRequestDetailsController.pullRequest = [[PullRequest alloc] initWithData:json];
+         [self.navigationController pushViewController:pullRequestDetailsController animated:YES];
+     }
+     failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+         [self.hud hide:YES];
+         NSLog(@"%@", error);
+     }];
+
+    [operation start];
 }
 
 - (void)didReceiveMemoryWarning

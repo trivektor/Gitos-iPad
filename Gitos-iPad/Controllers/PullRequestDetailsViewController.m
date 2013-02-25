@@ -1,18 +1,18 @@
 //
-//  NotificationDetailsViewController.m
+//  PullRequestDetailsViewController.m
 //  Gitos-iPad
 //
 //  Created by Tri Vuong on 2/24/13.
 //  Copyright (c) 2013 Crafted By Tri. All rights reserved.
 //
 
-#import "NotificationDetailsViewController.h"
+#import "PullRequestDetailsViewController.h"
 
-@interface NotificationDetailsViewController ()
+@interface PullRequestDetailsViewController ()
 
 @end
 
-@implementation NotificationDetailsViewController
+@implementation PullRequestDetailsViewController
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {

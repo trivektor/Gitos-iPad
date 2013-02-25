@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "Notification.h"
 
 @interface NotificationsViewController : UIViewController <UITableViewDataSource, UITableViewDelegate>
 
@@ -20,5 +21,7 @@
 - (void)registerNib;
 - (void)setupPullToRefresh;
 - (void)fetchNotificationsForPage:(NSInteger)page;
+- (void)fetchIssue:(Notification *)notification;
+- (void)fetchPullRequest:(Notification *)notification;
 
 @end

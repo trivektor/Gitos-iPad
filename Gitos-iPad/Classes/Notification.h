@@ -24,5 +24,7 @@
 - (BOOL)isUnread;
 - (NSString *)getSubjectUrl;
 - (NSString *)getSubjectType;
+- (NSString *)getLatestCommentUrl;
+- (User *)getOwner;
 
 @end

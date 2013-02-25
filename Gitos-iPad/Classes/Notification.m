@@ -64,4 +64,16 @@
     return [subjectData valueForKey:@"type"];
 }
 
+- (NSString *)getLatestCommentUrl
+{
+    NSDictionary *subjectData = [self getSubjectData];
+    return [subjectData valueForKey:@"latest_comment_url"];
+}
+
+- (User *)getOwner
+{
+    NSDictionary *repository = [self.data valueForKey:@"repository"];
+    return [[User alloc] initWithData:[repository valueForKey:@"owner"]];
+}
+
 @end
