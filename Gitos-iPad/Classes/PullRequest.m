@@ -14,6 +14,9 @@
 {
     self = [super init];
     self.data = pullRequestData;
+    self.dateFormatter = [[NSDateFormatter alloc] init];
+    [self.dateFormatter setDateFormat:@"yyyy-MM-dd'T'HH:mm:ssZZ"];
+    self.relativeDateDescriptor = [[RelativeDateDescriptor alloc] initWithPriorDateDescriptionFormat:@"%@ ago" postDateDescriptionFormat:@"in %@"];
     return self;
 }
 
@@ -22,21 +25,55 @@
     return [[Repo alloc] initWithData:[self.data valueForKey:@"repository"]];
 }
 
-- (NSDictionary *)getSubjet
+- (NSDictionary *)getSubject
 {
     return [self.data valueForKey:@"subject"];
 }
 
 - (NSString *)getTitle
 {
-    NSDictionary *subject = [self getSubjet];
-    return [subject valueForKey:@"title"];
+    return [self.data valueForKey:@"title"];
 }
 
-- (NSString *)getCommentUrl
+- (NSString *)getCommentsUrl
 {
-    NSDictionary *subject = [self getSubjet];
-    return [subject valueForKey:@"latest_comment_url"];
+    return [self.data valueForKey:@"comments_url"];
+}
+
+- (User *)getOwner
+{
+    return [[User alloc] initWithData:[self.data valueForKey:@"user"]];
+}
+
+- (NSString *)getState
+{
+    return [self.data valueForKey:@"state"];
+}
+
+- (NSString *)getBody
+{
+    return [self.data valueForKey:@"body"];
+}
+
+- (NSString *)getCreatedAt
+{
+    return [self convertToRelativeDate:[self.data valueForKey:@"created_at"]];
+}
+
+- (NSString *)getUpdatedAt
+{
+    return [self convertToRelativeDate:[self.data valueForKey:@"updated_at"]];
+}
+
+- (NSString *)getClosedAt
+{
+    return [self.data valueForKey:@"closed_at"];
+}
+
+- (NSString *)convertToRelativeDate:(NSString *)originalDateString
+{
+    NSDate *date  = [self.dateFormatter dateFromString:originalDateString];
+    return [self.relativeDateDescriptor describeDate:date relativeTo:[NSDate date]];
 }
 
 @end

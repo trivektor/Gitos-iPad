@@ -12,5 +12,13 @@
 @interface PullRequestDetailsViewController : UIViewController
 
 @property (nonatomic, strong) PullRequest *pullRequest;
+@property (nonatomic, weak) IBOutlet UIWebView *pullRequestView;
+@property (nonatomic, strong) NSString *accessToken;
+@property (nonatomic, strong) NSMutableArray *comments;
+@property (nonatomic, strong) MBProgressHUD *hud;
+
+- (void)performHouseKeepingTasks;
+- (void)fetchPullRequestDetails;
+- (void)displayPullRequestDetails;
 
 @end

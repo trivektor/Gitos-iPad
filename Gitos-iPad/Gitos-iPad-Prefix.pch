@@ -26,4 +26,5 @@
     #import "Repo.h"
     #import "Gist.h"
     #import "Issue.h"
+    #import "Comment.h"
 #endif

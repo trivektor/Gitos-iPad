@@ -7,17 +7,25 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "Repo.h"
 
 @interface PullRequest : NSObject
 
 @property (nonatomic, strong) NSDictionary *data;
 @property (nonatomic, strong) Repo *repo;
+@property (nonatomic, strong) RelativeDateDescriptor *relativeDateDescriptor;
+@property (nonatomic, strong) NSDateFormatter *dateFormatter;
 
 - (id)initWithData:(NSDictionary *)pullRequestData;
 - (Repo *)getRepo;
-- (NSDictionary *)getSubjet;
+- (NSDictionary *)getSubject;
 - (NSString *)getTitle;
-- (NSString *)getCommentUrl;
+- (NSString *)getCommentsUrl;
+- (User *)getOwner;
+- (NSString *)getState;
+- (NSString *)getBody;
+- (NSString *)getCreatedAt;
+- (NSString *)getUpdatedAt;
+- (NSString *)getClosedAt;
+- (NSString *)convertToRelativeDate:(NSString *)originalDateString;
 
 @end

@@ -30,11 +30,11 @@ table td, table th {
     display: block;
     margin-right: 10px;
     border-radius: 3px;
-    max-width: 40px;
+    max-width: 50px;
 }
 
 #issue-comments-table .issue-creator {
-    width: 40px;
+    width: 50px;
 }
 
 #issue-comments-table .issue-creator .label {
@@ -52,7 +52,7 @@ table td, table th {
 }
 
 #issue-comments-table .comment-details {
-    margin-left: 50px;
+    margin-left: 60px;
     max-width: 91%;
 }
 
