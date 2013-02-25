@@ -169,7 +169,7 @@
     NSMutableAttributedString *decoratedString = [[NSMutableAttributedString alloc] initWithString:rawString];
     [decoratedString setAttributes:@{
                NSFontAttributeName:[UIFont fontWithName:@"Arial-BoldMT" size:13.0],
-     NSForegroundColorAttributeName:[UIColor colorWithRed:63/255.0 green:114/255.0 blue:155/255.0 alpha:1.0]
+     NSForegroundColorAttributeName:[UIColor colorWithRed:38/255.0 green:79/255.0 blue:148/255.0 alpha:1.0]
      } range:NSMakeRange(0, decoratedString.length)];
 
     return decoratedString;
