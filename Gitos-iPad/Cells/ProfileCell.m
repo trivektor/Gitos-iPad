@@ -77,7 +77,7 @@
         labelText   = @"Recent Activity";
         detailsText = @"view all";
     } else if (indexPath.row == 11) {
-        fontAwesome = [NSString fontAwesomeIconStringForIconIdentifier:@"icon-beer"];
+        fontAwesome = [NSString fontAwesomeIconStringForIconIdentifier:@"icon-exchange"];
         labelText   = @"Contributions";
         detailsText = @"view all";
     }
