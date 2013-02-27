@@ -53,7 +53,9 @@
 
 - (void)viewWillAppear:(BOOL)animated
 {
-    self.navigationItem.hidesBackButton = YES;
+    if (self.hideBackButton) {
+        self.navigationItem.hidesBackButton = YES;
+    }
 }
 
 - (void)didReceiveMemoryWarning

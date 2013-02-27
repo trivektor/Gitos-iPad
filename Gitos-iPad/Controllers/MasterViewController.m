@@ -87,7 +87,9 @@
     } else if (indexPath.row == 2) {
         [self.delegate didSelectViewController:[[StarredViewController alloc] init]];
     } else if (indexPath.row == 3) {
-        [self.delegate didSelectViewController:[[GistsViewController alloc] init]];
+        GistsViewController *gistsController = [[GistsViewController alloc] init];
+        gistsController.hideBackButton = YES;
+        [self.delegate didSelectViewController:gistsController];
     } else if (indexPath.row == 4) {
         ProfileViewController *profileController = [[ProfileViewController alloc] init];
         profileController.hideBackButton = YES;

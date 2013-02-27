@@ -13,6 +13,8 @@
 #import "RecentActivityViewController.h"
 #import "OrganizationsViewController.h"
 #import "ContributionsViewController.h"
+#import "GistsViewController.h"
+#import "ReposViewController.h"
 
 @interface ProfileViewController ()
 
@@ -189,6 +191,14 @@
         followController.usersUrl = [self.user getFollowingUrl];
         followController.controllerTitle = @"Following";
         [self.navigationController pushViewController:followController animated:YES];
+    } else if (indexPath.row == 6) {
+        ReposViewController *reposController = [[ReposViewController alloc] init];
+        reposController.user = self.user;
+        [self.navigationController pushViewController:reposController animated:YES];
+    } else if (indexPath.row == 7) {
+        GistsViewController *gistsController = [[GistsViewController alloc] init];
+        gistsController.user = self.user;
+        [self.navigationController pushViewController:gistsController animated:YES];
     } else if (indexPath.row == 9) {
         OrganizationsViewController *organizationsController = [[OrganizationsViewController alloc] init];
         organizationsController.user = self.user;

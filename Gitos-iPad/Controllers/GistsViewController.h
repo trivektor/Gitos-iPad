@@ -19,6 +19,7 @@
 @property (nonatomic) NSInteger currentPage;
 @property (nonatomic, strong) NSMutableArray *gists;
 @property (nonatomic, strong) User *user;
+@property (nonatomic) BOOL hideBackButton;
 
 - (void)registerNib;
 - (void)getUserInfo;
