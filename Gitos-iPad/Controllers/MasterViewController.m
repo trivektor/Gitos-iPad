@@ -108,15 +108,16 @@
 
 - (void)signout
 {
-    UIActionSheet *actionSheet = [[UIActionSheet alloc] initWithTitle:@"Are you sure?" delegate:self cancelButtonTitle:@"Cancel" destructiveButtonTitle:@"Sign out" otherButtonTitles:nil];
-    actionSheet.actionSheetStyle = UIActionSheetStyleBlackOpaque;
-    [actionSheet showInView:[UIApplication sharedApplication].keyWindow];
+    self.actionSheet = [[UIActionSheet alloc] initWithTitle:@"Are you sure?" delegate:self cancelButtonTitle:@"Cancel" destructiveButtonTitle:@"Sign out" otherButtonTitles:nil];
+    self.actionSheet.actionSheetStyle = UIActionSheetStyleBlackOpaque;
+    [self.actionSheet showInView:[UIApplication sharedApplication].keyWindow];
 }
 
 - (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex
 {
     // 'OK' was clicked
     if (buttonIndex == 0) {
+        [self.actionSheet dismissWithClickedButtonIndex:0 animated:NO];
         [SSKeychain deletePasswordForService:@"access_token" account:@"gitos"];
         LoginViewController *loginController = [[LoginViewController alloc] init];
         UINavigationController *navController = [[UINavigationController alloc] initWithRootViewController:loginController];

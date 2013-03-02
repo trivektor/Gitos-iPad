@@ -14,6 +14,7 @@
 
 @property (nonatomic, strong) UISplitViewController *parentViewController;
 @property (nonatomic, weak) IBOutlet UITableView *menuTable;
+@property (nonatomic, strong) UIActionSheet *actionSheet;
 @property (nonatomic, strong) id<MasterViewControllerDelegate> delegate;
 
 - (void)performHouseKeepingTasks;
