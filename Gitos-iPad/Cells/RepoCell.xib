@@ -79,7 +79,7 @@
 							<object class="IBUIImageView" id="680195919">
 								<reference key="NSNextResponder" ref="390018270"/>
 								<int key="NSvFlags">292</int>
-								<string key="NSFrame">{{594, 27}, {21, 12}}</string>
+								<string key="NSFrame">{{594, 27}, {21, 14}}</string>
 								<reference key="NSSuperview" ref="390018270"/>
 								<reference key="NSWindow"/>
 								<reference key="NSNextKeyView" ref="36814808"/>
@@ -88,7 +88,7 @@
 								<string key="targetRuntimeIdentifier">IBIPadFramework</string>
 								<object class="NSCustomResource" key="IBUIImage">
 									<string key="NSClassName">NSImage</string>
-									<string key="NSResourceName">04-squiggle.png</string>
+									<string key="NSResourceName">122-stats@2x.png</string>
 								</object>
 							</object>
 							<object class="IBUILabel" id="36814808">
@@ -436,7 +436,7 @@
 		<bool key="IBDocument.PluginDeclaredDependenciesTrackSystemTargetVersion">YES</bool>
 		<int key="IBDocument.defaultPropertyAccessControl">3</int>
 		<dictionary class="NSMutableDictionary" key="IBDocument.LastKnownImageSizes">
-			<string key="04-squiggle.png">{33, 16}</string>
+			<string key="122-stats@2x.png">{54, 38}</string>
 			<string key="28-star@2x.png">{52, 52}</string>
 		</dictionary>
 		<string key="IBCocoaTouchPluginVersion">2083</string>
