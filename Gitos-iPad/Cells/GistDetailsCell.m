@@ -38,6 +38,7 @@
         [self.fieldLabel setText:@"Comments"];
         [self.fieldValue setText:[NSString stringWithFormat:@"%i", [self.gist getNumberOfComments]]];
     }
+    self.backgroundColor = [UIColor whiteColor];
 }
 
 @end

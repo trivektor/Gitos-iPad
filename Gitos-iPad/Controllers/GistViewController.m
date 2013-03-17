@@ -71,8 +71,6 @@
         [table setSeparatorColor:[UIColor colorWithRed:206/255.0 green:206/255.0 blue:206/255.0 alpha:0.8]];
         [table setScrollEnabled:NO];
     }
-    
-    [self.view setBackgroundColor:[UIColor colorWithRed:229/255.0 green:229/255.0 blue:229/255.0 alpha:1.0]];
 }
 
 - (void)getGistStats
@@ -151,6 +149,7 @@
     [cell setGist:self.gist];
     [cell renderForIndexPath:indexPath];
     [cell setSelectionStyle:UITableViewCellSelectionStyleNone];
+    [cell setBackgroundColor:[UIColor whiteColor]];
 
     return cell;
 }
@@ -166,8 +165,9 @@
     }
 
     GistFile *file = [self.files objectAtIndex:indexPath.row];
-    cell.textLabel.text = [file getName];
-    cell.textLabel.font = [UIFont fontWithName:@"Arial" size:12.0];
+    cell.textLabel.text  = [file getName];
+    cell.textLabel.font  = [UIFont fontWithName:@"Arial" size:12.0];
+    cell.backgroundColor = [UIColor whiteColor];
 
     return cell;
 }

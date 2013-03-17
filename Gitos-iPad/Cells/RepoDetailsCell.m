@@ -73,6 +73,7 @@
     self.fieldLabel.text = fieldLabelText;
     self.fieldValue.text = fieldValueText;
     self.selectionStyle = UITableViewCellSelectionStyleNone;
+    self.backgroundColor = [UIColor whiteColor];
 }
 
 @end

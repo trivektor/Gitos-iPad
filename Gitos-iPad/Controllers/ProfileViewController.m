@@ -194,6 +194,7 @@
     } else if (indexPath.row == 6) {
         ReposViewController *reposController = [[ReposViewController alloc] init];
         reposController.user = self.user;
+        reposController.hideBackButton = NO;
         [self.navigationController pushViewController:reposController animated:YES];
     } else if (indexPath.row == 7) {
         GistsViewController *gistsController = [[GistsViewController alloc] init];

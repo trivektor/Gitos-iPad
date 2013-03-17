@@ -16,6 +16,7 @@
 @property (nonatomic, weak) IBOutlet UITableView *reposTable;
 @property (nonatomic, strong) NSMutableArray *repos;
 @property (nonatomic, strong) MBProgressHUD *hud;
+@property (nonatomic) Boolean hideBackButton;
 
 - (void)registerNib;
 - (void)getUserInfoAndRepos;

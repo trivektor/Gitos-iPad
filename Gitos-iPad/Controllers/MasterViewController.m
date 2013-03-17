@@ -83,7 +83,9 @@
     if (indexPath.row == 0) {
         [self.delegate didSelectViewController:[[NewsfeedViewController alloc] init]];
     } else if (indexPath.row == 1) {
-        [self.delegate didSelectViewController:[[ReposViewController alloc] init]];
+        ReposViewController *reposController = [[ReposViewController alloc] init];
+        reposController.hideBackButton = YES;
+        [self.delegate didSelectViewController:reposController];
     } else if (indexPath.row == 2) {
         [self.delegate didSelectViewController:[[StarredViewController alloc] init]];
     } else if (indexPath.row == 3) {

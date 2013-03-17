@@ -76,9 +76,7 @@
 {
     UINib *repoDetailsCellNib = [UINib nibWithNibName:@"RepoDetailsCell" bundle:nil];
     [detailsTable registerNib:repoDetailsCellNib forCellReuseIdentifier:@"RepoDetailsCell"];
-    
-    [self.view setBackgroundColor:[UIColor colorWithRed:229/255.0 green:229/255.0 blue:229/255.0 alpha:1.0]];
-    
+
     NSArray *tables = [[NSArray alloc] initWithObjects:detailsTable, branchesTable, nil];
     
     UITableView *table;
@@ -143,8 +141,9 @@
     
     Branch *branch = [self.repoBranches objectAtIndex:indexPath.row];
     
-    cell.textLabel.font = [UIFont fontWithName:@"Arial" size:14.0];
-    cell.textLabel.text = [branch getName];
+    cell.textLabel.font  = [UIFont fontWithName:@"Arial" size:14.0];
+    cell.textLabel.text  = [branch getName];
+    cell.backgroundColor = [UIColor whiteColor];
     
     return cell;
 }
