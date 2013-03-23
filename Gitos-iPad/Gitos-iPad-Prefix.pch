@@ -27,4 +27,5 @@
     #import "Gist.h"
     #import "Issue.h"
     #import "Comment.h"
+    #import "YRDropdownView.h"
 #endif

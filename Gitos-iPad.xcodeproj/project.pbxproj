@@ -275,6 +275,15 @@
 		B55D918316B7B6D4009CB90F /* RepoSearchResultCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B55D918216B7B6D2009CB90F /* RepoSearchResultCell.xib */; };
 		B55D918616B7B6E9009CB90F /* ProfileCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B55D918516B7B6E7009CB90F /* ProfileCell.m */; };
 		B55D918816B7B70D009CB90F /* ProfileCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B55D918716B7B70B009CB90F /* ProfileCell.xib */; };
+		B569D0C416FE6496002216DD /* glyphicons_078_warning_sign.png in Resources */ = {isa = PBXBuildFile; fileRef = B569D0C016FE6496002216DD /* glyphicons_078_warning_sign.png */; };
+		B569D0C516FE6496002216DD /* glyphicons_078_warning_sign@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B569D0C116FE6496002216DD /* glyphicons_078_warning_sign@2x.png */; };
+		B569D0C616FE6496002216DD /* glyphicons_198_ok.png in Resources */ = {isa = PBXBuildFile; fileRef = B569D0C216FE6496002216DD /* glyphicons_198_ok.png */; };
+		B569D0C716FE6496002216DD /* glyphicons_198_ok@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B569D0C316FE6496002216DD /* glyphicons_198_ok@2x.png */; };
+		B569D0CC16FE6861002216DD /* glyphicons_078_warning_sign.png in Resources */ = {isa = PBXBuildFile; fileRef = B569D0C816FE6861002216DD /* glyphicons_078_warning_sign.png */; };
+		B569D0CD16FE6861002216DD /* glyphicons_078_warning_sign@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B569D0C916FE6861002216DD /* glyphicons_078_warning_sign@2x.png */; };
+		B569D0CE16FE6861002216DD /* glyphicons_198_ok.png in Resources */ = {isa = PBXBuildFile; fileRef = B569D0CA16FE6861002216DD /* glyphicons_198_ok.png */; };
+		B569D0CF16FE6861002216DD /* glyphicons_198_ok@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B569D0CB16FE6861002216DD /* glyphicons_198_ok@2x.png */; };
+		B57E39AA16FE5CBB006C2BD1 /* YRDropdownView.m in Sources */ = {isa = PBXBuildFile; fileRef = B57E39A916FE5CBB006C2BD1 /* YRDropdownView.m */; };
 		B5BC451E16BA5DFD00434848 /* prettify.css in Resources */ = {isa = PBXBuildFile; fileRef = B5BC451B16BA5DFD00434848 /* prettify.css */; };
 		B5BC452016BA5DFD00434848 /* sunburst.css in Resources */ = {isa = PBXBuildFile; fileRef = B5BC451D16BA5DFD00434848 /* sunburst.css */; };
 		B5BC452116BA5E3F00434848 /* prettify.js in Resources */ = {isa = PBXBuildFile; fileRef = B5BC451C16BA5DFD00434848 /* prettify.js */; };
@@ -660,6 +669,16 @@
 		B55D918416B7B6E5009CB90F /* ProfileCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProfileCell.h; sourceTree = "<group>"; };
 		B55D918516B7B6E7009CB90F /* ProfileCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProfileCell.m; sourceTree = "<group>"; };
 		B55D918716B7B70B009CB90F /* ProfileCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ProfileCell.xib; sourceTree = "<group>"; };
+		B569D0C016FE6496002216DD /* glyphicons_078_warning_sign.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = glyphicons_078_warning_sign.png; sourceTree = "<group>"; };
+		B569D0C116FE6496002216DD /* glyphicons_078_warning_sign@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "glyphicons_078_warning_sign@2x.png"; sourceTree = "<group>"; };
+		B569D0C216FE6496002216DD /* glyphicons_198_ok.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = glyphicons_198_ok.png; sourceTree = "<group>"; };
+		B569D0C316FE6496002216DD /* glyphicons_198_ok@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "glyphicons_198_ok@2x.png"; sourceTree = "<group>"; };
+		B569D0C816FE6861002216DD /* glyphicons_078_warning_sign.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = glyphicons_078_warning_sign.png; sourceTree = "<group>"; };
+		B569D0C916FE6861002216DD /* glyphicons_078_warning_sign@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "glyphicons_078_warning_sign@2x.png"; sourceTree = "<group>"; };
+		B569D0CA16FE6861002216DD /* glyphicons_198_ok.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = glyphicons_198_ok.png; sourceTree = "<group>"; };
+		B569D0CB16FE6861002216DD /* glyphicons_198_ok@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "glyphicons_198_ok@2x.png"; sourceTree = "<group>"; };
+		B57E39A816FE5CBB006C2BD1 /* YRDropdownView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YRDropdownView.h; sourceTree = "<group>"; };
+		B57E39A916FE5CBB006C2BD1 /* YRDropdownView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YRDropdownView.m; sourceTree = "<group>"; };
 		B5BC451B16BA5DFD00434848 /* prettify.css */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.css; path = prettify.css; sourceTree = "<group>"; };
 		B5BC451C16BA5DFD00434848 /* prettify.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = prettify.js; sourceTree = "<group>"; };
 		B5BC451D16BA5DFD00434848 /* sunburst.css */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.css; path = sunburst.css; sourceTree = "<group>"; };
@@ -705,6 +724,10 @@
 				B516539A16B7C1B9003F0DFA /* 01-refresh.png */,
 				B516539B16B7C1B9003F0DFA /* 01-refresh@2x.png */,
 				B516539C16B7C1B9003F0DFA /* 06-magnify.png */,
+				B569D0C816FE6861002216DD /* glyphicons_078_warning_sign.png */,
+				B569D0C916FE6861002216DD /* glyphicons_078_warning_sign@2x.png */,
+				B569D0CA16FE6861002216DD /* glyphicons_198_ok.png */,
+				B569D0CB16FE6861002216DD /* glyphicons_198_ok@2x.png */,
 				B54F69DD16D2DF1E00978DD9 /* avatar-placeholder.png */,
 				B516539D16B7C1B9003F0DFA /* 06-magnify@2x.png */,
 				B54F69D916D2C5CA00978DD9 /* 04-squiggle.png */,
@@ -715,6 +738,10 @@
 				B54F69DF16D2E94800978DD9 /* avatar-placeholder.png */,
 				B516539F16B7C1B9003F0DFA /* 07-map-marker@2x.png */,
 				B51653A016B7C1B9003F0DFA /* 12-eye.png */,
+				B569D0C016FE6496002216DD /* glyphicons_078_warning_sign.png */,
+				B569D0C116FE6496002216DD /* glyphicons_078_warning_sign@2x.png */,
+				B569D0C216FE6496002216DD /* glyphicons_198_ok.png */,
+				B569D0C316FE6496002216DD /* glyphicons_198_ok@2x.png */,
 				B51653A116B7C1B9003F0DFA /* 12-eye@2x.png */,
 				B51653A216B7C1B9003F0DFA /* 28-star_w.png */,
 				B51653A316B7C1B9003F0DFA /* 28-star_w@2x.png */,
@@ -892,6 +919,7 @@
 		B55D908F16B7AA27009CB90F = {
 			isa = PBXGroup;
 			children = (
+				B57E39A716FE5CBB006C2BD1 /* YRDropdownView */,
 				B54603BB16C37B5F007D4FB3 /* icon@2x.png */,
 				B54603B916C37B13007D4FB3 /* icon.png */,
 				B546038316C0FFA8007D4FB3 /* SDWebImage */,
@@ -1188,6 +1216,15 @@
 			path = Cells;
 			sourceTree = "<group>";
 		};
+		B57E39A716FE5CBB006C2BD1 /* YRDropdownView */ = {
+			isa = PBXGroup;
+			children = (
+				B57E39A816FE5CBB006C2BD1 /* YRDropdownView.h */,
+				B57E39A916FE5CBB006C2BD1 /* YRDropdownView.m */,
+			);
+			path = YRDropdownView;
+			sourceTree = "<group>";
+		};
 		B5BC451A16BA5DFC00434848 /* Html */ = {
 			isa = PBXGroup;
 			children = (
@@ -1432,6 +1469,14 @@
 				B511D45316DB3D0900DD0ED5 /* pull_request.html in Resources */,
 				B511D45616E08F7700DD0ED5 /* 122-stats.png in Resources */,
 				B511D45716E08F7700DD0ED5 /* 122-stats@2x.png in Resources */,
+				B569D0C416FE6496002216DD /* glyphicons_078_warning_sign.png in Resources */,
+				B569D0C516FE6496002216DD /* glyphicons_078_warning_sign@2x.png in Resources */,
+				B569D0C616FE6496002216DD /* glyphicons_198_ok.png in Resources */,
+				B569D0C716FE6496002216DD /* glyphicons_198_ok@2x.png in Resources */,
+				B569D0CC16FE6861002216DD /* glyphicons_078_warning_sign.png in Resources */,
+				B569D0CD16FE6861002216DD /* glyphicons_078_warning_sign@2x.png in Resources */,
+				B569D0CE16FE6861002216DD /* glyphicons_198_ok.png in Resources */,
+				B569D0CF16FE6861002216DD /* glyphicons_198_ok@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1544,6 +1589,7 @@
 				B511D44216DAF68200DD0ED5 /* DeleteEvent.m in Sources */,
 				B511D44C16DB36B000DD0ED5 /* PullRequest.m in Sources */,
 				B511D45016DB383D00DD0ED5 /* PullRequestDetailsViewController.m in Sources */,
+				B57E39AA16FE5CBB006C2BD1 /* YRDropdownView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -43,7 +43,6 @@
     // Do any additional setup after loading the view from its nib.
     [self performHouseKeepingTasks];
     [self applyCustomStyling];
-    [self loadFeedbackForm];
     
     UIBarButtonItem *submitButton = [[UIBarButtonItem alloc] initWithTitle:@"Submit" style:UIBarButtonItemStyleBordered target:self action:@selector(sendFeedback)];
     [self.navigationItem setRightBarButtonItem:submitButton];
@@ -88,6 +87,26 @@
 
 - (void)sendFeedback
 {
+    NSString *name    = self.nameField.text;
+    NSString *email   = self.emailField.text;
+    NSString *message = self.messageField.text;
+
+    if (name.length == 0 || email.length == 0 || message.length == 0) {
+        [YRDropdownView showDropdownInView:self.view
+                                     title:@"Error"
+                                    detail:@"All fields are required"
+                                     image:[UIImage imageNamed:@"glyphicons_078_warning_sign.png"]
+                                 textColor:[UIColor whiteColor]
+                           backgroundColor:[UIColor colorWithRed:202/255.0 green:36/255.0 blue:36/255.0 alpha:1.0]
+                                  animated:YES
+                                 hideAfter:2.0f];
+        return;
+    }
+
+    if ([self.messageField isFirstResponder]) {
+        [self.messageField resignFirstResponder];
+    }
+
     NSURL *url = [NSURL URLWithString:[AppConfig getConfigValue:@"GitosHost"]];
 
     NSMutableDictionary *params = [NSMutableDictionary dictionaryWithObjectsAndKeys:
@@ -110,9 +129,14 @@
          NSDictionary *json = [NSJSONSerialization JSONObjectWithData:[response dataUsingEncoding:NSUTF8StringEncoding] options:NSJSONReadingMutableContainers error:nil];
 
          if ([[json valueForKey:@"success"] intValue] == 1) {
-             UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Alert" message:@"Feedback sent successfully" delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
-
-             [alert show];
+             [YRDropdownView showDropdownInView:self.view
+                                          title:@"Alert"
+                                         detail:@"Feedback submitted successfully"
+                                          image:[UIImage imageNamed:@"glyphicons_198_ok.png"]
+                                      textColor:[UIColor whiteColor]
+                                backgroundColor:[UIColor colorWithRed:87/255.0 green:153/255.0 blue:38/255.0 alpha:1.0]
+                                       animated:YES
+                                      hideAfter:2.0f];
          }
      }
      failure:^(AFHTTPRequestOperation *operation, NSError *error) {
