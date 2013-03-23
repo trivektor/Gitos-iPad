@@ -7,12 +7,25 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <QuartzCore/QuartzCore.h>
 
 @interface FeedbackViewController : UIViewController <UIWebViewDelegate>
 
-@property (nonatomic, weak) IBOutlet UIWebView *formWebView;
+@property (nonatomic, strong) IBOutlet UITextField *nameField;
+@property (nonatomic, strong) IBOutlet UITextField *emailField;
+@property (nonatomic, strong) IBOutlet UITextView *messageField;
+@property (nonatomic, strong) MBProgressHUD *hud;
 
 - (void)performHouseKeepingTasks;
-- (void)loadFeedbackForm;
+- (void)applyCustomStyling;
+- (void)sendFeedback;
 
 @end
+
+@interface CustomUITextField : UITextField
+
+@property (nonatomic, assign) float verticalPadding;
+@property (nonatomic, assign) float horizontalPadding;
+
+@end
+
