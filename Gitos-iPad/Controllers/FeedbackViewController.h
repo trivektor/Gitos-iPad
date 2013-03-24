@@ -9,15 +9,19 @@
 #import <UIKit/UIKit.h>
 #import <QuartzCore/QuartzCore.h>
 
-@interface FeedbackViewController : UIViewController <UIWebViewDelegate>
+@interface FeedbackViewController : UIViewController <UITableViewDataSource, UITableViewDelegate>
 
-@property (nonatomic, strong) IBOutlet UITextField *nameField;
-@property (nonatomic, strong) IBOutlet UITextField *emailField;
-@property (nonatomic, strong) IBOutlet UITextView *messageField;
 @property (nonatomic, strong) MBProgressHUD *hud;
 
+@property (weak, nonatomic) IBOutlet UITableView *feedbackTable;
+@property (weak, nonatomic) IBOutlet UITableViewCell *nameCell;
+@property (weak, nonatomic) IBOutlet UITableViewCell *emailCell;
+@property (weak, nonatomic) IBOutlet UITableViewCell *messageCell;
+@property (weak, nonatomic) IBOutlet UITextField *nameField;
+@property (weak, nonatomic) IBOutlet UITextField *emailField;
+@property (weak, nonatomic) IBOutlet UITextView *messageField;
+
 - (void)performHouseKeepingTasks;
-- (void)applyCustomStyling;
 - (void)sendFeedback;
 
 @end

@@ -12,21 +12,9 @@
 
 @end
 
-@implementation CustomUITextField
-
-@synthesize horizontalPadding, verticalPadding;
-
-- (CGRect)textRectForBounds:(CGRect)bounds {
-    return CGRectMake(bounds.origin.x + horizontalPadding, bounds.origin.y + verticalPadding, bounds.size.width - horizontalPadding*2, bounds.size.height - verticalPadding*2);
-}
-
-- (CGRect)editingRectForBounds:(CGRect)bounds {
-    return [self textRectForBounds:bounds];
-}
-
-@end
-
 @implementation FeedbackViewController
+
+@synthesize feedbackTable, nameCell, emailCell, messageCell, hud, nameField, emailField, messageField;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -42,7 +30,6 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
     [self performHouseKeepingTasks];
-    [self applyCustomStyling];
     
     UIBarButtonItem *submitButton = [[UIBarButtonItem alloc] initWithTitle:@"Submit" style:UIBarButtonItemStyleBordered target:self action:@selector(sendFeedback)];
     [self.navigationItem setRightBarButtonItem:submitButton];
@@ -53,58 +40,37 @@
     self.navigationItem.title = @"Feedback";
     self.navigationItem.hidesBackButton = YES;
 
-    self.hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
-    self.hud.hidden = YES;
-    self.hud.mode = MBProgressHUDAnimationFade;
-    self.hud.labelText = LOADING_MESSAGE;
-}
+    hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+    hud.mode = MBProgressHUDAnimationFade;
+    hud.labelText = LOADING_MESSAGE;
+    [hud hide:YES];
 
-- (void)applyCustomStyling
-{
-    NSArray *fields = @[self.nameField, self.emailField];
-
-    UIView *namePaddingView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 5, 20)];
-    UIView *emailPaddingView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 5, 20)];
-
-    self.nameField.leftView = namePaddingView;
-    self.nameField.leftViewMode = UITextFieldViewModeAlways;
-
-    self.emailField.leftView = emailPaddingView;
-    self.emailField.leftViewMode = UITextFieldViewModeAlways;
-
-    for (UITextField *f in fields) {
-        f.layer.borderColor   = [[UIColor colorWithRed:204/255.0 green:204/255.0 blue:204/255.0 alpha:1.0] CGColor];
-        f.layer.borderWidth   = 1.0f;
-        f.layer.cornerRadius  = 4.0f;
-        f.layer.masksToBounds = YES;
-    }
-
-    self.messageField.layer.borderColor   = [[UIColor colorWithRed:204/255.0 green:204/255.0 blue:204/255.0 alpha:1.0] CGColor];
-    self.messageField.layer.borderWidth   = 1.0f;
-    self.messageField.layer.cornerRadius  = 4.0f;
-    self.messageField.layer.masksToBounds = YES;
+    [feedbackTable setBackgroundView:nil];
+    [feedbackTable setScrollEnabled:NO];
+    [feedbackTable setSeparatorStyle:UITableViewCellSeparatorStyleSingleLine];
+    [feedbackTable setSeparatorColor:[UIColor colorWithRed:206/255.0 green:206/255.0 blue:206/255.0 alpha:0.8]];
 }
 
 - (void)sendFeedback
 {
-    NSString *name    = self.nameField.text;
-    NSString *email   = self.emailField.text;
-    NSString *message = self.messageField.text;
+    NSString *name    = nameField.text;
+    NSString *email   = emailField.text;
+    NSString *message = messageField.text;
 
     if (name.length == 0 || email.length == 0 || message.length == 0) {
         [YRDropdownView showDropdownInView:self.view
                                      title:@"Error"
                                     detail:@"All fields are required"
                                      image:[UIImage imageNamed:@"glyphicons_078_warning_sign.png"]
-                                 textColor:[UIColor whiteColor]
-                           backgroundColor:[UIColor colorWithRed:202/255.0 green:36/255.0 blue:36/255.0 alpha:1.0]
+                                 textColor:[UIColor colorWithRed:186/255.0 green:12/255.0 blue:12/255.0 alpha:1.0]
+                           backgroundColor:[UIColor whiteColor]
                                   animated:YES
                                  hideAfter:HIDE_AFTER];
         return;
     }
 
-    if ([self.messageField isFirstResponder]) {
-        [self.messageField resignFirstResponder];
+    if ([messageField isFirstResponder]) {
+        [messageField resignFirstResponder];
     }
 
     NSURL *url = [NSURL URLWithString:[AppConfig getConfigValue:@"GitosHost"]];
@@ -146,6 +112,36 @@
 
     [operation start];
     [self.hud setHidden:NO];
+}
+
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
+{
+    return 1;
+}
+
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+{
+    return 3;
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    if (indexPath.row == 2) {
+        return 157;
+    } else {
+        return 44;
+    }
+}
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    if (indexPath.row == 0) {
+        return nameCell;
+    } else if (indexPath.row == 1) {
+        return emailCell;
+    } else {
+        return messageCell;
+    }
 }
 
 - (void)didReceiveMemoryWarning
