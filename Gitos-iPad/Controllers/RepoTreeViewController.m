@@ -54,7 +54,7 @@
 
     hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
     hud.mode = MBProgressHUDAnimationFade;
-    hud.labelText = @"Loading";
+    hud.labelText = LOADING_MESSAGE;
 
     UIBarButtonItem *commitButton = [[UIBarButtonItem alloc] initWithTitle:@"Commits" style:UIBarButtonItemStyleBordered target:self action:@selector(showCommitForBranch)];
     [self.navigationItem setRightBarButtonItem:commitButton];

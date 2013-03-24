@@ -34,9 +34,11 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
     self.navigationItem.title = @"Repositories";
-    self.hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
-    self.hud.mode = MBProgressHUDAnimationFade;
-    self.hud.labelText = @"Loading";
+
+    hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+    hud.mode = MBProgressHUDAnimationFade;
+    hud.labelText = LOADING_MESSAGE;
+
     [self registerNib];
     [self getUserInfoAndRepos];
 }
@@ -122,9 +124,9 @@
         }
         
         [reposTable reloadData];
-        [self.hud hide:YES];
+        [hud hide:YES];
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-        [self.hud hide:YES];
+        [hud hide:YES];
         NSLog(@"%@", error);
     }];
     

@@ -39,7 +39,7 @@
 
     hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
     hud.mode = MBProgressHUDAnimationFade;
-    hud.labelText = @"Loading";
+    hud.labelText = LOADING_MESSAGE;
 
     [self registerNib];
     [self setupPullToRefresh];

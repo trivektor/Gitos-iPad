@@ -47,7 +47,7 @@ static NSInteger PER_PAGE = 100;
     self.navigationItem.title = @"Commits";
     self.hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
     self.hud.mode = MBProgressHUDAnimationFade;
-    self.hud.labelText = @"Loading";
+    self.hud.labelText = LOADING_MESSAGE;
 }
 
 - (void)registerNib

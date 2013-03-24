@@ -56,7 +56,7 @@
     self.hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
     self.hud.hidden = YES;
     self.hud.mode = MBProgressHUDAnimationFade;
-    self.hud.labelText = @"Loading";
+    self.hud.labelText = LOADING_MESSAGE;
 }
 
 - (void)applyCustomStyling

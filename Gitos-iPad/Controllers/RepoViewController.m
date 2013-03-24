@@ -10,10 +10,6 @@
 #import "WebsiteViewController.h"
 #import "IssuesViewController.h"
 #import "RepoDetailsCell.h"
-#import "AppConfig.h"
-#import "AFHTTPClient.h"
-#import "AFHTTPRequestOperation.h"
-#import "SSKeychain.h"
 #import "RepoTreeViewController.h"
 #import "Branch.h"
 
@@ -66,9 +62,9 @@
 
 - (void)performHouseKeepingTasks
 {
-    self.hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
-    self.hud.mode = MBProgressHUDAnimationFade;
-    self.hud.labelText = @"Loading";
+    hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+    hud.mode = MBProgressHUDAnimationFade;
+    hud.labelText = LOADING_MESSAGE;
     [self registerNib];
 }
 
@@ -203,12 +199,12 @@
          
          [branchesTable setFrame:CGRectMake(0, self.detailsTable.frame.size.height + 46, self.view.frame.size.width, [self.repoBranches count]*44 + 155)];
          [branchesTable reloadData];
-         [self.hud hide:YES];
+         [hud hide:YES];
          [self adjustFrameHeight];
      }
      failure:^(AFHTTPRequestOperation *operation, NSError *error) {
          NSLog(@"%@", error);
-         [self.hud hide:YES];
+         [hud hide:YES];
      }];
     [operation start];
 }

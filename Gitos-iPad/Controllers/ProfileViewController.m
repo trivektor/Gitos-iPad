@@ -57,9 +57,9 @@
 {
     [scrollView setContentSize:self.view.frame.size];
     [self adjustFrameHeight];
-    self.hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
-    self.hud.mode = MBProgressHUDAnimationFade;
-    self.hud.labelText = @"Loading";
+    hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+    hud.mode = MBProgressHUDAnimationFade;
+    hud.labelText = LOADING_MESSAGE;
 }
 
 - (void)addOptionsButton
@@ -129,11 +129,11 @@
          if (!self.hideOptionsButton) {
              [self addOptionsButton];
          }
-         [self.hud hide:YES];
+         [hud hide:YES];
      }
      failure:^(AFHTTPRequestOperation *operation, NSError *error) {
          NSLog(@"%@", error);
-         [self.hud hide:YES];
+         [hud hide:YES];
      }];
     
     [operation start];
@@ -254,7 +254,7 @@
 //             self.isFollowing = true;
 //             [self displayFollowOptions];
 //         }
-//         [self.hud hide:YES];
+//         [hud hide:YES];
 //     }
 //     failure:^(AFHTTPRequestOperation *operation, NSError *error) {
 //         NSLog(@"%@", error);
@@ -262,7 +262,7 @@
 //             self.isFollowing = false;
 //             [self displayFollowOptions];
 //         }
-//         [self.hud hide:YES];
+//         [hud hide:YES];
 //     }];
 //
 //    [operation start];
@@ -300,13 +300,13 @@
     [operation setCompletionBlockWithSuccess:
      ^(AFHTTPRequestOperation *operation, id responseObject){
          self.isFollowing = true;
-         [self.hud hide:YES];
+         [hud hide:YES];
          UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Alert" message:[NSString stringWithFormat:@"You are now following %@", [self.user getLogin]] delegate:self cancelButtonTitle:nil otherButtonTitles:nil];
          [alert show];
      }
      failure:^(AFHTTPRequestOperation *operation, NSError *error) {
          NSLog(@"%@", error);
-         [self.hud hide:YES];
+         [hud hide:YES];
      }];
 
     [operation start];
@@ -326,13 +326,13 @@
     [operation setCompletionBlockWithSuccess:
      ^(AFHTTPRequestOperation *operation, id responseObject){
          self.isFollowing = true;
-         [self.hud hide:YES];
+         [hud hide:YES];
          UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Alert" message:[NSString stringWithFormat:@"You are now following %@", [self.user getLogin]] delegate:self cancelButtonTitle:nil otherButtonTitles:nil];
          [alert show];
      }
      failure:^(AFHTTPRequestOperation *operation, NSError *error) {
          NSLog(@"%@", error);
-         [self.hud hide:YES];
+         [hud hide:YES];
      }];
 
     [operation start];

@@ -20,6 +20,8 @@
 
 @implementation SearchViewController
 
+@synthesize hud;
+
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
@@ -37,10 +39,11 @@
     // Do any additional setup after loading the view from its nib.
     [self performHouseKeepingTasks];
     [self prepareSearchBar];
-    self.hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
-    self.hud.mode = MBProgressHUDAnimationFade;
-    self.hud.labelText = @"Loading";
-    [self.hud hide:YES];
+
+    hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+    hud.mode = MBProgressHUDAnimationFade;
+    hud.labelText = LOADING_MESSAGE;
+    [hud hide:YES];
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -140,7 +143,7 @@
 - (void)searchBarSearchButtonClicked:(UISearchBar *)searchBar
 {
     [searchBar resignFirstResponder];
-    [self.hud show:YES];
+    [hud show:YES];
 
     NSString *term = [searchBar text];
 
@@ -184,11 +187,11 @@
 
          [self.resultsTable reloadData];
          [self.searchBar resignFirstResponder];
-         [self.hud hide:YES];
+         [hud hide:YES];
      }
      failure:^(AFHTTPRequestOperation *operation, NSError *error) {
          NSLog(@"%@", error);
-         [self.hud hide:YES];
+         [hud hide:YES];
      }];
     
     [operation start];
@@ -228,11 +231,11 @@
 
          [self.resultsTable reloadData];
          [self.searchBar resignFirstResponder];
-         [self.hud hide:YES];
+         [hud hide:YES];
      }
      failure:^(AFHTTPRequestOperation *operation, NSError *error) {
          NSLog(@"%@", error);
-         [self.hud hide:YES];
+         [hud hide:YES];
      }];
 
     [operation start];
@@ -282,7 +285,7 @@
     
     [operation setCompletionBlockWithSuccess:
      ^(AFHTTPRequestOperation *operation, id responseObject){
-         [self.hud hide:YES];
+         [hud hide:YES];
          NSString *response = [operation responseString];
 
          NSDictionary *json = [NSJSONSerialization JSONObjectWithData:[response dataUsingEncoding:NSUTF8StringEncoding] options:NSJSONReadingMutableContainers error:nil];
@@ -293,7 +296,7 @@
      }
      failure:^(AFHTTPRequestOperation *operation, NSError *error) {
          NSLog(@"%@", error);
-         [self.hud hide:YES];
+         [hud hide:YES];
      }];
 
     [operation start];
@@ -319,7 +322,7 @@
 
     [operation setCompletionBlockWithSuccess:
      ^(AFHTTPRequestOperation *operation, id responseObject){
-         [self.hud hide:YES];
+         [hud hide:YES];
          NSString *response = [operation responseString];
 
          NSDictionary *json = [NSJSONSerialization JSONObjectWithData:[response dataUsingEncoding:NSUTF8StringEncoding] options:NSJSONReadingMutableContainers error:nil];
@@ -330,7 +333,7 @@
      }
      failure:^(AFHTTPRequestOperation *operation, NSError *error) {
          NSLog(@"%@", error);
-         [self.hud hide:YES];
+         [hud hide:YES];
      }];
 
     [operation start];

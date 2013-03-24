@@ -8,10 +8,6 @@
 
 #import "GistViewController.h"
 #import "GistDetailsCell.h"
-#import "AFHTTPClient.h"
-#import "AFHTTPRequestOperation.h"
-#import "SSKeychain.h"
-#import "AppConfig.h"
 #import "GistFile.h"
 #import "GistRawFileViewController.h"
 
@@ -50,9 +46,9 @@
 - (void)performHouseKeepingTasks
 {
     [self registerNib];
-    self.hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
-    self.hud.mode = MBProgressHUDAnimationFade;
-    self.hud.labelText = @"Loading";
+    hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+    hud.mode = MBProgressHUDAnimationFade;
+    hud.labelText = LOADING_MESSAGE;
 }
 
 - (void)registerNib
@@ -93,10 +89,10 @@
         
         [self setGistStats:json];
         [detailsTable reloadData];
-        [self.hud hide:YES];
+        [hud hide:YES];
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
         NSLog(@"%@", error);
-        [self.hud hide:YES];
+        [hud hide:YES];
     }];
     [operation start];
 }

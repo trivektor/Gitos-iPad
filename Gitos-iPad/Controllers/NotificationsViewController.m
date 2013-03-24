@@ -45,7 +45,7 @@
     self.navigationItem.title = @"Notifications";
     self.hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
     self.hud.mode = MBProgressHUDAnimationFade;
-    self.hud.labelText = @"Loading";
+    self.hud.labelText = LOADING_MESSAGE;
 }
 
 - (void)registerNib
