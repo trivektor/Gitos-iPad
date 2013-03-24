@@ -7,9 +7,6 @@
 //
 
 #import "RawFileViewController.h"
-#import "AppConfig.h"
-#import "AFHTTPClient.h"
-#import "AFHTTPRequestOperation.h"
 #import "RepoTreeNode.h"
 #import "RepoTreeViewController.h"
 
@@ -19,13 +16,15 @@
 
 @implementation RawFileViewController
 
-@synthesize repo, branch, fileName, mimeType, rawFileUrl, rawFileRequest, fileWebView;
+@synthesize repo, branch, fileName, mimeType, rawFileUrl, rawFileRequest, fileWebView, hud, theme, themesOptions, themes;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
         // Custom initialization
+        themes = @[@"prettify.css", @"desert.css", @"sunburst.css", @"sons-of-obsidian.css", @"doxy.css"];
+        theme = [themes objectAtIndex:0];
     }
     return self;
 }
@@ -35,9 +34,11 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
     [self.navigationItem setTitle:self.fileName];
-    self.hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
-    self.hud.mode = MBProgressHUDAnimationFade;
-    self.hud.labelText = @"Loading";
+
+    hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+    hud.mode = MBProgressHUDAnimationFade;
+    hud.labelText = LOADING_MESSAGE;
+
     [self fetchRawFile];
 }
 
@@ -102,14 +103,33 @@
         // Raw file is an image
         [fileWebView loadRequest:self.rawFileRequest];
     } else if ([self.mimeType isEqualToString:@"text/plain"]) {
+        UIBarButtonItem *switchThemeButton = [[UIBarButtonItem alloc] initWithTitle:@"Switch Theme" style:UIBarButtonItemStyleBordered target:self action:@selector(switchTheme)];
+
+        self.navigationItem.rightBarButtonItem = switchThemeButton;
+
         NSString *rawFilePath = [[NSBundle mainBundle] pathForResource:@"raw_file" ofType:@"html"];
         NSString *rawFileContent = [NSString stringWithContentsOfFile:rawFilePath encoding:NSUTF8StringEncoding error:nil];
         NSString *content = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
         NSURL *baseURL = [NSURL fileURLWithPath:[[NSBundle mainBundle] bundlePath]];
-        NSString *htmlString = [NSString stringWithFormat:rawFileContent, [self encodeHtmlEntities:content]];
+        NSString *htmlString = [NSString stringWithFormat:rawFileContent, theme, [self encodeHtmlEntities:content]];
         [fileWebView loadHTMLString:htmlString baseURL:baseURL];
     }
     [self.hud hide:YES];
+}
+
+- (void)switchTheme
+{
+    themesOptions = [[UIActionSheet alloc] initWithTitle:@"Choose Themes" delegate:self cancelButtonTitle:@"Cancel" destructiveButtonTitle:nil otherButtonTitles:@"Default", @"Desert", @"Sunburst", @"Sons Of Obsidian", @"Doxy", nil];
+    themesOptions.actionSheetStyle = UIActionSheetStyleBlackOpaque;
+    [themesOptions showInView:[UIApplication sharedApplication].keyWindow];
+}
+
+- (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex
+{
+    if (buttonIndex != themesOptions.cancelButtonIndex) {
+        theme = [themes objectAtIndex:buttonIndex];
+        [self fetchRawFile];
+    }
 }
 
 - (NSString *)encodeHtmlEntities:(NSString *)rawHtmlString

@@ -279,9 +279,12 @@
 		B569D0C716FE6496002216DD /* glyphicons_198_ok@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B569D0C316FE6496002216DD /* glyphicons_198_ok@2x.png */; };
 		B569D0D216FE6F0F002216DD /* Authorization.m in Sources */ = {isa = PBXBuildFile; fileRef = B569D0D116FE6F0F002216DD /* Authorization.m */; };
 		B569D0D516FE7923002216DD /* GitosConstants.m in Sources */ = {isa = PBXBuildFile; fileRef = B569D0D416FE7923002216DD /* GitosConstants.m */; };
+		B574CF3416FFAAA00077D353 /* desert.css in Resources */ = {isa = PBXBuildFile; fileRef = B574CF3016FFAAA00077D353 /* desert.css */; };
+		B574CF3516FFAAA00077D353 /* prettify.css in Resources */ = {isa = PBXBuildFile; fileRef = B574CF3116FFAAA00077D353 /* prettify.css */; };
+		B574CF3616FFAAA00077D353 /* sons-of-obsidian.css in Resources */ = {isa = PBXBuildFile; fileRef = B574CF3216FFAAA00077D353 /* sons-of-obsidian.css */; };
+		B574CF3716FFAAA00077D353 /* sunburst.css in Resources */ = {isa = PBXBuildFile; fileRef = B574CF3316FFAAA00077D353 /* sunburst.css */; };
+		B574CF3916FFB28C0077D353 /* doxy.css in Resources */ = {isa = PBXBuildFile; fileRef = B574CF3816FFB28C0077D353 /* doxy.css */; };
 		B57E39AA16FE5CBB006C2BD1 /* YRDropdownView.m in Sources */ = {isa = PBXBuildFile; fileRef = B57E39A916FE5CBB006C2BD1 /* YRDropdownView.m */; };
-		B5BC451E16BA5DFD00434848 /* prettify.css in Resources */ = {isa = PBXBuildFile; fileRef = B5BC451B16BA5DFD00434848 /* prettify.css */; };
-		B5BC452016BA5DFD00434848 /* sunburst.css in Resources */ = {isa = PBXBuildFile; fileRef = B5BC451D16BA5DFD00434848 /* sunburst.css */; };
 		B5BC452116BA5E3F00434848 /* prettify.js in Resources */ = {isa = PBXBuildFile; fileRef = B5BC451C16BA5DFD00434848 /* prettify.js */; };
 		B5BC452516BCEE7100434848 /* MasterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B5BC452316BCEE7000434848 /* MasterViewController.m */; };
 		B5BC452616BCEE7100434848 /* MasterViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B5BC452416BCEE7000434848 /* MasterViewController.xib */; };
@@ -675,11 +678,14 @@
 		B569D0D116FE6F0F002216DD /* Authorization.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Authorization.m; sourceTree = "<group>"; };
 		B569D0D316FE7923002216DD /* GitosConstants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GitosConstants.h; sourceTree = "<group>"; };
 		B569D0D416FE7923002216DD /* GitosConstants.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GitosConstants.m; sourceTree = "<group>"; };
+		B574CF3016FFAAA00077D353 /* desert.css */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.css; path = desert.css; sourceTree = "<group>"; };
+		B574CF3116FFAAA00077D353 /* prettify.css */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.css; path = prettify.css; sourceTree = "<group>"; };
+		B574CF3216FFAAA00077D353 /* sons-of-obsidian.css */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.css; path = "sons-of-obsidian.css"; sourceTree = "<group>"; };
+		B574CF3316FFAAA00077D353 /* sunburst.css */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.css; path = sunburst.css; sourceTree = "<group>"; };
+		B574CF3816FFB28C0077D353 /* doxy.css */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.css; path = doxy.css; sourceTree = "<group>"; };
 		B57E39A816FE5CBB006C2BD1 /* YRDropdownView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YRDropdownView.h; sourceTree = "<group>"; };
 		B57E39A916FE5CBB006C2BD1 /* YRDropdownView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YRDropdownView.m; sourceTree = "<group>"; };
-		B5BC451B16BA5DFD00434848 /* prettify.css */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.css; path = prettify.css; sourceTree = "<group>"; };
 		B5BC451C16BA5DFD00434848 /* prettify.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = prettify.js; sourceTree = "<group>"; };
-		B5BC451D16BA5DFD00434848 /* sunburst.css */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.css; path = sunburst.css; sourceTree = "<group>"; };
 		B5BC452216BCEE6F00434848 /* MasterViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MasterViewController.h; sourceTree = "<group>"; };
 		B5BC452316BCEE7000434848 /* MasterViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MasterViewController.m; sourceTree = "<group>"; };
 		B5BC452416BCEE7000434848 /* MasterViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MasterViewController.xib; sourceTree = "<group>"; };
@@ -1216,6 +1222,18 @@
 			path = Cells;
 			sourceTree = "<group>";
 		};
+		B574CF2F16FFAAA00077D353 /* prettify_themes */ = {
+			isa = PBXGroup;
+			children = (
+				B574CF3016FFAAA00077D353 /* desert.css */,
+				B574CF3116FFAAA00077D353 /* prettify.css */,
+				B574CF3216FFAAA00077D353 /* sons-of-obsidian.css */,
+				B574CF3316FFAAA00077D353 /* sunburst.css */,
+				B574CF3816FFB28C0077D353 /* doxy.css */,
+			);
+			path = prettify_themes;
+			sourceTree = "<group>";
+		};
 		B57E39A716FE5CBB006C2BD1 /* YRDropdownView */ = {
 			isa = PBXGroup;
 			children = (
@@ -1228,13 +1246,12 @@
 		B5BC451A16BA5DFC00434848 /* Html */ = {
 			isa = PBXGroup;
 			children = (
-				B5BC451B16BA5DFD00434848 /* prettify.css */,
+				B574CF2F16FFAAA00077D353 /* prettify_themes */,
 				B5BC457A16BEE21700434848 /* FontAwesome.ttf */,
 				B5BC451C16BA5DFD00434848 /* prettify.js */,
 				B542275916CDF86E0020F300 /* diff.js */,
 				B511D43816D9C6A600DD0ED5 /* underscore.js */,
 				B542275A16CDF86E0020F300 /* highlight.js */,
-				B5BC451D16BA5DFD00434848 /* sunburst.css */,
 				B552949316C85FEB0010D56A /* bootstrap.css */,
 				B552949816C866380010D56A /* issue_details.html */,
 				B552949A16C8705B0010D56A /* gitos.css */,
@@ -1425,8 +1442,6 @@
 				B516545816B7C1B9003F0DFA /* barButtonPressed.svg in Resources */,
 				B516545916B7C1B9003F0DFA /* Untitled-2.png in Resources */,
 				B516545B16B7C558003F0DFA /* AppConfig.plist in Resources */,
-				B5BC451E16BA5DFD00434848 /* prettify.css in Resources */,
-				B5BC452016BA5DFD00434848 /* sunburst.css in Resources */,
 				B5BC452616BCEE7100434848 /* MasterViewController.xib in Resources */,
 				B5BC456D16BD996200434848 /* DetailsViewController.xib in Resources */,
 				B5BC457516BE6C1A00434848 /* magma_border.png in Resources */,
@@ -1472,6 +1487,11 @@
 				B569D0C516FE6496002216DD /* glyphicons_078_warning_sign@2x.png in Resources */,
 				B569D0C616FE6496002216DD /* glyphicons_198_ok.png in Resources */,
 				B569D0C716FE6496002216DD /* glyphicons_198_ok@2x.png in Resources */,
+				B574CF3416FFAAA00077D353 /* desert.css in Resources */,
+				B574CF3516FFAAA00077D353 /* prettify.css in Resources */,
+				B574CF3616FFAAA00077D353 /* sons-of-obsidian.css in Resources */,
+				B574CF3716FFAAA00077D353 /* sunburst.css in Resources */,
+				B574CF3916FFB28C0077D353 /* doxy.css in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

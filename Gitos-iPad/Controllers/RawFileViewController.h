@@ -11,7 +11,7 @@
 #import "Branch.h"
 #import "MBProgressHUD.h"
 
-@interface RawFileViewController : UIViewController <UIWebViewDelegate, NSURLConnectionDataDelegate>
+@interface RawFileViewController : UIViewController <UIWebViewDelegate, NSURLConnectionDataDelegate, UIActionSheetDelegate>
 
 @property (nonatomic, weak) IBOutlet UIWebView *fileWebView;
 @property (nonatomic, strong) Repo *repo;
@@ -21,8 +21,12 @@
 @property (nonatomic, strong) NSString *mimeType;
 @property (nonatomic, strong) NSURL *rawFileUrl;
 @property (nonatomic, strong) NSURLRequest *rawFileRequest;
+@property (nonatomic, strong) NSString *theme;
+@property (nonatomic, strong) NSArray *themes;
+@property (nonatomic, strong) UIActionSheet *themesOptions;
 
 - (void)fetchRawFile;
+- (void)switchTheme;
 - (NSString *)encodeHtmlEntities:(NSString *)rawHtmlString;
 
 @end
