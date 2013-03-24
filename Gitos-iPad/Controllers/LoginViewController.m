@@ -86,14 +86,6 @@
 {
     NSString *username = [usernameField text];
     NSString *password = [passwordField text];
-    
-    // Prompt if username of password was blank
-    if (username.length == 0 || password.length == 0) {
-        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Alert" message:nil delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
-        [alert setMessage:@"Please enter both username and password"];
-        [alert show];
-        return;
-    }
 
     NSURL *url = [NSURL URLWithString:[AppConfig getConfigValue:@"GithubApiHost"]];
 
@@ -149,7 +141,13 @@
 {
     NSString *username = [usernameField text];
     NSString *password = [passwordField text];
-    
+
+    // Prompt if username of password was blank
+    if (username.length == 0 || password.length == 0) {
+        [YRDropdownView showDropdownInView:self.view title:@"Error" detail:@"Please enter your username and password" image:[UIImage imageNamed:@"glyphicons_078_warning_sign.png"] textColor:[UIColor colorWithRed:186/255.0 green:12/255.0 blue:12/255.0 alpha:1.0] backgroundColor:[UIColor whiteColor] animated:YES hideAfter:2.0f];
+        return;
+    }
+
     NSURL *url = [NSURL URLWithString:[AppConfig getConfigValue:@"GithubApiHost"]];
     
     NSMutableDictionary *oauthParams = [NSMutableDictionary dictionaryWithObjectsAndKeys:
