@@ -10,5 +10,7 @@
 	<string>https://raw.github.com</string>
 	<key>KeychainName</key>
 	<string>GitosKeychain</string>
+	<key>KeychainAccountName</key>
+	<string>gitos</string>
 </dict>
 </plist>

@@ -283,6 +283,8 @@
 		B569D0CD16FE6861002216DD /* glyphicons_078_warning_sign@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B569D0C916FE6861002216DD /* glyphicons_078_warning_sign@2x.png */; };
 		B569D0CE16FE6861002216DD /* glyphicons_198_ok.png in Resources */ = {isa = PBXBuildFile; fileRef = B569D0CA16FE6861002216DD /* glyphicons_198_ok.png */; };
 		B569D0CF16FE6861002216DD /* glyphicons_198_ok@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B569D0CB16FE6861002216DD /* glyphicons_198_ok@2x.png */; };
+		B569D0D216FE6F0F002216DD /* Authorization.m in Sources */ = {isa = PBXBuildFile; fileRef = B569D0D116FE6F0F002216DD /* Authorization.m */; };
+		B569D0D516FE7923002216DD /* GitosConstants.m in Sources */ = {isa = PBXBuildFile; fileRef = B569D0D416FE7923002216DD /* GitosConstants.m */; };
 		B57E39AA16FE5CBB006C2BD1 /* YRDropdownView.m in Sources */ = {isa = PBXBuildFile; fileRef = B57E39A916FE5CBB006C2BD1 /* YRDropdownView.m */; };
 		B5BC451E16BA5DFD00434848 /* prettify.css in Resources */ = {isa = PBXBuildFile; fileRef = B5BC451B16BA5DFD00434848 /* prettify.css */; };
 		B5BC452016BA5DFD00434848 /* sunburst.css in Resources */ = {isa = PBXBuildFile; fileRef = B5BC451D16BA5DFD00434848 /* sunburst.css */; };
@@ -677,6 +679,10 @@
 		B569D0C916FE6861002216DD /* glyphicons_078_warning_sign@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "glyphicons_078_warning_sign@2x.png"; sourceTree = "<group>"; };
 		B569D0CA16FE6861002216DD /* glyphicons_198_ok.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = glyphicons_198_ok.png; sourceTree = "<group>"; };
 		B569D0CB16FE6861002216DD /* glyphicons_198_ok@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "glyphicons_198_ok@2x.png"; sourceTree = "<group>"; };
+		B569D0D016FE6F0F002216DD /* Authorization.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Authorization.h; sourceTree = "<group>"; };
+		B569D0D116FE6F0F002216DD /* Authorization.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Authorization.m; sourceTree = "<group>"; };
+		B569D0D316FE7923002216DD /* GitosConstants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GitosConstants.h; sourceTree = "<group>"; };
+		B569D0D416FE7923002216DD /* GitosConstants.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GitosConstants.m; sourceTree = "<group>"; };
 		B57E39A816FE5CBB006C2BD1 /* YRDropdownView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YRDropdownView.h; sourceTree = "<group>"; };
 		B57E39A916FE5CBB006C2BD1 /* YRDropdownView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YRDropdownView.m; sourceTree = "<group>"; };
 		B5BC451B16BA5DFD00434848 /* prettify.css */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.css; path = prettify.css; sourceTree = "<group>"; };
@@ -1166,6 +1172,10 @@
 				B54F69E216D2F69C00978DD9 /* Notification.m */,
 				B511D44A16DB36AE00DD0ED5 /* PullRequest.h */,
 				B511D44B16DB36AF00DD0ED5 /* PullRequest.m */,
+				B569D0D016FE6F0F002216DD /* Authorization.h */,
+				B569D0D116FE6F0F002216DD /* Authorization.m */,
+				B569D0D316FE7923002216DD /* GitosConstants.h */,
+				B569D0D416FE7923002216DD /* GitosConstants.m */,
 			);
 			path = Classes;
 			sourceTree = "<group>";
@@ -1590,6 +1600,8 @@
 				B511D44C16DB36B000DD0ED5 /* PullRequest.m in Sources */,
 				B511D45016DB383D00DD0ED5 /* PullRequestDetailsViewController.m in Sources */,
 				B57E39AA16FE5CBB006C2BD1 /* YRDropdownView.m in Sources */,
+				B569D0D216FE6F0F002216DD /* Authorization.m in Sources */,
+				B569D0D516FE7923002216DD /* GitosConstants.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

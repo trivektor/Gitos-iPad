@@ -7,11 +7,8 @@
 //
 
 #import "LoginViewController.h"
-#import "SSKeychain.h"
 #import "AppInitialization.h"
-#import "AFHTTPClient.h"
-#import "AFJSONRequestOperation.h"
-#import "AppConfig.h"
+#import "Authorization.h"
 
 @interface LoginViewController ()
 
@@ -97,16 +94,13 @@
         [alert show];
         return;
     }
-    
+
     NSURL *url = [NSURL URLWithString:[AppConfig getConfigValue:@"GithubApiHost"]];
-    
-    NSMutableArray *scopes = [[NSMutableArray alloc] initWithObjects:@"user", @"public_repo", @"repo", @"repo:status",
-                              @"notifications", @"gist", nil];
-    
+
     NSMutableDictionary *oauthParams = [NSMutableDictionary dictionaryWithObjectsAndKeys:
-                                        scopes, @"scopes",
-                                        @"75f198a854031c317e62", @"client_id",
-                                        @"07d3e053d06132245799f4afe45b90d2780a89a8", @"client_secret",
+                                        [Authorization appScopes], @"scopes",
+                                        CLIENT_ID, @"client_id",
+                                        CLIENT_SECRET, @"client_secret",
                                         nil];
     
     AFHTTPClient *httpClient = [[AFHTTPClient alloc] initWithBaseURL:url];
@@ -121,24 +115,30 @@
      ^(AFHTTPRequestOperation *operation, id responseObject) {
          [self.spinnerView setHidden:NO];
          NSString *response = [operation responseString];
-         
+
          NSDictionary *json = [NSJSONSerialization JSONObjectWithData:[response dataUsingEncoding:NSUTF8StringEncoding] options:NSJSONReadingMutableContainers error:nil];
-         
-         NSString *token = [json valueForKey:@"token"];
-         [SSKeychain setPassword:token forService:@"access_token" account:@"gitos"];
+
+         Authorization *authorization = [[Authorization alloc] initWithData:json];
+
+         NSString *token = [authorization getToken];
+         NSString *authorizationId = [authorization getId];
+         NSString *account = [AppConfig getConfigValue:@"KeychainAccountName"];
+
+         [SSKeychain setPassword:token forService:@"access_token" account:account];
+         [SSKeychain setPassword:authorizationId forService:@"authorization_id" account:account];
          [AppInitialization run:self.view.window];
      }
-                                     failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-                                         [self.spinnerView setHidden:YES];
-                                         NSString *response = [operation responseString];
-                                         
-                                         NSDictionary *json = [NSJSONSerialization JSONObjectWithData:[response dataUsingEncoding:NSUTF8StringEncoding] options:NSJSONReadingMutableContainers error:nil];
-                                         
-                                         UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Alert" message:nil delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
-                                         
-                                         [alert setMessage:[json valueForKey:@"message"]];
-                                         [alert show];
-                                     }];
+     failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+         [self.spinnerView setHidden:YES];
+         NSString *response = [operation responseString];
+
+         NSDictionary *json = [NSJSONSerialization JSONObjectWithData:[response dataUsingEncoding:NSUTF8StringEncoding] options:NSJSONReadingMutableContainers error:nil];
+
+         UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Alert" message:nil delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
+
+         [alert setMessage:[json valueForKey:@"message"]];
+         [alert show];
+     }];
     
     [operation start];
     [usernameField resignFirstResponder];
@@ -156,30 +156,32 @@
                                         @"75f198a854031c317e62", @"client_id",
                                         @"07d3e053d06132245799f4afe45b90d2780a89a8", @"client_secret",
                                         nil];
-    
+
     AFHTTPClient *httpClient = [[AFHTTPClient alloc] initWithBaseURL:url];
     [httpClient setParameterEncoding:AFJSONParameterEncoding];
     [httpClient setAuthorizationHeaderWithUsername:username password:password];
-    
+
     NSMutableURLRequest *postRequest = [httpClient requestWithMethod:@"GET" path:@"/authorizations" parameters:oauthParams];
-    
+
     AFHTTPRequestOperation *operation = [[AFHTTPRequestOperation alloc] initWithRequest:postRequest];
     [operation setCompletionBlockWithSuccess:^(AFHTTPRequestOperation *operation, id responseObject) {
         NSString *response = [operation responseString];
-        
+
         NSArray *json = [NSJSONSerialization JSONObjectWithData:[response dataUsingEncoding:NSUTF8StringEncoding] options:NSJSONReadingMutableContainers error:nil];
-        
-        NSDictionary *authorization;
-        
+
+        NSString *account = [AppConfig getConfigValue:@"KeychainAccountName"];
+        NSString *storedAuthorizationId = [SSKeychain passwordForService:@"authorization_id" account:account];
+
         for (int i=0; i < [json count]; i++) {
-            authorization = [json objectAtIndex:i];
-            NSString *appName = [[authorization valueForKey:@"app"] valueForKey:@"name"];
-            
-            if ([appName isEqualToString:@"Gitos"]) {
-                NSInteger authorizationId = [[authorization valueForKey:@"id"] integerValue];
-                NSLog(@"deleting existing authorization id");
-                
-                NSMutableURLRequest *deleteRequest = [httpClient requestWithMethod:@"DELETE" path:[NSString stringWithFormat:@"/authorizations/%i", authorizationId] parameters:nil];
+            Authorization *authorization = [[Authorization alloc] initWithData:[json objectAtIndex:i]];
+
+            NSString *authorizationId = [authorization getId];
+
+            if ([[authorization getName] isEqualToString:@"Gitos"] && [authorizationId isEqualToString:storedAuthorizationId]) {
+
+                NSLog(@"deleting existing authorization id: %@", storedAuthorizationId);
+
+                NSMutableURLRequest *deleteRequest = [httpClient requestWithMethod:@"DELETE" path:[NSString stringWithFormat:@"/authorizations/%@", storedAuthorizationId] parameters:nil];
                 AFHTTPRequestOperation *deleteOperation = [[AFHTTPRequestOperation alloc] initWithRequest:deleteRequest];
                 [deleteOperation setCompletionBlockWithSuccess:^(AFHTTPRequestOperation *operation, id responseObject) {
                     [self authenticate];

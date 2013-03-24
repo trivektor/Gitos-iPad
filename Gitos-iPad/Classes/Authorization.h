@@ -10,4 +10,15 @@
 
 @interface Authorization : NSObject
 
+@property (nonatomic, retain) NSDictionary *data;
+
+- (id)initWithData:(NSDictionary *)authorizationData;
+
+- (NSString *)getId;
+- (NSString *)getUrl;
+- (NSDictionary *)getApp;
+- (NSString *)getName;
+- (NSString *)getToken;
++ (NSArray *)appScopes;
+
 @end
