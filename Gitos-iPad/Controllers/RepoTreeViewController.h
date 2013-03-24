@@ -10,7 +10,6 @@
 #import "Branch.h"
 #import "Repo.h"
 #import "RepoTreeNode.h"
-#import "SpinnerView.h"
 
 @interface RepoTreeViewController : UIViewController <UITableViewDataSource, UITableViewDelegate>
 
@@ -22,7 +21,7 @@
 @property (nonatomic, strong) Branch *branch;
 @property (nonatomic, strong) Repo *repo;
 @property (nonatomic, strong) RepoTreeNode *node;
-@property (nonatomic, strong) SpinnerView *spinnerView;
+@property (nonatomic, strong) MBProgressHUD *hud;
 
 - (void)performHouseKeepingTasks;
 - (void)fetchData;

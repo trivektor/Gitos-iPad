@@ -10,10 +10,6 @@
 #import "RawFileViewController.h"
 #import "CommitsViewController.h"
 #import "RepoTreeCell.h"
-#import "AppConfig.h"
-#import "SSKeychain.h"
-#import "AFHTTPClient.h"
-#import "AFHTTPRequestOperation.h"
 #import "RepoTreeNode.h"
 #import "RepoTreeCell.h"
 
@@ -23,7 +19,7 @@
 
 @implementation RepoTreeViewController
 
-@synthesize accessToken, accessTokenParams, treeTable, repo, node;
+@synthesize accessToken, accessTokenParams, treeTable, repo, node, hud;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -55,7 +51,10 @@
     } else if ([self.node isTree]) {
         self.navigationItem.title = self.node.path;
     }
-    self.spinnerView = [SpinnerView loadSpinnerIntoView:self.view];
+
+    hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+    hud.mode = MBProgressHUDAnimationFade;
+    hud.labelText = @"Loading";
 
     UIBarButtonItem *commitButton = [[UIBarButtonItem alloc] initWithTitle:@"Commits" style:UIBarButtonItemStyleBordered target:self action:@selector(showCommitForBranch)];
     [self.navigationItem setRightBarButtonItem:commitButton];
@@ -97,11 +96,11 @@
              [self.treeNodes addObject:treeNode];
          }
          [treeTable reloadData];
-         [self.spinnerView setHidden:YES];
+         [hud setHidden:YES];
      }
      failure:^(AFHTTPRequestOperation *operation, NSError *error) {
          NSLog(@"%@", error);
-         [self.spinnerView setHidden:YES];
+         [hud setHidden:YES];
      }];
     
     [operation start];
@@ -132,11 +131,11 @@
              [self.treeNodes addObject:treeNode];
          }
          [treeTable reloadData];
-         [self.spinnerView setHidden:YES];
+         [hud setHidden:YES];
      }
      failure:^(AFHTTPRequestOperation *operation, NSError *error) {
          NSLog(@"%@", error);
-         [self.spinnerView setHidden:YES];
+         [hud setHidden:YES];
      }];
     
     [operation start];

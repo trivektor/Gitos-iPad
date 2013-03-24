@@ -227,7 +227,6 @@
 		B55D910716B7AD2B009CB90F /* RelativeDateDescriptor.m in Sources */ = {isa = PBXBuildFile; fileRef = B55D910616B7AD2B009CB90F /* RelativeDateDescriptor.m */; };
 		B55D910A16B7AD47009CB90F /* Repo.m in Sources */ = {isa = PBXBuildFile; fileRef = B55D910916B7AD46009CB90F /* Repo.m */; };
 		B55D910D16B7AD79009CB90F /* RepoTreeNode.m in Sources */ = {isa = PBXBuildFile; fileRef = B55D910C16B7AD78009CB90F /* RepoTreeNode.m */; };
-		B55D911016B7ADAA009CB90F /* SpinnerView.m in Sources */ = {isa = PBXBuildFile; fileRef = B55D910F16B7ADA9009CB90F /* SpinnerView.m */; };
 		B55D911316B7ADCE009CB90F /* TimelineEvent.m in Sources */ = {isa = PBXBuildFile; fileRef = B55D911216B7ADCD009CB90F /* TimelineEvent.m */; };
 		B55D911616B7ADF0009CB90F /* User.m in Sources */ = {isa = PBXBuildFile; fileRef = B55D911516B7ADEE009CB90F /* User.m */; };
 		B55D911D16B7AE48009CB90F /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B55D911B16B7AE48009CB90F /* LoginViewController.m */; };
@@ -594,8 +593,6 @@
 		B55D910916B7AD46009CB90F /* Repo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Repo.m; sourceTree = "<group>"; };
 		B55D910B16B7AD77009CB90F /* RepoTreeNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RepoTreeNode.h; sourceTree = "<group>"; };
 		B55D910C16B7AD78009CB90F /* RepoTreeNode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RepoTreeNode.m; sourceTree = "<group>"; };
-		B55D910E16B7ADA8009CB90F /* SpinnerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SpinnerView.h; sourceTree = "<group>"; };
-		B55D910F16B7ADA9009CB90F /* SpinnerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SpinnerView.m; sourceTree = "<group>"; };
 		B55D911116B7ADCC009CB90F /* TimelineEvent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TimelineEvent.h; sourceTree = "<group>"; };
 		B55D911216B7ADCD009CB90F /* TimelineEvent.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TimelineEvent.m; sourceTree = "<group>"; };
 		B55D911416B7ADED009CB90F /* User.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = User.h; sourceTree = "<group>"; };
@@ -1147,8 +1144,6 @@
 				B55D910916B7AD46009CB90F /* Repo.m */,
 				B55D910B16B7AD77009CB90F /* RepoTreeNode.h */,
 				B55D910C16B7AD78009CB90F /* RepoTreeNode.m */,
-				B55D910E16B7ADA8009CB90F /* SpinnerView.h */,
-				B55D910F16B7ADA9009CB90F /* SpinnerView.m */,
 				B55D911116B7ADCC009CB90F /* TimelineEvent.h */,
 				B55D911216B7ADCD009CB90F /* TimelineEvent.m */,
 				B55D911416B7ADED009CB90F /* User.h */,
@@ -1510,7 +1505,6 @@
 				B55D910716B7AD2B009CB90F /* RelativeDateDescriptor.m in Sources */,
 				B55D910A16B7AD47009CB90F /* Repo.m in Sources */,
 				B55D910D16B7AD79009CB90F /* RepoTreeNode.m in Sources */,
-				B55D911016B7ADAA009CB90F /* SpinnerView.m in Sources */,
 				B55D911316B7ADCE009CB90F /* TimelineEvent.m in Sources */,
 				B55D911616B7ADF0009CB90F /* User.m in Sources */,
 				B55D911D16B7AE48009CB90F /* LoginViewController.m in Sources */,

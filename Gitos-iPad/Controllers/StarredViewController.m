@@ -7,15 +7,9 @@
 //
 
 #import "StarredViewController.h"
-#import "AFHTTPClient.h"
-#import "AFHTTPRequestOperation.h"
-#import "SSKeychain.h"
 #import "RepoCell.h"
-#import "SpinnerView.h"
-#import "SVPullToRefresh.h"
 #import "Repo.h"
 #import "RepoViewController.h"
-#import "AppConfig.h"
 
 @interface StarredViewController ()
 
@@ -42,9 +36,11 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
     [self.navigationItem setTitle:@"Starred Repositories"];
-    self.hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
-    self.hud.mode = MBProgressHUDAnimationFade;
-    self.hud.labelText = @"Loading";
+
+    hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+    hud.mode = MBProgressHUDAnimationFade;
+    hud.labelText = @"Loading";
+
     [self registerNib];
     [self setupPullToRefresh];
     [self getUserInfo];
@@ -134,10 +130,10 @@
          
          [starredReposTable.pullToRefreshView stopAnimating];
          [starredReposTable reloadData];
-         [self.hud hide:YES];
+         [hud hide:YES];
      }
      failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-         [self.hud hide:YES];
+         [hud hide:YES];
          NSLog(@"%@", error);
      }];
     
@@ -187,7 +183,7 @@
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView
 {
     if (([scrollView contentOffset].y + scrollView.frame.size.height) == scrollView.contentSize.height) {
-        [self.hud show:YES];
+        [hud show:YES];
         [self getStarredReposForPage:self.currentPage++];
     }
 }
