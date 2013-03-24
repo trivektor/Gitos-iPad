@@ -82,7 +82,7 @@
         [table setScrollEnabled:NO];
         [table setBackgroundView:nil];
         [table setSeparatorStyle:UITableViewCellSeparatorStyleSingleLine];
-        [table setSeparatorColor:[UIColor colorWithRed:206/255.0 green:206/255.0 blue:206/255.0 alpha:0.8]];
+        [table setSeparatorColor:[UIColor colorWithRed:200/255.0 green:200/255.0 blue:200/255.0 alpha:1.0]];
     }
 }
 

@@ -64,8 +64,7 @@
     [starredReposTable setAutoresizingMask:(UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight)];
     [starredReposTable setBackgroundView:nil];
     [starredReposTable setSeparatorStyle:UITableViewCellSeparatorStyleSingleLine];
-    [starredReposTable setSeparatorColor:[UIColor colorWithRed:206/255.0 green:206/255.0 blue:206/255.0 alpha:0.8]];
-    [self.view setBackgroundColor:[UIColor colorWithRed:229/255.0 green:229/255.0 blue:229/255.0 alpha:1.0]];
+    [starredReposTable setSeparatorColor:[UIColor colorWithRed:200/255.0 green:200/255.0 blue:200/255.0 alpha:1.0]];
 }
 
 - (void)getUserInfo

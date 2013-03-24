@@ -7,9 +7,6 @@
 //
 
 #import "OrganizationViewController.h"
-#import "AFHTTPClient.h"
-#import "AFHTTPRequestOperation.h"
-#import "SSKeychain.h"
 #import "WebsiteViewController.h"
 
 @interface OrganizationViewController ()
@@ -46,8 +43,7 @@
     [organizationTable setAutoresizingMask:(UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight)];
     [organizationTable setBackgroundView:nil];
     [organizationTable setSeparatorStyle:UITableViewCellSeparatorStyleSingleLine];
-    [organizationTable setSeparatorColor:[UIColor colorWithRed:206/255.0 green:206/255.0 blue:206/255.0 alpha:0.8]];
-    [self.view setBackgroundColor:[UIColor colorWithRed:229/255.0 green:229/255.0 blue:229/255.0 alpha:1.0]];
+    [organizationTable setSeparatorColor:[UIColor colorWithRed:200/255.0 green:200/255.0 blue:200/255.0 alpha:1.0]];
 }
 
 - (void)fetchOrganizationInfo
@@ -140,10 +136,12 @@
             break;
     }
 
-    cell.textLabel.font = [UIFont fontWithName:@"Arial" size:14];
-    cell.textLabel.text = textLabel;
+    cell.textLabel.font       = [UIFont fontWithName:@"Arial" size:14];
+    cell.textLabel.text       = textLabel;
     cell.detailTextLabel.font = [UIFont fontWithName:@"Arial" size:14];
     cell.detailTextLabel.text = textDetail;
+    cell.backgroundColor      = [UIColor whiteColor];
+    cell.selectionStyle       = UITableViewCellSelectionStyleNone;
 
     return cell;
 }

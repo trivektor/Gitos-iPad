@@ -50,7 +50,7 @@
 {
     hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
     hud.mode = MBProgressHUDAnimationFade;
-    hud.labelText = @"Loading";
+    hud.labelText = LOADING_MESSAGE;
     hud.hidden = YES;
 
     [self.navigationItem setTitle:@"Login to Github"];
@@ -62,8 +62,7 @@
     [loginTable setBackgroundView:nil];
     [loginTable setScrollEnabled:NO];
     [loginTable setSeparatorStyle:UITableViewCellSeparatorStyleSingleLine];
-    [loginTable setSeparatorColor:[UIColor colorWithRed:206/255.0 green:206/255.0 blue:206/255.0 alpha:0.8]];
-    [self.view setBackgroundColor:[UIColor colorWithRed:229/255.0 green:229/255.0 blue:229/255.0 alpha:1.0]];
+    [loginTable setSeparatorColor:[UIColor colorWithRed:200/255.0 green:200/255.0 blue:200/255.0 alpha:1.0]];
 }
 
 - (void)setDelegates

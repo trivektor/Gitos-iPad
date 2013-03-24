@@ -7,15 +7,8 @@
 //
 
 #import "GistsViewController.h"
-#import "AFHTTPClient.h"
-#import "AFHTTPRequestOperation.h"
-#import "SSKeychain.h"
 #import "GistCell.h"
-#import "RelativeDateDescriptor.h"
-#import "SVPullToRefresh.h"
 #import "Gist.h"
-#import "SSKeychain.h"
-#import "AppConfig.h"
 #import "GistViewController.h"
 
 @interface GistsViewController ()
@@ -71,8 +64,7 @@
     [gistsTable setAutoresizingMask:(UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight)];
     [gistsTable setBackgroundView:nil];
     [gistsTable setSeparatorStyle:UITableViewCellSeparatorStyleSingleLine];
-    [gistsTable setSeparatorColor:[UIColor colorWithRed:206/255.0 green:206/255.0 blue:206/255.0 alpha:0.8]];
-    [self.view setBackgroundColor:[UIColor colorWithRed:229/255.0 green:229/255.0 blue:229/255.0 alpha:1.0]];
+    [gistsTable setSeparatorColor:[UIColor colorWithRed:200/255.0 green:200/255.0 blue:200/255.0 alpha:1.0]];
 }
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
