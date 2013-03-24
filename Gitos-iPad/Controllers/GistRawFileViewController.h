@@ -7,16 +7,20 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "MBProgressHUD.h"
 #import "GistFile.h"
 
-@interface GistRawFileViewController : UIViewController <UIWebViewDelegate, NSURLConnectionDelegate>
+@interface GistRawFileViewController : UIViewController <UIWebViewDelegate, NSURLConnectionDelegate, UIActionSheetDelegate>
 
 @property (nonatomic, weak) IBOutlet UIWebView *fileWebView;
 @property (nonatomic, strong) MBProgressHUD *hud;
 @property (nonatomic, strong) GistFile *gistFile;
+@property (nonatomic, strong) NSString *theme;
+@property (nonatomic, strong) NSArray *themes;
+@property (nonatomic, strong) UIActionSheet *themesOptions;
 
 - (void)performHouseKeepingTasks;
+- (void)fetchRawFile;
+- (void)switchTheme;
 - (NSString *)encodeHtmlEntities:(NSString *)rawHtmlString;
 
 @end
