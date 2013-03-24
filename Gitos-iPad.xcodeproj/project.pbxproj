@@ -161,7 +161,6 @@
 		B54F69DB16D2C5CA00978DD9 /* 04-squiggle.png in Resources */ = {isa = PBXBuildFile; fileRef = B54F69D916D2C5CA00978DD9 /* 04-squiggle.png */; };
 		B54F69DC16D2C5CA00978DD9 /* 04-squiggle@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B54F69DA16D2C5CA00978DD9 /* 04-squiggle@2x.png */; };
 		B54F69DE16D2DF1E00978DD9 /* avatar-placeholder.png in Resources */ = {isa = PBXBuildFile; fileRef = B54F69DD16D2DF1E00978DD9 /* avatar-placeholder.png */; };
-		B54F69E016D2E94800978DD9 /* avatar-placeholder.png in Resources */ = {isa = PBXBuildFile; fileRef = B54F69DF16D2E94800978DD9 /* avatar-placeholder.png */; };
 		B54F69E316D2F69C00978DD9 /* Notification.m in Sources */ = {isa = PBXBuildFile; fileRef = B54F69E216D2F69C00978DD9 /* Notification.m */; };
 		B54F69E716D2F88C00978DD9 /* NotificationsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B54F69E516D2F88A00978DD9 /* NotificationsViewController.m */; };
 		B54F69E816D2F88C00978DD9 /* NotificationsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B54F69E616D2F88B00978DD9 /* NotificationsViewController.xib */; };
@@ -279,10 +278,6 @@
 		B569D0C516FE6496002216DD /* glyphicons_078_warning_sign@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B569D0C116FE6496002216DD /* glyphicons_078_warning_sign@2x.png */; };
 		B569D0C616FE6496002216DD /* glyphicons_198_ok.png in Resources */ = {isa = PBXBuildFile; fileRef = B569D0C216FE6496002216DD /* glyphicons_198_ok.png */; };
 		B569D0C716FE6496002216DD /* glyphicons_198_ok@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B569D0C316FE6496002216DD /* glyphicons_198_ok@2x.png */; };
-		B569D0CC16FE6861002216DD /* glyphicons_078_warning_sign.png in Resources */ = {isa = PBXBuildFile; fileRef = B569D0C816FE6861002216DD /* glyphicons_078_warning_sign.png */; };
-		B569D0CD16FE6861002216DD /* glyphicons_078_warning_sign@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B569D0C916FE6861002216DD /* glyphicons_078_warning_sign@2x.png */; };
-		B569D0CE16FE6861002216DD /* glyphicons_198_ok.png in Resources */ = {isa = PBXBuildFile; fileRef = B569D0CA16FE6861002216DD /* glyphicons_198_ok.png */; };
-		B569D0CF16FE6861002216DD /* glyphicons_198_ok@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B569D0CB16FE6861002216DD /* glyphicons_198_ok@2x.png */; };
 		B569D0D216FE6F0F002216DD /* Authorization.m in Sources */ = {isa = PBXBuildFile; fileRef = B569D0D116FE6F0F002216DD /* Authorization.m */; };
 		B569D0D516FE7923002216DD /* GitosConstants.m in Sources */ = {isa = PBXBuildFile; fileRef = B569D0D416FE7923002216DD /* GitosConstants.m */; };
 		B57E39AA16FE5CBB006C2BD1 /* YRDropdownView.m in Sources */ = {isa = PBXBuildFile; fileRef = B57E39A916FE5CBB006C2BD1 /* YRDropdownView.m */; };
@@ -1284,7 +1279,7 @@
 		B55D909116B7AA27009CB90F /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0450;
+				LastUpgradeCheck = 0460;
 				ORGANIZATIONNAME = "Crafted By Tri";
 			};
 			buildConfigurationList = B55D909416B7AA27009CB90F /* Build configuration list for PBXProject "Gitos-iPad" */;
@@ -1468,7 +1463,6 @@
 				B54F69DB16D2C5CA00978DD9 /* 04-squiggle.png in Resources */,
 				B54F69DC16D2C5CA00978DD9 /* 04-squiggle@2x.png in Resources */,
 				B54F69DE16D2DF1E00978DD9 /* avatar-placeholder.png in Resources */,
-				B54F69E016D2E94800978DD9 /* avatar-placeholder.png in Resources */,
 				B54F69E816D2F88C00978DD9 /* NotificationsViewController.xib in Resources */,
 				B54F69ED16D2FB4400978DD9 /* NotificationCell.xib in Resources */,
 				B54F6A1A16D3605C00978DD9 /* FeedbackViewController.xib in Resources */,
@@ -1483,10 +1477,6 @@
 				B569D0C516FE6496002216DD /* glyphicons_078_warning_sign@2x.png in Resources */,
 				B569D0C616FE6496002216DD /* glyphicons_198_ok.png in Resources */,
 				B569D0C716FE6496002216DD /* glyphicons_198_ok@2x.png in Resources */,
-				B569D0CC16FE6861002216DD /* glyphicons_078_warning_sign.png in Resources */,
-				B569D0CD16FE6861002216DD /* glyphicons_078_warning_sign@2x.png in Resources */,
-				B569D0CE16FE6861002216DD /* glyphicons_198_ok.png in Resources */,
-				B569D0CF16FE6861002216DD /* glyphicons_198_ok@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

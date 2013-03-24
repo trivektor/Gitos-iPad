@@ -99,7 +99,7 @@
                                  textColor:[UIColor whiteColor]
                            backgroundColor:[UIColor colorWithRed:202/255.0 green:36/255.0 blue:36/255.0 alpha:1.0]
                                   animated:YES
-                                 hideAfter:2.0f];
+                                 hideAfter:HIDE_AFTER];
         return;
     }
 
@@ -136,7 +136,7 @@
                                       textColor:[UIColor whiteColor]
                                 backgroundColor:[UIColor colorWithRed:87/255.0 green:153/255.0 blue:38/255.0 alpha:1.0]
                                        animated:YES
-                                      hideAfter:2.0f];
+                                      hideAfter:HIDE_AFTER];
          }
      }
      failure:^(AFHTTPRequestOperation *operation, NSError *error) {

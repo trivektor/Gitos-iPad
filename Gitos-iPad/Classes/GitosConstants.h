@@ -12,5 +12,6 @@
 
 extern const NSString *CLIENT_ID;
 extern const NSString *CLIENT_SECRET;
+extern const float HIDE_AFTER;
 
 @end

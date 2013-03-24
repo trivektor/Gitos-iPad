@@ -16,13 +16,18 @@
 
 @implementation LoginViewController
 
-@synthesize usernameCell, passwordCell, spinnerView;
+@synthesize usernameCell, passwordCell, oauthParams, hud;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
         // Custom initialization
+        oauthParams = [NSMutableDictionary dictionaryWithObjectsAndKeys:
+                                        [Authorization appScopes], @"scopes",
+                                        CLIENT_ID, @"client_id",
+                                        CLIENT_SECRET, @"client_secret",
+                                        nil];
     }
     return self;
 }
@@ -43,9 +48,11 @@
 
 - (void)performHousekeepingTasks
 {
-    self.spinnerView = [SpinnerView loadSpinnerIntoView:self.view];
-    [self.spinnerView setHidden:YES];
-    
+    hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+    hud.mode = MBProgressHUDAnimationFade;
+    hud.labelText = @"Loading";
+    hud.hidden = YES;
+
     [self.navigationItem setTitle:@"Login to Github"];
     
     UIBarButtonItem *submitButton = [[UIBarButtonItem alloc] initWithTitle:@"Submit" style:UIBarButtonItemStyleBordered target:self action:@selector(deleteExistingAuthorizations)];
@@ -88,12 +95,6 @@
     NSString *password = [passwordField text];
 
     NSURL *url = [NSURL URLWithString:[AppConfig getConfigValue:@"GithubApiHost"]];
-
-    NSMutableDictionary *oauthParams = [NSMutableDictionary dictionaryWithObjectsAndKeys:
-                                        [Authorization appScopes], @"scopes",
-                                        CLIENT_ID, @"client_id",
-                                        CLIENT_SECRET, @"client_secret",
-                                        nil];
     
     AFHTTPClient *httpClient = [[AFHTTPClient alloc] initWithBaseURL:url];
     [httpClient setParameterEncoding:AFJSONParameterEncoding];
@@ -105,7 +106,7 @@
     
     [operation setCompletionBlockWithSuccess:
      ^(AFHTTPRequestOperation *operation, id responseObject) {
-         [self.spinnerView setHidden:NO];
+         [hud setHidden:NO];
          NSString *response = [operation responseString];
 
          NSDictionary *json = [NSJSONSerialization JSONObjectWithData:[response dataUsingEncoding:NSUTF8StringEncoding] options:NSJSONReadingMutableContainers error:nil];
@@ -121,7 +122,7 @@
          [AppInitialization run:self.view.window];
      }
      failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-         [self.spinnerView setHidden:YES];
+         [hud setHidden:YES];
          NSString *response = [operation responseString];
 
          NSDictionary *json = [NSJSONSerialization JSONObjectWithData:[response dataUsingEncoding:NSUTF8StringEncoding] options:NSJSONReadingMutableContainers error:nil];
@@ -144,16 +145,11 @@
 
     // Prompt if username of password was blank
     if (username.length == 0 || password.length == 0) {
-        [YRDropdownView showDropdownInView:self.view title:@"Error" detail:@"Please enter your username and password" image:[UIImage imageNamed:@"glyphicons_078_warning_sign.png"] textColor:[UIColor colorWithRed:186/255.0 green:12/255.0 blue:12/255.0 alpha:1.0] backgroundColor:[UIColor whiteColor] animated:YES hideAfter:2.0f];
+        [YRDropdownView showDropdownInView:self.view title:@"Error" detail:@"Please enter your username and password" image:[UIImage imageNamed:@"glyphicons_078_warning_sign.png"] textColor:[UIColor colorWithRed:186/255.0 green:12/255.0 blue:12/255.0 alpha:1.0] backgroundColor:[UIColor whiteColor] animated:YES hideAfter:HIDE_AFTER];
         return;
     }
 
     NSURL *url = [NSURL URLWithString:[AppConfig getConfigValue:@"GithubApiHost"]];
-    
-    NSMutableDictionary *oauthParams = [NSMutableDictionary dictionaryWithObjectsAndKeys:
-                                        @"75f198a854031c317e62", @"client_id",
-                                        @"07d3e053d06132245799f4afe45b90d2780a89a8", @"client_secret",
-                                        nil];
 
     AFHTTPClient *httpClient = [[AFHTTPClient alloc] initWithBaseURL:url];
     [httpClient setParameterEncoding:AFJSONParameterEncoding];
@@ -187,7 +183,7 @@
                     NSLog(@"%@", error);
                 }];
                 [deleteOperation start];
-                [self.spinnerView setHidden:NO];
+                [hud setHidden:NO];
                 return;
             }
         }
