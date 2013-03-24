@@ -14,5 +14,6 @@ const NSString *CLIENT_ID = @"75f198a854031c317e62";
 const NSString *CLIENT_SECRET = @"07d3e053d06132245799f4afe45b90d2780a89a8";
 NSString * const LOADING_MESSAGE = @"Loading";
 const float HIDE_AFTER = 2.0f;
+const int REPO_DETAILS_MAX_CHARS = 65;
 
 @end

@@ -14,5 +14,6 @@ extern const NSString *CLIENT_ID;
 extern const NSString *CLIENT_SECRET;
 extern NSString * const LOADING_MESSAGE;
 extern const float HIDE_AFTER;
+extern const int REPO_DETAILS_MAX_CHARS;
 
 @end

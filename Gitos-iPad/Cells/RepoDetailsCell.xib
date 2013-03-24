@@ -42,7 +42,7 @@
 							<object class="IBUILabel" id="153751941">
 								<reference key="NSNextResponder" ref="1030391321"/>
 								<int key="NSvFlags">292</int>
-								<string key="NSFrame">{{20, 11}, {128, 21}}</string>
+								<string key="NSFrame">{{20, 11}, {97, 21}}</string>
 								<reference key="NSSuperview" ref="1030391321"/>
 								<reference key="NSWindow"/>
 								<reference key="NSNextKeyView" ref="491140852"/>
@@ -80,7 +80,7 @@
 							<object class="IBUILabel" id="491140852">
 								<reference key="NSNextResponder" ref="1030391321"/>
 								<int key="NSvFlags">292</int>
-								<string key="NSFrame">{{203, 11}, {784, 21}}</string>
+								<string key="NSFrame">{{156, 11}, {507, 21}}</string>
 								<reference key="NSSuperview" ref="1030391321"/>
 								<reference key="NSWindow"/>
 								<string key="NSReuseIdentifierKey">_NS:9</string>
@@ -96,6 +96,7 @@
 								</object>
 								<reference key="IBUIHighlightedColor" ref="589319003"/>
 								<int key="IBUIBaselineAdjustment">0</int>
+								<int key="IBUILineBreakMode">1</int>
 								<object class="IBUIFontDescription" key="IBUIFontDescription">
 									<string key="name">ArialMT</string>
 									<string key="family">Arial</string>

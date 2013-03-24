@@ -29,6 +29,11 @@
 - (void)renderForIndexPath:(NSIndexPath *)indexPath
 {
     NSString *fieldLabelText = @"", *fieldValueText = @"";
+    NSString *homepage = [self.repo getHomepage];
+
+    if (homepage.length >= REPO_DETAILS_MAX_CHARS) {
+        homepage = [[homepage substringToIndex:REPO_DETAILS_MAX_CHARS] stringByAppendingString:@"..."];
+    }
 
     switch (indexPath.row) {
         case 0:
@@ -37,7 +42,7 @@
             break;
         case 1:
             fieldLabelText = @"Website";
-            fieldValueText = [self.repo getHomepage];
+            fieldValueText = homepage;
             break;
         case 2:
             fieldLabelText = @"Watchers";
