@@ -58,6 +58,7 @@
     self.searchCriteria = [[UISegmentedControl alloc] initWithItems:criteria];
     self.searchCriteria.segmentedControlStyle = UISegmentedControlStyleBar;
     self.searchCriteria.momentary = NO;
+    self.searchCriteria.selectedSegmentIndex = 0;
     [self.searchCriteria addTarget:self action:nil forControlEvents:UIControlEventValueChanged];
 
     UIBarButtonItem *criteriaButton = [[UIBarButtonItem alloc] initWithCustomView:self.searchCriteria];
@@ -106,22 +107,26 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    UITableViewCell *cell = [self.resultsTable dequeueReusableCellWithIdentifier:@"Cell"];
+    static NSString *cellIdentifier = @"Cell";
+
+    UITableViewCell *cell = [self.resultsTable dequeueReusableCellWithIdentifier:cellIdentifier];
 
     if (!cell) {
-        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:@"Cell"];
+        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:cellIdentifier];
     }
 
     cell.textLabel.font       = [UIFont fontWithName:@"Arial-BoldMT" size:14.0];
     cell.detailTextLabel.font = [UIFont fontWithName:@"Arial" size:12.0];
     cell.accessoryType        = UITableViewCellAccessoryDisclosureIndicator;
 
-    if ([self isRepoSearch]) {
-        Repo *repo = [self.results objectAtIndex:indexPath.row];
+    NSObject *object = [self.results objectAtIndex:indexPath.row];
+
+    if ([object isKindOfClass:[Repo class]]) {
+        Repo *repo = (Repo *) object;
         cell.textLabel.text = [repo getName];
         cell.detailTextLabel.text = [repo getDescription];
-    } else {
-        User *user = [self.results objectAtIndex:indexPath.row];
+    } else if ([object isKindOfClass:[User class]]) {
+        User *user = (User *) object;
         if ([user getName] != (id)[NSNull null]) {
             cell.textLabel.text = [user getName];
         }
@@ -185,8 +190,9 @@
              [self.results addObject:[[User alloc] initWithData:[users objectAtIndex:i]]];
          }
 
-         [self.resultsTable reloadData];
          [self.searchBar resignFirstResponder];
+         [self.resultsTable reloadData];
+         [self.resultsTable scrollRectToVisible:CGRectMake(0, 0, 1, 1) animated:YES];
          [hud hide:YES];
      }
      failure:^(AFHTTPRequestOperation *operation, NSError *error) {
@@ -230,6 +236,7 @@
          }
 
          [self.resultsTable reloadData];
+         [self.resultsTable scrollRectToVisible:CGRectMake(0, 0, 1, 1) animated:YES];
          [self.searchBar resignFirstResponder];
          [hud hide:YES];
      }
@@ -239,6 +246,7 @@
      }];
 
     [operation start];
+    [hud show:YES];
 }
 
 - (BOOL)searchBarShouldBeginEditing:(UISearchBar *)searchBar
@@ -300,6 +308,7 @@
      }];
 
     [operation start];
+    [hud show:YES];
 }
 
 - (void)fetchUserAtIndexPath:(NSIndexPath *)indexPath
