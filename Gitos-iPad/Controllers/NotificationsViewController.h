@@ -6,7 +6,6 @@
 //  Copyright (c) 2013 Crafted By Tri. All rights reserved.
 //
 
-#import <UIKit/UIKit.h>
 #import "Notification.h"
 
 @interface NotificationsViewController : UIViewController <UITableViewDataSource, UITableViewDelegate>

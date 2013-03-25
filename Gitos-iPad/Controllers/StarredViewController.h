@@ -6,10 +6,7 @@
 //  Copyright (c) 2013 Crafted By Tri. All rights reserved.
 //
 
-
-#import <UIKit/UIKit.h>
 #import "User.h"
-#import "MBProgressHUD.h"
 
 @interface StarredViewController : UIViewController <UITableViewDataSource, UITableViewDelegate>
 

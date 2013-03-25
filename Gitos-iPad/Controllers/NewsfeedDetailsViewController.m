@@ -7,8 +7,6 @@
 //
 
 #import "NewsfeedDetailsViewController.h"
-#import "AppConfig.h"
-#import "SSKeychain.h"
 
 @interface NewsfeedDetailsViewController ()
 

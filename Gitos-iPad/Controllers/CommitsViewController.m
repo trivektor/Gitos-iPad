@@ -8,9 +8,6 @@
 
 #import "CommitsViewController.h"
 #import "CommitViewController.h"
-#import "AFHTTPClient.h"
-#import "AFHTTPRequestOperation.h"
-#import "SSKeychain.h"
 #import "CommitCell.h"
 
 @interface CommitsViewController ()

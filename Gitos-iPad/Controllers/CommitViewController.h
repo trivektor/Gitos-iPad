@@ -8,7 +8,6 @@
 
 #import <UIKit/UIKit.h>
 #import "Commit.h"
-#import "MBProgressHUD.h"
 
 @interface CommitViewController : UIViewController <UIWebViewDelegate>
 

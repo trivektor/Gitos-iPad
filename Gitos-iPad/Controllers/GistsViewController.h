@@ -7,9 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "MBProgressHUD.h"
 #import "User.h"
-#import "RelativeDateDescriptor.h"
 
 @interface GistsViewController : UIViewController <UITableViewDataSource, UITableViewDelegate>
 

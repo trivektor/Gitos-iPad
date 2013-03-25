@@ -7,10 +7,6 @@
 //
 
 #import "OrganizationsViewController.h"
-#import "AFHTTPClient.h"
-#import "AFHTTPRequestOperation.h"
-#import "AppConfig.h"
-#import "SSKeychain.h"
 #import "Organization.h"
 #import "OrganizationViewController.h"
 

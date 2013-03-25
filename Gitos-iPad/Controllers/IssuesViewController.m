@@ -9,9 +9,6 @@
 #import "IssuesViewController.h"
 #import "IssueDetailsViewController.h"
 #import "Issue.h"
-#import "AFHTTPClient.h"
-#import "AFHTTPRequestOperation.h"
-#import "SSKeychain.h"
 #import "IssueCell.h"
 
 @interface IssuesViewController ()

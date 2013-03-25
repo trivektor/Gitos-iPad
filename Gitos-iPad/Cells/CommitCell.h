@@ -7,7 +7,6 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "RelativeDateDescriptor.h"
 #import "Commit.h"
 
 @interface CommitCell : UITableViewCell

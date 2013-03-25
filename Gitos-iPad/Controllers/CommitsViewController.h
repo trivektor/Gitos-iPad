@@ -8,7 +8,6 @@
 
 #import <UIKit/UIKit.h>
 #import "Repo.h"
-#import "MBProgressHUD.h"
 #import "Branch.h"
 
 @interface CommitsViewController : UIViewController <UITableViewDataSource, UITableViewDelegate, UIScrollViewDelegate>

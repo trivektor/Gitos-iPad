@@ -7,9 +7,6 @@
 //
 
 #import "IssueDetailsViewController.h"
-#import "AFHTTPClient.h"
-#import "AFHTTPRequestOperation.h"
-#import "SSKeychain.h"
 #import "Comment.h"
 
 @interface UILabel (BPExtensions)

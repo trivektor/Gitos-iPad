@@ -9,7 +9,6 @@
 #import <UIKit/UIKit.h>
 #import "Gist.h"
 #import "User.h"
-#import "MBProgressHUD.h"
 
 @interface GistViewController : UIViewController <UITableViewDataSource, UITableViewDelegate>
 

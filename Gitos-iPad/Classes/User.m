@@ -7,7 +7,6 @@
 //
 
 #import "User.h"
-#import "RelativeDateDescriptor.h"
 
 @implementation User
 

@@ -7,7 +7,6 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "AppConfig.h"
 
 @interface Branch : NSObject
 

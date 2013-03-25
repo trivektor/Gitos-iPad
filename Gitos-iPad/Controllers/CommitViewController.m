@@ -7,9 +7,6 @@
 //
 
 #import "CommitViewController.h"
-#import "AFHTTPClient.h"
-#import "AFHTTPRequestOperation.h"
-#import "SSKeychain.h"
 #import "CommitFile.h"
 #import "User.h"
 

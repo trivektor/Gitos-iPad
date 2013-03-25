@@ -8,7 +8,6 @@
 
 #import <UIKit/UIKit.h>
 #import "TimelineEvent.h"
-#import "MBProgressHUD.h"
 
 @interface NewsfeedDetailsViewController : UIViewController <UIWebViewDelegate>
 

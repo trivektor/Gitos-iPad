@@ -7,7 +7,6 @@
 //
 
 #import "IssueCell.h"
-#import "NSString+FontAwesome.h"
 
 @implementation IssueCell
 

@@ -7,7 +7,6 @@
 //
 
 #import "WebsiteViewController.h"
-#import "NSString+FontAwesome.h"
 
 @interface WebsiteViewController ()
 

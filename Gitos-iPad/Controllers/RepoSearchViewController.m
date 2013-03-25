@@ -7,10 +7,6 @@
 //
 
 #import "RepoSearchViewController.h"
-#import "SSKeychain.h"
-#import "AFHTTPClient.h"
-#import "AFJSONRequestOperation.h"
-#import "AppConfig.h"
 #import "Repo.h"
 #import "RepoSearchResultCell.h"
 #import "RepoViewController.h"

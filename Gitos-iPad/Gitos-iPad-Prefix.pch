@@ -13,6 +13,7 @@
     #import <Foundation/Foundation.h>
     #import <CoreData/CoreData.h>
     #import <MessageUI/MessageUI.h>
+    #import <QuartzCore/QuartzCore.h>
     #import "GitosConstants.h"
     #import "AFHTTPClient.h"
     #import "AFHTTPRequestOperation.h"

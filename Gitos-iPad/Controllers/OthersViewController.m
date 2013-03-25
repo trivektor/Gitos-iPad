@@ -8,7 +8,6 @@
 
 #import "OthersViewController.h"
 #import "ProfileViewController.h"
-#import "SSKeychain.h"
 #import "LoginViewController.h"
 #import "RepoSearchViewController.h"
 

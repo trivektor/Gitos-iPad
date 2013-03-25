@@ -7,7 +7,6 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "RelativeDateDescriptor.h"
 #import "User.h"
 
 @interface Commit : NSObject

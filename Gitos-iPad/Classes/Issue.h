@@ -8,7 +8,6 @@
 
 #import <Foundation/Foundation.h>
 #import "User.h"
-#import "RelativeDateDescriptor.h"
 
 @interface Issue : NSObject
 

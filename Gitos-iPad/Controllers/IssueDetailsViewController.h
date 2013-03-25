@@ -8,7 +8,6 @@
 
 #import <UIKit/UIKit.h>
 #import "Issue.h"
-#import "MBProgressHUD.h"
 
 @interface IssueDetailsViewController : UIViewController <UIWebViewDelegate>
 

@@ -8,8 +8,6 @@
 
 #import <Foundation/Foundation.h>
 
-#import "AppConfig.h"
-
 @implementation AppConfig
 
 + (NSString *)getConfigValue:(NSString *)valueName

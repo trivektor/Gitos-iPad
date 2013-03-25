@@ -7,7 +7,6 @@
 //
 
 #import "Branch.h"
-#import "AppConfig.h"
 
 @implementation Branch
 

@@ -6,10 +6,8 @@
 //  Copyright (c) 2013 Crafted By Tri. All rights reserved.
 //
 
-#import <UIKit/UIKit.h>
 #import "Repo.h"
 #import "Branch.h"
-#import "MBProgressHUD.h"
 
 @interface RawFileViewController : UIViewController <UIWebViewDelegate, NSURLConnectionDataDelegate, UIActionSheetDelegate>
 

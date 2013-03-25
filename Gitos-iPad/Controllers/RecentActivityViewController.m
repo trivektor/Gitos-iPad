@@ -7,14 +7,8 @@
 //
 
 #import "RecentActivityViewController.h"
-#import "AFHTTPClient.h"
-#import "AFHTTPRequestOperation.h"
 #import "NewsFeedCell.h"
-#import "NSString+FontAwesome.h"
-#import "AppConfig.h"
-#import "SSKeychain.h"
 #import "TimelineEvent.h"
-#import "SVPullToRefresh.h"
 
 @interface RecentActivityViewController ()
 
