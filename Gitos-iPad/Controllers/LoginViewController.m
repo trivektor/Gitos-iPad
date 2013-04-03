@@ -118,6 +118,8 @@
 
          [SSKeychain setPassword:token forService:@"access_token" account:account];
          [SSKeychain setPassword:authorizationId forService:@"authorization_id" account:account];
+         [SSKeychain setPassword:username forService:@"username" account:account];
+         [SSKeychain setPassword:password forService:@"password" account:account];
          [AppInitialization run:self.view.window];
      }
      failure:^(AFHTTPRequestOperation *operation, NSError *error) {

@@ -8,16 +8,15 @@
 
 #import "Repo.h"
 
-@interface RepoViewController : UIViewController
-<UITableViewDataSource, UITableViewDelegate>
+@interface RepoViewController : UIViewController <UITableViewDataSource, UITableViewDelegate, UIActionSheetDelegate>
 
 @property (nonatomic, weak) IBOutlet UITableView *detailsTable;
 @property (nonatomic, weak) IBOutlet UITableView *branchesTable;
 @property (nonatomic, weak) IBOutlet UIScrollView *repoScrollView;
-@property (nonatomic, strong) NSString *accessToken;
 @property (nonatomic, strong) Repo *repo;
 @property (nonatomic, strong) NSMutableArray *repoBranches;
 @property (nonatomic, strong) MBProgressHUD *hud;
+@property (nonatomic, strong) UIActionSheet *actionOptions;
 
 - (void)performHouseKeepingTasks;
 - (void)registerNib;
@@ -25,5 +24,7 @@
 - (UITableViewCell *)cellForBranchesTableAtIndexPath:(NSIndexPath *)indexPath;
 - (void)getRepoBranches;
 - (void)adjustFrameHeight;
+- (void)prepareActionOptionsForStatus:(NSNotification *)notification;
+- (void)showAvailableActions;
 
 @end

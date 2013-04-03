@@ -4,6 +4,8 @@
 <dict>
 	<key>GitosHost</key>
 	<string>http://thawing-crag-8872.herokuapp.com</string>
+	<key>GithubHost</key>
+	<string>https://github.com</string>
 	<key>GithubApiHost</key>
 	<string>https://api.github.com</string>
 	<key>GithubRawHost</key>

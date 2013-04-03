@@ -27,7 +27,6 @@
     if (self) {
         // Custom initialization
         self.repoBranches = [[NSMutableArray alloc] initWithCapacity:0];
-        self.accessToken = [SSKeychain passwordForService:@"access_token" account:@"gitos"];
     }
     return self;
 }
@@ -38,8 +37,8 @@
     // Do any additional setup after loading the view from its nib.
     [self.navigationItem setTitle:[self.repo getName]];
     [self performHouseKeepingTasks];
-    //[self adjustFrameHeight];
     [self getRepoBranches];
+    [self.repo checkStar];
 }
 
 - (void)adjustFrameHeight
@@ -66,6 +65,8 @@
     hud.mode = MBProgressHUDAnimationFade;
     hud.labelText = LOADING_MESSAGE;
     [self registerNib];
+
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(prepareActionOptionsForStatus:) name:@"StarChecked" object:nil];
 }
 
 - (void)registerNib
@@ -175,13 +176,8 @@
     
     AFHTTPClient *httpClient = [[AFHTTPClient alloc] initWithBaseURL:branchesUrl];
     
-    NSMutableDictionary *params = [NSMutableDictionary dictionaryWithObjectsAndKeys:
-                                   self.accessToken, @"access_token",
-                                   @"bearer", @"token_type",
-                                   nil];
-    
-    NSMutableURLRequest *getRequest = [httpClient requestWithMethod:@"GET" path:branchesUrl.absoluteString parameters:params];
-    
+    NSMutableURLRequest *getRequest = [httpClient requestWithMethod:@"GET" path:branchesUrl.absoluteString parameters:[AppHelper getAccessTokenParams]];
+
     AFHTTPRequestOperation *operation = [[AFHTTPRequestOperation alloc] initWithRequest:getRequest];
     
     [operation setCompletionBlockWithSuccess:
@@ -207,6 +203,37 @@
          [hud hide:YES];
      }];
     [operation start];
+}
+
+- (void)prepareActionOptionsForStatus:(NSNotification *)notification
+{
+    int statusCode = [[notification.userInfo valueForKey:@"Code"] intValue];
+
+    if (statusCode == 204) {
+        self.actionOptions = [[UIActionSheet alloc] initWithTitle:@"Actions" delegate:self cancelButtonTitle:@"" destructiveButtonTitle:nil otherButtonTitles:@"Unstar", @"View on Github", nil];
+    } else if (statusCode == 404) {
+        self.actionOptions = [[UIActionSheet alloc] initWithTitle:@"Actions" delegate:self cancelButtonTitle:@"" destructiveButtonTitle:nil otherButtonTitles:@"Star", @"View on Github", nil];
+    }
+
+    UIBarButtonItem *actionsButton = [[UIBarButtonItem alloc] initWithTitle:@"" style:UIBarButtonItemStyleBordered target:self action:@selector(showAvailableActions)];
+    actionsButton.image = [UIImage imageNamed:@"211-action.png"];
+    self.navigationItem.rightBarButtonItem = actionsButton;
+}
+
+- (void)showAvailableActions
+{
+    [self.actionOptions showInView:[UIApplication sharedApplication].keyWindow];
+}
+
+- (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex
+{
+    if (buttonIndex == 0) {
+
+    } else if (buttonIndex == 1) {
+        WebsiteViewController *websiteController = [[WebsiteViewController alloc] init];
+        websiteController.requestedUrl = [self.repo getGithubUrl];
+        [self.navigationController pushViewController:websiteController animated:YES];
+    }
 }
 
 @end

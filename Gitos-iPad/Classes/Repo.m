@@ -162,4 +162,51 @@
     return [[self.data valueForKey:@"fork"] integerValue] == 1;
 }
 
+- (NSString *)getSubscriptionUrl
+{
+    NSString *githubApiHost = [AppConfig getConfigValue:@"GithubApiHost"];
+    return [githubApiHost stringByAppendingFormat:@"/user/subscriptions/%@", [self getFullName]];
+}
+
+- (NSString *)getStarredUrl
+{
+    NSString *githubApiHost = [AppConfig getConfigValue:@"GithubApiHost"];
+    return [githubApiHost stringByAppendingFormat:@"/user/starred/%@", [self getFullName]];
+}
+
+- (NSString *)getGithubUrl
+{
+    NSString *githubHost = [AppConfig getConfigValue:@"GithubHost"];
+    return [githubHost stringByAppendingFormat:@"/%@", [self getFullName]];
+}
+
+- (void)checkStar
+{
+    NSURL *starredUrl = [NSURL URLWithString:[self getStarredUrl]];
+
+    AFHTTPClient *httpClient = [[AFHTTPClient alloc] initWithBaseURL:starredUrl];
+
+    NSMutableURLRequest *getRequest = [httpClient requestWithMethod:@"GET" path:starredUrl.absoluteString parameters:[AppHelper getAccessTokenParams]];
+
+    AFHTTPRequestOperation *operation = [[AFHTTPRequestOperation alloc] initWithRequest:getRequest];
+
+    [operation setCompletionBlockWithSuccess:^(AFHTTPRequestOperation *operation, id responseObject) {
+        NSNumber *statusCode = [NSNumber numberWithInt:operation.response.statusCode];
+
+        NSDictionary *userInfo = [NSDictionary dictionaryWithObject:statusCode forKey:@"Code"];
+
+        [[NSNotificationCenter defaultCenter] postNotificationName:@"StarChecked" object:self userInfo:userInfo];
+    }
+    failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        NSNumber *statusCode = [NSNumber numberWithInt:operation.response.statusCode];
+
+        NSDictionary *userInfo = [NSDictionary dictionaryWithObject:statusCode forKey:@"Code"];
+
+        [[NSNotificationCenter defaultCenter] postNotificationName:@"StarChecked" object:self userInfo:userInfo];
+    }];
+
+    [operation start];
+}
+
+
 @end

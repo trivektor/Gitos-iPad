@@ -23,6 +23,7 @@
 - (NSString *)getLanguage;
 - (NSString *)getBranchesUrl;
 - (NSString *)getTreeUrl;
+- (NSString *)getStarredUrl;
 - (NSInteger)getSize;
 - (NSString *)getPushedAt;
 - (NSString *)getDescription;
@@ -36,5 +37,7 @@
 - (NSString *)convertToRelativeDate:(NSString *)originalDateString;
 - (NSString *)getOwner;
 - (BOOL)isForked;
+- (NSString *)getGithubUrl;
+- (void)checkStar;
 
 @end

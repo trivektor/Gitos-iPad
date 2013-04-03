@@ -30,4 +30,5 @@
     #import "Issue.h"
     #import "Comment.h"
     #import "YRDropdownView.h"
+    #import "AppHelper.h"
 #endif

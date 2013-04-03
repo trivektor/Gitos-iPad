@@ -285,6 +285,7 @@
 		B574CF3716FFAAA00077D353 /* sunburst.css in Resources */ = {isa = PBXBuildFile; fileRef = B574CF3316FFAAA00077D353 /* sunburst.css */; };
 		B574CF3916FFB28C0077D353 /* doxy.css in Resources */ = {isa = PBXBuildFile; fileRef = B574CF3816FFB28C0077D353 /* doxy.css */; };
 		B57E39AA16FE5CBB006C2BD1 /* YRDropdownView.m in Sources */ = {isa = PBXBuildFile; fileRef = B57E39A916FE5CBB006C2BD1 /* YRDropdownView.m */; };
+		B5836C90170BFCA40012CC61 /* AppHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = B5836C8F170BFCA40012CC61 /* AppHelper.m */; };
 		B5BC452116BA5E3F00434848 /* prettify.js in Resources */ = {isa = PBXBuildFile; fileRef = B5BC451C16BA5DFD00434848 /* prettify.js */; };
 		B5BC452516BCEE7100434848 /* MasterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B5BC452316BCEE7000434848 /* MasterViewController.m */; };
 		B5BC452616BCEE7100434848 /* MasterViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B5BC452416BCEE7000434848 /* MasterViewController.xib */; };
@@ -685,6 +686,8 @@
 		B574CF3816FFB28C0077D353 /* doxy.css */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.css; path = doxy.css; sourceTree = "<group>"; };
 		B57E39A816FE5CBB006C2BD1 /* YRDropdownView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YRDropdownView.h; sourceTree = "<group>"; };
 		B57E39A916FE5CBB006C2BD1 /* YRDropdownView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YRDropdownView.m; sourceTree = "<group>"; };
+		B5836C8E170BFCA40012CC61 /* AppHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppHelper.h; sourceTree = "<group>"; };
+		B5836C8F170BFCA40012CC61 /* AppHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppHelper.m; sourceTree = "<group>"; };
 		B5BC451C16BA5DFD00434848 /* prettify.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = prettify.js; sourceTree = "<group>"; };
 		B5BC452216BCEE6F00434848 /* MasterViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MasterViewController.h; sourceTree = "<group>"; };
 		B5BC452316BCEE7000434848 /* MasterViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MasterViewController.m; sourceTree = "<group>"; };
@@ -963,6 +966,7 @@
 		B55D90A616B7AA27009CB90F /* Gitos-iPad */ = {
 			isa = PBXGroup;
 			children = (
+				B5836C8D170BFC870012CC61 /* Helpers */,
 				B5BC451A16BA5DFC00434848 /* Html */,
 				B516539916B7C1AA003F0DFA /* Images */,
 				B55D90AF16B7AA27009CB90F /* AppDelegate.h */,
@@ -1243,6 +1247,15 @@
 			path = YRDropdownView;
 			sourceTree = "<group>";
 		};
+		B5836C8D170BFC870012CC61 /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				B5836C8E170BFCA40012CC61 /* AppHelper.h */,
+				B5836C8F170BFCA40012CC61 /* AppHelper.m */,
+			);
+			name = Helpers;
+			sourceTree = "<group>";
+		};
 		B5BC451A16BA5DFC00434848 /* Html */ = {
 			isa = PBXGroup;
 			children = (
@@ -1300,6 +1313,11 @@
 			hasScannedForEncodings = 0;
 			knownRegions = (
 				en,
+				da,
+				"es-ES",
+				es,
+				"zh-Hans",
+				"zh-Hant",
 			);
 			mainGroup = B55D908F16B7AA27009CB90F;
 			productRefGroup = B55D909B16B7AA27009CB90F /* Products */;
@@ -1606,6 +1624,7 @@
 				B57E39AA16FE5CBB006C2BD1 /* YRDropdownView.m in Sources */,
 				B569D0D216FE6F0F002216DD /* Authorization.m in Sources */,
 				B569D0D516FE7923002216DD /* GitosConstants.m in Sources */,
+				B5836C90170BFCA40012CC61 /* AppHelper.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
