@@ -20,10 +20,11 @@
 
 - (void)performHouseKeepingTasks;
 - (void)registerNib;
+- (void)registerNotifications;
 - (UITableViewCell *)cellForDetailsTableAtIndexPath:(NSIndexPath *)indexPath;
 - (UITableViewCell *)cellForBranchesTableAtIndexPath:(NSIndexPath *)indexPath;
-- (void)getRepoBranches;
 - (void)adjustFrameHeight;
+- (void)populateBranches:(NSNotification *)notification;
 - (void)prepareActionOptionsForStatus:(NSNotification *)notification;
 - (void)showAvailableActions;
 

@@ -7,6 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "Branch.h"
 
 @interface Repo : NSObject
 
@@ -39,5 +40,6 @@
 - (BOOL)isForked;
 - (NSString *)getGithubUrl;
 - (void)checkStar;
+- (void)fetchBranches;
 
 @end

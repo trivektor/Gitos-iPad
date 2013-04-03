@@ -19,7 +19,7 @@
 
 @implementation RepoViewController
 
-@synthesize repo, hud, repoScrollView, detailsTable, branchesTable;
+@synthesize repo, hud, repoScrollView, detailsTable, branchesTable, repoBranches;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -35,10 +35,10 @@
 {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
-    [self.navigationItem setTitle:[self.repo getName]];
     [self performHouseKeepingTasks];
-    [self getRepoBranches];
-    [self.repo checkStar];
+
+    [repo fetchBranches];
+    [repo checkStar];
 }
 
 - (void)adjustFrameHeight
@@ -61,12 +61,14 @@
 
 - (void)performHouseKeepingTasks
 {
+    [self.navigationItem setTitle:[self.repo getName]];
+
     hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
     hud.mode = MBProgressHUDAnimationFade;
     hud.labelText = LOADING_MESSAGE;
-    [self registerNib];
 
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(prepareActionOptionsForStatus:) name:@"StarChecked" object:nil];
+    [self registerNib];
+    [self registerNotifications];
 }
 
 - (void)registerNib
@@ -85,6 +87,13 @@
         [table setSeparatorStyle:UITableViewCellSeparatorStyleSingleLine];
         [table setSeparatorColor:[UIColor colorWithRed:200/255.0 green:200/255.0 blue:200/255.0 alpha:1.0]];
     }
+}
+
+- (void)registerNotifications
+{
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(prepareActionOptionsForStatus:) name:@"StarChecked" object:nil];
+
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(populateBranches:) name:@"BranchesFetched" object:nil];
 }
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
@@ -170,39 +179,15 @@
     }
 }
 
-- (void)getRepoBranches
+- (void)populateBranches:(NSNotification *)notification
 {
-    NSURL *branchesUrl = [NSURL URLWithString:[self.repo getBranchesUrl]];
-    
-    AFHTTPClient *httpClient = [[AFHTTPClient alloc] initWithBaseURL:branchesUrl];
-    
-    NSMutableURLRequest *getRequest = [httpClient requestWithMethod:@"GET" path:branchesUrl.absoluteString parameters:[AppHelper getAccessTokenParams]];
+    repoBranches = [notification.userInfo valueForKey:@"Branches"];
 
-    AFHTTPRequestOperation *operation = [[AFHTTPRequestOperation alloc] initWithRequest:getRequest];
+    [branchesTable setFrame:CGRectMake(0, self.detailsTable.frame.size.height + 46, self.view.frame.size.width, [self.repoBranches count]*44 + 155)];
+    [branchesTable reloadData];
+    [hud hide:YES];
+    [self adjustFrameHeight];
     
-    [operation setCompletionBlockWithSuccess:
-     ^(AFHTTPRequestOperation *operation, id responseObject){
-         NSString *response = [operation responseString];
-         
-         NSArray *json = [NSJSONSerialization JSONObjectWithData:[response dataUsingEncoding:NSUTF8StringEncoding] options:NSJSONReadingMutableContainers error:nil];
-         
-         Branch *branch;
-         
-         for (int i=0; i < json.count; i++) {
-             branch = [[Branch alloc] initWithData:[json objectAtIndex:i]];
-             [self.repoBranches addObject:branch];
-         }
-         
-         [branchesTable setFrame:CGRectMake(0, self.detailsTable.frame.size.height + 46, self.view.frame.size.width, [self.repoBranches count]*44 + 155)];
-         [branchesTable reloadData];
-         [hud hide:YES];
-         [self adjustFrameHeight];
-     }
-     failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-         NSLog(@"%@", error);
-         [hud hide:YES];
-     }];
-    [operation start];
 }
 
 - (void)prepareActionOptionsForStatus:(NSNotification *)notification

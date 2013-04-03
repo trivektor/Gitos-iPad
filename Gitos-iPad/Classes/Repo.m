@@ -208,5 +208,36 @@
     [operation start];
 }
 
+- (void)fetchBranches
+{
+    NSURL *branchesUrl = [NSURL URLWithString:[self getBranchesUrl]];
+
+    AFHTTPClient *httpClient = [[AFHTTPClient alloc] initWithBaseURL:branchesUrl];
+
+    NSMutableURLRequest *getRequest = [httpClient requestWithMethod:@"GET" path:branchesUrl.absoluteString parameters:[AppHelper getAccessTokenParams]];
+
+    AFHTTPRequestOperation *operation = [[AFHTTPRequestOperation alloc] initWithRequest:getRequest];
+
+    [operation setCompletionBlockWithSuccess:
+     ^(AFHTTPRequestOperation *operation, id responseObject){
+         NSString *response = [operation responseString];
+
+         NSArray *json = [NSJSONSerialization JSONObjectWithData:[response dataUsingEncoding:NSUTF8StringEncoding] options:NSJSONReadingMutableContainers error:nil];
+
+         NSMutableArray *branches = [[NSMutableArray alloc] initWithCapacity:0];
+
+         for (int i=0; i < json.count; i++) {
+             [branches addObject:[[Branch alloc] initWithData:[json objectAtIndex:i]]];
+         }
+
+         NSDictionary *userInfo = [NSDictionary dictionaryWithObject:branches forKey:@"Branches"];
+
+         [[NSNotificationCenter defaultCenter] postNotificationName:@"BranchesFetched" object:self userInfo:userInfo];
+     }
+     failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+         NSLog(@"%@", error);
+     }];
+    [operation start];
+}
 
 @end
