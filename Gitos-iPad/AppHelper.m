@@ -10,4 +10,14 @@
 
 @implementation AppHelper
 
++ (NSString *)getAccessToken
+{
+    return [SSKeychain passwordForService:@"access_token" account:@"gitos"];
+}
+
++ (NSDictionary *)getAccessTokenParams
+{
+    return [NSDictionary dictionaryWithObjectsAndKeys:[self getAccessToken], @"access_token", nil];
+}
+
 @end

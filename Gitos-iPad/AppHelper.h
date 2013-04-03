@@ -10,4 +10,7 @@
 
 @interface AppHelper : NSObject
 
++ (NSString *)getAccessToken;
++ (NSDictionary *)getAccessTokenParams;
+
 @end
