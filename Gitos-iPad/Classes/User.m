@@ -189,4 +189,35 @@
     [operation start];
 }
 
++ (void)fetchInfoForUser:(NSString *)username
+{
+    NSString *githubApiHost = [AppConfig getConfigValue:@"GithubApiHost"];
+
+    NSURL *userUrl = [NSURL URLWithString:[NSString stringWithFormat:@"%@/users/%@", githubApiHost, username]];
+
+    AFHTTPClient *httpClient = [[AFHTTPClient alloc] initWithBaseURL:userUrl];
+
+    NSMutableURLRequest *getRequest = [httpClient requestWithMethod:@"GET" path:userUrl.absoluteString parameters:[AppHelper getAccessTokenParams]];
+
+    AFHTTPRequestOperation *operation = [[AFHTTPRequestOperation alloc] initWithRequest:getRequest];
+
+    [operation setCompletionBlockWithSuccess:
+     ^(AFHTTPRequestOperation *operation, id responseObject){
+         NSString *response = [operation responseString];
+
+         NSDictionary *json = [NSJSONSerialization JSONObjectWithData:[response dataUsingEncoding:NSUTF8StringEncoding] options:NSJSONReadingMutableContainers error:nil];
+
+         User *user = [[User alloc] initWithData:json];
+
+         NSDictionary *userInfo = [NSDictionary dictionaryWithObject:user forKey:@"User"];
+
+         [[NSNotificationCenter defaultCenter] postNotificationName:@"UserInfoFetched" object:self userInfo:userInfo];
+     }
+     failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+         NSLog(@"%@", error);
+     }];
+
+    [operation start];
+}
+
 @end

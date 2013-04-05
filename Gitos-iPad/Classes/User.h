@@ -38,5 +38,6 @@
 - (NSString *)getCreatedAt;
 - (NSString *)getHtmlUrl;
 + (void)fetchNewsFeedForUser:(NSString *)username andPage:(int)page;
++ (void)fetchInfoForUser:(NSString *)username;
 
 @end
