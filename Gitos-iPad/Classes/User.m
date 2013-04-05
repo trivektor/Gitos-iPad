@@ -149,4 +149,44 @@
     return [self.data valueForKey:@"html_url"];
 }
 
++ (void)fetchNewsFeedForUser:(NSString *)username andPage:(int)page
+{
+    NSString *githubApiHost = [AppConfig getConfigValue:@"GithubApiHost"];
+
+    NSURL *userReceivedEventsUrl = [NSURL URLWithString:[githubApiHost stringByAppendingFormat:@"/users/%@", username]];
+
+    AFHTTPClient *httpClient = [[AFHTTPClient alloc] initWithBaseURL:userReceivedEventsUrl];
+
+    NSMutableDictionary *params = [NSMutableDictionary dictionaryWithDictionary:[AppHelper getAccessTokenParams]];
+    [params addEntriesFromDictionary:[NSDictionary dictionaryWithObjectsAndKeys:
+                                      [NSString stringWithFormat:@"%i", page], @"page", nil]];
+
+    NSMutableURLRequest *getRequest = [httpClient requestWithMethod:@"GET" path:@"received_events" parameters:params];
+
+    AFHTTPRequestOperation *operation = [[AFHTTPRequestOperation alloc] initWithRequest:getRequest];
+
+    [operation setCompletionBlockWithSuccess:
+     ^(AFHTTPRequestOperation *operation, id responseObject){
+         NSString *response = [operation responseString];
+
+         NSArray *json = [NSJSONSerialization JSONObjectWithData:[response dataUsingEncoding:NSUTF8StringEncoding] options:NSJSONReadingMutableContainers error:nil];
+
+         NSMutableArray *newsFeed = [[NSMutableArray alloc] initWithCapacity:0];
+
+         for (int i=0; i < json.count; i++) {
+             [newsFeed addObject:[[TimelineEvent alloc] initWithData:[json objectAtIndex:i]]];
+         }
+
+         NSDictionary *userInfo = [NSDictionary dictionaryWithObject:newsFeed forKey:@"NewsFeed"];
+
+         [[NSNotificationCenter defaultCenter] postNotificationName:@"NewsFeedFetched" object:self
+                                                           userInfo:userInfo];
+     }
+     failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+         NSLog(@"%@", error);
+     }];
+
+    [operation start];
+}
+
 @end

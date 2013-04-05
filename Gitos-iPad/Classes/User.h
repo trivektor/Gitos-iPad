@@ -37,5 +37,6 @@
 - (NSInteger)getNumberOfGists;
 - (NSString *)getCreatedAt;
 - (NSString *)getHtmlUrl;
++ (void)fetchNewsFeedForUser:(NSString *)username andPage:(int)page;
 
 @end
