@@ -20,4 +20,9 @@
     return [NSDictionary dictionaryWithObjectsAndKeys:[self getAccessToken], @"access_token", nil];
 }
 
++ (NSString *)getAccountUsername
+{
+    return [SSKeychain passwordForService:@"username" account:@"gitos"];
+}
+
 @end

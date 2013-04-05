@@ -12,5 +12,6 @@
 
 + (NSString *)getAccessToken;
 + (NSDictionary *)getAccessTokenParams;
++ (NSString *)getAccountUsername;
 
 @end
