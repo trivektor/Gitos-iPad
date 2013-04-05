@@ -18,8 +18,8 @@
 @property (nonatomic, strong) MBProgressHUD *hud;
 
 - (void)registerNib;
-- (void)getUserInfo;
-- (void)getStarredReposForPage:(NSInteger)page;
+- (void)registerEvents;
+- (void)displayStarredRepos:(NSNotification *)notification;
 - (void)setupPullToRefresh;
 
 @end

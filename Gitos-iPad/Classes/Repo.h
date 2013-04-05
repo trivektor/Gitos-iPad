@@ -43,5 +43,6 @@
 - (void)fetchBranches;
 
 + (void)fetchReposForUser:(NSString *)username andPage:(int)page;
++ (void)fetchStarredReposForUser:(NSString *)username andPage:(int)page;
 
 @end

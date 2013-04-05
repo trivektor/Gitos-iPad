@@ -17,16 +17,16 @@
 
 @implementation StarredViewController
 
-@synthesize accessToken, user, starredRepos, currentPage, starredReposTable, hud;
+@synthesize user, starredRepos, currentPage, starredReposTable, hud;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
         // Custom initialization
-        self.currentPage = 1;
-        self.starredRepos = [[NSMutableArray alloc] initWithCapacity:0];
-        self.accessToken = [SSKeychain passwordForService:@"access_token" account:@"gitos"];
+        currentPage = 1;
+        starredRepos = [[NSMutableArray alloc] initWithCapacity:0];
+        user = nil;
     }
     return self;
 }
@@ -42,8 +42,9 @@
     hud.labelText = LOADING_MESSAGE;
 
     [self registerNib];
+    [self registerEvents];
     [self setupPullToRefresh];
-    [self getUserInfo];
+    [self getStarredReposForPage:currentPage++];
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -67,77 +68,26 @@
     [starredReposTable setSeparatorColor:[UIColor colorWithRed:200/255.0 green:200/255.0 blue:200/255.0 alpha:1.0]];
 }
 
-- (void)getUserInfo
+- (void)registerEvents
 {
-    NSURL *userUrl = [NSURL URLWithString:[[AppConfig getConfigValue:@"GithubApiHost"] stringByAppendingString:@"/user"]];
-    
-    AFHTTPClient *httpClient = [[AFHTTPClient alloc] initWithBaseURL:userUrl];
-    
-    NSMutableDictionary *params = [NSMutableDictionary dictionaryWithObjectsAndKeys:
-                                   self.accessToken, @"access_token",
-                                   @"bearer", @"token_type",
-                                   nil];
-    
-    NSMutableURLRequest *getRequest = [httpClient requestWithMethod:@"GET" path:userUrl.absoluteString parameters:params];
-    
-    AFHTTPRequestOperation *operation = [[AFHTTPRequestOperation alloc] initWithRequest:getRequest];
-    
-    [operation setCompletionBlockWithSuccess:
-     ^(AFHTTPRequestOperation *operation, id responseObject){
-         NSString *response = [operation responseString];
-         
-         NSDictionary *json = [NSJSONSerialization JSONObjectWithData:[response dataUsingEncoding:NSUTF8StringEncoding] options:NSJSONReadingMutableContainers error:nil];
-         
-         self.user = [[User alloc] initWithData:json];
-         [self getStarredReposForPage:self.currentPage++];
-     }
-     failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-         NSLog(@"%@", error);
-     }];
-    
-    [operation start];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(displayStarredRepos:) name:@"StarredReposFetched" object:nil];
 }
 
 - (void)getStarredReposForPage:(NSInteger)page
 {
-    NSURL *starredReposUrl = [NSURL URLWithString:[self.user getStarredUrl]];
-    
-    AFHTTPClient *httpClient = [[AFHTTPClient alloc] initWithBaseURL:starredReposUrl];
-    
-    NSMutableDictionary *params = [NSMutableDictionary dictionaryWithObjectsAndKeys:
-                                   [NSString stringWithFormat:@"%i", page], @"page",
-                                   self.accessToken, @"access_token",
-                                   @"bearer", @"token_type",
-                                   nil];
-    
-    NSMutableURLRequest *getRequest = [httpClient requestWithMethod:@"GET" path:starredReposUrl.absoluteString parameters:params];
-    
-    AFHTTPRequestOperation *operation = [[AFHTTPRequestOperation alloc] initWithRequest:getRequest];
-    
-    [operation setCompletionBlockWithSuccess:
-     ^(AFHTTPRequestOperation *operation, id responseObject){
-         NSString *response = [operation responseString];
-         
-         NSArray *json = [NSJSONSerialization JSONObjectWithData:[response dataUsingEncoding:NSUTF8StringEncoding] options:NSJSONReadingMutableContainers error:nil];
-         
-         Repo *r;
-         
-         for (int i=0; i < json.count; i++) {
-             r = [[Repo alloc] initWithData:[json objectAtIndex:i]];
-             [self.starredRepos addObject:r];
-         }
-         
-         [starredReposTable.pullToRefreshView stopAnimating];
-         [starredReposTable reloadData];
-         [hud hide:YES];
-     }
-     failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-         [hud hide:YES];
-         NSLog(@"%@", error);
-     }];
-    
-    [operation start];
-    
+    if (user == nil) {
+        [Repo fetchStarredReposForUser:[AppHelper getAccountUsername] andPage:currentPage++];
+    } else {
+        [Repo fetchStarredReposForUser:[user getLogin] andPage:currentPage++];
+    }
+}
+
+- (void)displayStarredRepos:(NSNotification *)notification
+{
+    [starredRepos addObjectsFromArray:[notification.userInfo valueForKey:@"StarredRepos"]];
+    [starredReposTable reloadData];
+    [starredReposTable.pullToRefreshView stopAnimating];
+    [hud hide:YES];
 }
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
@@ -147,7 +97,7 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return self.starredRepos.count;
+    return starredRepos.count;
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -165,7 +115,7 @@
         cell = [[RepoCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:cellIdentifier];
     }
 
-    cell.repo = [self.starredRepos objectAtIndex:indexPath.row];
+    cell.repo = [starredRepos objectAtIndex:indexPath.row];
     [cell render];
     
     return cell;
@@ -174,7 +124,7 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     RepoViewController *repoController = [[RepoViewController alloc] init];
-    repoController.repo = [self.starredRepos objectAtIndex:indexPath.row];
+    repoController.repo = [starredRepos objectAtIndex:indexPath.row];
     [self.navigationController pushViewController:repoController animated:YES];
 }
 
@@ -183,7 +133,7 @@
 {
     if (([scrollView contentOffset].y + scrollView.frame.size.height) == scrollView.contentSize.height) {
         [hud show:YES];
-        [self getStarredReposForPage:self.currentPage++];
+        [self getStarredReposForPage:currentPage++];
     }
 }
 
@@ -191,7 +141,7 @@
 {
     self.currentPage = 1;
     [starredReposTable addPullToRefreshWithActionHandler:^{
-        [self getStarredReposForPage:self.currentPage++];
+        [self getStarredReposForPage:currentPage++];
     }];
 }
 
