@@ -29,6 +29,7 @@
 - (void)showProfileOptions;
 - (void)prepareProfileTable;
 - (void)getUserInfo;
+- (void)displayUserInfo:(NSNotification *)notification;
 - (void)displayUsernameAndAvatar;
 - (void)adjustFrameHeight;
 - (void)displayFollowOptions;

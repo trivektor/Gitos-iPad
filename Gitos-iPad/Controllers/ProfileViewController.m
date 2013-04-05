@@ -22,19 +22,15 @@
 
 @implementation ProfileViewController
 
-@synthesize accessToken, user, hud, avatar, profileTable, nameLabel, loginLabel, scrollView, hideBackButton;
+@synthesize user, hud, avatar, profileTable, nameLabel, loginLabel, scrollView, hideBackButton;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
         // Custom initialization
-        self.user = nil;
-        self.accessToken = [SSKeychain passwordForService:@"access_token" account:@"gitos"];
-        self.accessTokenParams = [NSMutableDictionary dictionaryWithObjectsAndKeys:
-                                       self.accessToken, @"access_token",
-                                       nil];
-        self.hideBackButton = NO;
+        user = nil;
+        hideBackButton = NO;
     }
     return self;
 }
@@ -50,21 +46,30 @@
 
 - (void)viewWillAppear:(BOOL)animated
 {
-    self.navigationItem.hidesBackButton = self.hideBackButton;
+    self.navigationItem.hidesBackButton = hideBackButton;
 }
 
 - (void)performHouseKeepingTasks
 {
     [scrollView setContentSize:self.view.frame.size];
     [self adjustFrameHeight];
+
     hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
     hud.mode = MBProgressHUDAnimationFade;
     hud.labelText = LOADING_MESSAGE;
+
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(displayUserInfo:)
+                                                 name:@"UserInfoFetched"
+                                               object:nil];
 }
 
 - (void)addOptionsButton
 {
-    UIBarButtonItem *optionsButton = [[UIBarButtonItem alloc] initWithTitle:@"" style:UIBarButtonItemStyleBordered target:self action:@selector(showProfileOptions)];
+    UIBarButtonItem *optionsButton = [[UIBarButtonItem alloc] initWithTitle:@""
+                                                                      style:UIBarButtonItemStyleBordered
+                                                                     target:self
+                                                                     action:@selector(showProfileOptions)];
     optionsButton.image = [UIImage imageNamed:@"211-action.png"];
     self.navigationItem.rightBarButtonItem = optionsButton;
 }
@@ -101,42 +106,26 @@
 
 - (void)getUserInfo
 {
-    NSURL *userUrl;
-    NSString *githubApiHost = [AppConfig getConfigValue:@"GithubApiHost"];
-
-    if (self.user == nil) {
-        userUrl = [NSURL URLWithString:[NSString stringWithFormat:@"%@/user", githubApiHost]];
+    if (user == nil) {
+        [User fetchInfoForUser:[AppHelper getAccountUsername]];
     } else {
-        userUrl = [NSURL URLWithString:[NSString stringWithFormat:@"%@/users/%@", githubApiHost, [self.user getLogin]]];
+        [User fetchInfoForUser:[user getLogin]];
     }
+}
 
-    AFHTTPClient *httpClient = [[AFHTTPClient alloc] initWithBaseURL:userUrl];
+- (void)displayUserInfo:(NSNotification *)notification
+{
+    user = [notification.userInfo valueForKey:@"User"];
 
-    NSMutableURLRequest *getRequest = [httpClient requestWithMethod:@"GET" path:userUrl.absoluteString parameters:self.accessTokenParams];
-
-    AFHTTPRequestOperation *operation = [[AFHTTPRequestOperation alloc] initWithRequest:getRequest];
-
-    [operation setCompletionBlockWithSuccess:
-     ^(AFHTTPRequestOperation *operation, id responseObject){
-         NSString *response = [operation responseString];
-
-         NSDictionary *json = [NSJSONSerialization JSONObjectWithData:[response dataUsingEncoding:NSUTF8StringEncoding] options:NSJSONReadingMutableContainers error:nil];
-
-         self.user = [[User alloc] initWithData:json];
-         self.navigationItem.title = [self.user getLogin];
-         [self displayUsernameAndAvatar];
-         [profileTable reloadData];
-         if (!self.hideOptionsButton) {
-             [self addOptionsButton];
-         }
-         [hud hide:YES];
-     }
-     failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-         NSLog(@"%@", error);
-         [hud hide:YES];
-     }];
+    self.navigationItem.title = [user getLogin];
     
-    [operation start];
+    [self displayUsernameAndAvatar];
+
+    [profileTable reloadData];
+    if (!self.hideOptionsButton) {
+        [self addOptionsButton];
+    }
+    [hud hide:YES];
 }
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
@@ -161,10 +150,11 @@
     ProfileCell *cell = [profileTable dequeueReusableCellWithIdentifier:cellIdentifier];
     
     if (!cell) {
-        cell = [[ProfileCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellIdentifier];
+        cell = [[ProfileCell alloc] initWithStyle:UITableViewCellStyleDefault
+                                  reuseIdentifier:cellIdentifier];
     }
     
-    [cell displayByIndexPath:indexPath forUser:self.user];
+    [cell displayByIndexPath:indexPath forUser:user];
     
     return cell;
 }
@@ -174,43 +164,43 @@
     if (indexPath.row == 2) {
         // Popup the mail composer when clicking on email
         // http://stackoverflow.com/questions/9024994/open-mail-and-safari-from-uitableviewcell
-        if ([self.user getEmail] != (id)[NSNull null]) {
-            [self mailProfileToEmail:[self.user getEmail] WithSubject:@"Hello"];
+        if ([user getEmail] != (id)[NSNull null]) {
+            [self mailProfileToEmail:[user getEmail] WithSubject:@"Hello"];
         }
     } else if (indexPath.row == 1) {
-        if ([self.user getWebsite] != (id)[NSNull null]) {
-            [self loadWebsiteWithUrl:[self.user getWebsite]];
+        if ([user getWebsite] != (id)[NSNull null]) {
+            [self loadWebsiteWithUrl:[user getWebsite]];
         }
     } else if (indexPath.row == 4) {
         FollowViewController *followController = [[FollowViewController alloc] init];
-        followController.usersUrl = [self.user getFollowersUrl];
+        followController.usersUrl = [user getFollowersUrl];
         followController.controllerTitle = @"Followers";
         [self.navigationController pushViewController:followController animated:YES];
     } else if (indexPath.row == 5) {
         FollowViewController *followController = [[FollowViewController alloc] init];
-        followController.usersUrl = [self.user getFollowingUrl];
+        followController.usersUrl = [user getFollowingUrl];
         followController.controllerTitle = @"Following";
         [self.navigationController pushViewController:followController animated:YES];
     } else if (indexPath.row == 6) {
         ReposViewController *reposController = [[ReposViewController alloc] init];
-        reposController.user = self.user;
+        reposController.user = user;
         reposController.hideBackButton = NO;
         [self.navigationController pushViewController:reposController animated:YES];
     } else if (indexPath.row == 7) {
         GistsViewController *gistsController = [[GistsViewController alloc] init];
-        gistsController.user = self.user;
+        gistsController.user = user;
         [self.navigationController pushViewController:gistsController animated:YES];
     } else if (indexPath.row == 9) {
         OrganizationsViewController *organizationsController = [[OrganizationsViewController alloc] init];
-        organizationsController.user = self.user;
+        organizationsController.user = user;
         [self.navigationController pushViewController:organizationsController animated:YES];
     } else if (indexPath.row == 10) {
         RecentActivityViewController *recentActivityController = [[RecentActivityViewController alloc] init];
-        recentActivityController.user = self.user;
+        recentActivityController.user = user;
         [self.navigationController pushViewController:recentActivityController animated:YES];
     } else if (indexPath.row == 11) {
         ContributionsViewController *contributionsController = [[ContributionsViewController alloc] init];
-        contributionsController.user = self.user;
+        contributionsController.user = user;
         [self.navigationController pushViewController:contributionsController animated:YES];
     }
 }
@@ -222,18 +212,18 @@
 
 - (void)displayUsernameAndAvatar
 {
-    NSData *avatarData = [[NSData alloc] initWithContentsOfURL:[NSURL URLWithString:[self.user getAvatarUrl]]];
+    NSData *avatarData = [[NSData alloc] initWithContentsOfURL:[NSURL URLWithString:[user getAvatarUrl]]];
     
     avatar.image = [UIImage imageWithData:avatarData];
     avatar.layer.cornerRadius = 5.0;
     avatar.layer.masksToBounds = YES;
     
-    if ([self.user getName] == (id)[NSNull null] || [self.user getName] == nil) {
-        nameLabel.text = [self.user getLogin];
+    if ([user getName] == (id)[NSNull null] || [user getName] == nil) {
+        nameLabel.text = [user getLogin];
         loginLabel.hidden = YES;
     } else {
-        nameLabel.text  = [self.user getName];
-        loginLabel.text = [self.user getLogin];
+        nameLabel.text  = [user getName];
+        loginLabel.text = [user getLogin];
     }
 }
 
@@ -266,7 +256,11 @@
 //     }];
 //
 //    [operation start];
-    self.optionsActionSheet = [[UIActionSheet alloc] initWithTitle:@"Options" delegate:self cancelButtonTitle:@"Cancel" destructiveButtonTitle:nil otherButtonTitles:@"View on Github", @"Mail profile", @"Copy profile", nil];
+    self.optionsActionSheet = [[UIActionSheet alloc] initWithTitle:@"Options"
+                                                          delegate:self
+                                                 cancelButtonTitle:@"Cancel"
+                                            destructiveButtonTitle:nil
+                                                 otherButtonTitles:@"View on Github", @"Mail profile", @"Copy profile", nil];
     self.optionsActionSheet.actionSheetStyle = UIActionSheetStyleBlackOpaque;
     [self.optionsActionSheet showInView:[UIApplication sharedApplication].keyWindow];
 }
@@ -281,7 +275,11 @@
         otherButtonTitles = @"Follow";
     }
 
-    self.optionsActionSheet = [[UIActionSheet alloc] initWithTitle:@"Options" delegate:self cancelButtonTitle:@"Cancel" destructiveButtonTitle:nil otherButtonTitles:otherButtonTitles, nil];
+    self.optionsActionSheet = [[UIActionSheet alloc] initWithTitle:@"Options"
+                                                          delegate:self
+                                                 cancelButtonTitle:@"Cancel"
+                                            destructiveButtonTitle:nil
+                                                 otherButtonTitles:otherButtonTitles, nil];
     self.optionsActionSheet.actionSheetStyle = UIActionSheetStyleBlackOpaque;
     [self.optionsActionSheet showInView:[UIApplication sharedApplication].keyWindow];
 }
@@ -289,7 +287,7 @@
 - (void)follow
 {
     NSString *githubApiHost = [AppConfig getConfigValue:@"GithubApiHost"];
-    NSURL *url = [NSURL URLWithString:[githubApiHost stringByAppendingFormat:@"/user/following/%@", [self.user getLogin]]];
+    NSURL *url = [NSURL URLWithString:[githubApiHost stringByAppendingFormat:@"/user/following/%@", [user getLogin]]];
 
     AFHTTPClient *httpClient = [[AFHTTPClient alloc] initWithBaseURL:url];
 
@@ -315,7 +313,7 @@
 - (void)unfollow
 {
     NSString *githubApiHost = [AppConfig getConfigValue:@"GithubApiHost"];
-    NSURL *url = [NSURL URLWithString:[githubApiHost stringByAppendingFormat:@"/user/following/%@", [self.user getLogin]]];
+    NSURL *url = [NSURL URLWithString:[githubApiHost stringByAppendingFormat:@"/user/following/%@", [user getLogin]]];
 
     AFHTTPClient *httpClient = [[AFHTTPClient alloc] initWithBaseURL:url];
 
@@ -352,7 +350,7 @@
 - (void)viewProfileOnGithub
 {
     if ([self.user getHtmlUrl] != (id)[NSNull null]) {
-        [self loadWebsiteWithUrl:[self.user getHtmlUrl]];
+        [self loadWebsiteWithUrl:[user getHtmlUrl]];
     }
 }
 
