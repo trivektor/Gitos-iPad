@@ -17,14 +17,16 @@
 
 @implementation ReposViewController
 
-@synthesize user, reposTable, repos, hud;
+@synthesize user, reposTable, repos, hud, currentPage;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
         // Custom initialization
-        self.repos = [[NSMutableArray alloc] initWithCapacity:0];
+        repos = [[NSMutableArray alloc] initWithCapacity:0];
+        currentPage = 1;
+        user = nil;
     }
     return self;
 }
@@ -40,7 +42,8 @@
     hud.labelText = LOADING_MESSAGE;
 
     [self registerNib];
-    [self getUserInfoAndRepos];
+    [self registerEvents];
+    [self getUserRepos];
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -68,69 +71,29 @@
     [reposTable setSeparatorColor:[UIColor colorWithRed:200/255.0 green:200/255.0 blue:200/255.0 alpha:1.0]];
 }
 
-- (void)getUserInfoAndRepos
+- (void)registerEvents
 {
-    // Revisit the code below. It's awkward that this has to be done in every controller
-    // In the future when I'm getting better with iOS/Objective-C, I should figure out how to share
-    // the user's information application wide
-    NSString *accessToken = [SSKeychain passwordForService:@"access_token" account:@"gitos"];
-    
-    NSURL *userUrl = [NSURL URLWithString:@"https://api.github.com/user"];
-    
-    AFHTTPClient *httpClient = [[AFHTTPClient alloc] initWithBaseURL:userUrl];
-    
-    NSMutableDictionary *params = [NSMutableDictionary dictionaryWithObjectsAndKeys:
-                                   accessToken, @"access_token",
-                                   @"bearer", @"token_type",
-                                   nil];
-    
-    NSMutableURLRequest *getRequest = [httpClient requestWithMethod:@"GET" path:userUrl.absoluteString parameters:params];
-    
-    AFHTTPRequestOperation *operation = [[AFHTTPRequestOperation alloc] initWithRequest:getRequest];
-    
-    [operation setCompletionBlockWithSuccess:
-     ^(AFHTTPRequestOperation *operation, id responseObject){
-         NSString *response = [operation responseString];
-         
-         NSDictionary *json = [NSJSONSerialization JSONObjectWithData:[response dataUsingEncoding:NSUTF8StringEncoding] options:NSJSONReadingMutableContainers error:nil];
-         
-         self.user = [[User alloc] initWithData:json];
-         [self getUserRepos];
-     }
-    failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-        NSLog(@"%@", error);
-    }];
-    
-    [operation start];
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(displayUserRepos:)
+                                                 name:@"UserReposFetched"
+                                               object:nil];
 }
 
 - (void)getUserRepos
 {
-    NSURL *reposURL = [NSURL URLWithString:[self.user getReposUrl]];
-    
-    AFHTTPClient *httpClient = [[AFHTTPClient alloc] initWithBaseURL:reposURL];
-    
-    NSMutableURLRequest *getRequest = [httpClient requestWithMethod:@"GET" path:reposURL.absoluteString parameters:nil];
-    
-    AFHTTPRequestOperation *operation = [[AFHTTPRequestOperation alloc] initWithRequest:getRequest];
-    
-    [operation setCompletionBlockWithSuccess:^(AFHTTPRequestOperation *operation, id responseObject) {
-        NSString *response = [operation responseString];
-        
-        NSMutableArray *json = [NSJSONSerialization JSONObjectWithData:[response dataUsingEncoding:NSUTF8StringEncoding] options:NSJSONReadingMutableContainers error:nil];
-        
-        for (int i=0; i < [json count]; i++) {
-            [self.repos addObject:[[Repo alloc] initWithData:[json objectAtIndex:i]]];
-        }
-        
-        [reposTable reloadData];
-        [hud hide:YES];
-    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-        [hud hide:YES];
-        NSLog(@"%@", error);
-    }];
-    
-    [operation start];
+    if (user == nil) {
+        [Repo fetchReposForUser:[AppHelper getAccountUsername] andPage:currentPage++];
+    } else {
+        [Repo fetchReposForUser:[user getLogin] andPage:currentPage++];
+    }
+}
+
+- (void)displayUserRepos:(NSNotification *)notification
+{
+    repos = [notification.userInfo valueForKey:@"Repos"];
+
+    [reposTable reloadData];
+    [hud hide:YES];
 }
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
@@ -140,7 +103,7 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return self.repos.count;
+    return repos.count;
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -152,13 +115,13 @@
 {
     static NSString *cellIdentifier = @"RepoCell";
     
-    RepoCell *cell = [self.reposTable dequeueReusableCellWithIdentifier:cellIdentifier];
+    RepoCell *cell = [reposTable dequeueReusableCellWithIdentifier:cellIdentifier];
     
     if (!cell) {
         cell = [[RepoCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellIdentifier];
     }
     
-    cell.repo = [self.repos objectAtIndex:indexPath.row];
+    cell.repo = [repos objectAtIndex:indexPath.row];
     [cell render];
     
     return cell;
@@ -167,7 +130,7 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     RepoViewController *repoController = [[RepoViewController alloc] init];
-    repoController.repo = [self.repos objectAtIndex:indexPath.row];
+    repoController.repo = [repos objectAtIndex:indexPath.row];
     [self.navigationController pushViewController:repoController animated:YES];
 }
 

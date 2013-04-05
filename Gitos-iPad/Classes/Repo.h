@@ -42,4 +42,6 @@
 - (void)checkStar;
 - (void)fetchBranches;
 
++ (void)fetchReposForUser:(NSString *)username andPage:(int)page;
+
 @end

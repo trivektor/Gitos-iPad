@@ -15,9 +15,11 @@
 @property (nonatomic, strong) NSMutableArray *repos;
 @property (nonatomic, strong) MBProgressHUD *hud;
 @property (nonatomic) Boolean hideBackButton;
+@property (nonatomic) int currentPage;
 
 - (void)registerNib;
-- (void)getUserInfoAndRepos;
+- (void)registerEvents;
 - (void)getUserRepos;
+- (void)displayUserRepos:(NSNotification *)notification;
 
 @end

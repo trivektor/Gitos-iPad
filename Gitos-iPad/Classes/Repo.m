@@ -240,4 +240,40 @@
     [operation start];
 }
 
++ (void)fetchReposForUser:(NSString *)username andPage:(int)page
+{
+    NSString *userReposURL = [[AppConfig getConfigValue:@"GithubApiHost"] stringByAppendingFormat:@"/users/%@/repos", username];
+
+    NSURL *reposURL = [NSURL URLWithString:userReposURL];
+
+    AFHTTPClient *httpClient = [[AFHTTPClient alloc] initWithBaseURL:reposURL];
+
+    NSMutableDictionary *params = [[NSMutableDictionary alloc] initWithDictionary:[AppHelper getAccessTokenParams]];
+    [params addEntriesFromDictionary:[NSDictionary dictionaryWithObjectsAndKeys:[NSString stringWithFormat:@"%i", page], @"page", nil]];
+
+    NSMutableURLRequest *getRequest = [httpClient requestWithMethod:@"GET" path:reposURL.absoluteString parameters:params];
+
+    AFHTTPRequestOperation *operation = [[AFHTTPRequestOperation alloc] initWithRequest:getRequest];
+
+    [operation setCompletionBlockWithSuccess:^(AFHTTPRequestOperation *operation, id responseObject) {
+        NSString *response = [operation responseString];
+
+        NSMutableArray *json = [NSJSONSerialization JSONObjectWithData:[response dataUsingEncoding:NSUTF8StringEncoding] options:NSJSONReadingMutableContainers error:nil];
+
+        NSMutableArray *repos = [[NSMutableArray alloc] initWithCapacity:0];
+
+        for (int i=0; i < [json count]; i++) {
+            [repos addObject:[[Repo alloc] initWithData:[json objectAtIndex:i]]];
+        }
+
+        NSDictionary *userInfo = [NSDictionary dictionaryWithObject:repos forKey:@"Repos"];
+
+        [[NSNotificationCenter defaultCenter] postNotificationName:@"UserReposFetched" object:self userInfo:userInfo];
+    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        NSLog(@"%@", error);
+    }];
+
+    [operation start];
+}
+
 @end
