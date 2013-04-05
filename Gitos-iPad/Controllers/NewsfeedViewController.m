@@ -8,9 +8,7 @@
 
 #import "NewsfeedViewController.h"
 #import "NewsfeedDetailsViewController.h"
-#import "User.h"
 #import "NewsFeedCell.h"
-#import "TimelineEvent.h"
 
 @interface NewsfeedViewController ()
 
@@ -43,9 +41,8 @@
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
         // Custom initialization
-        self.newsFeed     = [[NSMutableArray alloc] initWithCapacity:0];
-        self.currentPage  = 1;
-        self.accessToken  = [SSKeychain passwordForService:@"access_token" account:@"gitos"];
+        newsFeed     = [[NSMutableArray alloc] initWithCapacity:0];
+        currentPage  = 1;
     }
     return self;
 }
@@ -57,7 +54,13 @@
     [self performHouseKeepingTasks];
     [self prepareTableView];
     [self setupPullToRefresh];
-    [self getUserInfoAndNewsFeed];
+
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(displayUserNewsFeed:)
+                                                 name:@"NewsFeedFetched"
+                                               object:nil];
+
+    [User fetchNewsFeedForUser:[AppHelper getAccountUsername] andPage:currentPage++];
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -73,9 +76,9 @@
     [reloadButton setTitleTextAttributes:[NSDictionary dictionaryWithObjectsAndKeys:[UIFont fontWithName:kFontAwesomeFamilyName size:17], UITextAttributeFont, nil] forState:UIControlStateNormal];
     [self.navigationItem setRightBarButtonItem:reloadButton];
     
-    self.hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
-    self.hud.mode = MBProgressHUDAnimationFade;
-    self.hud.labelText = LOADING_MESSAGE;
+    hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+    hud.mode = MBProgressHUDAnimationFade;
+    hud.labelText = LOADING_MESSAGE;
 }
 
 - (void)prepareTableView
@@ -98,37 +101,6 @@
     // Dispose of any resources that can be recreated.
 }
 
-- (void)getUserInfoAndNewsFeed
-{
-    NSString *githubApiHost = [AppConfig getConfigValue:@"GithubApiHost"];
-    NSURL *userUrl = [NSURL URLWithString:[githubApiHost stringByAppendingString:@"/user"]];
-
-    AFHTTPClient *httpClient = [[AFHTTPClient alloc] initWithBaseURL:userUrl];
-
-    NSMutableDictionary *params = [NSMutableDictionary dictionaryWithObjectsAndKeys:
-                                   self.accessToken, @"access_token",
-                                   nil];
-
-    NSMutableURLRequest *getRequest = [httpClient requestWithMethod:@"GET" path:userUrl.absoluteString parameters:params];
-    
-    AFHTTPRequestOperation *operation = [[AFHTTPRequestOperation alloc] initWithRequest:getRequest];
-    
-    [operation setCompletionBlockWithSuccess:
-     ^(AFHTTPRequestOperation *operation, id responseObject){
-         NSString *response = [operation responseString];
-         
-         NSDictionary *json = [NSJSONSerialization JSONObjectWithData:[response dataUsingEncoding:NSUTF8StringEncoding] options:NSJSONReadingMutableContainers error:nil];
-         
-         self.user = [[User alloc] initWithData:json];
-         [self getUserNewsFeed:self.currentPage++];
-     }
-     failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-         NSLog(@"%@", error);
-     }];
-    
-    [operation start];
-}
-
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
     return 1;
@@ -136,7 +108,7 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return self.newsFeed.count;
+    return newsFeed.count;
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -163,9 +135,9 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     NewsfeedDetailsViewController *newsfeedDetailsController = [[NewsfeedDetailsViewController alloc] init];
-    newsfeedDetailsController.event = [self.newsFeed objectAtIndex:indexPath.row];
+    newsfeedDetailsController.event = [newsFeed objectAtIndex:indexPath.row];
     newsfeedDetailsController.currentPage = (indexPath.row / 30) + 1;
-    newsfeedDetailsController.username = [self.user getLogin];
+    newsfeedDetailsController.username = [user getLogin];
     
     UIBarButtonItem *backButton = [[UIBarButtonItem alloc] initWithTitle:@"Back" style:UIBarButtonItemStyleBordered target:nil action:nil];
     [backButton setTintColor:[UIColor colorWithRed:209/255.0 green:0 blue:0 alpha:1]];
@@ -178,69 +150,34 @@
 {
     if (([scrollView contentOffset].y + scrollView.frame.size.height) == scrollView.contentSize.height) {
         // Bottom of UITableView reached
-        [self.hud show:YES];
-        [self getUserNewsFeed:self.currentPage++];
+        [hud show:YES];
+        [User fetchNewsFeedForUser:[AppHelper getAccountUsername] andPage:currentPage++];
     }
 }
 
-- (void)getUserNewsFeed:(NSInteger)page
+- (void)displayUserNewsFeed:(NSNotification *)notication
 {
-    AFHTTPClient *httpClient = [[AFHTTPClient alloc] initWithBaseURL:[NSURL URLWithString:[self.user getReceivedEventsUrl]]];
-    
-    NSMutableDictionary *params = [NSMutableDictionary dictionaryWithObjectsAndKeys:
-                                   [NSString stringWithFormat:@"%i", page], @"page",
-                                   self.accessToken, @"access_token",
-                                   nil];
-    
-    NSMutableURLRequest *getRequest = [httpClient requestWithMethod:@"GET" path:[self.user getReceivedEventsUrl] parameters:params];
-    
-    AFHTTPRequestOperation *operation = [[AFHTTPRequestOperation alloc] initWithRequest:getRequest];
-    
-    [operation setCompletionBlockWithSuccess:
-     ^(AFHTTPRequestOperation *operation, id responseObject){
-         NSString *response = [operation responseString];
-         
-         NSArray *newsfeed = [NSJSONSerialization JSONObjectWithData:[response dataUsingEncoding:NSUTF8StringEncoding] options:NSJSONReadingMutableContainers error:nil];
-         
-         for (int i=0; i < newsfeed.count; i++) {
-             [self.newsFeed addObject:[[TimelineEvent alloc] initWithData:[newsfeed objectAtIndex:i]]];
-         }
-
-         [newsFeedTable.pullToRefreshView stopAnimating];
-         [newsFeedTable reloadData];
-         [self.hud hide:YES];
-     }
-     failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-         [newsFeedTable.pullToRefreshView stopAnimating];
-         [self.hud hide:YES];
-     }
-     ];
-    
-    [operation start];
-    
+    [newsFeed addObjectsFromArray:[notication.userInfo valueForKey:@"NewsFeed"]];
+    [newsFeedTable.pullToRefreshView stopAnimating];
+    [newsFeedTable reloadData];
+    [hud hide:YES];
 }
 
 - (void)setupPullToRefresh
 {
-    self.currentPage = 1;
+    currentPage = 1;
     [newsFeedTable addPullToRefreshWithActionHandler:^{
-        [self getUserNewsFeed:self.currentPage++];
+        [User fetchNewsFeedForUser:[AppHelper getAccountUsername] andPage:currentPage++];
     }];
 }
 
 - (void)reloadNewsfeed
 {
-    [self.hud show:YES];
-    self.currentPage = 1;
-    [self.newsFeed removeAllObjects];
+    [hud show:YES];
+    currentPage = 1;
+    [newsFeed removeAllObjects];
     [newsFeedTable reloadData];
-    [self getUserNewsFeed:self.currentPage++];
+    [User fetchNewsFeedForUser:[AppHelper getAccountUsername] andPage:currentPage++];
 }
-
-//- (void)masterViewController:(MasterViewController *)controller loadController:(UIViewController *)loadedController
-//{
-//    UINavigationController *navController = [[UINavigationController alloc] initWithRootViewController:loadedController];
-//    [self.view.window setRootViewController:navController];
-//}
 
 @end
