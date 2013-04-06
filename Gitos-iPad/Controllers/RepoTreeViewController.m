@@ -42,7 +42,7 @@
     if (node == (id)[NSNull null]) {
         self.navigationItem.title = [branch getName];
     } else if ([node isTree]) {
-        self.navigationItem.title = node.path;
+        self.navigationItem.title = [node getPath];
     }
 
     hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
@@ -83,7 +83,7 @@
     RawFileViewController *rawFileController = [[RawFileViewController alloc] init];
     rawFileController.repo = repo;
     rawFileController.branch = branch;
-    rawFileController.fileName = node.path;
+    rawFileController.fileName = [node getPath];
     [self.navigationController pushViewController:rawFileController animated:YES];
 }
 
@@ -114,7 +114,7 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return [self.treeNodes count];
+    return [treeNodes count];
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -127,26 +127,30 @@
         cell = [[RepoTreeCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellIdentifier];
     }
     
-    [cell setNode:[self.treeNodes objectAtIndex:indexPath.row]];
+    [cell setNode:[treeNodes objectAtIndex:indexPath.row]];
     [cell render];
     return cell;
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    RepoTreeNode *selectedNode = [self.treeNodes objectAtIndex:indexPath.row];
+    RepoTreeNode *selectedNode = [treeNodes objectAtIndex:indexPath.row];
     
     if ([selectedNode isBlob]) {
         RawFileViewController *rawFileController = [[RawFileViewController alloc] init];
-        rawFileController.repo = repo;
-        rawFileController.branch = branch;
-        rawFileController.fileName = [selectedNode path];
+
+        rawFileController.repo      = repo;
+        rawFileController.branch    = branch;
+        rawFileController.fileName  = [selectedNode getPath];
+
         [self.navigationController pushViewController:rawFileController animated:YES];
     } else if ([selectedNode isTree]) {
         RepoTreeViewController *repoTreeController = [[RepoTreeViewController alloc] init];
-        repoTreeController.branch = branch;
-        repoTreeController.repo = repo;
-        repoTreeController.node = selectedNode;
+
+        repoTreeController.branch   = branch;
+        repoTreeController.repo     = repo;
+        repoTreeController.node     = selectedNode;
+
         [self.navigationController pushViewController:repoTreeController animated:YES];
     }
 }
@@ -155,7 +159,7 @@
 {
     CommitsViewController *commitsController = [[CommitsViewController alloc] init];
     commitsController.branch = branch;
-    commitsController.repo = repo;
+    commitsController.repo   = repo;
     [self.navigationController pushViewController:commitsController animated:YES];
 }
 
