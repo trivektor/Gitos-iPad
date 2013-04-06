@@ -8,7 +8,6 @@
 
 #import "ReposViewController.h"
 #import "RepoCell.h"
-#import "Repo.h"
 #import "RepoViewController.h"
 
 @interface ReposViewController ()

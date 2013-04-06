@@ -7,8 +7,8 @@
 //
 
 #import "Branch.h"
-#import "Repo.h"
 #import "RepoTreeNode.h"
+#import "RepoTreeCell.h"
 
 @interface RepoTreeViewController : UIViewController <UITableViewDataSource, UITableViewDelegate>
 
@@ -23,9 +23,10 @@
 @property (nonatomic, strong) MBProgressHUD *hud;
 
 - (void)performHouseKeepingTasks;
+- (void)registerEvents;
 - (void)fetchData;
-- (void)fetchTopLayer;
-- (void)fetchTree;
+- (void)displayTopLayer:(NSNotification *)notication;
+- (void)displayTree:(NSNotification *)notification;
 - (void)fetchBlob;
 - (void)showCommitForBranch;
 

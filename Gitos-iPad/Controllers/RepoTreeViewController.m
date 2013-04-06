@@ -9,9 +9,6 @@
 #import "RepoTreeViewController.h"
 #import "RawFileViewController.h"
 #import "CommitsViewController.h"
-#import "RepoTreeCell.h"
-#import "RepoTreeNode.h"
-#import "RepoTreeCell.h"
 
 @interface RepoTreeViewController ()
 
@@ -19,7 +16,7 @@
 
 @implementation RepoTreeViewController
 
-@synthesize accessToken, accessTokenParams, treeTable, repo, node, hud;
+@synthesize treeTable, treeNodes, repo, node, hud, branch;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -27,11 +24,6 @@
     if (self) {
         // Custom initialization
         self.treeNodes = [[NSMutableArray alloc] initWithCapacity:0];
-        self.accessToken = [SSKeychain passwordForService:@"access_token" account:@"gitos"];
-        self.accessTokenParams = [NSMutableDictionary dictionaryWithObjectsAndKeys:
-                                  self.accessToken, @"access_token",
-                                  @"bearer", @"token_type",
-                                  nil];
     }
     return self;
 }
@@ -41,113 +33,72 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
     [self performHouseKeepingTasks];
+    [self registerEvents];
     [self fetchData];
 }
 
 - (void)performHouseKeepingTasks
 {
-    if (self.node == (id)[NSNull null]) {
-        self.navigationItem.title = [self.branch getName];
-    } else if ([self.node isTree]) {
-        self.navigationItem.title = self.node.path;
+    if (node == (id)[NSNull null]) {
+        self.navigationItem.title = [branch getName];
+    } else if ([node isTree]) {
+        self.navigationItem.title = node.path;
     }
 
     hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
     hud.mode = MBProgressHUDAnimationFade;
     hud.labelText = LOADING_MESSAGE;
 
-    UIBarButtonItem *commitButton = [[UIBarButtonItem alloc] initWithTitle:@"Commits" style:UIBarButtonItemStyleBordered target:self action:@selector(showCommitForBranch)];
+    UIBarButtonItem *commitButton = [[UIBarButtonItem alloc] initWithTitle:@"Commits"
+                                                                     style:UIBarButtonItemStyleBordered
+                                                                    target:self
+                                                                    action:@selector(showCommitForBranch)];
     [self.navigationItem setRightBarButtonItem:commitButton];
+}
+
+- (void)registerEvents
+{
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(displayTopLayer:)
+                                                 name:@"TopLayerFetched"
+                                               object:nil];
+
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(displayTree:)
+                                                 name:@"TreeFetched"
+                                               object:nil];
 }
 
 - (void)fetchData
 {
-    if (self.node == (id)[NSNull null]) {
-        [self fetchTopLayer];
-    } else if ([self.node isTree]) {
-        [self fetchTree];
+    if (node == (id)[NSNull null]) {
+        [repo fetchTopLayerForBranch:branch];
+    } else if ([node isTree]) {
+        [node fetchTree];
     }
-}
-
-- (void)fetchTopLayer
-{
-    NSString *treeUrl = [[self.repo getTreeUrl] stringByAppendingString:[self.branch getName]];
-    
-    NSURL *repoTreeUrl = [NSURL URLWithString:treeUrl];
-    
-    AFHTTPClient *httpClient = [[AFHTTPClient alloc] initWithBaseURL:repoTreeUrl];
-    
-    NSMutableURLRequest *getRequest = [httpClient requestWithMethod:@"GET" path:repoTreeUrl.absoluteString parameters:self.accessTokenParams];
-    
-    AFHTTPRequestOperation *operation = [[AFHTTPRequestOperation alloc] initWithRequest:getRequest];
-    
-    [operation setCompletionBlockWithSuccess:
-     ^(AFHTTPRequestOperation *operation, id responseObject){
-         NSString *response = [operation responseString];
-         
-         NSDictionary *json = [NSJSONSerialization JSONObjectWithData:[response dataUsingEncoding:NSUTF8StringEncoding] options:NSJSONReadingMutableContainers error:nil];
-         
-         NSArray *treeNodes = [json valueForKey:@"tree"];
-         
-         RepoTreeNode *treeNode;
-         
-         for (int i=0; i < treeNodes.count; i++) {
-             treeNode = [[RepoTreeNode alloc] initWithData:[treeNodes objectAtIndex:i]];
-             [self.treeNodes addObject:treeNode];
-         }
-         [treeTable reloadData];
-         [hud setHidden:YES];
-     }
-     failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-         NSLog(@"%@", error);
-         [hud setHidden:YES];
-     }];
-    
-    [operation start];
-}
-
-- (void)fetchTree
-{
-    NSURL *treeNodeUrl = [NSURL URLWithString:self.node.url];
-    
-    AFHTTPClient *httpClient = [[AFHTTPClient alloc] initWithBaseURL:treeNodeUrl];
-    
-    NSMutableURLRequest *getRequest = [httpClient requestWithMethod:@"GET" path:treeNodeUrl.absoluteString parameters:self.accessTokenParams];
-    
-    AFHTTPRequestOperation *operation = [[AFHTTPRequestOperation alloc] initWithRequest:getRequest];
-    
-    [operation setCompletionBlockWithSuccess:
-     ^(AFHTTPRequestOperation *operation, id responseObject){
-         NSString *response = [operation responseString];
-         
-         NSDictionary *json = [NSJSONSerialization JSONObjectWithData:[response dataUsingEncoding:NSUTF8StringEncoding] options:NSJSONReadingMutableContainers error:nil];
-         
-         NSArray *treeNodes = [json valueForKey:@"tree"];
-         
-         RepoTreeNode *treeNode;
-         
-         for (int i=0; i < treeNodes.count; i++) {
-             treeNode = [[RepoTreeNode alloc] initWithData:[treeNodes objectAtIndex:i]];
-             [self.treeNodes addObject:treeNode];
-         }
-         [treeTable reloadData];
-         [hud setHidden:YES];
-     }
-     failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-         NSLog(@"%@", error);
-         [hud setHidden:YES];
-     }];
-    
-    [operation start];
 }
 
 - (void)fetchBlob
 {
     RawFileViewController *rawFileController = [[RawFileViewController alloc] init];
-    rawFileController.repo = self.repo;
-    rawFileController.branch = self.branch;
-    rawFileController.fileName = self.node.path;
+    rawFileController.repo = repo;
+    rawFileController.branch = branch;
+    rawFileController.fileName = node.path;
     [self.navigationController pushViewController:rawFileController animated:YES];
+}
+
+- (void)displayTopLayer:(NSNotification *)notication
+{
+    treeNodes = [notication.userInfo valueForKey:@"Nodes"];
+    [treeTable reloadData];
+    [hud setHidden:YES];
+}
+
+- (void)displayTree:(NSNotification *)notification
+{
+    [treeNodes addObjectsFromArray:[notification.userInfo valueForKey:@"Nodes"]];
+    [treeTable reloadData];
+    [hud setHidden:YES];
 }
 
 - (void)didReceiveMemoryWarning
@@ -187,14 +138,14 @@
     
     if ([selectedNode isBlob]) {
         RawFileViewController *rawFileController = [[RawFileViewController alloc] init];
-        rawFileController.repo = self.repo;
-        rawFileController.branch = self.branch;
+        rawFileController.repo = repo;
+        rawFileController.branch = branch;
         rawFileController.fileName = [selectedNode path];
         [self.navigationController pushViewController:rawFileController animated:YES];
     } else if ([selectedNode isTree]) {
         RepoTreeViewController *repoTreeController = [[RepoTreeViewController alloc] init];
-        repoTreeController.branch = self.branch;
-        repoTreeController.repo = self.repo;
+        repoTreeController.branch = branch;
+        repoTreeController.repo = repo;
         repoTreeController.node = selectedNode;
         [self.navigationController pushViewController:repoTreeController animated:YES];
     }
@@ -203,8 +154,8 @@
 - (void)showCommitForBranch
 {
     CommitsViewController *commitsController = [[CommitsViewController alloc] init];
-    commitsController.branch = self.branch;
-    commitsController.repo = self.repo;
+    commitsController.branch = branch;
+    commitsController.repo = repo;
     [self.navigationController pushViewController:commitsController animated:YES];
 }
 
