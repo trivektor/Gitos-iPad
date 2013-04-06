@@ -261,8 +261,6 @@
 		B55D916516B7B49A009CB90F /* RawFileViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B55D916316B7B497009CB90F /* RawFileViewController.xib */; };
 		B55D916916B7B4F0009CB90F /* GistRawFileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B55D916716B7B4EA009CB90F /* GistRawFileViewController.m */; };
 		B55D916A16B7B4F0009CB90F /* GistRawFileViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B55D916816B7B4EE009CB90F /* GistRawFileViewController.xib */; };
-		B55D916D16B7B563009CB90F /* RepoTreeCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B55D916C16B7B562009CB90F /* RepoTreeCell.m */; };
-		B55D916F16B7B590009CB90F /* RepoTreeCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B55D916E16B7B58F009CB90F /* RepoTreeCell.xib */; };
 		B55D917316B7B5C5009CB90F /* OthersViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B55D917116B7B5C0009CB90F /* OthersViewController.m */; };
 		B55D917416B7B5C5009CB90F /* OthersViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B55D917216B7B5C2009CB90F /* OthersViewController.xib */; };
 		B55D917816B7B61B009CB90F /* ProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B55D917616B7B613009CB90F /* ProfileViewController.m */; };
@@ -286,6 +284,8 @@
 		B574CF3916FFB28C0077D353 /* doxy.css in Resources */ = {isa = PBXBuildFile; fileRef = B574CF3816FFB28C0077D353 /* doxy.css */; };
 		B57E39AA16FE5CBB006C2BD1 /* YRDropdownView.m in Sources */ = {isa = PBXBuildFile; fileRef = B57E39A916FE5CBB006C2BD1 /* YRDropdownView.m */; };
 		B5836C90170BFCA40012CC61 /* AppHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = B5836C8F170BFCA40012CC61 /* AppHelper.m */; };
+		B5836C961710C8B60012CC61 /* RepoTreeCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B5836C951710C8B60012CC61 /* RepoTreeCell.m */; };
+		B5836C981710C8C90012CC61 /* RepoTreeCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B5836C971710C8C90012CC61 /* RepoTreeCell.xib */; };
 		B5BC452116BA5E3F00434848 /* prettify.js in Resources */ = {isa = PBXBuildFile; fileRef = B5BC451C16BA5DFD00434848 /* prettify.js */; };
 		B5BC452516BCEE7100434848 /* MasterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B5BC452316BCEE7000434848 /* MasterViewController.m */; };
 		B5BC452616BCEE7100434848 /* MasterViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B5BC452416BCEE7000434848 /* MasterViewController.xib */; };
@@ -649,9 +649,6 @@
 		B55D916616B7B4E9009CB90F /* GistRawFileViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GistRawFileViewController.h; sourceTree = "<group>"; };
 		B55D916716B7B4EA009CB90F /* GistRawFileViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GistRawFileViewController.m; sourceTree = "<group>"; };
 		B55D916816B7B4EE009CB90F /* GistRawFileViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GistRawFileViewController.xib; sourceTree = "<group>"; };
-		B55D916B16B7B560009CB90F /* RepoTreeCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RepoTreeCell.h; sourceTree = "<group>"; };
-		B55D916C16B7B562009CB90F /* RepoTreeCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RepoTreeCell.m; sourceTree = "<group>"; };
-		B55D916E16B7B58F009CB90F /* RepoTreeCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RepoTreeCell.xib; sourceTree = "<group>"; };
 		B55D917016B7B5BD009CB90F /* OthersViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OthersViewController.h; sourceTree = "<group>"; };
 		B55D917116B7B5C0009CB90F /* OthersViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OthersViewController.m; sourceTree = "<group>"; };
 		B55D917216B7B5C2009CB90F /* OthersViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = OthersViewController.xib; sourceTree = "<group>"; };
@@ -688,6 +685,9 @@
 		B57E39A916FE5CBB006C2BD1 /* YRDropdownView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YRDropdownView.m; sourceTree = "<group>"; };
 		B5836C8E170BFCA40012CC61 /* AppHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppHelper.h; sourceTree = "<group>"; };
 		B5836C8F170BFCA40012CC61 /* AppHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppHelper.m; sourceTree = "<group>"; };
+		B5836C941710C8B60012CC61 /* RepoTreeCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RepoTreeCell.h; sourceTree = "<group>"; };
+		B5836C951710C8B60012CC61 /* RepoTreeCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RepoTreeCell.m; sourceTree = "<group>"; };
+		B5836C971710C8C90012CC61 /* RepoTreeCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RepoTreeCell.xib; sourceTree = "<group>"; };
 		B5BC451C16BA5DFD00434848 /* prettify.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = prettify.js; sourceTree = "<group>"; };
 		B5BC452216BCEE6F00434848 /* MasterViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MasterViewController.h; sourceTree = "<group>"; };
 		B5BC452316BCEE7000434848 /* MasterViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MasterViewController.m; sourceTree = "<group>"; };
@@ -1198,9 +1198,6 @@
 				B55D915C16B7B421009CB90F /* GistDetailsCell.h */,
 				B55D915D16B7B422009CB90F /* GistDetailsCell.m */,
 				B55D915F16B7B445009CB90F /* GistDetailsCell.xib */,
-				B55D916B16B7B560009CB90F /* RepoTreeCell.h */,
-				B55D916C16B7B562009CB90F /* RepoTreeCell.m */,
-				B55D916E16B7B58F009CB90F /* RepoTreeCell.xib */,
 				B55D917F16B7B6AB009CB90F /* RepoSearchResultCell.h */,
 				B55D918016B7B6AC009CB90F /* RepoSearchResultCell.m */,
 				B55D918216B7B6D2009CB90F /* RepoSearchResultCell.xib */,
@@ -1222,6 +1219,9 @@
 				B54F69E916D2FB3500978DD9 /* NotificationCell.h */,
 				B54F69EA16D2FB3600978DD9 /* NotificationCell.m */,
 				B54F69EC16D2FB4300978DD9 /* NotificationCell.xib */,
+				B5836C941710C8B60012CC61 /* RepoTreeCell.h */,
+				B5836C951710C8B60012CC61 /* RepoTreeCell.m */,
+				B5836C971710C8C90012CC61 /* RepoTreeCell.xib */,
 			);
 			path = Cells;
 			sourceTree = "<group>";
@@ -1358,7 +1358,6 @@
 				B55D916016B7B446009CB90F /* GistDetailsCell.xib in Resources */,
 				B55D916516B7B49A009CB90F /* RawFileViewController.xib in Resources */,
 				B55D916A16B7B4F0009CB90F /* GistRawFileViewController.xib in Resources */,
-				B55D916F16B7B590009CB90F /* RepoTreeCell.xib in Resources */,
 				B55D917416B7B5C5009CB90F /* OthersViewController.xib in Resources */,
 				B55D917916B7B61B009CB90F /* ProfileViewController.xib in Resources */,
 				B55D917E16B7B65C009CB90F /* RepoSearchViewController.xib in Resources */,
@@ -1510,6 +1509,7 @@
 				B574CF3616FFAAA00077D353 /* sons-of-obsidian.css in Resources */,
 				B574CF3716FFAAA00077D353 /* sunburst.css in Resources */,
 				B574CF3916FFB28C0077D353 /* doxy.css in Resources */,
+				B5836C981710C8C90012CC61 /* RepoTreeCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1561,7 +1561,6 @@
 				B55D915E16B7B423009CB90F /* GistDetailsCell.m in Sources */,
 				B55D916416B7B49A009CB90F /* RawFileViewController.m in Sources */,
 				B55D916916B7B4F0009CB90F /* GistRawFileViewController.m in Sources */,
-				B55D916D16B7B563009CB90F /* RepoTreeCell.m in Sources */,
 				B55D917316B7B5C5009CB90F /* OthersViewController.m in Sources */,
 				B55D917816B7B61B009CB90F /* ProfileViewController.m in Sources */,
 				B55D917D16B7B65C009CB90F /* RepoSearchViewController.m in Sources */,
@@ -1625,6 +1624,7 @@
 				B569D0D216FE6F0F002216DD /* Authorization.m in Sources */,
 				B569D0D516FE7923002216DD /* GitosConstants.m in Sources */,
 				B5836C90170BFCA40012CC61 /* AppHelper.m in Sources */,
+				B5836C961710C8B60012CC61 /* RepoTreeCell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

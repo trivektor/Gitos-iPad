@@ -23,7 +23,7 @@
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
         // Custom initialization
-        self.treeNodes = [[NSMutableArray alloc] initWithCapacity:0];
+        treeNodes = [[NSMutableArray alloc] initWithCapacity:0];
     }
     return self;
 }
@@ -53,6 +53,9 @@
                                                                      style:UIBarButtonItemStyleBordered
                                                                     target:self
                                                                     action:@selector(showCommitForBranch)];
+
+    [treeTable registerNib:[UINib nibWithNibName:@"RepoTreeCell" bundle:nil] forCellReuseIdentifier:@"RepoTreeCell"];
+
     [self.navigationItem setRightBarButtonItem:commitButton];
 }
 
@@ -119,7 +122,7 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    static NSString *cellIdentifier = @"Cell";
+    static NSString *cellIdentifier = @"RepoTreeCell";
     
     RepoTreeCell *cell = [treeTable dequeueReusableCellWithIdentifier:cellIdentifier];
     

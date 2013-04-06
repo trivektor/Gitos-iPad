@@ -2,7 +2,7 @@
 //  RepoTreeCell.h
 //  Gitos-iPad
 //
-//  Created by Tri Vuong on 1/28/13.
+//  Created by Tri Vuong on 4/6/13.
 //  Copyright (c) 2013 Crafted By Tri. All rights reserved.
 //
 
@@ -11,7 +11,9 @@
 
 @interface RepoTreeCell : UITableViewCell
 
-@property (nonatomic, strong) RepoTreeNode *node;
+@property (weak, nonatomic) IBOutlet UILabel *iconLabel;
+@property (weak, nonatomic) IBOutlet UILabel *nameLabel;
+@property (strong, nonatomic) RepoTreeNode *node;
 
 - (void)render;
 
