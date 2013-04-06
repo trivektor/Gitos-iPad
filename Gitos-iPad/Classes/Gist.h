@@ -26,5 +26,6 @@
 - (NSDictionary *)getFiles;
 - (NSInteger)getNumberOfComments;
 - (NSString *)convertToRelativeDate:(NSString *)originalDateString;
++ (void)fetchGistsForUser:(NSString *)username andPage:(int)page;
 
 @end

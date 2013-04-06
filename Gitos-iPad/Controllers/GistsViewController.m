@@ -8,7 +8,6 @@
 
 #import "GistsViewController.h"
 #import "GistCell.h"
-#import "Gist.h"
 #import "GistViewController.h"
 
 @interface GistsViewController ()
@@ -17,16 +16,15 @@
 
 @implementation GistsViewController
 
-@synthesize currentPage, hud, user, accessToken, gistsTable;
+@synthesize currentPage, hud, user, gistsTable, gists;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
         // Custom initialization
-        self.gists = [[NSMutableArray alloc] initWithCapacity:0];
-        self.currentPage = 1;
-        self.accessToken = [SSKeychain passwordForService:@"access_token" account:@"gitos"];
+        gists = [[NSMutableArray alloc] initWithCapacity:0];
+        currentPage = 1;
     }
     return self;
 }
@@ -36,12 +34,16 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
     self.navigationItem.title = @"Gists";
-    self.hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
-    self.hud.mode = MBProgressHUDAnimationFade;
-    self.hud.labelText = @"Loading";
+
+    hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+    hud.mode = MBProgressHUDAnimationFade;
+    hud.labelText = @"Loading";
+
     [self registerNib];
+    [self registerEvents];
+
     [self setupPullToRefresh];
-    [self getUserInfo];
+    [self getUserGists:currentPage++];
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -67,6 +69,11 @@
     [gistsTable setSeparatorColor:[UIColor colorWithRed:200/255.0 green:200/255.0 blue:200/255.0 alpha:1.0]];
 }
 
+- (void)registerEvents
+{
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(displayUserGists:) name:@"UserGistsFetched" object:nil];
+}
+
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
     return 1;
@@ -74,7 +81,7 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return [self.gists count];
+    return [gists count];
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -90,7 +97,7 @@
         cell = [[GistCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:@"GistCell"];
     }
     
-    cell.gist = [self.gists objectAtIndex:indexPath.row];
+    cell.gist = [gists objectAtIndex:indexPath.row];
     [cell render];
     return cell;
     
@@ -99,8 +106,8 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     GistViewController *gistController = [[GistViewController alloc] init];
-    gistController.gist = [self.gists objectAtIndex:indexPath.row];
-    gistController.user = self.user;
+    gistController.gist = [gists objectAtIndex:indexPath.row];
+    gistController.user = user;
     [self.navigationController pushViewController:gistController animated:YES];
 }
 
@@ -108,88 +115,34 @@
 {
     if (([scrollView contentOffset].y + scrollView.frame.size.height) == scrollView.contentSize.height) {
         // Bottom of UITableView reached
-        [self.hud show:YES];
+        [hud show:YES];
         [self getUserGists:self.currentPage++];
     }
 }
 
-- (void)getUserInfo
+- (void)getUserGists:(int)page
 {
-    
-    NSURL *userUrl = [NSURL URLWithString:@"https://api.github.com/user"];
-    
-    AFHTTPClient *httpClient = [[AFHTTPClient alloc] initWithBaseURL:userUrl];
-    
-    NSMutableDictionary *params = [NSMutableDictionary dictionaryWithObjectsAndKeys:
-                                   self.accessToken, @"access_token",
-                                   @"bearer", @"token_type",
-                                   nil];
-    
-    NSMutableURLRequest *getRequest = [httpClient requestWithMethod:@"GET" path:userUrl.absoluteString parameters:params];
-    
-    AFHTTPRequestOperation *operation = [[AFHTTPRequestOperation alloc] initWithRequest:getRequest];
-    
-    [operation setCompletionBlockWithSuccess:
-     ^(AFHTTPRequestOperation *operation, id responseObject){
-         NSString *response = [operation responseString];
-         
-         NSDictionary *json = [NSJSONSerialization JSONObjectWithData:[response dataUsingEncoding:NSUTF8StringEncoding] options:NSJSONReadingMutableContainers error:nil];
-         
-         self.user = [[User alloc] initWithData:json];
-         [self getUserGists:self.currentPage++];
-     }
-     failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-         NSLog(@"%@", error);
-     }];
-    
-    [operation start];
+    if (user == nil) {
+        [Gist fetchGistsForUser:[AppHelper getAccountUsername] andPage:currentPage++];
+    } else {
+        [Gist fetchGistsForUser:[user getLogin] andPage:currentPage++];
+    }
 }
 
-- (void)getUserGists:(NSInteger)page
+- (void)displayUserGists:(NSNotification *)notification
 {
-    NSURL *gistsUrl = [NSURL URLWithString:[self.user getGistsUrl]];
-    
-    AFHTTPClient *httpClient = [[AFHTTPClient alloc] initWithBaseURL:gistsUrl];
-    
-    NSMutableDictionary *params = [NSMutableDictionary dictionaryWithObjectsAndKeys:
-                                   [NSString stringWithFormat:@"%i", page], @"page",
-                                   nil];
-    
-    NSMutableURLRequest *getRequest = [httpClient requestWithMethod:@"GET" path:gistsUrl.absoluteString parameters:params];
-    
-    AFHTTPRequestOperation *operation = [[AFHTTPRequestOperation alloc] initWithRequest:getRequest];
-    
-    [operation setCompletionBlockWithSuccess:
-     ^(AFHTTPRequestOperation *operation, id responseObject){
-         NSString *response = [operation responseString];
-         
-         NSArray *gistsArray = [NSJSONSerialization JSONObjectWithData:[response dataUsingEncoding:NSUTF8StringEncoding] options:NSJSONReadingMutableContainers error:nil];
-         
-         Gist *g;
-         
-         for (int i=0; i < [gistsArray count]; i++) {
-             g = [[Gist alloc] initWithData:[gistsArray objectAtIndex:i]];
-             [self.gists addObject:g];
-         }
-         
-         [gistsTable.pullToRefreshView stopAnimating];
-         [gistsTable reloadData];
-         [self.hud hide:YES];
-     }
-     failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-         NSLog(@"%@", error);
-         [self.hud hide:YES];
-     }];
-    
-    [operation start];
+    [gists addObjectsFromArray:[notification.userInfo valueForKey:@"Gists"]];
+    [gistsTable reloadData];
+    [gistsTable.pullToRefreshView stopAnimating];
+    [hud hide:YES];
 }
 
 - (void)setupPullToRefresh
 {
-    [self.hud show:YES];
-    self.currentPage = 1;
+    [hud show:YES];
+    currentPage = 1;
     [gistsTable addPullToRefreshWithActionHandler:^{
-        [self getUserGists:self.currentPage];
+        [self getUserGists:currentPage];
     }];
 }
 
