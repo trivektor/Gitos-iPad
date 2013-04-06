@@ -10,14 +10,21 @@
 
 @interface RepoTreeNode : NSObject
 
+@property (nonatomic, strong) NSDictionary *data;
 @property (nonatomic, strong) NSString *type;
 @property (nonatomic, strong) NSString *path;
 @property (nonatomic, strong) NSString *sha;
 @property (nonatomic, strong) NSString *mode;
-@property (nonatomic) NSInteger size;
+@property (nonatomic) int size;
 @property (nonatomic, strong) NSString *url;
 
-- (id)initWithData:(NSDictionary *)data;
+- (id)initWithData:(NSDictionary *)nodeData;
+- (NSString *)getType;
+- (NSString *)getPath;
+- (NSString *)getSha;
+- (NSString *)getMode;
+- (int)getSize;
+- (NSString *)getUrl;
 - (BOOL)isTree;
 - (BOOL)isBlob;
 - (void)fetchTree;

@@ -10,35 +10,58 @@
 
 @implementation RepoTreeNode
 
-@synthesize type, path, sha, mode, size, url;
+@synthesize data, type, path, sha, mode, size, url;
 
-- (id)initWithData:(NSDictionary *)data
+- (id)initWithData:(NSDictionary *)nodeData
 {
     self = [super init];
-    
-    self.type = [data valueForKey:@"type"];
-    self.path = [data valueForKey:@"path"];
-    self.sha  = [data valueForKey:@"sha"];
-    self.mode = [data valueForKey:@"mode"];
-    self.size = [[data valueForKey:@"size"] integerValue];
-    self.url  = [data valueForKey:@"url"];
-    
+    data = nodeData;
     return self;
+}
+
+- (NSString *)getType
+{
+    return [data valueForKey:@"type"];
+}
+
+- (NSString *)getPath
+{
+    return [data valueForKey:@"path"];
+}
+
+- (NSString *)getSha
+{
+    return [data valueForKey:@"sha"];
+}
+
+- (NSString *)getMode
+{
+    return [data valueForKey:@"mode"];
+}
+
+- (int)getSize
+{
+    return [[data valueForKey:@"size"] intValue];
+}
+
+- (NSString *)getUrl
+{
+    return [data valueForKey:@"url"];
 }
 
 - (BOOL)isTree
 {
-    return [self.type isEqualToString:@"tree"];
+    return [[self getType] isEqualToString:@"tree"];
 }
 
 - (BOOL)isBlob
 {
-    return [self.type isEqualToString:@"blob"];
+    return [[self getType] isEqualToString:@"blob"];
 }
 
 - (void)fetchTree
 {
-    NSURL *treeNodeUrl = [NSURL URLWithString:self.url];
+    NSURL *treeNodeUrl = [NSURL URLWithString:[self getUrl]];
 
     AFHTTPClient *httpClient = [[AFHTTPClient alloc] initWithBaseURL:treeNodeUrl];
 
