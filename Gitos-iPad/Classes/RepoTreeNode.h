@@ -20,5 +20,6 @@
 - (id)initWithData:(NSDictionary *)data;
 - (BOOL)isTree;
 - (BOOL)isBlob;
+- (void)fetchTree;
 
 @end
