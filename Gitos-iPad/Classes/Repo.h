@@ -8,6 +8,7 @@
 
 #import <Foundation/Foundation.h>
 #import "Branch.h"
+#import "RepoTreeNode.h"
 
 @interface Repo : NSObject
 
@@ -44,5 +45,7 @@
 
 + (void)fetchReposForUser:(NSString *)username andPage:(int)page;
 + (void)fetchStarredReposForUser:(NSString *)username andPage:(int)page;
+
+- (void)fetchTopLayerForBranch:(Branch *)branch;
 
 @end
