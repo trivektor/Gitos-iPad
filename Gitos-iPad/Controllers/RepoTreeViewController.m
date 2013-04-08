@@ -28,6 +28,12 @@
     return self;
 }
 
+- (void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    [self fetchData];
+}
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];
@@ -62,7 +68,7 @@
 - (void)registerEvents
 {
     [[NSNotificationCenter defaultCenter] addObserver:self
-                                             selector:@selector(displayTopLayer:)
+                                             selector:@selector(displayTree:)
                                                  name:@"TopLayerFetched"
                                                object:nil];
 
@@ -84,22 +90,16 @@
 - (void)fetchBlob
 {
     RawFileViewController *rawFileController = [[RawFileViewController alloc] init];
-    rawFileController.repo = repo;
-    rawFileController.branch = branch;
-    rawFileController.fileName = [node getPath];
+    rawFileController.repo      = repo;
+    rawFileController.branch    = branch;
+    rawFileController.fileName  = [node getPath];
     [self.navigationController pushViewController:rawFileController animated:YES];
 }
 
-- (void)displayTopLayer:(NSNotification *)notication
-{
-    treeNodes = [notication.userInfo valueForKey:@"Nodes"];
-    [treeTable reloadData];
-    [hud setHidden:YES];
-}
 
 - (void)displayTree:(NSNotification *)notification
 {
-    [treeNodes addObjectsFromArray:[notification.userInfo valueForKey:@"Nodes"]];
+    treeNodes = [notification.userInfo valueForKey:@"Nodes"];
     [treeTable reloadData];
     [hud setHidden:YES];
 }

@@ -13,9 +13,7 @@
 @interface RepoTreeViewController : UIViewController <UITableViewDataSource, UITableViewDelegate>
 
 @property (nonatomic, weak) IBOutlet UITableView *treeTable;
-@property (nonatomic, strong) NSString *accessToken;
-@property (nonatomic, strong) NSMutableDictionary *accessTokenParams;
-@property (nonatomic, strong) NSMutableArray *treeNodes;
+@property (nonatomic, retain) NSMutableArray *treeNodes;
 @property (nonatomic, strong) NSString *branchUrl;
 @property (nonatomic, strong) Branch *branch;
 @property (nonatomic, strong) Repo *repo;
@@ -25,7 +23,7 @@
 - (void)performHouseKeepingTasks;
 - (void)registerEvents;
 - (void)fetchData;
-- (void)displayTopLayer:(NSNotification *)notication;
+- (void)displayTopLayer:(NSNotification *)notification;
 - (void)displayTree:(NSNotification *)notification;
 - (void)fetchBlob;
 - (void)showCommitForBranch;
