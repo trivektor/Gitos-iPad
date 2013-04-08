@@ -45,7 +45,7 @@
 
 - (void)performHouseKeepingTasks
 {
-    if (node == (id)[NSNull null]) {
+    if (node == nil) {
         self.navigationItem.title = [branch getName];
     } else if ([node isTree]) {
         self.navigationItem.title = [node getPath];
@@ -69,18 +69,13 @@
 {
     [[NSNotificationCenter defaultCenter] addObserver:self
                                              selector:@selector(displayTree:)
-                                                 name:@"TopLayerFetched"
-                                               object:nil];
-
-    [[NSNotificationCenter defaultCenter] addObserver:self
-                                             selector:@selector(displayTree:)
                                                  name:@"TreeFetched"
                                                object:nil];
 }
 
 - (void)fetchData
 {
-    if (node == (id)[NSNull null]) {
+    if (node == nil) {
         [repo fetchTopLayerForBranch:branch];
     } else if ([node isTree]) {
         [node fetchTree];

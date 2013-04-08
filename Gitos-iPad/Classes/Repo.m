@@ -343,7 +343,7 @@
 
          NSDictionary *userInfo = [NSDictionary dictionaryWithObject:nodes forKey:@"Nodes"];
 
-         [[NSNotificationCenter defaultCenter] postNotificationName:@"TopLayerFetched" object:nil userInfo:userInfo];
+         [[NSNotificationCenter defaultCenter] postNotificationName:@"TreeFetched" object:nil userInfo:userInfo];
      }
      failure:^(AFHTTPRequestOperation *operation, NSError *error) {
          NSLog(@"%@", error);

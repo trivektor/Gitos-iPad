@@ -159,8 +159,7 @@
     if (tableView == branchesTable) {
         RepoTreeViewController *repoTreeController = [[RepoTreeViewController alloc] init];
         repoTreeController.branch = [self.repoBranches objectAtIndex:indexPath.row];
-        repoTreeController.repo = self.repo;
-        repoTreeController.node = (id)[NSNull null];
+        repoTreeController.repo   = self.repo;
         
         [self.navigationController pushViewController:repoTreeController animated:YES];
     } else if (tableView == detailsTable) {

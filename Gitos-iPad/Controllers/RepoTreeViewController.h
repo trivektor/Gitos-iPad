@@ -23,7 +23,6 @@
 - (void)performHouseKeepingTasks;
 - (void)registerEvents;
 - (void)fetchData;
-- (void)displayTopLayer:(NSNotification *)notification;
 - (void)displayTree:(NSNotification *)notification;
 - (void)fetchBlob;
 - (void)showCommitForBranch;

@@ -63,7 +63,7 @@
         if ([[viewControllers objectAtIndex:i] isKindOfClass:[RepoTreeViewController class]]) {
             treeController = (RepoTreeViewController *)[viewControllers objectAtIndex:i];
             node = treeController.node;
-            if (node != (id)[NSNull null]) {
+            if (node != nil) {
                 [blobPaths addObject:[node getPath]];
             }
         }
