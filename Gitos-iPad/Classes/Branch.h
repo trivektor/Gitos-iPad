@@ -7,17 +7,25 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "Repo.h"
+
+@class Repo;
 
 @interface Branch : NSObject
 
 @property (nonatomic, strong) NSDictionary *data;
 @property (nonatomic, strong) NSString *name;
 @property (nonatomic, strong) NSString *sha;
+@property (nonatomic, strong) NSString *endSha;
+@property (nonatomic, strong) Repo *repo;
 
 - (id)initWithData:(NSDictionary *)branchData;
 
 - (NSString *)getName;
 - (NSDictionary *)getCommit;
 - (NSString *)getSha;
+- (NSString *)getCommitsUrl;
+- (NSString *)getCommitsIndexUrl;
+- (void)fetchCommits;
 
 @end
