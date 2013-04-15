@@ -15,7 +15,6 @@
 
 @property (nonatomic, strong) NSDictionary *data;
 @property (nonatomic, strong) NSString *name;
-@property (nonatomic, strong) NSString *sha;
 @property (nonatomic, strong) NSString *endSha;
 @property (nonatomic, strong) Repo *repo;
 

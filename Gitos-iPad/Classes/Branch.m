@@ -12,7 +12,7 @@
 
 @implementation Branch
 
-@synthesize name, data, repo;
+@synthesize name, data, repo, endSha;
 
 static int PER_PAGE = 30;
 
@@ -61,11 +61,11 @@ static int PER_PAGE = 30;
     NSString *sha;
     NSInteger *startIndex;
 
-    if (self.endSha == (id)[NSNull null] || self.endSha == nil) {
+    if (endSha == (id)[NSNull null] || endSha == nil) {
         sha = [self getSha];
         startIndex = 0;
     } else {
-        sha = self.endSha;
+        sha = endSha;
         startIndex = 1;
     }
 
@@ -93,7 +93,7 @@ static int PER_PAGE = 30;
              [commits addObject:[[Commit alloc] initWithData:[json objectAtIndex:i]]];
          }
 
-         self.endSha = [[commits lastObject] getSha];
+         endSha = [[commits lastObject] getSha];
 
          NSDictionary *userInfo = [NSDictionary dictionaryWithObject:commits forKey:@"Commits"];
 
