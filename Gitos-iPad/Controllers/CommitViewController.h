@@ -11,15 +11,14 @@
 
 @interface CommitViewController : UIViewController <UIWebViewDelegate>
 
-@property (nonatomic, strong) NSString *accessToken;
 @property (nonatomic, strong) NSString *branch;
 @property (nonatomic, strong) Commit *commit;
 @property (nonatomic, strong) MBProgressHUD *hud;
 @property (nonatomic, weak) IBOutlet UIWebView *commitView;
 
 - (void)performHouseKeepingTasks;
+- (void)registerEvents;
 - (void)fetchCommitDetails;
-- (void)displayCommitDetails;
-- (NSString *)encodeHtmlEntities:(NSString *)rawHtmlString;
+- (void)displayCommitDetails:(NSNotification *)notification;
 
 @end
