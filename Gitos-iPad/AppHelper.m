@@ -25,4 +25,9 @@
     return [SSKeychain passwordForService:@"username" account:@"gitos"];
 }
 
++ (NSString *)getDateFormat
+{
+    return @"yyyy-MM-dd'T'HH:mm:ssZZ";
+}
+
 @end

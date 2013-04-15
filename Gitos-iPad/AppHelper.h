@@ -13,5 +13,6 @@
 + (NSString *)getAccessToken;
 + (NSDictionary *)getAccessTokenParams;
 + (NSString *)getAccountUsername;
++ (NSString *)getDateFormat;
 
 @end

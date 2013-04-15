@@ -17,6 +17,8 @@
 @property (nonatomic, strong) NSMutableArray *organizations;
 
 - (void)performHouseKeepingTasks;
+- (void)registerEvents;
 - (void)fetchOrganizations;
+- (void)displayOrganizations:(NSNotification *)notification;
 
 @end

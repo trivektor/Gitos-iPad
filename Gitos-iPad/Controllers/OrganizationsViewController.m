@@ -23,9 +23,7 @@
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
         // Custom initialization
-        self.accessToken = [SSKeychain passwordForService:@"access_token" account:@"gitos"];
-
-        self.organizations = [[NSMutableArray alloc] initWithCapacity:0];
+        organizations = [[NSMutableArray alloc] initWithCapacity:0];
     }
     return self;
 }
@@ -35,49 +33,34 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
     [self performHouseKeepingTasks];
+    [self registerEvents];
     [self fetchOrganizations];
 }
 
 - (void)performHouseKeepingTasks
 {
     self.navigationItem.title = @"Organizations";
-    self.hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
-    self.hud.mode = MBProgressHUDAnimationFade;
-    self.hud.labelText = @"Loading";
+    hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+    hud.mode = MBProgressHUDAnimationFade;
+    hud.labelText = @"Loading";
+}
+
+- (void)registerEvents
+{
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(displayOrganizations:) name:@"OrganizationsFetched" object:nil];
 }
 
 - (void)fetchOrganizations
 {
-    NSURL *organizationsUrl = [NSURL URLWithString:[self.user getOrganizationsUrl]];
+    [Organization fetchUserOrganizations:user];
+    [hud show:YES];
+}
 
-    AFHTTPClient *httpClient = [[AFHTTPClient alloc] initWithBaseURL:organizationsUrl];
-
-    NSMutableDictionary *params = [NSMutableDictionary dictionaryWithObjectsAndKeys:
-                                   self.accessToken, @"access_token",
-                                   nil];
-    
-    NSMutableURLRequest *getRequest = [httpClient requestWithMethod:@"GET" path:organizationsUrl.absoluteString parameters:params];
-
-    AFHTTPRequestOperation *operation = [[AFHTTPRequestOperation alloc] initWithRequest:getRequest];
-    
-    [operation setCompletionBlockWithSuccess:
-     ^(AFHTTPRequestOperation *operation, id responseObject){
-         NSString *response = [operation responseString];
-         
-         NSArray *json = [NSJSONSerialization JSONObjectWithData:[response dataUsingEncoding:NSUTF8StringEncoding] options:NSJSONReadingMutableContainers error:nil];
-         
-         for (int i=0; i < json.count; i++) {
-             [self.organizations addObject:[[Organization alloc] initWithData:[json objectAtIndex:i]]];
-         }
-         [organizationsTable reloadData];
-         [self.hud hide:YES];
-     }
-     failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-         NSLog(@"%@", error);
-         [self.hud hide:YES];
-     }];
-    
-    [operation start];
+- (void)displayOrganizations:(NSNotification *)notification
+{
+    organizations = [notification.userInfo valueForKey:@"Organizations"];
+    [organizationsTable reloadData];
+    [hud hide:YES];
 }
 
 - (void)didReceiveMemoryWarning

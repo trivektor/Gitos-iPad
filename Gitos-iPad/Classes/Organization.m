@@ -15,87 +15,89 @@
 - (id)initWithData:(NSDictionary *)organizationData
 {
     self = [super init];
-    self.data = organizationData;
-    self.relativeDateDescriptor = [[RelativeDateDescriptor alloc] initWithPriorDateDescriptionFormat:@"%@ ago" postDateDescriptionFormat:@"in %@"];
-    self.dateFormatter = [[NSDateFormatter alloc] init];
-    self.dateFormatter.dateFormat = @"yyyy-MM-dd'T'HH:mm:ssZZ";
+    data = organizationData;
+
+    relativeDateDescriptor = [[RelativeDateDescriptor alloc] initWithPriorDateDescriptionFormat:@"%@ ago" postDateDescriptionFormat:@"in %@"];
+    dateFormatter = [[NSDateFormatter alloc] init];
+    dateFormatter.dateFormat = [AppHelper getDateFormat];
+
     return self;
 }
 
 - (NSString *)getName
 {
-    return [self.data valueForKey:@"name"];
+    return [data valueForKey:@"name"];
 }
 
 - (NSString *)getLocation
 {
-    return [self.data valueForKey:@"location"];
+    return [data valueForKey:@"location"];
 }
 
 - (NSString *)getEventsUrl
 {
-    return [self.data valueForKey:@"events_url"];
+    return [data valueForKey:@"events_url"];
 }
 
 - (NSString *)getUrl
 {
-    return [self.data valueForKey:@"url"];
+    return [data valueForKey:@"url"];
 }
 
 - (NSString *)getMembersUrl
 {
-    return [self.data valueForKey:@"members_url"];
+    return [data valueForKey:@"members_url"];
 }
 
 - (NSString *)getAvatarUrl
 {
-    return [self.data valueForKey:@"avatar_url"];
+    return [data valueForKey:@"avatar_url"];
 }
 
 - (NSString *)getReposUrl
 {
-    return [self.data valueForKey:@"repos_url"];
+    return [data valueForKey:@"repos_url"];
 }
 
 - (NSString *)getLogin
 {
-    return [self.data valueForKey:@"login"];
+    return [data valueForKey:@"login"];
 }
 
 - (NSString *)getCreatedAt
 {
-    return [self convertToRelativeDate:[self.data valueForKey:@"created_at"]];
+    return [self convertToRelativeDate:[data valueForKey:@"created_at"]];
 }
 
 - (NSString *)getUpdatedAt
 {
-    return [self convertToRelativeDate:[self.data valueForKey:@"updated_at"]];
+    return [self convertToRelativeDate:[data valueForKey:@"updated_at"]];
 }
 
 - (NSString *)convertToRelativeDate:(NSString *)originalDateString
 {
-    NSDate *date  = [self.dateFormatter dateFromString:originalDateString];
-    return [self.relativeDateDescriptor describeDate:date relativeTo:[NSDate date]];
+    NSDate *date  = [dateFormatter dateFromString:originalDateString];
+    return [relativeDateDescriptor describeDate:date relativeTo:[NSDate date]];
 }
 
 - (NSString *)getWebsite
 {
-    return [self.data valueForKey:@"blog"];
+    return [data valueForKey:@"blog"];
 }
 
 - (NSInteger)getNumberOfRepos
 {
-    return [[self.data valueForKey:@"public_repos"] integerValue];
+    return [[data valueForKey:@"public_repos"] integerValue];
 }
 
 - (NSInteger)getNumberOfFollowers
 {
-    return [[self.data valueForKey:@"followers"] integerValue];
+    return [[data valueForKey:@"followers"] integerValue];
 }
 
 - (NSInteger)getNumberOfFollowing
 {
-    return [[self.data valueForKey:@"following"] integerValue];
+    return [[data valueForKey:@"following"] integerValue];
 }
 
 + (void)fetchUserOrganizations:(User *)user
