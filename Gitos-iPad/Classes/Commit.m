@@ -7,8 +7,11 @@
 //
 
 #import "Commit.h"
+#import "CommitFile.h"
 
 @implementation Commit
+
+@synthesize data;
 
 - (id)initWithData:(NSDictionary *)commitData
 {
@@ -85,6 +88,114 @@
     NSString *dateString = [author valueForKey:@"date"];
     NSDate *date  = [self.dateFormatter dateFromString:dateString];
     return [self.relativeDateDescriptor describeDate:date relativeTo:[NSDate date]];
+}
+
+- (void)fetchDetails
+{
+    NSURL *commitsUrl = [NSURL URLWithString:[self getUrl]];
+
+    AFHTTPClient *httpClient = [[AFHTTPClient alloc] initWithBaseURL:commitsUrl];
+
+    NSMutableDictionary *params = [NSMutableDictionary dictionaryWithObjectsAndKeys:
+                                   [AppHelper getAccessToken], @"access_token",
+                                   nil];
+
+    NSMutableURLRequest *getRequest = [httpClient requestWithMethod:@"GET"
+                                                               path:commitsUrl.absoluteString
+                                                         parameters:params];
+
+    AFHTTPRequestOperation *operation = [[AFHTTPRequestOperation alloc] initWithRequest:getRequest];
+
+    [operation setCompletionBlockWithSuccess:
+     ^(AFHTTPRequestOperation *operation, id responseObject){
+         NSString *response = [operation responseString];
+
+         NSDictionary *json = [NSJSONSerialization JSONObjectWithData:[response dataUsingEncoding:NSUTF8StringEncoding] options:NSJSONReadingMutableContainers error:nil];
+
+         NSDictionary *userInfo = [NSDictionary dictionaryWithObject:[[Commit alloc] initWithData:json] forKey:@"CommitDetails"];
+
+         [[NSNotificationCenter defaultCenter] postNotificationName:@"CommitDetailsFetched"
+                                                             object:nil
+                                                           userInfo:userInfo];
+     }
+     failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+         NSLog(@"%@", error);
+     }];
+
+    [operation start];
+}
+
+- (NSString *)toHTMLString
+{
+    NSString *commitHtmlString = @"";
+    NSArray *files = [self getFiles];
+    User *author = [self getAuthor];
+
+    NSString *commitMessageString = [NSString stringWithFormat:@" \
+                                     <tr id='commit-overview'> \
+                                     <td> \
+                                     <h4>%@</h4> \
+                                     <p> \
+                                     <img src='%@' class='avatar pull-left' /> \
+                                     authored %@ \
+                                     </p> \
+                                     </td> \
+                                     </tr>",
+                                     [self getMessage],
+                                     [author getAvatarUrl],
+                                     [self getCommittedAt]];
+
+    commitMessageString = [commitMessageString stringByAppendingFormat:@" \
+                           <tr> \
+                           <td>Showing %i changed %@</td> \
+                           </tr>",
+                           [files count],
+                           [files count] > 1 ? @"files" : @"file"];
+
+    NSString *markupString = @" \
+    <tr> \
+    <td> \
+    <div class='clearfix'> \
+    <b class='pull-left'>%@</b> \
+    <span class='pull-right commit-stats'> \
+    <b>%@</b> \
+    <label class='label label-success'>%@</label> \
+    <label class='label label-important'>%@</label> \
+    </span> \
+    </div> \
+    <pre><code>%@</code></pre> \
+    </td> \
+    </tr>";
+
+    for (int i=0; i < files.count; i++) {
+        CommitFile *file = [[CommitFile alloc] initWithData:[files objectAtIndex:i]];
+        NSInteger additions = [file getAdditions], deletions = [file getDeletions];
+
+        commitHtmlString = [commitHtmlString stringByAppendingFormat:markupString,
+                            [file getFileName],
+                            [NSString stringWithFormat:@"%i", (additions + deletions)],
+                            [NSString stringWithFormat:@"%i %@", additions, additions > 1 ? @"additions" : @"addition"],
+                            [NSString stringWithFormat:@"%i %@", deletions, deletions > 1 ? @"deletions" : @"deletion"],
+                            [self encodeHtmlEntities:[file getPatch]]];
+    }
+
+    NSString *commitDetailsPath = [[NSBundle mainBundle] pathForResource:@"commit_details"
+                                                                  ofType:@"html"];
+
+    NSString *commitDetails = [NSString stringWithContentsOfFile:commitDetailsPath
+                                                        encoding:NSUTF8StringEncoding
+                                                           error:nil];
+
+    NSString *contentHtml = [NSString stringWithFormat:commitDetails, commitMessageString, commitHtmlString];
+
+    return contentHtml;
+}
+
+- (NSString *)encodeHtmlEntities:(NSString *)rawHtmlString
+{
+    return [[rawHtmlString
+             stringByReplacingOccurrencesOfString: @">" withString: @"&#62;"]
+            stringByReplacingOccurrencesOfString: @"<" withString: @"&#60;"];
 }
 
 @end

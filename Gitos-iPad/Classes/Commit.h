@@ -28,5 +28,8 @@
 - (NSArray *)getFiles;
 - (User *)getAuthor;
 - (NSString *)getCommittedAt;
+- (void)fetchDetails;
+- (NSString *)toHTMLString;
+- (NSString *)encodeHtmlEntities:(NSString *)rawHtmlString;
 
 @end
