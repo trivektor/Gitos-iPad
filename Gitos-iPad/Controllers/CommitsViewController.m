@@ -16,16 +16,14 @@
 
 @implementation CommitsViewController
 
-static NSInteger PER_PAGE = 100;
+@synthesize branch, hud, commitsTable, commits;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
         // Custom initialization
-        self.accessToken = [SSKeychain passwordForService:@"access_token" account:@"gitos"];
-        self.commits = [[NSMutableArray alloc] initWithCapacity:0];
-        self.currentPage = 1;
+        commits = [[NSMutableArray alloc] initWithCapacity:0];
     }
     return self;
 }
@@ -36,21 +34,34 @@ static NSInteger PER_PAGE = 100;
     // Do any additional setup after loading the view from its nib.
     [self performHouseKeepingTasks];
     [self registerNib];
+    [self registerEvents];
     [self fetchCommits];
 }
 
 - (void)performHouseKeepingTasks
 {
     self.navigationItem.title = @"Commits";
-    self.hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
-    self.hud.mode = MBProgressHUDAnimationFade;
-    self.hud.labelText = LOADING_MESSAGE;
+    hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+    hud.mode = MBProgressHUDAnimationFade;
+    hud.labelText = LOADING_MESSAGE;
 }
 
 - (void)registerNib
 {
     UINib *nib = [UINib nibWithNibName:@"CommitCell" bundle:nil];
-    [self.commitsTable registerNib:nib forCellReuseIdentifier:@"CommitCell"];
+    [commitsTable registerNib:nib forCellReuseIdentifier:@"CommitCell"];
+}
+
+- (void)registerEvents
+{
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(displayCommits:) name:@"CommitsFetched" object:nil];
+}
+
+- (void)displayCommits:(NSNotification *)notification
+{
+    [commits addObjectsFromArray:[notification.userInfo valueForKey:@"Commits"]];
+    [commitsTable reloadData];
+    [hud hide:YES];
 }
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
@@ -60,7 +71,7 @@ static NSInteger PER_PAGE = 100;
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return [self.commits count];
+    return [commits count];
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -72,13 +83,13 @@ static NSInteger PER_PAGE = 100;
 {
     static NSString *cellIdentifier = @"CommitCell";
 
-    CommitCell *cell = [self.commitsTable dequeueReusableCellWithIdentifier:cellIdentifier];
+    CommitCell *cell = [commitsTable dequeueReusableCellWithIdentifier:cellIdentifier];
 
     if (!cell) {
         cell = [[CommitCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellIdentifier];
     }
 
-    cell.commit = [self.commits objectAtIndex:indexPath.row];
+    cell.commit = [commits objectAtIndex:indexPath.row];
     [cell render];
 
     return cell;
@@ -87,65 +98,20 @@ static NSInteger PER_PAGE = 100;
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     CommitViewController *commitController = [[CommitViewController alloc] init];
-    commitController.commit = [self.commits objectAtIndex:indexPath.row];
+    commitController.commit = [commits objectAtIndex:indexPath.row];
     [self.navigationController pushViewController:commitController animated:YES];
 }
 
 - (void)fetchCommits
 {
-    NSURL *commitsUrl = [NSURL URLWithString:[self.repo getCommitsUrl]];
-
-    AFHTTPClient *httpClient = [[AFHTTPClient alloc] initWithBaseURL:commitsUrl];
-
-    NSString *sha;
-    NSInteger *startIndex;
-
-    if (self.endSha == (id)[NSNull null] || self.endSha == nil) {
-        sha = [self.branch getSha];
-        startIndex = 0;
-    } else {
-        sha = self.endSha;
-        startIndex = 1;
-    }
-
-    NSMutableDictionary *params = [NSMutableDictionary dictionaryWithObjectsAndKeys:
-                                   sha, @"sha",
-                                   [NSString stringWithFormat:@"%i", PER_PAGE], @"per_page",
-                                   self.accessToken, @"access_token",
-                                   nil];
-
-    NSMutableURLRequest *getRequest = [httpClient requestWithMethod:@"GET" path:commitsUrl.absoluteString parameters:params];
-
-    AFHTTPRequestOperation *operation = [[AFHTTPRequestOperation alloc] initWithRequest:getRequest];
-
-    [operation setCompletionBlockWithSuccess:
-     ^(AFHTTPRequestOperation *operation, id responseObject){
-         NSString *response = [operation responseString];
-
-         NSArray *json = [NSJSONSerialization JSONObjectWithData:[response dataUsingEncoding:NSUTF8StringEncoding] options:NSJSONReadingMutableContainers error:nil];
-
-         for (int i=startIndex; i < json.count; i++) {
-             [self.commits addObject:[[Commit alloc] initWithData:[json objectAtIndex:i]]];
-         }
-
-         Commit *lastCommit = [self.commits lastObject];
-         self.endSha = [lastCommit getSha];
-
-         [self.commitsTable reloadData];
-         [self.hud hide:YES];
-     }
-     failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-         NSLog(@"%@", error);
-         [self.hud hide:YES];
-     }];
-
-    [operation start];
+    [branch fetchCommits];
+    [hud show:YES];
 }
 
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView
 {
     if (([scrollView contentOffset].y + scrollView.frame.size.height) == scrollView.contentSize.height) {
-        [self.hud show:YES];
+        [hud show:YES];
         [self fetchCommits];
     }
 }
