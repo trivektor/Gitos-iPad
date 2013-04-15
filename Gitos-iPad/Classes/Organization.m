@@ -98,4 +98,43 @@
     return [[self.data valueForKey:@"following"] integerValue];
 }
 
++ (void)fetchUserOrganizations:(User *)user
+{
+    NSURL *organizationsUrl = [NSURL URLWithString:[user getOrganizationsUrl]];
+
+    AFHTTPClient *httpClient = [[AFHTTPClient alloc] initWithBaseURL:organizationsUrl];
+
+    NSMutableDictionary *params = [NSMutableDictionary dictionaryWithObjectsAndKeys:
+                                   [AppHelper getAccessToken], @"access_token",
+                                   nil];
+
+    NSMutableURLRequest *getRequest = [httpClient requestWithMethod:@"GET" path:organizationsUrl.absoluteString parameters:params];
+
+    AFHTTPRequestOperation *operation = [[AFHTTPRequestOperation alloc] initWithRequest:getRequest];
+
+    [operation setCompletionBlockWithSuccess:
+     ^(AFHTTPRequestOperation *operation, id responseObject){
+         NSString *response = [operation responseString];
+
+         NSArray *json = [NSJSONSerialization JSONObjectWithData:[response dataUsingEncoding:NSUTF8StringEncoding] options:NSJSONReadingMutableContainers error:nil];
+
+         NSMutableArray *organizations = [[NSMutableArray alloc] initWithCapacity:0];
+
+         for (int i=0; i < json.count; i++) {
+             [organizations addObject:[[Organization alloc] initWithData:[json objectAtIndex:i]]];
+         }
+
+         NSDictionary *userInfo = [NSDictionary dictionaryWithObject:organizations forKey:@"Organizations"];
+
+         [[NSNotificationCenter defaultCenter] postNotificationName:@"OrganizationsFetched"
+                                                             object:nil
+                                                           userInfo:userInfo];
+     }
+     failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+         NSLog(@"%@", error);
+     }];
+
+    [operation start];
+}
+
 @end

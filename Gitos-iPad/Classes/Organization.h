@@ -32,4 +32,6 @@
 - (NSInteger)getNumberOfFollowers;
 - (NSInteger)getNumberOfFollowing;
 
++ (void)fetchUserOrganizations:(User *)user;
+
 @end
