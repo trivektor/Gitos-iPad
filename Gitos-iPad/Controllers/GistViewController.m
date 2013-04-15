@@ -17,19 +17,14 @@
 
 @implementation GistViewController
 
-@synthesize gist, user, hud, detailsTable, filesTable;
+@synthesize gist, user, hud, detailsTable, filesTable, files;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
         // Custom initialization
-        self.accessToken = [SSKeychain passwordForService:@"access_token" account:@"gitos"];
-        self.accessTokenParams = [NSMutableDictionary dictionaryWithObjectsAndKeys:
-                                  self.accessToken, @"access_token",
-                                  @"bearer", @"token_type",
-                                  nil];
-        self.files = [[NSMutableArray alloc] initWithCapacity:0];
+        files = [[NSMutableArray alloc] initWithCapacity:0];
     }
     return self;
 }
@@ -38,14 +33,15 @@
 {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
-    [self.navigationItem setTitle:[self.gist getName]];
+    [self.navigationItem setTitle:[gist getName]];
     [self performHouseKeepingTasks];
+    [self registerNib];
+    [self registerEvents];
     [self getGistStats];
 }
 
 - (void)performHouseKeepingTasks
 {
-    [self registerNib];
     hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
     hud.mode = MBProgressHUDAnimationFade;
     hud.labelText = LOADING_MESSAGE;
@@ -69,44 +65,24 @@
     }
 }
 
-- (void)getGistStats
+- (void)registerEvents
 {
-    NSString *githubApiHost = [AppConfig getConfigValue:@"GithubApiHost"];
-    
-    NSURL *gistDetailsUrl = [NSURL URLWithString:[githubApiHost stringByAppendingFormat:@"/gists/%@", [self.gist getId]]];
-    
-    AFHTTPClient *httpClient = [[AFHTTPClient alloc] initWithBaseURL:gistDetailsUrl];
-    
-    NSMutableURLRequest *getRequest = [httpClient requestWithMethod:@"GET" path:gistDetailsUrl.absoluteString parameters:self.accessTokenParams];
-    
-    AFHTTPRequestOperation *operation = [[AFHTTPRequestOperation alloc] initWithRequest:getRequest];
-    
-    [operation setCompletionBlockWithSuccess:^(AFHTTPRequestOperation *operation, id responseObject) {
-        NSLog(@"getting gist details");
-        NSString *response = [operation responseString];
-        
-        NSDictionary *json = [NSJSONSerialization JSONObjectWithData:[response dataUsingEncoding:NSUTF8StringEncoding] options:NSJSONReadingMutableContainers error:nil];
-        
-        [self setGistStats:json];
-        [detailsTable reloadData];
-        [hud hide:YES];
-    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-        NSLog(@"%@", error);
-        [hud hide:YES];
-    }];
-    [operation start];
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(displayGistStats:)
+                                                 name:@"GistStatsFetched" object:nil];
 }
 
-- (void)setGistStats:(NSDictionary *)stats
+- (void)getGistStats
 {
-    self.gist.details = [[NSDictionary alloc] initWithDictionary:stats];
-    
-    NSDictionary *gistFiles = [self.gist getFiles];
-    
-    for (NSString *key in [gistFiles allKeys]) {
-        [self.files addObject:[[GistFile alloc] initWithData:[gistFiles valueForKey:key]]];
-    }
+    [hud show:YES];
+    [gist fetchStats];
+}
+
+- (void)displayGistStats:(NSNotification *)notification
+{
+    files = [NSMutableArray arrayWithArray:[gist getGistFiles]];
     [filesTable reloadData];
+    [hud hide:YES];
 }
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
@@ -119,7 +95,7 @@
     if (tableView == detailsTable) {
         return 3;
     } else {
-        return [self.files count];
+        return [files count];
     }
 }
 
@@ -142,7 +118,7 @@
         cell = [[GistDetailsCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellIdentifier];
     }
 
-    [cell setGist:self.gist];
+    [cell setGist:gist];
     [cell renderForIndexPath:indexPath];
     [cell setSelectionStyle:UITableViewCellSelectionStyleNone];
     [cell setBackgroundColor:[UIColor whiteColor]];
@@ -160,7 +136,7 @@
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellIdentifier];
     }
 
-    GistFile *file = [self.files objectAtIndex:indexPath.row];
+    GistFile *file = [files objectAtIndex:indexPath.row];
     cell.textLabel.text  = [file getName];
     cell.textLabel.font  = [UIFont fontWithName:@"Arial" size:12.0];
     cell.backgroundColor = [UIColor whiteColor];
@@ -172,7 +148,7 @@
 {
     if (tableView == filesTable) {
         GistRawFileViewController *gistRawFileController = [[GistRawFileViewController alloc] init];
-        gistRawFileController.gistFile = [self.files objectAtIndex:indexPath.row];
+        gistRawFileController.gistFile = [files objectAtIndex:indexPath.row];
         [self.navigationController pushViewController:gistRawFileController animated:YES];
     }
 }

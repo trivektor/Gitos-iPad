@@ -16,15 +16,14 @@
 @property (nonatomic, strong) IBOutlet UITableView *filesTable;
 @property (nonatomic, strong) Gist *gist;
 @property (nonatomic, strong) User *user;
-@property (nonatomic, strong) NSString *accessToken;
-@property (nonatomic, strong) NSDictionary *accessTokenParams;
 @property (nonatomic, strong) NSMutableArray *files;
 @property (nonatomic, strong) MBProgressHUD *hud;
 
 - (void)performHouseKeepingTasks;
 - (void)registerNib;
+- (void)registerEvents;
 - (void)getGistStats;
-- (void)setGistStats:(NSDictionary *)stats;
+- (void)displayGistStats:(NSNotification *)notification;
 - (UITableViewCell *)cellForDetailsTableAtIndexPath:(NSIndexPath *)indexPath;
 - (UITableViewCell *)cellForBranchesTableAtIndexPath:(NSIndexPath *)indexPath;
 
