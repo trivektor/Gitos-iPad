@@ -24,8 +24,10 @@
 - (NSInteger)getNumberOfForks;
 - (NSInteger)getNumberOfFiles;
 - (NSDictionary *)getFiles;
+- (NSArray *)getGistFiles;
 - (NSInteger)getNumberOfComments;
 - (NSString *)convertToRelativeDate:(NSString *)originalDateString;
 + (void)fetchGistsForUser:(NSString *)username andPage:(int)page;
+- (void)fetchStats;
 
 @end

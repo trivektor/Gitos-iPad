@@ -7,6 +7,7 @@
 //
 
 #import "Gist.h"
+#import "GistFile.h"
 
 @implementation Gist
 
@@ -34,8 +35,8 @@
 
 - (NSString *)getDescription
 {
-    if ([self.data valueForKey:@"description"] != [NSNull null]) {
-        return [self.data valueForKey:@"description"];
+    if ([data valueForKey:@"description"] != [NSNull null]) {
+        return [data valueForKey:@"description"];
     } else {
         return @"n/a";
     }
@@ -43,35 +44,49 @@
 
 - (NSString *)getCreatedAt
 {
-    return [self convertToRelativeDate:[self.data valueForKey:@"created_at"]];
+    return [self convertToRelativeDate:[data valueForKey:@"created_at"]];
 }
 
 - (NSInteger)getNumberOfFiles
 {
-    NSArray *files = [self.data valueForKey:@"files"];
+    NSArray *files = [data valueForKey:@"files"];
     return [files count];
 }
 
 - (NSDictionary *)getFiles
 {
-    return [self.details valueForKey:@"files"];
+    return [details valueForKey:@"files"];
+}
+
+- (NSArray *)getGistFiles
+{
+    NSDictionary *gistFiles = [self getFiles];
+
+    NSMutableArray *_gistFiles = [[NSMutableArray alloc] initWithCapacity:0];
+
+    for (NSString *key in [gistFiles allKeys]) {
+        [_gistFiles addObject:[[GistFile alloc] initWithData:[gistFiles valueForKey:key]]];
+    }
+
+    return _gistFiles;
 }
 
 - (NSInteger)getNumberOfForks
 {
-    NSArray *forks = [self.details valueForKey:@"forks"];
+    NSArray *forks = [details valueForKey:@"forks"];
     return [forks count];
 }
 
 - (NSInteger)getNumberOfComments
 {
-    return [[self.details valueForKey:@"comments"] integerValue];
+    return [[details valueForKey:@"comments"] integerValue];
 }
 
 - (NSString *)convertToRelativeDate:(NSString *)originalDateString
 {
-    NSDate *date  = [self.dateFormatter dateFromString:originalDateString];
-    return [self.relativeDateDescriptor describeDate:date relativeTo:[NSDate date]];
+    NSDate *date  = [dateFormatter dateFromString:originalDateString];
+    return [relativeDateDescriptor describeDate:date
+                                     relativeTo:[NSDate date]];
 }
 
 + (void)fetchGistsForUser:(NSString *)username andPage:(int)page
@@ -109,6 +124,33 @@
          NSLog(@"%@", error);
      }];
 
+    [operation start];
+}
+
+- (void)fetchStats
+{
+    NSString *githubApiHost = [AppConfig getConfigValue:@"GithubApiHost"];
+
+    NSURL *gistDetailsUrl = [NSURL URLWithString:[githubApiHost stringByAppendingFormat:@"/gists/%@", [self getId]]];
+
+    AFHTTPClient *httpClient = [[AFHTTPClient alloc] initWithBaseURL:gistDetailsUrl];
+
+    NSMutableURLRequest *getRequest = [httpClient requestWithMethod:@"GET"
+                                                               path:gistDetailsUrl.absoluteString
+                                                         parameters:[AppHelper getAccessTokenParams]];
+
+    AFHTTPRequestOperation *operation = [[AFHTTPRequestOperation alloc] initWithRequest:getRequest];
+
+    [operation setCompletionBlockWithSuccess:^(AFHTTPRequestOperation *operation, id responseObject) {
+        NSString *response = [operation responseString];
+
+        NSDictionary *json = [NSJSONSerialization JSONObjectWithData:[response dataUsingEncoding:NSUTF8StringEncoding] options:NSJSONReadingMutableContainers error:nil];
+
+        details = json;
+        [[NSNotificationCenter defaultCenter] postNotificationName:@"GistStatsFetched" object:nil userInfo:nil];
+    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        NSLog(@"%@", error);
+    }];
     [operation start];
 }
 
