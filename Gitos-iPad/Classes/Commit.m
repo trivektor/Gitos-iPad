@@ -11,36 +11,39 @@
 
 @implementation Commit
 
-@synthesize data;
+@synthesize data, relativeDateDescriptor, dateFormatter;
+
+static NSString *DATE_FORMAT = @"yyyy-MM-dd'T'HH:mm:ssZZ";
 
 - (id)initWithData:(NSDictionary *)commitData
 {
     self = [super init];
-    self.data = commitData;
-    self.relativeDateDescriptor = [[RelativeDateDescriptor alloc] initWithPriorDateDescriptionFormat:@"%@ ago" postDateDescriptionFormat:@"in %@"];
-    self.dateFormatter = [[NSDateFormatter alloc] init];
-    self.dateFormatter.dateFormat = @"yyyy-MM-dd'T'HH:mm:ssZZ";
+    data = commitData;
+    relativeDateDescriptor = [[RelativeDateDescriptor alloc] initWithPriorDateDescriptionFormat:@"%@ ago" postDateDescriptionFormat:@"in %@"];
+
+    dateFormatter = [[NSDateFormatter alloc] init];
+    dateFormatter.dateFormat = DATE_FORMAT;
     return self;
 }
 
 - (NSString *)getSha
 {
-    return [self.data valueForKey:@"sha"];
+    return [data valueForKey:@"sha"];
 }
 
 - (NSString *)getUrl
 {
-    return [self.data valueForKey:@"url"];
+    return [data valueForKey:@"url"];
 }
 
 - (NSString *)getCommentsUrl
 {
-    return [self.data valueForKey:@"url"];
+    return [data valueForKey:@"url"];
 }
 
 - (NSDictionary *)getDetails
 {
-    return [self.data valueForKey:@"commit"];
+    return [data valueForKey:@"commit"];
 }
 
 - (NSString *)getMessage
@@ -51,7 +54,7 @@
 
 - (NSDictionary *)getParent
 {
-    return [self.data valueForKey:@"parents"];
+    return [data valueForKey:@"parents"];
 }
 
 - (NSString *)getParentSha
@@ -68,17 +71,17 @@
 
 - (NSDictionary *)getStats
 {
-    return [self.data valueForKey:@"status"];
+    return [data valueForKey:@"status"];
 }
 
 - (NSArray *)getFiles
 {
-    return [self.data valueForKey:@"files"];
+    return [data valueForKey:@"files"];
 }
 
 - (User *)getAuthor
 {
-    return [[User alloc] initWithData:[self.data valueForKey:@"author"]];
+    return [[User alloc] initWithData:[data valueForKey:@"author"]];
 }
 
 - (NSString *)getCommittedAt
@@ -86,8 +89,8 @@
     NSDictionary *details = [self getDetails];
     NSDictionary *author = [details valueForKey:@"author"];
     NSString *dateString = [author valueForKey:@"date"];
-    NSDate *date  = [self.dateFormatter dateFromString:dateString];
-    return [self.relativeDateDescriptor describeDate:date relativeTo:[NSDate date]];
+    NSDate *date  = [dateFormatter dateFromString:dateString];
+    return [relativeDateDescriptor describeDate:date relativeTo:[NSDate date]];
 }
 
 - (void)fetchDetails
