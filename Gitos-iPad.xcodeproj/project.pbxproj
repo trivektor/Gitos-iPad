@@ -116,6 +116,9 @@
 		B516545B16B7C558003F0DFA /* AppConfig.plist in Resources */ = {isa = PBXBuildFile; fileRef = B516545A16B7C558003F0DFA /* AppConfig.plist */; };
 		B5167A0F16C0EFA0000D952F /* FollowViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B5167A0D16C0EFA0000D952F /* FollowViewController.m */; };
 		B5167A1016C0EFA0000D952F /* FollowViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B5167A0E16C0EFA0000D952F /* FollowViewController.xib */; };
+		B51FCB0F17235DDA003A75A6 /* IISideController.m in Sources */ = {isa = PBXBuildFile; fileRef = B51FCB0A17235DDA003A75A6 /* IISideController.m */; };
+		B51FCB1017235DDA003A75A6 /* IIViewDeckController.m in Sources */ = {isa = PBXBuildFile; fileRef = B51FCB0C17235DDA003A75A6 /* IIViewDeckController.m */; };
+		B51FCB1117235DDA003A75A6 /* IIWrapController.m in Sources */ = {isa = PBXBuildFile; fileRef = B51FCB0E17235DDA003A75A6 /* IIWrapController.m */; };
 		B542274216CCB15D0020F300 /* Commit.m in Sources */ = {isa = PBXBuildFile; fileRef = B542274116CCB15D0020F300 /* Commit.m */; };
 		B542274616CCB75A0020F300 /* CommitViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B542274416CCB75A0020F300 /* CommitViewController.m */; };
 		B542274716CCB75A0020F300 /* CommitViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B542274516CCB75A0020F300 /* CommitViewController.xib */; };
@@ -414,6 +417,12 @@
 		B5167A0C16C0EFA0000D952F /* FollowViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FollowViewController.h; sourceTree = "<group>"; };
 		B5167A0D16C0EFA0000D952F /* FollowViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FollowViewController.m; sourceTree = "<group>"; };
 		B5167A0E16C0EFA0000D952F /* FollowViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FollowViewController.xib; sourceTree = "<group>"; };
+		B51FCB0917235DDA003A75A6 /* IISideController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IISideController.h; sourceTree = "<group>"; };
+		B51FCB0A17235DDA003A75A6 /* IISideController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IISideController.m; sourceTree = "<group>"; };
+		B51FCB0B17235DDA003A75A6 /* IIViewDeckController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IIViewDeckController.h; sourceTree = "<group>"; };
+		B51FCB0C17235DDA003A75A6 /* IIViewDeckController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IIViewDeckController.m; sourceTree = "<group>"; };
+		B51FCB0D17235DDA003A75A6 /* IIWrapController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IIWrapController.h; sourceTree = "<group>"; };
+		B51FCB0E17235DDA003A75A6 /* IIWrapController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IIWrapController.m; sourceTree = "<group>"; };
 		B542274016CCB15D0020F300 /* Commit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Commit.h; sourceTree = "<group>"; };
 		B542274116CCB15D0020F300 /* Commit.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Commit.m; sourceTree = "<group>"; };
 		B542274316CCB75A0020F300 /* CommitViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CommitViewController.h; sourceTree = "<group>"; };
@@ -860,6 +869,19 @@
 			path = vector;
 			sourceTree = "<group>";
 		};
+		B51FCB0817235DDA003A75A6 /* ViewDeck */ = {
+			isa = PBXGroup;
+			children = (
+				B51FCB0917235DDA003A75A6 /* IISideController.h */,
+				B51FCB0A17235DDA003A75A6 /* IISideController.m */,
+				B51FCB0B17235DDA003A75A6 /* IIViewDeckController.h */,
+				B51FCB0C17235DDA003A75A6 /* IIViewDeckController.m */,
+				B51FCB0D17235DDA003A75A6 /* IIWrapController.h */,
+				B51FCB0E17235DDA003A75A6 /* IIWrapController.m */,
+			);
+			path = ViewDeck;
+			sourceTree = "<group>";
+		};
 		B546038316C0FFA8007D4FB3 /* SDWebImage */ = {
 			isa = PBXGroup;
 			children = (
@@ -1042,6 +1064,7 @@
 				B542274516CCB75A0020F300 /* CommitViewController.xib */,
 				B511D43116D9A5DA00DD0ED5 /* ContributionsViewController.h */,
 				B511D43216D9A5DA00DD0ED5 /* ContributionsViewController.m */,
+				B51FCB0817235DDA003A75A6 /* ViewDeck */,
 				B511D43316D9A5DA00DD0ED5 /* ContributionsViewController.xib */,
 				B5BC456916BD996200434848 /* DetailsViewController.h */,
 				B5BC456A16BD996200434848 /* DetailsViewController.m */,
@@ -1625,6 +1648,9 @@
 				B569D0D516FE7923002216DD /* GitosConstants.m in Sources */,
 				B5836C90170BFCA40012CC61 /* AppHelper.m in Sources */,
 				B5836C961710C8B60012CC61 /* RepoTreeCell.m in Sources */,
+				B51FCB0F17235DDA003A75A6 /* IISideController.m in Sources */,
+				B51FCB1017235DDA003A75A6 /* IIViewDeckController.m in Sources */,
+				B51FCB1117235DDA003A75A6 /* IIWrapController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

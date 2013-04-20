@@ -8,32 +8,22 @@
 
 #import "AppInitialization.h"
 #import "NewsfeedViewController.h"
-#import "ReposViewController.h"
-#import "GistsViewController.h"
-#import "StarredViewController.h"
-#import "OthersViewController.h"
 #import "MasterViewController.h"
-#import "DetailsViewController.h"
+#import "IIViewDeckController.h"
 
 @implementation AppInitialization
 
 + (void)run:(UIWindow *)window
 {
-    UISplitViewController *splitController = [[UISplitViewController alloc] init];
-
-    DetailsViewController *detailsController = [[DetailsViewController alloc] init];
-    UINavigationController *detailsNavController = [[UINavigationController alloc] initWithRootViewController:detailsController];
-    
     MasterViewController *masterController = [[MasterViewController alloc] init];
-    masterController.parentViewController = splitController;
-    masterController.delegate = detailsController;
 
-    UINavigationController *masterNavController = [[UINavigationController alloc] initWithRootViewController:masterController];
+    NewsfeedViewController *newsfeedController = [[NewsfeedViewController alloc] init];
 
-    NSMutableArray *viewControllers = [[NSMutableArray alloc] initWithObjects:masterNavController, detailsNavController, nil];
-    
-    [splitController setViewControllers:viewControllers];
-    [window setRootViewController:splitController];
+    UINavigationController *mainNavController = [[UINavigationController alloc] initWithRootViewController:newsfeedController];
+
+    IIViewDeckController *deckController = [[IIViewDeckController alloc] initWithCenterViewController:mainNavController leftViewController:masterController];
+
+    [window setRootViewController:deckController];
 }
 
 @end

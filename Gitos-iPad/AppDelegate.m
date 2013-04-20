@@ -10,6 +10,7 @@
 #import "LoginViewController.h"
 #import "SSKeychain.h"
 #import "AppInitialization.h"
+#import "IIViewDeckController.h"
 
 @interface UINavigationController (autorotate)
 
