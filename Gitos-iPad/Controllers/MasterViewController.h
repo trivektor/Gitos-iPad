@@ -18,6 +18,7 @@
 @property (nonatomic, strong) id<MasterViewControllerDelegate> delegate;
 
 - (void)performHouseKeepingTasks;
+- (void)navigateToSelectedController:(UINavigationController *)selectedController;
 - (void)signout;
 
 @end

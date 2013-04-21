@@ -19,6 +19,7 @@
 #import "SearchViewController.h"
 #import "FeedbackViewController.h"
 #import "NotificationsViewController.h"
+#import "IIViewDeckController.h"
 
 @interface MasterViewController ()
 
@@ -80,32 +81,60 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    UINavigationController *selectedController;
+
     if (indexPath.row == 0) {
-        [self.delegate didSelectViewController:[[NewsfeedViewController alloc] init]];
+
+        selectedController = [[UINavigationController alloc] initWithRootViewController:[[NewsfeedViewController alloc] init]];
+
     } else if (indexPath.row == 1) {
+
         ReposViewController *reposController = [[ReposViewController alloc] init];
         reposController.hideBackButton = YES;
-        [self.delegate didSelectViewController:reposController];
+        selectedController = [[UINavigationController alloc] initWithRootViewController:reposController];
+
     } else if (indexPath.row == 2) {
-        [self.delegate didSelectViewController:[[StarredViewController alloc] init]];
+
+        selectedController = [[UINavigationController alloc] initWithRootViewController:[[StarredViewController alloc] init]];
+
     } else if (indexPath.row == 3) {
+
         GistsViewController *gistsController = [[GistsViewController alloc] init];
         gistsController.hideBackButton = YES;
-        [self.delegate didSelectViewController:gistsController];
+        selectedController = [[UINavigationController alloc] initWithRootViewController:gistsController];
+
     } else if (indexPath.row == 4) {
+
         ProfileViewController *profileController = [[ProfileViewController alloc] init];
         profileController.hideBackButton = YES;
         profileController.hideOptionsButton = YES;
-        [self.delegate didSelectViewController:profileController];
+        selectedController = [[UINavigationController alloc] initWithRootViewController:profileController];
+
     } else if (indexPath.row == 5) {
-        [self.delegate didSelectViewController:[[SearchViewController alloc] init]];
+
+        selectedController = [[UINavigationController alloc] initWithRootViewController:[[SearchViewController alloc] init]];
+
     } else if (indexPath.row == 6) {
-        [self.delegate didSelectViewController:[[NotificationsViewController alloc] init]];
+
+        selectedController = [[UINavigationController alloc] initWithRootViewController:[[NotificationsViewController alloc] init]];
+
     } else if (indexPath.row == 7) {
-        [self.delegate didSelectViewController:[[FeedbackViewController alloc] init]];
+
+        selectedController = [[UINavigationController alloc] initWithRootViewController:[[FeedbackViewController alloc] init]];
+
     } else if (indexPath.row == 8) {
         [self signout];
+        return;
     }
+
+    [self navigateToSelectedController:selectedController];
+}
+
+- (void)navigateToSelectedController:(UINavigationController *)selectedController
+{
+    [self.viewDeckController closeLeftViewAnimated:YES completion:^(IIViewDeckController *controller, BOOL success) {
+        controller.centerController = selectedController;
+    }];
 }
 
 - (void)signout
