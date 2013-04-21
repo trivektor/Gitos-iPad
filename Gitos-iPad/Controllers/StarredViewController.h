@@ -8,7 +8,7 @@
 
 #import "User.h"
 
-@interface StarredViewController : UIViewController <UITableViewDataSource, UITableViewDelegate>
+@interface StarredViewController : GitosViewController <UITableViewDataSource, UITableViewDelegate>
 
 @property (nonatomic, weak) IBOutlet UITableView *starredReposTable;
 @property (nonatomic, strong) NSString *accessToken;

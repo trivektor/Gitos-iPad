@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface GistsViewController : UIViewController <UITableViewDataSource, UITableViewDelegate>
+@interface GistsViewController : GitosViewController <UITableViewDataSource, UITableViewDelegate>
 
 @property (nonatomic, weak) IBOutlet UITableView *gistsTable;
 @property (nonatomic, strong) MBProgressHUD *hud;

@@ -70,12 +70,17 @@
 
 - (void)performHouseKeepingTasks
 {
+    [super performHousekeepingTasks];
+
     self.navigationItem.title = @"News Feed";
 
-    UIBarButtonItem *reloadButton = [[UIBarButtonItem alloc] initWithTitle:[NSString fontAwesomeIconStringForIconIdentifier:@"icon-repeat"] style:UIBarButtonItemStyleBordered target:self action:@selector(reloadNewsfeed)];
+    UIBarButtonItem *reloadButton = [[UIBarButtonItem alloc] initWithTitle:[NSString fontAwesomeIconStringForIconIdentifier:@"icon-repeat"] style:UIBarButtonItemStyleBordered
+                                                                    target:self
+                                                                    action:@selector(reloadNewsfeed)];
+
     [reloadButton setTitleTextAttributes:[NSDictionary dictionaryWithObjectsAndKeys:[UIFont fontWithName:kFontAwesomeFamilyName size:17], UITextAttributeFont, nil] forState:UIControlStateNormal];
     [self.navigationItem setRightBarButtonItem:reloadButton];
-    
+
     hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
     hud.mode = MBProgressHUDAnimationFade;
     hud.labelText = LOADING_MESSAGE;

@@ -51,6 +51,8 @@
 
 - (void)performHouseKeepingTasks
 {
+    [super performHousekeepingTasks];
+
     [scrollView setContentSize:self.view.frame.size];
     [self adjustFrameHeight];
 

@@ -31,6 +31,7 @@
     self.fontAwesomeLabel.font      = [UIFont fontWithName:kFontAwesomeFamilyName size:20];
     self.fontAwesomeLabel.textColor = [UIColor whiteColor];
     self.optionLabel.textColor      = [UIColor whiteColor];
+    self.selectionStyle             = UITableViewCellSelectionStyleGray;
 
     NSString *fontAwesome = @"", *optionLabelText = @"";
 

@@ -55,6 +55,8 @@
     [menuTable registerNib:nib forCellReuseIdentifier:@"MasterControllerCell"];
     [menuTable setBackgroundColor:[UIColor colorWithPatternImage:[UIImage imageNamed:@"magma"]]];
     [menuTable setSeparatorColor:[UIColor clearColor]];
+
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(toggleViewDeck) name:@"ToggleViewDeck" object:nil];
 }
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
@@ -168,6 +170,11 @@
 {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+- (void)toggleViewDeck
+{
+    [self.viewDeckController toggleLeftViewAnimated:YES];
 }
 
 @end

@@ -119,6 +119,9 @@
 		B51FCB0F17235DDA003A75A6 /* IISideController.m in Sources */ = {isa = PBXBuildFile; fileRef = B51FCB0A17235DDA003A75A6 /* IISideController.m */; };
 		B51FCB1017235DDA003A75A6 /* IIViewDeckController.m in Sources */ = {isa = PBXBuildFile; fileRef = B51FCB0C17235DDA003A75A6 /* IIViewDeckController.m */; };
 		B51FCB1117235DDA003A75A6 /* IIWrapController.m in Sources */ = {isa = PBXBuildFile; fileRef = B51FCB0E17235DDA003A75A6 /* IIWrapController.m */; };
+		B51FCB1417237E15003A75A6 /* 399-list1.png in Resources */ = {isa = PBXBuildFile; fileRef = B51FCB1217237E15003A75A6 /* 399-list1.png */; };
+		B51FCB1517237E15003A75A6 /* 399-list1@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B51FCB1317237E15003A75A6 /* 399-list1@2x.png */; };
+		B51FCB181723834D003A75A6 /* GitosViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B51FCB171723834A003A75A6 /* GitosViewController.m */; };
 		B542274216CCB15D0020F300 /* Commit.m in Sources */ = {isa = PBXBuildFile; fileRef = B542274116CCB15D0020F300 /* Commit.m */; };
 		B542274616CCB75A0020F300 /* CommitViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B542274416CCB75A0020F300 /* CommitViewController.m */; };
 		B542274716CCB75A0020F300 /* CommitViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B542274516CCB75A0020F300 /* CommitViewController.xib */; };
@@ -423,6 +426,10 @@
 		B51FCB0C17235DDA003A75A6 /* IIViewDeckController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IIViewDeckController.m; sourceTree = "<group>"; };
 		B51FCB0D17235DDA003A75A6 /* IIWrapController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IIWrapController.h; sourceTree = "<group>"; };
 		B51FCB0E17235DDA003A75A6 /* IIWrapController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IIWrapController.m; sourceTree = "<group>"; };
+		B51FCB1217237E15003A75A6 /* 399-list1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "399-list1.png"; sourceTree = "<group>"; };
+		B51FCB1317237E15003A75A6 /* 399-list1@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "399-list1@2x.png"; sourceTree = "<group>"; };
+		B51FCB1617238346003A75A6 /* GitosViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GitosViewController.h; sourceTree = "<group>"; };
+		B51FCB171723834A003A75A6 /* GitosViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GitosViewController.m; sourceTree = "<group>"; };
 		B542274016CCB15D0020F300 /* Commit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Commit.h; sourceTree = "<group>"; };
 		B542274116CCB15D0020F300 /* Commit.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Commit.m; sourceTree = "<group>"; };
 		B542274316CCB75A0020F300 /* CommitViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CommitViewController.h; sourceTree = "<group>"; };
@@ -740,6 +747,8 @@
 				B516539A16B7C1B9003F0DFA /* 01-refresh.png */,
 				B516539B16B7C1B9003F0DFA /* 01-refresh@2x.png */,
 				B516539C16B7C1B9003F0DFA /* 06-magnify.png */,
+				B51FCB1217237E15003A75A6 /* 399-list1.png */,
+				B51FCB1317237E15003A75A6 /* 399-list1@2x.png */,
 				B569D0C816FE6861002216DD /* glyphicons_078_warning_sign.png */,
 				B569D0C916FE6861002216DD /* glyphicons_078_warning_sign@2x.png */,
 				B569D0CA16FE6861002216DD /* glyphicons_198_ok.png */,
@@ -1147,6 +1156,8 @@
 				B511D44D16DB383C00DD0ED5 /* PullRequestDetailsViewController.h */,
 				B511D44E16DB383C00DD0ED5 /* PullRequestDetailsViewController.m */,
 				B511D44F16DB383D00DD0ED5 /* PullRequestDetailsViewController.xib */,
+				B51FCB1617238346003A75A6 /* GitosViewController.h */,
+				B51FCB171723834A003A75A6 /* GitosViewController.m */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -1533,6 +1544,8 @@
 				B574CF3716FFAAA00077D353 /* sunburst.css in Resources */,
 				B574CF3916FFB28C0077D353 /* doxy.css in Resources */,
 				B5836C981710C8C90012CC61 /* RepoTreeCell.xib in Resources */,
+				B51FCB1417237E15003A75A6 /* 399-list1.png in Resources */,
+				B51FCB1517237E15003A75A6 /* 399-list1@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1651,6 +1664,7 @@
 				B51FCB0F17235DDA003A75A6 /* IISideController.m in Sources */,
 				B51FCB1017235DDA003A75A6 /* IIViewDeckController.m in Sources */,
 				B51FCB1117235DDA003A75A6 /* IIWrapController.m in Sources */,
+				B51FCB181723834D003A75A6 /* GitosViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

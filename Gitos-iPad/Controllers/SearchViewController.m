@@ -53,6 +53,8 @@
 
 - (void)performHouseKeepingTasks
 {
+    [super performHousekeepingTasks];
+
     self.navigationItem.title = @"Search";
     NSArray *criteria = [[NSArray alloc] initWithObjects:@"Repo", @"User", nil];
     self.searchCriteria = [[UISegmentedControl alloc] initWithItems:criteria];

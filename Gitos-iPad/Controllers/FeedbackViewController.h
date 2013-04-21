@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 #import <QuartzCore/QuartzCore.h>
 
-@interface FeedbackViewController : UIViewController <UITableViewDataSource, UITableViewDelegate>
+@interface FeedbackViewController : GitosViewController <UITableViewDataSource, UITableViewDelegate>
 
 @property (nonatomic, strong) MBProgressHUD *hud;
 

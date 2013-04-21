@@ -20,6 +20,7 @@
 - (void)performHouseKeepingTasks;
 - (void)navigateToSelectedController:(UINavigationController *)selectedController;
 - (void)signout;
+- (void)toggleViewDeck;
 
 @end
 

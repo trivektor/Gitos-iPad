@@ -6,7 +6,7 @@
 //  Copyright (c) 2013 Crafted By Tri. All rights reserved.
 //
 
-@interface SearchViewController : UIViewController <UITableViewDataSource, UITableViewDelegate, UISearchBarDelegate>
+@interface SearchViewController : GitosViewController <UITableViewDataSource, UITableViewDelegate, UISearchBarDelegate>
 
 @property (nonatomic, strong) NSString *accessToken;
 @property (nonatomic, strong) MBProgressHUD *hud;

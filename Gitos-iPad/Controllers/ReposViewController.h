@@ -8,7 +8,7 @@
 
 #import "User.h"
 
-@interface ReposViewController : UIViewController <UITableViewDataSource, UITableViewDelegate>
+@interface ReposViewController : GitosViewController <UITableViewDataSource, UITableViewDelegate>
 
 @property (nonatomic, strong) User *user;
 @property (nonatomic, weak) IBOutlet UITableView *reposTable;

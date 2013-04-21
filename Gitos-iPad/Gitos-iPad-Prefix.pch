@@ -31,4 +31,5 @@
     #import "Comment.h"
     #import "YRDropdownView.h"
     #import "AppHelper.h"
+    #import "GitosViewController.h"
 #endif

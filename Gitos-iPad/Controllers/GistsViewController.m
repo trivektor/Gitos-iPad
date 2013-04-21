@@ -32,6 +32,8 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    [super performHousekeepingTasks];
+
     // Do any additional setup after loading the view from its nib.
     self.navigationItem.title = @"Gists";
 

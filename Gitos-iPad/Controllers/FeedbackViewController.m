@@ -37,6 +37,8 @@
 
 - (void)performHouseKeepingTasks
 {
+    [self performHousekeepingTasks];
+
     self.navigationItem.title = @"Feedback";
     self.navigationItem.hidesBackButton = YES;
 

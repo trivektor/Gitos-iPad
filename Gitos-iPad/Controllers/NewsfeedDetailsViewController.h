@@ -21,6 +21,7 @@
 - (void)performHouseKeepingTasks;
 - (void)loadNewsfeedDetails;
 - (void)reloadNewsfeedDetails;
+- (void)showMenu;
 
 @end
 

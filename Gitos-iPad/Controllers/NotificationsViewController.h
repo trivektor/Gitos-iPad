@@ -8,7 +8,7 @@
 
 #import "Notification.h"
 
-@interface NotificationsViewController : UIViewController <UITableViewDataSource, UITableViewDelegate>
+@interface NotificationsViewController : GitosViewController <UITableViewDataSource, UITableViewDelegate>
 
 @property (nonatomic, weak) IBOutlet UITableView *notificationsTable;
 @property (nonatomic, strong) NSMutableArray *notifications;

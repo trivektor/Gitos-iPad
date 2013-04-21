@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "MasterViewController.h"
 
-@interface NewsfeedViewController : UIViewController <UITableViewDataSource, UITableViewDelegate>
+@interface NewsfeedViewController : GitosViewController <UITableViewDataSource, UITableViewDelegate>
 {
     __weak IBOutlet UITableView *newsFeedTable;
 }

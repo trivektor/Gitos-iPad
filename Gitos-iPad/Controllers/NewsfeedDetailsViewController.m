@@ -45,13 +45,20 @@
     [self.navigationItem setTitle:@"Details"];
     [webView setDelegate:self];
     
+    UIBarButtonItem *menuButton = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"399-list1.png"] landscapeImagePhone:nil style:UIBarButtonItemStyleBordered target:self action:@selector(showMenu)];
+
     UIBarButtonItem *reloadButton = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"glyphicons_081_refresh"] landscapeImagePhone:nil style:UIBarButtonItemStyleBordered target:self action:@selector(reloadNewsfeedDetails)];
 
+    [self.navigationItem setBackBarButtonItem:menuButton];
     [self.navigationItem setRightBarButtonItem:reloadButton];
 
     self.hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
     self.hud.mode = MBProgressHUDAnimationFade;
     self.hud.labelText = LOADING_MESSAGE;
+}
+
+- (void)showMenu
+{
 }
 
 - (void)loadNewsfeedDetails
