@@ -42,13 +42,12 @@
 							<object class="IBUILabel" id="1035803575">
 								<reference key="NSNextResponder" ref="362923209"/>
 								<int key="NSvFlags">292</int>
-								<string key="NSFrame">{{179, 14}, {414, 21}}</string>
+								<string key="NSFrame">{{257, 14}, {747, 21}}</string>
 								<reference key="NSSuperview" ref="362923209"/>
 								<reference key="NSWindow"/>
 								<string key="NSReuseIdentifierKey">_NS:9</string>
 								<bool key="IBUIOpaque">NO</bool>
 								<bool key="IBUIClipsSubviews">YES</bool>
-								<int key="IBUIContentMode">7</int>
 								<bool key="IBUIUserInteractionEnabled">NO</bool>
 								<string key="targetRuntimeIdentifier">IBIPadFramework</string>
 								<string key="IBUIText">Label</string>
@@ -61,7 +60,6 @@
 									<bytes key="NSWhite">MQA</bytes>
 								</object>
 								<int key="IBUIBaselineAdjustment">0</int>
-								<int key="IBUITextAlignment">2</int>
 								<object class="IBUIFontDescription" key="IBUIFontDescription" id="576947095">
 									<string key="name">ArialMT</string>
 									<string key="family">Arial</string>
@@ -130,7 +128,7 @@
 								<bool key="IBUIAdjustsFontSizeToFit">NO</bool>
 							</object>
 						</array>
-						<string key="NSFrameSize">{613, 50}</string>
+						<string key="NSFrameSize">{1024, 50}</string>
 						<reference key="NSSuperview" ref="400800257"/>
 						<reference key="NSWindow"/>
 						<reference key="NSNextKeyView" ref="352096136"/>
@@ -146,7 +144,7 @@
 						<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
 					</object>
 				</array>
-				<string key="NSFrameSize">{613, 51}</string>
+				<string key="NSFrameSize">{1024, 51}</string>
 				<reference key="NSSuperview"/>
 				<reference key="NSWindow"/>
 				<reference key="NSNextKeyView" ref="362923209"/>

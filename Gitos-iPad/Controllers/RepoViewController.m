@@ -144,13 +144,14 @@
     if (!cell) {
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellIdentifier];
     }
-    
+
     Branch *branch = [self.repoBranches objectAtIndex:indexPath.row];
-    
+
     cell.textLabel.font  = [UIFont fontWithName:@"Arial" size:14.0];
     cell.textLabel.text  = [branch getName];
     cell.backgroundColor = [UIColor whiteColor];
-    
+    cell.textLabel.textAlignment = NSTextAlignmentCenter;
+
     return cell;
 }
 

@@ -45,7 +45,7 @@
 							<object class="IBUITableView" id="58345160">
 								<reference key="NSNextResponder" ref="525901754"/>
 								<int key="NSvFlags">292</int>
-								<string key="NSFrame">{{0, 90}, {703, 658}}</string>
+								<string key="NSFrame">{{0, 90}, {1024, 658}}</string>
 								<reference key="NSSuperview" ref="525901754"/>
 								<reference key="NSWindow"/>
 								<reference key="NSNextKeyView" ref="132822932"/>
@@ -72,6 +72,7 @@
 								<string key="NSFrame">{{44, 20}, {80, 80}}</string>
 								<reference key="NSSuperview" ref="525901754"/>
 								<reference key="NSWindow"/>
+								<reference key="NSNextKeyView"/>
 								<string key="NSReuseIdentifierKey">_NS:9</string>
 								<bool key="IBUIUserInteractionEnabled">NO</bool>
 								<string key="targetRuntimeIdentifier">IBIPadFramework</string>
@@ -79,7 +80,7 @@
 							<object class="IBUILabel" id="460909325">
 								<reference key="NSNextResponder" ref="525901754"/>
 								<int key="NSvFlags">292</int>
-								<string key="NSFrame">{{143, 36}, {455, 21}}</string>
+								<string key="NSFrame">{{143, 36}, {740, 21}}</string>
 								<reference key="NSSuperview" ref="525901754"/>
 								<reference key="NSWindow"/>
 								<reference key="NSNextKeyView" ref="47028243"/>
@@ -113,9 +114,10 @@
 							<object class="IBUILabel" id="47028243">
 								<reference key="NSNextResponder" ref="525901754"/>
 								<int key="NSvFlags">292</int>
-								<string key="NSFrame">{{143, 61}, {455, 21}}</string>
+								<string key="NSFrame">{{143, 61}, {740, 21}}</string>
 								<reference key="NSSuperview" ref="525901754"/>
 								<reference key="NSWindow"/>
+								<reference key="NSNextKeyView" ref="58345160"/>
 								<string key="NSReuseIdentifierKey">_NS:9</string>
 								<bool key="IBUIOpaque">NO</bool>
 								<bool key="IBUIClipsSubviews">YES</bool>
@@ -143,7 +145,7 @@
 								<bool key="IBUIAdjustsFontSizeToFit">NO</bool>
 							</object>
 						</array>
-						<string key="NSFrameSize">{703, 768}</string>
+						<string key="NSFrameSize">{1024, 768}</string>
 						<reference key="NSSuperview" ref="766721923"/>
 						<reference key="NSWindow"/>
 						<reference key="NSNextKeyView" ref="460909325"/>
@@ -153,7 +155,7 @@
 						<string key="targetRuntimeIdentifier">IBIPadFramework</string>
 					</object>
 				</array>
-				<string key="NSFrame">{{0, 20}, {703, 748}}</string>
+				<string key="NSFrame">{{0, 20}, {1024, 748}}</string>
 				<reference key="NSSuperview"/>
 				<reference key="NSWindow"/>
 				<reference key="NSNextKeyView" ref="525901754"/>
@@ -171,27 +173,6 @@
 				<object class="IBUISimulatedOrientationMetrics" key="IBUISimulatedOrientationMetrics">
 					<int key="IBUIInterfaceOrientation">3</int>
 					<int key="interfaceOrientation">3</int>
-				</object>
-				<object class="IBUISimulatedSizeMetrics" key="IBUISimulatedDestinationMetrics">
-					<string key="IBUISimulatedSizeMetricsClass">IBUISplitViewDetailSimulatedSizeMetrics</string>
-					<object class="NSMutableDictionary" key="IBUINormalizedOrientationToSizeMap">
-						<bool key="EncodedWithXMLCoder">YES</bool>
-						<array key="dict.sortedKeys">
-							<integer value="1"/>
-							<integer value="3"/>
-						</array>
-						<array key="dict.values">
-							<string>{768, 1024}</string>
-							<string>{703, 768}</string>
-						</array>
-					</object>
-					<string key="IBUITargetRuntime">IBIPadFramework</string>
-					<string key="IBUIDisplayName">Detail</string>
-					<string key="IBUIDestinationClass">IBUISplitViewController</string>
-					<object class="NSDictionary" key="IBUIDestinationContext">
-						<string key="NS.key.0">IBUISplitViewControllerContentSizeLocation</string>
-						<string key="NS.object.0">IBUISplitViewControllerContentSizeLocationDetail</string>
-					</object>
 				</object>
 				<string key="targetRuntimeIdentifier">IBIPadFramework</string>
 			</object>
