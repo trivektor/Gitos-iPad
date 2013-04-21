@@ -22,6 +22,8 @@
     UINavigationController *mainNavController = [[UINavigationController alloc] initWithRootViewController:newsfeedController];
 
     IIViewDeckController *deckController = [[IIViewDeckController alloc] initWithCenterViewController:mainNavController leftViewController:masterController];
+    deckController.sizeMode = IIViewDeckViewSizeMode;
+    deckController.leftSize = 20;
 
     [window setRootViewController:deckController];
 }

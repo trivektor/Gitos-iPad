@@ -53,6 +53,8 @@
     UINib *nib = [UINib nibWithNibName:@"MasterControllerCell" bundle:nil];
 
     [menuTable registerNib:nib forCellReuseIdentifier:@"MasterControllerCell"];
+    [menuTable setBackgroundColor:[UIColor colorWithPatternImage:[UIImage imageNamed:@"magma"]]];
+    [menuTable setSeparatorColor:[UIColor clearColor]];
 }
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
@@ -63,6 +65,11 @@
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     return 9;
+}
+
+- (void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    [cell setBackgroundColor:[UIColor colorWithPatternImage:[UIImage imageNamed:@"magma_border.png"]]];
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath

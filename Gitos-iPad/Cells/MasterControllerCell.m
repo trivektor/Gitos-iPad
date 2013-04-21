@@ -28,7 +28,9 @@
 
 - (void)renderForIndexPath:(NSIndexPath *)indexPath
 {
-    self.fontAwesomeLabel.font = [UIFont fontWithName:kFontAwesomeFamilyName size:20];
+    self.fontAwesomeLabel.font      = [UIFont fontWithName:kFontAwesomeFamilyName size:20];
+    self.fontAwesomeLabel.textColor = [UIColor whiteColor];
+    self.optionLabel.textColor      = [UIColor whiteColor];
 
     NSString *fontAwesome = @"", *optionLabelText = @"";
 
