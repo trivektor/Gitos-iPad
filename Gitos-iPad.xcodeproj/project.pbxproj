@@ -122,6 +122,7 @@
 		B51FCB1417237E15003A75A6 /* 399-list1.png in Resources */ = {isa = PBXBuildFile; fileRef = B51FCB1217237E15003A75A6 /* 399-list1.png */; };
 		B51FCB1517237E15003A75A6 /* 399-list1@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B51FCB1317237E15003A75A6 /* 399-list1@2x.png */; };
 		B51FCB181723834D003A75A6 /* GitosViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B51FCB171723834A003A75A6 /* GitosViewController.m */; };
+		B51FCB1A1723881B003A75A6 /* selected_cell_bg.png in Resources */ = {isa = PBXBuildFile; fileRef = B51FCB191723881B003A75A6 /* selected_cell_bg.png */; };
 		B542274216CCB15D0020F300 /* Commit.m in Sources */ = {isa = PBXBuildFile; fileRef = B542274116CCB15D0020F300 /* Commit.m */; };
 		B542274616CCB75A0020F300 /* CommitViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B542274416CCB75A0020F300 /* CommitViewController.m */; };
 		B542274716CCB75A0020F300 /* CommitViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B542274516CCB75A0020F300 /* CommitViewController.xib */; };
@@ -430,6 +431,7 @@
 		B51FCB1317237E15003A75A6 /* 399-list1@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "399-list1@2x.png"; sourceTree = "<group>"; };
 		B51FCB1617238346003A75A6 /* GitosViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GitosViewController.h; sourceTree = "<group>"; };
 		B51FCB171723834A003A75A6 /* GitosViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GitosViewController.m; sourceTree = "<group>"; };
+		B51FCB191723881B003A75A6 /* selected_cell_bg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = selected_cell_bg.png; sourceTree = "<group>"; };
 		B542274016CCB15D0020F300 /* Commit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Commit.h; sourceTree = "<group>"; };
 		B542274116CCB15D0020F300 /* Commit.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Commit.m; sourceTree = "<group>"; };
 		B542274316CCB75A0020F300 /* CommitViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CommitViewController.h; sourceTree = "<group>"; };
@@ -754,6 +756,7 @@
 				B569D0CA16FE6861002216DD /* glyphicons_198_ok.png */,
 				B569D0CB16FE6861002216DD /* glyphicons_198_ok@2x.png */,
 				B54F69DD16D2DF1E00978DD9 /* avatar-placeholder.png */,
+				B51FCB191723881B003A75A6 /* selected_cell_bg.png */,
 				B516539D16B7C1B9003F0DFA /* 06-magnify@2x.png */,
 				B54F69D916D2C5CA00978DD9 /* 04-squiggle.png */,
 				B54F69DA16D2C5CA00978DD9 /* 04-squiggle@2x.png */,
@@ -1546,6 +1549,7 @@
 				B5836C981710C8C90012CC61 /* RepoTreeCell.xib in Resources */,
 				B51FCB1417237E15003A75A6 /* 399-list1.png in Resources */,
 				B51FCB1517237E15003A75A6 /* 399-list1@2x.png in Resources */,
+				B51FCB1A1723881B003A75A6 /* selected_cell_bg.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
