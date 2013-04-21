@@ -232,8 +232,6 @@
 		B55D911616B7ADF0009CB90F /* User.m in Sources */ = {isa = PBXBuildFile; fileRef = B55D911516B7ADEE009CB90F /* User.m */; };
 		B55D911D16B7AE48009CB90F /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B55D911B16B7AE48009CB90F /* LoginViewController.m */; };
 		B55D911E16B7AE48009CB90F /* LoginViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B55D911C16B7AE48009CB90F /* LoginViewController.xib */; };
-		B55D913116B7AF37009CB90F /* StarredViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B55D912F16B7AF36009CB90F /* StarredViewController.m */; };
-		B55D913216B7AF37009CB90F /* StarredViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B55D913016B7AF36009CB90F /* StarredViewController.xib */; };
 		B55D913616B7AF86009CB90F /* GistCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B55D913516B7AF86009CB90F /* GistCell.m */; };
 		B55D913816B7AFAA009CB90F /* GistCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B55D913716B7AFAA009CB90F /* GistCell.xib */; };
 		B55D913B16B7AFF4009CB90F /* RepoCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B55D913A16B7AFF4009CB90F /* RepoCell.m */; };
@@ -246,8 +244,6 @@
 		B55D916016B7B446009CB90F /* GistDetailsCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B55D915F16B7B445009CB90F /* GistDetailsCell.xib */; };
 		B55D916416B7B49A009CB90F /* RawFileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B55D916216B7B495009CB90F /* RawFileViewController.m */; };
 		B55D916516B7B49A009CB90F /* RawFileViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B55D916316B7B497009CB90F /* RawFileViewController.xib */; };
-		B55D917316B7B5C5009CB90F /* OthersViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B55D917116B7B5C0009CB90F /* OthersViewController.m */; };
-		B55D917416B7B5C5009CB90F /* OthersViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B55D917216B7B5C2009CB90F /* OthersViewController.xib */; };
 		B55D918116B7B6AE009CB90F /* RepoSearchResultCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B55D918016B7B6AC009CB90F /* RepoSearchResultCell.m */; };
 		B55D918316B7B6D4009CB90F /* RepoSearchResultCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B55D918216B7B6D2009CB90F /* RepoSearchResultCell.xib */; };
 		B55D918616B7B6E9009CB90F /* ProfileCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B55D918516B7B6E7009CB90F /* ProfileCell.m */; };
@@ -293,6 +289,8 @@
 		B5A104611723C1ED00487A47 /* IssueDetailsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B5A1045C1723C1ED00487A47 /* IssueDetailsViewController.xib */; };
 		B5A104621723C1ED00487A47 /* IssuesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B5A1045E1723C1ED00487A47 /* IssuesViewController.m */; };
 		B5A104631723C1ED00487A47 /* IssuesViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B5A1045F1723C1ED00487A47 /* IssuesViewController.xib */; };
+		B5A104671723C26300487A47 /* StarredViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B5A104651723C26300487A47 /* StarredViewController.m */; };
+		B5A104681723C26300487A47 /* StarredViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B5A104661723C26300487A47 /* StarredViewController.xib */; };
 		B5BC452116BA5E3F00434848 /* prettify.js in Resources */ = {isa = PBXBuildFile; fileRef = B5BC451C16BA5DFD00434848 /* prettify.js */; };
 		B5BC452516BCEE7100434848 /* MasterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B5BC452316BCEE7000434848 /* MasterViewController.m */; };
 		B5BC452616BCEE7100434848 /* MasterViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B5BC452416BCEE7000434848 /* MasterViewController.xib */; };
@@ -613,9 +611,6 @@
 		B55D911A16B7AE48009CB90F /* LoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginViewController.h; sourceTree = "<group>"; };
 		B55D911B16B7AE48009CB90F /* LoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginViewController.m; sourceTree = "<group>"; };
 		B55D911C16B7AE48009CB90F /* LoginViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LoginViewController.xib; sourceTree = "<group>"; };
-		B55D912E16B7AF35009CB90F /* StarredViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StarredViewController.h; sourceTree = "<group>"; };
-		B55D912F16B7AF36009CB90F /* StarredViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StarredViewController.m; sourceTree = "<group>"; };
-		B55D913016B7AF36009CB90F /* StarredViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = StarredViewController.xib; sourceTree = "<group>"; };
 		B55D913416B7AF86009CB90F /* GistCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GistCell.h; sourceTree = "<group>"; };
 		B55D913516B7AF86009CB90F /* GistCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GistCell.m; sourceTree = "<group>"; };
 		B55D913716B7AFAA009CB90F /* GistCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GistCell.xib; sourceTree = "<group>"; };
@@ -634,9 +629,6 @@
 		B55D916116B7B493009CB90F /* RawFileViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RawFileViewController.h; sourceTree = "<group>"; };
 		B55D916216B7B495009CB90F /* RawFileViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RawFileViewController.m; sourceTree = "<group>"; };
 		B55D916316B7B497009CB90F /* RawFileViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RawFileViewController.xib; sourceTree = "<group>"; };
-		B55D917016B7B5BD009CB90F /* OthersViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OthersViewController.h; sourceTree = "<group>"; };
-		B55D917116B7B5C0009CB90F /* OthersViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OthersViewController.m; sourceTree = "<group>"; };
-		B55D917216B7B5C2009CB90F /* OthersViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = OthersViewController.xib; sourceTree = "<group>"; };
 		B55D917F16B7B6AB009CB90F /* RepoSearchResultCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RepoSearchResultCell.h; sourceTree = "<group>"; };
 		B55D918016B7B6AC009CB90F /* RepoSearchResultCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RepoSearchResultCell.m; sourceTree = "<group>"; };
 		B55D918216B7B6D2009CB90F /* RepoSearchResultCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RepoSearchResultCell.xib; sourceTree = "<group>"; };
@@ -706,6 +698,9 @@
 		B5A1045D1723C1ED00487A47 /* IssuesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IssuesViewController.h; sourceTree = "<group>"; };
 		B5A1045E1723C1ED00487A47 /* IssuesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IssuesViewController.m; sourceTree = "<group>"; };
 		B5A1045F1723C1ED00487A47 /* IssuesViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = IssuesViewController.xib; sourceTree = "<group>"; };
+		B5A104641723C26300487A47 /* StarredViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StarredViewController.h; sourceTree = "<group>"; };
+		B5A104651723C26300487A47 /* StarredViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StarredViewController.m; sourceTree = "<group>"; };
+		B5A104661723C26300487A47 /* StarredViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = StarredViewController.xib; sourceTree = "<group>"; };
 		B5BC451C16BA5DFD00434848 /* prettify.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = prettify.js; sourceTree = "<group>"; };
 		B5BC452216BCEE6F00434848 /* MasterViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MasterViewController.h; sourceTree = "<group>"; };
 		B5BC452316BCEE7000434848 /* MasterViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MasterViewController.m; sourceTree = "<group>"; };
@@ -1118,9 +1113,6 @@
 				B54F69E416D2F88A00978DD9 /* NotificationsViewController.h */,
 				B54F69E516D2F88A00978DD9 /* NotificationsViewController.m */,
 				B54F69E616D2F88B00978DD9 /* NotificationsViewController.xib */,
-				B55D917016B7B5BD009CB90F /* OthersViewController.h */,
-				B55D917116B7B5C0009CB90F /* OthersViewController.m */,
-				B55D917216B7B5C2009CB90F /* OthersViewController.xib */,
 				B5A104391723C1BC00487A47 /* Repo */,
 				B55D916116B7B493009CB90F /* RawFileViewController.h */,
 				B55D916216B7B495009CB90F /* RawFileViewController.m */,
@@ -1132,9 +1124,6 @@
 				B542276716D0322D0020F300 /* SearchViewController.h */,
 				B542276816D0322E0020F300 /* SearchViewController.m */,
 				B542276916D0322F0020F300 /* SearchViewController.xib */,
-				B55D912E16B7AF35009CB90F /* StarredViewController.h */,
-				B55D912F16B7AF36009CB90F /* StarredViewController.m */,
-				B55D913016B7AF36009CB90F /* StarredViewController.xib */,
 				B54603AC16C225FC007D4FB3 /* WebsiteViewController.h */,
 				B54603AD16C225FC007D4FB3 /* WebsiteViewController.m */,
 				B54603AE16C225FC007D4FB3 /* WebsiteViewController.xib */,
@@ -1310,6 +1299,9 @@
 				B5A1043A1723C1BC00487A47 /* RepoSearchViewController.h */,
 				B5A1043B1723C1BC00487A47 /* RepoSearchViewController.m */,
 				B5A1043C1723C1BC00487A47 /* RepoSearchViewController.xib */,
+				B5A104641723C26300487A47 /* StarredViewController.h */,
+				B5A104651723C26300487A47 /* StarredViewController.m */,
+				B5A104661723C26300487A47 /* StarredViewController.xib */,
 				B5A1043D1723C1BC00487A47 /* ReposViewController.h */,
 				B5A1043E1723C1BC00487A47 /* ReposViewController.m */,
 				B5A1043F1723C1BC00487A47 /* ReposViewController.xib */,
@@ -1436,14 +1428,12 @@
 				B55D90B516B7AA27009CB90F /* Default@2x.png in Resources */,
 				B55D90B716B7AA27009CB90F /* Default-568h@2x.png in Resources */,
 				B55D911E16B7AE48009CB90F /* LoginViewController.xib in Resources */,
-				B55D913216B7AF37009CB90F /* StarredViewController.xib in Resources */,
 				B55D913816B7AFAA009CB90F /* GistCell.xib in Resources */,
 				B55D913D16B7B01A009CB90F /* RepoCell.xib in Resources */,
 				B55D915116B7B265009CB90F /* NewsFeedCell.xib in Resources */,
 				B55D915616B7B321009CB90F /* RepoDetailsCell.xib in Resources */,
 				B55D916016B7B446009CB90F /* GistDetailsCell.xib in Resources */,
 				B55D916516B7B49A009CB90F /* RawFileViewController.xib in Resources */,
-				B55D917416B7B5C5009CB90F /* OthersViewController.xib in Resources */,
 				B55D918316B7B6D4009CB90F /* RepoSearchResultCell.xib in Resources */,
 				B55D918816B7B70D009CB90F /* ProfileCell.xib in Resources */,
 				B51653FB16B7C1B9003F0DFA /* 01-refresh.png in Resources */,
@@ -1606,6 +1596,7 @@
 				B5A104581723C1C900487A47 /* NewsfeedViewController.xib in Resources */,
 				B5A104611723C1ED00487A47 /* IssueDetailsViewController.xib in Resources */,
 				B5A104631723C1ED00487A47 /* IssuesViewController.xib in Resources */,
+				B5A104681723C26300487A47 /* StarredViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1642,14 +1633,12 @@
 				B55D911316B7ADCE009CB90F /* TimelineEvent.m in Sources */,
 				B55D911616B7ADF0009CB90F /* User.m in Sources */,
 				B55D911D16B7AE48009CB90F /* LoginViewController.m in Sources */,
-				B55D913116B7AF37009CB90F /* StarredViewController.m in Sources */,
 				B55D913616B7AF86009CB90F /* GistCell.m in Sources */,
 				B55D913B16B7AFF4009CB90F /* RepoCell.m in Sources */,
 				B55D914F16B7B1FF009CB90F /* NewsFeedCell.m in Sources */,
 				B55D915416B7B2F4009CB90F /* RepoDetailsCell.m in Sources */,
 				B55D915E16B7B423009CB90F /* GistDetailsCell.m in Sources */,
 				B55D916416B7B49A009CB90F /* RawFileViewController.m in Sources */,
-				B55D917316B7B5C5009CB90F /* OthersViewController.m in Sources */,
 				B55D918116B7B6AE009CB90F /* RepoSearchResultCell.m in Sources */,
 				B55D918616B7B6E9009CB90F /* ProfileCell.m in Sources */,
 				B5BC452516BCEE7100434848 /* MasterViewController.m in Sources */,
@@ -1725,6 +1714,7 @@
 				B5A104571723C1C900487A47 /* NewsfeedViewController.m in Sources */,
 				B5A104601723C1ED00487A47 /* IssueDetailsViewController.m in Sources */,
 				B5A104621723C1ED00487A47 /* IssuesViewController.m in Sources */,
+				B5A104671723C26300487A47 /* StarredViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

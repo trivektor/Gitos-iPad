@@ -11,7 +11,6 @@
 #import "ReposViewController.h"
 #import "GistsViewController.h"
 #import "StarredViewController.h"
-#import "OthersViewController.h"
 #import "MasterControllerCell.h"
 #import "ProfileViewController.h"
 #import "RepoSearchViewController.h"
