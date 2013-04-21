@@ -37,6 +37,8 @@
 - (NSInteger)getNumberOfGists;
 - (NSString *)getCreatedAt;
 - (NSString *)getHtmlUrl;
+- (BOOL)isEditable;
+
 + (void)fetchNewsFeedForUser:(NSString *)username andPage:(int)page;
 + (void)fetchInfoForUser:(NSString *)username;
 

@@ -40,5 +40,7 @@
 - (void)copyProfile;
 - (void)mailProfileToEmail:(NSString *)email WithSubject:(NSString *)subject;
 - (void)loadWebsiteWithUrl:(NSString *)url;
+- (void)showEditButtonIfEditable;
+- (void)editProfile;
 
 @end

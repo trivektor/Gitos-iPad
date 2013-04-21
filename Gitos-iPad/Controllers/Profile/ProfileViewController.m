@@ -15,6 +15,7 @@
 #import "ContributionsViewController.h"
 #import "GistsViewController.h"
 #import "ReposViewController.h"
+#import "EditProfileViewController.h"
 
 @interface ProfileViewController ()
 
@@ -128,6 +129,7 @@
         [self addOptionsButton];
     }
     [hud hide:YES];
+    [self showEditButtonIfEditable];
 }
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
@@ -301,7 +303,7 @@
      ^(AFHTTPRequestOperation *operation, id responseObject){
          self.isFollowing = true;
          [hud hide:YES];
-         UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Alert" message:[NSString stringWithFormat:@"You are now following %@", [self.user getLogin]] delegate:self cancelButtonTitle:nil otherButtonTitles:nil];
+         UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Alert" message:[NSString stringWithFormat:@"You are now following %@", [user getLogin]] delegate:self cancelButtonTitle:nil otherButtonTitles:nil];
          [alert show];
      }
      failure:^(AFHTTPRequestOperation *operation, NSError *error) {
@@ -327,7 +329,7 @@
      ^(AFHTTPRequestOperation *operation, id responseObject){
          self.isFollowing = true;
          [hud hide:YES];
-         UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Alert" message:[NSString stringWithFormat:@"You are now following %@", [self.user getLogin]] delegate:self cancelButtonTitle:nil otherButtonTitles:nil];
+         UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Alert" message:[NSString stringWithFormat:@"You are now following %@", [user getLogin]] delegate:self cancelButtonTitle:nil otherButtonTitles:nil];
          [alert show];
      }
      failure:^(AFHTTPRequestOperation *operation, NSError *error) {
@@ -351,7 +353,7 @@
 
 - (void)viewProfileOnGithub
 {
-    if ([self.user getHtmlUrl] != (id)[NSNull null]) {
+    if ([user getHtmlUrl] != (id)[NSNull null]) {
         [self loadWebsiteWithUrl:[user getHtmlUrl]];
     }
 }
@@ -382,6 +384,21 @@
     WebsiteViewController *websiteController = [[WebsiteViewController alloc] init];
     websiteController.requestedUrl = url;
     [self.navigationController pushViewController:websiteController animated:YES];
+}
+
+- (void)showEditButtonIfEditable
+{
+    if ([user isEditable]) {
+        UIBarButtonItem *editButton = [[UIBarButtonItem alloc] initWithTitle:@"Edit" style:UIBarButtonItemStyleBordered target:self action:@selector(editProfile)];
+
+        [self.navigationItem setRightBarButtonItem:editButton];
+    }
+}
+
+- (void)editProfile
+{
+    EditProfileViewController *editProfileController = [[EditProfileViewController alloc] init];
+    [self.navigationController pushViewController:editProfileController animated:YES];
 }
 
 @end

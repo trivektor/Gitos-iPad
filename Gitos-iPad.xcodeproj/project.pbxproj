@@ -291,6 +291,8 @@
 		B5A1049C1723C4D300487A47 /* SearchViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B5A104951723C4D300487A47 /* SearchViewController.xib */; };
 		B5A1049D1723C4D300487A47 /* WebsiteViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B5A104971723C4D300487A47 /* WebsiteViewController.m */; };
 		B5A1049E1723C4D300487A47 /* WebsiteViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B5A104981723C4D300487A47 /* WebsiteViewController.xib */; };
+		B5A104A21723C57A00487A47 /* EditProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B5A104A01723C57A00487A47 /* EditProfileViewController.m */; };
+		B5A104A31723C57A00487A47 /* EditProfileViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B5A104A11723C57A00487A47 /* EditProfileViewController.xib */; };
 		B5BC452116BA5E3F00434848 /* prettify.js in Resources */ = {isa = PBXBuildFile; fileRef = B5BC451C16BA5DFD00434848 /* prettify.js */; };
 		B5BC452516BCEE7100434848 /* MasterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B5BC452316BCEE7000434848 /* MasterViewController.m */; };
 		B5BC452616BCEE7100434848 /* MasterViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B5BC452416BCEE7000434848 /* MasterViewController.xib */; };
@@ -407,7 +409,7 @@
 		B51653F816B7C1B9003F0DFA /* barButtonPressed.idraw */ = {isa = PBXFileReference; lastKnownFileType = file; path = barButtonPressed.idraw; sourceTree = "<group>"; };
 		B51653F916B7C1B9003F0DFA /* barButtonPressed.svg */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = barButtonPressed.svg; sourceTree = "<group>"; };
 		B51653FA16B7C1B9003F0DFA /* Untitled-2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Untitled-2.png"; sourceTree = "<group>"; };
-		B516545A16B7C558003F0DFA /* AppConfig.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = AppConfig.plist; sourceTree = "<group>"; };
+		B516545A16B7C558003F0DFA /* AppConfig.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = AppConfig.plist; path = ../AppConfig.plist; sourceTree = "<group>"; };
 		B51FCB0917235DDA003A75A6 /* IISideController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IISideController.h; sourceTree = "<group>"; };
 		B51FCB0A17235DDA003A75A6 /* IISideController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IISideController.m; sourceTree = "<group>"; };
 		B51FCB0B17235DDA003A75A6 /* IIViewDeckController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IIViewDeckController.h; sourceTree = "<group>"; };
@@ -699,6 +701,9 @@
 		B5A104961723C4D300487A47 /* WebsiteViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WebsiteViewController.h; sourceTree = "<group>"; };
 		B5A104971723C4D300487A47 /* WebsiteViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WebsiteViewController.m; sourceTree = "<group>"; };
 		B5A104981723C4D300487A47 /* WebsiteViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WebsiteViewController.xib; sourceTree = "<group>"; };
+		B5A1049F1723C57A00487A47 /* EditProfileViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EditProfileViewController.h; sourceTree = "<group>"; };
+		B5A104A01723C57A00487A47 /* EditProfileViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EditProfileViewController.m; sourceTree = "<group>"; };
+		B5A104A11723C57A00487A47 /* EditProfileViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EditProfileViewController.xib; sourceTree = "<group>"; };
 		B5BC451C16BA5DFD00434848 /* prettify.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = prettify.js; sourceTree = "<group>"; };
 		B5BC452216BCEE6F00434848 /* MasterViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MasterViewController.h; sourceTree = "<group>"; };
 		B5BC452316BCEE7000434848 /* MasterViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MasterViewController.m; sourceTree = "<group>"; };
@@ -890,15 +895,18 @@
 				B5A1047E1723C42300487A47 /* FollowViewController.h */,
 				B5A1047F1723C42300487A47 /* FollowViewController.m */,
 				B5A104801723C42300487A47 /* FollowViewController.xib */,
-				B51FCB1C1723BF81003A75A6 /* ProfileViewController.h */,
 				B5A104741723C38A00487A47 /* ContributionsViewController.h */,
 				B5A104751723C38A00487A47 /* ContributionsViewController.m */,
 				B5A104761723C38A00487A47 /* ContributionsViewController.xib */,
 				B5A104771723C38A00487A47 /* RecentActivityViewController.h */,
 				B5A104781723C38A00487A47 /* RecentActivityViewController.m */,
 				B5A104791723C38A00487A47 /* RecentActivityViewController.xib */,
+				B51FCB1C1723BF81003A75A6 /* ProfileViewController.h */,
 				B51FCB1D1723BF81003A75A6 /* ProfileViewController.m */,
 				B51FCB1E1723BF81003A75A6 /* ProfileViewController.xib */,
+				B5A1049F1723C57A00487A47 /* EditProfileViewController.h */,
+				B5A104A01723C57A00487A47 /* EditProfileViewController.m */,
+				B5A104A11723C57A00487A47 /* EditProfileViewController.xib */,
 			);
 			path = Profile;
 			sourceTree = "<group>";
@@ -986,7 +994,6 @@
 				B54603BB16C37B5F007D4FB3 /* icon@2x.png */,
 				B54603B916C37B13007D4FB3 /* icon.png */,
 				B546038316C0FFA8007D4FB3 /* SDWebImage */,
-				B516545A16B7C558003F0DFA /* AppConfig.plist */,
 				B55D90C416B7AA48009CB90F /* AFNetworking */,
 				B55D90C016B7AA3C009CB90F /* SVPullToRefresh */,
 				B55D90A616B7AA27009CB90F /* Gitos-iPad */,
@@ -1025,11 +1032,11 @@
 				B5836C8D170BFC870012CC61 /* Helpers */,
 				B5BC451A16BA5DFC00434848 /* Html */,
 				B516539916B7C1AA003F0DFA /* Images */,
-				B55D90AF16B7AA27009CB90F /* AppDelegate.h */,
 				B55D913316B7AF65009CB90F /* Cells */,
 				B55D90F216B7ABD6009CB90F /* Classes */,
 				B55D90F116B7ABC9009CB90F /* Controllers */,
 				B55D90B016B7AA27009CB90F /* AppDelegate.m */,
+				B55D90AF16B7AA27009CB90F /* AppDelegate.h */,
 				B55D90B816B7AA27009CB90F /* Gitos_iPad.xcdatamodeld */,
 				B55D90A716B7AA27009CB90F /* Supporting Files */,
 			);
@@ -1040,6 +1047,7 @@
 			isa = PBXGroup;
 			children = (
 				B55D90A816B7AA27009CB90F /* Gitos-iPad-Info.plist */,
+				B516545A16B7C558003F0DFA /* AppConfig.plist */,
 				B55D90A916B7AA27009CB90F /* InfoPlist.strings */,
 				B55D90AC16B7AA27009CB90F /* main.m */,
 				B55D90AE16B7AA27009CB90F /* Gitos-iPad-Prefix.pch */,
@@ -1620,6 +1628,7 @@
 				B5A1049A1723C4D300487A47 /* RawFileViewController.xib in Resources */,
 				B5A1049C1723C4D300487A47 /* SearchViewController.xib in Resources */,
 				B5A1049E1723C4D300487A47 /* WebsiteViewController.xib in Resources */,
+				B5A104A31723C57A00487A47 /* EditProfileViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1737,6 +1746,7 @@
 				B5A104991723C4D300487A47 /* RawFileViewController.m in Sources */,
 				B5A1049B1723C4D300487A47 /* SearchViewController.m in Sources */,
 				B5A1049D1723C4D300487A47 /* WebsiteViewController.m in Sources */,
+				B5A104A21723C57A00487A47 /* EditProfileViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

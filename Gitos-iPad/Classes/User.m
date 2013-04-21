@@ -149,6 +149,11 @@
     return [self.data valueForKey:@"html_url"];
 }
 
+- (BOOL)isEditable
+{
+    return [[AppHelper getAccountUsername] isEqualToString:[self getLogin]];
+}
+
 + (void)fetchNewsFeedForUser:(NSString *)username andPage:(int)page
 {
     NSString *githubApiHost = [AppConfig getConfigValue:@"GithubApiHost"];
