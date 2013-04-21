@@ -123,11 +123,13 @@
 		B51FCB1517237E15003A75A6 /* 399-list1@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B51FCB1317237E15003A75A6 /* 399-list1@2x.png */; };
 		B51FCB181723834D003A75A6 /* GitosViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B51FCB171723834A003A75A6 /* GitosViewController.m */; };
 		B51FCB1A1723881B003A75A6 /* selected_cell_bg.png in Resources */ = {isa = PBXBuildFile; fileRef = B51FCB191723881B003A75A6 /* selected_cell_bg.png */; };
+		B51FCB1F1723BF81003A75A6 /* ProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B51FCB1D1723BF81003A75A6 /* ProfileViewController.m */; };
+		B51FCB201723BF81003A75A6 /* ProfileViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B51FCB1E1723BF81003A75A6 /* ProfileViewController.xib */; };
+		B51FCB281723C025003A75A6 /* CommitsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B51FCB231723C025003A75A6 /* CommitsViewController.m */; };
+		B51FCB291723C025003A75A6 /* CommitsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B51FCB241723C025003A75A6 /* CommitsViewController.xib */; };
+		B51FCB2A1723C025003A75A6 /* CommitViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B51FCB261723C025003A75A6 /* CommitViewController.m */; };
+		B51FCB2B1723C025003A75A6 /* CommitViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B51FCB271723C025003A75A6 /* CommitViewController.xib */; };
 		B542274216CCB15D0020F300 /* Commit.m in Sources */ = {isa = PBXBuildFile; fileRef = B542274116CCB15D0020F300 /* Commit.m */; };
-		B542274616CCB75A0020F300 /* CommitViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B542274416CCB75A0020F300 /* CommitViewController.m */; };
-		B542274716CCB75A0020F300 /* CommitViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B542274516CCB75A0020F300 /* CommitViewController.xib */; };
-		B542274B16CCBA240020F300 /* CommitsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B542274916CCBA240020F300 /* CommitsViewController.m */; };
-		B542274C16CCBA240020F300 /* CommitsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B542274A16CCBA240020F300 /* CommitsViewController.xib */; };
 		B542274F16CCBBD30020F300 /* CommitCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B542274E16CCBBD30020F300 /* CommitCell.m */; };
 		B542275116CCBBDF0020F300 /* CommitCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B542275016CCBBDF0020F300 /* CommitCell.xib */; };
 		B542275316CCC8D00020F300 /* commit_details.html in Resources */ = {isa = PBXBuildFile; fileRef = B542275216CCC8D00020F300 /* commit_details.html */; };
@@ -159,10 +161,6 @@
 		B54603BA16C37B14007D4FB3 /* icon.png in Resources */ = {isa = PBXBuildFile; fileRef = B54603B916C37B13007D4FB3 /* icon.png */; };
 		B54603BC16C37B60007D4FB3 /* icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B54603BB16C37B5F007D4FB3 /* icon@2x.png */; };
 		B54603BF16C37D53007D4FB3 /* Organization.m in Sources */ = {isa = PBXBuildFile; fileRef = B54603BE16C37D52007D4FB3 /* Organization.m */; };
-		B54603C316C37FB4007D4FB3 /* OrganizationsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B54603C116C37FB1007D4FB3 /* OrganizationsViewController.m */; };
-		B54603C416C37FB4007D4FB3 /* OrganizationsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B54603C216C37FB2007D4FB3 /* OrganizationsViewController.xib */; };
-		B54603C816C388D2007D4FB3 /* OrganizationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B54603C616C388CF007D4FB3 /* OrganizationViewController.m */; };
-		B54603C916C388D2007D4FB3 /* OrganizationViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B54603C716C388D0007D4FB3 /* OrganizationViewController.xib */; };
 		B54603CC16C4D0DD007D4FB3 /* MBProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = B54603CB16C4D0DD007D4FB3 /* MBProgressHUD.m */; };
 		B54F69D816D158C300978DD9 /* 211-action@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B54F69D716D158C300978DD9 /* 211-action@2x.png */; };
 		B54F69DB16D2C5CA00978DD9 /* 04-squiggle.png in Resources */ = {isa = PBXBuildFile; fileRef = B54F69D916D2C5CA00978DD9 /* 04-squiggle.png */; };
@@ -189,13 +187,9 @@
 		B54F6A1916D3605C00978DD9 /* FeedbackViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B54F6A1716D3605900978DD9 /* FeedbackViewController.m */; };
 		B54F6A1A16D3605C00978DD9 /* FeedbackViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B54F6A1816D3605A00978DD9 /* FeedbackViewController.xib */; };
 		B54F6A1C16D3617600978DD9 /* feedback.html in Resources */ = {isa = PBXBuildFile; fileRef = B54F6A1B16D3617600978DD9 /* feedback.html */; };
-		B552947D16C7A22E0010D56A /* IssuesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B552947B16C7A22E0010D56A /* IssuesViewController.m */; };
-		B552947E16C7A22E0010D56A /* IssuesViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B552947C16C7A22E0010D56A /* IssuesViewController.xib */; };
 		B552948116C7A23D0010D56A /* Issue.m in Sources */ = {isa = PBXBuildFile; fileRef = B552948016C7A23D0010D56A /* Issue.m */; };
 		B552948416C818DC0010D56A /* IssueCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B552948316C818DC0010D56A /* IssueCell.m */; };
 		B552948616C818F50010D56A /* IssueCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B552948516C818F50010D56A /* IssueCell.xib */; };
-		B552948A16C827AC0010D56A /* IssueDetailsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B552948816C827AC0010D56A /* IssueDetailsViewController.m */; };
-		B552948B16C827AC0010D56A /* IssueDetailsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B552948916C827AC0010D56A /* IssueDetailsViewController.xib */; };
 		B552949416C85FEB0010D56A /* bootstrap.css in Resources */ = {isa = PBXBuildFile; fileRef = B552949316C85FEB0010D56A /* bootstrap.css */; };
 		B552949716C862FD0010D56A /* Comment.m in Sources */ = {isa = PBXBuildFile; fileRef = B552949616C862FD0010D56A /* Comment.m */; };
 		B552949916C866380010D56A /* issue_details.html in Resources */ = {isa = PBXBuildFile; fileRef = B552949816C866380010D56A /* issue_details.html */; };
@@ -238,42 +232,22 @@
 		B55D911616B7ADF0009CB90F /* User.m in Sources */ = {isa = PBXBuildFile; fileRef = B55D911516B7ADEE009CB90F /* User.m */; };
 		B55D911D16B7AE48009CB90F /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B55D911B16B7AE48009CB90F /* LoginViewController.m */; };
 		B55D911E16B7AE48009CB90F /* LoginViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B55D911C16B7AE48009CB90F /* LoginViewController.xib */; };
-		B55D912216B7AE9B009CB90F /* NewsfeedViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B55D912016B7AE9A009CB90F /* NewsfeedViewController.m */; };
-		B55D912316B7AE9B009CB90F /* NewsfeedViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B55D912116B7AE9A009CB90F /* NewsfeedViewController.xib */; };
-		B55D912716B7AED1009CB90F /* ReposViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B55D912516B7AED0009CB90F /* ReposViewController.m */; };
-		B55D912816B7AED1009CB90F /* ReposViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B55D912616B7AED0009CB90F /* ReposViewController.xib */; };
-		B55D912C16B7AF09009CB90F /* GistsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B55D912A16B7AF08009CB90F /* GistsViewController.m */; };
-		B55D912D16B7AF09009CB90F /* GistsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B55D912B16B7AF08009CB90F /* GistsViewController.xib */; };
 		B55D913116B7AF37009CB90F /* StarredViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B55D912F16B7AF36009CB90F /* StarredViewController.m */; };
 		B55D913216B7AF37009CB90F /* StarredViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B55D913016B7AF36009CB90F /* StarredViewController.xib */; };
 		B55D913616B7AF86009CB90F /* GistCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B55D913516B7AF86009CB90F /* GistCell.m */; };
 		B55D913816B7AFAA009CB90F /* GistCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B55D913716B7AFAA009CB90F /* GistCell.xib */; };
 		B55D913B16B7AFF4009CB90F /* RepoCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B55D913A16B7AFF4009CB90F /* RepoCell.m */; };
 		B55D913D16B7B01A009CB90F /* RepoCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B55D913C16B7B019009CB90F /* RepoCell.xib */; };
-		B55D914116B7B0A0009CB90F /* RepoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B55D913F16B7B09F009CB90F /* RepoViewController.m */; };
-		B55D914216B7B0A0009CB90F /* RepoViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B55D914016B7B0A0009CB90F /* RepoViewController.xib */; };
-		B55D914616B7B0E3009CB90F /* NewsfeedDetailsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B55D914416B7B0E0009CB90F /* NewsfeedDetailsViewController.m */; };
-		B55D914716B7B0E3009CB90F /* NewsfeedDetailsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B55D914516B7B0E1009CB90F /* NewsfeedDetailsViewController.xib */; };
-		B55D914B16B7B19D009CB90F /* GistViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B55D914916B7B199009CB90F /* GistViewController.m */; };
-		B55D914C16B7B19D009CB90F /* GistViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B55D914A16B7B19B009CB90F /* GistViewController.xib */; };
 		B55D914F16B7B1FF009CB90F /* NewsFeedCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B55D914E16B7B1FE009CB90F /* NewsFeedCell.m */; };
 		B55D915116B7B265009CB90F /* NewsFeedCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B55D915016B7B265009CB90F /* NewsFeedCell.xib */; };
 		B55D915416B7B2F4009CB90F /* RepoDetailsCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B55D915316B7B2F3009CB90F /* RepoDetailsCell.m */; };
 		B55D915616B7B321009CB90F /* RepoDetailsCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B55D915516B7B321009CB90F /* RepoDetailsCell.xib */; };
-		B55D915A16B7B38D009CB90F /* RepoTreeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B55D915816B7B38A009CB90F /* RepoTreeViewController.m */; };
-		B55D915B16B7B38D009CB90F /* RepoTreeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B55D915916B7B38C009CB90F /* RepoTreeViewController.xib */; };
 		B55D915E16B7B423009CB90F /* GistDetailsCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B55D915D16B7B422009CB90F /* GistDetailsCell.m */; };
 		B55D916016B7B446009CB90F /* GistDetailsCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B55D915F16B7B445009CB90F /* GistDetailsCell.xib */; };
 		B55D916416B7B49A009CB90F /* RawFileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B55D916216B7B495009CB90F /* RawFileViewController.m */; };
 		B55D916516B7B49A009CB90F /* RawFileViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B55D916316B7B497009CB90F /* RawFileViewController.xib */; };
-		B55D916916B7B4F0009CB90F /* GistRawFileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B55D916716B7B4EA009CB90F /* GistRawFileViewController.m */; };
-		B55D916A16B7B4F0009CB90F /* GistRawFileViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B55D916816B7B4EE009CB90F /* GistRawFileViewController.xib */; };
 		B55D917316B7B5C5009CB90F /* OthersViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B55D917116B7B5C0009CB90F /* OthersViewController.m */; };
 		B55D917416B7B5C5009CB90F /* OthersViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B55D917216B7B5C2009CB90F /* OthersViewController.xib */; };
-		B55D917816B7B61B009CB90F /* ProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B55D917616B7B613009CB90F /* ProfileViewController.m */; };
-		B55D917916B7B61B009CB90F /* ProfileViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B55D917716B7B618009CB90F /* ProfileViewController.xib */; };
-		B55D917D16B7B65C009CB90F /* RepoSearchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B55D917B16B7B653009CB90F /* RepoSearchViewController.m */; };
-		B55D917E16B7B65C009CB90F /* RepoSearchViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B55D917C16B7B658009CB90F /* RepoSearchViewController.xib */; };
 		B55D918116B7B6AE009CB90F /* RepoSearchResultCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B55D918016B7B6AC009CB90F /* RepoSearchResultCell.m */; };
 		B55D918316B7B6D4009CB90F /* RepoSearchResultCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B55D918216B7B6D2009CB90F /* RepoSearchResultCell.xib */; };
 		B55D918616B7B6E9009CB90F /* ProfileCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B55D918516B7B6E7009CB90F /* ProfileCell.m */; };
@@ -293,6 +267,32 @@
 		B5836C90170BFCA40012CC61 /* AppHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = B5836C8F170BFCA40012CC61 /* AppHelper.m */; };
 		B5836C961710C8B60012CC61 /* RepoTreeCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B5836C951710C8B60012CC61 /* RepoTreeCell.m */; };
 		B5836C981710C8C90012CC61 /* RepoTreeCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B5836C971710C8C90012CC61 /* RepoTreeCell.xib */; };
+		B5A104281723C10200487A47 /* GistRawFileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B5A104201723C10200487A47 /* GistRawFileViewController.m */; };
+		B5A104291723C10200487A47 /* GistRawFileViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B5A104211723C10200487A47 /* GistRawFileViewController.xib */; };
+		B5A1042A1723C10200487A47 /* GistsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B5A104231723C10200487A47 /* GistsViewController.m */; };
+		B5A1042B1723C10200487A47 /* GistsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B5A104241723C10200487A47 /* GistsViewController.xib */; };
+		B5A1042C1723C10200487A47 /* GistViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B5A104261723C10200487A47 /* GistViewController.m */; };
+		B5A1042D1723C10200487A47 /* GistViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B5A104271723C10200487A47 /* GistViewController.xib */; };
+		B5A104351723C19E00487A47 /* OrganizationsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B5A104301723C19E00487A47 /* OrganizationsViewController.m */; };
+		B5A104361723C19E00487A47 /* OrganizationsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B5A104311723C19E00487A47 /* OrganizationsViewController.xib */; };
+		B5A104371723C19E00487A47 /* OrganizationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B5A104331723C19E00487A47 /* OrganizationViewController.m */; };
+		B5A104381723C19E00487A47 /* OrganizationViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B5A104341723C19E00487A47 /* OrganizationViewController.xib */; };
+		B5A104461723C1BC00487A47 /* RepoSearchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B5A1043B1723C1BC00487A47 /* RepoSearchViewController.m */; };
+		B5A104471723C1BC00487A47 /* RepoSearchViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B5A1043C1723C1BC00487A47 /* RepoSearchViewController.xib */; };
+		B5A104481723C1BC00487A47 /* ReposViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B5A1043E1723C1BC00487A47 /* ReposViewController.m */; };
+		B5A104491723C1BC00487A47 /* ReposViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B5A1043F1723C1BC00487A47 /* ReposViewController.xib */; };
+		B5A1044A1723C1BC00487A47 /* RepoTreeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B5A104411723C1BC00487A47 /* RepoTreeViewController.m */; };
+		B5A1044B1723C1BC00487A47 /* RepoTreeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B5A104421723C1BC00487A47 /* RepoTreeViewController.xib */; };
+		B5A1044C1723C1BC00487A47 /* RepoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B5A104441723C1BC00487A47 /* RepoViewController.m */; };
+		B5A1044D1723C1BC00487A47 /* RepoViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B5A104451723C1BC00487A47 /* RepoViewController.xib */; };
+		B5A104551723C1C900487A47 /* NewsfeedDetailsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B5A104501723C1C900487A47 /* NewsfeedDetailsViewController.m */; };
+		B5A104561723C1C900487A47 /* NewsfeedDetailsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B5A104511723C1C900487A47 /* NewsfeedDetailsViewController.xib */; };
+		B5A104571723C1C900487A47 /* NewsfeedViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B5A104531723C1C900487A47 /* NewsfeedViewController.m */; };
+		B5A104581723C1C900487A47 /* NewsfeedViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B5A104541723C1C900487A47 /* NewsfeedViewController.xib */; };
+		B5A104601723C1ED00487A47 /* IssueDetailsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B5A1045B1723C1ED00487A47 /* IssueDetailsViewController.m */; };
+		B5A104611723C1ED00487A47 /* IssueDetailsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B5A1045C1723C1ED00487A47 /* IssueDetailsViewController.xib */; };
+		B5A104621723C1ED00487A47 /* IssuesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B5A1045E1723C1ED00487A47 /* IssuesViewController.m */; };
+		B5A104631723C1ED00487A47 /* IssuesViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B5A1045F1723C1ED00487A47 /* IssuesViewController.xib */; };
 		B5BC452116BA5E3F00434848 /* prettify.js in Resources */ = {isa = PBXBuildFile; fileRef = B5BC451C16BA5DFD00434848 /* prettify.js */; };
 		B5BC452516BCEE7100434848 /* MasterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B5BC452316BCEE7000434848 /* MasterViewController.m */; };
 		B5BC452616BCEE7100434848 /* MasterViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B5BC452416BCEE7000434848 /* MasterViewController.xib */; };
@@ -432,14 +432,17 @@
 		B51FCB1617238346003A75A6 /* GitosViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GitosViewController.h; sourceTree = "<group>"; };
 		B51FCB171723834A003A75A6 /* GitosViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GitosViewController.m; sourceTree = "<group>"; };
 		B51FCB191723881B003A75A6 /* selected_cell_bg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = selected_cell_bg.png; sourceTree = "<group>"; };
+		B51FCB1C1723BF81003A75A6 /* ProfileViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProfileViewController.h; sourceTree = "<group>"; };
+		B51FCB1D1723BF81003A75A6 /* ProfileViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProfileViewController.m; sourceTree = "<group>"; };
+		B51FCB1E1723BF81003A75A6 /* ProfileViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ProfileViewController.xib; sourceTree = "<group>"; };
+		B51FCB221723C025003A75A6 /* CommitsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CommitsViewController.h; sourceTree = "<group>"; };
+		B51FCB231723C025003A75A6 /* CommitsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CommitsViewController.m; sourceTree = "<group>"; };
+		B51FCB241723C025003A75A6 /* CommitsViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CommitsViewController.xib; sourceTree = "<group>"; };
+		B51FCB251723C025003A75A6 /* CommitViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CommitViewController.h; sourceTree = "<group>"; };
+		B51FCB261723C025003A75A6 /* CommitViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CommitViewController.m; sourceTree = "<group>"; };
+		B51FCB271723C025003A75A6 /* CommitViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CommitViewController.xib; sourceTree = "<group>"; };
 		B542274016CCB15D0020F300 /* Commit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Commit.h; sourceTree = "<group>"; };
 		B542274116CCB15D0020F300 /* Commit.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Commit.m; sourceTree = "<group>"; };
-		B542274316CCB75A0020F300 /* CommitViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CommitViewController.h; sourceTree = "<group>"; };
-		B542274416CCB75A0020F300 /* CommitViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CommitViewController.m; sourceTree = "<group>"; };
-		B542274516CCB75A0020F300 /* CommitViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CommitViewController.xib; sourceTree = "<group>"; };
-		B542274816CCBA240020F300 /* CommitsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CommitsViewController.h; sourceTree = "<group>"; };
-		B542274916CCBA240020F300 /* CommitsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CommitsViewController.m; sourceTree = "<group>"; };
-		B542274A16CCBA240020F300 /* CommitsViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CommitsViewController.xib; sourceTree = "<group>"; };
 		B542274D16CCBBD30020F300 /* CommitCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CommitCell.h; sourceTree = "<group>"; };
 		B542274E16CCBBD30020F300 /* CommitCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CommitCell.m; sourceTree = "<group>"; };
 		B542275016CCBBDF0020F300 /* CommitCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CommitCell.xib; sourceTree = "<group>"; };
@@ -489,12 +492,6 @@
 		B54603BB16C37B5F007D4FB3 /* icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon@2x.png"; sourceTree = "<group>"; };
 		B54603BD16C37D52007D4FB3 /* Organization.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Organization.h; sourceTree = "<group>"; };
 		B54603BE16C37D52007D4FB3 /* Organization.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Organization.m; sourceTree = "<group>"; };
-		B54603C016C37FB0007D4FB3 /* OrganizationsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OrganizationsViewController.h; sourceTree = "<group>"; };
-		B54603C116C37FB1007D4FB3 /* OrganizationsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OrganizationsViewController.m; sourceTree = "<group>"; };
-		B54603C216C37FB2007D4FB3 /* OrganizationsViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = OrganizationsViewController.xib; sourceTree = "<group>"; };
-		B54603C516C388CF007D4FB3 /* OrganizationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OrganizationViewController.h; sourceTree = "<group>"; };
-		B54603C616C388CF007D4FB3 /* OrganizationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OrganizationViewController.m; sourceTree = "<group>"; };
-		B54603C716C388D0007D4FB3 /* OrganizationViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = OrganizationViewController.xib; sourceTree = "<group>"; };
 		B54603CA16C4D0DD007D4FB3 /* MBProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MBProgressHUD.h; sourceTree = "<group>"; };
 		B54603CB16C4D0DD007D4FB3 /* MBProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MBProgressHUD.m; sourceTree = "<group>"; };
 		B54F69D716D158C300978DD9 /* 211-action@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "211-action@2x.png"; sourceTree = "<group>"; };
@@ -540,17 +537,11 @@
 		B54F6A1716D3605900978DD9 /* FeedbackViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FeedbackViewController.m; sourceTree = "<group>"; };
 		B54F6A1816D3605A00978DD9 /* FeedbackViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FeedbackViewController.xib; sourceTree = "<group>"; };
 		B54F6A1B16D3617600978DD9 /* feedback.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = feedback.html; sourceTree = "<group>"; };
-		B552947A16C7A22E0010D56A /* IssuesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IssuesViewController.h; sourceTree = "<group>"; };
-		B552947B16C7A22E0010D56A /* IssuesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IssuesViewController.m; sourceTree = "<group>"; };
-		B552947C16C7A22E0010D56A /* IssuesViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = IssuesViewController.xib; sourceTree = "<group>"; };
 		B552947F16C7A23D0010D56A /* Issue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Issue.h; sourceTree = "<group>"; };
 		B552948016C7A23D0010D56A /* Issue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Issue.m; sourceTree = "<group>"; };
 		B552948216C818DC0010D56A /* IssueCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IssueCell.h; sourceTree = "<group>"; };
 		B552948316C818DC0010D56A /* IssueCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IssueCell.m; sourceTree = "<group>"; };
 		B552948516C818F50010D56A /* IssueCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = IssueCell.xib; sourceTree = "<group>"; };
-		B552948716C827AC0010D56A /* IssueDetailsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IssueDetailsViewController.h; sourceTree = "<group>"; };
-		B552948816C827AC0010D56A /* IssueDetailsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IssueDetailsViewController.m; sourceTree = "<group>"; };
-		B552948916C827AC0010D56A /* IssueDetailsViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = IssueDetailsViewController.xib; sourceTree = "<group>"; };
 		B552949316C85FEB0010D56A /* bootstrap.css */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.css; path = bootstrap.css; sourceTree = "<group>"; };
 		B552949516C862FD0010D56A /* Comment.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Comment.h; sourceTree = "<group>"; };
 		B552949616C862FD0010D56A /* Comment.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Comment.m; sourceTree = "<group>"; };
@@ -622,15 +613,6 @@
 		B55D911A16B7AE48009CB90F /* LoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginViewController.h; sourceTree = "<group>"; };
 		B55D911B16B7AE48009CB90F /* LoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginViewController.m; sourceTree = "<group>"; };
 		B55D911C16B7AE48009CB90F /* LoginViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LoginViewController.xib; sourceTree = "<group>"; };
-		B55D911F16B7AE9A009CB90F /* NewsfeedViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NewsfeedViewController.h; sourceTree = "<group>"; };
-		B55D912016B7AE9A009CB90F /* NewsfeedViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NewsfeedViewController.m; sourceTree = "<group>"; };
-		B55D912116B7AE9A009CB90F /* NewsfeedViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NewsfeedViewController.xib; sourceTree = "<group>"; };
-		B55D912416B7AECF009CB90F /* ReposViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ReposViewController.h; sourceTree = "<group>"; };
-		B55D912516B7AED0009CB90F /* ReposViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ReposViewController.m; sourceTree = "<group>"; };
-		B55D912616B7AED0009CB90F /* ReposViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ReposViewController.xib; sourceTree = "<group>"; };
-		B55D912916B7AF07009CB90F /* GistsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GistsViewController.h; sourceTree = "<group>"; };
-		B55D912A16B7AF08009CB90F /* GistsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GistsViewController.m; sourceTree = "<group>"; };
-		B55D912B16B7AF08009CB90F /* GistsViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GistsViewController.xib; sourceTree = "<group>"; };
 		B55D912E16B7AF35009CB90F /* StarredViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StarredViewController.h; sourceTree = "<group>"; };
 		B55D912F16B7AF36009CB90F /* StarredViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StarredViewController.m; sourceTree = "<group>"; };
 		B55D913016B7AF36009CB90F /* StarredViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = StarredViewController.xib; sourceTree = "<group>"; };
@@ -640,42 +622,21 @@
 		B55D913916B7AFF3009CB90F /* RepoCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RepoCell.h; sourceTree = "<group>"; };
 		B55D913A16B7AFF4009CB90F /* RepoCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RepoCell.m; sourceTree = "<group>"; };
 		B55D913C16B7B019009CB90F /* RepoCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RepoCell.xib; sourceTree = "<group>"; };
-		B55D913E16B7B09E009CB90F /* RepoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RepoViewController.h; sourceTree = "<group>"; };
-		B55D913F16B7B09F009CB90F /* RepoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RepoViewController.m; sourceTree = "<group>"; };
-		B55D914016B7B0A0009CB90F /* RepoViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RepoViewController.xib; sourceTree = "<group>"; };
-		B55D914316B7B0DF009CB90F /* NewsfeedDetailsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NewsfeedDetailsViewController.h; sourceTree = "<group>"; };
-		B55D914416B7B0E0009CB90F /* NewsfeedDetailsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NewsfeedDetailsViewController.m; sourceTree = "<group>"; };
-		B55D914516B7B0E1009CB90F /* NewsfeedDetailsViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NewsfeedDetailsViewController.xib; sourceTree = "<group>"; };
-		B55D914816B7B197009CB90F /* GistViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GistViewController.h; sourceTree = "<group>"; };
-		B55D914916B7B199009CB90F /* GistViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GistViewController.m; sourceTree = "<group>"; };
-		B55D914A16B7B19B009CB90F /* GistViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GistViewController.xib; sourceTree = "<group>"; };
 		B55D914D16B7B1FE009CB90F /* NewsFeedCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NewsFeedCell.h; sourceTree = "<group>"; };
 		B55D914E16B7B1FE009CB90F /* NewsFeedCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NewsFeedCell.m; sourceTree = "<group>"; };
 		B55D915016B7B265009CB90F /* NewsFeedCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NewsFeedCell.xib; sourceTree = "<group>"; };
 		B55D915216B7B2F3009CB90F /* RepoDetailsCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RepoDetailsCell.h; sourceTree = "<group>"; };
 		B55D915316B7B2F3009CB90F /* RepoDetailsCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RepoDetailsCell.m; sourceTree = "<group>"; };
 		B55D915516B7B321009CB90F /* RepoDetailsCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RepoDetailsCell.xib; sourceTree = "<group>"; };
-		B55D915716B7B388009CB90F /* RepoTreeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RepoTreeViewController.h; sourceTree = "<group>"; };
-		B55D915816B7B38A009CB90F /* RepoTreeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RepoTreeViewController.m; sourceTree = "<group>"; };
-		B55D915916B7B38C009CB90F /* RepoTreeViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RepoTreeViewController.xib; sourceTree = "<group>"; };
 		B55D915C16B7B421009CB90F /* GistDetailsCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GistDetailsCell.h; sourceTree = "<group>"; };
 		B55D915D16B7B422009CB90F /* GistDetailsCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GistDetailsCell.m; sourceTree = "<group>"; };
 		B55D915F16B7B445009CB90F /* GistDetailsCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GistDetailsCell.xib; sourceTree = "<group>"; };
 		B55D916116B7B493009CB90F /* RawFileViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RawFileViewController.h; sourceTree = "<group>"; };
 		B55D916216B7B495009CB90F /* RawFileViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RawFileViewController.m; sourceTree = "<group>"; };
 		B55D916316B7B497009CB90F /* RawFileViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RawFileViewController.xib; sourceTree = "<group>"; };
-		B55D916616B7B4E9009CB90F /* GistRawFileViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GistRawFileViewController.h; sourceTree = "<group>"; };
-		B55D916716B7B4EA009CB90F /* GistRawFileViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GistRawFileViewController.m; sourceTree = "<group>"; };
-		B55D916816B7B4EE009CB90F /* GistRawFileViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GistRawFileViewController.xib; sourceTree = "<group>"; };
 		B55D917016B7B5BD009CB90F /* OthersViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OthersViewController.h; sourceTree = "<group>"; };
 		B55D917116B7B5C0009CB90F /* OthersViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OthersViewController.m; sourceTree = "<group>"; };
 		B55D917216B7B5C2009CB90F /* OthersViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = OthersViewController.xib; sourceTree = "<group>"; };
-		B55D917516B7B611009CB90F /* ProfileViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProfileViewController.h; sourceTree = "<group>"; };
-		B55D917616B7B613009CB90F /* ProfileViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProfileViewController.m; sourceTree = "<group>"; };
-		B55D917716B7B618009CB90F /* ProfileViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ProfileViewController.xib; sourceTree = "<group>"; };
-		B55D917A16B7B650009CB90F /* RepoSearchViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RepoSearchViewController.h; sourceTree = "<group>"; };
-		B55D917B16B7B653009CB90F /* RepoSearchViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RepoSearchViewController.m; sourceTree = "<group>"; };
-		B55D917C16B7B658009CB90F /* RepoSearchViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RepoSearchViewController.xib; sourceTree = "<group>"; };
 		B55D917F16B7B6AB009CB90F /* RepoSearchResultCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RepoSearchResultCell.h; sourceTree = "<group>"; };
 		B55D918016B7B6AC009CB90F /* RepoSearchResultCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RepoSearchResultCell.m; sourceTree = "<group>"; };
 		B55D918216B7B6D2009CB90F /* RepoSearchResultCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RepoSearchResultCell.xib; sourceTree = "<group>"; };
@@ -706,6 +667,45 @@
 		B5836C941710C8B60012CC61 /* RepoTreeCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RepoTreeCell.h; sourceTree = "<group>"; };
 		B5836C951710C8B60012CC61 /* RepoTreeCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RepoTreeCell.m; sourceTree = "<group>"; };
 		B5836C971710C8C90012CC61 /* RepoTreeCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RepoTreeCell.xib; sourceTree = "<group>"; };
+		B5A1041F1723C10200487A47 /* GistRawFileViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GistRawFileViewController.h; sourceTree = "<group>"; };
+		B5A104201723C10200487A47 /* GistRawFileViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GistRawFileViewController.m; sourceTree = "<group>"; };
+		B5A104211723C10200487A47 /* GistRawFileViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GistRawFileViewController.xib; sourceTree = "<group>"; };
+		B5A104221723C10200487A47 /* GistsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GistsViewController.h; sourceTree = "<group>"; };
+		B5A104231723C10200487A47 /* GistsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GistsViewController.m; sourceTree = "<group>"; };
+		B5A104241723C10200487A47 /* GistsViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GistsViewController.xib; sourceTree = "<group>"; };
+		B5A104251723C10200487A47 /* GistViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GistViewController.h; sourceTree = "<group>"; };
+		B5A104261723C10200487A47 /* GistViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GistViewController.m; sourceTree = "<group>"; };
+		B5A104271723C10200487A47 /* GistViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GistViewController.xib; sourceTree = "<group>"; };
+		B5A1042F1723C19E00487A47 /* OrganizationsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OrganizationsViewController.h; sourceTree = "<group>"; };
+		B5A104301723C19E00487A47 /* OrganizationsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OrganizationsViewController.m; sourceTree = "<group>"; };
+		B5A104311723C19E00487A47 /* OrganizationsViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = OrganizationsViewController.xib; sourceTree = "<group>"; };
+		B5A104321723C19E00487A47 /* OrganizationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OrganizationViewController.h; sourceTree = "<group>"; };
+		B5A104331723C19E00487A47 /* OrganizationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OrganizationViewController.m; sourceTree = "<group>"; };
+		B5A104341723C19E00487A47 /* OrganizationViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = OrganizationViewController.xib; sourceTree = "<group>"; };
+		B5A1043A1723C1BC00487A47 /* RepoSearchViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RepoSearchViewController.h; sourceTree = "<group>"; };
+		B5A1043B1723C1BC00487A47 /* RepoSearchViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RepoSearchViewController.m; sourceTree = "<group>"; };
+		B5A1043C1723C1BC00487A47 /* RepoSearchViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RepoSearchViewController.xib; sourceTree = "<group>"; };
+		B5A1043D1723C1BC00487A47 /* ReposViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ReposViewController.h; sourceTree = "<group>"; };
+		B5A1043E1723C1BC00487A47 /* ReposViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ReposViewController.m; sourceTree = "<group>"; };
+		B5A1043F1723C1BC00487A47 /* ReposViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ReposViewController.xib; sourceTree = "<group>"; };
+		B5A104401723C1BC00487A47 /* RepoTreeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RepoTreeViewController.h; sourceTree = "<group>"; };
+		B5A104411723C1BC00487A47 /* RepoTreeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RepoTreeViewController.m; sourceTree = "<group>"; };
+		B5A104421723C1BC00487A47 /* RepoTreeViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RepoTreeViewController.xib; sourceTree = "<group>"; };
+		B5A104431723C1BC00487A47 /* RepoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RepoViewController.h; sourceTree = "<group>"; };
+		B5A104441723C1BC00487A47 /* RepoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RepoViewController.m; sourceTree = "<group>"; };
+		B5A104451723C1BC00487A47 /* RepoViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RepoViewController.xib; sourceTree = "<group>"; };
+		B5A1044F1723C1C900487A47 /* NewsfeedDetailsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NewsfeedDetailsViewController.h; sourceTree = "<group>"; };
+		B5A104501723C1C900487A47 /* NewsfeedDetailsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NewsfeedDetailsViewController.m; sourceTree = "<group>"; };
+		B5A104511723C1C900487A47 /* NewsfeedDetailsViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NewsfeedDetailsViewController.xib; sourceTree = "<group>"; };
+		B5A104521723C1C900487A47 /* NewsfeedViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NewsfeedViewController.h; sourceTree = "<group>"; };
+		B5A104531723C1C900487A47 /* NewsfeedViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NewsfeedViewController.m; sourceTree = "<group>"; };
+		B5A104541723C1C900487A47 /* NewsfeedViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NewsfeedViewController.xib; sourceTree = "<group>"; };
+		B5A1045A1723C1ED00487A47 /* IssueDetailsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IssueDetailsViewController.h; sourceTree = "<group>"; };
+		B5A1045B1723C1ED00487A47 /* IssueDetailsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IssueDetailsViewController.m; sourceTree = "<group>"; };
+		B5A1045C1723C1ED00487A47 /* IssueDetailsViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = IssueDetailsViewController.xib; sourceTree = "<group>"; };
+		B5A1045D1723C1ED00487A47 /* IssuesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IssuesViewController.h; sourceTree = "<group>"; };
+		B5A1045E1723C1ED00487A47 /* IssuesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IssuesViewController.m; sourceTree = "<group>"; };
+		B5A1045F1723C1ED00487A47 /* IssuesViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = IssuesViewController.xib; sourceTree = "<group>"; };
 		B5BC451C16BA5DFD00434848 /* prettify.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = prettify.js; sourceTree = "<group>"; };
 		B5BC452216BCEE6F00434848 /* MasterViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MasterViewController.h; sourceTree = "<group>"; };
 		B5BC452316BCEE7000434848 /* MasterViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MasterViewController.m; sourceTree = "<group>"; };
@@ -894,6 +894,29 @@
 			path = ViewDeck;
 			sourceTree = "<group>";
 		};
+		B51FCB1B1723BF7B003A75A6 /* Profile */ = {
+			isa = PBXGroup;
+			children = (
+				B51FCB1C1723BF81003A75A6 /* ProfileViewController.h */,
+				B51FCB1D1723BF81003A75A6 /* ProfileViewController.m */,
+				B51FCB1E1723BF81003A75A6 /* ProfileViewController.xib */,
+			);
+			path = Profile;
+			sourceTree = "<group>";
+		};
+		B51FCB211723BFEF003A75A6 /* Commit */ = {
+			isa = PBXGroup;
+			children = (
+				B51FCB221723C025003A75A6 /* CommitsViewController.h */,
+				B51FCB231723C025003A75A6 /* CommitsViewController.m */,
+				B51FCB241723C025003A75A6 /* CommitsViewController.xib */,
+				B51FCB251723C025003A75A6 /* CommitViewController.h */,
+				B51FCB261723C025003A75A6 /* CommitViewController.m */,
+				B51FCB271723C025003A75A6 /* CommitViewController.xib */,
+			);
+			path = Commit;
+			sourceTree = "<group>";
+		};
 		B546038316C0FFA8007D4FB3 /* SDWebImage */ = {
 			isa = PBXGroup;
 			children = (
@@ -1068,17 +1091,15 @@
 		B55D90F116B7ABC9009CB90F /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				B542274816CCBA240020F300 /* CommitsViewController.h */,
-				B542274916CCBA240020F300 /* CommitsViewController.m */,
-				B542274A16CCBA240020F300 /* CommitsViewController.xib */,
-				B542274316CCB75A0020F300 /* CommitViewController.h */,
-				B542274416CCB75A0020F300 /* CommitViewController.m */,
-				B542274516CCB75A0020F300 /* CommitViewController.xib */,
+				B5A1041E1723C10200487A47 /* Gist */,
+				B51FCB211723BFEF003A75A6 /* Commit */,
+				B51FCB1B1723BF7B003A75A6 /* Profile */,
 				B511D43116D9A5DA00DD0ED5 /* ContributionsViewController.h */,
 				B511D43216D9A5DA00DD0ED5 /* ContributionsViewController.m */,
 				B51FCB0817235DDA003A75A6 /* ViewDeck */,
 				B511D43316D9A5DA00DD0ED5 /* ContributionsViewController.xib */,
 				B5BC456916BD996200434848 /* DetailsViewController.h */,
+				B5A1042E1723C19E00487A47 /* Organization */,
 				B5BC456A16BD996200434848 /* DetailsViewController.m */,
 				B5BC456B16BD996200434848 /* DetailsViewController.xib */,
 				B54F6A1616D3605700978DD9 /* FeedbackViewController.h */,
@@ -1087,66 +1108,27 @@
 				B5167A0C16C0EFA0000D952F /* FollowViewController.h */,
 				B5167A0D16C0EFA0000D952F /* FollowViewController.m */,
 				B5167A0E16C0EFA0000D952F /* FollowViewController.xib */,
-				B55D916616B7B4E9009CB90F /* GistRawFileViewController.h */,
-				B55D916716B7B4EA009CB90F /* GistRawFileViewController.m */,
-				B55D916816B7B4EE009CB90F /* GistRawFileViewController.xib */,
-				B55D912916B7AF07009CB90F /* GistsViewController.h */,
-				B55D912A16B7AF08009CB90F /* GistsViewController.m */,
-				B55D912B16B7AF08009CB90F /* GistsViewController.xib */,
-				B55D914816B7B197009CB90F /* GistViewController.h */,
-				B55D914916B7B199009CB90F /* GistViewController.m */,
-				B55D914A16B7B19B009CB90F /* GistViewController.xib */,
-				B552948716C827AC0010D56A /* IssueDetailsViewController.h */,
-				B552948816C827AC0010D56A /* IssueDetailsViewController.m */,
-				B552948916C827AC0010D56A /* IssueDetailsViewController.xib */,
-				B552947A16C7A22E0010D56A /* IssuesViewController.h */,
-				B552947B16C7A22E0010D56A /* IssuesViewController.m */,
-				B552947C16C7A22E0010D56A /* IssuesViewController.xib */,
 				B55D911A16B7AE48009CB90F /* LoginViewController.h */,
 				B55D911B16B7AE48009CB90F /* LoginViewController.m */,
 				B55D911C16B7AE48009CB90F /* LoginViewController.xib */,
 				B5BC452216BCEE6F00434848 /* MasterViewController.h */,
 				B5BC452316BCEE7000434848 /* MasterViewController.m */,
+				B5A104591723C1ED00487A47 /* Issue */,
 				B5BC452416BCEE7000434848 /* MasterViewController.xib */,
-				B55D914316B7B0DF009CB90F /* NewsfeedDetailsViewController.h */,
-				B55D914416B7B0E0009CB90F /* NewsfeedDetailsViewController.m */,
-				B55D914516B7B0E1009CB90F /* NewsfeedDetailsViewController.xib */,
-				B55D911F16B7AE9A009CB90F /* NewsfeedViewController.h */,
-				B55D912016B7AE9A009CB90F /* NewsfeedViewController.m */,
-				B55D912116B7AE9A009CB90F /* NewsfeedViewController.xib */,
 				B54F69E416D2F88A00978DD9 /* NotificationsViewController.h */,
 				B54F69E516D2F88A00978DD9 /* NotificationsViewController.m */,
 				B54F69E616D2F88B00978DD9 /* NotificationsViewController.xib */,
-				B54603C016C37FB0007D4FB3 /* OrganizationsViewController.h */,
-				B54603C116C37FB1007D4FB3 /* OrganizationsViewController.m */,
-				B54603C216C37FB2007D4FB3 /* OrganizationsViewController.xib */,
-				B54603C516C388CF007D4FB3 /* OrganizationViewController.h */,
-				B54603C616C388CF007D4FB3 /* OrganizationViewController.m */,
-				B54603C716C388D0007D4FB3 /* OrganizationViewController.xib */,
 				B55D917016B7B5BD009CB90F /* OthersViewController.h */,
 				B55D917116B7B5C0009CB90F /* OthersViewController.m */,
 				B55D917216B7B5C2009CB90F /* OthersViewController.xib */,
-				B55D917516B7B611009CB90F /* ProfileViewController.h */,
-				B55D917616B7B613009CB90F /* ProfileViewController.m */,
-				B55D917716B7B618009CB90F /* ProfileViewController.xib */,
+				B5A104391723C1BC00487A47 /* Repo */,
 				B55D916116B7B493009CB90F /* RawFileViewController.h */,
 				B55D916216B7B495009CB90F /* RawFileViewController.m */,
 				B55D916316B7B497009CB90F /* RawFileViewController.xib */,
 				B54603B116C24001007D4FB3 /* RecentActivityViewController.h */,
 				B54603B216C24002007D4FB3 /* RecentActivityViewController.m */,
+				B5A1044E1723C1C900487A47 /* Newsfeed */,
 				B54603B316C24002007D4FB3 /* RecentActivityViewController.xib */,
-				B55D917A16B7B650009CB90F /* RepoSearchViewController.h */,
-				B55D917B16B7B653009CB90F /* RepoSearchViewController.m */,
-				B55D917C16B7B658009CB90F /* RepoSearchViewController.xib */,
-				B55D912416B7AECF009CB90F /* ReposViewController.h */,
-				B55D912516B7AED0009CB90F /* ReposViewController.m */,
-				B55D912616B7AED0009CB90F /* ReposViewController.xib */,
-				B55D915716B7B388009CB90F /* RepoTreeViewController.h */,
-				B55D915816B7B38A009CB90F /* RepoTreeViewController.m */,
-				B55D915916B7B38C009CB90F /* RepoTreeViewController.xib */,
-				B55D913E16B7B09E009CB90F /* RepoViewController.h */,
-				B55D913F16B7B09F009CB90F /* RepoViewController.m */,
-				B55D914016B7B0A0009CB90F /* RepoViewController.xib */,
 				B542276716D0322D0020F300 /* SearchViewController.h */,
 				B542276816D0322E0020F300 /* SearchViewController.m */,
 				B542276916D0322F0020F300 /* SearchViewController.xib */,
@@ -1293,6 +1275,80 @@
 			name = Helpers;
 			sourceTree = "<group>";
 		};
+		B5A1041E1723C10200487A47 /* Gist */ = {
+			isa = PBXGroup;
+			children = (
+				B5A1041F1723C10200487A47 /* GistRawFileViewController.h */,
+				B5A104201723C10200487A47 /* GistRawFileViewController.m */,
+				B5A104211723C10200487A47 /* GistRawFileViewController.xib */,
+				B5A104221723C10200487A47 /* GistsViewController.h */,
+				B5A104231723C10200487A47 /* GistsViewController.m */,
+				B5A104241723C10200487A47 /* GistsViewController.xib */,
+				B5A104251723C10200487A47 /* GistViewController.h */,
+				B5A104261723C10200487A47 /* GistViewController.m */,
+				B5A104271723C10200487A47 /* GistViewController.xib */,
+			);
+			path = Gist;
+			sourceTree = "<group>";
+		};
+		B5A1042E1723C19E00487A47 /* Organization */ = {
+			isa = PBXGroup;
+			children = (
+				B5A1042F1723C19E00487A47 /* OrganizationsViewController.h */,
+				B5A104301723C19E00487A47 /* OrganizationsViewController.m */,
+				B5A104311723C19E00487A47 /* OrganizationsViewController.xib */,
+				B5A104321723C19E00487A47 /* OrganizationViewController.h */,
+				B5A104331723C19E00487A47 /* OrganizationViewController.m */,
+				B5A104341723C19E00487A47 /* OrganizationViewController.xib */,
+			);
+			path = Organization;
+			sourceTree = "<group>";
+		};
+		B5A104391723C1BC00487A47 /* Repo */ = {
+			isa = PBXGroup;
+			children = (
+				B5A1043A1723C1BC00487A47 /* RepoSearchViewController.h */,
+				B5A1043B1723C1BC00487A47 /* RepoSearchViewController.m */,
+				B5A1043C1723C1BC00487A47 /* RepoSearchViewController.xib */,
+				B5A1043D1723C1BC00487A47 /* ReposViewController.h */,
+				B5A1043E1723C1BC00487A47 /* ReposViewController.m */,
+				B5A1043F1723C1BC00487A47 /* ReposViewController.xib */,
+				B5A104401723C1BC00487A47 /* RepoTreeViewController.h */,
+				B5A104411723C1BC00487A47 /* RepoTreeViewController.m */,
+				B5A104421723C1BC00487A47 /* RepoTreeViewController.xib */,
+				B5A104431723C1BC00487A47 /* RepoViewController.h */,
+				B5A104441723C1BC00487A47 /* RepoViewController.m */,
+				B5A104451723C1BC00487A47 /* RepoViewController.xib */,
+			);
+			path = Repo;
+			sourceTree = "<group>";
+		};
+		B5A1044E1723C1C900487A47 /* Newsfeed */ = {
+			isa = PBXGroup;
+			children = (
+				B5A1044F1723C1C900487A47 /* NewsfeedDetailsViewController.h */,
+				B5A104501723C1C900487A47 /* NewsfeedDetailsViewController.m */,
+				B5A104511723C1C900487A47 /* NewsfeedDetailsViewController.xib */,
+				B5A104521723C1C900487A47 /* NewsfeedViewController.h */,
+				B5A104531723C1C900487A47 /* NewsfeedViewController.m */,
+				B5A104541723C1C900487A47 /* NewsfeedViewController.xib */,
+			);
+			path = Newsfeed;
+			sourceTree = "<group>";
+		};
+		B5A104591723C1ED00487A47 /* Issue */ = {
+			isa = PBXGroup;
+			children = (
+				B5A1045A1723C1ED00487A47 /* IssueDetailsViewController.h */,
+				B5A1045B1723C1ED00487A47 /* IssueDetailsViewController.m */,
+				B5A1045C1723C1ED00487A47 /* IssueDetailsViewController.xib */,
+				B5A1045D1723C1ED00487A47 /* IssuesViewController.h */,
+				B5A1045E1723C1ED00487A47 /* IssuesViewController.m */,
+				B5A1045F1723C1ED00487A47 /* IssuesViewController.xib */,
+			);
+			path = Issue;
+			sourceTree = "<group>";
+		};
 		B5BC451A16BA5DFC00434848 /* Html */ = {
 			isa = PBXGroup;
 			children = (
@@ -1380,24 +1436,14 @@
 				B55D90B516B7AA27009CB90F /* Default@2x.png in Resources */,
 				B55D90B716B7AA27009CB90F /* Default-568h@2x.png in Resources */,
 				B55D911E16B7AE48009CB90F /* LoginViewController.xib in Resources */,
-				B55D912316B7AE9B009CB90F /* NewsfeedViewController.xib in Resources */,
-				B55D912816B7AED1009CB90F /* ReposViewController.xib in Resources */,
-				B55D912D16B7AF09009CB90F /* GistsViewController.xib in Resources */,
 				B55D913216B7AF37009CB90F /* StarredViewController.xib in Resources */,
 				B55D913816B7AFAA009CB90F /* GistCell.xib in Resources */,
 				B55D913D16B7B01A009CB90F /* RepoCell.xib in Resources */,
-				B55D914216B7B0A0009CB90F /* RepoViewController.xib in Resources */,
-				B55D914716B7B0E3009CB90F /* NewsfeedDetailsViewController.xib in Resources */,
-				B55D914C16B7B19D009CB90F /* GistViewController.xib in Resources */,
 				B55D915116B7B265009CB90F /* NewsFeedCell.xib in Resources */,
 				B55D915616B7B321009CB90F /* RepoDetailsCell.xib in Resources */,
-				B55D915B16B7B38D009CB90F /* RepoTreeViewController.xib in Resources */,
 				B55D916016B7B446009CB90F /* GistDetailsCell.xib in Resources */,
 				B55D916516B7B49A009CB90F /* RawFileViewController.xib in Resources */,
-				B55D916A16B7B4F0009CB90F /* GistRawFileViewController.xib in Resources */,
 				B55D917416B7B5C5009CB90F /* OthersViewController.xib in Resources */,
-				B55D917916B7B61B009CB90F /* ProfileViewController.xib in Resources */,
-				B55D917E16B7B65C009CB90F /* RepoSearchViewController.xib in Resources */,
 				B55D918316B7B6D4009CB90F /* RepoSearchResultCell.xib in Resources */,
 				B55D918816B7B70D009CB90F /* ProfileCell.xib in Resources */,
 				B51653FB16B7C1B9003F0DFA /* 01-refresh.png in Resources */,
@@ -1507,16 +1553,10 @@
 				B54603B516C24003007D4FB3 /* RecentActivityViewController.xib in Resources */,
 				B54603BA16C37B14007D4FB3 /* icon.png in Resources */,
 				B54603BC16C37B60007D4FB3 /* icon@2x.png in Resources */,
-				B54603C416C37FB4007D4FB3 /* OrganizationsViewController.xib in Resources */,
-				B54603C916C388D2007D4FB3 /* OrganizationViewController.xib in Resources */,
-				B552947E16C7A22E0010D56A /* IssuesViewController.xib in Resources */,
 				B552948616C818F50010D56A /* IssueCell.xib in Resources */,
-				B552948B16C827AC0010D56A /* IssueDetailsViewController.xib in Resources */,
 				B552949416C85FEB0010D56A /* bootstrap.css in Resources */,
 				B552949916C866380010D56A /* issue_details.html in Resources */,
 				B552949B16C8705B0010D56A /* gitos.css in Resources */,
-				B542274716CCB75A0020F300 /* CommitViewController.xib in Resources */,
-				B542274C16CCBA240020F300 /* CommitsViewController.xib in Resources */,
 				B542275116CCBBDF0020F300 /* CommitCell.xib in Resources */,
 				B542275316CCC8D00020F300 /* commit_details.html in Resources */,
 				B542275E16CDFB390020F300 /* github.css in Resources */,
@@ -1550,6 +1590,22 @@
 				B51FCB1417237E15003A75A6 /* 399-list1.png in Resources */,
 				B51FCB1517237E15003A75A6 /* 399-list1@2x.png in Resources */,
 				B51FCB1A1723881B003A75A6 /* selected_cell_bg.png in Resources */,
+				B51FCB201723BF81003A75A6 /* ProfileViewController.xib in Resources */,
+				B51FCB291723C025003A75A6 /* CommitsViewController.xib in Resources */,
+				B51FCB2B1723C025003A75A6 /* CommitViewController.xib in Resources */,
+				B5A104291723C10200487A47 /* GistRawFileViewController.xib in Resources */,
+				B5A1042B1723C10200487A47 /* GistsViewController.xib in Resources */,
+				B5A1042D1723C10200487A47 /* GistViewController.xib in Resources */,
+				B5A104361723C19E00487A47 /* OrganizationsViewController.xib in Resources */,
+				B5A104381723C19E00487A47 /* OrganizationViewController.xib in Resources */,
+				B5A104471723C1BC00487A47 /* RepoSearchViewController.xib in Resources */,
+				B5A104491723C1BC00487A47 /* ReposViewController.xib in Resources */,
+				B5A1044B1723C1BC00487A47 /* RepoTreeViewController.xib in Resources */,
+				B5A1044D1723C1BC00487A47 /* RepoViewController.xib in Resources */,
+				B5A104561723C1C900487A47 /* NewsfeedDetailsViewController.xib in Resources */,
+				B5A104581723C1C900487A47 /* NewsfeedViewController.xib in Resources */,
+				B5A104611723C1ED00487A47 /* IssueDetailsViewController.xib in Resources */,
+				B5A104631723C1ED00487A47 /* IssuesViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1586,24 +1642,14 @@
 				B55D911316B7ADCE009CB90F /* TimelineEvent.m in Sources */,
 				B55D911616B7ADF0009CB90F /* User.m in Sources */,
 				B55D911D16B7AE48009CB90F /* LoginViewController.m in Sources */,
-				B55D912216B7AE9B009CB90F /* NewsfeedViewController.m in Sources */,
-				B55D912716B7AED1009CB90F /* ReposViewController.m in Sources */,
-				B55D912C16B7AF09009CB90F /* GistsViewController.m in Sources */,
 				B55D913116B7AF37009CB90F /* StarredViewController.m in Sources */,
 				B55D913616B7AF86009CB90F /* GistCell.m in Sources */,
 				B55D913B16B7AFF4009CB90F /* RepoCell.m in Sources */,
-				B55D914116B7B0A0009CB90F /* RepoViewController.m in Sources */,
-				B55D914616B7B0E3009CB90F /* NewsfeedDetailsViewController.m in Sources */,
-				B55D914B16B7B19D009CB90F /* GistViewController.m in Sources */,
 				B55D914F16B7B1FF009CB90F /* NewsFeedCell.m in Sources */,
 				B55D915416B7B2F4009CB90F /* RepoDetailsCell.m in Sources */,
-				B55D915A16B7B38D009CB90F /* RepoTreeViewController.m in Sources */,
 				B55D915E16B7B423009CB90F /* GistDetailsCell.m in Sources */,
 				B55D916416B7B49A009CB90F /* RawFileViewController.m in Sources */,
-				B55D916916B7B4F0009CB90F /* GistRawFileViewController.m in Sources */,
 				B55D917316B7B5C5009CB90F /* OthersViewController.m in Sources */,
-				B55D917816B7B61B009CB90F /* ProfileViewController.m in Sources */,
-				B55D917D16B7B65C009CB90F /* RepoSearchViewController.m in Sources */,
 				B55D918116B7B6AE009CB90F /* RepoSearchResultCell.m in Sources */,
 				B55D918616B7B6E9009CB90F /* ProfileCell.m in Sources */,
 				B5BC452516BCEE7100434848 /* MasterViewController.m in Sources */,
@@ -1624,17 +1670,11 @@
 				B54603AF16C225FC007D4FB3 /* WebsiteViewController.m in Sources */,
 				B54603B416C24003007D4FB3 /* RecentActivityViewController.m in Sources */,
 				B54603BF16C37D53007D4FB3 /* Organization.m in Sources */,
-				B54603C316C37FB4007D4FB3 /* OrganizationsViewController.m in Sources */,
-				B54603C816C388D2007D4FB3 /* OrganizationViewController.m in Sources */,
 				B54603CC16C4D0DD007D4FB3 /* MBProgressHUD.m in Sources */,
-				B552947D16C7A22E0010D56A /* IssuesViewController.m in Sources */,
 				B552948116C7A23D0010D56A /* Issue.m in Sources */,
 				B552948416C818DC0010D56A /* IssueCell.m in Sources */,
-				B552948A16C827AC0010D56A /* IssueDetailsViewController.m in Sources */,
 				B552949716C862FD0010D56A /* Comment.m in Sources */,
 				B542274216CCB15D0020F300 /* Commit.m in Sources */,
-				B542274616CCB75A0020F300 /* CommitViewController.m in Sources */,
-				B542274B16CCBA240020F300 /* CommitsViewController.m in Sources */,
 				B542274F16CCBBD30020F300 /* CommitCell.m in Sources */,
 				B542275616CDEA580020F300 /* CommitFile.m in Sources */,
 				B542276A16D032300020F300 /* SearchViewController.m in Sources */,
@@ -1669,6 +1709,22 @@
 				B51FCB1017235DDA003A75A6 /* IIViewDeckController.m in Sources */,
 				B51FCB1117235DDA003A75A6 /* IIWrapController.m in Sources */,
 				B51FCB181723834D003A75A6 /* GitosViewController.m in Sources */,
+				B51FCB1F1723BF81003A75A6 /* ProfileViewController.m in Sources */,
+				B51FCB281723C025003A75A6 /* CommitsViewController.m in Sources */,
+				B51FCB2A1723C025003A75A6 /* CommitViewController.m in Sources */,
+				B5A104281723C10200487A47 /* GistRawFileViewController.m in Sources */,
+				B5A1042A1723C10200487A47 /* GistsViewController.m in Sources */,
+				B5A1042C1723C10200487A47 /* GistViewController.m in Sources */,
+				B5A104351723C19E00487A47 /* OrganizationsViewController.m in Sources */,
+				B5A104371723C19E00487A47 /* OrganizationViewController.m in Sources */,
+				B5A104461723C1BC00487A47 /* RepoSearchViewController.m in Sources */,
+				B5A104481723C1BC00487A47 /* ReposViewController.m in Sources */,
+				B5A1044A1723C1BC00487A47 /* RepoTreeViewController.m in Sources */,
+				B5A1044C1723C1BC00487A47 /* RepoViewController.m in Sources */,
+				B5A104551723C1C900487A47 /* NewsfeedDetailsViewController.m in Sources */,
+				B5A104571723C1C900487A47 /* NewsfeedViewController.m in Sources */,
+				B5A104601723C1ED00487A47 /* IssueDetailsViewController.m in Sources */,
+				B5A104621723C1ED00487A47 /* IssuesViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
