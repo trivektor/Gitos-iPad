@@ -398,6 +398,7 @@
 - (void)editProfile
 {
     EditProfileViewController *editProfileController = [[EditProfileViewController alloc] init];
+    editProfileController.user = user;
     [self.navigationController pushViewController:editProfileController animated:YES];
 }
 
