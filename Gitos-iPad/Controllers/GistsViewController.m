@@ -133,7 +133,7 @@
 
 - (void)displayUserGists:(NSNotification *)notification
 {
-    [gists addObjectsFromArray:[notification.userInfo valueForKey:@"Gists"]];
+    [gists addObjectsFromArray:notification.object];
     [gistsTable reloadData];
     [gistsTable.pullToRefreshView stopAnimating];
     [hud hide:YES];

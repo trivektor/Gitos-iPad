@@ -95,9 +95,7 @@ static int PER_PAGE = 30;
 
          endSha = [[commits lastObject] getSha];
 
-         NSDictionary *userInfo = [NSDictionary dictionaryWithObject:commits forKey:@"Commits"];
-
-         [[NSNotificationCenter defaultCenter] postNotificationName:@"CommitsFetched" object:nil userInfo:userInfo];
+         [[NSNotificationCenter defaultCenter] postNotificationName:@"CommitsFetched" object:commits];
      }
      failure:^(AFHTTPRequestOperation *operation, NSError *error) {
          NSLog(@"%@", error);

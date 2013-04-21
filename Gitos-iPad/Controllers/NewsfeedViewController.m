@@ -162,7 +162,7 @@
 
 - (void)displayUserNewsFeed:(NSNotification *)notication
 {
-    [newsFeed addObjectsFromArray:[notication.userInfo valueForKey:@"NewsFeed"]];
+    [newsFeed addObjectsFromArray:notication.object];
     [newsFeedTable.pullToRefreshView stopAnimating];
     [newsFeedTable reloadData];
     [hud hide:YES];

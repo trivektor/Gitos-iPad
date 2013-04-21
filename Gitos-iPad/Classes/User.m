@@ -177,10 +177,7 @@
              [newsFeed addObject:[[TimelineEvent alloc] initWithData:[json objectAtIndex:i]]];
          }
 
-         NSDictionary *userInfo = [NSDictionary dictionaryWithObject:newsFeed forKey:@"NewsFeed"];
-
-         [[NSNotificationCenter defaultCenter] postNotificationName:@"NewsFeedFetched" object:self
-                                                           userInfo:userInfo];
+         [[NSNotificationCenter defaultCenter] postNotificationName:@"NewsFeedFetched" object:newsFeed];
      }
      failure:^(AFHTTPRequestOperation *operation, NSError *error) {
          NSLog(@"%@", error);
@@ -209,9 +206,7 @@
 
          User *user = [[User alloc] initWithData:json];
 
-         NSDictionary *userInfo = [NSDictionary dictionaryWithObject:user forKey:@"User"];
-
-         [[NSNotificationCenter defaultCenter] postNotificationName:@"UserInfoFetched" object:self userInfo:userInfo];
+         [[NSNotificationCenter defaultCenter] postNotificationName:@"UserInfoFetched" object:user];
      }
      failure:^(AFHTTPRequestOperation *operation, NSError *error) {
          NSLog(@"%@", error);

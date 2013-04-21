@@ -59,7 +59,7 @@
 
 - (void)displayCommits:(NSNotification *)notification
 {
-    [commits addObjectsFromArray:[notification.userInfo valueForKey:@"Commits"]];
+    [commits addObjectsFromArray:notification.object];
     [commitsTable reloadData];
     [hud hide:YES];
 }

@@ -116,9 +116,7 @@
              [gists addObject:[[Gist alloc] initWithData:[gistsArray objectAtIndex:i]]];
          }
 
-         NSDictionary *userInfo = [NSDictionary dictionaryWithObject:gists forKey:@"Gists"];
-
-         [[NSNotificationCenter defaultCenter] postNotificationName:@"UserGistsFetched" object:nil userInfo:userInfo];
+         [[NSNotificationCenter defaultCenter] postNotificationName:@"UserGistsFetched" object:gists];
      }
      failure:^(AFHTTPRequestOperation *operation, NSError *error) {
          NSLog(@"%@", error);

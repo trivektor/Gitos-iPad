@@ -94,7 +94,7 @@
 
 - (void)displayTree:(NSNotification *)notification
 {
-    treeNodes = [notification.userInfo valueForKey:@"Nodes"];
+    treeNodes = notification.object;
     [treeTable reloadData];
     [hud setHidden:YES];
 }

@@ -53,7 +53,7 @@
 
 - (void)displayCommitDetails:(NSNotification *)notification
 {
-    commit = [notification.userInfo valueForKey:@"CommitDetails"];
+    commit = notification.object;
     NSURL *baseUrl = [NSURL fileURLWithPath:[[NSBundle mainBundle] bundlePath]];
     [commitView loadHTMLString:[commit toHTMLString] baseURL:baseUrl];
 }

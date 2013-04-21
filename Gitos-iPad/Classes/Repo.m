@@ -266,9 +266,7 @@
             [repos addObject:[[Repo alloc] initWithData:[json objectAtIndex:i]]];
         }
 
-        NSDictionary *userInfo = [NSDictionary dictionaryWithObject:repos forKey:@"Repos"];
-
-        [[NSNotificationCenter defaultCenter] postNotificationName:@"UserReposFetched" object:self userInfo:userInfo];
+        [[NSNotificationCenter defaultCenter] postNotificationName:@"UserReposFetched" object:repos];
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
         NSLog(@"%@", error);
     }];
@@ -304,9 +302,7 @@
              [repos addObject:[[Repo alloc] initWithData:[json objectAtIndex:i]]];
          }
 
-         NSDictionary *userInfo = [NSDictionary dictionaryWithObject:repos forKey:@"StarredRepos"];
-
-         [[NSNotificationCenter defaultCenter] postNotificationName:@"StarredReposFetched" object:self userInfo:userInfo];
+         [[NSNotificationCenter defaultCenter] postNotificationName:@"StarredReposFetched" object:repos];
      }
      failure:^(AFHTTPRequestOperation *operation, NSError *error) {
          NSLog(@"%@", error);
@@ -341,9 +337,7 @@
              [nodes addObject:[[RepoTreeNode alloc] initWithData:[treeNodes objectAtIndex:i]]];
          }
 
-         NSDictionary *userInfo = [NSDictionary dictionaryWithObject:nodes forKey:@"Nodes"];
-
-         [[NSNotificationCenter defaultCenter] postNotificationName:@"TreeFetched" object:nil userInfo:userInfo];
+         [[NSNotificationCenter defaultCenter] postNotificationName:@"TreeFetched" object:nodes];
      }
      failure:^(AFHTTPRequestOperation *operation, NSError *error) {
          NSLog(@"%@", error);

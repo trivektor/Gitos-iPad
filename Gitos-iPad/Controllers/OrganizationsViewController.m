@@ -58,7 +58,7 @@
 
 - (void)displayOrganizations:(NSNotification *)notification
 {
-    organizations = [notification.userInfo valueForKey:@"Organizations"];
+    organizations = notification.object;
     [organizationsTable reloadData];
     [hud hide:YES];
 }

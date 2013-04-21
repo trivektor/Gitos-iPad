@@ -117,7 +117,7 @@
 
 - (void)displayUserInfo:(NSNotification *)notification
 {
-    user = [notification.userInfo valueForKey:@"User"];
+    user = notification.object;
 
     self.navigationItem.title = [user getLogin];
     

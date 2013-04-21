@@ -83,9 +83,7 @@
              [nodes addObject:[[RepoTreeNode alloc] initWithData:[treeNodes objectAtIndex:i]]];
          }
 
-         NSDictionary *userInfo = [NSDictionary dictionaryWithObject:nodes forKey:@"Nodes"];
-
-         [[NSNotificationCenter defaultCenter] postNotificationName:@"TreeFetched" object:nil userInfo:userInfo];
+         [[NSNotificationCenter defaultCenter] postNotificationName:@"TreeFetched" object:nodes];
      }
      failure:^(AFHTTPRequestOperation *operation, NSError *error) {
          NSLog(@"%@", error);

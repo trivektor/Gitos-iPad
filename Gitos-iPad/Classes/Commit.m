@@ -115,11 +115,8 @@ static NSString *DATE_FORMAT = @"yyyy-MM-dd'T'HH:mm:ssZZ";
 
          NSDictionary *json = [NSJSONSerialization JSONObjectWithData:[response dataUsingEncoding:NSUTF8StringEncoding] options:NSJSONReadingMutableContainers error:nil];
 
-         NSDictionary *userInfo = [NSDictionary dictionaryWithObject:[[Commit alloc] initWithData:json] forKey:@"CommitDetails"];
-
          [[NSNotificationCenter defaultCenter] postNotificationName:@"CommitDetailsFetched"
-                                                             object:nil
-                                                           userInfo:userInfo];
+                                                             object:[[Commit alloc] initWithData:json]];
      }
      failure:^(AFHTTPRequestOperation *operation, NSError *error) {
          NSLog(@"%@", error);

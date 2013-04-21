@@ -91,8 +91,7 @@
 
 - (void)displayUserRepos:(NSNotification *)notification
 {
-    repos = [notification.userInfo valueForKey:@"Repos"];
-
+    repos = notification.object;
     [reposTable reloadData];
     [hud hide:YES];
 }

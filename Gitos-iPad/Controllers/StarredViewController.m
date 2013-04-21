@@ -86,7 +86,7 @@
 
 - (void)displayStarredRepos:(NSNotification *)notification
 {
-    [starredRepos addObjectsFromArray:[notification.userInfo valueForKey:@"StarredRepos"]];
+    [starredRepos addObjectsFromArray:notification.object];
     [starredReposTable reloadData];
     [starredReposTable.pullToRefreshView stopAnimating];
     [hud hide:YES];

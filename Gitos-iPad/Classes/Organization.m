@@ -126,11 +126,8 @@
              [organizations addObject:[[Organization alloc] initWithData:[json objectAtIndex:i]]];
          }
 
-         NSDictionary *userInfo = [NSDictionary dictionaryWithObject:organizations forKey:@"Organizations"];
-
          [[NSNotificationCenter defaultCenter] postNotificationName:@"OrganizationsFetched"
-                                                             object:nil
-                                                           userInfo:userInfo];
+                                                             object:organizations];
      }
      failure:^(AFHTTPRequestOperation *operation, NSError *error) {
          NSLog(@"%@", error);
