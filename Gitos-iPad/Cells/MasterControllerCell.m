@@ -70,7 +70,7 @@
             optionLabelText  = @"Notifications";
             break;
         case 7:
-            fontAwesome      = [NSString fontAwesomeIconStringForIconIdentifier:@"icon-thumbs-up"];
+            fontAwesome      = [NSString fontAwesomeIconStringForIconIdentifier:@"icon-envelope"];
             optionLabelText  = @"Feedback";
             break;
         case 8:

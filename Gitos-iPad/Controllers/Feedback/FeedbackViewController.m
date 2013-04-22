@@ -60,14 +60,7 @@
     NSString *message = messageField.text;
 
     if (name.length == 0 || email.length == 0 || message.length == 0) {
-        [YRDropdownView showDropdownInView:self.view
-                                     title:@"Error"
-                                    detail:@"All fields are required"
-                                     image:[UIImage imageNamed:@"glyphicons_078_warning_sign.png"]
-                                 textColor:[UIColor colorWithRed:186/255.0 green:12/255.0 blue:12/255.0 alpha:1.0]
-                           backgroundColor:[UIColor whiteColor]
-                                  animated:YES
-                                 hideAfter:HIDE_AFTER];
+        [AppHelper flashError:@"All fields are required" inView:self.view];
         return;
     }
 
@@ -97,14 +90,7 @@
          NSDictionary *json = [NSJSONSerialization JSONObjectWithData:[response dataUsingEncoding:NSUTF8StringEncoding] options:NSJSONReadingMutableContainers error:nil];
 
          if ([[json valueForKey:@"success"] intValue] == 1) {
-             [YRDropdownView showDropdownInView:self.view
-                                          title:@"Alert"
-                                         detail:@"Feedback submitted successfully"
-                                          image:[UIImage imageNamed:@"glyphicons_198_ok.png"]
-                                      textColor:[UIColor whiteColor]
-                                backgroundColor:[UIColor colorWithRed:87/255.0 green:153/255.0 blue:38/255.0 alpha:1.0]
-                                       animated:YES
-                                      hideAfter:HIDE_AFTER];
+             [AppHelper flashAlert:@"Feedback submitted successfully" inView:self.view];
          }
      }
      failure:^(AFHTTPRequestOperation *operation, NSError *error) {
