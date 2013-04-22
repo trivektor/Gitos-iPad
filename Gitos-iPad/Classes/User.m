@@ -225,10 +225,9 @@
 {
     NSString *githubApiHost = [AppConfig getConfigValue:@"GithubApiHost"];
 
-    NSURL *userUrl = [NSURL URLWithString:[githubApiHost stringByAppendingString:@"/user"]];
+    NSURL *userUrl = [NSURL URLWithString:[githubApiHost stringByAppendingFormat:@"/user?access_token=%@", [AppHelper getAccessToken]]];
 
     AFHTTPClient *httpClient = [[AFHTTPClient alloc] initWithBaseURL:userUrl];
-    [httpClient setAuthorizationHeaderWithUsername:[AppHelper getAccountUsername] password:[AppHelper getAccountPassword]];
     [httpClient setParameterEncoding:AFJSONParameterEncoding];
 
     NSMutableURLRequest *patchRequest = [httpClient requestWithMethod:@"PATCH"
