@@ -98,7 +98,28 @@ nameTextField, emailTextField, websiteTextField, companyTextField, locationTextF
         @"location" : locationTextField.text
     };
 
+    [self blurTextFields];
     [user update:updatedInfo];
+}
+
+- (void)blurTextFields
+{
+    if (nameTextField.isFirstResponder) [nameTextField resignFirstResponder];
+    if (emailTextField.isFirstResponder) [emailTextField resignFirstResponder];
+    if (websiteTextField.isFirstResponder) [websiteTextField resignFirstResponder];
+    if (companyTextField.isFirstResponder) [companyTextField resignFirstResponder];
+    if (locationTextField.isFirstResponder) [locationTextField resignFirstResponder];
+}
+
+- (BOOL)textFieldShouldEndEditing:(UITextField *)textField
+{
+    return YES;
+}
+
+- (BOOL)textFieldShouldReturn:(UITextField *)textField
+{
+    [textField resignFirstResponder];
+    return YES;
 }
 
 - (void)handleServerResponse:(NSNotification *)notification

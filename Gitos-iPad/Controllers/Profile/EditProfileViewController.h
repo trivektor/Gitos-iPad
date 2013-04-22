@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface EditProfileViewController : UIViewController <UITableViewDataSource, UITableViewDelegate>
+@interface EditProfileViewController : UIViewController <UITableViewDataSource, UITableViewDelegate, UITextFieldDelegate>
 
 @property (nonatomic, strong) User *user;
 
@@ -34,6 +34,7 @@
 - (void)registerEvents;
 - (void)populateUserInfo;
 - (void)updateInfo;
+- (void)blurTextFields;
 - (void)handleServerResponse:(NSNotification *)notification;
 
 @end
