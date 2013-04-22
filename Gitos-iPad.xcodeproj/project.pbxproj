@@ -302,6 +302,10 @@
 		B5BC457E16BEE28900434848 /* NSString+FontAwesome.m in Sources */ = {isa = PBXBuildFile; fileRef = B5BC457D16BEE28900434848 /* NSString+FontAwesome.m */; };
 		B5BC458116BEE55100434848 /* MasterControllerCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B5BC458016BEE55100434848 /* MasterControllerCell.m */; };
 		B5BC458316BEE56000434848 /* MasterControllerCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B5BC458216BEE56000434848 /* MasterControllerCell.xib */; };
+		B5C61303172469420039FDD5 /* Underscore+Functional.m in Sources */ = {isa = PBXBuildFile; fileRef = B5C612FA172469420039FDD5 /* Underscore+Functional.m */; };
+		B5C61304172469420039FDD5 /* Underscore.m in Sources */ = {isa = PBXBuildFile; fileRef = B5C612FD172469420039FDD5 /* Underscore.m */; };
+		B5C61305172469420039FDD5 /* USArrayWrapper.m in Sources */ = {isa = PBXBuildFile; fileRef = B5C612FF172469420039FDD5 /* USArrayWrapper.m */; };
+		B5C61306172469420039FDD5 /* USDictionaryWrapper.m in Sources */ = {isa = PBXBuildFile; fileRef = B5C61302172469420039FDD5 /* USDictionaryWrapper.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -716,6 +720,16 @@
 		B5BC457F16BEE55100434848 /* MasterControllerCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MasterControllerCell.h; sourceTree = "<group>"; };
 		B5BC458016BEE55100434848 /* MasterControllerCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MasterControllerCell.m; sourceTree = "<group>"; };
 		B5BC458216BEE56000434848 /* MasterControllerCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MasterControllerCell.xib; sourceTree = "<group>"; };
+		B5C612F9172469420039FDD5 /* Underscore+Functional.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Underscore+Functional.h"; sourceTree = "<group>"; };
+		B5C612FA172469420039FDD5 /* Underscore+Functional.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "Underscore+Functional.m"; sourceTree = "<group>"; };
+		B5C612FB172469420039FDD5 /* Underscore-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Underscore-Prefix.pch"; sourceTree = "<group>"; };
+		B5C612FC172469420039FDD5 /* Underscore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Underscore.h; sourceTree = "<group>"; };
+		B5C612FD172469420039FDD5 /* Underscore.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Underscore.m; sourceTree = "<group>"; };
+		B5C612FE172469420039FDD5 /* USArrayWrapper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = USArrayWrapper.h; sourceTree = "<group>"; };
+		B5C612FF172469420039FDD5 /* USArrayWrapper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = USArrayWrapper.m; sourceTree = "<group>"; };
+		B5C61300172469420039FDD5 /* USConstants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = USConstants.h; sourceTree = "<group>"; };
+		B5C61301172469420039FDD5 /* USDictionaryWrapper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = USDictionaryWrapper.h; sourceTree = "<group>"; };
+		B5C61302172469420039FDD5 /* USDictionaryWrapper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = USDictionaryWrapper.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -990,6 +1004,7 @@
 		B55D908F16B7AA27009CB90F = {
 			isa = PBXGroup;
 			children = (
+				B5C612F8172469420039FDD5 /* Underscore */,
 				B57E39A716FE5CBB006C2BD1 /* YRDropdownView */,
 				B54603BB16C37B5F007D4FB3 /* icon@2x.png */,
 				B54603B916C37B13007D4FB3 /* icon.png */,
@@ -1395,6 +1410,23 @@
 			path = Html;
 			sourceTree = "<group>";
 		};
+		B5C612F8172469420039FDD5 /* Underscore */ = {
+			isa = PBXGroup;
+			children = (
+				B5C612F9172469420039FDD5 /* Underscore+Functional.h */,
+				B5C612FA172469420039FDD5 /* Underscore+Functional.m */,
+				B5C612FB172469420039FDD5 /* Underscore-Prefix.pch */,
+				B5C612FC172469420039FDD5 /* Underscore.h */,
+				B5C612FD172469420039FDD5 /* Underscore.m */,
+				B5C612FE172469420039FDD5 /* USArrayWrapper.h */,
+				B5C612FF172469420039FDD5 /* USArrayWrapper.m */,
+				B5C61300172469420039FDD5 /* USConstants.h */,
+				B5C61301172469420039FDD5 /* USDictionaryWrapper.h */,
+				B5C61302172469420039FDD5 /* USDictionaryWrapper.m */,
+			);
+			path = Underscore;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -1747,6 +1779,10 @@
 				B5A1049B1723C4D300487A47 /* SearchViewController.m in Sources */,
 				B5A1049D1723C4D300487A47 /* WebsiteViewController.m in Sources */,
 				B5A104A21723C57A00487A47 /* EditProfileViewController.m in Sources */,
+				B5C61303172469420039FDD5 /* Underscore+Functional.m in Sources */,
+				B5C61304172469420039FDD5 /* Underscore.m in Sources */,
+				B5C61305172469420039FDD5 /* USArrayWrapper.m in Sources */,
+				B5C61306172469420039FDD5 /* USDictionaryWrapper.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

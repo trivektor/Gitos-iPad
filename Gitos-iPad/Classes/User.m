@@ -7,6 +7,7 @@
 //
 
 #import "User.h"
+#import "Underscore.h"
 
 @implementation User
 
@@ -215,6 +216,33 @@
      }
      failure:^(AFHTTPRequestOperation *operation, NSError *error) {
          NSLog(@"%@", error);
+     }];
+
+    [operation start];
+}
+
+- (void)update:(NSDictionary *)updatedInfo
+{
+    NSString *githubApiHost = [AppConfig getConfigValue:@"GithubApiHost"];
+
+    NSURL *userUrl = [NSURL URLWithString:[githubApiHost stringByAppendingString:@"/user"]];
+
+    AFHTTPClient *httpClient = [[AFHTTPClient alloc] initWithBaseURL:userUrl];
+    [httpClient setAuthorizationHeaderWithUsername:[AppHelper getAccountUsername] password:[AppHelper getAccountPassword]];
+    [httpClient setParameterEncoding:AFJSONParameterEncoding];
+
+    NSMutableURLRequest *patchRequest = [httpClient requestWithMethod:@"PATCH"
+                                                               path:userUrl.absoluteString
+                                                         parameters:updatedInfo];
+
+    AFHTTPRequestOperation *operation = [[AFHTTPRequestOperation alloc] initWithRequest:patchRequest];
+
+    [operation setCompletionBlockWithSuccess:^(AFHTTPRequestOperation *operation, id responseObject){
+         [[NSNotificationCenter defaultCenter] postNotificationName:@"ProfileUpdated" object:operation.response];
+     }
+     failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+         NSLog(@"%@", error);
+         [[NSNotificationCenter defaultCenter] postNotificationName:@"ProfileUpdated" object:operation.response];
      }];
 
     [operation start];

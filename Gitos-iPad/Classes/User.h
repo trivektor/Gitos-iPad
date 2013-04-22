@@ -38,6 +38,7 @@
 - (NSString *)getCreatedAt;
 - (NSString *)getHtmlUrl;
 - (BOOL)isEditable;
+- (void)update:(NSDictionary *)updatedInfo;
 
 + (void)fetchNewsFeedForUser:(NSString *)username andPage:(int)page;
 + (void)fetchInfoForUser:(NSString *)username;

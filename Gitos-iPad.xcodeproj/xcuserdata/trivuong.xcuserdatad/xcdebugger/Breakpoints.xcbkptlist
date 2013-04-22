@@ -21,11 +21,11 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "Gitos-iPad/Classes/User.m"
-         timestampString = "385873978.487842"
+         timestampString = "388262552.664105"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "11"
-         endingLineNumber = "11"
+         startingLineNumber = "12"
+         endingLineNumber = "12"
          landmarkName = "@implementation User"
          landmarkType = "3">
       </FileBreakpoint>

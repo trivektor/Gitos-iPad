@@ -35,11 +35,11 @@
     return @"yyyy-MM-dd'T'HH:mm:ssZZ";
 }
 
-+ (void)flashAlertInView:(UIView *)view
++ (void)flashAlert:(NSString *)message inView:(UIView *)view
 {
     [YRDropdownView showDropdownInView:view
                                  title:@"Alert"
-                                detail:@"Profile updated successfully"
+                                detail:message
                                  image:[UIImage imageNamed:@"glyphicons_198_ok.png"]
                              textColor:[UIColor whiteColor]
                        backgroundColor:[UIColor colorWithRed:87/255.0 green:153/255.0 blue:38/255.0 alpha:1.0]
@@ -47,11 +47,11 @@
                              hideAfter:HIDE_AFTER];
 }
 
-+ (void)flashErrorInView:(UIView *)view
++ (void)flashError:(NSString *)message inView:(UIView *)view
 {
     [YRDropdownView showDropdownInView:view
                                  title:@"Error"
-                                detail:@"Please enter your username and password"
+                                detail:message
                                  image:[UIImage imageNamed:@"glyphicons_078_warning_sign.png"]
                              textColor:[UIColor colorWithRed:186/255.0 green:12/255.0 blue:12/255.0 alpha:1.0] backgroundColor:[UIColor whiteColor]
                               animated:YES

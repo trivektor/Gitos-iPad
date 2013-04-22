@@ -31,7 +31,9 @@
 
 
 - (void)performHousekeepingTasks;
+- (void)registerEvents;
 - (void)populateUserInfo;
 - (void)updateInfo;
+- (void)handleServerResponse:(NSNotification *)notification;
 
 @end

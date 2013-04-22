@@ -31,7 +31,13 @@ nameTextField, emailTextField, websiteTextField, companyTextField, locationTextF
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
     [self performHousekeepingTasks];
+    [self registerEvents];
     [self populateUserInfo];
+}
+
+- (void)registerEvents
+{
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(handleServerResponse:) name:@"ProfileUpdated" object:nil];
 }
 
 - (void)populateUserInfo
@@ -84,7 +90,27 @@ nameTextField, emailTextField, websiteTextField, companyTextField, locationTextF
 
 - (void)updateInfo
 {
+    NSDictionary *updatedInfo = @{
+        @"name"     : nameTextField.text,
+        @"email"    : emailTextField.text,
+        @"blog"     : websiteTextField.text,
+        @"company"  : companyTextField.text,
+        @"location" : locationTextField.text
+    };
 
+    [user update:updatedInfo];
+}
+
+- (void)handleServerResponse:(NSNotification *)notification
+{
+    int statusCode = [notification.object statusCode];
+
+    if (statusCode == 200) {
+        [AppHelper flashAlert:@"Profile updated successfully" inView:self.view];
+    } else {
+        NSString *errorMessage = [NSString stringWithFormat:@"Error: %@", [notification.object responseString]];
+        [AppHelper flashError:errorMessage inView:self.view];
+    }
 }
 
 @end
