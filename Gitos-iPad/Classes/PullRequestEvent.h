@@ -11,5 +11,6 @@
 @interface PullRequestEvent : TimelineEvent
 
 - (NSMutableAttributedString *)toString;
+- (NSString *)toHTMLString;
 
 @end

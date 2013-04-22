@@ -28,4 +28,9 @@
     return actorLogin;
 }
 
+- (NSString *)toHTMLString
+{
+    return @"";
+}
+
 @end

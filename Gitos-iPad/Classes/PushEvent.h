@@ -11,5 +11,6 @@
 @interface PushEvent : TimelineEvent
 
 - (NSMutableAttributedString *)toString;
+- (NSString *)toHTMLString;
 
 @end

@@ -148,6 +148,26 @@
     return actorLogin;
 }
 
+- (NSString *)toActorRepoHTMLString:(NSString *)actionName
+{
+    User *actor = [self getActor];
+    Repo *repo = [self getRepo];
+
+    NSString *actorHTML = [NSString stringWithContentsOfFile:@"eventActor.html"
+                                                    encoding:NSUTF8StringEncoding error:nil];
+
+    NSString *actionHTML = [NSString stringWithContentsOfFile:@"eventAction"
+                                                     encoding:NSUTF8StringEncoding error:nil];
+
+    NSString *actoHTMLString = [NSString stringWithFormat:actorHTML, [actor getAvatarUrl], [actor getLogin]];
+    NSString *repoHTMLString = [NSString stringWithFormat:actorHTML, [repo getName], GITHUB_OCTOCAT];
+    NSString *actionHTMLString = [NSString stringWithFormat:actionHTML, actionName];
+
+    NSArray *strings = @[actoHTMLString, repoHTMLString, actionHTMLString];
+
+    return [strings componentsJoinedByString:@""];
+}
+
 - (NSString *)getFontAwesomeIcon
 {
     return [self.fontAwesomeIcons valueForKey:[self getType]];

@@ -15,4 +15,9 @@
     return [self toActorRepoString:@"forked"];
 }
 
+- (NSString *)toHTMLString
+{
+    return [self toActorRepoHTMLString:@"forked"];
+}
+
 @end

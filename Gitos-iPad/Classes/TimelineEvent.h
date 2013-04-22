@@ -22,6 +22,8 @@
 - (id)initWithData:(NSDictionary *)eventData;
 - (NSMutableAttributedString *)toString;
 - (NSMutableAttributedString *)toActorRepoString:(NSString *)actionName;
+- (NSString *)toActorRepoHTMLString:(NSString *)actionName;
+
 - (NSString *)getFontAwesomeIcon;
 - (NSString *)toDateString;
 - (NSDictionary *)getPayload;

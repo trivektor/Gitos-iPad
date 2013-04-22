@@ -11,5 +11,6 @@
 @interface GollumEvent : TimelineEvent
 
 - (NSMutableAttributedString *)toString;
+- (NSString *)toHTMLString;
 
 @end

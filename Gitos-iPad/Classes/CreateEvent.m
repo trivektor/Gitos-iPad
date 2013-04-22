@@ -15,4 +15,9 @@
     return [self toActorRepoString:@"created"];
 }
 
+- (NSString *)toHTMLString
+{
+    return [self toActorRepoHTMLString:@"created"];
+}
+
 @end

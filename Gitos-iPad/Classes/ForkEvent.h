@@ -11,5 +11,6 @@
 @interface ForkEvent : TimelineEvent
 
 - (NSMutableAttributedString *)toString;
+- (NSString *)toHTMLString;
 
 @end

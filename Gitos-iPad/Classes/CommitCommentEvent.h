@@ -11,5 +11,6 @@
 @interface CommitCommentEvent : TimelineEvent
 
 - (NSMutableAttributedString *)toString;
+- (NSString *)toHTMLString;
 
 @end

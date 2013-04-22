@@ -11,5 +11,6 @@
 @interface DeleteEvent : TimelineEvent
 
 - (NSMutableAttributedString *)toString;
+- (NSString *)toHTMLString;
 
 @end

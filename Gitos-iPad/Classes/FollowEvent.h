@@ -11,5 +11,6 @@
 @interface FollowEvent : TimelineEvent
 
 - (NSMutableAttributedString *)toString;
+- (NSString *)toHTMLString;
 
 @end

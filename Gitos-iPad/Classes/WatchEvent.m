@@ -15,4 +15,9 @@
     return [self toActorRepoString:@"watched"];
 }
 
+- (NSString *)toHTMLString
+{
+    return [self toActorRepoHTMLString:@"watched"];
+}
+
 @end

@@ -11,5 +11,6 @@
 @interface IssueEvent : TimelineEvent
 
 - (NSMutableAttributedString *)toString;
+- (NSString *)toHTMLString;
 
 @end

@@ -11,5 +11,6 @@
 @interface IssueCommentEvent : TimelineEvent
 
 - (NSMutableAttributedString *)toString;
+- (NSString *)toHTMLString;
 
 @end

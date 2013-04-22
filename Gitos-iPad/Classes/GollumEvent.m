@@ -15,4 +15,9 @@
     return [self toActorRepoString:@"created wiki for"];
 }
 
+- (NSString *)toHTMLString
+{
+    return @"";
+}
+
 @end

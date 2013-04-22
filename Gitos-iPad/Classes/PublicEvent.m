@@ -15,4 +15,9 @@
     return [self toActorRepoString:@"open sourced"];
 }
 
+- (NSString *)toHTMLString
+{
+    return @"";
+}
+
 @end
