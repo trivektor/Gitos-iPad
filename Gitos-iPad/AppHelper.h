@@ -13,6 +13,9 @@
 + (NSString *)getAccessToken;
 + (NSDictionary *)getAccessTokenParams;
 + (NSString *)getAccountUsername;
++ (NSString *)getAccountPassword;
 + (NSString *)getDateFormat;
++ (void)flashAlert:(NSString *)message inView:(UIView *)view;
++ (void)flashError:(NSString *)message inView:(UIView *)view;
 
 @end
