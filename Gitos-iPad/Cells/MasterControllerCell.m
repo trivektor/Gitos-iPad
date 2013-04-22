@@ -34,7 +34,7 @@
     [selectedBackgroundView setBackgroundColor:[UIColor colorWithPatternImage:[UIImage imageNamed:@"selected_cell_bg.png"]]];
     self.selectedBackgroundView     = selectedBackgroundView;
 
-    self.fontAwesomeLabel.font      = [UIFont fontWithName:kFontAwesomeFamilyName size:20];
+    self.fontAwesomeLabel.font      = [UIFont fontWithName:kFontAwesomeFamilyName size:15];
     self.fontAwesomeLabel.textColor = [UIColor whiteColor];
     self.optionLabel.textColor      = [UIColor whiteColor];
 
@@ -46,11 +46,11 @@
             optionLabelText  = @"News Feed";
             break;
         case 1:
-            fontAwesome      = [NSString fontAwesomeIconStringForIconIdentifier:@"icon-github"];
+            fontAwesome      = [NSString fontAwesomeIconStringForIconIdentifier:@"icon-github-alt"];
             optionLabelText  = @"Repositories";
             break;
         case 2:
-            fontAwesome      = [NSString fontAwesomeIconStringForIconIdentifier:@"icon-star"];
+            fontAwesome      = [NSString fontAwesomeIconStringForIconIdentifier:@"icon-star-empty"];
             optionLabelText  = @"Watched";
             break;
         case 3:
@@ -58,7 +58,7 @@
             optionLabelText  = @"Gists";
             break;
         case 4:
-            fontAwesome      = [NSString fontAwesomeIconStringForIconIdentifier:@"icon-user"];
+            fontAwesome      = [NSString fontAwesomeIconStringForIconIdentifier:@"icon-edit"];
             optionLabelText  = @"Profile";
             break;
         case 5:
