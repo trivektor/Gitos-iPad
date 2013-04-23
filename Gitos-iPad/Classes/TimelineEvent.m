@@ -83,53 +83,12 @@
 - (NSMutableAttributedString *)toString
 {
     NSString *eventType = [self getType];
-    // First refactoring effort on Feb 18 (create sub-classes of TimelineEvent)
-    // Next: try to figure out how to initialize these classes dynamically
-    if ([eventType isEqualToString:@"ForkEvent"]) {
-        ForkEvent *forkEvent = [[ForkEvent alloc] initWithData:self.data];
-        return [forkEvent toString];
-    } else if ([eventType isEqualToString:@"WatchEvent"]) {
-        WatchEvent *watchEvent = [[WatchEvent alloc] initWithData:self.data];
-        return [watchEvent toString];
-    } else if ([eventType isEqualToString:@"CreateEvent"]) {
-        CreateEvent *createEvent = [[CreateEvent alloc] initWithData:self.data];
-        return [createEvent toString];
-    } else if ([eventType isEqualToString:@"DeleteEvent"]) {
-        DeleteEvent *deleteEvent = [[DeleteEvent alloc] initWithData:self.data];
-        return [deleteEvent toString];
-    } else if ([eventType isEqualToString:@"FollowEvent"]) {
-        FollowEvent *followEvent = [[FollowEvent alloc] initWithData:self.data];
-        return [followEvent toString];
-    } else if ([eventType isEqualToString:@"GistEvent"]) {
-        GistEvent *gistEvent = [[GistEvent alloc] initWithData:self.data];
-        return [gistEvent toString];
-    } else if ([eventType isEqualToString:@"IssuesEvent"]) {
-        IssueEvent *issueEvent = [[IssueEvent alloc] initWithData:self.data];
-        return [issueEvent toString];
-    } else if ([eventType isEqualToString:@"MemberEvent"]) {
-        MemberEvent *memberEvent = [[MemberEvent alloc] initWithData:self.data];
-        return [memberEvent toString];
-    } else if ([eventType isEqualToString:@"IssueCommentEvent"]) {
-        IssueCommentEvent *issueCommentEvent = [[IssueCommentEvent alloc] initWithData:self.data];
-        return [issueCommentEvent toString];
-    } else if ([eventType isEqualToString:@"PushEvent"]) {
-        PushEvent *pushEvent = [[PushEvent alloc] initWithData:self.data];
-        return [pushEvent toString];
-    } else if ([eventType isEqualToString:@"PullRequestEvent"]) {
-        PullRequestEvent *pullRequestEvent = [[PullRequestEvent alloc] initWithData:self.data];
-        return [pullRequestEvent toString];
-    } else if ([eventType isEqualToString:@"PublicEvent"]) {
-        PublicEvent *publicEvent = [[PublicEvent alloc] initWithData:self.data];
-        return [publicEvent toString];
-    } else if ([eventType isEqualToString:@"CommitCommentEvent"]) {
-        CommitCommentEvent *commitCommentEvent = [[CommitCommentEvent alloc] initWithData:self.data];
-        return [commitCommentEvent toString];
-    } else if ([eventType isEqualToString:@"GollumEvent"]) {
-        GollumEvent *gollumEvent = [[GollumEvent alloc] initWithData:self.data];
-        return [gollumEvent toString];
-    } else {
-        return [[NSMutableAttributedString alloc] initWithString:@""];
-    }
+    id klass = [NSClassFromString(eventType) alloc];
+    // Dynamically initialize class instance at runtime
+    // http://stackoverflow.com/questions/2573805/using-objc-msgsend-to-call-a-objective-c-function-with-named-arguments
+    id obj = objc_msgSend(klass, sel_getUid("initWithData:"), self.data);
+    return [obj toString];
+    // return [[NSClassFromString(eventType) alloc] ini];
 }
 
 - (NSMutableAttributedString *)toActorRepoString:(NSString *)actionName
