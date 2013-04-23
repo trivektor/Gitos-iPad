@@ -141,9 +141,7 @@
 {
     NewsfeedDetailsViewController *newsfeedDetailsController = [[NewsfeedDetailsViewController alloc] init];
     newsfeedDetailsController.event = [newsFeed objectAtIndex:indexPath.row];
-    newsfeedDetailsController.currentPage = (indexPath.row / 30) + 1;
-    newsfeedDetailsController.username = [user getLogin];
-    
+
     UIBarButtonItem *backButton = [[UIBarButtonItem alloc] initWithTitle:@"Back" style:UIBarButtonItemStyleBordered target:nil action:nil];
     [backButton setTintColor:[UIColor colorWithRed:209/255.0 green:0 blue:0 alpha:1]];
     [self.navigationItem setBackBarButtonItem:backButton];

@@ -35,6 +35,7 @@
     self.accessoryType          = UITableViewCellAccessoryDisclosureIndicator;
     self.fontAwesomeLabel.font  = [UIFont fontWithName:kFontAwesomeFamilyName size:15.0];
     self.fontAwesomeLabel.text  = [NSString fontAwesomeIconStringForIconIdentifier:[self.event getFontAwesomeIcon]];
+    self.selectionStyle         = UITableViewCellSelectionStyleGray;
 }
 
 @end

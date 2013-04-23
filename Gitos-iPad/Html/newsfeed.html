@@ -62,21 +62,11 @@
             box-shadow: 0 5px 11px -2px rgba(0, 0, 0, .5);
             line-height: 0;
             position: relative;
-          }
-
-          .avatar-holder:before {
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            content: "";
-            height: 120px;
-            z-index: 10;
-            box-shadow: 0 3px 15px -2px rgba(0, 0, 0, .6) inset;
+            background: #fff
           }
 
           .avatar-holder img {
-            max-width: 100%;
+            width: 100%;
           }
 
           .avatar-holder .name {
@@ -89,11 +79,11 @@
             text-shadow: 0 1px 1px rgba(0, 0, 0, .88);
             border-top: 1px solid rgba(255, 255, 255, .3);
             padding: 7px 2px;
-            width: 100%;
             box-sizing: border-box;
             background: -webkit-linear-gradient(#72757F, #626570);
             border-radius: 0 0 3px 3px;
             text-overflow: ellipsis;
+            word-wrap: break-word
           }
 
           .action {
@@ -120,6 +110,7 @@
     </head>
     <body>
       <div id="panel">
+          %@
       </div>
     </body>
 </html>

@@ -35,5 +35,6 @@
 - (NSString *)convertToRelativeDate:(NSString *)originalDateString;
 - (NSMutableAttributedString *)decorateEmphasizedText:(NSString *)rawString;
 - (NSMutableAttributedString *)toAttributedString:(NSString *)rawString;
+- (NSString *)toHTMLString;
 
 @end

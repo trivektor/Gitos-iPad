@@ -14,14 +14,13 @@
 
 @implementation NewsfeedDetailsViewController
 
-@synthesize accessToken, event, currentPage, username, webView, hud;
+@synthesize event, webView;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
         // Custom initialization
-        self.accessToken = [SSKeychain passwordForService:@"access_token" account:@"gitos"];
     }
     return self;
 }
@@ -44,17 +43,14 @@
 {
     [self.navigationItem setTitle:@"Details"];
     [webView setDelegate:self];
-    
-    UIBarButtonItem *menuButton = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"399-list1.png"] landscapeImagePhone:nil style:UIBarButtonItemStyleBordered target:self action:@selector(showMenu)];
 
-    UIBarButtonItem *reloadButton = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"glyphicons_081_refresh"] landscapeImagePhone:nil style:UIBarButtonItemStyleBordered target:self action:@selector(reloadNewsfeedDetails)];
+    UIBarButtonItem *reloadButton = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"glyphicons_081_refresh"]
+                                                       landscapeImagePhone:nil
+                                                                     style:UIBarButtonItemStyleBordered
+                                                                    target:self
+                                                                    action:@selector(reloadNewsfeedDetails)];
 
-    [self.navigationItem setBackBarButtonItem:menuButton];
     [self.navigationItem setRightBarButtonItem:reloadButton];
-
-    self.hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
-    self.hud.mode = MBProgressHUDAnimationFade;
-    self.hud.labelText = LOADING_MESSAGE;
 }
 
 - (void)showMenu
@@ -63,30 +59,16 @@
 
 - (void)loadNewsfeedDetails
 {
-    [self.hud show:YES];
-    NSString *urlString = [AppConfig getConfigValue:@"GitosHost"];
-    urlString = [urlString stringByAppendingFormat:@"/events/%@?page=%d&username=%@&access_token=%@",
-                 [self.event getId],
-                 self.currentPage,
-                 self.username,
-                 self.accessToken];
-    
-    NSURL *url = [NSURL URLWithString:urlString];
-
-    NSURLRequest *request = [NSURLRequest requestWithURL:url];
-    
-    [webView loadRequest:request];
+    NSString *newsfeedPath = [[NSBundle mainBundle] pathForResource:@"newsfeed" ofType:@"html"];
+    NSString *html = [NSString stringWithContentsOfFile:newsfeedPath encoding:NSUTF8StringEncoding error:nil];
+    NSString *newsfeedContentHtml = [html stringByReplacingOccurrencesOfString:@"%@" withString:[event toHTMLString]];
+    NSURL *baseUrl = [NSURL fileURLWithPath:[[NSBundle mainBundle] bundlePath]];
+    [webView loadHTMLString:newsfeedContentHtml baseURL:baseUrl];
 }
 
 - (void)reloadNewsfeedDetails
 {
-    [self.hud hide:NO];
     [webView reload];
-}
-
-- (void)webViewDidFinishLoad:(UIWebView *)webView
-{
-    [self.hud hide:YES];
 }
 
 @end

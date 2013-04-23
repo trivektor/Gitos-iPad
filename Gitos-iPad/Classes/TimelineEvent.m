@@ -106,17 +106,21 @@
     User *actor = [self getActor];
     Repo *repo = [self getRepo];
 
-    NSString *actorHTML = [NSString stringWithContentsOfFile:@"eventActor.html"
+    NSString *eventActorPath = [[NSBundle mainBundle] pathForResource:@"eventActor" ofType:@"html"];
+
+    NSString *actorHTML = [NSString stringWithContentsOfFile:eventActorPath
                                                     encoding:NSUTF8StringEncoding error:nil];
 
-    NSString *actionHTML = [NSString stringWithContentsOfFile:@"eventAction"
+    NSString *eventActionPath = [[NSBundle mainBundle] pathForResource:@"eventAction" ofType:@"html"];
+
+    NSString *actionHTML = [NSString stringWithContentsOfFile:eventActionPath
                                                      encoding:NSUTF8StringEncoding error:nil];
 
     NSString *actoHTMLString = [NSString stringWithFormat:actorHTML, [actor getAvatarUrl], [actor getLogin]];
-    NSString *repoHTMLString = [NSString stringWithFormat:actorHTML, [repo getName], GITHUB_OCTOCAT];
+    NSString *repoHTMLString = [NSString stringWithFormat:actorHTML, GITHUB_OCTOCAT, [repo getName]];
     NSString *actionHTMLString = [NSString stringWithFormat:actionHTML, actionName];
 
-    NSArray *strings = @[actoHTMLString, repoHTMLString, actionHTMLString];
+    NSArray *strings = @[actoHTMLString, actionHTMLString, repoHTMLString];
 
     return [strings componentsJoinedByString:@""];
 }
@@ -155,6 +159,11 @@
                 NSFontAttributeName:[UIFont fontWithName:@"Arial" size:13.0]
      } range:NSMakeRange(0, attributedString.length)];
     return attributedString;
+}
+
+- (NSString *)toHTMLString
+{
+    return @"";
 }
 
 @end
