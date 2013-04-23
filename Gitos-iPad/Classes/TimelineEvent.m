@@ -82,13 +82,7 @@
 
 - (NSMutableAttributedString *)toString
 {
-    NSString *eventType = [self getType];
-    id klass = [NSClassFromString(eventType) alloc];
-    // Dynamically initialize class instance at runtime
-    // http://stackoverflow.com/questions/2573805/using-objc-msgsend-to-call-a-objective-c-function-with-named-arguments
-    id obj = objc_msgSend(klass, sel_getUid("initWithData:"), self.data);
-    return [obj toString];
-    // return [[NSClassFromString(eventType) alloc] ini];
+    return [[NSMutableAttributedString alloc] initWithString:@""];
 }
 
 - (NSMutableAttributedString *)toActorRepoString:(NSString *)actionName

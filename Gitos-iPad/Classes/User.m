@@ -8,6 +8,7 @@
 
 #import "User.h"
 #import "Underscore.h"
+#import <objc/message.h>
 
 @implementation User
 
@@ -178,9 +179,16 @@
          NSArray *json = [NSJSONSerialization JSONObjectWithData:[response dataUsingEncoding:NSUTF8StringEncoding] options:NSJSONReadingMutableContainers error:nil];
 
          NSMutableArray *newsFeed = [[NSMutableArray alloc] initWithCapacity:0];
+         NSDictionary *data;
 
          for (int i=0; i < json.count; i++) {
-             [newsFeed addObject:[[TimelineEvent alloc] initWithData:[json objectAtIndex:i]]];
+             data = [json objectAtIndex:i];
+
+             id klass = [NSClassFromString([data valueForKey:@"type"]) alloc];
+
+             id obj = objc_msgSend(klass, sel_getUid("initWithData:"), data);
+
+             [newsFeed addObject:obj];
          }
 
          [[NSNotificationCenter defaultCenter] postNotificationName:@"NewsFeedFetched" object:newsFeed];
