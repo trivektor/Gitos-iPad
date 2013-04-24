@@ -9,6 +9,7 @@
 #import "GistsViewController.h"
 #import "GistCell.h"
 #import "GistViewController.h"
+#import "NewGistViewController.h"
 
 @interface GistsViewController ()
 
@@ -32,7 +33,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    [super performHousekeepingTasks];
+    [self performHousekeepingTasks];
 
     // Do any additional setup after loading the view from its nib.
     self.navigationItem.title = @"Gists";
@@ -61,6 +62,17 @@
     // Dispose of any resources that can be recreated.
 }
 
+- (void)performHousekeepingTasks
+{
+    [super performHousekeepingTasks];
+
+    UIBarButtonItem *newGistButton = [[UIBarButtonItem alloc] initWithTitle:@"New gist"
+                                                                      style:UIBarButtonItemStyleBordered
+                                                                     target:self
+                                                                     action:@selector(createNewGist)];
+    [self.navigationItem setRightBarButtonItem:newGistButton];
+}
+
 - (void)registerNib
 {
     UINib *nib = [UINib nibWithNibName:@"GistCell" bundle:nil];
@@ -73,7 +85,10 @@
 
 - (void)registerEvents
 {
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(displayUserGists:) name:@"UserGistsFetched" object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(displayUserGists:)
+                                                 name:@"UserGistsFetched"
+                                               object:nil];
 }
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
@@ -146,6 +161,12 @@
     [gistsTable addPullToRefreshWithActionHandler:^{
         [self getUserGists:currentPage];
     }];
+}
+
+- (void)createNewGist
+{
+    NewGistViewController *newGistController = [[NewGistViewController alloc] init];
+    [self.navigationController pushViewController:newGistController animated:YES];
 }
 
 @end

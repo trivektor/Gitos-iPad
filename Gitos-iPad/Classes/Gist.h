@@ -29,5 +29,6 @@
 - (NSString *)convertToRelativeDate:(NSString *)originalDateString;
 + (void)fetchGistsForUser:(NSString *)username andPage:(int)page;
 - (void)fetchStats;
++ (void)save:(NSDictionary *)data;
 
 @end

@@ -152,4 +152,29 @@
     [operation start];
 }
 
++ (void)save:(NSDictionary *)data
+{
+    NSString *githubApiHost = [AppConfig getConfigValue:@"GithubApiHost"];
+
+    NSURL *gistsUrl = [NSURL URLWithString:[githubApiHost stringByAppendingFormat:@"/gists?access_token=%@", [AppHelper getAccessToken]]];
+
+    AFHTTPClient *httpClient = [[AFHTTPClient alloc] initWithBaseURL:gistsUrl];
+    [httpClient setParameterEncoding:AFJSONParameterEncoding];
+
+    NSMutableURLRequest *postRequest = [httpClient requestWithMethod:@"POST"
+                                                               path:gistsUrl.absoluteString
+                                                         parameters:data];
+
+    AFHTTPRequestOperation *operation = [[AFHTTPRequestOperation alloc] initWithRequest:postRequest];
+
+    [operation setCompletionBlockWithSuccess:^(AFHTTPRequestOperation *operation, id responseObject) {
+        [[NSNotificationCenter defaultCenter] postNotificationName:@"GistSubmitted"
+                                                            object:operation.response];
+    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        NSLog(@"%@", operation.responseString);
+    }];
+
+    [operation start];
+}
+
 @end

@@ -309,6 +309,8 @@
 		B5C6130B17250BEE0039FDD5 /* eventActor.html in Resources */ = {isa = PBXBuildFile; fileRef = B5C6130A17250BEE0039FDD5 /* eventActor.html */; };
 		B5C6130D17250C310039FDD5 /* eventAction.html in Resources */ = {isa = PBXBuildFile; fileRef = B5C6130C17250C310039FDD5 /* eventAction.html */; };
 		B5C6130F1725174F0039FDD5 /* newsfeed.html in Resources */ = {isa = PBXBuildFile; fileRef = B5C6130E1725174F0039FDD5 /* newsfeed.html */; };
+		B5C613131727AC740039FDD5 /* NewGistViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B5C613111727AC740039FDD5 /* NewGistViewController.m */; };
+		B5C613141727AC740039FDD5 /* NewGistViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B5C613121727AC740039FDD5 /* NewGistViewController.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -736,6 +738,9 @@
 		B5C6130A17250BEE0039FDD5 /* eventActor.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = eventActor.html; sourceTree = "<group>"; };
 		B5C6130C17250C310039FDD5 /* eventAction.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = eventAction.html; sourceTree = "<group>"; };
 		B5C6130E1725174F0039FDD5 /* newsfeed.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = newsfeed.html; sourceTree = "<group>"; };
+		B5C613101727AC740039FDD5 /* NewGistViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NewGistViewController.h; sourceTree = "<group>"; };
+		B5C613111727AC740039FDD5 /* NewGistViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NewGistViewController.m; sourceTree = "<group>"; };
+		B5C613121727AC740039FDD5 /* NewGistViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NewGistViewController.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -1280,6 +1285,9 @@
 				B5A104251723C10200487A47 /* GistViewController.h */,
 				B5A104261723C10200487A47 /* GistViewController.m */,
 				B5A104271723C10200487A47 /* GistViewController.xib */,
+				B5C613101727AC740039FDD5 /* NewGistViewController.h */,
+				B5C613111727AC740039FDD5 /* NewGistViewController.m */,
+				B5C613121727AC740039FDD5 /* NewGistViewController.xib */,
 			);
 			path = Gist;
 			sourceTree = "<group>";
@@ -1681,6 +1689,7 @@
 				B5C6130B17250BEE0039FDD5 /* eventActor.html in Resources */,
 				B5C6130D17250C310039FDD5 /* eventAction.html in Resources */,
 				B5C6130F1725174F0039FDD5 /* newsfeed.html in Resources */,
+				B5C613141727AC740039FDD5 /* NewGistViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1803,6 +1812,7 @@
 				B5C61304172469420039FDD5 /* Underscore.m in Sources */,
 				B5C61305172469420039FDD5 /* USArrayWrapper.m in Sources */,
 				B5C61306172469420039FDD5 /* USDictionaryWrapper.m in Sources */,
+				B5C613131727AC740039FDD5 /* NewGistViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
