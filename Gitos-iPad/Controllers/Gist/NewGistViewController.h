@@ -27,5 +27,6 @@
 - (void)submitGist;
 - (NSDictionary *)prepDataForSubmission;
 - (void)handleServerResponse:(NSNotification *)notification;
+- (void)blurTextFields;
 
 @end

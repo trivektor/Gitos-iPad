@@ -80,9 +80,12 @@ gistFormTable;
 
 - (void)submitGist
 {
-    if ([descriptionTextField isFirstResponder]) [descriptionTextField resignFirstResponder];
-    if ([nameTextField isFirstResponder]) [nameTextField resignFirstResponder];
-    if ([contentTextField isFirstResponder]) [contentTextField resignFirstResponder];
+    [self blurTextFields];
+
+    if (contentTextField.text.length == 0) {
+        [AppHelper flashError:@"Gist content cannot be blank" inView:self.view];
+        return;
+    }
 
     [Gist save:[self prepDataForSubmission]];
 }
@@ -110,6 +113,13 @@ gistFormTable;
     } else {
         [AppHelper flashError:[operation responseString] inView:self.view];
     }
+}
+
+- (void)blurTextFields
+{
+    if ([descriptionTextField isFirstResponder]) [descriptionTextField resignFirstResponder];
+    if ([nameTextField isFirstResponder]) [nameTextField resignFirstResponder];
+    if ([contentTextField isFirstResponder]) [contentTextField resignFirstResponder];
 }
 
 - (void)didReceiveMemoryWarning
