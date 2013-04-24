@@ -15,6 +15,6 @@ extern const NSString *CLIENT_SECRET;
 extern NSString * const LOADING_MESSAGE;
 extern const float HIDE_AFTER;
 extern const int REPO_DETAILS_MAX_CHARS;
-extern const NSString *GITHUB_OCTOCAT;
+extern NSString * const GITHUB_OCTOCAT;
 
 @end

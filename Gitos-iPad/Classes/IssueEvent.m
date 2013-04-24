@@ -34,7 +34,18 @@
 
 - (NSString *)toHTMLString
 {
-    return @"";
+    NSDictionary *payload = [self getPayload];
+
+    Issue *issue = [[Issue alloc] initWithData:[payload valueForKey:@"issue"]];
+    User *actor = [self getActor];
+
+    Repo *repo = [self getRepo];
+
+    NSString *action = [payload valueForKey:@"action"];
+
+    NSString *issueName = [NSString stringWithFormat:@"%@#%d", [repo getName], [issue getNumber]];
+
+    return [self toHTMLStringForObject1WithName:[actor getLogin] AndAvatar1:[actor getAvatarUrl] Object2:issueName AndAvatar2:[NSString string] andAction:action];
 }
 
 @end

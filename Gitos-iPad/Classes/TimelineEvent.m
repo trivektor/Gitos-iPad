@@ -161,6 +161,27 @@
     return attributedString;
 }
 
+- (NSString *)toHTMLStringForObject1WithName:(NSString *)name1 AndAvatar1:(NSString *)avatar1 Object2:(NSString *)name2 AndAvatar2:(NSString *)avatar2 andAction:(NSString *)actionName
+{
+    NSString *eventActorPath = [[NSBundle mainBundle] pathForResource:@"eventActor" ofType:@"html"];
+
+    NSString *actorHTML = [NSString stringWithContentsOfFile:eventActorPath
+                                                    encoding:NSUTF8StringEncoding error:nil];
+
+    NSString *eventActionPath = [[NSBundle mainBundle] pathForResource:@"eventAction" ofType:@"html"];
+
+    NSString *actionHTML = [NSString stringWithContentsOfFile:eventActionPath
+                                                     encoding:NSUTF8StringEncoding error:nil];
+
+    NSString *actoHTMLString = [NSString stringWithFormat:actorHTML, avatar1, name1];
+    NSString *repoHTMLString = [NSString stringWithFormat:actorHTML, avatar2, name2];
+    NSString *actionHTMLString = [NSString stringWithFormat:actionHTML, actionName];
+
+    NSArray *strings = @[actoHTMLString, actionHTMLString, repoHTMLString];
+
+    return [strings componentsJoinedByString:@""];
+}
+
 - (NSString *)toHTMLString
 {
     return @"";

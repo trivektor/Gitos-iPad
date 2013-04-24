@@ -35,6 +35,8 @@
 - (NSString *)convertToRelativeDate:(NSString *)originalDateString;
 - (NSMutableAttributedString *)decorateEmphasizedText:(NSString *)rawString;
 - (NSMutableAttributedString *)toAttributedString:(NSString *)rawString;
+- (NSString *)toHTMLStringForObject1WithName:(NSString *)name1 AndAvatar1:(NSString *)avatar1 Object2:(NSString *)name2 AndAvatar2:(NSString *)avatar2 andAction:(NSString *)actionName;
+
 - (NSString *)toHTMLString;
 
 @end

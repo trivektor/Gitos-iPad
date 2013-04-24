@@ -29,7 +29,14 @@
 
 - (NSString *)toHTMLString
 {
-    return @"";
+    User *actor  = [self getActor];
+    User *target = [[User alloc] initWithData:[self getTarget]];
+
+    return [super toHTMLStringForObject1WithName:[actor getLogin]
+                                      AndAvatar1:[actor getAvatarUrl]
+                                         Object2:[target getLogin]
+                                      AndAvatar2:[target getAvatarUrl]
+                                       andAction:@" started following "];
 }
 
 @end

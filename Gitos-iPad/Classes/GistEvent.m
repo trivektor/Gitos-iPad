@@ -29,7 +29,16 @@
 
 - (NSString *)toHTMLString
 {
-    return @"";
+    NSDictionary *payload = [self getPayload];
+
+    User *actor = [self getActor];
+    Gist *gist = [[Gist alloc] initWithData:[payload valueForKey:@"gist"]];
+
+    return [super toHTMLStringForObject1WithName:[actor getLogin]
+                                      AndAvatar1:[actor getAvatarUrl]
+                                         Object2:[gist getName]
+                                      AndAvatar2:GITHUB_OCTOCAT
+                                       andAction:[payload valueForKey:@"action"]];
 }
 
 @end

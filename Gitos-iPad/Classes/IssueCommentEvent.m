@@ -32,7 +32,14 @@
 
 - (NSString *)toHTMLString
 {
-    return @"";
+    NSDictionary *payload = [self getPayload];
+    NSDictionary *comment = [payload valueForKey:@"comment"];
+    User *user = [[User alloc] initWithData:[comment valueForKey:@"user"]];
+    Issue *issue = [[Issue alloc] initWithData:[payload valueForKey:@"issue"]];
+    Repo *repo = [self getRepo];
+
+    NSString *issueName = [NSString stringWithFormat:@"%@#%d", [repo getName], [issue getNumber]];
+    return [super toHTMLStringForObject1WithName:[user getLogin] AndAvatar1:[user getAvatarUrl] Object2:issueName AndAvatar2:GITHUB_OCTOCAT andAction:@" commented on issue "];
 }
 
 @end

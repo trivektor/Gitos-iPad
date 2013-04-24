@@ -37,6 +37,19 @@
 
 - (NSString *)toHTMLString
 {
+//    NSDictionary *payload = [self getPayload];
+//    User *actor = [self getActor];
+//    Repo *repo = [self getRepo];
+//    NSDictionary *member = [payload valueForKey:@"member"];
+//
+//    NSString *added = @" added ";
+//
+//    NSString *memberLogin = [member valueForKey:@"login"];
+//
+//    NSString *to = @" to ";
+//
+//    NSString *repoName = [repo getName];
+
     return @"";
 }
 

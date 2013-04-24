@@ -15,6 +15,6 @@ const NSString *CLIENT_SECRET = @"07d3e053d06132245799f4afe45b90d2780a89a8";
 NSString * const LOADING_MESSAGE = @"Loading";
 const float HIDE_AFTER = 2.0f;
 const int REPO_DETAILS_MAX_CHARS = 65;
-const NSString *GITHUB_OCTOCAT = @"http://octodex.github.com/images/original.jpg";
+NSString * const GITHUB_OCTOCAT = @"http://octodex.github.com/images/original.jpg";
 
 @end
