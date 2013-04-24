@@ -86,18 +86,19 @@
 
 - (NSString *)getName
 {
-    return [self.data valueForKey:@"name"];
+    if ([data valueForKey:@"name"] == (id)[NSNull null]) return @"n/a";
+    return [data valueForKey:@"name"];
 }
 
 - (NSString *)getLocation
 {
-    if ([self.data valueForKey:@"location"] == nil) return @"n/a";
+    if ([self.data valueForKey:@"location"] == (id)[NSNull null]) return @"n/a";
     return [self.data valueForKey:@"location"];
 }
 
 - (NSString *)getWebsite
 {
-    if ([self.data valueForKey:@"blog"] == nil) return @"n/a";
+    if ([self.data valueForKey:@"blog"] == (id)[NSNull null]) return @"n/a";
     return [self.data valueForKey:@"blog"];
 }
 
@@ -121,7 +122,7 @@
 
 - (NSString *)getCompany
 {
-    if ([self.data valueForKey:@"company"] == nil) return @"n/a";
+    if ([self.data valueForKey:@"company"] == (id)[NSNull null]) return @"n/a";
     return [self.data valueForKey:@"company"];
 }
 
