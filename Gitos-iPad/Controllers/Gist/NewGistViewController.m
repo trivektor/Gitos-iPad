@@ -80,6 +80,10 @@ gistFormTable;
 
 - (void)submitGist
 {
+    if ([descriptionTextField isFirstResponder]) [descriptionTextField resignFirstResponder];
+    if ([nameTextField isFirstResponder]) [nameTextField resignFirstResponder];
+    if ([contentTextField isFirstResponder]) [contentTextField resignFirstResponder];
+
     [Gist save:[self prepDataForSubmission]];
 }
 
@@ -98,7 +102,14 @@ gistFormTable;
 
 - (void)handleServerResponse:(NSNotification *)notification
 {
+    AFHTTPRequestOperation *operation = (AFHTTPRequestOperation *) notification.object;
+    NSHTTPURLResponse *response = [operation response];
 
+    if ([response statusCode] == 201) {
+        [AppHelper flashAlert:@"Gist created successfully" inView:self.view];
+    } else {
+        [AppHelper flashError:[operation responseString] inView:self.view];
+    }
 }
 
 - (void)didReceiveMemoryWarning

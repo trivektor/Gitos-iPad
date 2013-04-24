@@ -169,7 +169,7 @@
 
     [operation setCompletionBlockWithSuccess:^(AFHTTPRequestOperation *operation, id responseObject) {
         [[NSNotificationCenter defaultCenter] postNotificationName:@"GistSubmitted"
-                                                            object:operation.response];
+                                                            object:operation];
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
         NSLog(@"%@", operation.responseString);
     }];
