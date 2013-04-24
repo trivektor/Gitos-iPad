@@ -17,71 +17,71 @@
 - (id)initWithData:(NSDictionary *)userData
 {
     self = [super init];
-    self.data = userData;
+    data = userData;
     return self;
 }
 
 - (NSString *)getAvatarUrl
 {
-    return [self.data valueForKey:@"avatar_url"];
+    return [data valueForKey:@"avatar_url"];
 }
 
 - (NSString *)getGravatarId
 {
-    return [self.data valueForKey:@"gravatar_id"];
+    return [data valueForKey:@"gravatar_id"];
 }
 
 - (NSString *)getGistsUrl
 {
-    NSString *gistsUrl = [self.data valueForKey:@"gists_url"];
+    NSString *gistsUrl = [data valueForKey:@"gists_url"];
     return [gistsUrl stringByReplacingOccurrencesOfString:@"{/gist_id}" withString:@""];
 }
 
 - (NSString *)getReceivedEventsUrl
 {
-    return [self.data valueForKey:@"received_events_url"];
+    return [data valueForKey:@"received_events_url"];
 }
 
 - (NSString *)getEventsUrl
 {
-    NSString *eventsUrl = [self.data valueForKey:@"events_url"];
+    NSString *eventsUrl = [data valueForKey:@"events_url"];
     return [eventsUrl stringByReplacingOccurrencesOfString:@"{/privacy}" withString:@""];
 }
 
 - (NSString *)getStarredUrl
 {
-    NSString *starredUrl = [self.data valueForKey:@"starred_url"];
+    NSString *starredUrl = [data valueForKey:@"starred_url"];
     return [starredUrl stringByReplacingOccurrencesOfString:@"{/owner}{/repo}" withString:@""];
 }
 
 - (NSString *)getFollowingUrl
 {
-    return [self.data valueForKey:@"following_url"];
+    return [data valueForKey:@"following_url"];
 }
 
 - (NSString *)getFollowersUrl
 {
-    return [self.data valueForKey:@"followers_url"];
+    return [data valueForKey:@"followers_url"];
 }
 
 - (NSString *)getReposUrl
 {
-    return [self.data valueForKey:@"repos_url"];
+    return [data valueForKey:@"repos_url"];
 }
 
 - (NSString *)getOrganizationsUrl
 {
-    return [self.data valueForKey:@"organizations_url"];
+    return [data valueForKey:@"organizations_url"];
 }
 
 - (NSString *)getSubscriptionsUrl
 {
-    return [self.data valueForKey:@"subscriptions_url"];
+    return [data valueForKey:@"subscriptions_url"];
 }
 
 - (NSString *)getLogin
 {
-    return [self.data valueForKey:@"login"];
+    return [data valueForKey:@"login"];
 }
 
 - (NSString *)getName
@@ -92,55 +92,55 @@
 
 - (NSString *)getLocation
 {
-    if ([self.data valueForKey:@"location"] == (id)[NSNull null]) return @"n/a";
-    return [self.data valueForKey:@"location"];
+    if ([data valueForKey:@"location"] == (id)[NSNull null]) return @"n/a";
+    return [data valueForKey:@"location"];
 }
 
 - (NSString *)getWebsite
 {
-    if ([self.data valueForKey:@"blog"] == (id)[NSNull null]) return @"n/a";
-    return [self.data valueForKey:@"blog"];
+    if ([data valueForKey:@"blog"] == (id)[NSNull null]) return @"n/a";
+    return [data valueForKey:@"blog"];
 }
 
 - (NSString *)getEmail
 {
-    if ([self.data valueForKey:@"email"] == nil) return @"n/a";
-    if ([self.data valueForKey:@"email"] == (id)[NSNull null]) return @"n/a";
-    if ([[self.data valueForKey:@"email"] isEqualToString:@""]) return @"n/a";
-    return [self.data valueForKey:@"email"];
+    if ([data valueForKey:@"email"] == nil) return @"n/a";
+    if ([data valueForKey:@"email"] == (id)[NSNull null]) return @"n/a";
+    if ([[data valueForKey:@"email"] isEqualToString:@""]) return @"n/a";
+    return [data valueForKey:@"email"];
 }
 
 - (NSInteger)getFollowers
 {
-    return [[self.data valueForKey:@"followers"] integerValue];
+    return [[data valueForKey:@"followers"] integerValue];
 }
 
 - (NSInteger)getFollowing
 {
-    return [[self.data valueForKey:@"following"] integerValue];
+    return [[data valueForKey:@"following"] integerValue];
 }
 
 - (NSString *)getCompany
 {
-    if ([self.data valueForKey:@"company"] == (id)[NSNull null]) return @"n/a";
-    return [self.data valueForKey:@"company"];
+    if ([data valueForKey:@"company"] == (id)[NSNull null]) return @"n/a";
+    return [data valueForKey:@"company"];
 }
 
 - (NSInteger)getNumberOfRepos
 {
-    return [[self.data valueForKey:@"public_repos"] integerValue];
+    return [[data valueForKey:@"public_repos"] integerValue];
 }
 
 - (NSInteger)getNumberOfGists
 {
-    return [[self.data valueForKey:@"public_gists"] integerValue];
+    return [[data valueForKey:@"public_gists"] integerValue];
 }
 
 - (NSString *)getCreatedAt
 {
     NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
     [dateFormatter setDateFormat:@"yyyy-MM-dd'T'HH:mm:ssZZ"];
-    NSDate *date  = [dateFormatter dateFromString:[self.data valueForKey:@"created_at"]];
+    NSDate *date  = [dateFormatter dateFromString:[data valueForKey:@"created_at"]];
 
     RelativeDateDescriptor *relativeDateDescriptor = [[RelativeDateDescriptor alloc] initWithPriorDateDescriptionFormat:@"%@ ago" postDateDescriptionFormat:@"in %@"];
 
@@ -149,7 +149,7 @@
 
 - (NSString *)getHtmlUrl
 {
-    return [self.data valueForKey:@"html_url"];
+    return [data valueForKey:@"html_url"];
 }
 
 - (BOOL)isEditable
