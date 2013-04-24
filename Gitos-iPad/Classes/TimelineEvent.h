@@ -36,6 +36,8 @@
 - (NSMutableAttributedString *)decorateEmphasizedText:(NSString *)rawString;
 - (NSMutableAttributedString *)toAttributedString:(NSString *)rawString;
 - (NSString *)toHTMLStringForObject1WithName:(NSString *)name1 AndAvatar1:(NSString *)avatar1 Object2:(NSString *)name2 AndAvatar2:(NSString *)avatar2 andAction:(NSString *)actionName;
+- (NSString *)toHTMLStringForObject1WithName:(NSString *)name1 AndAvatar1:(NSString *)avatar1 Object2:(NSString *)name2 AndAvatar2:(NSString *)avatar2 andAction1:(NSString *)actionName1 Object3:(NSString *)name3 AndAvatar3:(NSString *)avatar3 andAction2:(NSString *)actionName2;
+
 
 - (NSString *)toHTMLString;
 

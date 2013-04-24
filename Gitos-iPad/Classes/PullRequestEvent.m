@@ -35,7 +35,18 @@
 
 - (NSString *)toHTMLString
 {
-    return @"";
+    User *actor = [self getActor];
+    Repo *repo = [self getRepo];
+    NSDictionary *payload = [self getPayload];
+    NSString *pullRequestId = [NSString stringWithFormat:@"%@/#%i", [repo getName], [[payload valueForKey:@"number"] integerValue]];
+
+    return [super toHTMLStringForObject1WithName:[actor getLogin]
+                                      AndAvatar1:[actor getAvatarUrl]
+                                         Object2:pullRequestId
+                                      AndAvatar2:GITHUB_OCTOCAT
+                                      andAction1:[payload valueForKey:@"action"]
+                                         Object3:pullRequestId AndAvatar3:GITHUB_OCTOCAT
+                                      andAction2:[repo getName]];
 }
 
 @end

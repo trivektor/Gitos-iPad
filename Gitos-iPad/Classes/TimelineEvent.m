@@ -13,7 +13,7 @@
 #import "DeleteEvent.h"
 #import "FollowEvent.h"
 #import "GistEvent.h"
-#import "IssueEvent.h"
+#import "IssuesEvent.h"
 #import "IssueCommentEvent.h"
 #import "MemberEvent.h"
 #import "PushEvent.h"
@@ -178,6 +178,30 @@
     NSString *actionHTMLString = [NSString stringWithFormat:actionHTML, actionName];
 
     NSArray *strings = @[actoHTMLString, actionHTMLString, repoHTMLString];
+
+    return [strings componentsJoinedByString:@""];
+}
+
+- (NSString *)toHTMLStringForObject1WithName:(NSString *)name1 AndAvatar1:(NSString *)avatar1 Object2:(NSString *)name2 AndAvatar2:(NSString *)avatar2 andAction1:(NSString *)actionName1 Object3:(NSString *)name3 AndAvatar3:(NSString *)avatar3 andAction2:(NSString *)actionName2
+{
+    NSString *eventActorPath = [[NSBundle mainBundle] pathForResource:@"eventActor" ofType:@"html"];
+
+    NSString *actorHTML = [NSString stringWithContentsOfFile:eventActorPath
+                                                     encoding:NSUTF8StringEncoding error:nil];
+
+    NSString *eventActionPath = [[NSBundle mainBundle] pathForResource:@"eventAction" ofType:@"html"];
+
+    NSString *actionHTML = [NSString stringWithContentsOfFile:eventActionPath
+                                                     encoding:NSUTF8StringEncoding error:nil];
+
+    NSString *actor1HTMLString = [NSString stringWithFormat:actorHTML, avatar1, name1];
+    NSString *actor2HTMLString = [NSString stringWithFormat:actorHTML, avatar2, name2];
+    NSString *actor3HTMLString = [NSString stringWithFormat:actorHTML, avatar3, name3];
+
+    NSString *action1HTMLString = [NSString stringWithFormat:actionHTML, actionName1];
+    NSString *action2HTMLString = [NSString stringWithFormat:actionHTML, actionName2];
+
+    NSArray *strings = @[actor1HTMLString, action1HTMLString, actor2HTMLString, action2HTMLString, actor3HTMLString];
 
     return [strings componentsJoinedByString:@""];
 }

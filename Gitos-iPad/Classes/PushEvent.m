@@ -38,7 +38,20 @@
 
 - (NSString *)toHTMLString
 {
-    return @"";
+    NSDictionary *payload = [self getPayload];
+    User *actor = [self getActor];
+    Repo *repo = [self getRepo];
+    NSArray *ref = [[payload valueForKey:@"ref"] componentsSeparatedByString:@"/"];
+    NSString *branch = [ref lastObject];
+
+    return [super toHTMLStringForObject1WithName:[actor getLogin]
+                                      AndAvatar1:[actor getAvatarUrl]
+                                         Object2:[repo getName]
+                                      AndAvatar2:GITHUB_OCTOCAT
+                                      andAction1:@" pushed to "
+                                         Object3:branch
+                                      AndAvatar3:GITHUB_OCTOCAT
+                                      andAction2:@" at "];
 }
 
 @end

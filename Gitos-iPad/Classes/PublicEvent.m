@@ -17,7 +17,7 @@
 
 - (NSString *)toHTMLString
 {
-    return @"";
+    return [self toActorRepoHTMLString:@"open sourced"];
 }
 
 @end

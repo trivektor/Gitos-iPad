@@ -37,20 +37,21 @@
 
 - (NSString *)toHTMLString
 {
-//    NSDictionary *payload = [self getPayload];
-//    User *actor = [self getActor];
-//    Repo *repo = [self getRepo];
-//    NSDictionary *member = [payload valueForKey:@"member"];
-//
-//    NSString *added = @" added ";
-//
-//    NSString *memberLogin = [member valueForKey:@"login"];
-//
-//    NSString *to = @" to ";
-//
-//    NSString *repoName = [repo getName];
+    NSDictionary *payload = [self getPayload];
+    User *actor = [self getActor];
+    Repo *repo = [self getRepo];
+    User *member = [[User alloc] initWithData:[payload valueForKey:@"member"]];
 
-    return @"";
+    NSString *repoName = [repo getName];
+
+    return [super toHTMLStringForObject1WithName:[actor getLogin]
+                                      AndAvatar1:[actor getAvatarUrl]
+                                         Object2:[member getLogin]
+                                      AndAvatar2:[member getAvatarUrl]
+                                      andAction1:@" added "
+                                         Object3:repoName
+                                      AndAvatar3:GITHUB_OCTOCAT
+                                      andAction2:@" to "];
 }
 
 @end
