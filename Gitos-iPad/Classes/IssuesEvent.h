@@ -8,7 +8,7 @@
 
 #import "TimelineEvent.h"
 
-@interface IssueEvent : TimelineEvent
+@interface IssuesEvent : TimelineEvent
 
 - (NSMutableAttributedString *)toString;
 - (NSString *)toHTMLString;

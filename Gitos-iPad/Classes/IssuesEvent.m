@@ -6,9 +6,9 @@
 //  Copyright (c) 2013 Crafted By Tri. All rights reserved.
 //
 
-#import "IssueEvent.h"
+#import "IssuesEvent.h"
 
-@implementation IssueEvent
+@implementation IssuesEvent
 
 - (NSMutableAttributedString *)toString
 {
