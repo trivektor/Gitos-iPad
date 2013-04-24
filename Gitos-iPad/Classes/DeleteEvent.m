@@ -30,7 +30,18 @@
 
 - (NSString *)toHTMLString
 {
-    return @"";
+    User *actor = [self getActor];
+
+    NSDictionary *payload = [self getPayload];
+
+    NSString *refType = [NSString stringWithFormat:@"%@ ", [payload valueForKey:@"ref_type"]];
+    NSString *ref = [payload valueForKey:@"ref"];
+
+    return [super toHTMLStringForObject1WithName:[actor getLogin]
+                                      AndAvatar1:[actor getAvatarUrl]
+                                         Object2:[@[refType, ref] componentsJoinedByString:@"/"]
+                                      AndAvatar2:GITHUB_OCTOCAT
+                                       andAction:@"deleted"];
 }
 
 @end

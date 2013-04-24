@@ -31,7 +31,16 @@
 
 - (NSString *)toHTMLString
 {
-    return @"";
+    User *actor = [self getActor];
+    NSDictionary *payload = [self getPayload];
+    NSDictionary *comment = [payload valueForKey:@"comment"];
+    NSString *commitId    = [[comment valueForKey:@"commit_id"] substringToIndex:9];
+
+    return [super toHTMLStringForObject1WithName:[actor getLogin]
+                                      AndAvatar1:[actor getAvatarUrl]
+                                         Object2:commitId
+                                      AndAvatar2:GITHUB_OCTOCAT
+                                       andAction:@"comment"];
 }
 
 @end
