@@ -9,6 +9,7 @@
 #import "RecentActivityViewController.h"
 #import "NewsFeedCell.h"
 #import "TimelineEvent.h"
+#import <objc/message.h>
 
 @interface RecentActivityViewController ()
 
@@ -23,7 +24,7 @@
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
         // Custom initialization
-        self.activities  = [[NSMutableArray alloc] initWithCapacity:0];
+        activities  = [[NSMutableArray alloc] initWithCapacity:0];
         self.accessToken = [SSKeychain passwordForService:@"access_token" account:@"gitos"];
         self.currentPage = 1;
     }
@@ -72,7 +73,7 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return [self.activities count];
+    return [activities count];
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -90,7 +91,7 @@
         cell = [[NewsFeedCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellIdentifier];
     }
 
-    cell.event = [self.activities objectAtIndex:indexPath.row];
+    cell.event = [activities objectAtIndex:indexPath.row];
     [cell displayEvent];
 
     return cell;
@@ -114,9 +115,14 @@
          NSString *response = [operation responseString];
          
          NSArray *json = [NSJSONSerialization JSONObjectWithData:[response dataUsingEncoding:NSUTF8StringEncoding] options:NSJSONReadingMutableContainers error:nil];
-         
+
+         NSDictionary *data;
+
          for (int i=0; i < json.count; i++) {
-             [self.activities addObject:[[TimelineEvent alloc] initWithData:[json objectAtIndex:i]]];
+             data = [json objectAtIndex:i];
+             id klass = [NSClassFromString([data valueForKey:@"type"]) alloc];
+             id obj = objc_msgSend(klass, sel_getUid("initWithData:"), data);
+             [activities addObject:obj];
          }
          
          [activityTable.pullToRefreshView stopAnimating];
@@ -137,7 +143,7 @@
 {
     self.currentPage = 1;
     [self.hud show:YES];
-    [self.activities removeAllObjects];
+    [activities removeAllObjects];
     [self fetchActivities:self.currentPage];
 }
 
