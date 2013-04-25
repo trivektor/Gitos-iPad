@@ -42,5 +42,6 @@
 
 + (void)fetchNewsFeedForUser:(NSString *)username andPage:(int)page;
 + (void)fetchInfoForUser:(NSString *)username;
++ (void)fetchRecentActivityForUser:(NSString *)username andPage:(int)page;
 
 @end

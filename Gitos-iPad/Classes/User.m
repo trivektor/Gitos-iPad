@@ -201,6 +201,51 @@
     [operation start];
 }
 
++ (void)fetchRecentActivityForUser:(NSString *)username andPage:(int)page;
+{
+    NSString *githubApiHost = [AppConfig getConfigValue:@"GithubApiHost"];
+
+    NSURL *recentActivitysUrl = [NSURL URLWithString:[githubApiHost stringByAppendingFormat:@"/users/%@", username]];
+
+    AFHTTPClient *httpClient = [[AFHTTPClient alloc] initWithBaseURL:recentActivitysUrl];
+
+    NSMutableDictionary *params = [NSMutableDictionary dictionaryWithObjectsAndKeys:
+                                   [AppHelper getAccessToken], @"access_token",
+                                   [NSString stringWithFormat:@"%i", page], @"page",
+                                   nil];
+
+    NSMutableURLRequest *getRequest = [httpClient requestWithMethod:@"GET"
+                                                               path:@"events"
+                                                         parameters:params];
+
+    AFHTTPRequestOperation *operation = [[AFHTTPRequestOperation alloc] initWithRequest:getRequest];
+
+    [operation setCompletionBlockWithSuccess:
+     ^(AFHTTPRequestOperation *operation, id responseObject){
+         NSString *response = [operation responseString];
+
+         NSArray *json = [NSJSONSerialization JSONObjectWithData:[response dataUsingEncoding:NSUTF8StringEncoding] options:NSJSONReadingMutableContainers error:nil];
+
+         NSDictionary *data;
+
+         NSMutableArray *activities = [[NSMutableArray alloc] initWithCapacity:0];
+
+         for (int i=0; i < json.count; i++) {
+             data = [json objectAtIndex:i];
+             id klass = [NSClassFromString([data valueForKey:@"type"]) alloc];
+             id obj = objc_msgSend(klass, sel_getUid("initWithData:"), data);
+             [activities addObject:obj];
+         }
+
+         [[NSNotificationCenter defaultCenter] postNotificationName:@"RecentActivityFetched" object:activities];
+     }
+     failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+         NSLog(@"%@", error);
+     }];
+
+    [operation start];
+}
+
 + (void)fetchInfoForUser:(NSString *)username
 {
     NSString *githubApiHost = [AppConfig getConfigValue:@"GithubApiHost"];

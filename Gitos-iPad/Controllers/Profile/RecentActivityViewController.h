@@ -14,12 +14,12 @@
 @property (nonatomic, strong) NSMutableArray *activities;
 @property (nonatomic, strong) User *user;
 @property (nonatomic, strong) MBProgressHUD *hud;
-@property (nonatomic, strong) NSString *accessToken;
 @property (nonatomic) NSInteger currentPage;
 
-- (void)fetchActivities:(NSInteger)page;
 - (void)performHouseKeepingTasks;
 - (void)registerNib;
+- (void)registerEvents;
+- (void)displayRecentActivity:(NSNotification *)notification;
 - (void)reloadActivities;
 - (void)setupPullToRefresh;
 

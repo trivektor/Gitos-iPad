@@ -25,8 +25,7 @@
     if (self) {
         // Custom initialization
         activities  = [[NSMutableArray alloc] initWithCapacity:0];
-        self.accessToken = [SSKeychain passwordForService:@"access_token" account:@"gitos"];
-        self.currentPage = 1;
+        currentPage = 1;
     }
     return self;
 }
@@ -36,28 +35,39 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
     [self performHouseKeepingTasks];
-    [self fetchActivities:self.currentPage++];
+    [self registerNib];
+    [self registerEvents];
+    [self setupPullToRefresh];
+    [User fetchRecentActivityForUser:[user getLogin] andPage:currentPage++];
 }
 
 - (void)performHouseKeepingTasks
 {
     self.navigationItem.title = @"Recent Activity";
+
     UIBarButtonItem *reloadButton = [[UIBarButtonItem alloc] initWithTitle:[NSString fontAwesomeIconStringForIconIdentifier:@"icon-repeat"] style:UIBarButtonItemStyleBordered target:self action:@selector(reloadActivities)];
+
     [reloadButton setTitleTextAttributes:[NSDictionary dictionaryWithObjectsAndKeys:[UIFont fontWithName:kFontAwesomeFamilyName size:17], UITextAttributeFont, nil] forState:UIControlStateNormal];
+
     [self.navigationItem setRightBarButtonItem:reloadButton];
     
-    self.hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
-    self.hud.mode = MBProgressHUDAnimationFade;
-    self.hud.labelText = @"Loading";
-
-    [self registerNib];
-    [self setupPullToRefresh];
+    hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+    hud.mode = MBProgressHUDAnimationFade;
+    hud.labelText = @"Loading";
 }
 
 - (void)registerNib
 {
     UINib *nib = [UINib nibWithNibName:@"NewsFeedCell" bundle:nil];
     [activityTable registerNib:nib forCellReuseIdentifier:@"NewsFeedCell"];
+}
+
+- (void)registerEvents
+{
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(displayRecentActivity:)
+                                                 name:@"RecentActivityFetched"
+                                               object:nil];
 }
 
 - (void)didReceiveMemoryWarning
@@ -97,61 +107,25 @@
     return cell;
 }
 
-- (void)fetchActivities:(NSInteger)page
+- (void)displayRecentActivity:(NSNotification *)notification
 {
-    AFHTTPClient *httpClient = [[AFHTTPClient alloc] initWithBaseURL:[NSURL URLWithString:[self.user getEventsUrl]]];
-    
-    NSMutableDictionary *params = [NSMutableDictionary dictionaryWithObjectsAndKeys:
-                                   self.accessToken, @"access_token",
-                                   [NSString stringWithFormat:@"%i", page], @"page",
-                                   nil];
-    
-    NSMutableURLRequest *getRequest = [httpClient requestWithMethod:@"GET" path:[self.user getEventsUrl] parameters:params];
-    
-    AFHTTPRequestOperation *operation = [[AFHTTPRequestOperation alloc] initWithRequest:getRequest];
-    
-    [operation setCompletionBlockWithSuccess:
-     ^(AFHTTPRequestOperation *operation, id responseObject){
-         NSString *response = [operation responseString];
-         
-         NSArray *json = [NSJSONSerialization JSONObjectWithData:[response dataUsingEncoding:NSUTF8StringEncoding] options:NSJSONReadingMutableContainers error:nil];
-
-         NSDictionary *data;
-
-         for (int i=0; i < json.count; i++) {
-             data = [json objectAtIndex:i];
-             id klass = [NSClassFromString([data valueForKey:@"type"]) alloc];
-             id obj = objc_msgSend(klass, sel_getUid("initWithData:"), data);
-             [activities addObject:obj];
-         }
-         
-         [activityTable.pullToRefreshView stopAnimating];
-         [activityTable reloadData];
-         [self.hud hide:YES];
-     }
-     failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-         NSLog(@"%@", error);
-         [self.hud hide:YES];
-         [activityTable.pullToRefreshView stopAnimating];
-     }
-     ];
-    
-    [operation start];
+    [activities addObjectsFromArray:notification.object];
+    [activityTable reloadData];
+    [hud hide:YES];
 }
 
 - (void)reloadActivities
 {
     self.currentPage = 1;
-    [self.hud show:YES];
+    [hud show:YES];
     [activities removeAllObjects];
-    [self fetchActivities:self.currentPage];
 }
 
 - (void)setupPullToRefresh
 {
-    self.currentPage = 1;
+    currentPage = 1;
     [activityTable addPullToRefreshWithActionHandler:^{
-        [self fetchActivities:self.currentPage++];
+        [User fetchRecentActivityForUser:[user getLogin] andPage:currentPage++];
     }];
 }
 
@@ -159,8 +133,8 @@
 {
     if (([scrollView contentOffset].y + scrollView.frame.size.height) == scrollView.contentSize.height) {
         // Bottom of UITableView reached
-        [self.hud show:YES];
-        [self fetchActivities:self.currentPage++];
+        [hud show:YES];
+        [User fetchRecentActivityForUser:[user getLogin] andPage:currentPage++];
     }
 }
 
