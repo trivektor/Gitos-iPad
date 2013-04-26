@@ -13,11 +13,12 @@
 
 @implementation AppInitialization
 
-+ (void)run:(UIWindow *)window
++ (void)run:(UIWindow *)window withUser:(User *)user
 {
     MasterViewController *masterController = [[MasterViewController alloc] init];
 
     NewsfeedViewController *newsfeedController = [[NewsfeedViewController alloc] init];
+    newsfeedController.user = user;
 
     UINavigationController *mainNavController = [[UINavigationController alloc] initWithRootViewController:newsfeedController];
 

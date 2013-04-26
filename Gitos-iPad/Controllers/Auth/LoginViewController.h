@@ -22,7 +22,9 @@
 @property(nonatomic, strong) NSMutableDictionary *oauthParams;
 
 - (void)performHousekeepingTasks;
+- (void)registerEvents;
 - (void)authenticate;
+- (void)fetchUser;
 - (void)deleteExistingAuthorizations;
 - (void)setDelegates;
 

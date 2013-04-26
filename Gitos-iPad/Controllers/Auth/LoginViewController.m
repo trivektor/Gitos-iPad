@@ -37,6 +37,7 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
     [self performHousekeepingTasks];
+    [self registerEvents];
     [self setDelegates];
 }
 
@@ -88,6 +89,19 @@
     return nil;
 }
 
+- (void)registerEvents
+{
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(authenticate)
+                                                 name:@"ExistingAuthorizationsDeleted"
+                                               object:nil];
+
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(fetchUser)
+                                                 name:@"UserAutheticated"
+                                               object:nil];
+}
+
 - (void)authenticate
 {
     NSString *username = [usernameField text];
@@ -118,9 +132,7 @@
 
          [SSKeychain setPassword:token forService:@"access_token" account:account];
          [SSKeychain setPassword:authorizationId forService:@"authorization_id" account:account];
-         [SSKeychain setPassword:username forService:@"username" account:account];
-         [SSKeychain setPassword:password forService:@"password" account:account];
-         [AppInitialization run:self.view.window];
+         [[NSNotificationCenter defaultCenter] postNotificationName:@"UserAutheticated" object:nil];
      }
      failure:^(AFHTTPRequestOperation *operation, NSError *error) {
          [hud setHidden:YES];
@@ -178,8 +190,9 @@
 
                 NSMutableURLRequest *deleteRequest = [httpClient requestWithMethod:@"DELETE" path:[NSString stringWithFormat:@"/authorizations/%@", storedAuthorizationId] parameters:nil];
                 AFHTTPRequestOperation *deleteOperation = [[AFHTTPRequestOperation alloc] initWithRequest:deleteRequest];
+
                 [deleteOperation setCompletionBlockWithSuccess:^(AFHTTPRequestOperation *operation, id responseObject) {
-                    [self authenticate];
+                    [[NSNotificationCenter defaultCenter] postNotificationName:@"ExistingAuthorizationsDeleted" object:nil];
                 } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
                     NSLog(@"%@", error);
                 }];
@@ -188,8 +201,39 @@
                 return;
             }
         }
-        [self authenticate];
+        [[NSNotificationCenter defaultCenter] postNotificationName:@"ExistingAuthorizationsDeleted" object:nil];
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {}];
+    [operation start];
+}
+
+- (void)fetchUser
+{
+    NSURL *url = [NSURL URLWithString:[AppConfig getConfigValue:@"GithubApiHost"]];
+
+    AFHTTPClient *httpClient = [[AFHTTPClient alloc] initWithBaseURL:url];
+    [httpClient setParameterEncoding:AFJSONParameterEncoding];
+
+    NSMutableURLRequest *getRequest = [httpClient requestWithMethod:@"GET"
+                                                               path:@"/user"
+                                                         parameters:[AppHelper getAccessTokenParams]];
+
+    AFHTTPRequestOperation *operation = [[AFHTTPRequestOperation alloc] initWithRequest:getRequest];
+
+    [operation setCompletionBlockWithSuccess:
+     ^(AFHTTPRequestOperation *operation, id responseObject) {
+         [hud setHidden:NO];
+         NSString *response = [operation responseString];
+
+         NSDictionary *json = [NSJSONSerialization JSONObjectWithData:[response dataUsingEncoding:NSUTF8StringEncoding] options:NSJSONReadingMutableContainers error:nil];
+
+         User *user = [[User alloc] initWithData:json];
+
+         [AppInitialization run:self.view.window withUser:user];
+     }
+     failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+
+     }];
+
     [operation start];
 }
 

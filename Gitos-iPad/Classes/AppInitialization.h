@@ -10,6 +10,6 @@
 
 @interface AppInitialization : NSObject
 
-+ (void)run:(UIWindow *)window;
++ (void)run:(UIWindow *)window withUser:(User *)user;
 
 @end

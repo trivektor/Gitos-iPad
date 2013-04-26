@@ -21,6 +21,7 @@
 - (void)validateAuthenticationToken;
 - (void)sendDeviceTokenToServer:(NSData *)deviceToken;
 - (NSString *)stringWithDeviceToken:(NSData *)deviceToken;
+- (void)start:(NSNotification *)notification;
 
 @end
 

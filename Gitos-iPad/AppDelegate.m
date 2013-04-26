@@ -219,13 +219,16 @@
 
 - (void)validateAuthenticationToken
 {
-    //NSString *authToken = [KeychainHelper getAuthenticationToken];
     NSString *authToken = [SSKeychain passwordForService:@"access_token" account:@"gitos"];
     
     NSLog(@"authToken when app starts is %@", authToken);
     
     if (authToken != nil && ![authToken isEqualToString:@""]) {
-        [AppInitialization run:(self.window)];
+        [[NSNotificationCenter defaultCenter] addObserver:self
+                                                 selector:@selector(start:)
+                                                     name:@"UserInfoFetched"
+                                                   object:nil];
+        [User fetchInfoForUserWithToken:[AppHelper getAccessToken]];
     } else {
         LoginViewController *loginController = [[LoginViewController alloc] init];
         UINavigationController *navController = [[UINavigationController alloc] initWithRootViewController:loginController];
@@ -233,4 +236,13 @@
     }
     
 }
+
+- (void)start:(NSNotification *)notification
+{
+    User *user = (User *)notification.object;
+    NSString *account = [AppConfig getConfigValue:@"KeychainAccountName"];
+    [SSKeychain setPassword:[user getLogin] forService:@"username" account:account];
+    [AppInitialization run:(self.window) withUser:user];
+}
+
 @end
