@@ -105,7 +105,9 @@
 
     } else if (indexPath.row == 1) {
 
-        selectedController = [[UINavigationController alloc] initWithRootViewController:[[NewsfeedViewController alloc] init]];
+        NewsfeedViewController *newsfeedController = [[NewsfeedViewController alloc] init];
+        newsfeedController.user = user;
+        selectedController = [[UINavigationController alloc] initWithRootViewController:newsfeedController];
 
     } else if (indexPath.row == 2) {
 
