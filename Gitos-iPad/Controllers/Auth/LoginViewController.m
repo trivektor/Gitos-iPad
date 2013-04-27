@@ -54,12 +54,15 @@
     hud.labelText = LOADING_MESSAGE;
     hud.hidden = YES;
 
-    [self.navigationItem setTitle:@"Login to Github"];
+    [self.navigationItem setTitle:@"Sign in to Github"];
     
-    UIBarButtonItem *submitButton = [[UIBarButtonItem alloc] initWithTitle:@"Submit" style:UIBarButtonItemStyleBordered target:self action:@selector(deleteExistingAuthorizations)];
+    UIBarButtonItem *submitButton = [[UIBarButtonItem alloc] initWithTitle:@"Sign in"
+                                                                     style:UIBarButtonItemStyleBordered
+                                                                    target:self
+                                                                    action:@selector(deleteExistingAuthorizations)];
     [submitButton setTintColor:[UIColor colorWithRed:202/255.0 green:0 blue:0 alpha:1]];
     [self.navigationItem setRightBarButtonItem:submitButton];
-    
+
     [loginTable setBackgroundView:nil];
     [loginTable setScrollEnabled:NO];
     [loginTable setSeparatorStyle:UITableViewCellSeparatorStyleSingleLine];

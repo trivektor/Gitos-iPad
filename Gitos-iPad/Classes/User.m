@@ -297,7 +297,7 @@
 
          User *user = [[User alloc] initWithData:json];
 
-         [[NSNotificationCenter defaultCenter] postNotificationName:@"UserInfoFetched" object:user];
+         [[NSNotificationCenter defaultCenter] postNotificationName:@"AuthenticatedUserFetched" object:user];
      }
      failure:^(AFHTTPRequestOperation *operation, NSError *error) {
          NSLog(@"%@", error);
