@@ -15,13 +15,15 @@
 
 @property (nonatomic, weak) IBOutlet UITableView *usersTable;
 @property (nonatomic, strong) NSMutableArray *users;
-@property (nonatomic, strong) NSString *accessToken;
 @property (nonatomic, strong) NSString *controllerTitle;
-
-@property (nonatomic, strong) NSString *usersUrl;
 @property (nonatomic, strong) MBProgressHUD *hud;
 @property (nonatomic) NSInteger currentPage;
 
+@property (nonatomic, strong) NSString *userType;
+
+- (void)performHouseKeepingTasks;
+- (void)registerEvents;
 - (void)fetchUsers:(NSInteger)page;
+- (void)displayUsers:(NSNotification *)notification;
 
 @end

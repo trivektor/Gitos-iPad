@@ -415,6 +415,54 @@
     [operation start];
 }
 
+- (void)fetchRelatedUsersWithUrl:(NSString *)url forPage:(int)page
+{
+    NSURL *fetchUrl = [NSURL URLWithString:url];
+
+    AFHTTPClient *httpClient = [[AFHTTPClient alloc] initWithBaseURL:fetchUrl];
+
+    NSMutableDictionary *params = [NSMutableDictionary dictionaryWithObjectsAndKeys:
+                                   [AppHelper getAccessToken], @"access_token",
+                                   [NSString stringWithFormat:@"%i", page], @"page",
+                                   nil];
+
+    NSMutableURLRequest *getRequest = [httpClient requestWithMethod:@"GET"
+                                                               path:fetchUrl.absoluteString
+                                                         parameters:params];
+
+    AFHTTPRequestOperation *operation = [[AFHTTPRequestOperation alloc] initWithRequest:getRequest];
+
+    [operation setCompletionBlockWithSuccess:
+     ^(AFHTTPRequestOperation *operation, id responseObject){
+         NSString *response = [operation responseString];
+
+         NSArray *json = [NSJSONSerialization JSONObjectWithData:[response dataUsingEncoding:NSUTF8StringEncoding] options:NSJSONReadingMutableContainers error:nil];
+
+         NSMutableArray *users = [[NSMutableArray alloc] initWithCapacity:0];
+
+         for (int i=0; i < json.count; i++) {
+             [users addObject:[[User alloc] initWithData:[json objectAtIndex:i]]];
+         }
+
+         [[NSNotificationCenter defaultCenter] postNotificationName:@"FollowUsersFetched" object:users];
+     }
+     failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+         NSLog(@"%@", error);
+     }];
+
+    [operation start];
+}
+
+- (void)fetchFollowersForPage:(int)page
+{
+    [self fetchRelatedUsersWithUrl:[self getFollowersUrl] forPage:page];
+}
+
+- (void)fetchFollowingUsersForPage:(int)page
+{
+    [self fetchRelatedUsersWithUrl:[self getFollowingUrl] forPage:page];
+}
+
 - (void)update:(NSDictionary *)updatedInfo
 {
     NSString *githubApiHost = [AppConfig getConfigValue:@"GithubApiHost"];

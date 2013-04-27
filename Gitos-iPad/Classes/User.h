@@ -48,5 +48,8 @@
 - (void)fetchReposForPage:(int)page;
 - (void)fetchStarredReposForPage:(int)page;
 - (void)fetchGistsForPage:(int)page;
+- (void)fetchRelatedUsersWithUrl:(NSString *)url forPage:(int)page;
+- (void)fetchFollowersForPage:(int)page;
+- (void)fetchFollowingUsersForPage:(int)page;
 
 @end

@@ -173,46 +173,66 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     if (indexPath.row == 2) {
+
         // Popup the mail composer when clicking on email
         // http://stackoverflow.com/questions/9024994/open-mail-and-safari-from-uitableviewcell
         if ([user getEmail] != (id)[NSNull null]) {
             [self mailProfileToEmail:[user getEmail] WithSubject:@"Hello"];
         }
+
     } else if (indexPath.row == 1) {
+
         if ([user getWebsite] != (id)[NSNull null]) {
             [self loadWebsiteWithUrl:[user getWebsite]];
         }
+
     } else if (indexPath.row == 4) {
+
         FollowViewController *followController = [[FollowViewController alloc] init];
-        followController.usersUrl = [user getFollowersUrl];
+        followController.user = user;
+        followController.userType = @"followers";
         followController.controllerTitle = @"Followers";
         [self.navigationController pushViewController:followController animated:YES];
+
     } else if (indexPath.row == 5) {
+
         FollowViewController *followController = [[FollowViewController alloc] init];
-        followController.usersUrl = [user getFollowingUrl];
+        followController.user = user;
+        followController.userType = @"following";
         followController.controllerTitle = @"Following";
         [self.navigationController pushViewController:followController animated:YES];
+
     } else if (indexPath.row == 6) {
+
         ReposViewController *reposController = [[ReposViewController alloc] init];
         reposController.user = user;
         reposController.hideBackButton = NO;
         [self.navigationController pushViewController:reposController animated:YES];
+
     } else if (indexPath.row == 7) {
+
         GistsViewController *gistsController = [[GistsViewController alloc] init];
         gistsController.user = user;
         [self.navigationController pushViewController:gistsController animated:YES];
+
     } else if (indexPath.row == 9) {
+
         OrganizationsViewController *organizationsController = [[OrganizationsViewController alloc] init];
         organizationsController.user = user;
         [self.navigationController pushViewController:organizationsController animated:YES];
+
     } else if (indexPath.row == 10) {
+
         RecentActivityViewController *recentActivityController = [[RecentActivityViewController alloc] init];
         recentActivityController.user = user;
         [self.navigationController pushViewController:recentActivityController animated:YES];
+
     } else if (indexPath.row == 11) {
+
         ContributionsViewController *contributionsController = [[ContributionsViewController alloc] init];
         contributionsController.user = user;
         [self.navigationController pushViewController:contributionsController animated:YES];
+
     }
 }
 
