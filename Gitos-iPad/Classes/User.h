@@ -40,7 +40,7 @@
 - (BOOL)isEditable;
 - (void)update:(NSDictionary *)updatedInfo;
 
-+ (void)fetchNewsFeedForUser:(NSString *)username andPage:(int)page;
+- (void)fetchNewsFeedForPage:(int)page;
 + (void)fetchInfoForUser:(NSString *)username;
 + (void)fetchInfoForUserWithToken:(NSString *)accessToken;
 + (void)fetchRecentActivityForUser:(NSString *)username andPage:(int)page;

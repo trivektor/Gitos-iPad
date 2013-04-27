@@ -157,11 +157,11 @@
     return [[AppHelper getAccountUsername] isEqualToString:[self getLogin]];
 }
 
-+ (void)fetchNewsFeedForUser:(NSString *)username andPage:(int)page
+- (void)fetchNewsFeedForPage:(int)page
 {
     NSString *githubApiHost = [AppConfig getConfigValue:@"GithubApiHost"];
 
-    NSURL *userReceivedEventsUrl = [NSURL URLWithString:[githubApiHost stringByAppendingFormat:@"/users/%@", username]];
+    NSURL *userReceivedEventsUrl = [NSURL URLWithString:[githubApiHost stringByAppendingFormat:@"/users/%@", [AppHelper getAccountUsername]]];
 
     AFHTTPClient *httpClient = [[AFHTTPClient alloc] initWithBaseURL:userReceivedEventsUrl];
 
@@ -180,15 +180,12 @@
          NSArray *json = [NSJSONSerialization JSONObjectWithData:[response dataUsingEncoding:NSUTF8StringEncoding] options:NSJSONReadingMutableContainers error:nil];
 
          NSMutableArray *newsFeed = [[NSMutableArray alloc] initWithCapacity:0];
-         NSDictionary *data;
+         NSDictionary *_data;
 
          for (int i=0; i < json.count; i++) {
-             data = [json objectAtIndex:i];
-
-             id klass = [NSClassFromString([data valueForKey:@"type"]) alloc];
-
-             id obj = objc_msgSend(klass, sel_getUid("initWithData:"), data);
-
+             _data = [json objectAtIndex:i];
+             id klass = [NSClassFromString([_data valueForKey:@"type"]) alloc];
+             id obj = objc_msgSend(klass, sel_getUid("initWithData:"), _data);
              [newsFeed addObject:obj];
          }
 

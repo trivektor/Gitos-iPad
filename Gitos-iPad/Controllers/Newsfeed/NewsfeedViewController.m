@@ -60,7 +60,7 @@
                                                  name:@"NewsFeedFetched"
                                                object:nil];
 
-    [User fetchNewsFeedForUser:[AppHelper getAccountUsername] andPage:currentPage++];
+    [user fetchNewsFeedForPage:currentPage++];
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -154,7 +154,7 @@
     if (([scrollView contentOffset].y + scrollView.frame.size.height) == scrollView.contentSize.height) {
         // Bottom of UITableView reached
         [hud show:YES];
-        [User fetchNewsFeedForUser:[AppHelper getAccountUsername] andPage:currentPage++];
+        [user fetchNewsFeedForPage:currentPage++];
     }
 }
 
@@ -170,7 +170,7 @@
 {
     currentPage = 1;
     [newsFeedTable addPullToRefreshWithActionHandler:^{
-        [User fetchNewsFeedForUser:[AppHelper getAccountUsername] andPage:currentPage++];
+        [user fetchNewsFeedForPage:currentPage++];
     }];
 }
 
@@ -180,7 +180,7 @@
     currentPage = 1;
     [newsFeed removeAllObjects];
     [newsFeedTable reloadData];
-    [User fetchNewsFeedForUser:[AppHelper getAccountUsername] andPage:currentPage++];
+    [user fetchNewsFeedForPage:currentPage++];
 }
 
 @end
