@@ -10,7 +10,7 @@
 
 @implementation NewsFeedCell
 
-@synthesize fontAwesomeLabel, actionDescription, actionDate;
+@synthesize fontAwesomeLabel, actionDescription, event, actionDate;
 
 - (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
 {
@@ -30,12 +30,18 @@
 
 - (void)displayEvent
 {
-    self.actionDescription.attributedText = [self.event toString];
-    self.actionDate.text        = [self.event toDateString];
-    self.accessoryType          = UITableViewCellAccessoryDisclosureIndicator;
-    self.fontAwesomeLabel.font  = [UIFont fontWithName:kFontAwesomeFamilyName size:15.0];
-    self.fontAwesomeLabel.text  = [NSString fontAwesomeIconStringForIconIdentifier:[self.event getFontAwesomeIcon]];
-    self.selectionStyle         = UITableViewCellSelectionStyleGray;
+    static NSString *relativeDate = nil;
+
+    if (!relativeDate) {
+        relativeDate = [event toDateString];
+    }
+
+    actionDescription.attributedText = [event toString];
+    actionDate.text                  = relativeDate;
+    self.accessoryType               = UITableViewCellAccessoryDisclosureIndicator;
+    fontAwesomeLabel.font            = [UIFont fontWithName:kFontAwesomeFamilyName size:15.0];
+    fontAwesomeLabel.text            = [NSString fontAwesomeIconStringForIconIdentifier:[self.event getFontAwesomeIcon]];
+    self.selectionStyle              = UITableViewCellSelectionStyleGray;
 }
 
 @end
