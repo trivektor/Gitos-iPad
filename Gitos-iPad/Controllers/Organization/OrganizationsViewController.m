@@ -16,7 +16,7 @@
 
 @implementation OrganizationsViewController
 
-@synthesize organizationsTable, hud, accessToken, user, organizations;
+@synthesize organizationsTable, hud, user, organizations, currentPage;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -24,6 +24,7 @@
     if (self) {
         // Custom initialization
         organizations = [[NSMutableArray alloc] initWithCapacity:0];
+        currentPage = 1;
     }
     return self;
 }
@@ -52,13 +53,13 @@
 
 - (void)fetchOrganizations
 {
-    [Organization fetchUserOrganizations:user];
     [hud show:YES];
+    [user fetchOrganizationsForPage:currentPage++];
 }
 
 - (void)displayOrganizations:(NSNotification *)notification
 {
-    organizations = notification.object;
+    [organizations addObjectsFromArray:notification.object];
     [organizationsTable reloadData];
     [hud hide:YES];
 }
@@ -76,7 +77,7 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return [self.organizations count];
+    return [organizations count];
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -89,7 +90,7 @@
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellIdentifier];
     }
 
-    Organization *org = [self.organizations objectAtIndex:indexPath.row];
+    Organization *org = [organizations objectAtIndex:indexPath.row];
 
     NSData *data = [NSData dataWithContentsOfURL:[NSURL URLWithString:[org getAvatarUrl]]];
 
@@ -103,7 +104,7 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     OrganizationViewController *organizationController = [[OrganizationViewController alloc] init];
-    organizationController.organization = [self.organizations objectAtIndex:indexPath.row];
+    organizationController.organization = [organizations objectAtIndex:indexPath.row];
     [self.navigationController pushViewController:organizationController animated:YES];
 }
 

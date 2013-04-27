@@ -463,6 +463,45 @@
     [self fetchRelatedUsersWithUrl:[self getFollowingUrl] forPage:page];
 }
 
+- (void)fetchOrganizationsForPage:(int)page
+{
+    NSURL *organizationsUrl = [NSURL URLWithString:[self getOrganizationsUrl]];
+
+    AFHTTPClient *httpClient = [[AFHTTPClient alloc] initWithBaseURL:organizationsUrl];
+
+    NSMutableDictionary *params = [NSMutableDictionary dictionaryWithObjectsAndKeys:
+                                   [AppHelper getAccessToken], @"access_token",
+                                   [NSString stringWithFormat:@"%i", page], @"page",
+                                   nil];
+
+    NSMutableURLRequest *getRequest = [httpClient requestWithMethod:@"GET"
+                                                               path:organizationsUrl.absoluteString
+                                                         parameters:params];
+
+    AFHTTPRequestOperation *operation = [[AFHTTPRequestOperation alloc] initWithRequest:getRequest];
+
+    [operation setCompletionBlockWithSuccess:
+     ^(AFHTTPRequestOperation *operation, id responseObject){
+         NSString *response = [operation responseString];
+
+         NSArray *json = [NSJSONSerialization JSONObjectWithData:[response dataUsingEncoding:NSUTF8StringEncoding] options:NSJSONReadingMutableContainers error:nil];
+
+         NSMutableArray *organizations = [[NSMutableArray alloc] initWithCapacity:0];
+
+         for (int i=0; i < json.count; i++) {
+             [organizations addObject:[[Organization alloc] initWithData:[json objectAtIndex:i]]];
+         }
+
+         [[NSNotificationCenter defaultCenter] postNotificationName:@"OrganizationsFetched"
+                                                             object:organizations];
+     }
+     failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+         NSLog(@"%@", error);
+     }];
+
+    [operation start];
+}
+
 - (void)update:(NSDictionary *)updatedInfo
 {
     NSString *githubApiHost = [AppConfig getConfigValue:@"GithubApiHost"];

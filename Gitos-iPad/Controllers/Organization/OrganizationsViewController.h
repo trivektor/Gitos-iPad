@@ -12,9 +12,9 @@
 
 @property (nonatomic, weak) IBOutlet UITableView *organizationsTable;
 @property (nonatomic, strong) MBProgressHUD *hud;
-@property (nonatomic, strong) NSString *accessToken;
 @property (nonatomic, strong) User *user;
 @property (nonatomic, strong) NSMutableArray *organizations;
+@property (nonatomic) int currentPage;
 
 - (void)performHouseKeepingTasks;
 - (void)registerEvents;

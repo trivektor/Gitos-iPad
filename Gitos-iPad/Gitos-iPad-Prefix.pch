@@ -31,6 +31,7 @@
     #import "Gist.h"
     #import "Issue.h"
     #import "Comment.h"
+    #import "Organization.h"
     #import "YRDropdownView.h"
     #import "AppHelper.h"
     #import "GitosViewController.h"

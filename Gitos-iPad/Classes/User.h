@@ -51,5 +51,6 @@
 - (void)fetchRelatedUsersWithUrl:(NSString *)url forPage:(int)page;
 - (void)fetchFollowersForPage:(int)page;
 - (void)fetchFollowingUsersForPage:(int)page;
+- (void)fetchOrganizationsForPage:(int)page;
 
 @end

@@ -14,6 +14,7 @@
 @property (nonatomic, strong) NSString *accessToken;
 @property (nonatomic, strong) MBProgressHUD *hud;
 @property (nonatomic, strong) Organization *organization;
+@property (nonatomic) int currentPage;
 
 - (void)performHouseKeepingTasks;
 - (void)fetchOrganizationInfo;
