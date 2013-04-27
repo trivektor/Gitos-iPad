@@ -20,7 +20,6 @@
 - (void)performHousekeepingTasks;
 - (void)registerNib;
 - (void)registerEvents;
-- (void)getUserGists:(int)page;
 - (void)displayUserGists:(NSNotification *)notification;
 - (void)setupPullToRefresh;
 - (void)createNewGist;

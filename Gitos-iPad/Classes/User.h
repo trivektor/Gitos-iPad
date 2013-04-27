@@ -46,5 +46,6 @@
 - (void)fetchRecentActivityForPage:(int)page;
 - (void)fetchReposForPage:(int)page;
 - (void)fetchStarredReposForPage:(int)page;
+- (void)fetchGistsForPage:(int)page;
 
 @end

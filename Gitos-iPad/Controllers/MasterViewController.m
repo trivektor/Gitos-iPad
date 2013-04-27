@@ -111,6 +111,7 @@
     } else if (indexPath.row == 3) {
 
         GistsViewController *gistsController = [[GistsViewController alloc] init];
+        gistsController.user = user;
         gistsController.hideBackButton = YES;
         selectedController = [[UINavigationController alloc] initWithRootViewController:gistsController];
 

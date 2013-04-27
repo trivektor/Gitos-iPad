@@ -374,6 +374,42 @@
     [operation start];
 }
 
+- (void)fetchGistsForPage:(int)page
+{
+    NSString *userGistsUrl = [[AppConfig getConfigValue:@"GithubApiHost"] stringByAppendingFormat:@"/users/%@/gists", [self getLogin]];
+
+    NSURL *gistsUrl = [NSURL URLWithString:userGistsUrl];
+
+    AFHTTPClient *httpClient = [[AFHTTPClient alloc] initWithBaseURL:gistsUrl];
+
+    NSMutableDictionary *params = [NSMutableDictionary dictionaryWithDictionary:[AppHelper getAccessTokenParams]];
+    [params addEntriesFromDictionary:[NSDictionary dictionaryWithObjectsAndKeys:[NSString stringWithFormat:@"%i", page],  @"page", nil]];
+
+    NSMutableURLRequest *getRequest = [httpClient requestWithMethod:@"GET" path:gistsUrl.absoluteString parameters:params];
+
+    AFHTTPRequestOperation *operation = [[AFHTTPRequestOperation alloc] initWithRequest:getRequest];
+
+    [operation setCompletionBlockWithSuccess:
+     ^(AFHTTPRequestOperation *operation, id responseObject){
+         NSString *response = [operation responseString];
+
+         NSArray *gistsArray = [NSJSONSerialization JSONObjectWithData:[response dataUsingEncoding:NSUTF8StringEncoding] options:NSJSONReadingMutableContainers error:nil];
+
+         NSMutableArray *gists = [[NSMutableArray alloc] initWithCapacity:0];
+
+         for (int i=0; i < [gistsArray count]; i++) {
+             [gists addObject:[[Gist alloc] initWithData:[gistsArray objectAtIndex:i]]];
+         }
+
+         [[NSNotificationCenter defaultCenter] postNotificationName:@"UserGistsFetched" object:gists];
+     }
+     failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+         NSLog(@"%@", error);
+     }];
+
+    [operation start];
+}
+
 - (void)update:(NSDictionary *)updatedInfo
 {
     NSString *githubApiHost = [AppConfig getConfigValue:@"GithubApiHost"];

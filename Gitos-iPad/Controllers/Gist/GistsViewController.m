@@ -46,7 +46,7 @@
     [self registerEvents];
 
     [self setupPullToRefresh];
-    [self getUserGists:currentPage++];
+    [user fetchGistsForPage:currentPage++];
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -133,16 +133,7 @@
     if (([scrollView contentOffset].y + scrollView.frame.size.height) == scrollView.contentSize.height) {
         // Bottom of UITableView reached
         [hud show:YES];
-        [self getUserGists:self.currentPage++];
-    }
-}
-
-- (void)getUserGists:(int)page
-{
-    if (user == nil) {
-        [Gist fetchGistsForUser:[AppHelper getAccountUsername] andPage:currentPage++];
-    } else {
-        [Gist fetchGistsForUser:[user getLogin] andPage:currentPage++];
+        [user fetchGistsForPage:currentPage++];
     }
 }
 
@@ -159,7 +150,7 @@
     [hud show:YES];
     currentPage = 1;
     [gistsTable addPullToRefreshWithActionHandler:^{
-        [self getUserGists:currentPage];
+        [user fetchGistsForPage:currentPage++];
     }];
 }
 
