@@ -16,25 +16,25 @@
 {
     self = [super init];
     
-    self.data = _data;
-    self.relativeDateDescriptor = [[RelativeDateDescriptor alloc] initWithPriorDateDescriptionFormat:@"%@ ago" postDateDescriptionFormat:@"in %@"];
-    self.dateFormatter = [[NSDateFormatter alloc] init];
-    self.dateFormatter.dateFormat = @"yyyy-MM-dd'T'HH:mm:ssZZ";
+    data = _data;
+    relativeDateDescriptor = [[RelativeDateDescriptor alloc] initWithPriorDateDescriptionFormat:@"%@ ago" postDateDescriptionFormat:@"in %@"];
+    dateFormatter = [[NSDateFormatter alloc] init];
+    dateFormatter.dateFormat = @"yyyy-MM-dd'T'HH:mm:ssZZ";
 
     return self;
 }
 
 - (NSString *)getName
 {
-    return [self.data valueForKey:@"name"];
+    return [data valueForKey:@"name"];
 }
 
 - (NSString *)getFullName
 {
-    NSString *fullName = [self.data valueForKey:@"full_name"];
+    NSString *fullName = [data valueForKey:@"full_name"];
     
     if (fullName == (id)[NSNull null] || fullName.length == 0) {
-        NSString *owner = [self.data valueForKey:@"owner"];
+        NSString *owner = [data valueForKey:@"owner"];
         return [owner stringByAppendingString:[self getName]];
     }
     
@@ -43,27 +43,27 @@
 
 - (NSInteger)getForks
 {
-    return [[self.data valueForKey:@"forks"] integerValue];
+    return [[data valueForKey:@"forks"] integerValue];
 }
 
 - (NSInteger)getWatchers
 {
-    return [[self.data valueForKey:@"watchers"] integerValue];
+    return [[data valueForKey:@"watchers"] integerValue];
 }
 
 - (NSString *)getLanguage
 {
-    if ([self.data valueForKey:@"language"] == (id)[NSNull null]) return @"n/a";
-    return [self.data valueForKey:@"language"];
+    if ([data valueForKey:@"language"] == (id)[NSNull null]) return @"n/a";
+    return [data valueForKey:@"language"];
 }
 
 - (NSString *)getBranchesUrl
 {
-    NSString *url = [self.data valueForKey:@"url"];
+    NSString *url = [data valueForKey:@"url"];
     
     if (url == (id)[NSNull null] || url.length == 0) {
         NSString *githubApiHost = [AppConfig getConfigValue:@"GithubApiHost"];
-        NSString *owner = [self.data valueForKey:@"owner"];
+        NSString *owner = [data valueForKey:@"owner"];
         url = [githubApiHost stringByAppendingFormat:@"/repos/%@/%@", owner, [self getName]];
     }
     
@@ -72,11 +72,11 @@
 
 - (NSString *)getTreeUrl
 {
-    NSString *url = [self.data valueForKey:@"url"];
+    NSString *url = [data valueForKey:@"url"];
     
     if (url == (id)[NSNull null] || url.length == 0) {
         NSString *githubApiHost = [AppConfig getConfigValue:@"GithubApiHost"];
-        NSString *owner = [self.data valueForKey:@"owner"];
+        NSString *owner = [data valueForKey:@"owner"];
         url = [githubApiHost stringByAppendingFormat:@"/repos/%@/%@", owner, [self getName]];
     }
     
@@ -85,52 +85,52 @@
 
 - (NSInteger)getSize
 {
-    return [[self.data valueForKey:@"size"] integerValue];
+    return [[data valueForKey:@"size"] integerValue];
 }
 
 - (NSString *)getPushedAt
 {
-    return [self.data valueForKey:@"pushed_at"];
+    return [data valueForKey:@"pushed_at"];
 }
 
 - (NSString *)getDescription
 {
-    if ([self.data valueForKey:@"description"] == (id)[NSNull null]) return @"n/a";
-    return [self.data valueForKey:@"description"];
+    if ([data valueForKey:@"description"] == (id)[NSNull null]) return @"n/a";
+    return [data valueForKey:@"description"];
 }
 
 - (NSString *)getHomepage
 {
-    if ([self.data valueForKey:@"homepage"] == (id)[NSNull null]) return @"n/a";
-    if ([[self.data valueForKey:@"homepage"] length] == 0) return @"n/a";
-    return [self.data valueForKey:@"homepage"];
+    if ([data valueForKey:@"homepage"] == (id)[NSNull null]) return @"n/a";
+    if ([[data valueForKey:@"homepage"] length] == 0) return @"n/a";
+    return [data valueForKey:@"homepage"];
 }
 
 - (NSInteger)getOpenIssues
 {
-    return [[self.data valueForKey:@"open_issues"] integerValue];
+    return [[data valueForKey:@"open_issues"] integerValue];
 }
 
 - (NSString *)getIssuesUrl
 {
-    return [[self.data valueForKey:@"issues_url"] stringByReplacingOccurrencesOfString:@"{/number}" withString:@""];
+    return [[data valueForKey:@"issues_url"] stringByReplacingOccurrencesOfString:@"{/number}" withString:@""];
 }
 
 - (NSString *)getCommitsUrl
 {
-    return [[self.data valueForKey:@"commits_url"] stringByReplacingOccurrencesOfString:@"{/sha}" withString:@""];
+    return [[data valueForKey:@"commits_url"] stringByReplacingOccurrencesOfString:@"{/sha}" withString:@""];
 }
 
 - (NSString *)getAuthorName
 {
-    if ([self.data valueForKey:@"owner"] != (id)[NSNull null]) {
-        if ([[self.data valueForKey:@"owner"] isKindOfClass:[NSDictionary class]]) {
-            return [[self.data valueForKey:@"owner"] valueForKey:@"login"];
+    if ([data valueForKey:@"owner"] != (id)[NSNull null]) {
+        if ([[data valueForKey:@"owner"] isKindOfClass:[NSDictionary class]]) {
+            return [[data valueForKey:@"owner"] valueForKey:@"login"];
         } else {
-            return [self.data valueForKey:@"owner"];
+            return [data valueForKey:@"owner"];
         }
-    } else if ([self.data valueForKey:@"username"]) {
-        return [self.data valueForKey:@"username"];
+    } else if ([data valueForKey:@"username"]) {
+        return [data valueForKey:@"username"];
     } else {
         return @"";
     }
@@ -138,28 +138,28 @@
 
 - (NSString *)getCreatedAt
 {
-    return [self convertToRelativeDate:[self.data valueForKey:@"created_at"]];
+    return [self convertToRelativeDate:[data valueForKey:@"created_at"]];
 }
 
 - (NSString *)getUpdatedAt
 {
-    return [self convertToRelativeDate:[self.data valueForKey:@"updated_at"]];
+    return [self convertToRelativeDate:[data valueForKey:@"updated_at"]];
 }
 
 - (NSString *)convertToRelativeDate:(NSString *)originalDateString
 {
-    NSDate *date  = [self.dateFormatter dateFromString:originalDateString];
-    return [self.relativeDateDescriptor describeDate:date relativeTo:[NSDate date]];
+    NSDate *date  = [dateFormatter dateFromString:originalDateString];
+    return [relativeDateDescriptor describeDate:date relativeTo:[NSDate date]];
 }
 
 - (NSString *)getOwner
 {
-    return [self.data valueForKey:@"owner"];
+    return [data valueForKey:@"owner"];
 }
 
 - (BOOL)isForked
 {
-    return [[self.data valueForKey:@"fork"] integerValue] == 1;
+    return [[data valueForKey:@"fork"] integerValue] == 1;
 }
 
 - (NSString *)getSubscriptionUrl
@@ -186,7 +186,9 @@
 
     AFHTTPClient *httpClient = [[AFHTTPClient alloc] initWithBaseURL:starredUrl];
 
-    NSMutableURLRequest *getRequest = [httpClient requestWithMethod:@"GET" path:starredUrl.absoluteString parameters:[AppHelper getAccessTokenParams]];
+    NSMutableURLRequest *getRequest = [httpClient requestWithMethod:@"GET"
+                                                               path:starredUrl.absoluteString
+                                                         parameters:[AppHelper getAccessTokenParams]];
 
     AFHTTPRequestOperation *operation = [[AFHTTPRequestOperation alloc] initWithRequest:getRequest];
 
@@ -214,7 +216,9 @@
 
     AFHTTPClient *httpClient = [[AFHTTPClient alloc] initWithBaseURL:branchesUrl];
 
-    NSMutableURLRequest *getRequest = [httpClient requestWithMethod:@"GET" path:branchesUrl.absoluteString parameters:[AppHelper getAccessTokenParams]];
+    NSMutableURLRequest *getRequest = [httpClient requestWithMethod:@"GET"
+                                                               path:branchesUrl.absoluteString
+                                                         parameters:[AppHelper getAccessTokenParams]];
 
     AFHTTPRequestOperation *operation = [[AFHTTPRequestOperation alloc] initWithRequest:getRequest];
 
@@ -232,7 +236,9 @@
 
          NSDictionary *userInfo = [NSDictionary dictionaryWithObject:branches forKey:@"Branches"];
 
-         [[NSNotificationCenter defaultCenter] postNotificationName:@"BranchesFetched" object:self userInfo:userInfo];
+         [[NSNotificationCenter defaultCenter] postNotificationName:@"BranchesFetched"
+                                                             object:self
+                                                           userInfo:userInfo];
      }
      failure:^(AFHTTPRequestOperation *operation, NSError *error) {
          NSLog(@"%@", error);
