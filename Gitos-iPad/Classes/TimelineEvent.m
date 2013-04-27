@@ -24,14 +24,19 @@
 
 @implementation TimelineEvent
 
+@synthesize data, relativeDateDescriptor, dateFormatter, fontAwesomeIcons;
+
 - (id)initWithData:(NSDictionary *)eventData
 {
     self = [super init];
-    self.data = eventData;
-    self.relativeDateDescriptor = [[RelativeDateDescriptor alloc] initWithPriorDateDescriptionFormat:@"%@ ago" postDateDescriptionFormat:@"in %@"];
-    self.dateFormatter = [[NSDateFormatter alloc] init];
-    [self.dateFormatter setDateFormat:@"yyyy-MM-dd'T'HH:mm:ssZZ"];
-    self.fontAwesomeIcons = @{
+    data = eventData;
+    relativeDateDescriptor = [[RelativeDateDescriptor alloc]
+                              initWithPriorDateDescriptionFormat:@"%@ ago"
+                              postDateDescriptionFormat:@"in %@"];
+
+    dateFormatter = [[NSDateFormatter alloc] init];
+    [dateFormatter setDateFormat:@"yyyy-MM-dd'T'HH:mm:ssZZ"];
+    fontAwesomeIcons = @{
         @"ForkEvent"          : @"icon-random",
         @"WatchEvent"         : @"icon-star",
         @"CreateEvent"        : @"icon-plus",
@@ -51,12 +56,12 @@
 
 - (NSString *)getId
 {
-    return [self.data valueForKey:@"id"];
+    return [data valueForKey:@"id"];
 }
 
 - (NSDictionary *)getPayload
 {
-    return [self.data valueForKey:@"payload"];
+    return [data valueForKey:@"payload"];
 }
 
 - (NSDictionary *)getTarget
@@ -67,17 +72,17 @@
 
 - (NSString *)getType
 {
-    return [self.data valueForKey:@"type"];
+    return [data valueForKey:@"type"];
 }
 
 - (User *)getActor
 {
-    return [[User alloc] initWithData:[self.data valueForKey:@"actor"]];
+    return [[User alloc] initWithData:[data valueForKey:@"actor"]];
 }
 
 - (Repo *)getRepo
 {
-    return [[Repo alloc] initWithData:[self.data valueForKey:@"repo"]];
+    return [[Repo alloc] initWithData:[data valueForKey:@"repo"]];
 }
 
 - (NSMutableAttributedString *)toString
@@ -127,18 +132,18 @@
 
 - (NSString *)getFontAwesomeIcon
 {
-    return [self.fontAwesomeIcons valueForKey:[self getType]];
+    return [fontAwesomeIcons valueForKey:[self getType]];
 }
 
 - (NSString *)convertToRelativeDate:(NSString *)originalDateString
 {
-    NSDate *date  = [self.dateFormatter dateFromString:originalDateString];
-    return [self.relativeDateDescriptor describeDate:date relativeTo:[NSDate date]];
+    NSDate *date  = [dateFormatter dateFromString:originalDateString];
+    return [relativeDateDescriptor describeDate:date relativeTo:[NSDate date]];
 }
 
 - (NSString *)toDateString
 {
-    return [self convertToRelativeDate:[self.data valueForKey:@"created_at"]];
+    return [self convertToRelativeDate:[data valueForKey:@"created_at"]];
 }
 
 - (NSMutableAttributedString *)decorateEmphasizedText:(NSString *)rawString
