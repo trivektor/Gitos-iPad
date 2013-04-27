@@ -157,6 +157,11 @@
     return [[AppHelper getAccountUsername] isEqualToString:[self getLogin]];
 }
 
+- (BOOL)isMyself
+{
+    return [[AppHelper getAccountUsername] isEqualToString:[self getLogin]];
+}
+
 - (void)fetchNewsFeedForPage:(int)page
 {
     NSString *githubApiHost = [AppConfig getConfigValue:@"GithubApiHost"];
@@ -243,11 +248,11 @@
     [operation start];
 }
 
-+ (void)fetchInfoForUser:(NSString *)username
+- (void)fetchProfileInfo
 {
     NSString *githubApiHost = [AppConfig getConfigValue:@"GithubApiHost"];
 
-    NSURL *userUrl = [NSURL URLWithString:[NSString stringWithFormat:@"%@/users/%@", githubApiHost, username]];
+    NSURL *userUrl = [NSURL URLWithString:[NSString stringWithFormat:@"%@/users/%@", githubApiHost, [self getLogin]]];
 
     AFHTTPClient *httpClient = [[AFHTTPClient alloc] initWithBaseURL:userUrl];
 
@@ -263,7 +268,7 @@
 
          User *user = [[User alloc] initWithData:json];
 
-         [[NSNotificationCenter defaultCenter] postNotificationName:@"UserInfoFetched" object:user];
+         [[NSNotificationCenter defaultCenter] postNotificationName:@"ProfileInfoFetched" object:user];
      }
      failure:^(AFHTTPRequestOperation *operation, NSError *error) {
          NSLog(@"%@", error);

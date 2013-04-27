@@ -38,10 +38,11 @@
 - (NSString *)getCreatedAt;
 - (NSString *)getHtmlUrl;
 - (BOOL)isEditable;
+- (BOOL)isMyself;
 - (void)update:(NSDictionary *)updatedInfo;
 
 - (void)fetchNewsFeedForPage:(int)page;
-+ (void)fetchInfoForUser:(NSString *)username;
+- (void)fetchProfileInfo;
 + (void)fetchInfoForUserWithToken:(NSString *)accessToken;
 - (void)fetchRecentActivityForPage:(int)page;
 - (void)fetchReposForPage:(int)page;

@@ -63,7 +63,7 @@
 
     [[NSNotificationCenter defaultCenter] addObserver:self
                                              selector:@selector(displayUserInfo:)
-                                                 name:@"UserInfoFetched"
+                                                 name:@"ProfileInfoFetched"
                                                object:nil];
 }
 
@@ -109,10 +109,17 @@
 
 - (void)getUserInfo
 {
-    if (user == nil) {
-        [User fetchInfoForUser:[AppHelper getAccountUsername]];
+    if (![user isMyself]) {
+        [user fetchProfileInfo];
     } else {
-        [User fetchInfoForUser:[user getLogin]];
+        [self displayUsernameAndAvatar];
+
+        [profileTable reloadData];
+        if (!self.hideOptionsButton) {
+            [self addOptionsButton];
+        }
+        [hud hide:YES];
+        [self showEditButtonIfEditable];
     }
 }
 
