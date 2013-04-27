@@ -77,11 +77,7 @@
 
 - (void)getStarredReposForPage:(NSInteger)page
 {
-    if (user == nil) {
-        [Repo fetchStarredReposForUser:[AppHelper getAccountUsername] andPage:currentPage++];
-    } else {
-        [Repo fetchStarredReposForUser:[user getLogin] andPage:currentPage++];
-    }
+    [user fetchStarredReposForPage:currentPage++];
 }
 
 - (void)displayStarredRepos:(NSNotification *)notification
@@ -135,7 +131,7 @@
 {
     if (([scrollView contentOffset].y + scrollView.frame.size.height) == scrollView.contentSize.height) {
         [hud show:YES];
-        [self getStarredReposForPage:currentPage++];
+        [user fetchStarredReposForPage:currentPage++];
     }
 }
 
@@ -143,7 +139,7 @@
 {
     self.currentPage = 1;
     [starredReposTable addPullToRefreshWithActionHandler:^{
-        [self getStarredReposForPage:currentPage++];
+        [user fetchStarredReposForPage:currentPage++];
     }];
 }
 

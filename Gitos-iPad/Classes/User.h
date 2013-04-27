@@ -44,5 +44,7 @@
 + (void)fetchInfoForUser:(NSString *)username;
 + (void)fetchInfoForUserWithToken:(NSString *)accessToken;
 - (void)fetchRecentActivityForPage:(int)page;
+- (void)fetchReposForPage:(int)page;
+- (void)fetchStarredReposForPage:(int)page;
 
 @end

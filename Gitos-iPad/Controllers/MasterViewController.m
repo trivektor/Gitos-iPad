@@ -98,12 +98,15 @@
     } else if (indexPath.row == 1) {
 
         ReposViewController *reposController = [[ReposViewController alloc] init];
+        reposController.user = user;
         reposController.hideBackButton = YES;
         selectedController = [[UINavigationController alloc] initWithRootViewController:reposController];
 
     } else if (indexPath.row == 2) {
 
-        selectedController = [[UINavigationController alloc] initWithRootViewController:[[StarredViewController alloc] init]];
+        StarredViewController *starredController = [[StarredViewController alloc] init];
+        starredController.user = user;
+        selectedController = [[UINavigationController alloc] initWithRootViewController:starredController];
 
     } else if (indexPath.row == 3) {
 

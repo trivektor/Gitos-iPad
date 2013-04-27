@@ -82,11 +82,7 @@
 
 - (void)getUserRepos
 {
-    if (user == nil) {
-        [Repo fetchReposForUser:[AppHelper getAccountUsername] andPage:currentPage++];
-    } else {
-        [Repo fetchReposForUser:[user getLogin] andPage:currentPage++];
-    }
+    [user fetchReposForPage:currentPage++];
 }
 
 - (void)displayUserRepos:(NSNotification *)notification
