@@ -38,6 +38,7 @@ gistFormTable;
 {
     self.navigationItem.title = @"Create New Gist";
     [gistFormTable setBackgroundView:nil];
+    [gistFormTable setSeparatorColor:[UIColor colorWithRed:200/255.0 green:200/255.0 blue:200/255.0 alpha:1.0]];
 
     UIBarButtonItem *submitButton = [[UIBarButtonItem alloc] initWithTitle:@"Submit"
                                                                      style:UIBarButtonItemStyleBordered
