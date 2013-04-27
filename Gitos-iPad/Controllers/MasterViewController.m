@@ -26,7 +26,7 @@
 
 @implementation MasterViewController
 
-@synthesize user, menuTable, parentViewController;
+@synthesize user, menuTable, parentViewController, avatar, usernameLabel, profileCell;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -65,7 +65,7 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return 9;
+    return 10;
 }
 
 - (void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath
@@ -75,66 +75,71 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    static NSString *cellIdentifier = @"MasterControllerCell";
-    MasterControllerCell *cell = [menuTable dequeueReusableCellWithIdentifier:cellIdentifier];
+    if (indexPath.row == 0) {
+        [self displayAvatarAndUsername];
+        return profileCell;
+    } else {
+        static NSString *cellIdentifier = @"MasterControllerCell";
+        MasterControllerCell *cell = [menuTable dequeueReusableCellWithIdentifier:cellIdentifier];
 
-    if (!cell) {
-        cell = [[MasterControllerCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellIdentifier];
+        if (!cell) {
+            cell = [[MasterControllerCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellIdentifier];
+        }
+
+        [cell renderForIndexPath:indexPath];
+
+        return cell;
     }
-
-    [cell renderForIndexPath:indexPath];
-
-    return cell;
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     UINavigationController *selectedController;
 
-    if (indexPath.row == 0) {
-
-        selectedController = [[UINavigationController alloc] initWithRootViewController:[[NewsfeedViewController alloc] init]];
-
-    } else if (indexPath.row == 1) {
-
-        ReposViewController *reposController = [[ReposViewController alloc] init];
-        reposController.user = user;
-        reposController.hideBackButton = YES;
-        selectedController = [[UINavigationController alloc] initWithRootViewController:reposController];
-
-    } else if (indexPath.row == 2) {
-
-        StarredViewController *starredController = [[StarredViewController alloc] init];
-        starredController.user = user;
-        selectedController = [[UINavigationController alloc] initWithRootViewController:starredController];
-
-    } else if (indexPath.row == 3) {
-
-        GistsViewController *gistsController = [[GistsViewController alloc] init];
-        gistsController.user = user;
-        gistsController.hideBackButton = YES;
-        selectedController = [[UINavigationController alloc] initWithRootViewController:gistsController];
-
-    } else if (indexPath.row == 4) {
+    if (indexPath.row == 0 || indexPath.row == 5) {
 
         ProfileViewController *profileController = [[ProfileViewController alloc] init];
         profileController.hideBackButton = YES;
         profileController.hideOptionsButton = YES;
         selectedController = [[UINavigationController alloc] initWithRootViewController:profileController];
 
-    } else if (indexPath.row == 5) {
+    } else if (indexPath.row == 1) {
 
-        selectedController = [[UINavigationController alloc] initWithRootViewController:[[SearchViewController alloc] init]];
+        selectedController = [[UINavigationController alloc] initWithRootViewController:[[NewsfeedViewController alloc] init]];
+
+    } else if (indexPath.row == 2) {
+
+        ReposViewController *reposController = [[ReposViewController alloc] init];
+        reposController.user = user;
+        reposController.hideBackButton = YES;
+        selectedController = [[UINavigationController alloc] initWithRootViewController:reposController];
+
+    } else if (indexPath.row == 3) {
+
+        StarredViewController *starredController = [[StarredViewController alloc] init];
+        starredController.user = user;
+        selectedController = [[UINavigationController alloc] initWithRootViewController:starredController];
+
+    } else if (indexPath.row == 4) {
+
+        GistsViewController *gistsController = [[GistsViewController alloc] init];
+        gistsController.user = user;
+        gistsController.hideBackButton = YES;
+        selectedController = [[UINavigationController alloc] initWithRootViewController:gistsController];
 
     } else if (indexPath.row == 6) {
 
-        selectedController = [[UINavigationController alloc] initWithRootViewController:[[NotificationsViewController alloc] init]];
+        selectedController = [[UINavigationController alloc] initWithRootViewController:[[SearchViewController alloc] init]];
 
     } else if (indexPath.row == 7) {
 
-        selectedController = [[UINavigationController alloc] initWithRootViewController:[[FeedbackViewController alloc] init]];
+        selectedController = [[UINavigationController alloc] initWithRootViewController:[[NotificationsViewController alloc] init]];
 
     } else if (indexPath.row == 8) {
+
+        selectedController = [[UINavigationController alloc] initWithRootViewController:[[FeedbackViewController alloc] init]];
+
+    } else if (indexPath.row == 9) {
         [self signout];
         return;
     }
@@ -178,6 +183,24 @@
 - (void)toggleViewDeck
 {
     [self.viewDeckController toggleLeftViewAnimated:YES];
+}
+
+- (void)displayAvatarAndUsername
+{
+    NSData *userImageData = [NSData dataWithContentsOfURL:[NSURL URLWithString:[user getAvatarUrl]]];
+    avatar.image = [UIImage imageWithData:userImageData];
+    avatar.layer.masksToBounds  = YES;
+    avatar.layer.borderColor    = [[UIColor blackColor] CGColor];
+    avatar.layer.borderWidth    = 1;
+    avatar.layer.cornerRadius   = 3;
+
+    usernameLabel.text = [user getLogin];
+    usernameLabel.textColor = [UIColor whiteColor];
+
+    UIView *selectedBackgroundView  = [[UIView alloc] init];
+    [selectedBackgroundView setBackgroundColor:[UIColor colorWithPatternImage:[UIImage imageNamed:@"selected_cell_bg.png"]]];
+    profileCell.selectedBackgroundView = selectedBackgroundView;
+
 }
 
 @end

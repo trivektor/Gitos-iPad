@@ -41,39 +41,39 @@
     NSString *fontAwesome = @"", *optionLabelText = @"";
 
     switch (indexPath.row) {
-        case 0:
+        case 1:
             fontAwesome      = [NSString fontAwesomeIconStringForIconIdentifier:@"icon-rss"];
             optionLabelText  = @"News Feed";
             break;
-        case 1:
+        case 2:
             fontAwesome      = [NSString fontAwesomeIconStringForIconIdentifier:@"icon-github-alt"];
             optionLabelText  = @"Repositories";
             break;
-        case 2:
+        case 3:
             fontAwesome      = [NSString fontAwesomeIconStringForIconIdentifier:@"icon-star-empty"];
             optionLabelText  = @"Watched";
             break;
-        case 3:
+        case 4:
             fontAwesome      = [NSString fontAwesomeIconStringForIconIdentifier:@"icon-file-alt"];
             optionLabelText  = @"Gists";
             break;
-        case 4:
+        case 5:
             fontAwesome      = [NSString fontAwesomeIconStringForIconIdentifier:@"icon-edit"];
             optionLabelText  = @"Profile";
             break;
-        case 5:
+        case 6:
             fontAwesome      = [NSString fontAwesomeIconStringForIconIdentifier:@"icon-search"];
             optionLabelText  = @"Search";
             break;
-        case 6:
+        case 7:
             fontAwesome      = [NSString fontAwesomeIconStringForIconIdentifier:@"icon-bullhorn"];
             optionLabelText  = @"Notifications";
             break;
-        case 7:
+        case 8:
             fontAwesome      = [NSString fontAwesomeIconStringForIconIdentifier:@"icon-envelope"];
             optionLabelText  = @"Feedback";
             break;
-        case 8:
+        case 9:
             fontAwesome      = [NSString fontAwesomeIconStringForIconIdentifier:@"icon-signout"];
             optionLabelText  = @"Sign out";
             break;

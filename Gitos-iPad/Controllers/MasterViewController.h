@@ -17,11 +17,15 @@
 @property (nonatomic, strong) UIActionSheet *actionSheet;
 @property (nonatomic, strong) id<MasterViewControllerDelegate> delegate;
 @property (nonatomic, strong) User *user;
+@property (strong, nonatomic) IBOutlet UITableViewCell *profileCell;
+@property (weak, nonatomic) IBOutlet UIImageView *avatar;
+@property (weak, nonatomic) IBOutlet UILabel *usernameLabel;
 
 - (void)performHouseKeepingTasks;
 - (void)navigateToSelectedController:(UINavigationController *)selectedController;
 - (void)signout;
 - (void)toggleViewDeck;
+- (void)displayAvatarAndUsername;
 
 @end
 
