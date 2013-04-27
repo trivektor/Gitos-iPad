@@ -302,7 +302,9 @@
 
     AFHTTPClient *httpClient = [[AFHTTPClient alloc] initWithBaseURL:url];
 
-    NSMutableURLRequest *putRequest = [httpClient requestWithMethod:@"PUT" path:url.absoluteString parameters:self.accessTokenParams];
+    NSMutableURLRequest *putRequest = [httpClient requestWithMethod:@"PUT"
+                                                               path:url.absoluteString
+                                                         parameters:[AppHelper getAccessTokenParams]];
 
     AFHTTPRequestOperation *operation = [[AFHTTPRequestOperation alloc] initWithRequest:putRequest];
 
@@ -328,7 +330,9 @@
 
     AFHTTPClient *httpClient = [[AFHTTPClient alloc] initWithBaseURL:url];
 
-    NSMutableURLRequest *deleteRequest = [httpClient requestWithMethod:@"PUT" path:url.absoluteString parameters:self.accessTokenParams];
+    NSMutableURLRequest *deleteRequest = [httpClient requestWithMethod:@"PUT"
+                                                                  path:url.absoluteString
+                                                            parameters:[AppHelper getAccessTokenParams]];
 
     AFHTTPRequestOperation *operation = [[AFHTTPRequestOperation alloc] initWithRequest:deleteRequest];
 

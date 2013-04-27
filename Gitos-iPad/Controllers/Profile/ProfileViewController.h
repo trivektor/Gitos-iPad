@@ -15,8 +15,6 @@
 @property (nonatomic, weak) IBOutlet UITableView *profileTable;
 @property (nonatomic, weak) IBOutlet UILabel *nameLabel;
 @property (nonatomic, weak) IBOutlet UILabel *loginLabel;
-@property (nonatomic, strong) NSString *accessToken;
-@property (nonatomic, strong) NSMutableDictionary *accessTokenParams;
 @property (nonatomic, strong) User *user;
 @property (nonatomic, strong) MBProgressHUD *hud;
 @property (nonatomic, strong) UIActionSheet *optionsActionSheet;
@@ -28,7 +26,6 @@
 - (void)addOptionsButton;
 - (void)showProfileOptions;
 - (void)prepareProfileTable;
-- (void)displayUserInfo;
 - (void)displayUsernameAndAvatar;
 - (void)adjustFrameHeight;
 - (void)displayFollowOptions;
