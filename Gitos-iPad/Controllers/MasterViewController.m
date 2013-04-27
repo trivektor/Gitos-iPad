@@ -26,7 +26,7 @@
 
 @implementation MasterViewController
 
-@synthesize menuTable, parentViewController;
+@synthesize user, menuTable, parentViewController;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {

@@ -43,6 +43,6 @@
 - (void)fetchNewsFeedForPage:(int)page;
 + (void)fetchInfoForUser:(NSString *)username;
 + (void)fetchInfoForUserWithToken:(NSString *)accessToken;
-+ (void)fetchRecentActivityForUser:(NSString *)username andPage:(int)page;
+- (void)fetchRecentActivityForPage:(int)page;
 
 @end

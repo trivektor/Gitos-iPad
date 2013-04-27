@@ -16,6 +16,7 @@
 + (void)run:(UIWindow *)window withUser:(User *)user
 {
     MasterViewController *masterController = [[MasterViewController alloc] init];
+    masterController.user = user;
 
     NewsfeedViewController *newsfeedController = [[NewsfeedViewController alloc] init];
     newsfeedController.user = user;

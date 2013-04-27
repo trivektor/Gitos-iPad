@@ -16,6 +16,7 @@
 @property (nonatomic, weak) IBOutlet UITableView *menuTable;
 @property (nonatomic, strong) UIActionSheet *actionSheet;
 @property (nonatomic, strong) id<MasterViewControllerDelegate> delegate;
+@property (nonatomic, strong) User *user;
 
 - (void)performHouseKeepingTasks;
 - (void)navigateToSelectedController:(UINavigationController *)selectedController;

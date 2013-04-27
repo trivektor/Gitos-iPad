@@ -161,7 +161,7 @@
 {
     NSString *githubApiHost = [AppConfig getConfigValue:@"GithubApiHost"];
 
-    NSURL *userReceivedEventsUrl = [NSURL URLWithString:[githubApiHost stringByAppendingFormat:@"/users/%@", [AppHelper getAccountUsername]]];
+    NSURL *userReceivedEventsUrl = [NSURL URLWithString:[githubApiHost stringByAppendingFormat:@"/users/%@", [self getLogin]]];
 
     AFHTTPClient *httpClient = [[AFHTTPClient alloc] initWithBaseURL:userReceivedEventsUrl];
 
@@ -198,11 +198,11 @@
     [operation start];
 }
 
-+ (void)fetchRecentActivityForUser:(NSString *)username andPage:(int)page;
+- (void)fetchRecentActivityForPage:(int)page
 {
     NSString *githubApiHost = [AppConfig getConfigValue:@"GithubApiHost"];
 
-    NSURL *recentActivitysUrl = [NSURL URLWithString:[githubApiHost stringByAppendingFormat:@"/users/%@", username]];
+    NSURL *recentActivitysUrl = [NSURL URLWithString:[githubApiHost stringByAppendingFormat:@"/users/%@", [self getLogin]]];
 
     AFHTTPClient *httpClient = [[AFHTTPClient alloc] initWithBaseURL:recentActivitysUrl];
 
@@ -223,14 +223,14 @@
 
          NSArray *json = [NSJSONSerialization JSONObjectWithData:[response dataUsingEncoding:NSUTF8StringEncoding] options:NSJSONReadingMutableContainers error:nil];
 
-         NSDictionary *data;
+         NSDictionary *_data;
 
          NSMutableArray *activities = [[NSMutableArray alloc] initWithCapacity:0];
 
          for (int i=0; i < json.count; i++) {
-             data = [json objectAtIndex:i];
-             id klass = [NSClassFromString([data valueForKey:@"type"]) alloc];
-             id obj = objc_msgSend(klass, sel_getUid("initWithData:"), data);
+             _data = [json objectAtIndex:i];
+             id klass = [NSClassFromString([_data valueForKey:@"type"]) alloc];
+             id obj = objc_msgSend(klass, sel_getUid("initWithData:"), _data);
              [activities addObject:obj];
          }
 

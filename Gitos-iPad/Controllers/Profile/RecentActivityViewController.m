@@ -38,7 +38,7 @@
     [self registerNib];
     [self registerEvents];
     [self setupPullToRefresh];
-    [User fetchRecentActivityForUser:[user getLogin] andPage:currentPage++];
+    [user fetchRecentActivityForPage:currentPage++];
 }
 
 - (void)performHouseKeepingTasks
@@ -125,7 +125,7 @@
 {
     currentPage = 1;
     [activityTable addPullToRefreshWithActionHandler:^{
-        [User fetchRecentActivityForUser:[user getLogin] andPage:currentPage++];
+        [user fetchRecentActivityForPage:currentPage++];
     }];
 }
 
@@ -134,7 +134,7 @@
     if (([scrollView contentOffset].y + scrollView.frame.size.height) == scrollView.contentSize.height) {
         // Bottom of UITableView reached
         [hud show:YES];
-        [User fetchRecentActivityForUser:[user getLogin] andPage:currentPage++];
+        [user fetchRecentActivityForPage:currentPage++];
     }
 }
 
