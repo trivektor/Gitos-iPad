@@ -289,7 +289,6 @@
 
          RepoViewController *repoController = [[RepoViewController alloc] init];
          repoController.repo = [[Repo alloc] initWithData:json];
-         repoController.user = user;
          [self.navigationController pushViewController:repoController animated:YES];
      }
      failure:^(AFHTTPRequestOperation *operation, NSError *error) {

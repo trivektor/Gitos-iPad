@@ -14,7 +14,6 @@
 @property (nonatomic, weak) IBOutlet UITableView *branchesTable;
 @property (nonatomic, weak) IBOutlet UIScrollView *repoScrollView;
 @property (nonatomic, strong) Repo *repo;
-@property (nonatomic, strong) User *user;
 @property (nonatomic, strong) NSMutableArray *repoBranches;
 @property (nonatomic, strong) MBProgressHUD *hud;
 @property (nonatomic, strong) UIActionSheet *actionOptions;

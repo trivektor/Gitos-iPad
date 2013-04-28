@@ -19,7 +19,7 @@
 
 @implementation RepoViewController
 
-@synthesize user, repo, hud, repoScrollView, detailsTable, branchesTable, repoBranches, actionOptions, isWatching;
+@synthesize repo, hud, repoScrollView, detailsTable, branchesTable, repoBranches, actionOptions, isWatching;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -256,13 +256,15 @@
 
 - (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex
 {
+    User *currentUser = [CurrentUserManager getUser];
+
     if (buttonIndex == 0) {
         if (isWatching) {
             // Star a repo
-            [user unstarRepo:repo];
+            [currentUser unstarRepo:repo];
         } else {
             // Unstar a repo
-            [user starRepo:repo];
+            [currentUser starRepo:repo];
         }
     } else if (buttonIndex == 1) {
         WebsiteViewController *websiteController = [[WebsiteViewController alloc] init];
