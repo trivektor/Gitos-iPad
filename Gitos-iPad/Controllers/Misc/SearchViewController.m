@@ -20,15 +20,14 @@
 
 @implementation SearchViewController
 
-@synthesize hud;
+@synthesize hud, user, results, searchCriteria, searchBar, resultsTable;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
         // Custom initialization
-        self.results = [[NSMutableArray alloc] initWithCapacity:0];
-        self.accessToken = [SSKeychain passwordForService:@"access_token" account:@"gitos"];
+        results = [[NSMutableArray alloc] initWithCapacity:0];
     }
     return self;
 }
@@ -57,21 +56,24 @@
 
     self.navigationItem.title = @"Search";
     NSArray *criteria = [[NSArray alloc] initWithObjects:@"Repo", @"User", nil];
-    self.searchCriteria = [[UISegmentedControl alloc] initWithItems:criteria];
-    self.searchCriteria.segmentedControlStyle = UISegmentedControlStyleBar;
-    self.searchCriteria.momentary = NO;
-    self.searchCriteria.selectedSegmentIndex = 0;
-    [self.searchCriteria addTarget:self action:nil forControlEvents:UIControlEventValueChanged];
 
-    UIBarButtonItem *criteriaButton = [[UIBarButtonItem alloc] initWithCustomView:self.searchCriteria];
+    searchCriteria = [[UISegmentedControl alloc] initWithItems:criteria];
+    searchCriteria.segmentedControlStyle = UISegmentedControlStyleBar;
+    searchCriteria.momentary = NO;
+    searchCriteria.selectedSegmentIndex = 0;
+    [searchCriteria addTarget:self
+                       action:nil
+             forControlEvents:UIControlEventValueChanged];
+
+    UIBarButtonItem *criteriaButton = [[UIBarButtonItem alloc] initWithCustomView:searchCriteria];
     self.navigationItem.rightBarButtonItem = criteriaButton;
 }
 
 - (void)prepareSearchBar
 {
-    [self.searchBar setTintColor:[UIColor colorWithRed:220/255.0 green:220/255.0 blue:220/255.0 alpha:1]];
+    [searchBar setTintColor:[UIColor colorWithRed:220/255.0 green:220/255.0 blue:220/255.0 alpha:1]];
 
-    for (UIView *v in self.searchBar.subviews) {
+    for (UIView *v in searchBar.subviews) {
         if ([v isKindOfClass:[UITextField class]]) {
             UITextField *searchField = (UITextField *)v;
             [searchField setBorderStyle:UITextBorderStyleNone];
@@ -89,12 +91,12 @@
 
 - (BOOL)isUserSearch
 {
-    return self.searchCriteria.selectedSegmentIndex == 1;
+    return searchCriteria.selectedSegmentIndex == 1;
 }
 
 - (BOOL)isRepoSearch
 {
-    return self.searchCriteria.selectedSegmentIndex == 0;
+    return searchCriteria.selectedSegmentIndex == 0;
 }
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
@@ -104,14 +106,14 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return self.results.count;
+    return results.count;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     static NSString *cellIdentifier = @"Cell";
 
-    UITableViewCell *cell = [self.resultsTable dequeueReusableCellWithIdentifier:cellIdentifier];
+    UITableViewCell *cell = [resultsTable dequeueReusableCellWithIdentifier:cellIdentifier];
 
     if (!cell) {
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:cellIdentifier];
@@ -121,18 +123,18 @@
     cell.detailTextLabel.font = [UIFont fontWithName:@"Arial" size:12.0];
     cell.accessoryType        = UITableViewCellAccessoryDisclosureIndicator;
 
-    NSObject *object = [self.results objectAtIndex:indexPath.row];
+    NSObject *object = [results objectAtIndex:indexPath.row];
 
     if ([object isKindOfClass:[Repo class]]) {
         Repo *repo = (Repo *) object;
         cell.textLabel.text = [repo getName];
         cell.detailTextLabel.text = [repo getDescription];
     } else if ([object isKindOfClass:[User class]]) {
-        User *user = (User *) object;
-        if ([user getName] != (id)[NSNull null]) {
-            cell.textLabel.text = [user getName];
+        User *_user = (User *) object;
+        if ([_user getName] != (id)[NSNull null]) {
+            cell.textLabel.text = [_user getName];
         }
-        cell.detailTextLabel.text = [user getLogin];
+        cell.detailTextLabel.text = [_user getLogin];
     }
 
     return cell;
@@ -147,9 +149,9 @@
     }
 }
 
-- (void)searchBarSearchButtonClicked:(UISearchBar *)searchBar
+- (void)searchBarSearchButtonClicked:(UISearchBar *)_searchBar
 {
-    [searchBar resignFirstResponder];
+    [_searchBar resignFirstResponder];
     [hud show:YES];
 
     NSString *term = [searchBar text];
@@ -167,14 +169,9 @@
 
     AFHTTPClient *httpClient = [[AFHTTPClient alloc] initWithBaseURL:searchUrl];
 
-    NSMutableDictionary *params = [NSMutableDictionary dictionaryWithObjectsAndKeys:
-                                   self.accessToken, @"access_token",
-                                   @"bearer", @"token_type",
-                                   nil];
-
     NSMutableURLRequest *getRequest = [httpClient requestWithMethod:@"GET"
                        path:[NSString stringWithFormat:@"legacy/user/search/%@", term]
-                 parameters:params];
+                 parameters:[AppHelper getAccessTokenParams]];
 
     AFHTTPRequestOperation *operation = [[AFHTTPRequestOperation alloc] initWithRequest:getRequest];
 
@@ -186,15 +183,15 @@
 
          NSArray *users = [json valueForKey:@"users"];
 
-         [self.results removeAllObjects];
+         [results removeAllObjects];
 
          for (int i=0; i < users.count; i++) {
-             [self.results addObject:[[User alloc] initWithData:[users objectAtIndex:i]]];
+             [results addObject:[[User alloc] initWithData:[users objectAtIndex:i]]];
          }
 
-         [self.searchBar resignFirstResponder];
-         [self.resultsTable reloadData];
-         [self.resultsTable scrollRectToVisible:CGRectMake(0, 0, 1, 1) animated:YES];
+         [searchBar resignFirstResponder];
+         [resultsTable reloadData];
+         [resultsTable scrollRectToVisible:CGRectMake(0, 0, 1, 1) animated:YES];
          [hud hide:YES];
      }
      failure:^(AFHTTPRequestOperation *operation, NSError *error) {
@@ -203,7 +200,6 @@
      }];
     
     [operation start];
-
 }
 
 - (void)searchRepos:(NSString *)term
@@ -212,14 +208,9 @@
 
     AFHTTPClient *httpClient = [[AFHTTPClient alloc] initWithBaseURL:searchUrl];
 
-    NSMutableDictionary *params = [NSMutableDictionary dictionaryWithObjectsAndKeys:
-                                   self.accessToken, @"access_token",
-                                   @"bearer", @"token_type",
-                                   nil];
-
     NSMutableURLRequest *getRequest = [httpClient requestWithMethod:@"GET"
                path:[NSString stringWithFormat:@"legacy/repos/search/%@", term]
-         parameters:params];
+         parameters:[AppHelper getAccessTokenParams]];
 
     AFHTTPRequestOperation *operation = [[AFHTTPRequestOperation alloc] initWithRequest:getRequest];
 
@@ -231,15 +222,15 @@
 
          NSArray *repos = [json valueForKey:@"repositories"];
 
-         [self.results removeAllObjects];
+         [results removeAllObjects];
 
          for (int i=0; i < repos.count; i++) {
-             [self.results addObject:[[Repo alloc] initWithData:[repos objectAtIndex:i]]];
+             [results addObject:[[Repo alloc] initWithData:[repos objectAtIndex:i]]];
          }
 
-         [self.resultsTable reloadData];
-         [self.resultsTable scrollRectToVisible:CGRectMake(0, 0, 1, 1) animated:YES];
-         [self.searchBar resignFirstResponder];
+         [resultsTable reloadData];
+         [resultsTable scrollRectToVisible:CGRectMake(0, 0, 1, 1) animated:YES];
+         [searchBar resignFirstResponder];
          [hud hide:YES];
      }
      failure:^(AFHTTPRequestOperation *operation, NSError *error) {
@@ -251,9 +242,9 @@
     [hud show:YES];
 }
 
-- (BOOL)searchBarShouldBeginEditing:(UISearchBar *)searchBar
+- (BOOL)searchBarShouldBeginEditing:(UISearchBar *)_searchBar
 {
-    searchBar.showsCancelButton = YES;
+    _searchBar.showsCancelButton = YES;
     for (UIView *v in searchBar.subviews) {
         if ([v isKindOfClass:[UIButton class]]) {
             UIButton *cancelButton = (UIButton *)v;
@@ -264,15 +255,15 @@
     return YES;
 }
 
-- (BOOL)searchBarShouldEndEditing:(UISearchBar *)searchBar
+- (BOOL)searchBarShouldEndEditing:(UISearchBar *)_searchBar
 {
-    searchBar.showsCancelButton = NO;
+    _searchBar.showsCancelButton = NO;
     return YES;
 }
 
-- (void)searchBarCancelButtonClicked:(UISearchBar *)searchBar
+- (void)searchBarCancelButtonClicked:(UISearchBar *)_searchBar
 {
-    [searchBar resignFirstResponder];
+    [_searchBar resignFirstResponder];
 }
 
 - (void)fetchRepoAtIndexPath:(NSIndexPath *)indexPath
@@ -280,17 +271,13 @@
     Repo *repo = [self.results objectAtIndex:indexPath.row];
 
     NSURL *searchUrl = [NSURL URLWithString:[AppConfig getConfigValue:@"GithubApiHost"]];
-    
+
     AFHTTPClient *httpClient = [[AFHTTPClient alloc] initWithBaseURL:searchUrl];
-    
-    NSMutableDictionary *params = [NSMutableDictionary dictionaryWithObjectsAndKeys:
-                                   self.accessToken, @"access_token",
-                                   nil];
-    
+
     NSMutableURLRequest *getRequest = [httpClient requestWithMethod:@"GET"
                            path:[NSString stringWithFormat:@"repos/%@/%@", [repo getOwner], [repo getName]]
-                     parameters:params];
-    
+                     parameters:[AppHelper getAccessTokenParams]];
+
     AFHTTPRequestOperation *operation = [[AFHTTPRequestOperation alloc] initWithRequest:getRequest];
     
     [operation setCompletionBlockWithSuccess:
@@ -302,6 +289,7 @@
 
          RepoViewController *repoController = [[RepoViewController alloc] init];
          repoController.repo = [[Repo alloc] initWithData:json];
+         repoController.user = user;
          [self.navigationController pushViewController:repoController animated:YES];
      }
      failure:^(AFHTTPRequestOperation *operation, NSError *error) {
@@ -315,19 +303,15 @@
 
 - (void)fetchUserAtIndexPath:(NSIndexPath *)indexPath
 {
-    User *user = [self.results objectAtIndex:indexPath.row];
+    User *_user = [self.results objectAtIndex:indexPath.row];
 
     NSURL *searchUrl = [NSURL URLWithString:[AppConfig getConfigValue:@"GithubApiHost"]];
 
     AFHTTPClient *httpClient = [[AFHTTPClient alloc] initWithBaseURL:searchUrl];
 
-    NSMutableDictionary *params = [NSMutableDictionary dictionaryWithObjectsAndKeys:
-                                   self.accessToken, @"access_token",
-                                   nil];
-
     NSMutableURLRequest *getRequest = [httpClient requestWithMethod:@"GET"
-                       path:[NSString stringWithFormat:@"/users/%@", [user getLogin]]
-                 parameters:params];
+                       path:[NSString stringWithFormat:@"/users/%@", [_user getLogin]]
+                 parameters:[AppHelper getAccessTokenParams]];
 
     AFHTTPRequestOperation *operation = [[AFHTTPRequestOperation alloc] initWithRequest:getRequest];
 

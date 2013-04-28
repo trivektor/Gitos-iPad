@@ -8,12 +8,12 @@
 
 @interface SearchViewController : GitosViewController <UITableViewDataSource, UITableViewDelegate, UISearchBarDelegate>
 
-@property (nonatomic, strong) NSString *accessToken;
 @property (nonatomic, strong) MBProgressHUD *hud;
 @property (nonatomic, strong) NSMutableArray *results;
 @property (nonatomic, weak) IBOutlet UISearchBar *searchBar;
 @property (nonatomic, strong) UISegmentedControl *searchCriteria;
 @property (nonatomic, weak) IBOutlet UITableView *resultsTable;
+@property (nonatomic, strong) User *user;
 
 - (void)performHouseKeepingTasks;
 - (void)prepareSearchBar;
