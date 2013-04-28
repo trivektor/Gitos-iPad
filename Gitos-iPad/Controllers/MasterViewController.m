@@ -195,8 +195,6 @@
     NSData *userImageData = [NSData dataWithContentsOfURL:[NSURL URLWithString:[user getAvatarUrl]]];
     avatar.image = [UIImage imageWithData:userImageData];
     avatar.layer.masksToBounds  = YES;
-    avatar.layer.borderColor    = [[UIColor blackColor] CGColor];
-    avatar.layer.borderWidth    = 1;
     avatar.layer.cornerRadius   = 3;
 
     usernameLabel.text = [user getLogin];

@@ -25,7 +25,7 @@
 
     IIViewDeckController *deckController = [[IIViewDeckController alloc] initWithCenterViewController:mainNavController leftViewController:masterController];
     deckController.sizeMode = IIViewDeckViewSizeMode;
-    deckController.leftSize = -50;
+    deckController.leftSize = -20;
 
     [window setRootViewController:deckController];
 }

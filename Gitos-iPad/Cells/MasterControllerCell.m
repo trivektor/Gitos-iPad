@@ -49,11 +49,11 @@
             break;
         case 2:
             fontAwesome      = [NSString fontAwesomeIconStringForIconIdentifier:@"icon-github-alt"];
-            optionLabelText  = @"Repositories";
+            optionLabelText  = @"Personal Repositories";
             break;
         case 3:
             fontAwesome      = [NSString fontAwesomeIconStringForIconIdentifier:@"icon-star-empty"];
-            optionLabelText  = @"Watched";
+            optionLabelText  = @"Starred Repositories";
             break;
         case 4:
             fontAwesome      = [NSString fontAwesomeIconStringForIconIdentifier:@"icon-file-alt"];
