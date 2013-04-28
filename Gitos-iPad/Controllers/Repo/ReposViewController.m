@@ -127,6 +127,7 @@
 {
     RepoViewController *repoController = [[RepoViewController alloc] init];
     repoController.repo = [repos objectAtIndex:indexPath.row];
+    repoController.user = user;
     [self.navigationController pushViewController:repoController animated:YES];
 }
 

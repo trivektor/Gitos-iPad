@@ -528,4 +528,40 @@
     [operation start];
 }
 
+- (void)starRepo:(Repo *)repo
+{
+    [self toggleStarringForRepo:repo withMethod:@"PUT"];
+}
+
+- (void)unstarRepo:(Repo *)repo
+{
+    [self toggleStarringForRepo:repo withMethod:@"DELETE"];
+}
+
+- (void)toggleStarringForRepo:(Repo *)repo withMethod:(NSString *)methodName
+{
+    NSString *githubApiHost = [AppConfig getConfigValue:@"GithubApiHost"];
+
+    NSURL *starredUrl = [NSURL URLWithString:[githubApiHost stringByAppendingFormat:@"/user/starred/%@?access_token=%@",
+                                              [repo getFullName], [AppHelper getAccessToken]]];
+
+    AFHTTPClient *httpClient = [[AFHTTPClient alloc] initWithBaseURL:starredUrl];
+
+    NSMutableURLRequest *request = [httpClient requestWithMethod:methodName
+                                                               path:starredUrl.absoluteString
+                                                         parameters:nil];
+
+    AFHTTPRequestOperation *operation = [[AFHTTPRequestOperation alloc] initWithRequest:request];
+
+    [operation setCompletionBlockWithSuccess:^(AFHTTPRequestOperation *operation, id responseObject){
+        NSLog(@"%i", [operation.response statusCode]);
+        [[NSNotificationCenter defaultCenter] postNotificationName:@"RepoStarringUpdated" object:nil];
+    }
+    failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        NSLog(@"%@", error);
+    }];
+
+    [operation start];
+}
+
 @end

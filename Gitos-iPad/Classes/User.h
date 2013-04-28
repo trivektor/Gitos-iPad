@@ -52,5 +52,8 @@
 - (void)fetchFollowersForPage:(int)page;
 - (void)fetchFollowingUsersForPage:(int)page;
 - (void)fetchOrganizationsForPage:(int)page;
+- (void)starRepo:(Repo *)repo;
+- (void)unstarRepo:(Repo *)repo;
+- (void)toggleStarringForRepo:(Repo *)repo withMethod:(NSString *)methodName;
 
 @end

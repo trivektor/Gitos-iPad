@@ -132,7 +132,9 @@
 
     } else if (indexPath.row == 6) {
 
-        selectedController = [[UINavigationController alloc] initWithRootViewController:[[SearchViewController alloc] init]];
+        SearchViewController *searchController = [[SearchViewController alloc] init];
+        searchController.user = user;
+        selectedController = [[UINavigationController alloc] initWithRootViewController:searchController];
 
     } else if (indexPath.row == 7) {
 

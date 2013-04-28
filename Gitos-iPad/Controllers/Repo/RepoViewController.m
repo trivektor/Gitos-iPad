@@ -19,14 +19,14 @@
 
 @implementation RepoViewController
 
-@synthesize repo, hud, repoScrollView, detailsTable, branchesTable, repoBranches;
+@synthesize user, repo, hud, repoScrollView, detailsTable, branchesTable, repoBranches, actionOptions, isWatching;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
         // Custom initialization
-        self.repoBranches = [[NSMutableArray alloc] initWithCapacity:0];
+        repoBranches = [[NSMutableArray alloc] initWithCapacity:0];
     }
     return self;
 }
@@ -91,9 +91,20 @@
 
 - (void)registerNotifications
 {
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(prepareActionOptionsForStatus:) name:@"StarChecked" object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(prepareActionOptionsForStatus:)
+                                                 name:@"StarChecked"
+                                               object:nil];
 
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(populateBranches:) name:@"BranchesFetched" object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(populateBranches:)
+                                                 name:@"BranchesFetched"
+                                               object:nil];
+
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(updateStarredStatus)
+                                                 name:@"RepoStarringUpdated"
+                                               object:nil];
 }
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
@@ -106,7 +117,7 @@
     if (tableView == detailsTable) {
         return 9;
     } else if (tableView == branchesTable) {
-        return [self.repoBranches count];
+        return [repoBranches count];
     } else {
         return 1;
     }
@@ -145,7 +156,7 @@
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellIdentifier];
     }
 
-    Branch *branch = [self.repoBranches objectAtIndex:indexPath.row];
+    Branch *branch = [repoBranches objectAtIndex:indexPath.row];
 
     cell.textLabel.font  = [UIFont fontWithName:@"Arial" size:14.0];
     cell.textLabel.text  = [branch getName];
@@ -159,13 +170,13 @@
 {
     if (tableView == branchesTable) {
         RepoTreeViewController *repoTreeController = [[RepoTreeViewController alloc] init];
-        repoTreeController.branch = [self.repoBranches objectAtIndex:indexPath.row];
-        repoTreeController.repo   = self.repo;
+        repoTreeController.branch = [repoBranches objectAtIndex:indexPath.row];
+        repoTreeController.repo   = repo;
         
         [self.navigationController pushViewController:repoTreeController animated:YES];
     } else if (tableView == detailsTable) {
         if (indexPath.row == 1) {
-            NSString *url = [self.repo getHomepage];
+            NSString *url = [repo getHomepage];
             if (url != nil) {
                 WebsiteViewController *websiteController = [[WebsiteViewController alloc] init];
                 websiteController.requestedUrl = url;
@@ -173,7 +184,7 @@
             }
         } else if (indexPath.row == 8) {
             IssuesViewController *issuesController = [[IssuesViewController alloc] init];
-            issuesController.repo = self.repo;
+            issuesController.repo = repo;
             [self.navigationController pushViewController:issuesController animated:YES];
         }
     }
@@ -183,7 +194,7 @@
 {
     repoBranches = [notification.userInfo valueForKey:@"Branches"];
 
-    [branchesTable setFrame:CGRectMake(0, self.detailsTable.frame.size.height + 46, self.view.frame.size.width, [self.repoBranches count]*44 + 155)];
+    [branchesTable setFrame:CGRectMake(0, detailsTable.frame.size.height + 46, self.view.frame.size.width, [self.repoBranches count]*44 + 155)];
     [branchesTable reloadData];
     [hud hide:YES];
     [self adjustFrameHeight];
@@ -193,30 +204,67 @@
 - (void)prepareActionOptionsForStatus:(NSNotification *)notification
 {
     int statusCode = [[notification.userInfo valueForKey:@"Code"] intValue];
+    NSString *starOption = nil;
 
     if (statusCode == 204) {
-        self.actionOptions = [[UIActionSheet alloc] initWithTitle:@"Actions" delegate:self cancelButtonTitle:@"" destructiveButtonTitle:nil otherButtonTitles:@"Unstar", @"View on Github", nil];
+        starOption = @"Unstar";
+        isWatching = YES;
     } else if (statusCode == 404) {
-        self.actionOptions = [[UIActionSheet alloc] initWithTitle:@"Actions" delegate:self cancelButtonTitle:@"" destructiveButtonTitle:nil otherButtonTitles:@"Star", @"View on Github", nil];
+        starOption = @"Star";
+        isWatching = NO;
     }
 
-    UIBarButtonItem *actionsButton = [[UIBarButtonItem alloc] initWithTitle:@"" style:UIBarButtonItemStyleBordered target:self action:@selector(showAvailableActions)];
+    actionOptions = [[UIActionSheet alloc] initWithTitle:@"Actions"
+                                                delegate:self
+                                       cancelButtonTitle:@""
+                                  destructiveButtonTitle:nil
+                                       otherButtonTitles:starOption, @"View on Github", nil];
+
+    UIBarButtonItem *actionsButton = [[UIBarButtonItem alloc] initWithTitle:@""
+                                                                      style:UIBarButtonItemStyleBordered
+                                                                     target:self
+                                                                     action:@selector(showAvailableActions)];
     actionsButton.image = [UIImage imageNamed:@"211-action.png"];
     self.navigationItem.rightBarButtonItem = actionsButton;
 }
 
+- (void)updateStarredStatus
+{
+    NSString *starOption = nil;
+
+    isWatching = !isWatching;
+
+    if (isWatching) {
+        starOption = @"Unstar";
+    } else {
+        starOption = @"Star";
+    }
+
+    actionOptions = [[UIActionSheet alloc] initWithTitle:@"Actions"
+                                                delegate:self
+                                       cancelButtonTitle:@""
+                                  destructiveButtonTitle:nil
+                                       otherButtonTitles:starOption, @"View on Github", nil];
+}
+
 - (void)showAvailableActions
 {
-    [self.actionOptions showInView:[UIApplication sharedApplication].keyWindow];
+    [actionOptions showInView:[UIApplication sharedApplication].keyWindow];
 }
 
 - (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex
 {
     if (buttonIndex == 0) {
-
+        if (isWatching) {
+            // Star a repo
+            [user unstarRepo:repo];
+        } else {
+            // Unstar a repo
+            [user starRepo:repo];
+        }
     } else if (buttonIndex == 1) {
         WebsiteViewController *websiteController = [[WebsiteViewController alloc] init];
-        websiteController.requestedUrl = [self.repo getGithubUrl];
+        websiteController.requestedUrl = [repo getGithubUrl];
         [self.navigationController pushViewController:websiteController animated:YES];
     }
 }
