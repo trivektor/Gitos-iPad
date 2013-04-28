@@ -46,7 +46,7 @@
     [self registerNib];
     [self registerEvents];
     [self setupPullToRefresh];
-    [self getStarredReposForPage:currentPage++];
+    [user fetchStarredReposForPage:currentPage++];
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -72,12 +72,10 @@
 
 - (void)registerEvents
 {
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(displayStarredRepos:) name:@"StarredReposFetched" object:nil];
-}
-
-- (void)getStarredReposForPage:(NSInteger)page
-{
-    [user fetchStarredReposForPage:currentPage++];
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(displayStarredRepos:)
+                                                 name:@"StarredReposFetched"
+                                               object:nil];
 }
 
 - (void)displayStarredRepos:(NSNotification *)notification
