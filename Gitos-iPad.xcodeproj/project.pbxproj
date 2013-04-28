@@ -243,6 +243,7 @@
 		B5836C90170BFCA40012CC61 /* AppHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = B5836C8F170BFCA40012CC61 /* AppHelper.m */; };
 		B5836C961710C8B60012CC61 /* RepoTreeCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B5836C951710C8B60012CC61 /* RepoTreeCell.m */; };
 		B5836C981710C8C90012CC61 /* RepoTreeCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B5836C971710C8C90012CC61 /* RepoTreeCell.xib */; };
+		B5845773172DC72A00DB13B7 /* CurrentUserManager.m in Sources */ = {isa = PBXBuildFile; fileRef = B5845772172DC72A00DB13B7 /* CurrentUserManager.m */; };
 		B5A104281723C10200487A47 /* GistRawFileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B5A104201723C10200487A47 /* GistRawFileViewController.m */; };
 		B5A104291723C10200487A47 /* GistRawFileViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B5A104211723C10200487A47 /* GistRawFileViewController.xib */; };
 		B5A1042A1723C10200487A47 /* GistsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B5A104231723C10200487A47 /* GistsViewController.m */; };
@@ -640,6 +641,8 @@
 		B5836C941710C8B60012CC61 /* RepoTreeCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RepoTreeCell.h; sourceTree = "<group>"; };
 		B5836C951710C8B60012CC61 /* RepoTreeCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RepoTreeCell.m; sourceTree = "<group>"; };
 		B5836C971710C8C90012CC61 /* RepoTreeCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RepoTreeCell.xib; sourceTree = "<group>"; };
+		B5845771172DC72A00DB13B7 /* CurrentUserManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CurrentUserManager.h; sourceTree = "<group>"; };
+		B5845772172DC72A00DB13B7 /* CurrentUserManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CurrentUserManager.m; sourceTree = "<group>"; };
 		B5A1041F1723C10200487A47 /* GistRawFileViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GistRawFileViewController.h; sourceTree = "<group>"; };
 		B5A104201723C10200487A47 /* GistRawFileViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GistRawFileViewController.m; sourceTree = "<group>"; };
 		B5A104211723C10200487A47 /* GistRawFileViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GistRawFileViewController.xib; sourceTree = "<group>"; };
@@ -1198,6 +1201,8 @@
 				B569D0D116FE6F0F002216DD /* Authorization.m */,
 				B569D0D316FE7923002216DD /* GitosConstants.h */,
 				B569D0D416FE7923002216DD /* GitosConstants.m */,
+				B5845771172DC72A00DB13B7 /* CurrentUserManager.h */,
+				B5845772172DC72A00DB13B7 /* CurrentUserManager.m */,
 			);
 			path = Classes;
 			sourceTree = "<group>";
@@ -1823,6 +1828,7 @@
 				B5C61306172469420039FDD5 /* USDictionaryWrapper.m in Sources */,
 				B5C613131727AC740039FDD5 /* NewGistViewController.m in Sources */,
 				B5C61318172BA05E0039FDD5 /* LoadingViewController.m in Sources */,
+				B5845773172DC72A00DB13B7 /* CurrentUserManager.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

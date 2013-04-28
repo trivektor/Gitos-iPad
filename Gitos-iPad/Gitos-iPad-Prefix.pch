@@ -35,4 +35,5 @@
     #import "YRDropdownView.h"
     #import "AppHelper.h"
     #import "GitosViewController.h"
+    #import "CurrentUserManager.h"
 #endif

@@ -43,10 +43,11 @@
 
 - (void)enterMainStage:(NSNotification *)notification
 {
-    User *user = (User *)notification.object;
+    User *currentUser = (User *)notification.object;
+    [CurrentUserManager initializeWithUser:currentUser];
     NSString *account = [AppConfig getConfigValue:@"KeychainAccountName"];
-    [SSKeychain setPassword:[user getLogin] forService:@"username" account:account];
-    [AppInitialization run:(self.view.window) withUser:user];
+    [SSKeychain setPassword:[currentUser getLogin] forService:@"username" account:account];
+    [AppInitialization run:(self.view.window) withUser:currentUser];
 }
 
 - (void)didReceiveMemoryWarning

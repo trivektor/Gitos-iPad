@@ -106,9 +106,8 @@
 
     } else if (indexPath.row == 1) {
 
-        NewsfeedViewController *newsfeedController = [[NewsfeedViewController alloc] init];
-        newsfeedController.user = user;
-        selectedController = [[UINavigationController alloc] initWithRootViewController:newsfeedController];
+        selectedController = [[UINavigationController alloc]
+                              initWithRootViewController:[[NewsfeedViewController alloc] init]];
 
     } else if (indexPath.row == 2) {
 
@@ -192,18 +191,18 @@
 
 - (void)displayAvatarAndUsername
 {
-    NSData *userImageData = [NSData dataWithContentsOfURL:[NSURL URLWithString:[user getAvatarUrl]]];
+    User *currentUser = [CurrentUserManager getUser];
+    NSData *userImageData = [NSData dataWithContentsOfURL:[NSURL URLWithString:[currentUser getAvatarUrl]]];
     avatar.image = [UIImage imageWithData:userImageData];
     avatar.layer.masksToBounds  = YES;
     avatar.layer.cornerRadius   = 3;
 
-    usernameLabel.text = [user getLogin];
+    usernameLabel.text = [currentUser getLogin];
     usernameLabel.textColor = [UIColor whiteColor];
 
     UIView *selectedBackgroundView  = [[UIView alloc] init];
     [selectedBackgroundView setBackgroundColor:[UIColor colorWithPatternImage:[UIImage imageNamed:@"selected_cell_bg.png"]]];
     profileCell.selectedBackgroundView = selectedBackgroundView;
-
 }
 
 @end

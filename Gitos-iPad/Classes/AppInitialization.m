@@ -19,7 +19,6 @@
     masterController.user = user;
 
     NewsfeedViewController *newsfeedController = [[NewsfeedViewController alloc] init];
-    newsfeedController.user = user;
 
     UINavigationController *mainNavController = [[UINavigationController alloc] initWithRootViewController:newsfeedController];
 

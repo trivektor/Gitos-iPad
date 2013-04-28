@@ -34,7 +34,7 @@
 
 @implementation NewsfeedViewController
 
-@synthesize newsFeed, user, currentPage, hud;
+@synthesize newsFeed, currentPage, hud;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -54,13 +54,8 @@
     [self performHouseKeepingTasks];
     [self prepareTableView];
     [self setupPullToRefresh];
-
-    [[NSNotificationCenter defaultCenter] addObserver:self
-                                             selector:@selector(displayUserNewsFeed:)
-                                                 name:@"NewsFeedFetched"
-                                               object:nil];
-
-    [user fetchNewsFeedForPage:currentPage++];
+    [self registerEvents];
+    [self fetchUserNewsFeed];
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -86,6 +81,14 @@
     hud.labelText = LOADING_MESSAGE;
 }
 
+- (void)registerEvents
+{
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(displayUserNewsFeed:)
+                                                 name:@"NewsFeedFetched"
+                                               object:nil];
+}
+
 - (void)prepareTableView
 {
     // Load 'NewsFeed' nib
@@ -98,6 +101,11 @@
     // Remove background
     [newsFeedTable setBackgroundView:nil];
     [self.view setBackgroundColor:[UIColor whiteColor]];
+}
+
+- (void)fetchUserNewsFeed
+{
+    [[CurrentUserManager getUser] fetchNewsFeedForPage:currentPage++];
 }
 
 - (void)didReceiveMemoryWarning
@@ -154,7 +162,7 @@
     if (([scrollView contentOffset].y + scrollView.frame.size.height) == scrollView.contentSize.height) {
         // Bottom of UITableView reached
         [hud show:YES];
-        [user fetchNewsFeedForPage:currentPage++];
+        [self fetchUserNewsFeed];
     }
 }
 
@@ -170,7 +178,7 @@
 {
     currentPage = 1;
     [newsFeedTable addPullToRefreshWithActionHandler:^{
-        [user fetchNewsFeedForPage:currentPage++];
+        [self fetchUserNewsFeed];
     }];
 }
 
@@ -180,7 +188,7 @@
     currentPage = 1;
     [newsFeed removeAllObjects];
     [newsFeedTable reloadData];
-    [user fetchNewsFeedForPage:currentPage++];
+    [self fetchUserNewsFeed];
 }
 
 @end

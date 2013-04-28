@@ -15,14 +15,15 @@
 }
 
 @property (nonatomic, strong) NSMutableArray *newsFeed;
-@property (nonatomic, strong) User *user;
 @property (nonatomic) NSInteger currentPage;
 @property (nonatomic, strong) MBProgressHUD *hud;
 
 - (void)performHouseKeepingTasks;
+- (void)registerEvents;
 - (void)prepareTableView;
 - (void)setupPullToRefresh;
 - (void)reloadNewsfeed;
+- (void)fetchUserNewsFeed;
 - (void)displayUserNewsFeed:(NSNotification *)notication;
 
 @end
