@@ -10,6 +10,8 @@
 
 @implementation NotificationCell
 
+@synthesize fontAwesomeLabel, notification, titleLabel, updatedAtLabel;
+
 - (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
 {
     self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
@@ -29,16 +31,18 @@
 - (void)render
 {
     NSString *iconIdentifier;
-    self.fontAwesomeLabel.font = [UIFont fontWithName:kFontAwesomeFamilyName size:14];
-    if (self.notification.isIssue) {
+    fontAwesomeLabel.font = [UIFont fontWithName:kFontAwesomeFamilyName size:14];
+
+    if ([notification isIssue]) {
         iconIdentifier = @"icon-warning-sign";
-    } else if (self.notification.isPullRequest) {
+    } else if ([notification isPullRequest]) {
         iconIdentifier = @"icon-reply";
     }
-    self.fontAwesomeLabel.text = [NSString fontAwesomeIconStringForIconIdentifier:iconIdentifier];
-    self.titleLabel.text       = [self.notification getTitle];
-    self.updatedAtLabel.text   = [self.notification getUpdatedAt];
-    self.accessoryType         = UITableViewCellAccessoryDisclosureIndicator;
+
+    fontAwesomeLabel.text = [NSString fontAwesomeIconStringForIconIdentifier:iconIdentifier];
+    titleLabel.text       = [notification getTitle];
+    updatedAtLabel.text   = [notification getUpdatedAt];
+    self.accessoryType    = UITableViewCellAccessoryDisclosureIndicator;
 }
 
 @end

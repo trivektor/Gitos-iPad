@@ -10,6 +10,8 @@
 
 @implementation RepoCell
 
+@synthesize repo, fontAwesomeLabel, repoNameLabel, starLabel, forkLabel, descriptionLabel;
+
 - (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
 {
     self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
@@ -28,55 +30,56 @@
 
 - (void)render
 {
-    self.fontAwesomeLabel.font = [UIFont fontWithName:kFontAwesomeFamilyName size:14];
+    fontAwesomeLabel.font = [UIFont fontWithName:kFontAwesomeFamilyName size:14];
 
-    if (self.repo.isForked) {
-        self.fontAwesomeLabel.text = [NSString fontAwesomeIconStringForIconIdentifier:@"icon-random"];
+    if ([repo isForked]) {
+        fontAwesomeLabel.text = [NSString fontAwesomeIconStringForIconIdentifier:@"icon-random"];
     } else {
-        self.fontAwesomeLabel.text = [NSString fontAwesomeIconStringForIconIdentifier:@"icon-book"];
+        fontAwesomeLabel.text = [NSString fontAwesomeIconStringForIconIdentifier:@"icon-book"];
     }
-    self.repoNameLabel.text = [self.repo getName];
-    
+
+    repoNameLabel.text = [repo getName];
+
     // Float the Forks and Watchers labels side by side
     // http://stackoverflow.com/questions/5891384/place-two-uilabels-side-by-side-left-and-right-without-knowing-string-length-of
-    
-    NSInteger _forks = [self.repo getForks];
+
+    NSInteger _forks = [repo getForks];
     NSString *forks;
-    
+
     NSInteger MAX_COUNT = 1000.0;
-    
+
     if (_forks > MAX_COUNT) {
         forks = [NSString stringWithFormat:@"%.1fk", _forks/MAX_COUNT*1.0];
     } else {
         forks = [NSString stringWithFormat:@"%i", _forks];
     }
-    
-    NSInteger _watchers = [self.repo getWatchers];
+
+    NSInteger _watchers = [repo getWatchers];
     NSString *watchers;
-    
+
     if (_watchers > MAX_COUNT) {
         watchers = [NSString stringWithFormat:@"%.1fk", _watchers/MAX_COUNT*1.0];
     } else {
         watchers = [NSString stringWithFormat:@"%i", _watchers];
     }
-    
-    CGSize forksSize = [forks sizeWithFont:self.forkLabel.font];
-    CGSize watchersSize = [watchers sizeWithFont:self.starLabel.font];
-    
-    self.forkLabel.text = forks;
-    self.starLabel.text = watchers;
-    
-    self.forkLabel.frame = CGRectMake(self.forkLabel.frame.origin.x,
-                                      self.forkLabel.frame.origin.y,
+
+    CGSize forksSize = [forks sizeWithFont:forkLabel.font];
+    CGSize watchersSize = [watchers sizeWithFont:starLabel.font];
+
+    forkLabel.text = forks;
+    starLabel.text = watchers;
+
+    forkLabel.frame = CGRectMake(forkLabel.frame.origin.x,
+                                      forkLabel.frame.origin.y,
                                       forksSize.width,
                                       forksSize.height);
-    
-    self.starLabel.frame = CGRectMake(self.starLabel.frame.origin.x,
-                                      self.starLabel.frame.origin.y,
+
+    starLabel.frame = CGRectMake(starLabel.frame.origin.x,
+                                      starLabel.frame.origin.y,
                                       watchersSize.width,
                                       watchersSize.height);
-    
-    self.descriptionLabel.text = [self.repo getDescription];
+
+    descriptionLabel.text = [repo getDescription];
 
     self.backgroundColor = [UIColor whiteColor];
     self.accessoryType   = UITableViewCellAccessoryDisclosureIndicator;

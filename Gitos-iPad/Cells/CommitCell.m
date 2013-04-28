@@ -10,6 +10,8 @@
 
 @implementation CommitCell
 
+@synthesize commentLabel, dateLabel, shaLabel;
+
 - (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
 {
     self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
@@ -29,9 +31,9 @@
 
 - (void)render
 {
-    self.commentLabel.text  = [self.commit getMessage];
-    self.dateLabel.text     = [self.commit getCommittedAt];
-    self.shaLabel.text      = [[self.commit getSha] substringToIndex:10];
+    commentLabel.text  = [self.commit getMessage];
+    dateLabel.text     = [self.commit getCommittedAt];
+    shaLabel.text      = [[self.commit getSha] substringToIndex:10];
 }
 
 @end

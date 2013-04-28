@@ -10,6 +10,8 @@
 
 @implementation UserSearchResultCell
 
+@synthesize avatar, name, username, user;
+
 - (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
 {
     self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
@@ -28,10 +30,10 @@
 
 - (void)render
 {
-    NSData *data = [NSData dataWithContentsOfURL:[NSURL URLWithString:[self.user getAvatarUrl]]];
-    self.avatar.image = [UIImage imageWithData:data];
-    self.name.text = [self.user getName];
-    self.username.text = [self.user getLogin];
+    NSData *data  = [NSData dataWithContentsOfURL:[NSURL URLWithString:[user getAvatarUrl]]];
+    avatar.image  = [UIImage imageWithData:data];
+    name.text     = [user getName];
+    username.text = [user getLogin];
 }
 
 @end

@@ -10,6 +10,8 @@
 
 @implementation MasterControllerCell
 
+@synthesize fontAwesomeLabel, optionLabel;
+
 - (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
 {
     self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
@@ -34,9 +36,9 @@
     [selectedBackgroundView setBackgroundColor:[UIColor colorWithPatternImage:[UIImage imageNamed:@"selected_cell_bg.png"]]];
     self.selectedBackgroundView     = selectedBackgroundView;
 
-    self.fontAwesomeLabel.font      = [UIFont fontWithName:kFontAwesomeFamilyName size:15];
-    self.fontAwesomeLabel.textColor = [UIColor whiteColor];
-    self.optionLabel.textColor      = [UIColor whiteColor];
+    fontAwesomeLabel.font      = [UIFont fontWithName:kFontAwesomeFamilyName size:15];
+    fontAwesomeLabel.textColor = [UIColor whiteColor];
+    optionLabel.textColor      = [UIColor whiteColor];
 
     NSString *fontAwesome = @"", *optionLabelText = @"";
 
@@ -81,8 +83,8 @@
             break;
     }
 
-    self.fontAwesomeLabel.text = fontAwesome;
-    self.optionLabel.text      = optionLabelText;
+    fontAwesomeLabel.text = fontAwesome;
+    optionLabel.text      = optionLabelText;
 }
 
 @end

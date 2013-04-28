@@ -10,6 +10,8 @@
 
 @implementation GistDetailsCell
 
+@synthesize fieldLabel, fieldValue, gist;
+
 - (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
 {
     self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
@@ -29,14 +31,14 @@
 - (void)renderForIndexPath:(NSIndexPath *)indexPath
 {
     if (indexPath.row == 0) {
-        [self.fieldLabel setText:@"Files"];
-        [self.fieldValue setText:[NSString stringWithFormat:@"%i", [self.gist getNumberOfFiles]]];
+        [fieldLabel setText:@"Files"];
+        [fieldValue setText:[NSString stringWithFormat:@"%i", [gist getNumberOfFiles]]];
     } else if (indexPath.row == 1) {
-        [self.fieldLabel setText:@"Forks"];
-        [self.fieldValue setText:[NSNumberFormatter localizedStringFromNumber:@([self.gist getNumberOfForks]) numberStyle:NSNumberFormatterDecimalStyle]];
+        [fieldLabel setText:@"Forks"];
+        [fieldValue setText:[NSNumberFormatter localizedStringFromNumber:@([gist getNumberOfForks]) numberStyle:NSNumberFormatterDecimalStyle]];
     } else if (indexPath.row == 2) {
-        [self.fieldLabel setText:@"Comments"];
-        [self.fieldValue setText:[NSString stringWithFormat:@"%i", [self.gist getNumberOfComments]]];
+        [fieldLabel setText:@"Comments"];
+        [fieldValue setText:[NSString stringWithFormat:@"%i", [gist getNumberOfComments]]];
     }
     self.backgroundColor = [UIColor whiteColor];
 }

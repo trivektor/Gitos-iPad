@@ -10,7 +10,7 @@
 
 @implementation IssueCell
 
-@synthesize issue;
+@synthesize issue, titleLabel, commentsLabel, overviewLabel;
 
 - (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
 {
@@ -34,9 +34,9 @@
 
     NSString *title = [[issue getTitle] stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceCharacterSet]];
 
-    self.titleLabel.text = [NSString stringWithFormat:@"#%i %@", [issue getNumber], title];
-    self.overviewLabel.text = [NSString stringWithFormat:@"by %@ %@", [user getLogin], [issue getCreatedAt]];
-    self.commentsLabel.text = [NSString stringWithFormat:@"%i comments", [self.issue getNumberOfComments]];
+    titleLabel.text = [NSString stringWithFormat:@"#%i %@", [issue getNumber], title];
+    overviewLabel.text = [NSString stringWithFormat:@"by %@ %@", [user getLogin], [issue getCreatedAt]];
+    commentsLabel.text = [NSString stringWithFormat:@"%i comments", [self.issue getNumberOfComments]];
 }
 
 @end

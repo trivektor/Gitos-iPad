@@ -10,6 +10,8 @@
 
 @implementation ProfileCell
 
+@synthesize fontAwesomeLabel, fieldDetails, fieldLabel;
+
 - (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
 {
     self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
@@ -28,7 +30,7 @@
 
 - (void)displayByIndexPath:(NSIndexPath *)indexPath forUser:(User *)user
 {
-    self.fontAwesomeLabel.font = [UIFont fontWithName:kFontAwesomeFamilyName size:19];
+    fontAwesomeLabel.font = [UIFont fontWithName:kFontAwesomeFamilyName size:19];
 
     NSString *labelText, *detailsText, *fontAwesome;
 
@@ -81,10 +83,10 @@
         labelText   = @"Contributions";
         detailsText = @"view all";
     }
-    
-    self.fontAwesomeLabel.text  = fontAwesome;
-    self.fieldLabel.text        = labelText;
-    self.fieldDetails.text      = detailsText;
+
+    fontAwesomeLabel.text  = fontAwesome;
+    fieldLabel.text        = labelText;
+    fieldDetails.text      = detailsText;
     self.selectionStyle         = UITableViewCellSelectionStyleNone;
     self.backgroundColor        = [UIColor clearColor];
 }

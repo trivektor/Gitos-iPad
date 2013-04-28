@@ -11,7 +11,7 @@
 
 @implementation RepoSearchResultCell
 
-@synthesize repo, repoNameLabel, repoDescriptionLabel, repoDetailsLabel;
+@synthesize repo, repoNameLabel, repoDescriptionLabel, repoDetailsLabel, repoDetails;
 
 - (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
 {
@@ -36,7 +36,7 @@
     
     RelativeDateDescriptor *relativeDateDescriptor = [[RelativeDateDescriptor alloc] initWithPriorDateDescriptionFormat:@"%@ ago" postDateDescriptionFormat:@"in %@"];
     
-    NSInteger size = [self.repo getSize];
+    NSInteger size = [repo getSize];
     
     NSString *sizeLabel;
     if (size <= 1024) {
@@ -47,14 +47,14 @@
     
     NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
     [dateFormatter setDateFormat:@"yyyy-MM-dd'T'HH:mm:sszzz"];
-    NSDate *pushedAt  = [dateFormatter dateFromString:[self.repo getPushedAt]];
+    NSDate *pushedAt  = [dateFormatter dateFromString:[repo getPushedAt]];
     
     NSMutableArray *labels = [[NSMutableArray alloc] initWithCapacity:0];
     [labels addObject:sizeLabel];
-    [labels addObject:[NSString stringWithFormat:@"%i forks", [[self.repoDetails objectForKey:@"forks"] integerValue]]];
-    [labels addObject:[NSString stringWithFormat:@"%i watchers", [[self.repoDetails objectForKey:@"watchers"] integerValue]]];
+    [labels addObject:[NSString stringWithFormat:@"%i forks", [[repoDetails objectForKey:@"forks"] integerValue]]];
+    [labels addObject:[NSString stringWithFormat:@"%i watchers", [[repoDetails objectForKey:@"watchers"] integerValue]]];
     [labels addObject:[NSString stringWithFormat:@"last activity %@", [relativeDateDescriptor describeDate:pushedAt relativeTo:[NSDate date]]]];
-    [self.repoDetailsLabel setText:[labels componentsJoinedByString:@" | "]];
+    [repoDetailsLabel setText:[labels componentsJoinedByString:@" | "]];
     //    [self.repoDetailsLabel setNumberOfLines:0];
     //    [self.repoDetailsLabel setLineBreakMode:NSLineBreakByWordWrapping];
     //    [self.repoDetailsLabel sizeToFit];
@@ -62,22 +62,22 @@
 
 - (void)renderName
 {
-    [self.repoNameLabel setText:[self.repo getName]];
+    [repoNameLabel setText:[repo getName]];
 }
 
 - (void)renderDescription
 {
-    NSString *description = [self.repo getDescription];
+    NSString *description = [repo getDescription];
     
     if (description == (id)[NSNull null]) {
-        [self.repoDescriptionLabel setText:@"no description"];
+        [repoDescriptionLabel setText:@"no description"];
         return;
     }
     
     if (description.length == 0) {
-        [self.repoDescriptionLabel setText:@"no description"];
+        [repoDescriptionLabel setText:@"no description"];
     } else {
-        [self.repoDescriptionLabel setText:description];
+        [repoDescriptionLabel setText:description];
     }
 }
 
