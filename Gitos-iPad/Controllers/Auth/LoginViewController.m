@@ -165,13 +165,17 @@
         return;
     }
 
+    [self blurFields];
+
     NSURL *url = [NSURL URLWithString:[AppConfig getConfigValue:@"GithubApiHost"]];
 
     AFHTTPClient *httpClient = [[AFHTTPClient alloc] initWithBaseURL:url];
     [httpClient setParameterEncoding:AFJSONParameterEncoding];
     [httpClient setAuthorizationHeaderWithUsername:username password:password];
 
-    NSMutableURLRequest *postRequest = [httpClient requestWithMethod:@"GET" path:@"/authorizations" parameters:oauthParams];
+    NSMutableURLRequest *postRequest = [httpClient requestWithMethod:@"GET"
+                                                                path:@"/authorizations"
+                                                          parameters:oauthParams];
 
     AFHTTPRequestOperation *operation = [[AFHTTPRequestOperation alloc] initWithRequest:postRequest];
     [operation setCompletionBlockWithSuccess:^(AFHTTPRequestOperation *operation, id responseObject) {
@@ -205,7 +209,11 @@
             }
         }
         [[NSNotificationCenter defaultCenter] postNotificationName:@"ExistingAuthorizationsDeleted" object:nil];
-    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {}];
+    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        if ([operation.response statusCode] == 403) {
+            [self handleInvalidCredentials];
+        }
+    }];
     [operation start];
 }
 
@@ -240,6 +248,11 @@
     [operation start];
 }
 
+- (void)handleInvalidCredentials
+{
+    [AppHelper flashError:@"Invalid username or password" inView:self.view];
+}
+
 - (BOOL)textFieldShouldEndEditing:(UITextField *)textField
 {
     return YES;
@@ -249,6 +262,12 @@
 {
     [textField resignFirstResponder];
     return YES;
+}
+
+- (void)blurFields
+{
+    if ([usernameField isFirstResponder]) [usernameField resignFirstResponder];
+    if ([passwordField isFirstResponder]) [passwordField resignFirstResponder];
 }
 
 @end

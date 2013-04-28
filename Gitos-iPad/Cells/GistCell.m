@@ -11,6 +11,8 @@
 
 @implementation GistCell
 
+@synthesize fontAwesomeLabel, gist, gistName, gistCreatedAt, gistDescription;
+
 - (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
 {
     self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
@@ -32,14 +34,14 @@
     static NSString *createdAt = nil;
 
     if (!createdAt) {
-        createdAt = [self.gist getCreatedAt];
+        createdAt = [gist getCreatedAt];
     }
 
-    self.fontAwesomeLabel.font = [UIFont fontWithName:kFontAwesomeFamilyName size:15];
-    self.fontAwesomeLabel.text = [NSString fontAwesomeIconStringForIconIdentifier:@"icon-pushpin"];
-    self.gistName.text         = [self.gist getName];
-    self.gistDescription.text  = [self.gist getDescription];
-    self.gistCreatedAt.text    = createdAt;
+    fontAwesomeLabel.font = [UIFont fontWithName:kFontAwesomeFamilyName size:15];
+    fontAwesomeLabel.text = [NSString fontAwesomeIconStringForIconIdentifier:@"icon-pushpin"];
+    gistName.text         = [gist getName];
+    gistDescription.text  = [gist getDescription];
+    gistCreatedAt.text    = createdAt;
     self.accessoryType         = UITableViewCellAccessoryDisclosureIndicator;
 }
 

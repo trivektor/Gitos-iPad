@@ -27,5 +27,7 @@
 - (void)fetchUser;
 - (void)deleteExistingAuthorizations;
 - (void)setDelegates;
+- (void)handleInvalidCredentials;
+- (void)blurFields;
 
 @end
