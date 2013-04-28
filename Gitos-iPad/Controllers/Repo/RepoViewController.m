@@ -236,8 +236,10 @@
 
     if (isWatching) {
         starOption = @"Unstar";
+        [AppHelper flashAlert:@"Repository starred" inView:self.view];
     } else {
         starOption = @"Star";
+        [AppHelper flashAlert:@"Repository unstarred" inView:self.view];
     }
 
     actionOptions = [[UIActionSheet alloc] initWithTitle:@"Actions"
