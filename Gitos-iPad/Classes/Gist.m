@@ -82,11 +82,48 @@
     return [[details valueForKey:@"comments"] integerValue];
 }
 
+- (NSString *)getUrl
+{
+    return [data valueForKey:@"url"];
+}
+
+- (NSString *)getStarredUrl
+{
+    return [[self getUrl] stringByAppendingFormat:@"/%@", @"starred"];
+}
+
+- (NSString *)getHtmlUrl
+{
+    return [data valueForKey:@"html_url"];
+}
+
 - (NSString *)convertToRelativeDate:(NSString *)originalDateString
 {
     NSDate *date  = [dateFormatter dateFromString:originalDateString];
     return [relativeDateDescriptor describeDate:date
                                      relativeTo:[NSDate date]];
+}
+
+- (void)checkStar
+{
+    NSURL *starredUrl = [NSURL URLWithString:[self getStarredUrl]];
+
+    AFHTTPClient *httpClient = [[AFHTTPClient alloc] initWithBaseURL:starredUrl];
+
+    NSMutableURLRequest *getRequest = [httpClient requestWithMethod:@"GET"
+                                                               path:starredUrl.absoluteString
+                                                         parameters:[AppHelper getAccessTokenParams]];
+
+    AFHTTPRequestOperation *operation = [[AFHTTPRequestOperation alloc] initWithRequest:getRequest];
+
+    [operation setCompletionBlockWithSuccess:^(AFHTTPRequestOperation *operation, id responseObject) {
+        [[NSNotificationCenter defaultCenter] postNotificationName:@"GistStarringChecked" object:operation];
+    }
+    failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        [[NSNotificationCenter defaultCenter] postNotificationName:@"GistStarringChecked" object:operation];
+     }];
+
+    [operation start];
 }
 
 - (void)fetchStats

@@ -27,6 +27,10 @@
 - (NSArray *)getGistFiles;
 - (NSInteger)getNumberOfComments;
 - (NSString *)convertToRelativeDate:(NSString *)originalDateString;
+- (NSString *)getUrl;
+- (NSString *)getStarredUrl;
+- (NSString *)getHtmlUrl;
+- (void)checkStar;
 - (void)fetchStats;
 + (void)save:(NSDictionary *)data;
 
