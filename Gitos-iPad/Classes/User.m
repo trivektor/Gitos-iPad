@@ -297,9 +297,8 @@
 
          NSDictionary *json = [NSJSONSerialization JSONObjectWithData:[response dataUsingEncoding:NSUTF8StringEncoding] options:NSJSONReadingMutableContainers error:nil];
 
-         User *user = [[User alloc] initWithData:json];
-
-         [[NSNotificationCenter defaultCenter] postNotificationName:@"AuthenticatedUserFetched" object:user];
+         [[NSNotificationCenter defaultCenter] postNotificationName:@"AuthenticatedUserFetched"
+                                                             object:[[User alloc] initWithData:json]];
      }
      failure:^(AFHTTPRequestOperation *operation, NSError *error) {
          NSLog(@"%@", error);

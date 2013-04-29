@@ -237,9 +237,10 @@
 
          NSDictionary *json = [NSJSONSerialization JSONObjectWithData:[response dataUsingEncoding:NSUTF8StringEncoding] options:NSJSONReadingMutableContainers error:nil];
 
-         User *user = [[User alloc] initWithData:json];
+         User *currentUser = [[User alloc] initWithData:json];
+         [CurrentUserManager initializeWithUser:currentUser];
 
-         [AppInitialization run:self.view.window withUser:user];
+         [AppInitialization run:self.view.window withUser:currentUser];
      }
      failure:^(AFHTTPRequestOperation *operation, NSError *error) {
 
