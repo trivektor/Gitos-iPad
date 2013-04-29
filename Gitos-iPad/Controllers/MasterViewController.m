@@ -60,12 +60,74 @@
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-    return 1;
+    return 4;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return 10;
+    int rows;
+
+    switch (section) {
+        case 0:
+            rows = 1;
+            break;
+        case 1:
+            rows = 1;
+            break;
+        case 2:
+            rows = 2;
+            break;
+        case 3:
+            rows = 6;
+            break;
+        default:
+            rows = 0;
+            break;
+    }
+
+    return rows;
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
+{
+    return 25;
+}
+
+- (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
+{
+    UILabel *headerLabel = [[UILabel alloc] initWithFrame:CGRectMake(8, 1, 300, 25)];
+    headerLabel.backgroundColor = [UIColor clearColor];
+    headerLabel.text = [self tableView:tableView titleForHeaderInSection:section];
+
+    headerLabel.textColor = [UIColor colorWithRed:179/255.0
+                                            green:179/255.0
+                                             blue:179/255.0
+                                            alpha:1.0];
+
+    headerLabel.font = [UIFont fontWithName:@"Arial-BoldMT" size:12.0];
+
+    UIView *backgroundView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 300, 25)];
+
+    backgroundView.backgroundColor = [UIColor colorWithRed:49/255.0
+                                                     green:49/255.0
+                                                      blue:49/255.0
+                                                     alpha:0.9];
+    [backgroundView addSubview:headerLabel];
+
+    return backgroundView;
+}
+
+- (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section
+{
+    if (section == 0) {
+        return @"Profile";
+    } else if (section == 1) {
+        return @"News Feed";
+    } else if (section == 2) {
+        return @"Repositories";
+    } else {
+        return @"Others";
+    }
 }
 
 - (void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath
@@ -75,7 +137,7 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    if (indexPath.row == 0) {
+    if (indexPath.section == 0 && indexPath.row == 0) {
         [self displayAvatarAndUsername];
         return profileCell;
     } else {
@@ -96,55 +158,54 @@
 {
     UINavigationController *selectedController;
 
-    if (indexPath.row == 0 || indexPath.row == 5) {
-
-        ProfileViewController *profileController = [[ProfileViewController alloc] init];
-        profileController.user = user;
-        profileController.hideOptionsButton = YES;
-        selectedController = [[UINavigationController alloc] initWithRootViewController:profileController];
-
-    } else if (indexPath.row == 1) {
-
-        selectedController = [[UINavigationController alloc]
-                              initWithRootViewController:[[NewsfeedViewController alloc] init]];
-
-    } else if (indexPath.row == 2) {
-
-        ReposViewController *reposController = [[ReposViewController alloc] init];
-        reposController.user = user;
-        reposController.hideBackButton = YES;
-        selectedController = [[UINavigationController alloc] initWithRootViewController:reposController];
-
-    } else if (indexPath.row == 3) {
-
-        StarredViewController *starredController = [[StarredViewController alloc] init];
-        starredController.user = user;
-        selectedController = [[UINavigationController alloc] initWithRootViewController:starredController];
-
-    } else if (indexPath.row == 4) {
-
-        GistsViewController *gistsController = [[GistsViewController alloc] init];
-        gistsController.user = user;
-        gistsController.hideBackButton = YES;
-        selectedController = [[UINavigationController alloc] initWithRootViewController:gistsController];
-
-    } else if (indexPath.row == 6) {
-
-        SearchViewController *searchController = [[SearchViewController alloc] init];
-        searchController.user = user;
-        selectedController = [[UINavigationController alloc] initWithRootViewController:searchController];
-
-    } else if (indexPath.row == 7) {
-
-        selectedController = [[UINavigationController alloc] initWithRootViewController:[[NotificationsViewController alloc] init]];
-
-    } else if (indexPath.row == 8) {
-
-        selectedController = [[UINavigationController alloc] initWithRootViewController:[[FeedbackViewController alloc] init]];
-
-    } else if (indexPath.row == 9) {
-        [self signout];
-        return;
+    switch (indexPath.section) {
+        case 0:
+            if (indexPath.row == 0) {
+                ProfileViewController *profileController = [[ProfileViewController alloc] init];
+                profileController.user = user;
+                profileController.hideOptionsButton = YES;
+                selectedController = [[UINavigationController alloc] initWithRootViewController:profileController];
+            }
+            break;
+        case 1:
+            if (indexPath.row == 0) {
+                NewsfeedViewController *newsfeedController = [[NewsfeedViewController alloc] init];
+                selectedController = [[UINavigationController alloc] initWithRootViewController:newsfeedController];
+            }
+            break;
+        case 2:
+            if (indexPath.row == 0) {
+                ReposViewController *reposController = [[ReposViewController alloc] init];
+                reposController.user = user;
+                reposController.hideBackButton = YES;
+                selectedController = [[UINavigationController alloc] initWithRootViewController:reposController];
+            } else if (indexPath.row == 1) {
+                StarredViewController *starredController = [[StarredViewController alloc] init];
+                starredController.user = user;
+                selectedController = [[UINavigationController alloc] initWithRootViewController:starredController];
+            }
+            break;
+        case 3:
+            if (indexPath.row == 0) {
+                GistsViewController *gistsController = [[GistsViewController alloc] init];
+                gistsController.user = user;
+                gistsController.hideBackButton = YES;
+                selectedController = [[UINavigationController alloc] initWithRootViewController:gistsController];
+            } else if (indexPath.row == 1) {
+                SearchViewController *searchController = [[SearchViewController alloc] init];
+                searchController.user = user;
+                selectedController = [[UINavigationController alloc] initWithRootViewController:searchController];
+            } else if (indexPath.row == 2) {
+                selectedController = [[UINavigationController alloc] initWithRootViewController:[[NotificationsViewController alloc] init]];
+            } else if (indexPath.row == 3) {
+                selectedController = [[UINavigationController alloc] initWithRootViewController:[[FeedbackViewController alloc] init]];
+            } else if (indexPath.row == 4) {
+                [self signout];
+                return;
+            }
+            break;
+        default:
+            break;
     }
 
     [self navigateToSelectedController:selectedController];

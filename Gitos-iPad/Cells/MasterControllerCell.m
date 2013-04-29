@@ -42,45 +42,47 @@
 
     NSString *fontAwesome = @"", *optionLabelText = @"";
 
-    switch (indexPath.row) {
-        case 1:
-            fontAwesome      = [NSString fontAwesomeIconStringForIconIdentifier:@"icon-rss"];
-            optionLabelText  = @"News Feed";
-            break;
-        case 2:
-            fontAwesome      = [NSString fontAwesomeIconStringForIconIdentifier:@"icon-github-alt"];
-            optionLabelText  = @"Personal Repositories";
-            break;
-        case 3:
-            fontAwesome      = [NSString fontAwesomeIconStringForIconIdentifier:@"icon-star-empty"];
-            optionLabelText  = @"Starred Repositories";
-            break;
-        case 4:
-            fontAwesome      = [NSString fontAwesomeIconStringForIconIdentifier:@"icon-file-alt"];
-            optionLabelText  = @"Gists";
-            break;
-        case 5:
-            fontAwesome      = [NSString fontAwesomeIconStringForIconIdentifier:@"icon-edit"];
-            optionLabelText  = @"Profile";
-            break;
-        case 6:
-            fontAwesome      = [NSString fontAwesomeIconStringForIconIdentifier:@"icon-search"];
-            optionLabelText  = @"Search";
-            break;
-        case 7:
-            fontAwesome      = [NSString fontAwesomeIconStringForIconIdentifier:@"icon-bullhorn"];
-            optionLabelText  = @"Notifications";
-            break;
-        case 8:
-            fontAwesome      = [NSString fontAwesomeIconStringForIconIdentifier:@"icon-envelope"];
-            optionLabelText  = @"Feedback";
-            break;
-        case 9:
-            fontAwesome      = [NSString fontAwesomeIconStringForIconIdentifier:@"icon-signout"];
-            optionLabelText  = @"Sign out";
-            break;
-        default:
-            break;
+    if (indexPath.section == 1 && indexPath.row == 0) {
+        fontAwesome      = [NSString fontAwesomeIconStringForIconIdentifier:@"icon-rss"];
+        optionLabelText  = @"News Feed";
+    } else if (indexPath.section == 2) {
+        switch (indexPath.row) {
+            case 0:
+                fontAwesome      = [NSString fontAwesomeIconStringForIconIdentifier:@"icon-github-alt"];
+                optionLabelText  = @"Personal";
+                break;
+            case 1:
+                fontAwesome      = [NSString fontAwesomeIconStringForIconIdentifier:@"icon-star-empty"];
+                optionLabelText  = @"Starred";
+                break;
+            default:
+                break;
+        }
+    } else if (indexPath.section == 3) {
+        switch (indexPath.row) {
+            case 0:
+                fontAwesome      = [NSString fontAwesomeIconStringForIconIdentifier:@"icon-file-alt"];
+                optionLabelText  = @"Gists";
+                break;
+            case 1:
+                fontAwesome      = [NSString fontAwesomeIconStringForIconIdentifier:@"icon-search"];
+                optionLabelText  = @"Search";
+                break;
+            case 2:
+                fontAwesome      = [NSString fontAwesomeIconStringForIconIdentifier:@"icon-bullhorn"];
+                optionLabelText  = @"Notifications";
+                break;
+            case 3:
+                fontAwesome      = [NSString fontAwesomeIconStringForIconIdentifier:@"icon-envelope"];
+                optionLabelText  = @"Feedback";
+                break;
+            case 4:
+                fontAwesome      = [NSString fontAwesomeIconStringForIconIdentifier:@"icon-signout"];
+                optionLabelText  = @"Sign out";
+                break;
+            default:
+                break;
+        }
     }
 
     fontAwesomeLabel.text = fontAwesome;
