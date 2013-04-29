@@ -23,7 +23,7 @@
 
 @implementation ProfileViewController
 
-@synthesize user, hud, avatar, profileTable, nameLabel, loginLabel, scrollView, hideBackButton;
+@synthesize user, hud, avatar, profileTable, nameLabel, loginLabel, scrollView;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -31,7 +31,6 @@
     if (self) {
         // Custom initialization
         user = nil;
-        hideBackButton = NO;
     }
     return self;
 }
@@ -45,14 +44,11 @@
     [self getUserInfo];
 }
 
-- (void)viewWillAppear:(BOOL)animated
-{
-    self.navigationItem.hidesBackButton = hideBackButton;
-}
-
 - (void)performHouseKeepingTasks
 {
-    [super performHousekeepingTasks];
+    if ([user isMyself]) {
+        [super performHousekeepingTasks];
+    }
 
     [scrollView setContentSize:self.view.frame.size];
     [self adjustFrameHeight];
@@ -195,7 +191,6 @@
 
         ReposViewController *reposController = [[ReposViewController alloc] init];
         reposController.user = user;
-        reposController.hideBackButton = NO;
         [self.navigationController pushViewController:reposController animated:YES];
 
     } else if (indexPath.row == 7) {

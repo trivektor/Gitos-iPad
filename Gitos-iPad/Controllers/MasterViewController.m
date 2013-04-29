@@ -100,7 +100,6 @@
 
         ProfileViewController *profileController = [[ProfileViewController alloc] init];
         profileController.user = user;
-        profileController.hideBackButton = YES;
         profileController.hideOptionsButton = YES;
         selectedController = [[UINavigationController alloc] initWithRootViewController:profileController];
 

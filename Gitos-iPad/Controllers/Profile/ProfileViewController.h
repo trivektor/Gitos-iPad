@@ -18,7 +18,6 @@
 @property (nonatomic, strong) User *user;
 @property (nonatomic, strong) MBProgressHUD *hud;
 @property (nonatomic, strong) UIActionSheet *optionsActionSheet;
-@property (nonatomic) Boolean hideBackButton;
 @property (nonatomic) BOOL hideOptionsButton;
 @property (nonatomic) BOOL isFollowing;
 
