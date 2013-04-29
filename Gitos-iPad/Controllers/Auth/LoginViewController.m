@@ -60,13 +60,21 @@
                                                                      style:UIBarButtonItemStyleBordered
                                                                     target:self
                                                                     action:@selector(deleteExistingAuthorizations)];
-    [submitButton setTintColor:[UIColor colorWithRed:202/255.0 green:0 blue:0 alpha:1]];
+
+    [submitButton setTintColor:[UIColor colorWithRed:202/255.0
+                                               green:0
+                                                blue:0
+                                               alpha:1]];
+
     [self.navigationItem setRightBarButtonItem:submitButton];
 
     [loginTable setBackgroundView:nil];
     [loginTable setScrollEnabled:NO];
     [loginTable setSeparatorStyle:UITableViewCellSeparatorStyleSingleLine];
-    [loginTable setSeparatorColor:[UIColor colorWithRed:200/255.0 green:200/255.0 blue:200/255.0 alpha:1.0]];
+    [loginTable setSeparatorColor:[UIColor colorWithRed:200/255.0
+                                                  green:200/255.0
+                                                   blue:200/255.0
+                                                  alpha:1.0]];
 }
 
 - (void)setDelegates
@@ -116,7 +124,9 @@
     [httpClient setParameterEncoding:AFJSONParameterEncoding];
     [httpClient setAuthorizationHeaderWithUsername:username password:password];
     
-    NSMutableURLRequest *postRequest = [httpClient requestWithMethod:@"POST" path:@"/authorizations" parameters:oauthParams];
+    NSMutableURLRequest *postRequest = [httpClient requestWithMethod:@"POST"
+                                                                path:@"/authorizations"
+                                                          parameters:oauthParams];
     
     AFHTTPRequestOperation *operation = [[AFHTTPRequestOperation alloc] initWithRequest:postRequest];
     
@@ -138,20 +148,11 @@
          [[NSNotificationCenter defaultCenter] postNotificationName:@"UserAutheticated" object:nil];
      }
      failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-         [hud setHidden:YES];
-         NSString *response = [operation responseString];
-
-         NSDictionary *json = [NSJSONSerialization JSONObjectWithData:[response dataUsingEncoding:NSUTF8StringEncoding] options:NSJSONReadingMutableContainers error:nil];
-
-         UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Alert" message:nil delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
-
-         [alert setMessage:[json valueForKey:@"message"]];
-         [alert show];
+         [self handleInvalidCredentials];
      }];
     
     [operation start];
-    [usernameField resignFirstResponder];
-    [passwordField resignFirstResponder];
+    [self blurFields];
 }
 
 - (void)deleteExistingAuthorizations
