@@ -561,4 +561,40 @@
     [operation start];
 }
 
+- (void)starGist:(id)gist
+{
+    [self toggleStarringForGist:gist withMethod:@"PUT"];
+}
+
+- (void)unstarGist:(id)gist
+{
+    [self toggleStarringForGist:gist withMethod:@"DELETE"];
+}
+
+- (void)toggleStarringForGist:(id)gist withMethod:(NSString *)methodName
+{
+    NSString *githubApiHost = [AppConfig getConfigValue:@"GithubApiHost"];
+
+    NSURL *starredUrl = [NSURL URLWithString:[githubApiHost stringByAppendingFormat:@"/gists/%@/star?access_token=%@",
+                                              [gist getId], [AppHelper getAccessToken]]];
+
+    AFHTTPClient *httpClient = [[AFHTTPClient alloc] initWithBaseURL:starredUrl];
+
+    NSMutableURLRequest *request = [httpClient requestWithMethod:methodName
+                                                            path:starredUrl.absoluteString
+                                                      parameters:nil];
+
+    AFHTTPRequestOperation *operation = [[AFHTTPRequestOperation alloc] initWithRequest:request];
+
+    [operation setCompletionBlockWithSuccess:^(AFHTTPRequestOperation *operation, id responseObject){
+        NSLog(@"%i", [operation.response statusCode]);
+        [[NSNotificationCenter defaultCenter] postNotificationName:@"GistStarringUpdated" object:nil];
+    }
+    failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        NSLog(@"%@", error);
+    }];
+
+    [operation start];
+}
+
 @end

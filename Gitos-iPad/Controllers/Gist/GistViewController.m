@@ -10,6 +10,7 @@
 #import "GistDetailsCell.h"
 #import "GistFile.h"
 #import "GistRawFileViewController.h"
+#import "WebsiteViewController.h"
 
 @interface GistViewController ()
 
@@ -17,7 +18,7 @@
 
 @implementation GistViewController
 
-@synthesize gist, user, hud, detailsTable, filesTable, files;
+@synthesize gist, hud, detailsTable, filesTable, files, actionOptions, isStarring;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -38,6 +39,7 @@
     [self registerNib];
     [self registerEvents];
     [self getGistStats];
+    [gist checkStar];
 }
 
 - (void)performHouseKeepingTasks
@@ -69,7 +71,18 @@
 {
     [[NSNotificationCenter defaultCenter] addObserver:self
                                              selector:@selector(displayGistStats:)
-                                                 name:@"GistStatsFetched" object:nil];
+                                                 name:@"GistStatsFetched"
+                                               object:nil];
+
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(prepareActionOptionsForStatus:)
+                                                 name:@"GistStarringChecked"
+                                               object:nil];
+
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(updateStarredStatus)
+                                                 name:@"GistStarringUpdated"
+                                               object:nil];
 }
 
 - (void)getGistStats
@@ -157,6 +170,79 @@
 {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+- (void)prepareActionOptionsForStatus:(NSNotification *)notification
+{
+    AFHTTPRequestOperation *operation = (AFHTTPRequestOperation *) notification.object;
+    int statusCode = [operation.response statusCode];
+    NSString *starOption;
+
+    if (statusCode == 204) {
+        isStarring = YES;
+        starOption = @"Unstar";
+    } else {
+        isStarring = NO;
+        starOption = @"Star";
+    }
+
+    actionOptions = [[UIActionSheet alloc] initWithTitle:@"Actions"
+                                                delegate:self
+                                       cancelButtonTitle:@""
+                                  destructiveButtonTitle:nil
+                                       otherButtonTitles:starOption, @"View on Github", nil];
+
+    UIBarButtonItem *actionsButton = [[UIBarButtonItem alloc] initWithTitle:@""
+                                                                      style:UIBarButtonItemStyleBordered
+                                                                     target:self
+                                                                     action:@selector(showAvailableActions)];
+    actionsButton.image = [UIImage imageNamed:@"211-action.png"];
+    self.navigationItem.rightBarButtonItem = actionsButton;
+}
+
+- (void)showAvailableActions
+{
+    [actionOptions showInView:self.view];
+}
+
+- (void)updateStarredStatus
+{
+    NSString *starOption = nil;
+
+    isStarring = !isStarring;
+
+    if (isStarring) {
+        starOption = @"Unstar";
+        [AppHelper flashAlert:@"Gist starred" inView:self.view];
+    } else {
+        starOption = @"Star";
+        [AppHelper flashAlert:@"Gist unstarred" inView:self.view];
+    }
+
+    actionOptions = [[UIActionSheet alloc] initWithTitle:@"Actions"
+                                                delegate:self
+                                       cancelButtonTitle:@""
+                                  destructiveButtonTitle:nil
+                                       otherButtonTitles:starOption, @"View on Github", nil];
+}
+
+- (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex
+{
+    User *currentUser = [CurrentUserManager getUser];
+
+    if (buttonIndex == 0) {
+        if (isStarring) {
+            // Unstar a gist
+            [currentUser unstarGist:gist];
+        } else {
+            // Star a gist
+            [currentUser starGist:gist];
+        }
+    } else if (buttonIndex == 1) {
+        WebsiteViewController *websiteController = [[WebsiteViewController alloc] init];
+        websiteController.requestedUrl = [gist getHtmlUrl];
+        [self.navigationController pushViewController:websiteController animated:YES];
+    }
 }
 
 @end

@@ -10,14 +10,15 @@
 #import "Gist.h"
 #import "User.h"
 
-@interface GistViewController : UIViewController <UITableViewDataSource, UITableViewDelegate>
+@interface GistViewController : UIViewController <UITableViewDataSource, UITableViewDelegate, UIActionSheetDelegate>
 
 @property (nonatomic, strong) IBOutlet UITableView *detailsTable;
 @property (nonatomic, strong) IBOutlet UITableView *filesTable;
 @property (nonatomic, strong) Gist *gist;
-@property (nonatomic, strong) User *user;
 @property (nonatomic, strong) NSMutableArray *files;
 @property (nonatomic, strong) MBProgressHUD *hud;
+@property (nonatomic, strong) UIActionSheet *actionOptions;
+@property (nonatomic) BOOL isStarring;
 
 - (void)performHouseKeepingTasks;
 - (void)registerNib;
@@ -26,5 +27,8 @@
 - (void)displayGistStats:(NSNotification *)notification;
 - (UITableViewCell *)cellForDetailsTableAtIndexPath:(NSIndexPath *)indexPath;
 - (UITableViewCell *)cellForBranchesTableAtIndexPath:(NSIndexPath *)indexPath;
+- (void)prepareActionOptionsForStatus:(NSNotification *)notification;
+- (void)showAvailableActions;
+- (void)updateStarredStatus;
 
 @end

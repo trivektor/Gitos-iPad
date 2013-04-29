@@ -7,6 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "Gist.h"
 
 @interface User : NSObject
 
@@ -52,8 +53,15 @@
 - (void)fetchFollowersForPage:(int)page;
 - (void)fetchFollowingUsersForPage:(int)page;
 - (void)fetchOrganizationsForPage:(int)page;
+
+// Star/Unstar a repo
 - (void)starRepo:(Repo *)repo;
 - (void)unstarRepo:(Repo *)repo;
 - (void)toggleStarringForRepo:(Repo *)repo withMethod:(NSString *)methodName;
+
+// Star/Unstar a gist
+- (void)starGist:(Gist *)gist;
+- (void)unstarGist:(Gist *)gist;
+- (void)toggleStarringForGist:(Gist *)gist withMethod:(NSString *)methodName;
 
 @end
