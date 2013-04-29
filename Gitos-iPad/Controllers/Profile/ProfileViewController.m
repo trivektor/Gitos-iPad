@@ -109,18 +109,7 @@
 
 - (void)getUserInfo
 {
-    if (![user isMyself]) {
-        [user fetchProfileInfo];
-    } else {
-        [self displayUsernameAndAvatar];
-
-        [profileTable reloadData];
-        if (!self.hideOptionsButton) {
-            [self addOptionsButton];
-        }
-        [hud hide:YES];
-        [self showEditButtonIfEditable];
-    }
+    [user fetchProfileInfo];
 }
 
 - (void)displayUserInfo:(NSNotification *)notification
