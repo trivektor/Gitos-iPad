@@ -193,18 +193,10 @@
     AFHTTPRequestOperation *operation = [[AFHTTPRequestOperation alloc] initWithRequest:getRequest];
 
     [operation setCompletionBlockWithSuccess:^(AFHTTPRequestOperation *operation, id responseObject) {
-        NSNumber *statusCode = [NSNumber numberWithInt:operation.response.statusCode];
-
-        NSDictionary *userInfo = [NSDictionary dictionaryWithObject:statusCode forKey:@"Code"];
-
-        [[NSNotificationCenter defaultCenter] postNotificationName:@"StarChecked" object:self userInfo:userInfo];
+        [[NSNotificationCenter defaultCenter] postNotificationName:@"StarChecked" object:operation];
     }
     failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-        NSNumber *statusCode = [NSNumber numberWithInt:operation.response.statusCode];
-
-        NSDictionary *userInfo = [NSDictionary dictionaryWithObject:statusCode forKey:@"Code"];
-
-        [[NSNotificationCenter defaultCenter] postNotificationName:@"StarChecked" object:self userInfo:userInfo];
+        [[NSNotificationCenter defaultCenter] postNotificationName:@"StarChecked" object:operation];
     }];
 
     [operation start];

@@ -203,7 +203,10 @@
 
 - (void)prepareActionOptionsForStatus:(NSNotification *)notification
 {
-    int statusCode = [[notification.userInfo valueForKey:@"Code"] intValue];
+    AFHTTPRequestOperation *operation = (AFHTTPRequestOperation *) notification.object;
+
+    int statusCode = [operation.response statusCode];
+
     NSString *starOption = nil;
 
     if (statusCode == 204) {
