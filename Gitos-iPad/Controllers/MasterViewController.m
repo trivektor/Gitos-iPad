@@ -119,15 +119,24 @@
 
 - (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section
 {
-    if (section == 0) {
-        return @"Profile";
-    } else if (section == 1) {
-        return @"News Feed";
-    } else if (section == 2) {
-        return @"Repositories";
-    } else {
-        return @"Others";
+    NSString *headerTitle;
+
+    switch (section) {
+        case 0:
+            headerTitle = @"Profile";
+            break;
+        case 1:
+            headerTitle = @"News Feed";
+            break;
+        case 2:
+            headerTitle = @"Repositories";
+            break;
+        case 3:
+            headerTitle = @"Others";
+            break;
     }
+
+    return headerTitle;
 }
 
 - (void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath
@@ -203,8 +212,6 @@
                 [self signout];
                 return;
             }
-            break;
-        default:
             break;
     }
 

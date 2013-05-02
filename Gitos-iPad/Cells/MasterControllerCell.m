@@ -55,8 +55,6 @@
                 fontAwesome      = [NSString fontAwesomeIconStringForIconIdentifier:@"icon-star-empty"];
                 optionLabelText  = @"Starred";
                 break;
-            default:
-                break;
         }
     } else if (indexPath.section == 3) {
         switch (indexPath.row) {
@@ -79,8 +77,6 @@
             case 4:
                 fontAwesome      = [NSString fontAwesomeIconStringForIconIdentifier:@"icon-signout"];
                 optionLabelText  = @"Sign out";
-                break;
-            default:
                 break;
         }
     }
