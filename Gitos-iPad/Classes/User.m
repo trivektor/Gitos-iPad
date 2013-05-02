@@ -501,9 +501,8 @@
 
 - (void)update:(NSDictionary *)updatedInfo
 {
-    NSString *githubApiHost = [AppConfig getConfigValue:@"GithubApiHost"];
-
-    NSURL *userUrl = [NSURL URLWithString:[githubApiHost stringByAppendingFormat:@"/user?access_token=%@", [AppHelper getAccessToken]]];
+    NSURL *userUrl = [AppHelper prepUrlForApiCall:[NSString stringWithFormat:@"/user?access_token=%@",
+                                                   [AppHelper getAccessToken]]];
 
     AFHTTPClient *httpClient = [[AFHTTPClient alloc] initWithBaseURL:userUrl];
     [httpClient setParameterEncoding:AFJSONParameterEncoding];
@@ -537,10 +536,8 @@
 
 - (void)toggleStarringForRepo:(Repo *)repo withMethod:(NSString *)methodName
 {
-    NSString *githubApiHost = [AppConfig getConfigValue:@"GithubApiHost"];
-
-    NSURL *starredUrl = [NSURL URLWithString:[githubApiHost stringByAppendingFormat:@"/user/starred/%@?access_token=%@",
-                                              [repo getFullName], [AppHelper getAccessToken]]];
+    NSURL *starredUrl = [AppHelper prepUrlForApiCall:[NSString stringWithFormat:@"/user/starred/%@?access_token=%@",
+                                                      [repo getFullName], [AppHelper getAccessToken]]];
 
     AFHTTPClient *httpClient = [[AFHTTPClient alloc] initWithBaseURL:starredUrl];
 
@@ -573,10 +570,8 @@
 
 - (void)toggleStarringForGist:(id)gist withMethod:(NSString *)methodName
 {
-    NSString *githubApiHost = [AppConfig getConfigValue:@"GithubApiHost"];
-
-    NSURL *starredUrl = [NSURL URLWithString:[githubApiHost stringByAppendingFormat:@"/gists/%@/star?access_token=%@",
-                                              [gist getId], [AppHelper getAccessToken]]];
+    NSURL *starredUrl = [AppHelper prepUrlForApiCall:[NSString stringWithFormat:@"/gists/%@/star?access_token=%@",
+                                                      [gist getId], [AppHelper getAccessToken]]];
 
     AFHTTPClient *httpClient = [[AFHTTPClient alloc] initWithBaseURL:starredUrl];
 
@@ -589,6 +584,30 @@
     [operation setCompletionBlockWithSuccess:^(AFHTTPRequestOperation *operation, id responseObject){
         NSLog(@"%i", [operation.response statusCode]);
         [[NSNotificationCenter defaultCenter] postNotificationName:@"GistStarringUpdated" object:nil];
+    }
+    failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        NSLog(@"%@", error);
+    }];
+
+    [operation start];
+}
+
+- (void)forkGist:(Gist *)gist
+{
+    NSURL *forkUrl = [AppHelper prepUrlForApiCall:[NSString stringWithFormat:@"/gists/%@/forks?access_token=%@",
+                                                   [gist getId], [AppHelper getAccessToken]]];
+
+    AFHTTPClient *httpClient = [[AFHTTPClient alloc] initWithBaseURL:forkUrl];
+
+    NSMutableURLRequest *request = [httpClient requestWithMethod:@"POST"
+                                                            path:forkUrl.absoluteString
+                                                      parameters:nil];
+
+    AFHTTPRequestOperation *operation = [[AFHTTPRequestOperation alloc] initWithRequest:request];
+
+    [operation setCompletionBlockWithSuccess:^(AFHTTPRequestOperation *operation, id responseObject){
+        [[NSNotificationCenter defaultCenter] postNotificationName:@"GistForked"
+                                                            object:nil];
     }
     failure:^(AFHTTPRequestOperation *operation, NSError *error) {
         NSLog(@"%@", error);

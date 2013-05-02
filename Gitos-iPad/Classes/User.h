@@ -64,4 +64,7 @@
 - (void)unstarGist:(Gist *)gist;
 - (void)toggleStarringForGist:(Gist *)gist withMethod:(NSString *)methodName;
 
+// Fork a gist
+- (void)forkGist:(Gist *)gist;
+
 @end

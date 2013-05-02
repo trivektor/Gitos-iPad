@@ -190,7 +190,7 @@
                                                 delegate:self
                                        cancelButtonTitle:@""
                                   destructiveButtonTitle:nil
-                                       otherButtonTitles:starOption, @"View on Github", nil];
+                                       otherButtonTitles:starOption, @"Fork", @"View on Github", nil];
 
     UIBarButtonItem *actionsButton = [[UIBarButtonItem alloc] initWithTitle:@""
                                                                       style:UIBarButtonItemStyleBordered
