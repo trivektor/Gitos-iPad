@@ -31,9 +31,16 @@
 
 - (void)performHousekeepingTasks
 {
-    UIBarButtonItem *menuButton = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"399-list1.png"] landscapeImagePhone:nil style:UIBarButtonItemStyleBordered target:self action:@selector(showMenu)];
-    
-    [self.navigationItem setLeftBarButtonItem:menuButton];
+    if (self.navigationController.viewControllers.count == 1) {
+        UIBarButtonItem *menuButton = [[UIBarButtonItem alloc]
+                                       initWithImage:[UIImage imageNamed:@"399-list1.png"]
+                                       landscapeImagePhone:nil
+                                       style:UIBarButtonItemStyleBordered
+                                       target:self
+                                       action:@selector(showMenu)];
+
+        [self.navigationItem setLeftBarButtonItem:menuButton];
+    }
 }
 
 - (void)didReceiveMemoryWarning
