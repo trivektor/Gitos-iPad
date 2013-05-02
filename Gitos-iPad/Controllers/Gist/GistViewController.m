@@ -238,7 +238,7 @@
             // Star a gist
             [currentUser starGist:gist];
         }
-    } else if (buttonIndex == 1) {
+    } else if (buttonIndex == 2) {
         WebsiteViewController *websiteController = [[WebsiteViewController alloc] init];
         websiteController.requestedUrl = [gist getHtmlUrl];
         [self.navigationController pushViewController:websiteController animated:YES];
