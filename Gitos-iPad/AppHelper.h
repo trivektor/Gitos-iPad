@@ -18,4 +18,6 @@
 + (void)flashAlert:(NSString *)message inView:(UIView *)view;
 + (void)flashError:(NSString *)message inView:(UIView *)view;
 
++ (NSURL *)prepUrlForApiCall:(NSString *)endpoint;
+
 @end

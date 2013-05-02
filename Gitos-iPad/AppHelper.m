@@ -58,4 +58,9 @@
                              hideAfter:HIDE_AFTER];
 }
 
++ (NSURL *)prepUrlForApiCall:(NSString *)endpoint
+{
+    return [NSURL URLWithString:[[AppConfig getConfigValue:@"GithubApiHost"] stringByAppendingString:endpoint]];
+}
+
 @end
