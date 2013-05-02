@@ -10,70 +10,72 @@
 
 @implementation PullRequest
 
+@synthesize data, dateFormatter, relativeDateDescriptor;
+
 - (id)initWithData:(NSDictionary *)pullRequestData
 {
     self = [super init];
-    self.data = pullRequestData;
-    self.dateFormatter = [[NSDateFormatter alloc] init];
-    [self.dateFormatter setDateFormat:@"yyyy-MM-dd'T'HH:mm:ssZZ"];
-    self.relativeDateDescriptor = [[RelativeDateDescriptor alloc] initWithPriorDateDescriptionFormat:@"%@ ago" postDateDescriptionFormat:@"in %@"];
+    data = pullRequestData;
+    dateFormatter = [[NSDateFormatter alloc] init];
+    [dateFormatter setDateFormat:@"yyyy-MM-dd'T'HH:mm:ssZZ"];
+    relativeDateDescriptor = [[RelativeDateDescriptor alloc] initWithPriorDateDescriptionFormat:@"%@ ago" postDateDescriptionFormat:@"in %@"];
     return self;
 }
 
 - (Repo *)getRepo
 {
-    return [[Repo alloc] initWithData:[self.data valueForKey:@"repository"]];
+    return [[Repo alloc] initWithData:[data valueForKey:@"repository"]];
 }
 
 - (NSDictionary *)getSubject
 {
-    return [self.data valueForKey:@"subject"];
+    return [data valueForKey:@"subject"];
 }
 
 - (NSString *)getTitle
 {
-    return [self.data valueForKey:@"title"];
+    return [data valueForKey:@"title"];
 }
 
 - (NSString *)getCommentsUrl
 {
-    return [self.data valueForKey:@"comments_url"];
+    return [data valueForKey:@"comments_url"];
 }
 
 - (User *)getOwner
 {
-    return [[User alloc] initWithData:[self.data valueForKey:@"user"]];
+    return [[User alloc] initWithData:[data valueForKey:@"user"]];
 }
 
 - (NSString *)getState
 {
-    return [self.data valueForKey:@"state"];
+    return [data valueForKey:@"state"];
 }
 
 - (NSString *)getBody
 {
-    return [self.data valueForKey:@"body"];
+    return [data valueForKey:@"body"];
 }
 
 - (NSString *)getCreatedAt
 {
-    return [self convertToRelativeDate:[self.data valueForKey:@"created_at"]];
+    return [self convertToRelativeDate:[data valueForKey:@"created_at"]];
 }
 
 - (NSString *)getUpdatedAt
 {
-    return [self convertToRelativeDate:[self.data valueForKey:@"updated_at"]];
+    return [self convertToRelativeDate:[data valueForKey:@"updated_at"]];
 }
 
 - (NSString *)getClosedAt
 {
-    return [self.data valueForKey:@"closed_at"];
+    return [data valueForKey:@"closed_at"];
 }
 
 - (NSString *)convertToRelativeDate:(NSString *)originalDateString
 {
-    NSDate *date  = [self.dateFormatter dateFromString:originalDateString];
-    return [self.relativeDateDescriptor describeDate:date relativeTo:[NSDate date]];
+    NSDate *date  = [dateFormatter dateFromString:originalDateString];
+    return [relativeDateDescriptor describeDate:date relativeTo:[NSDate date]];
 }
 
 @end

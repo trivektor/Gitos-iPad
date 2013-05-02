@@ -16,19 +16,19 @@
 {
     self = [super init];
     
-    self.data = gistData;
+    data = gistData;
     
     return self;
 }
 
 - (NSString *)getName
 {
-    return [self.data valueForKey:@"filename"];
+    return [data valueForKey:@"filename"];
 }
 
 - (NSString *)getRawUrl
 {
-    return [self.data valueForKey:@"raw_url"];
+    return [data valueForKey:@"raw_url"];
 }
 
 @end

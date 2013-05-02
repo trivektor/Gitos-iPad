@@ -10,40 +10,42 @@
 
 @implementation Comment
 
+@synthesize data, relativeDateDescriptor, dateFormatter;
+
 - (id)initWithData:(NSDictionary *)commentData
 {
     self = [super init];
-    self.data = commentData;
-    self.relativeDateDescriptor = [[RelativeDateDescriptor alloc] initWithPriorDateDescriptionFormat:@"%@ ago" postDateDescriptionFormat:@"in %@"];
-    self.dateFormatter = [[NSDateFormatter alloc] init];
-    self.dateFormatter.dateFormat = @"yyyy-MM-dd'T'HH:mm:ssZZ";
+    data = commentData;
+    relativeDateDescriptor = [[RelativeDateDescriptor alloc] initWithPriorDateDescriptionFormat:@"%@ ago" postDateDescriptionFormat:@"in %@"];
+    dateFormatter = [[NSDateFormatter alloc] init];
+    dateFormatter.dateFormat = @"yyyy-MM-dd'T'HH:mm:ssZZ";
     return self;
 }
 
 - (User *)getUser
 {
-    return [[User alloc] initWithData:[self.data valueForKey:@"user"]];
+    return [[User alloc] initWithData:[data valueForKey:@"user"]];
 }
 
 - (NSString *)getBody
 {
-    return [self.data valueForKey:@"body"];
+    return [data valueForKey:@"body"];
 }
 
 - (NSString *)getCreatedAt
 {
-    return [self convertToRelativeDate:[self.data valueForKey:@"created_at"]];
+    return [self convertToRelativeDate:[data valueForKey:@"created_at"]];
 }
 
 - (NSString *)getUpdatedAt
 {
-    return [self convertToRelativeDate:[self.data valueForKey:@"updated_at"]];
+    return [self convertToRelativeDate:[data valueForKey:@"updated_at"]];
 }
 
 - (NSString *)convertToRelativeDate:(NSString *)originalDateString
 {
-    NSDate *date  = [self.dateFormatter dateFromString:originalDateString];
-    return [self.relativeDateDescriptor describeDate:date relativeTo:[NSDate date]];
+    NSDate *date  = [dateFormatter dateFromString:originalDateString];
+    return [relativeDateDescriptor describeDate:date relativeTo:[NSDate date]];
 }
 
 @end

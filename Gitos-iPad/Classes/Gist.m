@@ -128,9 +128,7 @@
 
 - (void)fetchStats
 {
-    NSString *githubApiHost = [AppConfig getConfigValue:@"GithubApiHost"];
-
-    NSURL *gistDetailsUrl = [NSURL URLWithString:[githubApiHost stringByAppendingFormat:@"/gists/%@", [self getId]]];
+    NSURL *gistDetailsUrl = [AppHelper prepUrlForApiCall:[NSString stringWithFormat:@"/gists/%@", [self getId]]];
 
     AFHTTPClient *httpClient = [[AFHTTPClient alloc] initWithBaseURL:gistDetailsUrl];
 
@@ -155,9 +153,7 @@
 
 + (void)save:(NSDictionary *)data
 {
-    NSString *githubApiHost = [AppConfig getConfigValue:@"GithubApiHost"];
-
-    NSURL *gistsUrl = [NSURL URLWithString:[githubApiHost stringByAppendingFormat:@"/gists?access_token=%@", [AppHelper getAccessToken]]];
+    NSURL *gistsUrl = [AppHelper prepUrlForApiCall:[NSString stringWithFormat:@"/gists?access_token=%@", [AppHelper getAccessToken]]];
 
     AFHTTPClient *httpClient = [[AFHTTPClient alloc] initWithBaseURL:gistsUrl];
     [httpClient setParameterEncoding:AFJSONParameterEncoding];

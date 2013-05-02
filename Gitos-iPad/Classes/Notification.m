@@ -10,19 +10,21 @@
 
 @implementation Notification
 
+@synthesize data, relativeDateDescriptor, dateFormatter;
+
 - (id)initWithData:(NSDictionary *)notificationData
 {
     self = [super init];
-    self.data = notificationData;
-    self.relativeDateDescriptor = [[RelativeDateDescriptor alloc] initWithPriorDateDescriptionFormat:@"%@ ago" postDateDescriptionFormat:@"in %@"];
-    self.dateFormatter = [[NSDateFormatter alloc] init];
-    self.dateFormatter.dateFormat = @"yyyy-MM-dd'T'HH:mm:ssZZ";
+    data = notificationData;
+    relativeDateDescriptor = [[RelativeDateDescriptor alloc] initWithPriorDateDescriptionFormat:@"%@ ago" postDateDescriptionFormat:@"in %@"];
+    dateFormatter = [[NSDateFormatter alloc] init];
+    dateFormatter.dateFormat = @"yyyy-MM-dd'T'HH:mm:ssZZ";
     return self;
 }
 
 - (NSDictionary *)getSubjectData
 {
-    return [self.data valueForKey:@"subject"];
+    return [data valueForKey:@"subject"];
 }
 
 - (NSString *)getTitle
@@ -33,23 +35,23 @@
 
 - (Repo *)getRepo
 {
-    return [[Repo alloc] initWithData:[self.data valueForKey:@"repository"]];
+    return [[Repo alloc] initWithData:[data valueForKey:@"repository"]];
 }
 
 - (NSString *)convertToRelativeDate:(NSString *)originalDateString
 {
-    NSDate *date  = [self.dateFormatter dateFromString:originalDateString];
-    return [self.relativeDateDescriptor describeDate:date relativeTo:[NSDate date]];
+    NSDate *date  = [dateFormatter dateFromString:originalDateString];
+    return [relativeDateDescriptor describeDate:date relativeTo:[NSDate date]];
 }
 
 - (NSString *)getUpdatedAt
 {
-    return [self convertToRelativeDate:[self.data valueForKey:@"updated_at"]];
+    return [self convertToRelativeDate:[data valueForKey:@"updated_at"]];
 }
 
 - (BOOL)isUnread
 {
-    return [[self.data valueForKey:@"unread"] integerValue] == 1;
+    return [[data valueForKey:@"unread"] integerValue] == 1;
 }
 
 - (NSString *)getSubjectUrl
@@ -72,7 +74,7 @@
 
 - (User *)getOwner
 {
-    NSDictionary *repository = [self.data valueForKey:@"repository"];
+    NSDictionary *repository = [data valueForKey:@"repository"];
     return [[User alloc] initWithData:[repository valueForKey:@"owner"]];
 }
 

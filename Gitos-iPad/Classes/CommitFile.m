@@ -10,46 +10,48 @@
 
 @implementation CommitFile
 
+@synthesize data;
+
 - (id)initWithData:(NSDictionary *)fileData
 {
     self = [super init];
-    self.data = fileData;
+    data = fileData;
     return self;
 }
 
 - (NSString *)getSha
 {
-    return [self.data valueForKey:@"sha"];
+    return [data valueForKey:@"sha"];
 }
 
 - (NSString *)getFileName
 {
-    return [self.data valueForKey:@"filename"];
+    return [data valueForKey:@"filename"];
 }
 
 - (NSString *)getStatus
 {
-    return [self.data valueForKey:@"status"];
+    return [data valueForKey:@"status"];
 }
 
 - (NSInteger)getAdditions
 {
-    return [[self.data valueForKey:@"additions"] integerValue];
+    return [[data valueForKey:@"additions"] integerValue];
 }
 
 - (NSInteger)getDeletions
 {
-    return [[self.data valueForKey:@"deletions"] integerValue];
+    return [[data valueForKey:@"deletions"] integerValue];
 }
 
 - (NSInteger)getChanges
 {
-    return [[self.data valueForKey:@"changes"] integerValue];
+    return [[data valueForKey:@"changes"] integerValue];
 }
 
 - (NSString *)getPatch
 {
-    return [self.data valueForKey:@"patch"];
+    return [data valueForKey:@"patch"];
 }
 
 @end

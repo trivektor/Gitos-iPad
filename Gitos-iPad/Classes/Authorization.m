@@ -10,26 +10,28 @@
 
 @implementation Authorization
 
+@synthesize data;
+
 - (id)initWithData:(NSDictionary *)authorizationData
 {
     self = [super init];
-    self.data = authorizationData;
+    data = authorizationData;
     return self;
 }
 
 - (NSString *)getId
 {
-    return [NSString stringWithFormat:@"%@", [self.data valueForKey:@"id"]];
+    return [NSString stringWithFormat:@"%@", [data valueForKey:@"id"]];
 }
 
 - (NSString *)getUrl
 {
-    return [self.data valueForKey:@"url"];
+    return [data valueForKey:@"url"];
 }
 
 - (NSDictionary *)getApp
 {
-    return [self.data valueForKey:@"app"];
+    return [data valueForKey:@"app"];
 }
 
 - (NSString *)getName
@@ -40,7 +42,7 @@
 
 - (NSString *)getToken
 {
-    return [self.data valueForKey:@"token"];
+    return [data valueForKey:@"token"];
 }
 
 + (NSArray *)appScopes
