@@ -31,6 +31,7 @@
 - (NSString *)getType;
 - (NSString *)getId;
 - (User *)getActor;
+- (User *)getTargetActor;
 - (Repo *)getRepo;
 - (NSString *)convertToRelativeDate:(NSString *)originalDateString;
 - (NSMutableAttributedString *)decorateEmphasizedText:(NSString *)rawString;

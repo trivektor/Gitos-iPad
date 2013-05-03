@@ -80,6 +80,11 @@
     return [[User alloc] initWithData:[data valueForKey:@"actor"]];
 }
 
+- (User *)getTargetActor
+{
+    return [[User alloc] initWithData:[self getTarget]];
+}
+
 - (Repo *)getRepo
 {
     return [[Repo alloc] initWithData:[data valueForKey:@"repo"]];
