@@ -67,4 +67,10 @@
 // Fork a gist
 - (void)forkGist:(Gist *)gist;
 
+// Follow/Unfollow a user
+- (void)checkFollowing:(User *)user;
+- (void)followUser:(User *)user;
+- (void)unfollowUser:(User *)user;
+- (void)toggleFollowingForUser:(User *)user withMethod:(NSString *)methodName;
+
 @end

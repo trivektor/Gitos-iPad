@@ -616,4 +616,66 @@
     [operation start];
 }
 
+- (void)checkFollowing:(User *)user
+{
+    NSURL *url = [AppHelper prepUrlForApiCall:[NSString stringWithFormat:@"/user/following/%@",
+                                               [user getLogin]]];
+
+    AFHTTPClient *httpClient = [[AFHTTPClient alloc] initWithBaseURL:url];
+
+    NSMutableURLRequest *putRequest = [httpClient requestWithMethod:@"GET"
+                                                               path:url.absoluteString
+                                                         parameters:[AppHelper getAccessTokenParams]];
+
+    AFHTTPRequestOperation *operation = [[AFHTTPRequestOperation alloc] initWithRequest:putRequest];
+
+    [operation setCompletionBlockWithSuccess:
+     ^(AFHTTPRequestOperation *operation, id responseObject){
+         [[NSNotificationCenter defaultCenter] postNotificationName:@"UserFollowingChecked"
+                                                             object:operation];
+     }
+     failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+         [[NSNotificationCenter defaultCenter] postNotificationName:@"UserFollowingChecked"
+                                                             object:operation];
+         NSLog(@"%@", error);
+     }];
+
+    [operation start];
+}
+
+- (void)followUser:(User *)user
+{
+    [self toggleFollowingForUser:user withMethod:@"PUT"];
+}
+
+- (void)unfollowUser:(User *)user
+{
+    [self toggleFollowingForUser:user withMethod:@"DELETE"];
+}
+
+- (void)toggleFollowingForUser:(User *)user withMethod:(NSString *)methodName
+{
+    NSURL *followUrl = [AppHelper prepUrlForApiCall:[NSString stringWithFormat:@"/user/following/%@?access_token=%@",
+                                                      [user getLogin], [AppHelper getAccessToken]]];
+
+    AFHTTPClient *httpClient = [[AFHTTPClient alloc] initWithBaseURL:followUrl];
+
+    NSMutableURLRequest *request = [httpClient requestWithMethod:methodName
+                                                            path:followUrl.absoluteString
+                                                      parameters:nil];
+
+    AFHTTPRequestOperation *operation = [[AFHTTPRequestOperation alloc] initWithRequest:request];
+
+    [operation setCompletionBlockWithSuccess:^(AFHTTPRequestOperation *operation, id responseObject){
+        NSLog(@"%i", [operation.response statusCode]);
+        [[NSNotificationCenter defaultCenter] postNotificationName:@"UserFollowingEvent"
+                                                            object:operation];
+    }
+    failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        NSLog(@"%@", error);
+    }];
+
+    [operation start];
+}
+
 @end
