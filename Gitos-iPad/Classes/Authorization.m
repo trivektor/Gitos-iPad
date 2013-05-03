@@ -47,7 +47,13 @@
 
 + (NSArray *)appScopes
 {
-    return @[@"user", @"public_repo", @"repo", @"repo:status", @"notifications", @"gist"];
+    return @[@"user",
+             @"user:follow",
+             @"public_repo",
+             @"repo",
+             @"repo:status",
+             @"notifications",
+             @"gist"];
 }
 
 @end
