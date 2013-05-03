@@ -23,7 +23,7 @@
 
 @implementation ProfileViewController
 
-@synthesize user, hud, avatar, profileTable, nameLabel, loginLabel, scrollView;
+@synthesize user, hud, avatar, profileTable, nameLabel, loginLabel, scrollView, isFollowing, optionsActionSheet;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -40,8 +40,13 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
     [self performHouseKeepingTasks];
+    [self registerEvents];
     [self prepareProfileTable];
     [self getUserInfo];
+
+    if (!user.isMyself) {
+        [[CurrentUserManager getUser] checkFollowing:user];
+    }
 }
 
 - (void)performHouseKeepingTasks
@@ -56,10 +61,23 @@
     hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
     hud.mode = MBProgressHUDAnimationFade;
     hud.labelText = LOADING_MESSAGE;
+}
 
+- (void)registerEvents
+{
     [[NSNotificationCenter defaultCenter] addObserver:self
                                              selector:@selector(displayUserInfo:)
                                                  name:@"ProfileInfoFetched"
+                                               object:nil];
+
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(prepareProfileOptions:)
+                                                 name:@"UserFollowingChecked"
+                                               object:nil];
+
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(respondToFollowingEvents:)
+                                                 name:@"UserFollowingEvent"
                                                object:nil];
 }
 
@@ -76,10 +94,13 @@
 - (void)prepareProfileTable
 {
     UINib *nib = [UINib nibWithNibName:@"ProfileCell" bundle:nil];
-    
+
     [profileTable registerNib:nib forCellReuseIdentifier:@"ProfileCell"];
     [profileTable setSeparatorStyle:UITableViewCellSeparatorStyleSingleLine];
-    [profileTable setSeparatorColor:[UIColor colorWithRed:200/255.0 green:200/255.0 blue:200/255.0 alpha:1.0]];
+    [profileTable setSeparatorColor:[UIColor colorWithRed:200/255.0
+                                                    green:200/255.0
+                                                     blue:200/255.0
+                                                    alpha:1.0]];
     [profileTable setBackgroundView:nil];
     [profileTable setScrollEnabled:NO];
 }
@@ -117,9 +138,6 @@
     [self displayUsernameAndAvatar];
 
     [profileTable reloadData];
-    if (!self.hideOptionsButton) {
-        [self addOptionsButton];
-    }
     [hud hide:YES];
     [self showEditButtonIfEditable];
 }
@@ -242,127 +260,47 @@
     }
 }
 
-- (void)showProfileOptions
+- (void)prepareProfileOptions:(NSNotification *)notification
 {
-//    NSString *githubApiHost = [AppConfig getConfigValue:@"GithubApiHost"];
-//    NSURL *url = [NSURL URLWithString:[githubApiHost stringByAppendingFormat:@"/user/following/%@", [self.user getLogin]]];
-//
-//    AFHTTPClient *httpClient = [[AFHTTPClient alloc] initWithBaseURL:url];
-//
-//    NSMutableURLRequest *getRequest = [httpClient requestWithMethod:@"GET" path:url.absoluteString parameters:self.accessTokenParams];
-//
-//    AFHTTPRequestOperation *operation = [[AFHTTPRequestOperation alloc] initWithRequest:getRequest];
-//
-//    [operation setCompletionBlockWithSuccess:
-//     ^(AFHTTPRequestOperation *operation, id responseObject){
-//         if (!self.hideOptionsButton) {
-//             self.isFollowing = true;
-//             [self displayFollowOptions];
-//         }
-//         [hud hide:YES];
-//     }
-//     failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-//         NSLog(@"%@", error);
-//         if (!self.hideOptionsButton) {
-//             self.isFollowing = false;
-//             [self displayFollowOptions];
-//         }
-//         [hud hide:YES];
-//     }];
-//
-//    [operation start];
-    self.optionsActionSheet = [[UIActionSheet alloc] initWithTitle:@"Options"
-                                                          delegate:self
-                                                 cancelButtonTitle:@"Cancel"
-                                            destructiveButtonTitle:nil
-                                                 otherButtonTitles:@"View on Github", @"Mail profile", @"Copy profile", nil];
-    self.optionsActionSheet.actionSheetStyle = UIActionSheetStyleBlackOpaque;
-    [self.optionsActionSheet showInView:[UIApplication sharedApplication].keyWindow];
-}
+    AFHTTPRequestOperation *operation = (AFHTTPRequestOperation *)notification.object;
 
-- (void)displayFollowOptions
-{
-    NSString *otherButtonTitles;
+    NSInteger statusCode = [operation.response statusCode];
 
-    if (self.isFollowing) {
-        otherButtonTitles = @"Unfollow";
-    } else if (!self.isFollowing) {
-        otherButtonTitles = @"Follow";
+    if (statusCode == 204) {
+        isFollowing = YES;
+    } else if (statusCode == 404) {
+        isFollowing = NO;
     }
 
-    self.optionsActionSheet = [[UIActionSheet alloc] initWithTitle:@"Options"
+    NSString *otherButtonTitles = isFollowing ? @"Unfollow" : @"Follow";
+
+    optionsActionSheet = [[UIActionSheet alloc] initWithTitle:@"Options"
                                                           delegate:self
                                                  cancelButtonTitle:@"Cancel"
                                             destructiveButtonTitle:nil
-                                                 otherButtonTitles:otherButtonTitles, nil];
-    self.optionsActionSheet.actionSheetStyle = UIActionSheetStyleBlackOpaque;
-    [self.optionsActionSheet showInView:[UIApplication sharedApplication].keyWindow];
+                                                 otherButtonTitles:otherButtonTitles, @"View on Github", nil];
+    optionsActionSheet.actionSheetStyle = UIActionSheetStyleBlackOpaque;
+
+    [self addOptionsButton];
 }
 
-- (void)follow
+- (void)showProfileOptions
 {
-    NSString *githubApiHost = [AppConfig getConfigValue:@"GithubApiHost"];
-    NSURL *url = [NSURL URLWithString:[githubApiHost stringByAppendingFormat:@"/user/following/%@", [user getLogin]]];
-
-    AFHTTPClient *httpClient = [[AFHTTPClient alloc] initWithBaseURL:url];
-
-    NSMutableURLRequest *putRequest = [httpClient requestWithMethod:@"PUT"
-                                                               path:url.absoluteString
-                                                         parameters:[AppHelper getAccessTokenParams]];
-
-    AFHTTPRequestOperation *operation = [[AFHTTPRequestOperation alloc] initWithRequest:putRequest];
-
-    [operation setCompletionBlockWithSuccess:
-     ^(AFHTTPRequestOperation *operation, id responseObject){
-         self.isFollowing = true;
-         [hud hide:YES];
-         UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Alert" message:[NSString stringWithFormat:@"You are now following %@", [user getLogin]] delegate:self cancelButtonTitle:nil otherButtonTitles:nil];
-         [alert show];
-     }
-     failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-         NSLog(@"%@", error);
-         [hud hide:YES];
-     }];
-
-    [operation start];
-}
-
-- (void)unfollow
-{
-    NSString *githubApiHost = [AppConfig getConfigValue:@"GithubApiHost"];
-    NSURL *url = [NSURL URLWithString:[githubApiHost stringByAppendingFormat:@"/user/following/%@", [user getLogin]]];
-
-    AFHTTPClient *httpClient = [[AFHTTPClient alloc] initWithBaseURL:url];
-
-    NSMutableURLRequest *deleteRequest = [httpClient requestWithMethod:@"PUT"
-                                                                  path:url.absoluteString
-                                                            parameters:[AppHelper getAccessTokenParams]];
-
-    AFHTTPRequestOperation *operation = [[AFHTTPRequestOperation alloc] initWithRequest:deleteRequest];
-
-    [operation setCompletionBlockWithSuccess:
-     ^(AFHTTPRequestOperation *operation, id responseObject){
-         self.isFollowing = true;
-         [hud hide:YES];
-         UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Alert" message:[NSString stringWithFormat:@"You are now following %@", [user getLogin]] delegate:self cancelButtonTitle:nil otherButtonTitles:nil];
-         [alert show];
-     }
-     failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-         NSLog(@"%@", error);
-         [hud hide:YES];
-     }];
-
-    [operation start];
+    [optionsActionSheet showInView:[UIApplication sharedApplication].keyWindow];
 }
 
 - (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex
 {
     if (buttonIndex == 0) {
-        [self viewProfileOnGithub];
+        User *currentUser = [CurrentUserManager getUser];
+
+        if (isFollowing) {
+            [currentUser unfollowUser:user];
+        } else {
+            [currentUser followUser:user];
+        }
     } else if (buttonIndex == 1) {
-        [self mailProfile];
-    } else {
-        [self copyProfile];
+        [self loadWebsiteWithUrl:[user getHtmlUrl]];
     }
 }
 
@@ -373,16 +311,6 @@
     }
 }
 
-- (void)mailProfile
-{
-    
-}
-
-- (void)copyProfile
-{
-    
-}
-
 - (void)mailProfileToEmail:(NSString *)email WithSubject:(NSString *)subject
 {
     if ([MFMailComposeViewController canSendMail]) {
@@ -390,7 +318,10 @@
         mailViewController.mailComposeDelegate = self;
         [mailViewController setSubject:subject];
         [mailViewController setToRecipients:[NSArray arrayWithObject:email]];
-        [self presentViewController:mailViewController animated:YES completion:nil];
+
+        [self presentViewController:mailViewController
+                           animated:YES
+                         completion:nil];
     }
 }
 
@@ -403,8 +334,11 @@
 
 - (void)showEditButtonIfEditable
 {
-    if ([user isEditable]) {
-        UIBarButtonItem *editButton = [[UIBarButtonItem alloc] initWithTitle:@"Edit" style:UIBarButtonItemStyleBordered target:self action:@selector(editProfile)];
+    if (user.isMyself) {
+        UIBarButtonItem *editButton = [[UIBarButtonItem alloc] initWithTitle:@"Edit"
+                                                                       style:UIBarButtonItemStyleBordered
+                                                                      target:self
+                                                                      action:@selector(editProfile)];
 
         [self.navigationItem setRightBarButtonItem:editButton];
     }
@@ -415,6 +349,27 @@
     EditProfileViewController *editProfileController = [[EditProfileViewController alloc] init];
     editProfileController.user = user;
     [self.navigationController pushViewController:editProfileController animated:YES];
+}
+
+- (void)respondToFollowingEvents:(NSNotification *)notification
+{
+    isFollowing = !isFollowing;
+
+    NSString *followOption;
+
+    if (isFollowing) {
+        followOption = @"Unfollow";
+        [AppHelper flashAlert:@"User followed" inView:self.view];
+    } else {
+        followOption = @"Follow";
+        [AppHelper flashAlert:@"User unfollowed" inView:self.view];
+    }
+
+    optionsActionSheet = [[UIActionSheet alloc] initWithTitle:@"Actions"
+                                                delegate:self
+                                       cancelButtonTitle:@""
+                                  destructiveButtonTitle:nil
+                                       otherButtonTitles:followOption, @"View on Github", nil];
 }
 
 @end

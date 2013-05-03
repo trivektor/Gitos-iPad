@@ -22,20 +22,18 @@
 @property (nonatomic) BOOL isFollowing;
 
 - (void)performHouseKeepingTasks;
+- (void)registerEvents;
 - (void)addOptionsButton;
 - (void)showProfileOptions;
+- (void)prepareProfileOptions:(NSNotification *)notification;
 - (void)prepareProfileTable;
 - (void)displayUsernameAndAvatar;
 - (void)adjustFrameHeight;
-- (void)displayFollowOptions;
-- (void)follow;
-- (void)unfollow;
 - (void)viewProfileOnGithub;
-- (void)mailProfile;
-- (void)copyProfile;
 - (void)mailProfileToEmail:(NSString *)email WithSubject:(NSString *)subject;
 - (void)loadWebsiteWithUrl:(NSString *)url;
 - (void)showEditButtonIfEditable;
 - (void)editProfile;
+- (void)respondToFollowingEvents:(NSNotification *)notification;
 
 @end
