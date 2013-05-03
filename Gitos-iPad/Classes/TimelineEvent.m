@@ -85,6 +85,11 @@
     return [[User alloc] initWithData:[self getTarget]];
 }
 
+- (Gist *)getTargetGist
+{
+    return [[Gist alloc] initWithData:[[self getPayload] valueForKey:@"gist"]];
+}
+
 - (Repo *)getRepo
 {
     return [[Repo alloc] initWithData:[data valueForKey:@"repo"]];
@@ -126,8 +131,8 @@
     NSString *actionHTML = [NSString stringWithContentsOfFile:eventActionPath
                                                      encoding:NSUTF8StringEncoding error:nil];
 
-    NSString *actoHTMLString = [NSString stringWithFormat:actorHTML, [actor getAvatarUrl], [actor getLogin]];
-    NSString *repoHTMLString = [NSString stringWithFormat:actorHTML, GITHUB_OCTOCAT, [repo getName]];
+    NSString *actoHTMLString = [NSString stringWithFormat:actorHTML, @"actor:", [actor getAvatarUrl], [actor getLogin]];
+    NSString *repoHTMLString = [NSString stringWithFormat:actorHTML, @"repo:", GITHUB_OCTOCAT, [repo getName]];
     NSString *actionHTMLString = [NSString stringWithFormat:actionHTML, actionName];
 
     NSArray *strings = @[actoHTMLString, actionHTMLString, repoHTMLString];
@@ -183,8 +188,17 @@
     NSString *actionHTML = [NSString stringWithContentsOfFile:eventActionPath
                                                      encoding:NSUTF8StringEncoding error:nil];
 
-    NSString *actoHTMLString = [NSString stringWithFormat:actorHTML, avatar1, name1];
-    NSString *repoHTMLString = [NSString stringWithFormat:actorHTML, avatar2, name2];
+    NSString *actoHTMLString = [NSString stringWithFormat:actorHTML, @"actor:", avatar1, name1];
+
+    NSString *urlPrefix;
+
+    if ([self isKindOfClass:[GistEvent class]]) {
+        urlPrefix = @"gist:";
+    } else {
+        urlPrefix = @"repo:";
+    }
+
+    NSString *repoHTMLString = [NSString stringWithFormat:actorHTML, urlPrefix, avatar2, name2];
     NSString *actionHTMLString = [NSString stringWithFormat:actionHTML, actionName];
 
     NSArray *strings = @[actoHTMLString, actionHTMLString, repoHTMLString];
@@ -204,9 +218,9 @@
     NSString *actionHTML = [NSString stringWithContentsOfFile:eventActionPath
                                                      encoding:NSUTF8StringEncoding error:nil];
 
-    NSString *actor1HTMLString = [NSString stringWithFormat:actorHTML, avatar1, name1];
-    NSString *actor2HTMLString = [NSString stringWithFormat:actorHTML, avatar2, name2];
-    NSString *actor3HTMLString = [NSString stringWithFormat:actorHTML, avatar3, name3];
+    NSString *actor1HTMLString = [NSString stringWithFormat:actorHTML, @"actor:", avatar1, name1];
+    NSString *actor2HTMLString = [NSString stringWithFormat:actorHTML, @"actor:", avatar2, name2];
+    NSString *actor3HTMLString = [NSString stringWithFormat:actorHTML, @"repo:", avatar3, name3];
 
     NSString *action1HTMLString = [NSString stringWithFormat:actionHTML, actionName1];
     NSString *action2HTMLString = [NSString stringWithFormat:actionHTML, actionName2];

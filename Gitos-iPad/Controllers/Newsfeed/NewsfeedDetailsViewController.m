@@ -7,6 +7,11 @@
 //
 
 #import "NewsfeedDetailsViewController.h"
+#import "ProfileViewController.h"
+#import "RepoViewController.h"
+#import "GistViewController.h"
+#import "WatchEvent.h"
+#import "CreateEvent.h"
 
 @interface NewsfeedDetailsViewController ()
 
@@ -69,6 +74,31 @@
 - (void)reloadNewsfeedDetails
 {
     [webView reload];
+}
+
+- (BOOL)webView:(UIWebView *)webView shouldStartLoadWithRequest:(NSURLRequest *)request navigationType:(UIWebViewNavigationType)navigationType
+{
+    NSString *url = request.URL.absoluteString;
+
+    if ([url hasPrefix:@"actor:"]) {
+        ProfileViewController *profileController = [[ProfileViewController alloc] init];
+        profileController.user = [event getActor];
+        [self.navigationController pushViewController:profileController animated:YES];
+    } else if ([url hasPrefix:@"repo:"]) {
+        RepoViewController *repoController = [[RepoViewController alloc] init];
+        repoController.repo = [event getRepo];
+        [self.navigationController pushViewController:repoController animated:YES];
+    } else if ([url hasPrefix:@"gist:"]) {
+        GistViewController *gistController = [[GistViewController alloc] init];
+        gistController.gist = [event getTargetGist];
+        [self.navigationController pushViewController:gistController animated:YES];
+    } else if ([url hasPrefix:@"targetactor:"]) {
+        ProfileViewController *profileController = [[ProfileViewController alloc] init];
+        profileController.user = [event getTargetActor];
+        [self.navigationController pushViewController:profileController animated:YES];
+    }
+
+    return TRUE;
 }
 
 @end

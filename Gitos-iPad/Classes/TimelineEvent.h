@@ -9,6 +9,7 @@
 #import <Foundation/Foundation.h>
 #import "Repo.h"
 #import "User.h"
+#import "Gist.h"
 
 @interface TimelineEvent : NSObject
 
@@ -33,6 +34,7 @@
 - (User *)getActor;
 - (User *)getTargetActor;
 - (Repo *)getRepo;
+- (Gist *)getTargetGist;
 - (NSString *)convertToRelativeDate:(NSString *)originalDateString;
 - (NSMutableAttributedString *)decorateEmphasizedText:(NSString *)rawString;
 - (NSMutableAttributedString *)toAttributedString:(NSString *)rawString;
