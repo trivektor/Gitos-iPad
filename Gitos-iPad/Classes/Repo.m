@@ -273,4 +273,43 @@
     [operation start];
 }
 
+- (void)fetchIssuesForPage:(int)page
+{
+    NSURL *issuesUrl = [NSURL URLWithString:[self getIssuesUrl]];
+
+    AFHTTPClient *httpClient = [[AFHTTPClient alloc] initWithBaseURL:issuesUrl];
+
+    NSMutableDictionary *params = [NSMutableDictionary dictionaryWithObjectsAndKeys:
+                                   [AppHelper getAccessToken], @"access_token",
+                                   [NSString stringWithFormat:@"%i", page], @"page",
+                                   nil];
+
+    NSMutableURLRequest *getRequest = [httpClient requestWithMethod:@"GET"
+                                                               path:issuesUrl.absoluteString
+                                                         parameters:params];
+
+    AFHTTPRequestOperation *operation = [[AFHTTPRequestOperation alloc] initWithRequest:getRequest];
+
+    [operation setCompletionBlockWithSuccess:
+     ^(AFHTTPRequestOperation *operation, id responseObject){
+         NSString *response = [operation responseString];
+
+         NSArray *json = [NSJSONSerialization JSONObjectWithData:[response dataUsingEncoding:NSUTF8StringEncoding] options:NSJSONReadingMutableContainers error:nil];
+
+         NSMutableArray *issues = [[NSMutableArray alloc] initWithCapacity:0];
+
+         for (int i=0; i < json.count; i++) {
+             [issues addObject:[[Issue alloc] initWithData:[json objectAtIndex:i]]];
+         }
+
+        [[NSNotificationCenter defaultCenter] postNotificationName:@"IssuesFetched"
+                                                            object:issues];
+     }
+     failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+         NSLog(@"%@", error);
+     }];
+
+    [operation start];
+}
+
 @end

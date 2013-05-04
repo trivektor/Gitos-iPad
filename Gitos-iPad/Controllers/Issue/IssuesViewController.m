@@ -17,16 +17,15 @@
 
 @implementation IssuesViewController
 
-@synthesize issuesTable, repo, hud;
+@synthesize issuesTable, repo, hud, issues, currentPage;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
         // Custom initialization
-        self.issues = [[NSMutableArray alloc] initWithCapacity:0];
-        self.currentPage = 1;
-        self.accessToken = [SSKeychain passwordForService:@"access_token" account:@"gitos"];
+        issues = [[NSMutableArray alloc] initWithCapacity:0];
+        currentPage = 1;
     }
     return self;
 }
@@ -36,22 +35,31 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
     [self performHouseKeepingTasks];
-    [self fetchIssues:self.currentPage++];
+    [self registerNib];
+    [self registerEvents];
+    [repo fetchIssuesForPage:currentPage++];
 }
 
 - (void)performHouseKeepingTasks
 {
     self.navigationItem.title = @"Issues";
-    [self registerNib];
-    self.hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
-    self.hud.mode = MBProgressHUDAnimationFade;
-    self.hud.labelText = @"Loading";
+    hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+    hud.mode = MBProgressHUDAnimationFade;
+    hud.labelText = @"Loading";
 }
 
 - (void)registerNib
 {
     UINib *nib = [UINib nibWithNibName:@"IssueCell" bundle:nil];
     [issuesTable registerNib:nib forCellReuseIdentifier:@"IssueCell"];
+}
+
+- (void)registerEvents
+{
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(displayIssues:)
+                                                 name:@"IssuesFetched"
+                                               object:nil];
 }
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
@@ -61,7 +69,7 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return [self.issues count];
+    return [issues count];
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -78,7 +86,7 @@
         cell = [[IssueCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:cellIdentifier];
     }
 
-    cell.issue = [self.issues objectAtIndex:indexPath.row];
+    cell.issue = [issues objectAtIndex:indexPath.row];
     [cell render];
 
     return cell;
@@ -87,50 +95,15 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     IssueDetailsViewController *issueDetailsController = [[IssueDetailsViewController alloc] init];
-    issueDetailsController.issue = [self.issues objectAtIndex:indexPath.row];
+    issueDetailsController.issue = [issues objectAtIndex:indexPath.row];
     [self.navigationController pushViewController:issueDetailsController animated:YES];
-}
-
-- (void)fetchIssues:(NSInteger)page
-{
-    NSURL *issuesUrl = [NSURL URLWithString:[self.repo getIssuesUrl]];
-    
-    AFHTTPClient *httpClient = [[AFHTTPClient alloc] initWithBaseURL:issuesUrl];
-    
-    NSMutableDictionary *params = [NSMutableDictionary dictionaryWithObjectsAndKeys:
-                                   self.accessToken, @"access_token",
-                                   [NSString stringWithFormat:@"%i", page], @"page",
-                                   nil];
-
-    NSMutableURLRequest *getRequest = [httpClient requestWithMethod:@"GET" path:issuesUrl.absoluteString parameters:params];
-
-    AFHTTPRequestOperation *operation = [[AFHTTPRequestOperation alloc] initWithRequest:getRequest];
-
-    [operation setCompletionBlockWithSuccess:
-     ^(AFHTTPRequestOperation *operation, id responseObject){
-         NSString *response = [operation responseString];
-         
-         NSArray *json = [NSJSONSerialization JSONObjectWithData:[response dataUsingEncoding:NSUTF8StringEncoding] options:NSJSONReadingMutableContainers error:nil];
-         
-         for (int i=0; i < json.count; i++) {
-             [self.issues addObject:[[Issue alloc] initWithData:[json objectAtIndex:i]]];
-         }
-         [issuesTable reloadData];
-         [self.hud hide:YES];
-     }
-     failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-         NSLog(@"%@", error);
-         [self.hud hide:YES];
-     }];
-
-    [operation start];
 }
 
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView
 {
     if (([scrollView contentOffset].y + scrollView.frame.size.height) == scrollView.contentSize.height) {
-        [self.hud show:YES];
-        [self fetchIssues:self.currentPage++];
+        [hud show:YES];
+        [repo fetchIssuesForPage:currentPage++];
     }
 }
 
@@ -138,6 +111,13 @@
 {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+- (void)displayIssues:(NSNotification *)notification
+{
+    issues = notification.object;
+    [issuesTable reloadData];
+    [hud hide:YES];
 }
 
 @end

@@ -13,7 +13,6 @@
 @interface IssuesViewController : UIViewController <UITableViewDataSource, UITableViewDelegate>
 
 @property (nonatomic, strong) Repo *repo;
-@property (nonatomic, strong) NSString *accessToken;
 @property (nonatomic, weak) IBOutlet UITableView *issuesTable;
 @property (nonatomic, strong) NSMutableArray *issues;
 @property (nonatomic) NSInteger *currentPage;
@@ -21,6 +20,7 @@
 
 - (void)performHouseKeepingTasks;
 - (void)registerNib;
-- (void)fetchIssues:(NSInteger)page;
+- (void)registerEvents;
+- (void)displayIssues:(NSNotification *)notification;
 
 @end

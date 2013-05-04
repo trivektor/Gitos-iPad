@@ -42,6 +42,7 @@
 - (NSString *)getGithubUrl;
 - (void)checkStar;
 - (void)fetchBranches;
+- (void)fetchIssuesForPage:(int)page;
 
 - (void)fetchTopLayerForBranch:(Branch *)branch;
 
