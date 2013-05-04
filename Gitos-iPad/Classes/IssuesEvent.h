@@ -12,5 +12,6 @@
 
 - (NSMutableAttributedString *)toString;
 - (NSString *)toHTMLString;
+- (Issue *)getIssue;
 
 @end

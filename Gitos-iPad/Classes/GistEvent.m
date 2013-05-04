@@ -41,4 +41,9 @@
                                        andAction:[payload valueForKey:@"action"]];
 }
 
+- (NSString *)getURLPrefixForObject:(NSObject *)object
+{
+    return GIST_EVENT_PREFIX;
+}
+
 @end

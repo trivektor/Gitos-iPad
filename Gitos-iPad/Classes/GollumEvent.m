@@ -20,4 +20,9 @@
     return [self toActorRepoHTMLString:@"created wiki for"];
 }
 
+- (NSString *)getURLPrefixForObject:(NSObject *)object
+{
+    return GOLLUM_EVENT_PREFIX;
+}
+
 @end

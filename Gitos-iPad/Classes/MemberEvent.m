@@ -54,4 +54,9 @@
                                       andAction2:@" to "];
 }
 
+- (NSString *)getURLPrefixForObject:(NSObject *)object
+{
+    return MEMBER_EVENT_PREFIX;
+}
+
 @end

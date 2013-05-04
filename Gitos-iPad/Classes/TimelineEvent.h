@@ -44,4 +44,6 @@
 
 - (NSString *)toHTMLString;
 
+- (NSString *)getURLPrefixForObject:(NSObject *)object;
+
 @end

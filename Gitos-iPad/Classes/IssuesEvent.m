@@ -20,7 +20,7 @@
 
     NSMutableAttributedString *actorLogin = [self decorateEmphasizedText:[actor getLogin]];
 
-    NSMutableAttributedString *action = [self toAttributedString:[payload valueForKey:@"action"]];
+    NSMutableAttributedString *action = [self toAttributedString:[NSString stringWithFormat:@" %@", [payload valueForKey:@"action"]]];
 
     NSMutableAttributedString *issueLabel = [self toAttributedString:@" issue "];
     NSMutableAttributedString *issueName = [self decorateEmphasizedText:[NSString stringWithFormat:@"%@#%d", [repo getName], [issue getNumber]]];
@@ -45,7 +45,22 @@
 
     NSString *issueName = [NSString stringWithFormat:@"%@#%d", [repo getName], [issue getNumber]];
 
-    return [self toHTMLStringForObject1WithName:[actor getLogin] AndAvatar1:[actor getAvatarUrl] Object2:issueName AndAvatar2:[NSString string] andAction:action];
+    return [self toHTMLStringForObject1WithName:[actor getLogin]
+                                     AndAvatar1:[actor getAvatarUrl]
+                                        Object2:issueName
+                                     AndAvatar2:GITHUB_OCTOCAT
+                                      andAction:action];
+}
+
+- (NSString *)getURLPrefixForObject:(NSObject *)object
+{
+    return ISSUE_EVENT_PREFIX;
+}
+
+- (Issue *)getIssue
+{
+    NSDictionary *payload = [self getPayload];
+    return [[Issue alloc] initWithData:[payload valueForKey:@"issue"]];
 }
 
 @end

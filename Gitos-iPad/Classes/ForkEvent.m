@@ -20,4 +20,9 @@
     return [self toActorRepoHTMLString:@"forked"];
 }
 
+- (NSString *)getURLPrefix
+{
+    return REPO_EVENT_PREFIX;
+}
+
 @end

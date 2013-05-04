@@ -10,8 +10,10 @@
 #import "ProfileViewController.h"
 #import "RepoViewController.h"
 #import "GistViewController.h"
+#import "IssueDetailsViewController.h"
 #import "WatchEvent.h"
 #import "CreateEvent.h"
+#import "IssuesEvent.h"
 
 @interface NewsfeedDetailsViewController ()
 
@@ -80,22 +82,42 @@
 {
     NSString *url = request.URL.absoluteString;
 
-    if ([url hasPrefix:@"actor:"]) {
+    if ([url hasPrefix:EVENT_ACTOR_PREFIX]) {
+        
         ProfileViewController *profileController = [[ProfileViewController alloc] init];
         profileController.user = [event getActor];
-        [self.navigationController pushViewController:profileController animated:YES];
-    } else if ([url hasPrefix:@"repo:"]) {
+        [self.navigationController pushViewController:profileController
+                                             animated:YES];
+
+    } else if ([url hasPrefix:REPO_EVENT_PREFIX]) {
+
         RepoViewController *repoController = [[RepoViewController alloc] init];
         repoController.repo = [event getRepo];
-        [self.navigationController pushViewController:repoController animated:YES];
-    } else if ([url hasPrefix:@"gist:"]) {
+        [self.navigationController pushViewController:repoController
+                                             animated:YES];
+
+    } else if ([url hasPrefix:GIST_EVENT_PREFIX]) {
+
         GistViewController *gistController = [[GistViewController alloc] init];
         gistController.gist = [event getTargetGist];
-        [self.navigationController pushViewController:gistController animated:YES];
-    } else if ([url hasPrefix:@"targetactor:"]) {
+        [self.navigationController pushViewController:gistController
+                                             animated:YES];
+
+    } else if ([url hasPrefix:EVENT_TARGET_ACTOR_PREFIX]) {
+
         ProfileViewController *profileController = [[ProfileViewController alloc] init];
         profileController.user = [event getTargetActor];
-        [self.navigationController pushViewController:profileController animated:YES];
+        [self.navigationController pushViewController:profileController
+                                             animated:YES];
+
+    } else if ([url hasPrefix:ISSUE_EVENT_PREFIX]) {
+
+        IssueDetailsViewController *issueDetailsController = [[IssueDetailsViewController alloc] init];
+        IssuesEvent *_event = (IssuesEvent *)event;
+        issueDetailsController.issue = [_event getIssue];
+        [self.navigationController pushViewController:issueDetailsController
+                                             animated:YES];
+
     }
 
     return TRUE;

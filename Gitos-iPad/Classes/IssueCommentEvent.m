@@ -42,4 +42,9 @@
     return [super toHTMLStringForObject1WithName:[user getLogin] AndAvatar1:[user getAvatarUrl] Object2:issueName AndAvatar2:GITHUB_OCTOCAT andAction:@" commented on issue "];
 }
 
+- (NSString *)getURLPrefixForObject:(NSObject *)object
+{
+    return ISSUE_COMMENT_EVENT_PREFIX;
+}
+
 @end

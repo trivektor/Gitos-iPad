@@ -44,4 +44,9 @@
                                        andAction:@"deleted"];
 }
 
+- (NSString *)getURLPrefixForObject:(NSObject *)object
+{
+    return REPO_EVENT_PREFIX;
+}
+
 @end

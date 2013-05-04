@@ -22,6 +22,8 @@
 
 @implementation IssueDetailsViewController
 
+@synthesize issue;
+
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];

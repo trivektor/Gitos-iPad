@@ -43,4 +43,9 @@
                                        andAction:@"comment"];
 }
 
+- (NSString *)getURLPrefixForObject:(NSObject *)object
+{
+    return COMMIT_COMMENT_EVENT_PREFIX;
+}
+
 @end

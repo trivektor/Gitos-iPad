@@ -49,4 +49,9 @@
                                       andAction2:[repo getName]];
 }
 
+- (NSString *)getURLPrefixForObject:(NSObject *)object
+{
+    return PULL_REQUEST_EVENT_PREFIX;
+}
+
 @end

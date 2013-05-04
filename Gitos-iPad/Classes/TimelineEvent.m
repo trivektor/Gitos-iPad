@@ -160,8 +160,12 @@
 {
     NSMutableAttributedString *decoratedString = [[NSMutableAttributedString alloc] initWithString:rawString];
     [decoratedString setAttributes:@{
-               NSFontAttributeName:[UIFont fontWithName:@"Arial-BoldMT" size:13.0],
-     NSForegroundColorAttributeName:[UIColor colorWithRed:63/255.0 green:114/255.0 blue:155/255.0 alpha:1.0]
+               NSFontAttributeName:[UIFont fontWithName:@"Arial-BoldMT"
+                                                   size:13.0],
+     NSForegroundColorAttributeName:[UIColor colorWithRed:63/255.0
+                                                    green:114/255.0
+                                                     blue:155/255.0
+                                                    alpha:1.0]
      } range:NSMakeRange(0, decoratedString.length)];
 
     return decoratedString;
@@ -178,27 +182,23 @@
 
 - (NSString *)toHTMLStringForObject1WithName:(NSString *)name1 AndAvatar1:(NSString *)avatar1 Object2:(NSString *)name2 AndAvatar2:(NSString *)avatar2 andAction:(NSString *)actionName
 {
-    NSString *eventActorPath = [[NSBundle mainBundle] pathForResource:@"eventActor" ofType:@"html"];
+    NSString *eventActorPath = [[NSBundle mainBundle] pathForResource:@"eventActor"
+                                                               ofType:@"html"];
 
     NSString *actorHTML = [NSString stringWithContentsOfFile:eventActorPath
-                                                    encoding:NSUTF8StringEncoding error:nil];
+                                                    encoding:NSUTF8StringEncoding
+                                                       error:nil];
 
-    NSString *eventActionPath = [[NSBundle mainBundle] pathForResource:@"eventAction" ofType:@"html"];
+    NSString *eventActionPath = [[NSBundle mainBundle] pathForResource:@"eventAction"
+                                                                ofType:@"html"];
 
     NSString *actionHTML = [NSString stringWithContentsOfFile:eventActionPath
-                                                     encoding:NSUTF8StringEncoding error:nil];
+                                                     encoding:NSUTF8StringEncoding
+                                                        error:nil];
 
-    NSString *actoHTMLString = [NSString stringWithFormat:actorHTML, @"actor:", avatar1, name1];
+    NSString *actoHTMLString = [NSString stringWithFormat:actorHTML, EVENT_ACTOR_PREFIX, avatar1, name1];
 
-    NSString *urlPrefix;
-
-    if ([self isKindOfClass:[GistEvent class]]) {
-        urlPrefix = @"gist:";
-    } else {
-        urlPrefix = @"repo:";
-    }
-
-    NSString *repoHTMLString = [NSString stringWithFormat:actorHTML, urlPrefix, avatar2, name2];
+    NSString *repoHTMLString = [NSString stringWithFormat:actorHTML, [self getURLPrefixForObject:nil], avatar2, name2];
     NSString *actionHTMLString = [NSString stringWithFormat:actionHTML, actionName];
 
     NSArray *strings = @[actoHTMLString, actionHTMLString, repoHTMLString];
@@ -208,19 +208,23 @@
 
 - (NSString *)toHTMLStringForObject1WithName:(NSString *)name1 AndAvatar1:(NSString *)avatar1 Object2:(NSString *)name2 AndAvatar2:(NSString *)avatar2 andAction1:(NSString *)actionName1 Object3:(NSString *)name3 AndAvatar3:(NSString *)avatar3 andAction2:(NSString *)actionName2
 {
-    NSString *eventActorPath = [[NSBundle mainBundle] pathForResource:@"eventActor" ofType:@"html"];
+    NSString *eventActorPath = [[NSBundle mainBundle] pathForResource:@"eventActor"
+                                                               ofType:@"html"];
 
     NSString *actorHTML = [NSString stringWithContentsOfFile:eventActorPath
-                                                     encoding:NSUTF8StringEncoding error:nil];
+                                                     encoding:NSUTF8StringEncoding
+                                                       error:nil];
 
-    NSString *eventActionPath = [[NSBundle mainBundle] pathForResource:@"eventAction" ofType:@"html"];
+    NSString *eventActionPath = [[NSBundle mainBundle] pathForResource:@"eventAction"
+                                                                ofType:@"html"];
 
     NSString *actionHTML = [NSString stringWithContentsOfFile:eventActionPath
-                                                     encoding:NSUTF8StringEncoding error:nil];
+                                                     encoding:NSUTF8StringEncoding
+                                                        error:nil];
 
-    NSString *actor1HTMLString = [NSString stringWithFormat:actorHTML, @"actor:", avatar1, name1];
-    NSString *actor2HTMLString = [NSString stringWithFormat:actorHTML, @"actor:", avatar2, name2];
-    NSString *actor3HTMLString = [NSString stringWithFormat:actorHTML, @"repo:", avatar3, name3];
+    NSString *actor1HTMLString = [NSString stringWithFormat:actorHTML, EVENT_ACTOR_PREFIX, avatar1, name1];
+    NSString *actor2HTMLString = [NSString stringWithFormat:actorHTML, EVENT_TARGET_ACTOR_PREFIX, avatar2, name2];
+    NSString *actor3HTMLString = [NSString stringWithFormat:actorHTML, REPO_EVENT_PREFIX, avatar3, name3];
 
     NSString *action1HTMLString = [NSString stringWithFormat:actionHTML, actionName1];
     NSString *action2HTMLString = [NSString stringWithFormat:actionHTML, actionName2];
@@ -231,6 +235,11 @@
 }
 
 - (NSString *)toHTMLString
+{
+    return @"";
+}
+
+- (NSString *)getURLPrefixForObject:(NSObject *)object
 {
     return @"";
 }

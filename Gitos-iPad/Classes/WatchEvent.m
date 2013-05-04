@@ -20,4 +20,9 @@
     return [self toActorRepoHTMLString:@"watched"];
 }
 
+- (NSString *)getURLPrefixForObject:(NSObject *)object
+{
+    return REPO_EVENT_PREFIX;
+}
+
 @end
