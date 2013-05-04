@@ -14,6 +14,7 @@
 #import "WatchEvent.h"
 #import "CreateEvent.h"
 #import "IssuesEvent.h"
+#import "IssueCommentEvent.h"
 
 @interface NewsfeedDetailsViewController ()
 
@@ -114,6 +115,14 @@
 
         IssueDetailsViewController *issueDetailsController = [[IssueDetailsViewController alloc] init];
         IssuesEvent *_event = (IssuesEvent *)event;
+        issueDetailsController.issue = [_event getIssue];
+        [self.navigationController pushViewController:issueDetailsController
+                                             animated:YES];
+
+    } else if ([url hasPrefix:ISSUE_COMMENT_EVENT_PREFIX]) {
+
+        IssueDetailsViewController *issueDetailsController = [[IssueDetailsViewController alloc] init];
+        IssueCommentEvent *_event = (IssueCommentEvent *)event;
         issueDetailsController.issue = [_event getIssue];
         [self.navigationController pushViewController:issueDetailsController
                                              animated:YES];

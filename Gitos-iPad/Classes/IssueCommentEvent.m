@@ -47,4 +47,10 @@
     return ISSUE_COMMENT_EVENT_PREFIX;
 }
 
+- (Issue *)getIssue
+{
+    NSDictionary *payload = [self getPayload];
+    return [[Issue alloc] initWithData:[payload valueForKey:@"issue"]];
+}
+
 @end

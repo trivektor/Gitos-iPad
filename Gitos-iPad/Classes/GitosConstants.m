@@ -27,7 +27,7 @@ NSString * const FOLLOW_EVENT_PREFIX          = @"targetactor:";
 NSString * const GOLLUM_EVENT_PREFIX          = @"gollum:";
 NSString * const PULL_REQUEST_EVENT_PREFIX    = @"pullrequest:";
 NSString * const COMMIT_COMMENT_EVENT_PREFIX  = @"commit:";
-NSString * const ISSUE_COMMENT_EVENT_PREFIX   = @"issue:";
+NSString * const ISSUE_COMMENT_EVENT_PREFIX   = @"issuecomment:";
 
 
 @end
