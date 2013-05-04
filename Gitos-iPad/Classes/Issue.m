@@ -94,4 +94,38 @@
     return [data valueForKey:@"body"];
 }
 
+- (void)fetchCommentsForPage:(int)page
+{
+    NSURL *commentsUrl = [NSURL URLWithString:[self getCommentsUrl]];
+
+    AFHTTPClient *httpClient = [[AFHTTPClient alloc] initWithBaseURL:commentsUrl];
+
+    NSMutableURLRequest *getRequest = [httpClient requestWithMethod:@"GET"
+                                                               path:commentsUrl.absoluteString
+                                                         parameters:[AppHelper getAccessTokenParams]];
+
+    AFHTTPRequestOperation *operation = [[AFHTTPRequestOperation alloc] initWithRequest:getRequest];
+
+    [operation setCompletionBlockWithSuccess:
+     ^(AFHTTPRequestOperation *operation, id responseObject){
+         NSString *response = [operation responseString];
+
+         NSArray *json = [NSJSONSerialization JSONObjectWithData:[response dataUsingEncoding:NSUTF8StringEncoding] options:NSJSONReadingMutableContainers error:nil];
+
+         NSMutableArray *comments = [[NSMutableArray alloc] initWithCapacity:0];
+
+         for (int i=0; i < json.count; i++) {
+             [comments addObject:[[Comment alloc] initWithData:[json objectAtIndex:i]]];
+         }
+
+         [[NSNotificationCenter defaultCenter] postNotificationName:@"IssueCommentsFetched"
+                                                             object:comments];
+     }
+     failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+         NSLog(@"%@", error);
+     }];
+
+    [operation start];
+}
+
 @end

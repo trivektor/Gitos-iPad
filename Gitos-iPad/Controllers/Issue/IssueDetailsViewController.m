@@ -22,15 +22,15 @@
 
 @implementation IssueDetailsViewController
 
-@synthesize issue;
+@synthesize issue, hud, comments, currentPage, detailsView;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
         // Custom initialization
-        self.accessToken = [SSKeychain passwordForService:@"access_token" account:@"gitos"];
-        self.comments = [[NSMutableArray alloc] initWithCapacity:0];
+        comments = [[NSMutableArray alloc] initWithCapacity:0];
+        currentPage = 1;
     }
     return self;
 }
@@ -41,81 +41,52 @@
     // Do any additional setup after loading the view from its nib.
     self.navigationItem.title = [self.issue getTitle];
     [self performHouseKeepingTasks];
-    [self fetchIssueDetails];
+    [self registerEvents];
+    [issue fetchCommentsForPage:currentPage++];
 }
 
 - (void)performHouseKeepingTasks
 {
-    self.hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
-    self.hud.mode = MBProgressHUDAnimationFade;
-    self.hud.labelText = @"Loading";
+    hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+    hud.mode = MBProgressHUDAnimationFade;
+    hud.labelText = @"Loading";
 }
 
-- (void)fetchIssueDetails
+- (void)registerEvents
 {
-    NSURL *commentsUrl = [NSURL URLWithString:[self.issue getCommentsUrl]];
-    
-    AFHTTPClient *httpClient = [[AFHTTPClient alloc] initWithBaseURL:commentsUrl];
-    
-    NSMutableDictionary *params = [NSMutableDictionary dictionaryWithObjectsAndKeys:
-                                   self.accessToken, @"access_token",
-                                   nil];
-    
-    NSMutableURLRequest *getRequest = [httpClient requestWithMethod:@"GET" path:commentsUrl.absoluteString parameters:params];
-    
-    AFHTTPRequestOperation *operation = [[AFHTTPRequestOperation alloc] initWithRequest:getRequest];
-    
-    [operation setCompletionBlockWithSuccess:
-     ^(AFHTTPRequestOperation *operation, id responseObject){
-         NSString *response = [operation responseString];
-         
-         NSArray *json = [NSJSONSerialization JSONObjectWithData:[response dataUsingEncoding:NSUTF8StringEncoding] options:NSJSONReadingMutableContainers error:nil];
-         
-         for (int i=0; i < json.count; i++) {
-             [self.comments addObject:[[Comment alloc] initWithData:[json objectAtIndex:i]]];
-         }
-         
-         [self displayIssueDetails];
-         [self.hud hide:YES];
-     }
-     failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-         NSLog(@"%@", error);
-         [self.hud hide:YES];
-     }];
-    
-    [operation start];
-
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(displayComments:)                                                 name:@"IssueCommentsFetched"
+                                               object:nil];
 }
 
-- (void)displayIssueDetails
+- (void)displayComments:(NSNotification *)notification
 {
+    comments = notification.object;
+
     NSString *commentHtmlString = @"";
 
-    User *owner = [self.issue getUser], *user;
+    User *owner = [issue getUser], *user;
     Comment *comment;
 
-    for (int i=0; i < self.comments.count; i++) {
-        comment = [self.comments objectAtIndex:i];
+    for (int i=0; i < comments.count; i++) {
+        comment = [comments objectAtIndex:i];
         user = [comment getUser];
         commentHtmlString = [commentHtmlString stringByAppendingFormat:@"<tr><td><img src='%@' class='avatar pull-left' /><div class='comment-details'><b>%@</b><p>%@</p></div></td></tr>", [user getAvatarUrl], [user getLogin], [comment getBody]];
     }
     
     NSString *issueDetailsPath = [[NSBundle mainBundle] pathForResource:@"issue_details" ofType:@"html"];
     NSString *issueDetails = [NSString stringWithContentsOfFile:issueDetailsPath encoding:NSUTF8StringEncoding error:nil];
-    NSString *contentHtml = [NSString stringWithFormat:issueDetails, [owner getAvatarUrl], [self.issue getState], [owner getLogin], [self.issue getCreatedAt], [self.issue getTitle], [self.issue getBody], commentHtmlString];
+    NSString *contentHtml = [NSString stringWithFormat:issueDetails, [owner getAvatarUrl], [issue getState], [owner getLogin], [issue getCreatedAt], [issue getTitle], [issue getBody], commentHtmlString];
     NSURL *baseUrl = [NSURL fileURLWithPath:[[NSBundle mainBundle] bundlePath]];
-    [self.detailsView loadHTMLString:contentHtml baseURL:baseUrl];
+    [detailsView loadHTMLString:contentHtml baseURL:baseUrl];
+
+    [hud hide:YES];
 }
 
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
-    
-}
-
-- (void)webViewDidFinishLoad:(UIWebView *)webView
-{
     
 }
 

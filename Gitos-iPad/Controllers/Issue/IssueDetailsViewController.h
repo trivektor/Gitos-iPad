@@ -14,12 +14,12 @@
 @property (nonatomic, strong) Issue *issue;
 @property (nonatomic, strong) NSMutableArray *comments;
 @property (nonatomic, weak) IBOutlet UIWebView *detailsView;
-@property (nonatomic, strong) NSString *accessToken;
 @property (nonatomic, strong) MBProgressHUD *hud;
 @property (nonatomic, strong) NSString *htmlString;
+@property (nonatomic) int currentPage;
 
 - (void)performHouseKeepingTasks;
-- (void)fetchIssueDetails;
-- (void)displayIssueDetails;
+- (void)registerEvents;
+- (void)displayComments:(NSNotification *)notification;
 
 @end

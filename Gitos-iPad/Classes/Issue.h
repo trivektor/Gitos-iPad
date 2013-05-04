@@ -32,4 +32,6 @@
 - (NSString *)convertToRelativeDate:(NSString *)originalDateString;
 - (NSString *)getBody;
 
+- (void)fetchCommentsForPage:(int)page;
+
 @end
