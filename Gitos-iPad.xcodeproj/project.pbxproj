@@ -314,6 +314,8 @@
 		B5C613141727AC740039FDD5 /* NewGistViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B5C613121727AC740039FDD5 /* NewGistViewController.xib */; };
 		B5C61318172BA05E0039FDD5 /* LoadingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B5C61316172BA05E0039FDD5 /* LoadingViewController.m */; };
 		B5C61319172BA05E0039FDD5 /* LoadingViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B5C61317172BA05E0039FDD5 /* LoadingViewController.xib */; };
+		B5C818781735E64500FF26AB /* Default-Landscape~ipad.png in Resources */ = {isa = PBXBuildFile; fileRef = B5C818771735E64500FF26AB /* Default-Landscape~ipad.png */; };
+		B5C8187A1735E64E00FF26AB /* Default-Landscape@2x~ipad.png in Resources */ = {isa = PBXBuildFile; fileRef = B5C818791735E64E00FF26AB /* Default-Landscape@2x~ipad.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -749,6 +751,8 @@
 		B5C61315172BA05E0039FDD5 /* LoadingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoadingViewController.h; sourceTree = "<group>"; };
 		B5C61316172BA05E0039FDD5 /* LoadingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoadingViewController.m; sourceTree = "<group>"; };
 		B5C61317172BA05E0039FDD5 /* LoadingViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LoadingViewController.xib; sourceTree = "<group>"; };
+		B5C818771735E64500FF26AB /* Default-Landscape~ipad.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-Landscape~ipad.png"; sourceTree = "<group>"; };
+		B5C818791735E64E00FF26AB /* Default-Landscape@2x~ipad.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-Landscape@2x~ipad.png"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -1023,6 +1027,8 @@
 		B55D908F16B7AA27009CB90F = {
 			isa = PBXGroup;
 			children = (
+				B5C818791735E64E00FF26AB /* Default-Landscape@2x~ipad.png */,
+				B5C818771735E64500FF26AB /* Default-Landscape~ipad.png */,
 				B5C612F8172469420039FDD5 /* Underscore */,
 				B57E39A716FE5CBB006C2BD1 /* YRDropdownView */,
 				B54603BB16C37B5F007D4FB3 /* icon@2x.png */,
@@ -1704,6 +1710,8 @@
 				B5C6130F1725174F0039FDD5 /* newsfeed.html in Resources */,
 				B5C613141727AC740039FDD5 /* NewGistViewController.xib in Resources */,
 				B5C61319172BA05E0039FDD5 /* LoadingViewController.xib in Resources */,
+				B5C818781735E64500FF26AB /* Default-Landscape~ipad.png in Resources */,
+				B5C8187A1735E64E00FF26AB /* Default-Landscape@2x~ipad.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1903,6 +1911,8 @@
 		B55D90BE16B7AA27009CB90F /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CODE_SIGN_IDENTITY = "iPhone Developer: Tri Vuong (57ZS6Q6FE7)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Tri Vuong (57ZS6Q6FE7)";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)\"",
@@ -1914,6 +1924,8 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
 				"OTHER_LDFLAGS[arch=*]" = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "0183F7E4-FDF6-4609-A3AA-1633652154E3";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "0183F7E4-FDF6-4609-A3AA-1633652154E3";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -1921,6 +1933,8 @@
 		B55D90BF16B7AA27009CB90F /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CODE_SIGN_IDENTITY = "iPhone Distribution: Tri Vuong (S8W7N6M49B)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Tri Vuong (S8W7N6M49B)";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)\"",
@@ -1932,6 +1946,8 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
 				"OTHER_LDFLAGS[arch=*]" = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "A6196D94-2DA7-4329-8FEB-0293794C72D9";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "A6196D94-2DA7-4329-8FEB-0293794C72D9";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;
