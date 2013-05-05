@@ -31,7 +31,10 @@
     // Do any additional setup after loading the view from its nib.
     [self performHouseKeepingTasks];
     
-    UIBarButtonItem *submitButton = [[UIBarButtonItem alloc] initWithTitle:@"Submit" style:UIBarButtonItemStyleBordered target:self action:@selector(sendFeedback)];
+    UIBarButtonItem *submitButton = [[UIBarButtonItem alloc] initWithTitle:@"Send"
+                                                                     style:UIBarButtonItemStyleBordered
+                                                                    target:self
+                                                                    action:@selector(sendFeedback)];
     [self.navigationItem setRightBarButtonItem:submitButton];
 }
 
@@ -50,7 +53,10 @@
     [feedbackTable setBackgroundView:nil];
     [feedbackTable setScrollEnabled:NO];
     [feedbackTable setSeparatorStyle:UITableViewCellSeparatorStyleSingleLine];
-    [feedbackTable setSeparatorColor:[UIColor colorWithRed:200/255.0 green:200/255.0 blue:200/255.0 alpha:1.0]];
+    [feedbackTable setSeparatorColor:[UIColor colorWithRed:200/255.0
+                                                     green:200/255.0
+                                                      blue:200/255.0
+                                                     alpha:1.0]];
 }
 
 - (void)sendFeedback
@@ -67,6 +73,8 @@
     if ([messageField isFirstResponder]) {
         [messageField resignFirstResponder];
     }
+
+    [hud show:YES];
 
     NSURL *url = [NSURL URLWithString:[AppConfig getConfigValue:@"GitosHost"]];
 
@@ -94,12 +102,12 @@
          }
      }
      failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-         [self.hud setHidden:YES];
+         [hud setHidden:YES];
          NSLog(@"%@", error);
      }];
 
     [operation start];
-    [self.hud setHidden:NO];
+    [hud setHidden:NO];
 }
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
