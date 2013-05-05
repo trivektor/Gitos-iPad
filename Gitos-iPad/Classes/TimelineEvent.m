@@ -162,9 +162,9 @@
     [decoratedString setAttributes:@{
                NSFontAttributeName:[UIFont fontWithName:@"Arial-BoldMT"
                                                    size:13.0],
-     NSForegroundColorAttributeName:[UIColor colorWithRed:63/255.0
-                                                    green:114/255.0
-                                                     blue:155/255.0
+     NSForegroundColorAttributeName:[UIColor colorWithRed:46/255.0
+                                                    green:46/255.0
+                                                     blue:46/255.0
                                                     alpha:1.0]
      } range:NSMakeRange(0, decoratedString.length)];
 
