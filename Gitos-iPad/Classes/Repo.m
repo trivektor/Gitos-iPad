@@ -338,4 +338,29 @@
     [operation start];
 }
 
+- (void)save:(NSDictionary *)info
+{
+    NSURL *createRepoUrl = [AppHelper prepUrlForApiCall:[NSString stringWithFormat:@"/user/repos?access_token=%@", [AppHelper getAccessToken]]];
+
+    AFHTTPClient *httpClient = [[AFHTTPClient alloc] initWithBaseURL:createRepoUrl];
+    [httpClient setParameterEncoding:AFJSONParameterEncoding];
+
+    NSMutableURLRequest *postRequest = [httpClient requestWithMethod:@"POST"
+                                                               path:createRepoUrl.absoluteString
+                                                         parameters:info];
+
+    AFHTTPRequestOperation *operation = [[AFHTTPRequestOperation alloc] initWithRequest:postRequest];
+
+    [operation setCompletionBlockWithSuccess:
+     ^(AFHTTPRequestOperation *operation, id responseObject){
+         [[NSNotificationCenter defaultCenter] postNotificationName:@"NewRepoSubmitted"
+                                                             object:operation];
+     }
+     failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+         NSLog(@"%@", error);
+     }];
+
+    [operation start];
+}
+
 @end

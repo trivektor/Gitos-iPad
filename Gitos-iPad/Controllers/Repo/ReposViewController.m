@@ -9,6 +9,7 @@
 #import "ReposViewController.h"
 #import "RepoCell.h"
 #import "RepoViewController.h"
+#import "NewRepoViewController.h"
 
 @interface ReposViewController ()
 
@@ -33,15 +34,8 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    [super performHousekeepingTasks];
-
     // Do any additional setup after loading the view from its nib.
-    self.navigationItem.title = @"Repositories";
-
-    hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
-    hud.mode = MBProgressHUDAnimationFade;
-    hud.labelText = LOADING_MESSAGE;
-
+    [self performHousekeepingTasks];
     [self registerNib];
     [self registerEvents];
     [self getUserRepos];
@@ -52,6 +46,24 @@
     if (self.hideBackButton) {
         self.navigationItem.hidesBackButton = YES;
     }
+}
+
+- (void)performHousekeepingTasks
+{
+    [super performHousekeepingTasks];
+
+    self.navigationItem.title = @"Repositories";
+
+    hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+    hud.mode = MBProgressHUDAnimationFade;
+    hud.labelText = LOADING_MESSAGE;
+
+    UIBarButtonItem *newRepoButton = [[UIBarButtonItem alloc] initWithTitle:@"New Repository"
+                                                                      style:UIBarButtonItemStyleBordered
+                                                                     target:self
+                                                                     action:@selector(createNewRepo)];
+
+    self.navigationItem.rightBarButtonItem = newRepoButton;
 }
 
 - (void)didReceiveMemoryWarning
@@ -128,6 +140,12 @@
     RepoViewController *repoController = [[RepoViewController alloc] init];
     repoController.repo = [repos objectAtIndex:indexPath.row];
     [self.navigationController pushViewController:repoController animated:YES];
+}
+
+- (void)createNewRepo
+{
+    NewRepoViewController *newRepoController = [[NewRepoViewController alloc] init];
+    [self.navigationController pushViewController:newRepoController animated:YES];
 }
 
 @end

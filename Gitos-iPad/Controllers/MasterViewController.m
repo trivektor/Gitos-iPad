@@ -11,6 +11,7 @@
 #import "ReposViewController.h"
 #import "GistsViewController.h"
 #import "StarredViewController.h"
+#import "NewRepoViewController.h"
 #import "MasterControllerCell.h"
 #import "ProfileViewController.h"
 #import "RepoSearchViewController.h"
@@ -75,7 +76,7 @@
             rows = 1;
             break;
         case 2:
-            rows = 2;
+            rows = 3;
             break;
         case 3:
             rows = 6;
@@ -192,6 +193,9 @@
                 StarredViewController *starredController = [[StarredViewController alloc] init];
                 starredController.user = user;
                 selectedController = [[UINavigationController alloc] initWithRootViewController:starredController];
+            } else if (indexPath.row == 2) {
+                NewRepoViewController *newRepoController = [[NewRepoViewController alloc] init];
+                selectedController = [[UINavigationController alloc] initWithRootViewController:newRepoController];
             }
             break;
         case 3:

@@ -316,6 +316,8 @@
 		B5C61319172BA05E0039FDD5 /* LoadingViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B5C61317172BA05E0039FDD5 /* LoadingViewController.xib */; };
 		B5C818781735E64500FF26AB /* Default-Landscape~ipad.png in Resources */ = {isa = PBXBuildFile; fileRef = B5C818771735E64500FF26AB /* Default-Landscape~ipad.png */; };
 		B5C8187A1735E64E00FF26AB /* Default-Landscape@2x~ipad.png in Resources */ = {isa = PBXBuildFile; fileRef = B5C818791735E64E00FF26AB /* Default-Landscape@2x~ipad.png */; };
+		B5C8187E1736506300FF26AB /* NewRepoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B5C8187C1736506300FF26AB /* NewRepoViewController.m */; };
+		B5C8187F1736506300FF26AB /* NewRepoViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B5C8187D1736506300FF26AB /* NewRepoViewController.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -753,6 +755,9 @@
 		B5C61317172BA05E0039FDD5 /* LoadingViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LoadingViewController.xib; sourceTree = "<group>"; };
 		B5C818771735E64500FF26AB /* Default-Landscape~ipad.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-Landscape~ipad.png"; sourceTree = "<group>"; };
 		B5C818791735E64E00FF26AB /* Default-Landscape@2x~ipad.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-Landscape@2x~ipad.png"; sourceTree = "<group>"; };
+		B5C8187B1736506300FF26AB /* NewRepoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NewRepoViewController.h; sourceTree = "<group>"; };
+		B5C8187C1736506300FF26AB /* NewRepoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NewRepoViewController.m; sourceTree = "<group>"; };
+		B5C8187D1736506300FF26AB /* NewRepoViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NewRepoViewController.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -1339,6 +1344,9 @@
 				B5A104431723C1BC00487A47 /* RepoViewController.h */,
 				B5A104441723C1BC00487A47 /* RepoViewController.m */,
 				B5A104451723C1BC00487A47 /* RepoViewController.xib */,
+				B5C8187B1736506300FF26AB /* NewRepoViewController.h */,
+				B5C8187C1736506300FF26AB /* NewRepoViewController.m */,
+				B5C8187D1736506300FF26AB /* NewRepoViewController.xib */,
 			);
 			path = Repo;
 			sourceTree = "<group>";
@@ -1712,6 +1720,7 @@
 				B5C61319172BA05E0039FDD5 /* LoadingViewController.xib in Resources */,
 				B5C818781735E64500FF26AB /* Default-Landscape~ipad.png in Resources */,
 				B5C8187A1735E64E00FF26AB /* Default-Landscape@2x~ipad.png in Resources */,
+				B5C8187F1736506300FF26AB /* NewRepoViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1837,6 +1846,7 @@
 				B5C613131727AC740039FDD5 /* NewGistViewController.m in Sources */,
 				B5C61318172BA05E0039FDD5 /* LoadingViewController.m in Sources */,
 				B5845773172DC72A00DB13B7 /* CurrentUserManager.m in Sources */,
+				B5C8187E1736506300FF26AB /* NewRepoViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

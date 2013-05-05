@@ -55,6 +55,10 @@
                 fontAwesome      = [NSString fontAwesomeIconStringForIconIdentifier:@"icon-star-empty"];
                 optionLabelText  = @"Starred";
                 break;
+            case 2:
+                fontAwesome      = [NSString fontAwesomeIconStringForIconIdentifier:@"icon-plus"];
+                optionLabelText  = @"New Repository";
+                break;
         }
     } else if (indexPath.section == 3) {
         switch (indexPath.row) {

@@ -21,5 +21,6 @@
 - (void)registerEvents;
 - (void)getUserRepos;
 - (void)displayUserRepos:(NSNotification *)notification;
+- (void)createNewRepo;
 
 @end
