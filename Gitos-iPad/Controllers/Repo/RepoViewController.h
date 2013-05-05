@@ -29,5 +29,6 @@
 - (void)prepareActionOptionsForStatus:(NSNotification *)notification;
 - (void)showAvailableActions;
 - (void)updateStarredStatus;
+- (void)displayRepoInfo:(NSNotification *)notification;
 
 @end

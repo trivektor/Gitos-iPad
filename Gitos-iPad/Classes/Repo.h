@@ -23,6 +23,7 @@
 - (NSInteger)getForks;
 - (NSInteger)getWatchers;
 - (NSString *)getLanguage;
+- (NSString *)getUrl;
 - (NSString *)getBranchesUrl;
 - (NSString *)getTreeUrl;
 - (NSString *)getStarredUrl;
@@ -43,6 +44,7 @@
 - (void)checkStar;
 - (void)fetchBranches;
 - (void)fetchIssuesForPage:(int)page;
+- (void)fetchFullInfo;
 
 - (void)fetchTopLayerForBranch:(Branch *)branch;
 

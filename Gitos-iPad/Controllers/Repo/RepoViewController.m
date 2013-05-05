@@ -36,9 +36,9 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
     [self performHouseKeepingTasks];
-
-    [repo fetchBranches];
-    [repo checkStar];
+    [self registerNib];
+    [self registerNotifications];
+    [repo fetchFullInfo];
 }
 
 - (void)adjustFrameHeight
@@ -66,9 +66,6 @@
     hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
     hud.mode = MBProgressHUDAnimationFade;
     hud.labelText = LOADING_MESSAGE;
-
-    [self registerNib];
-    [self registerNotifications];
 }
 
 - (void)registerNib
@@ -104,6 +101,11 @@
     [[NSNotificationCenter defaultCenter] addObserver:self
                                              selector:@selector(updateStarredStatus)
                                                  name:@"RepoStarringUpdated"
+                                               object:nil];
+
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(displayRepoInfo:)
+                                                 name:@"RepoInfoFetched"
                                                object:nil];
 }
 
@@ -274,6 +276,14 @@
         websiteController.requestedUrl = [repo getGithubUrl];
         [self.navigationController pushViewController:websiteController animated:YES];
     }
+}
+
+- (void)displayRepoInfo:(NSNotification *)notification
+{
+    repo = [[Repo alloc] initWithData:notification.object];
+    [detailsTable reloadData];
+    [repo fetchBranches];
+    [repo checkStar];
 }
 
 @end

@@ -162,6 +162,11 @@
     return [[data valueForKey:@"fork"] integerValue] == 1;
 }
 
+- (NSString *)getUrl
+{
+    return [data valueForKey:@"url"];
+}
+
 - (NSString *)getSubscriptionUrl
 {
     NSString *githubApiHost = [AppConfig getConfigValue:@"GithubApiHost"];
@@ -178,6 +183,27 @@
 {
     NSString *githubHost = [AppConfig getConfigValue:@"GithubHost"];
     return [githubHost stringByAppendingFormat:@"/%@", [self getFullName]];
+}
+
+- (void)fetchFullInfo
+{
+    NSURL *url = [NSURL URLWithString:[self getUrl]];
+
+    AFHTTPClient *httpClient = [[AFHTTPClient alloc] initWithBaseURL:url];
+
+    NSMutableURLRequest *getRequest = [httpClient requestWithMethod:@"GET"
+                                                               path:url.absoluteString
+                                                         parameters:[AppHelper getAccessTokenParams]];
+
+    AFHTTPRequestOperation *operation = [[AFHTTPRequestOperation alloc] initWithRequest:getRequest];
+
+    [operation setCompletionBlockWithSuccess:^(AFHTTPRequestOperation *operation, id responseObject) {
+        [[NSNotificationCenter defaultCenter] postNotificationName:@"RepoInfoFetched" object:[NSJSONSerialization JSONObjectWithData:[operation.responseString dataUsingEncoding:NSUTF8StringEncoding] options:NSJSONReadingMutableContainers error:nil]];
+    }
+    failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+    }];
+
+    [operation start];
 }
 
 - (void)checkStar
