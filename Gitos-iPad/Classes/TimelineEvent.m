@@ -24,7 +24,7 @@
 
 @implementation TimelineEvent
 
-@synthesize data, relativeDateDescriptor, dateFormatter, fontAwesomeIcons;
+@synthesize data, relativeDateDescriptor, dateFormatter, fontAwesomeIcons, relativeDate;
 
 - (id)initWithData:(NSDictionary *)eventData
 {
@@ -51,6 +51,9 @@
         @"CommitCommentEvent" : @"icon-comments",
         @"GollumnEvent"       : @"icon-book"
     };
+
+    relativeDate = [self convertToRelativeDate:[data valueForKey:@"created_at"]];
+
     return self;
 }
 
@@ -153,7 +156,7 @@
 
 - (NSString *)toDateString
 {
-    return [self convertToRelativeDate:[data valueForKey:@"created_at"]];
+    return relativeDate;
 }
 
 - (NSMutableAttributedString *)decorateEmphasizedText:(NSString *)rawString

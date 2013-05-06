@@ -19,6 +19,7 @@
 @property(nonatomic, strong) RelativeDateDescriptor *relativeDateDescriptor;
 @property(nonatomic, strong) NSString *descriptionText;
 @property(nonatomic, strong) NSDictionary *fontAwesomeIcons;
+@property(nonatomic, strong) NSString *relativeDate;
 
 - (id)initWithData:(NSDictionary *)eventData;
 - (NSMutableAttributedString *)toString;

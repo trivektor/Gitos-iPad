@@ -30,14 +30,8 @@
 
 - (void)displayEvent
 {
-    static NSString *relativeDate = nil;
-
-    if (!relativeDate) {
-        relativeDate = [event toDateString];
-    }
-
     actionDescription.attributedText = [event toString];
-    actionDate.text                  = relativeDate;
+    actionDate.text                  = [event toDateString];
     self.accessoryType               = UITableViewCellAccessoryDisclosureIndicator;
     fontAwesomeLabel.font            = [UIFont fontWithName:kFontAwesomeFamilyName size:15.0];
     fontAwesomeLabel.text            = [NSString fontAwesomeIconStringForIconIdentifier:[self.event getFontAwesomeIcon]];
