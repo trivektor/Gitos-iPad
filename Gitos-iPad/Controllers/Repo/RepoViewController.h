@@ -30,5 +30,6 @@
 - (void)showAvailableActions;
 - (void)updateStarredStatus;
 - (void)displayRepoInfo:(NSNotification *)notification;
+- (void)showReadme:(NSNotification *)notification;
 
 @end

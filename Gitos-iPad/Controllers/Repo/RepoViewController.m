@@ -11,6 +11,7 @@
 #import "IssuesViewController.h"
 #import "RepoDetailsCell.h"
 #import "RepoTreeViewController.h"
+#import "RawFileViewController.h"
 #import "Branch.h"
 
 @interface RepoViewController ()
@@ -82,31 +83,41 @@
         [table setScrollEnabled:NO];
         [table setBackgroundView:nil];
         [table setSeparatorStyle:UITableViewCellSeparatorStyleSingleLine];
-        [table setSeparatorColor:[UIColor colorWithRed:200/255.0 green:200/255.0 blue:200/255.0 alpha:1.0]];
+        [table setSeparatorColor:[UIColor colorWithRed:200/255.0
+                                                 green:200/255.0
+                                                  blue:200/255.0
+                                                 alpha:1.0]];
     }
 }
 
 - (void)registerNotifications
 {
-    [[NSNotificationCenter defaultCenter] addObserver:self
-                                             selector:@selector(prepareActionOptionsForStatus:)
-                                                 name:@"StarChecked"
-                                               object:nil];
+    NSNotificationCenter *center = [NSNotificationCenter defaultCenter];
 
-    [[NSNotificationCenter defaultCenter] addObserver:self
-                                             selector:@selector(populateBranches:)
-                                                 name:@"BranchesFetched"
-                                               object:nil];
+    [center addObserver:self
+               selector:@selector(prepareActionOptionsForStatus:)
+                   name:@"StarChecked"
+                 object:nil];
 
-    [[NSNotificationCenter defaultCenter] addObserver:self
-                                             selector:@selector(updateStarredStatus)
-                                                 name:@"RepoStarringUpdated"
-                                               object:nil];
+    [center addObserver:self
+               selector:@selector(populateBranches:)
+                   name:@"BranchesFetched"
+                 object:nil];
 
-    [[NSNotificationCenter defaultCenter] addObserver:self
-                                             selector:@selector(displayRepoInfo:)
-                                                 name:@"RepoInfoFetched"
-                                               object:nil];
+    [center addObserver:self
+               selector:@selector(updateStarredStatus)
+                   name:@"RepoStarringUpdated"
+                 object:nil];
+
+    [center addObserver:self
+               selector:@selector(displayRepoInfo:)
+                   name:@"RepoInfoFetched"
+                 object:nil];
+
+    [center addObserver:self
+               selector:@selector(showReadme:)
+                   name:@"ReadmeQueried"
+                 object:nil];
 }
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
@@ -117,7 +128,7 @@
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     if (tableView == detailsTable) {
-        return 9;
+        return 10;
     } else if (tableView == branchesTable) {
         return [repoBranches count];
     } else {
@@ -188,6 +199,9 @@
             IssuesViewController *issuesController = [[IssuesViewController alloc] init];
             issuesController.repo = repo;
             [self.navigationController pushViewController:issuesController animated:YES];
+        } else if (indexPath.row == 9) {
+            [hud show:YES];
+            [repo getReadme];
         }
     }
 }
@@ -284,6 +298,22 @@
     [detailsTable reloadData];
     [repo fetchBranches];
     [repo checkStar];
+}
+
+- (void)showReadme:(NSNotification *)notification
+{
+    [hud hide:YES];
+    if (notification.object) {
+        NSDictionary *readmeInfo = (NSDictionary *)notification.object;
+//        RawFileViewController *readmeController = [[RawFileViewController alloc] init];
+//        readmeController.rawFileUrl = [NSURL URLWithString:[readmeInfo valueForKey:@"git_url"]];
+//        readmeController.fileName = @"README";
+        WebsiteViewController *readmeController = [[WebsiteViewController alloc] init];
+        readmeController.requestedUrl = [readmeInfo valueForKey:@"html_url"];
+        [self.navigationController pushViewController:readmeController animated:YES];
+    } else {
+        [AppHelper flashError:@"Repo doesn't seem to have a README" inView:self.view];
+    }
 }
 
 @end

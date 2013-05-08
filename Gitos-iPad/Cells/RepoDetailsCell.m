@@ -73,7 +73,10 @@
         case 8:
             fieldLabelText = @"Issues";
             fieldValueText = [NSNumberFormatter localizedStringFromNumber:@([repo getOpenIssues]) numberStyle:NSNumberFormatterDecimalStyle];
-        default:
+            break;
+        case 9:
+            fieldLabelText = @"Other";
+            fieldValueText = @"README";
             break;
     }
 

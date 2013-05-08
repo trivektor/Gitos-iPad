@@ -71,9 +71,9 @@
     
     NSMutableArray *paths = [[NSMutableArray alloc] initWithCapacity:0];
     
-    [paths addObject:repoFullName];
-    [paths addObject:branchName];
-    
+    if (repo) [paths addObject:repoFullName];
+    if (branch) [paths addObject:branchName];
+
     if (blobPaths.count == 0) {
         [paths addObject:self.fileName];
     } else {

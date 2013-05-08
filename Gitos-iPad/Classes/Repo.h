@@ -46,6 +46,7 @@
 - (void)fetchIssuesForPage:(int)page;
 - (void)fetchFullInfo;
 - (void)save:(NSDictionary *)info;
+- (void)getReadme;
 
 - (void)fetchTopLayerForBranch:(Branch *)branch;
 

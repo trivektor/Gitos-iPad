@@ -363,4 +363,32 @@
     [operation start];
 }
 
+- (void)getReadme
+{
+    NSURL *readmeUrl = [AppHelper prepUrlForApiCall:[NSString stringWithFormat:@"/repos/%@/readme", [self getFullName]]];
+
+    AFHTTPClient *httpClient = [[AFHTTPClient alloc] initWithBaseURL:readmeUrl];
+
+    NSMutableURLRequest *getRequest = [httpClient requestWithMethod:@"GET"
+                                                               path:readmeUrl.absoluteString
+                                                         parameters:[AppHelper getAccessTokenParams]];
+
+    AFHTTPRequestOperation *operation = [[AFHTTPRequestOperation alloc] initWithRequest:getRequest];
+
+    [operation setCompletionBlockWithSuccess:
+    ^(AFHTTPRequestOperation *operation, id responseObject){
+        NSDictionary *json = [NSJSONSerialization JSONObjectWithData:[operation.responseString dataUsingEncoding:NSUTF8StringEncoding] options:NSJSONReadingMutableContainers error:nil];
+
+        [[NSNotificationCenter defaultCenter] postNotificationName:@"ReadmeQueried"
+                                                             object:json];
+    }
+    failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        [[NSNotificationCenter defaultCenter] postNotificationName:@"ReadmeQueried"
+                                                            object:nil];
+        NSLog(@"%@", error);
+    }];
+
+    [operation start];
+}
+
 @end
