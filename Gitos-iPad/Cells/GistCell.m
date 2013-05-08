@@ -31,17 +31,11 @@
 
 - (void)render
 {
-    static NSString *createdAt = nil;
-
-    if (!createdAt) {
-        createdAt = [gist getCreatedAt];
-    }
-
     fontAwesomeLabel.font = [UIFont fontWithName:kFontAwesomeFamilyName size:15];
     fontAwesomeLabel.text = [NSString fontAwesomeIconStringForIconIdentifier:@"icon-pushpin"];
     gistName.text         = [gist getName];
     gistDescription.text  = [gist getDescription];
-    gistCreatedAt.text    = createdAt;
+    gistCreatedAt.text    = [gist getCreatedAt];
     self.accessoryType         = UITableViewCellAccessoryDisclosureIndicator;
 }
 

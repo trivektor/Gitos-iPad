@@ -11,7 +11,7 @@
 
 @implementation Gist
 
-@synthesize data, details, dateFormatter, relativeDateDescriptor;
+@synthesize data, details, dateFormatter, relativeDateDescriptor, createdAt;
 
 - (id)initWithData:(NSDictionary *)gistData
 {
@@ -20,6 +20,7 @@
     dateFormatter = [[NSDateFormatter alloc] init];
     [dateFormatter setDateFormat:@"yyyy-MM-dd'T'HH:mm:ssZZ"];
     relativeDateDescriptor = [[RelativeDateDescriptor alloc] initWithPriorDateDescriptionFormat:@"%@ ago" postDateDescriptionFormat:@"in %@"];
+    createdAt = [self convertToRelativeDate:[data valueForKey:@"created_at"]];
     return self;
 }
 
@@ -44,7 +45,7 @@
 
 - (NSString *)getCreatedAt
 {
-    return [self convertToRelativeDate:[data valueForKey:@"created_at"]];
+    return createdAt;
 }
 
 - (NSInteger)getNumberOfFiles

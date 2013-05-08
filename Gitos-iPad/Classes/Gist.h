@@ -14,6 +14,7 @@
 @property (nonatomic, retain) NSDictionary *details;
 @property (nonatomic, strong) RelativeDateDescriptor *relativeDateDescriptor;
 @property (nonatomic, strong) NSDateFormatter *dateFormatter;
+@property (nonatomic, strong) NSString *createdAt;
 
 - (id)initWithData:(NSDictionary *)gistData;
 
