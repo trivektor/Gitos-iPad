@@ -107,6 +107,8 @@ homePageCell, homePageTextField, visibilityCell, hud;
                        inView:self.view];
         return;
     } else {
+        [hud show:YES];
+
         NSDictionary *repoData = @{
             @"name": nameTextField.text,
             @"description": descriptionTextField.text,
@@ -120,6 +122,7 @@ homePageCell, homePageTextField, visibilityCell, hud;
 {
     [AppHelper flashAlert:@"Repo created successfully"
                    inView:self.view];
+    [hud hide:YES];
 }
 
 - (void)handleCreationFailure:(NSNotification *)notification
@@ -127,6 +130,7 @@ homePageCell, homePageTextField, visibilityCell, hud;
     NSMutableArray *errors = (NSMutableArray *) notification.object;
     [AppHelper flashError:[errors componentsJoinedByString:@", "]
                    inView:self.view];
+    [hud hide:YES];
 }
 
 - (void)blurFields
