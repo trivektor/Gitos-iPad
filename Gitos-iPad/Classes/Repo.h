@@ -48,6 +48,8 @@
 - (void)fetchFullInfo;
 - (void)save:(NSDictionary *)info;
 - (void)fetchReadme;
+- (BOOL)isDestroyable;
+- (void)destroy;
 
 - (void)fetchTopLayerForBranch:(Branch *)branch;
 + (void)createNewWithData:(NSDictionary *)data;

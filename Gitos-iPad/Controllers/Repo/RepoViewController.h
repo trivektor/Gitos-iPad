@@ -8,7 +8,7 @@
 
 #import "Repo.h"
 
-@interface RepoViewController : UIViewController <UITableViewDataSource, UITableViewDelegate, UIActionSheetDelegate>
+@interface RepoViewController : UIViewController <UITableViewDataSource, UITableViewDelegate, UIActionSheetDelegate, UIAlertViewDelegate>
 
 @property (nonatomic, weak) IBOutlet UITableView *detailsTable;
 @property (nonatomic, weak) IBOutlet UITableView *branchesTable;
@@ -17,6 +17,7 @@
 @property (nonatomic, strong) NSMutableArray *repoBranches;
 @property (nonatomic, strong) MBProgressHUD *hud;
 @property (nonatomic, strong) UIActionSheet *actionOptions;
+@property (nonatomic, strong) UIAlertView *deleteConfirmation;
 @property (nonatomic) BOOL *isWatching;
 
 - (void)performHouseKeepingTasks;
@@ -31,5 +32,6 @@
 - (void)updateStarredStatus;
 - (void)displayRepoInfo:(NSNotification *)notification;
 - (void)showReadme:(NSNotification *)notification;
+- (void)handlePostDestroyEvent:(NSNotification *)notification;
 
 @end

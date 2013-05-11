@@ -431,4 +431,35 @@
     [operation start];
 }
 
+- (BOOL)isDestroyable
+{
+    return [[AppHelper getAccountUsername] isEqualToString:[self getAuthorName]];
+}
+
+- (void)destroy
+{
+    NSURL *deleteRepoUrl = [AppHelper prepUrlForApiCall:[NSString stringWithFormat:@"/repos/%@?access_token=%@",
+                                                         [self getFullName],
+                                                         [AppHelper getAccessToken]]];
+
+    AFHTTPClient *httpClient = [[AFHTTPClient alloc] initWithBaseURL:deleteRepoUrl];
+
+    NSMutableURLRequest *deleteRequest = [httpClient requestWithMethod:@"DELETE"
+                                                                path:deleteRepoUrl.absoluteString
+                                                          parameters:nil];
+
+    AFHTTPRequestOperation *operation = [[AFHTTPRequestOperation alloc] initWithRequest:deleteRequest];
+
+    [operation setCompletionBlockWithSuccess:
+     ^(AFHTTPRequestOperation *operation, id responseObject){
+         [[NSNotificationCenter defaultCenter] postNotificationName:@"RepoDestroyed"
+                                                             object:operation];
+     }
+     failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+         NSLog(@"%@", error);
+     }];
+
+    [operation start];
+}
+
 @end

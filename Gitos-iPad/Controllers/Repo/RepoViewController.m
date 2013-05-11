@@ -13,6 +13,7 @@
 #import "RepoTreeViewController.h"
 #import "ReadmeViewController.h"
 #import "Branch.h"
+#import "NSTimer+Blocks.h"
 
 @interface RepoViewController ()
 
@@ -20,7 +21,7 @@
 
 @implementation RepoViewController
 
-@synthesize repo, hud, repoScrollView, detailsTable, branchesTable, repoBranches, actionOptions, isWatching;
+@synthesize repo, hud, repoScrollView, detailsTable, branchesTable, repoBranches, actionOptions, isWatching, deleteConfirmation;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -67,6 +68,13 @@
     hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
     hud.mode = MBProgressHUDAnimationFade;
     hud.labelText = LOADING_MESSAGE;
+
+    deleteConfirmation = [[UIAlertView alloc]
+                          initWithTitle:@"Confirm"
+                          message:@"Are you sure you want to delete this repo? This action cannot be undone."
+                          delegate:self
+                          cancelButtonTitle:@"Never mind"
+                          otherButtonTitles:@"Go ahead", nil];
 }
 
 - (void)registerNib
@@ -117,6 +125,11 @@
     [center addObserver:self
                selector:@selector(showReadme:)
                    name:@"ReadmeFetched"
+                 object:nil];
+    
+    [center addObserver:self
+               selector:@selector(handlePostDestroyEvent:)
+                   name:@"RepoDestroyed"
                  object:nil];
 }
 
@@ -235,9 +248,13 @@
 
     actionOptions = [[UIActionSheet alloc] initWithTitle:@"Actions"
                                                 delegate:self
-                                       cancelButtonTitle:@""
+                                       cancelButtonTitle:nil
                                   destructiveButtonTitle:nil
                                        otherButtonTitles:starOption, @"View on Github", nil];
+
+    if ([repo isDestroyable]) {
+        [actionOptions addButtonWithTitle:@"Delete"];
+    }
 
     UIBarButtonItem *actionsButton = [[UIBarButtonItem alloc] initWithTitle:@""
                                                                       style:UIBarButtonItemStyleBordered
@@ -263,9 +280,13 @@
 
     actionOptions = [[UIActionSheet alloc] initWithTitle:@"Actions"
                                                 delegate:self
-                                       cancelButtonTitle:@""
+                                       cancelButtonTitle:nil
                                   destructiveButtonTitle:nil
                                        otherButtonTitles:starOption, @"View on Github", nil];
+
+    if ([repo isDestroyable]) {
+        [actionOptions addButtonWithTitle:@"Delete"];
+    }
 }
 
 - (void)showAvailableActions
@@ -285,10 +306,14 @@
             // Unstar a repo
             [currentUser starRepo:repo];
         }
-    } else if (buttonIndex == 1) {
-        WebsiteViewController *websiteController = [[WebsiteViewController alloc] init];
-        websiteController.requestedUrl = [repo getGithubUrl];
-        [self.navigationController pushViewController:websiteController animated:YES];
+    } else if (buttonIndex != -1) {
+        if ([[actionOptions buttonTitleAtIndex:buttonIndex] isEqualToString:@"View on Github"]) {
+            WebsiteViewController *websiteController = [[WebsiteViewController alloc] init];
+            websiteController.requestedUrl = [repo getGithubUrl];
+            [self.navigationController pushViewController:websiteController animated:YES];
+        } else if ([[actionOptions buttonTitleAtIndex:buttonIndex] isEqualToString:@"Delete"]) {
+            [deleteConfirmation show];
+        }
     }
 }
 
@@ -311,6 +336,23 @@
     } else {
         [AppHelper flashError:@"Repo doesn't seem to have a README" inView:self.view];
     }
+}
+
+ - (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
+{
+    if ([[deleteConfirmation buttonTitleAtIndex:buttonIndex] isEqualToString:@"Go ahead"]) {
+        [repo destroy];
+    }
+}
+
+- (void)handlePostDestroyEvent:(NSNotification *)notification
+{
+    [AppHelper flashAlert:@"Repo has been deleted" inView:self.view];
+    [NSTimer scheduledTimerWithTimeInterval:2.0
+                                      block:^{
+                                          [self.navigationController popViewControllerAnimated:YES];
+                                      }
+                                    repeats:NO];
 }
 
 @end

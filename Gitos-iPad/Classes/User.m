@@ -234,7 +234,8 @@
 
          for (int i=0; i < json.count; i++) {
              _data = [json objectAtIndex:i];
-             id klass = [NSClassFromString([_data valueForKey:@"type"]) alloc];
+             id klass = [NSClassFromString([_data valueForKey
+                                            :@"type"]) alloc];
              id obj = objc_msgSend(klass, sel_getUid("initWithData:"), _data);
              [activities addObject:obj];
          }

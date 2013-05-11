@@ -323,6 +323,7 @@
 		B5D8D788173DF77000B68FA2 /* ReadmeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B5D8D786173DF77000B68FA2 /* ReadmeViewController.xib */; };
 		B5D8D78B173DF81D00B68FA2 /* Readme.m in Sources */ = {isa = PBXBuildFile; fileRef = B5D8D78A173DF81D00B68FA2 /* Readme.m */; };
 		B5D8D78E173DFC7D00B68FA2 /* NSData+Base64.m in Sources */ = {isa = PBXBuildFile; fileRef = B5D8D78C173DFC7C00B68FA2 /* NSData+Base64.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		B5D8D791173E1CA300B68FA2 /* NSTimer+Blocks.m in Sources */ = {isa = PBXBuildFile; fileRef = B5D8D790173E1CA300B68FA2 /* NSTimer+Blocks.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -772,6 +773,8 @@
 		B5D8D78A173DF81D00B68FA2 /* Readme.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Readme.m; sourceTree = "<group>"; };
 		B5D8D78C173DFC7C00B68FA2 /* NSData+Base64.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSData+Base64.m"; sourceTree = "<group>"; };
 		B5D8D78D173DFC7C00B68FA2 /* NSData+Base64.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSData+Base64.h"; sourceTree = "<group>"; };
+		B5D8D78F173E1CA300B68FA2 /* NSTimer+Blocks.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSTimer+Blocks.h"; sourceTree = "<group>"; };
+		B5D8D790173E1CA300B68FA2 /* NSTimer+Blocks.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSTimer+Blocks.m"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -1223,6 +1226,8 @@
 				B542275416CDEA580020F300 /* CommitFile.h */,
 				B542275516CDEA580020F300 /* CommitFile.m */,
 				B54F69E116D2F69C00978DD9 /* Notification.h */,
+				B5D8D78F173E1CA300B68FA2 /* NSTimer+Blocks.h */,
+				B5D8D790173E1CA300B68FA2 /* NSTimer+Blocks.m */,
 				B54F69E216D2F69C00978DD9 /* Notification.m */,
 				B511D44A16DB36AE00DD0ED5 /* PullRequest.h */,
 				B511D44B16DB36AF00DD0ED5 /* PullRequest.m */,
@@ -1875,6 +1880,7 @@
 				B5D8D787173DF77000B68FA2 /* ReadmeViewController.m in Sources */,
 				B5D8D78B173DF81D00B68FA2 /* Readme.m in Sources */,
 				B5D8D78E173DFC7D00B68FA2 /* NSData+Base64.m in Sources */,
+				B5D8D791173E1CA300B68FA2 /* NSTimer+Blocks.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

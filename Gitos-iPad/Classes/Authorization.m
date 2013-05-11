@@ -52,6 +52,7 @@
              @"public_repo",
              @"repo",
              @"repo:status",
+             @"delete_repo",
              @"notifications",
              @"gist"];
 }
