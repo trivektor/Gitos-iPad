@@ -46,8 +46,9 @@
 - (void)fetchBranches;
 - (void)fetchIssuesForPage:(int)page;
 - (void)fetchFullInfo;
-- (void)save:(NSDictionary *)info;
 - (void)fetchReadme;
+- (void)fetchLanguages;
+- (void)save:(NSDictionary *)info;
 - (BOOL)isDestroyable;
 - (void)destroy;
 

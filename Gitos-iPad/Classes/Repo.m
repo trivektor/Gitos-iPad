@@ -7,6 +7,9 @@
 //
 
 #import "Repo.h"
+#import "Underscore-Prefix.pch"
+#import "Underscore+Functional.h"
+#import "Underscore.h"
 
 @implementation Repo
 
@@ -389,6 +392,44 @@
                                                             object:nil];
         NSLog(@"%@", error);
     }];
+
+    [operation start];
+}
+
+- (void)fetchLanguages
+{
+    NSURL *languagesUrl = [AppHelper prepUrlForApiCall:[NSString stringWithFormat:@"/repos/%@/languages", [self getFullName]]];
+
+    AFHTTPClient *httpClient = [[AFHTTPClient alloc] initWithBaseURL:languagesUrl];
+
+    NSMutableURLRequest *getRequest = [httpClient requestWithMethod:@"GET"
+                                                               path:languagesUrl.absoluteString
+                                                         parameters:[AppHelper getAccessTokenParams]];
+
+    AFHTTPRequestOperation *operation = [[AFHTTPRequestOperation alloc] initWithRequest:getRequest];
+
+    [operation setCompletionBlockWithSuccess:
+     ^(AFHTTPRequestOperation *operation, id responseObject){
+         NSDictionary *json = [NSJSONSerialization JSONObjectWithData:[operation.responseString dataUsingEncoding:NSUTF8StringEncoding] options:NSJSONReadingMutableContainers error:nil];
+
+         NSMutableDictionary *languageStats = [NSMutableDictionary dictionaryWithDictionary:json];
+
+         int total = 0;
+
+         for (id key in json) {
+             total += [[json valueForKey:key] integerValue];
+         }
+
+         [languageStats setValue:[NSNumber numberWithInt:total] forKey:@"Total"];
+
+         [[NSNotificationCenter defaultCenter] postNotificationName:@"RepoLanguagesFetched"
+                                                             object:languageStats];
+     }
+     failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+         [[NSNotificationCenter defaultCenter] postNotificationName:@"RepoLanguagesFetched"
+                                                             object:nil];
+         NSLog(@"%@", error);
+     }];
 
     [operation start];
 }
