@@ -10,4 +10,11 @@
 
 @interface Readme : NSObject
 
+@property (nonatomic, strong) NSDictionary *data;
+
+- (id)initWithData:(NSDictionary *)readmeData;
+
+- (NSString *)getName;
+- (NSData *)getContent;
+
 @end

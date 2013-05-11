@@ -10,4 +10,9 @@
 
 @interface ReadmeViewController : UIViewController
 
+@property (nonatomic, strong) Readme *readme;
+@property (weak, nonatomic) IBOutlet UIWebView *fileView;
+
+- (void)displayReadmeContent;
+
 @end
