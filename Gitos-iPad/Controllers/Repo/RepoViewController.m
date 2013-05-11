@@ -11,7 +11,7 @@
 #import "IssuesViewController.h"
 #import "RepoDetailsCell.h"
 #import "RepoTreeViewController.h"
-#import "RawFileViewController.h"
+#import "ReadmeViewController.h"
 #import "Branch.h"
 
 @interface RepoViewController ()
@@ -116,7 +116,7 @@
 
     [center addObserver:self
                selector:@selector(showReadme:)
-                   name:@"ReadmeQueried"
+                   name:@"ReadmeFetched"
                  object:nil];
 }
 
@@ -201,7 +201,7 @@
             [self.navigationController pushViewController:issuesController animated:YES];
         } else if (indexPath.row == 9) {
             [hud show:YES];
-            [repo getReadme];
+            [repo fetchReadme];
         }
     }
 }
@@ -304,12 +304,9 @@
 {
     [hud hide:YES];
     if (notification.object) {
-        NSDictionary *readmeInfo = (NSDictionary *)notification.object;
-//        RawFileViewController *readmeController = [[RawFileViewController alloc] init];
-//        readmeController.rawFileUrl = [NSURL URLWithString:[readmeInfo valueForKey:@"git_url"]];
-//        readmeController.fileName = @"README";
-        WebsiteViewController *readmeController = [[WebsiteViewController alloc] init];
-        readmeController.requestedUrl = [readmeInfo valueForKey:@"html_url"];
+        ReadmeViewController *readmeController = [[ReadmeViewController alloc] init];
+        readmeController.readme = (Readme *) notification.object;
+
         [self.navigationController pushViewController:readmeController animated:YES];
     } else {
         [AppHelper flashError:@"Repo doesn't seem to have a README" inView:self.view];

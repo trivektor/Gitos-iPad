@@ -9,6 +9,7 @@
 #import <Foundation/Foundation.h>
 #import "Branch.h"
 #import "RepoTreeNode.h"
+#import "Readme.h"
 
 @interface Repo : NSObject
 
@@ -46,7 +47,7 @@
 - (void)fetchIssuesForPage:(int)page;
 - (void)fetchFullInfo;
 - (void)save:(NSDictionary *)info;
-- (void)getReadme;
+- (void)fetchReadme;
 
 - (void)fetchTopLayerForBranch:(Branch *)branch;
 

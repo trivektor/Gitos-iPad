@@ -363,7 +363,7 @@
     [operation start];
 }
 
-- (void)getReadme
+- (void)fetchReadme
 {
     NSURL *readmeUrl = [AppHelper prepUrlForApiCall:[NSString stringWithFormat:@"/repos/%@/readme", [self getFullName]]];
 
@@ -379,11 +379,13 @@
     ^(AFHTTPRequestOperation *operation, id responseObject){
         NSDictionary *json = [NSJSONSerialization JSONObjectWithData:[operation.responseString dataUsingEncoding:NSUTF8StringEncoding] options:NSJSONReadingMutableContainers error:nil];
 
-        [[NSNotificationCenter defaultCenter] postNotificationName:@"ReadmeQueried"
-                                                             object:json];
+        Readme *readme = [[Readme alloc] initWithData:json];
+
+        [[NSNotificationCenter defaultCenter] postNotificationName:@"ReadmeFetched"
+                                                             object:readme];
     }
     failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-        [[NSNotificationCenter defaultCenter] postNotificationName:@"ReadmeQueried"
+        [[NSNotificationCenter defaultCenter] postNotificationName:@"ReadmeFetched"
                                                             object:nil];
         NSLog(@"%@", error);
     }];

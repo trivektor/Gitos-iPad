@@ -319,6 +319,10 @@
 		B5C8187E1736506300FF26AB /* NewRepoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B5C8187C1736506300FF26AB /* NewRepoViewController.m */; };
 		B5C8187F1736506300FF26AB /* NewRepoViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B5C8187D1736506300FF26AB /* NewRepoViewController.xib */; };
 		B5C8188217365B3F00FF26AB /* PullRequestReviewCommentEvent.m in Sources */ = {isa = PBXBuildFile; fileRef = B5C8188117365B3F00FF26AB /* PullRequestReviewCommentEvent.m */; };
+		B5D8D787173DF77000B68FA2 /* ReadmeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B5D8D785173DF77000B68FA2 /* ReadmeViewController.m */; };
+		B5D8D788173DF77000B68FA2 /* ReadmeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B5D8D786173DF77000B68FA2 /* ReadmeViewController.xib */; };
+		B5D8D78B173DF81D00B68FA2 /* Readme.m in Sources */ = {isa = PBXBuildFile; fileRef = B5D8D78A173DF81D00B68FA2 /* Readme.m */; };
+		B5D8D78E173DFC7D00B68FA2 /* NSData+Base64.m in Sources */ = {isa = PBXBuildFile; fileRef = B5D8D78C173DFC7C00B68FA2 /* NSData+Base64.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -761,6 +765,13 @@
 		B5C8187D1736506300FF26AB /* NewRepoViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NewRepoViewController.xib; sourceTree = "<group>"; };
 		B5C8188017365B3F00FF26AB /* PullRequestReviewCommentEvent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PullRequestReviewCommentEvent.h; sourceTree = "<group>"; };
 		B5C8188117365B3F00FF26AB /* PullRequestReviewCommentEvent.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PullRequestReviewCommentEvent.m; sourceTree = "<group>"; };
+		B5D8D784173DF77000B68FA2 /* ReadmeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ReadmeViewController.h; sourceTree = "<group>"; };
+		B5D8D785173DF77000B68FA2 /* ReadmeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ReadmeViewController.m; sourceTree = "<group>"; };
+		B5D8D786173DF77000B68FA2 /* ReadmeViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ReadmeViewController.xib; sourceTree = "<group>"; };
+		B5D8D789173DF81D00B68FA2 /* Readme.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Readme.h; sourceTree = "<group>"; };
+		B5D8D78A173DF81D00B68FA2 /* Readme.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Readme.m; sourceTree = "<group>"; };
+		B5D8D78C173DFC7C00B68FA2 /* NSData+Base64.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSData+Base64.m"; sourceTree = "<group>"; };
+		B5D8D78D173DFC7C00B68FA2 /* NSData+Base64.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSData+Base64.h"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -1176,6 +1187,8 @@
 				B55D90F316B7ABE2009CB90F /* AppConfig.h */,
 				B54603CA16C4D0DD007D4FB3 /* MBProgressHUD.h */,
 				B54603CB16C4D0DD007D4FB3 /* MBProgressHUD.m */,
+				B5D8D78C173DFC7C00B68FA2 /* NSData+Base64.m */,
+				B5D8D78D173DFC7C00B68FA2 /* NSData+Base64.h */,
 				B55D90F416B7ABE2009CB90F /* AppConfig.m */,
 				B55D90F616B7AC11009CB90F /* AppInitialization.h */,
 				B55D90F716B7AC11009CB90F /* AppInitialization.m */,
@@ -1219,6 +1232,8 @@
 				B569D0D416FE7923002216DD /* GitosConstants.m */,
 				B5845771172DC72A00DB13B7 /* CurrentUserManager.h */,
 				B5845772172DC72A00DB13B7 /* CurrentUserManager.m */,
+				B5D8D789173DF81D00B68FA2 /* Readme.h */,
+				B5D8D78A173DF81D00B68FA2 /* Readme.m */,
 			);
 			path = Classes;
 			sourceTree = "<group>";
@@ -1430,6 +1445,9 @@
 				B5C61315172BA05E0039FDD5 /* LoadingViewController.h */,
 				B5C61316172BA05E0039FDD5 /* LoadingViewController.m */,
 				B5C61317172BA05E0039FDD5 /* LoadingViewController.xib */,
+				B5D8D784173DF77000B68FA2 /* ReadmeViewController.h */,
+				B5D8D785173DF77000B68FA2 /* ReadmeViewController.m */,
+				B5D8D786173DF77000B68FA2 /* ReadmeViewController.xib */,
 			);
 			path = Misc;
 			sourceTree = "<group>";
@@ -1726,6 +1744,7 @@
 				B5C818781735E64500FF26AB /* Default-Landscape~ipad.png in Resources */,
 				B5C8187A1735E64E00FF26AB /* Default-Landscape@2x~ipad.png in Resources */,
 				B5C8187F1736506300FF26AB /* NewRepoViewController.xib in Resources */,
+				B5D8D788173DF77000B68FA2 /* ReadmeViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1853,6 +1872,9 @@
 				B5845773172DC72A00DB13B7 /* CurrentUserManager.m in Sources */,
 				B5C8187E1736506300FF26AB /* NewRepoViewController.m in Sources */,
 				B5C8188217365B3F00FF26AB /* PullRequestReviewCommentEvent.m in Sources */,
+				B5D8D787173DF77000B68FA2 /* ReadmeViewController.m in Sources */,
+				B5D8D78B173DF81D00B68FA2 /* Readme.m in Sources */,
+				B5D8D78E173DFC7D00B68FA2 /* NSData+Base64.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
