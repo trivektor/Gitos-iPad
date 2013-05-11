@@ -31,6 +31,7 @@ homePageCell, homePageTextField, visibilityCell, hud;
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
     [self performHousekeepingTasks];
+    [self registerEvents];
 }
 
 - (void)performHousekeepingTasks
@@ -65,6 +66,19 @@ homePageCell, homePageTextField, visibilityCell, hud;
     // Dispose of any resources that can be recreated.
 }
 
+- (void)registerEvents
+{
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(handleSuccessfulCreation:)
+                                                 name:@"RepoCreationSucceeded"
+                                               object:nil];
+
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(handleCreationFailure:)
+                                                 name:@"RepoCreationFailed"
+                                               object:nil];
+}
+
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
     return 1;
@@ -72,7 +86,7 @@ homePageCell, homePageTextField, visibilityCell, hud;
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return 4;
+    return 3;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -80,17 +94,46 @@ homePageCell, homePageTextField, visibilityCell, hud;
     if (indexPath.row == 0) return nameCell;
     if (indexPath.row == 1) return descriptionCell;
     if (indexPath.row == 2) return homePageCell;
-    if (indexPath.row == 3) return visibilityCell;
 
     return nil;
 }
 
 - (void)submitNewRepo
 {
+    [self blurFields];
+
     if (nameTextField.text.length == 0) {
-        [AppHelper flashError:@"Name cannot be blank" inView:self.view];
+        [AppHelper flashError:@"Name cannot be blank"
+                       inView:self.view];
         return;
+    } else {
+        NSDictionary *repoData = @{
+            @"name": nameTextField.text,
+            @"description": descriptionTextField.text,
+            @"homepage": homePageTextField.text
+        };
+        [Repo createNewWithData:repoData];
     }
+}
+
+- (void)handleSuccessfulCreation:(NSNotification *)notification
+{
+    [AppHelper flashAlert:@"Repo created successfully"
+                   inView:self.view];
+}
+
+- (void)handleCreationFailure:(NSNotification *)notification
+{
+    NSMutableArray *errors = (NSMutableArray *) notification.object;
+    [AppHelper flashError:[errors componentsJoinedByString:@", "]
+                   inView:self.view];
+}
+
+- (void)blurFields
+{
+    if ([nameTextField isFirstResponder]) [nameTextField resignFirstResponder];
+    if ([descriptionTextField isFirstResponder]) [descriptionTextField resignFirstResponder];
+    if ([homePageTextField isFirstResponder]) [homePageTextField resignFirstResponder];
 }
 
 @end

@@ -393,4 +393,42 @@
     [operation start];
 }
 
++ (void)createNewWithData:(NSDictionary *)data
+{
+    NSURL *newRepoUrl = [AppHelper prepUrlForApiCall:[NSString stringWithFormat:@"/user/repos?access_token=%@", [AppHelper getAccessToken]]];
+
+    AFHTTPClient *httpClient = [[AFHTTPClient alloc] initWithBaseURL:newRepoUrl];
+    [httpClient setParameterEncoding:AFJSONParameterEncoding];
+
+    NSMutableURLRequest *postRequest = [httpClient requestWithMethod:@"POST"
+                                                               path:newRepoUrl.absoluteString
+                                                         parameters:data];
+
+    AFHTTPRequestOperation *operation = [[AFHTTPRequestOperation alloc] initWithRequest:postRequest];
+
+    [operation setCompletionBlockWithSuccess:
+     ^(AFHTTPRequestOperation *operation, id responseObject){
+         [[NSNotificationCenter defaultCenter] postNotificationName:@"RepoCreationSucceeded"
+                                                             object:operation];
+     }
+     failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+         NSLog(@"%@", error.description);
+
+         NSDictionary *json = [NSJSONSerialization JSONObjectWithData:[operation.responseString dataUsingEncoding:NSUTF8StringEncoding] options:NSJSONReadingMutableContainers error:nil];
+
+         NSArray *_errors = [json valueForKey:@"errors"];
+         NSMutableArray *errors = [[NSMutableArray alloc] initWithCapacity:0];
+
+         for (int i=0; i < _errors.count; i++) {
+             NSDictionary *err = [_errors objectAtIndex:i];
+             [errors addObject:[NSString stringWithFormat:@"%@ %@", [err valueForKey:@"resource"], [err valueForKey:@"message"]]];
+         }
+
+         [[NSNotificationCenter defaultCenter] postNotificationName:@"RepoCreationFailed"
+                                                             object:errors];
+     }];
+
+    [operation start];
+}
+
 @end

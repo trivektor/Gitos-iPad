@@ -25,6 +25,10 @@
 @property (strong, nonatomic) IBOutlet UITableViewCell *visibilityCell;
 
 - (void)performHousekeepingTasks;
+- (void)registerEvents;
 - (void)submitNewRepo;
+- (void)handleSuccessfulCreation:(NSNotification *)notification;
+- (void)handleCreationFailure:(NSNotification *)notification;
+- (void)blurFields;
 
 @end

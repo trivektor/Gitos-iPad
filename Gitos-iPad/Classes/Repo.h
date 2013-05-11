@@ -50,5 +50,6 @@
 - (void)fetchReadme;
 
 - (void)fetchTopLayerForBranch:(Branch *)branch;
++ (void)createNewWithData:(NSDictionary *)data;
 
 @end
