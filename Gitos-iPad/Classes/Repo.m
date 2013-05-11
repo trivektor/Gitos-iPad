@@ -412,18 +412,8 @@
      ^(AFHTTPRequestOperation *operation, id responseObject){
          NSDictionary *json = [NSJSONSerialization JSONObjectWithData:[operation.responseString dataUsingEncoding:NSUTF8StringEncoding] options:NSJSONReadingMutableContainers error:nil];
 
-         NSMutableDictionary *languageStats = [NSMutableDictionary dictionaryWithDictionary:json];
-
-         int total = 0;
-
-         for (id key in json) {
-             total += [[json valueForKey:key] integerValue];
-         }
-
-         [languageStats setValue:[NSNumber numberWithInt:total] forKey:@"Total"];
-
          [[NSNotificationCenter defaultCenter] postNotificationName:@"RepoLanguagesFetched"
-                                                             object:languageStats];
+                                                             object:json];
      }
      failure:^(AFHTTPRequestOperation *operation, NSError *error) {
          [[NSNotificationCenter defaultCenter] postNotificationName:@"RepoLanguagesFetched"

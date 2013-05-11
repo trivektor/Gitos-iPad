@@ -324,6 +324,8 @@
 		B5D8D78B173DF81D00B68FA2 /* Readme.m in Sources */ = {isa = PBXBuildFile; fileRef = B5D8D78A173DF81D00B68FA2 /* Readme.m */; };
 		B5D8D78E173DFC7D00B68FA2 /* NSData+Base64.m in Sources */ = {isa = PBXBuildFile; fileRef = B5D8D78C173DFC7C00B68FA2 /* NSData+Base64.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		B5D8D791173E1CA300B68FA2 /* NSTimer+Blocks.m in Sources */ = {isa = PBXBuildFile; fileRef = B5D8D790173E1CA300B68FA2 /* NSTimer+Blocks.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		B5D8D795173E26C600B68FA2 /* RepoLanguagesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B5D8D793173E26C600B68FA2 /* RepoLanguagesViewController.m */; };
+		B5D8D796173E26C600B68FA2 /* RepoLanguagesViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B5D8D794173E26C600B68FA2 /* RepoLanguagesViewController.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -775,6 +777,9 @@
 		B5D8D78D173DFC7C00B68FA2 /* NSData+Base64.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSData+Base64.h"; sourceTree = "<group>"; };
 		B5D8D78F173E1CA300B68FA2 /* NSTimer+Blocks.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSTimer+Blocks.h"; sourceTree = "<group>"; };
 		B5D8D790173E1CA300B68FA2 /* NSTimer+Blocks.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSTimer+Blocks.m"; sourceTree = "<group>"; };
+		B5D8D792173E26C600B68FA2 /* RepoLanguagesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RepoLanguagesViewController.h; sourceTree = "<group>"; };
+		B5D8D793173E26C600B68FA2 /* RepoLanguagesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RepoLanguagesViewController.m; sourceTree = "<group>"; };
+		B5D8D794173E26C600B68FA2 /* RepoLanguagesViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RepoLanguagesViewController.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -1372,6 +1377,9 @@
 				B5C8187B1736506300FF26AB /* NewRepoViewController.h */,
 				B5C8187C1736506300FF26AB /* NewRepoViewController.m */,
 				B5C8187D1736506300FF26AB /* NewRepoViewController.xib */,
+				B5D8D792173E26C600B68FA2 /* RepoLanguagesViewController.h */,
+				B5D8D793173E26C600B68FA2 /* RepoLanguagesViewController.m */,
+				B5D8D794173E26C600B68FA2 /* RepoLanguagesViewController.xib */,
 			);
 			path = Repo;
 			sourceTree = "<group>";
@@ -1750,6 +1758,7 @@
 				B5C8187A1735E64E00FF26AB /* Default-Landscape@2x~ipad.png in Resources */,
 				B5C8187F1736506300FF26AB /* NewRepoViewController.xib in Resources */,
 				B5D8D788173DF77000B68FA2 /* ReadmeViewController.xib in Resources */,
+				B5D8D796173E26C600B68FA2 /* RepoLanguagesViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1881,6 +1890,7 @@
 				B5D8D78B173DF81D00B68FA2 /* Readme.m in Sources */,
 				B5D8D78E173DFC7D00B68FA2 /* NSData+Base64.m in Sources */,
 				B5D8D791173E1CA300B68FA2 /* NSTimer+Blocks.m in Sources */,
+				B5D8D795173E26C600B68FA2 /* RepoLanguagesViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

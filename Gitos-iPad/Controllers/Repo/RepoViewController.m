@@ -11,6 +11,7 @@
 #import "IssuesViewController.h"
 #import "RepoDetailsCell.h"
 #import "RepoTreeViewController.h"
+#import "RepoLanguagesViewController.h"
 #import "ReadmeViewController.h"
 #import "Branch.h"
 #import "NSTimer+Blocks.h"
@@ -198,20 +199,28 @@
         RepoTreeViewController *repoTreeController = [[RepoTreeViewController alloc] init];
         repoTreeController.branch = [repoBranches objectAtIndex:indexPath.row];
         repoTreeController.repo   = repo;
-        
-        [self.navigationController pushViewController:repoTreeController animated:YES];
+
+        [self.navigationController pushViewController:repoTreeController
+                                             animated:YES];
     } else if (tableView == detailsTable) {
         if (indexPath.row == 1) {
             NSString *url = [repo getHomepage];
             if (url != nil) {
                 WebsiteViewController *websiteController = [[WebsiteViewController alloc] init];
                 websiteController.requestedUrl = url;
-                [self.navigationController pushViewController:websiteController animated:YES];
+                [self.navigationController pushViewController:websiteController
+                                                     animated:YES];
             }
+        } else if (indexPath.row == 4) {
+            RepoLanguagesViewController *repoLanguagesController = [[RepoLanguagesViewController alloc] init];
+            repoLanguagesController.repo = repo;
+            [self.navigationController pushViewController:repoLanguagesController
+                                                 animated:YES];
         } else if (indexPath.row == 8) {
             IssuesViewController *issuesController = [[IssuesViewController alloc] init];
             issuesController.repo = repo;
-            [self.navigationController pushViewController:issuesController animated:YES];
+            [self.navigationController pushViewController:issuesController
+                                                 animated:YES];
         } else if (indexPath.row == 9) {
             [hud show:YES];
             [repo fetchReadme];
