@@ -194,7 +194,7 @@
 
             if ([[authorization getName] isEqualToString:@"Gitos"] && [authorizationId isEqualToString:storedAuthorizationId]) {
 
-                NSLog(@"deleting existing authorization id: %@", storedAuthorizationId);
+                //NSLog(@"deleting existing authorization id: %@", storedAuthorizationId);
 
                 NSMutableURLRequest *deleteRequest = [httpClient requestWithMethod:@"DELETE" path:[NSString stringWithFormat:@"/authorizations/%@", storedAuthorizationId] parameters:nil];
                 AFHTTPRequestOperation *deleteOperation = [[AFHTTPRequestOperation alloc] initWithRequest:deleteRequest];

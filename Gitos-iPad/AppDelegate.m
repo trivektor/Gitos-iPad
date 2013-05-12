@@ -222,7 +222,7 @@
 {
     NSString *authToken = [SSKeychain passwordForService:@"access_token" account:@"gitos"];
     
-    NSLog(@"authToken when app starts is %@", authToken);
+    //NSLog(@"authToken when app starts is %@", authToken);
     
     if (authToken != nil && ![authToken isEqualToString:@""]) {
         LoadingViewController *loadingController = [[LoadingViewController alloc] init];
