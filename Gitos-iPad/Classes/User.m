@@ -45,18 +45,22 @@
 - (NSString *)getEventsUrl
 {
     NSString *eventsUrl = [data valueForKey:@"events_url"];
-    return [eventsUrl stringByReplacingOccurrencesOfString:@"{/privacy}" withString:@""];
+    return [eventsUrl stringByReplacingOccurrencesOfString:@"{/privacy}"
+                                                withString:@""];
 }
 
 - (NSString *)getStarredUrl
 {
     NSString *starredUrl = [data valueForKey:@"starred_url"];
-    return [starredUrl stringByReplacingOccurrencesOfString:@"{/owner}{/repo}" withString:@""];
+    return [starredUrl stringByReplacingOccurrencesOfString:@"{/owner}{/repo}"
+                                                 withString:@""];
 }
 
 - (NSString *)getFollowingUrl
 {
-    return [data valueForKey:@"following_url"];
+    NSString *followingUrl = [data valueForKey:@"following_url"];
+    return [followingUrl stringByReplacingOccurrencesOfString:@"{/other_user}"
+                                                   withString:@""];
 }
 
 - (NSString *)getFollowersUrl
