@@ -86,8 +86,15 @@
     }
 
     NSString *key = [[languages allKeys] objectAtIndex:indexPath.row];
-    float percentage = [[[languages allValues] objectAtIndex:indexPath.row] floatValue] / 1000;
-    cell.textLabel.text = [NSString stringWithFormat:@"%@ (%.02f %%)", key, percentage];
+    NSArray *values = [languages allValues];
+
+    int total = 0;
+    for (int i=0; i < values.count; i++) {
+        total += [[values objectAtIndex:i] intValue];
+    }
+
+    float percentage = 100.0 * ([[values objectAtIndex:indexPath.row] floatValue] / total);
+    cell.textLabel.text = [NSString stringWithFormat:@"%@ (%.01f %%)", key, percentage];
     cell.textLabel.font = [UIFont fontWithName:@"Arial-BoldMT" size:14.0];
 
     return cell;
