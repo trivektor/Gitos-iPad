@@ -13,5 +13,7 @@
 @property (nonatomic, strong) NSDictionary *data;
 
 - (id)initWithData:(NSDictionary *)gistData;
+- (User *)getUser;
+- (NSString *)getBody;
 
 @end

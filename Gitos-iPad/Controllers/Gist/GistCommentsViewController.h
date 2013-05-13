@@ -12,6 +12,7 @@
 @interface GistCommentsViewController : UIViewController
 
 @property (nonatomic, strong) Gist *gist;
+@property (weak, nonatomic) IBOutlet UIWebView *commentsView;
 
 - (void)performHouseKeepingTasks;
 - (void)registerEvents;

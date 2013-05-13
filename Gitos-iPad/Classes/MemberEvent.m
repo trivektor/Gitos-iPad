@@ -12,7 +12,6 @@
 
 - (NSMutableAttributedString *)toString
 {
-    NSDictionary *payload = [self getPayload];
     User *actor = [self getActor];
     Repo *repo = [self getRepo];
     User *member = [self getMember];
@@ -37,7 +36,6 @@
 
 - (NSString *)toHTMLString
 {
-    NSDictionary *payload = [self getPayload];
     User *actor = [self getActor];
     Repo *repo = [self getRepo];
     User *member = [self getMember];

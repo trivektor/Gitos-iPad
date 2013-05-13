@@ -19,4 +19,14 @@
     return self;
 }
 
+- (User *)getUser
+{
+    return [[User alloc] initWithData:[data valueForKey:@"user"]];
+}
+
+- (NSString *)getBody
+{
+    return [data valueForKey:@"body"];
+}
+
 @end
