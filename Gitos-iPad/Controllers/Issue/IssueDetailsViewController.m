@@ -7,6 +7,7 @@
 //
 
 #import "IssueDetailsViewController.h"
+#import "NewIssueCommentViewController.h"
 #import "Comment.h"
 
 @interface UILabel (BPExtensions)
@@ -50,6 +51,13 @@
     hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
     hud.mode = MBProgressHUDAnimationFade;
     hud.labelText = @"Loading";
+
+    UIBarButtonItem *addCommentButton = [[UIBarButtonItem alloc] initWithTitle:@"Add Comment"
+                                                                         style:UIBarButtonItemStyleBordered
+                                                                        target:self
+                                                                        action:@selector(addComment)];
+
+    self.navigationItem.rightBarButtonItem = addCommentButton;
 }
 
 - (void)registerEvents
@@ -102,6 +110,17 @@
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
     
+}
+
+- (void)addComment
+{
+    NewIssueCommentViewController *newIssueCommentController = [[NewIssueCommentViewController alloc] init];
+    UINavigationController *navController = [[UINavigationController alloc] initWithRootViewController:newIssueCommentController];
+    navController.modalTransitionStyle = UIModalTransitionStyleCoverVertical;
+
+    [self presentViewController:navController
+                       animated:YES
+                     completion:nil];
 }
 
 @end

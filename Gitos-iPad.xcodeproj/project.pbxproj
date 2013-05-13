@@ -330,6 +330,8 @@
 		B5F10F8B173F83AE00263242 /* GistCommentsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B5F10F89173F83AE00263242 /* GistCommentsViewController.xib */; };
 		B5F10F8D173F850800263242 /* gist_comments.html in Resources */ = {isa = PBXBuildFile; fileRef = B5F10F8C173F850800263242 /* gist_comments.html */; };
 		B5F10F90173F863900263242 /* GistComment.m in Sources */ = {isa = PBXBuildFile; fileRef = B5F10F8F173F863900263242 /* GistComment.m */; };
+		B5F10F971740ACB500263242 /* NewIssueCommentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B5F10F951740ACB500263242 /* NewIssueCommentViewController.m */; };
+		B5F10F981740ACB500263242 /* NewIssueCommentViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B5F10F961740ACB500263242 /* NewIssueCommentViewController.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -790,6 +792,9 @@
 		B5F10F8C173F850800263242 /* gist_comments.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = gist_comments.html; sourceTree = "<group>"; };
 		B5F10F8E173F863900263242 /* GistComment.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GistComment.h; sourceTree = "<group>"; };
 		B5F10F8F173F863900263242 /* GistComment.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GistComment.m; sourceTree = "<group>"; };
+		B5F10F941740ACB400263242 /* NewIssueCommentViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NewIssueCommentViewController.h; sourceTree = "<group>"; };
+		B5F10F951740ACB500263242 /* NewIssueCommentViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NewIssueCommentViewController.m; sourceTree = "<group>"; };
+		B5F10F961740ACB500263242 /* NewIssueCommentViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NewIssueCommentViewController.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -1421,6 +1426,9 @@
 				B5A1045D1723C1ED00487A47 /* IssuesViewController.h */,
 				B5A1045E1723C1ED00487A47 /* IssuesViewController.m */,
 				B5A1045F1723C1ED00487A47 /* IssuesViewController.xib */,
+				B5F10F941740ACB400263242 /* NewIssueCommentViewController.h */,
+				B5F10F951740ACB500263242 /* NewIssueCommentViewController.m */,
+				B5F10F961740ACB500263242 /* NewIssueCommentViewController.xib */,
 			);
 			path = Issue;
 			sourceTree = "<group>";
@@ -1777,6 +1785,7 @@
 				B5D8D796173E26C600B68FA2 /* RepoLanguagesViewController.xib in Resources */,
 				B5F10F8B173F83AE00263242 /* GistCommentsViewController.xib in Resources */,
 				B5F10F8D173F850800263242 /* gist_comments.html in Resources */,
+				B5F10F981740ACB500263242 /* NewIssueCommentViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1911,6 +1920,7 @@
 				B5D8D795173E26C600B68FA2 /* RepoLanguagesViewController.m in Sources */,
 				B5F10F8A173F83AE00263242 /* GistCommentsViewController.m in Sources */,
 				B5F10F90173F863900263242 /* GistComment.m in Sources */,
+				B5F10F971740ACB500263242 /* NewIssueCommentViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

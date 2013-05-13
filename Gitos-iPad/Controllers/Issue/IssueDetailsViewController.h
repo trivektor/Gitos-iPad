@@ -21,5 +21,6 @@
 - (void)performHouseKeepingTasks;
 - (void)registerEvents;
 - (void)displayComments:(NSNotification *)notification;
+- (void)addComment;
 
 @end
