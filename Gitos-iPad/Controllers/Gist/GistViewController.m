@@ -10,6 +10,7 @@
 #import "GistDetailsCell.h"
 #import "GistFile.h"
 #import "GistRawFileViewController.h"
+#import "GistCommentsViewController.h"
 #import "WebsiteViewController.h"
 
 @interface GistViewController ()
@@ -69,20 +70,22 @@
 
 - (void)registerEvents
 {
-    [[NSNotificationCenter defaultCenter] addObserver:self
-                                             selector:@selector(displayGistStats:)
-                                                 name:@"GistStatsFetched"
-                                               object:nil];
+    NSNotificationCenter *center = [NSNotificationCenter defaultCenter];
 
-    [[NSNotificationCenter defaultCenter] addObserver:self
-                                             selector:@selector(prepareActionOptionsForStatus:)
-                                                 name:@"GistStarringChecked"
-                                               object:nil];
+    [center addObserver:self
+               selector:@selector(displayGistStats:)
+                   name:@"GistStatsFetched"
+                 object:nil];
 
-    [[NSNotificationCenter defaultCenter] addObserver:self
-                                             selector:@selector(updateStarredStatus)
-                                                 name:@"GistStarringUpdated"
-                                               object:nil];
+    [center addObserver:self
+               selector:@selector(prepareActionOptionsForStatus:)
+                   name:@"GistStarringChecked"
+                 object:nil];
+
+    [center addObserver:self
+               selector:@selector(updateStarredStatus)
+                   name:@"GistStarringUpdated"
+                 object:nil];
 }
 
 - (void)getGistStats
@@ -162,7 +165,15 @@
     if (tableView == filesTable) {
         GistRawFileViewController *gistRawFileController = [[GistRawFileViewController alloc] init];
         gistRawFileController.gistFile = [files objectAtIndex:indexPath.row];
-        [self.navigationController pushViewController:gistRawFileController animated:YES];
+        [self.navigationController pushViewController:gistRawFileController
+                                             animated:YES];
+    } else if (tableView == detailsTable) {
+        if (indexPath.row == 2) {
+            GistCommentsViewController *gistCommentsController = [[GistCommentsViewController alloc] init];
+            gistCommentsController.gist = gist;
+            [self.navigationController pushViewController:gistCommentsController
+                                                 animated:YES];
+        }
     }
 }
 

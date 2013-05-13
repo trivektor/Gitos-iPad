@@ -8,6 +8,7 @@
 
 #import "Gist.h"
 #import "GistFile.h"
+#import "GistComment.h"
 
 @implementation Gist
 
@@ -98,6 +99,11 @@
     return [data valueForKey:@"html_url"];
 }
 
+- (NSString *)getCommentsUrl
+{
+    return [data valueForKey:@"comments_url"];
+}
+
 - (NSString *)convertToRelativeDate:(NSString *)originalDateString
 {
     NSDate *date  = [dateFormatter dateFromString:originalDateString];
@@ -149,6 +155,39 @@
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
         NSLog(@"%@", error);
     }];
+    [operation start];
+}
+
+- (void)fetchComments
+{
+    NSURL *commentsUrl = [NSURL URLWithString:[self getCommentsUrl]];
+
+    AFHTTPClient *httpClient = [[AFHTTPClient alloc] initWithBaseURL:commentsUrl];
+
+    NSMutableURLRequest *getRequest = [httpClient requestWithMethod:@"GET"
+                                                               path:commentsUrl.absoluteString
+                                                         parameters:[AppHelper getAccessTokenParams]];
+
+    AFHTTPRequestOperation *operation = [[AFHTTPRequestOperation alloc] initWithRequest:getRequest];
+
+    [operation setCompletionBlockWithSuccess:^(AFHTTPRequestOperation *operation, id responseObject) {
+        NSString *response = [operation responseString];
+
+        NSArray *json = [NSJSONSerialization JSONObjectWithData:[response dataUsingEncoding:NSUTF8StringEncoding] options:NSJSONReadingMutableContainers error:nil];
+
+        NSMutableArray *comments = [[NSMutableArray alloc] initWithCapacity:0];
+
+        for (int i=0; i < json.count; i++) {
+            [comments addObject:[[GistComment alloc] initWithData:[json objectAtIndex:i]]];
+        }
+
+        [[NSNotificationCenter defaultCenter] postNotificationName:@"GistCommentsFetched"
+                                                            object:comments];
+
+    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        NSLog(@"%@", error);
+    }];
+
     [operation start];
 }
 

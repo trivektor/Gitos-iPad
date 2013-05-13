@@ -31,8 +31,10 @@
 - (NSString *)getUrl;
 - (NSString *)getStarredUrl;
 - (NSString *)getHtmlUrl;
+- (NSString *)getCommentsUrl;
 - (void)checkStar;
 - (void)fetchStats;
+- (void)fetchComments;
 + (void)save:(NSDictionary *)data;
 
 @end
