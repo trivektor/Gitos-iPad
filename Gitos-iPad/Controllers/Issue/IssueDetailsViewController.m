@@ -71,12 +71,26 @@
     for (int i=0; i < comments.count; i++) {
         comment = [comments objectAtIndex:i];
         user = [comment getUser];
-        commentHtmlString = [commentHtmlString stringByAppendingFormat:@"<tr><td><img src='%@' class='avatar pull-left' /><div class='comment-details'><b>%@</b><p>%@</p></div></td></tr>", [user getAvatarUrl], [user getLogin], [comment getBody]];
+        commentHtmlString = [commentHtmlString stringByAppendingFormat:@"<tr><td><img src='%@' class='avatar pull-left' /><div class='comment-details'><b>%@</b><span class='lightgrey'>%@</span><p>%@</p></div></td></tr>",
+                             [user getAvatarUrl],
+                             [user getLogin],
+                             [NSString stringWithFormat:@" commented %@", [comment getCreatedAt]],
+                             [comment getBody]];
     }
-    
-    NSString *issueDetailsPath = [[NSBundle mainBundle] pathForResource:@"issue_details" ofType:@"html"];
-    NSString *issueDetails = [NSString stringWithContentsOfFile:issueDetailsPath encoding:NSUTF8StringEncoding error:nil];
-    NSString *contentHtml = [NSString stringWithFormat:issueDetails, [owner getAvatarUrl], [issue getState], [owner getLogin], [issue getCreatedAt], [issue getTitle], [issue getBody], commentHtmlString];
+
+    NSString *issueDetailsPath = [[NSBundle mainBundle] pathForResource:@"issue_details"
+                                                                 ofType:@"html"];
+    NSString *issueDetails = [NSString stringWithContentsOfFile:issueDetailsPath
+                                                       encoding:NSUTF8StringEncoding
+                                                          error:nil];
+    NSString *contentHtml = [NSString stringWithFormat:issueDetails,
+                             [owner getAvatarUrl],
+                             [issue getState],
+                             [owner getLogin],
+                             [issue getCreatedAt],
+                             [issue getTitle],
+                             [issue getBody],
+                             commentHtmlString];
     NSURL *baseUrl = [NSURL fileURLWithPath:[[NSBundle mainBundle] bundlePath]];
     [detailsView loadHTMLString:contentHtml baseURL:baseUrl];
 

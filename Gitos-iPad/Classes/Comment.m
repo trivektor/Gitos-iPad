@@ -10,7 +10,7 @@
 
 @implementation Comment
 
-@synthesize data, relativeDateDescriptor, dateFormatter;
+@synthesize data, relativeDateDescriptor, dateFormatter, createdAt;
 
 - (id)initWithData:(NSDictionary *)commentData
 {
@@ -19,6 +19,7 @@
     relativeDateDescriptor = [[RelativeDateDescriptor alloc] initWithPriorDateDescriptionFormat:@"%@ ago" postDateDescriptionFormat:@"in %@"];
     dateFormatter = [[NSDateFormatter alloc] init];
     dateFormatter.dateFormat = @"yyyy-MM-dd'T'HH:mm:ssZZ";
+    createdAt = [self convertToRelativeDate:[data valueForKey:@"created_at"]];
     return self;
 }
 
@@ -34,7 +35,7 @@
 
 - (NSString *)getCreatedAt
 {
-    return [self convertToRelativeDate:[data valueForKey:@"created_at"]];
+    return createdAt;
 }
 
 - (NSString *)getUpdatedAt

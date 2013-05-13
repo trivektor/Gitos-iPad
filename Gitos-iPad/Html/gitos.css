@@ -53,7 +53,7 @@ table td, table th {
 
 #issue-comments-table .comment-details {
     margin-left: 60px;
-    max-width: 91%;
+    margin-right: 0;
 }
 
 #commit-table .avatar {
@@ -97,4 +97,8 @@ table td, table th {
 #contributions .month {
     padding: 8px;
     border-bottom: 1px solid #ddd;
+}
+
+.lightgrey {
+    color: #aaa;
 }

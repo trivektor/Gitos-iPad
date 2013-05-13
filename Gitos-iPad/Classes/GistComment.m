@@ -10,12 +10,16 @@
 
 @implementation GistComment
 
-@synthesize data;
+@synthesize data, createdAt, relativeDateDescriptor, dateFormatter;
 
 - (id)initWithData:(NSDictionary *)gistData
 {
     self = [super init];
     data = gistData;
+    relativeDateDescriptor = [[RelativeDateDescriptor alloc] initWithPriorDateDescriptionFormat:@"%@ ago" postDateDescriptionFormat:@"in %@"];
+    dateFormatter = [[NSDateFormatter alloc] init];
+    dateFormatter.dateFormat = @"yyyy-MM-dd'T'HH:mm:ssZZ";
+    createdAt = [self convertToRelativeDate:[data valueForKey:@"created_at"]];
     return self;
 }
 
@@ -27,6 +31,17 @@
 - (NSString *)getBody
 {
     return [data valueForKey:@"body"];
+}
+
+- (NSString *)getCreatedAt
+{
+    return createdAt;
+}
+
+- (NSString *)convertToRelativeDate:(NSString *)originalDateString
+{
+    NSDate *date  = [dateFormatter dateFromString:originalDateString];
+    return [relativeDateDescriptor describeDate:date relativeTo:[NSDate date]];
 }
 
 @end

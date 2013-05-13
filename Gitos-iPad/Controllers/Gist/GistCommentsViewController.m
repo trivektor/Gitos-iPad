@@ -63,7 +63,11 @@
     for (int i=0; i < comments.count; i++) {
         GistComment *comment = [comments objectAtIndex:i];
         User *user = [comment getUser];
-        commentHtmlString = [commentHtmlString stringByAppendingFormat:@"<tr><td><img src='%@' class='avatar pull-left' /><div class='comment-details'><b>%@</b><p>%@</p></div></td></tr>", [user getAvatarUrl], [user getLogin], [comment getBody]];
+        commentHtmlString = [commentHtmlString stringByAppendingFormat:@"<tr><td><img src='%@' class='avatar pull-left' /><div class='comment-details'><b>%@</b><span class='lightgrey'> commented %@</span><p>%@</p></div></td></tr>",
+                             [user getAvatarUrl],
+                             [user getLogin],
+                             [comment getCreatedAt],
+                             [comment getBody]];
     }
 
     NSString *gistCommentsPath = [[NSBundle mainBundle] pathForResource:@"gist_comments" ofType:@"html"];

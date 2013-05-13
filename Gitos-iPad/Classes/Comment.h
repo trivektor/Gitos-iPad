@@ -15,6 +15,7 @@
 @property (nonatomic, strong) NSDateFormatter *dateFormatter;
 @property (nonatomic, strong) User *user;
 @property (nonatomic, strong) RelativeDateDescriptor *relativeDateDescriptor;
+@property (nonatomic, strong) NSString *createdAt;
 
 - (id)initWithData:(NSDictionary *)commentData;
 
