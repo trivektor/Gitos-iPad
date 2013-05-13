@@ -115,6 +115,7 @@
 - (void)addComment
 {
     NewIssueCommentViewController *newIssueCommentController = [[NewIssueCommentViewController alloc] init];
+    newIssueCommentController.issue = issue;
     UINavigationController *navController = [[UINavigationController alloc] initWithRootViewController:newIssueCommentController];
     navController.modalTransitionStyle = UIModalTransitionStyleCoverVertical;
 

@@ -33,5 +33,6 @@
 - (NSString *)getBody;
 
 - (void)fetchCommentsForPage:(int)page;
+- (void)createComment:(NSString *)comment;
 
 @end

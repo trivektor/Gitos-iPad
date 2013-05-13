@@ -10,7 +10,12 @@
 
 @interface NewIssueCommentViewController : UIViewController
 
+@property (weak, nonatomic) IBOutlet UITextView *commentTextField;
+@property (nonatomic, strong) Repo *repo;
+@property (nonatomic, strong) Issue *issue;
+
 - (void)performHouseKeepingTasks;
 - (void)dismiss;
+- (void)submitComment;
 
 @end

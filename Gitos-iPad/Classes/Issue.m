@@ -128,4 +128,31 @@
     [operation start];
 }
 
+- (void)createComment:(NSString *)comment
+{
+    NSURL *newCommentUrl = [NSURL URLWithString:[NSString stringWithFormat:@"%@?access_token=%@",
+                                                 [self getCommentsUrl],
+                                                 [AppHelper getAccessToken]]];
+
+    NSDictionary *params = @{@"body": comment};
+
+    AFHTTPClient *httpClient = [[AFHTTPClient alloc] initWithBaseURL:newCommentUrl];
+    [httpClient setParameterEncoding:AFJSONParameterEncoding];
+
+    NSMutableURLRequest *postRequest = [httpClient requestWithMethod:@"POST"
+                                                               path:newCommentUrl.absoluteString
+                                                         parameters:params];
+
+    AFHTTPRequestOperation *operation = [[AFHTTPRequestOperation alloc] initWithRequest:postRequest];
+
+    [operation setCompletionBlockWithSuccess:
+     ^(AFHTTPRequestOperation *operation, id responseObject){
+     }
+     failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+         NSLog(@"%@", error);
+     }];
+
+    [operation start];
+}
+
 @end
