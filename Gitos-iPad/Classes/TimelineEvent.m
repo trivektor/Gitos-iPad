@@ -88,6 +88,12 @@
     return [[User alloc] initWithData:[self getTarget]];
 }
 
+- (User *)getMember
+{
+    NSDictionary *payload = [self getPayload];
+    return [[User alloc] initWithData:[payload valueForKey:@"member"]];
+}
+
 - (Gist *)getTargetGist
 {
     return [[Gist alloc] initWithData:[[self getPayload] valueForKey:@"gist"]];

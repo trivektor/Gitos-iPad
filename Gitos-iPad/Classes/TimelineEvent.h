@@ -34,6 +34,7 @@
 - (NSString *)getId;
 - (User *)getActor;
 - (User *)getTargetActor;
+- (User *)getMember;
 - (Repo *)getRepo;
 - (Gist *)getTargetGist;
 - (NSString *)convertToRelativeDate:(NSString *)originalDateString;

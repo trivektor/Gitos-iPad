@@ -14,6 +14,8 @@
 #import "WatchEvent.h"
 #import "CreateEvent.h"
 #import "IssuesEvent.h"
+#import "MemberEvent.h"
+#import "FollowEvent.h"
 #import "IssueCommentEvent.h"
 
 @interface NewsfeedDetailsViewController ()
@@ -107,7 +109,11 @@
     } else if ([url hasPrefix:EVENT_TARGET_ACTOR_PREFIX]) {
 
         ProfileViewController *profileController = [[ProfileViewController alloc] init];
-        profileController.user = [event getTargetActor];
+        if ([event isKindOfClass:[MemberEvent class]]) {
+            profileController.user = [event getMember];
+        } else if ([event isKindOfClass:[FollowEvent class]]) {
+            profileController.user = [event getTargetActor];
+        }
         [self.navigationController pushViewController:profileController
                                              animated:YES];
 

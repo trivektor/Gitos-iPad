@@ -15,13 +15,13 @@
     NSDictionary *payload = [self getPayload];
     User *actor = [self getActor];
     Repo *repo = [self getRepo];
-    NSDictionary *member = [payload valueForKey:@"member"];
+    User *member = [self getMember];
 
     NSMutableAttributedString *actorLogin = [self decorateEmphasizedText:[actor getLogin]];
 
     NSMutableAttributedString *added = [self toAttributedString:@" added "];
 
-    NSMutableAttributedString *memberLogin = [self decorateEmphasizedText:[member valueForKey:@"login"]];
+    NSMutableAttributedString *memberLogin = [self decorateEmphasizedText:[member getLogin]];
 
     NSMutableAttributedString *to = [self toAttributedString:@" to "];
 
@@ -40,7 +40,7 @@
     NSDictionary *payload = [self getPayload];
     User *actor = [self getActor];
     Repo *repo = [self getRepo];
-    User *member = [[User alloc] initWithData:[payload valueForKey:@"member"]];
+    User *member = [self getMember];
 
     NSString *repoName = [repo getName];
 
