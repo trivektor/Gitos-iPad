@@ -30,12 +30,6 @@
 
 - (void)renderForIndexPath:(NSIndexPath *)indexPath
 {
-    // Set the background of a cell when it is selected
-    // http://stackoverflow.com/questions/1998775/uitableview-cell-selected-color
-    UIView *selectedBackgroundView  = [[UIView alloc] init];
-    [selectedBackgroundView setBackgroundColor:[UIColor colorWithPatternImage:[UIImage imageNamed:@"selected_cell_bg.png"]]];
-    self.selectedBackgroundView     = selectedBackgroundView;
-
     fontAwesomeLabel.font      = [UIFont fontWithName:kFontAwesomeFamilyName size:15];
     fontAwesomeLabel.textColor = [UIColor whiteColor];
     optionLabel.textColor      = [UIColor whiteColor];
@@ -87,6 +81,11 @@
 
     fontAwesomeLabel.text = fontAwesome;
     optionLabel.text      = optionLabelText;
+
+    UIView *backgroundView = [[UIView alloc] initWithFrame:self.frame];
+    backgroundView.backgroundColor = [UIColor alizarinColor];
+
+    self.selectedBackgroundView = backgroundView;
 }
 
 @end

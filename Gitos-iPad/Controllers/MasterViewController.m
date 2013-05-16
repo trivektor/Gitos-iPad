@@ -20,6 +20,7 @@
 #import "FeedbackViewController.h"
 #import "NotificationsViewController.h"
 #import "IIViewDeckController.h"
+#import "UIColor+FlatUI.h"
 
 @interface MasterViewController ()
 
@@ -53,10 +54,15 @@
     UINib *nib = [UINib nibWithNibName:@"MasterControllerCell" bundle:nil];
 
     [menuTable registerNib:nib forCellReuseIdentifier:@"MasterControllerCell"];
-    [menuTable setBackgroundColor:[UIColor colorWithPatternImage:[UIImage imageNamed:@"magma"]]];
+    [menuTable setBackgroundColor:[UIColor colorWithRed:55/255.0
+                                                  green:55/255.0
+                                                   blue:55/255.0
+                                                  alpha:1.0]];
     [menuTable setSeparatorColor:[UIColor clearColor]];
 
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(toggleViewDeck) name:@"ToggleViewDeck" object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(toggleViewDeck)
+                                                 name:@"ToggleViewDeck" object:nil];
 }
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView

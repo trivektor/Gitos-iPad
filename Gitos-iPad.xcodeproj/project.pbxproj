@@ -123,6 +123,28 @@
 		B51FCB291723C025003A75A6 /* CommitsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B51FCB241723C025003A75A6 /* CommitsViewController.xib */; };
 		B51FCB2A1723C025003A75A6 /* CommitViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B51FCB261723C025003A75A6 /* CommitViewController.m */; };
 		B51FCB2B1723C025003A75A6 /* CommitViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B51FCB271723C025003A75A6 /* CommitViewController.xib */; };
+		B53681121744C44500249BC7 /* FUIAlertView.m in Sources */ = {isa = PBXBuildFile; fileRef = B53680FD1744C44500249BC7 /* FUIAlertView.m */; };
+		B53681131744C44500249BC7 /* FUIButton.m in Sources */ = {isa = PBXBuildFile; fileRef = B53680FF1744C44500249BC7 /* FUIButton.m */; };
+		B53681141744C44500249BC7 /* FUISwitch.m in Sources */ = {isa = PBXBuildFile; fileRef = B53681011744C44500249BC7 /* FUISwitch.m */; };
+		B53681151744C44500249BC7 /* UIBarButtonItem+FlatUI.m in Sources */ = {isa = PBXBuildFile; fileRef = B53681031744C44500249BC7 /* UIBarButtonItem+FlatUI.m */; };
+		B53681161744C44500249BC7 /* UIColor+FlatUI.m in Sources */ = {isa = PBXBuildFile; fileRef = B53681051744C44500249BC7 /* UIColor+FlatUI.m */; };
+		B53681171744C44500249BC7 /* UIFont+FlatUI.m in Sources */ = {isa = PBXBuildFile; fileRef = B53681071744C44500249BC7 /* UIFont+FlatUI.m */; };
+		B53681181744C44500249BC7 /* UIImage+FlatUI.m in Sources */ = {isa = PBXBuildFile; fileRef = B53681091744C44500249BC7 /* UIImage+FlatUI.m */; };
+		B53681191744C44500249BC7 /* UINavigationBar+FlatUI.m in Sources */ = {isa = PBXBuildFile; fileRef = B536810B1744C44500249BC7 /* UINavigationBar+FlatUI.m */; };
+		B536811A1744C44500249BC7 /* UISlider+FlatUI.m in Sources */ = {isa = PBXBuildFile; fileRef = B536810D1744C44500249BC7 /* UISlider+FlatUI.m */; };
+		B536811B1744C44500249BC7 /* UIStepper+FlatUI.m in Sources */ = {isa = PBXBuildFile; fileRef = B536810F1744C44500249BC7 /* UIStepper+FlatUI.m */; };
+		B536811C1744C44500249BC7 /* UITabBar+FlatUI.m in Sources */ = {isa = PBXBuildFile; fileRef = B53681111744C44500249BC7 /* UITabBar+FlatUI.m */; };
+		B53681281744C48400249BC7 /* Lato-Black.ttf in Resources */ = {isa = PBXBuildFile; fileRef = B536811E1744C48400249BC7 /* Lato-Black.ttf */; };
+		B53681291744C48400249BC7 /* Lato-BlackItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = B536811F1744C48400249BC7 /* Lato-BlackItalic.ttf */; };
+		B536812A1744C48400249BC7 /* Lato-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = B53681201744C48400249BC7 /* Lato-Bold.ttf */; };
+		B536812B1744C48400249BC7 /* Lato-BoldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = B53681211744C48400249BC7 /* Lato-BoldItalic.ttf */; };
+		B536812C1744C48400249BC7 /* Lato-Hairline.ttf in Resources */ = {isa = PBXBuildFile; fileRef = B53681221744C48400249BC7 /* Lato-Hairline.ttf */; };
+		B536812D1744C48400249BC7 /* Lato-HairlineItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = B53681231744C48400249BC7 /* Lato-HairlineItalic.ttf */; };
+		B536812E1744C48400249BC7 /* Lato-Italic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = B53681241744C48400249BC7 /* Lato-Italic.ttf */; };
+		B536812F1744C48400249BC7 /* Lato-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = B53681251744C48400249BC7 /* Lato-Light.ttf */; };
+		B53681301744C48400249BC7 /* Lato-LightItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = B53681261744C48400249BC7 /* Lato-LightItalic.ttf */; };
+		B53681311744C48400249BC7 /* Lato-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = B53681271744C48400249BC7 /* Lato-Regular.ttf */; };
+		B53681331744C4ED00249BC7 /* CoreText.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B53681321744C4ED00249BC7 /* CoreText.framework */; };
 		B542274216CCB15D0020F300 /* Commit.m in Sources */ = {isa = PBXBuildFile; fileRef = B542274116CCB15D0020F300 /* Commit.m */; };
 		B542274F16CCBBD30020F300 /* CommitCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B542274E16CCBBD30020F300 /* CommitCell.m */; };
 		B542275116CCBBDF0020F300 /* CommitCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B542275016CCBBDF0020F300 /* CommitCell.xib */; };
@@ -460,6 +482,39 @@
 		B51FCB251723C025003A75A6 /* CommitViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CommitViewController.h; sourceTree = "<group>"; };
 		B51FCB261723C025003A75A6 /* CommitViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CommitViewController.m; sourceTree = "<group>"; };
 		B51FCB271723C025003A75A6 /* CommitViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CommitViewController.xib; sourceTree = "<group>"; };
+		B53680FC1744C44500249BC7 /* FUIAlertView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FUIAlertView.h; sourceTree = "<group>"; };
+		B53680FD1744C44500249BC7 /* FUIAlertView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FUIAlertView.m; sourceTree = "<group>"; };
+		B53680FE1744C44500249BC7 /* FUIButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FUIButton.h; sourceTree = "<group>"; };
+		B53680FF1744C44500249BC7 /* FUIButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FUIButton.m; sourceTree = "<group>"; };
+		B53681001744C44500249BC7 /* FUISwitch.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FUISwitch.h; sourceTree = "<group>"; };
+		B53681011744C44500249BC7 /* FUISwitch.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FUISwitch.m; sourceTree = "<group>"; };
+		B53681021744C44500249BC7 /* UIBarButtonItem+FlatUI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIBarButtonItem+FlatUI.h"; sourceTree = "<group>"; };
+		B53681031744C44500249BC7 /* UIBarButtonItem+FlatUI.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIBarButtonItem+FlatUI.m"; sourceTree = "<group>"; };
+		B53681041744C44500249BC7 /* UIColor+FlatUI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor+FlatUI.h"; sourceTree = "<group>"; };
+		B53681051744C44500249BC7 /* UIColor+FlatUI.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+FlatUI.m"; sourceTree = "<group>"; };
+		B53681061744C44500249BC7 /* UIFont+FlatUI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIFont+FlatUI.h"; sourceTree = "<group>"; };
+		B53681071744C44500249BC7 /* UIFont+FlatUI.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIFont+FlatUI.m"; sourceTree = "<group>"; };
+		B53681081744C44500249BC7 /* UIImage+FlatUI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+FlatUI.h"; sourceTree = "<group>"; };
+		B53681091744C44500249BC7 /* UIImage+FlatUI.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+FlatUI.m"; sourceTree = "<group>"; };
+		B536810A1744C44500249BC7 /* UINavigationBar+FlatUI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UINavigationBar+FlatUI.h"; sourceTree = "<group>"; };
+		B536810B1744C44500249BC7 /* UINavigationBar+FlatUI.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UINavigationBar+FlatUI.m"; sourceTree = "<group>"; };
+		B536810C1744C44500249BC7 /* UISlider+FlatUI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UISlider+FlatUI.h"; sourceTree = "<group>"; };
+		B536810D1744C44500249BC7 /* UISlider+FlatUI.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UISlider+FlatUI.m"; sourceTree = "<group>"; };
+		B536810E1744C44500249BC7 /* UIStepper+FlatUI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIStepper+FlatUI.h"; sourceTree = "<group>"; };
+		B536810F1744C44500249BC7 /* UIStepper+FlatUI.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIStepper+FlatUI.m"; sourceTree = "<group>"; };
+		B53681101744C44500249BC7 /* UITabBar+FlatUI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UITabBar+FlatUI.h"; sourceTree = "<group>"; };
+		B53681111744C44500249BC7 /* UITabBar+FlatUI.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UITabBar+FlatUI.m"; sourceTree = "<group>"; };
+		B536811E1744C48400249BC7 /* Lato-Black.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Lato-Black.ttf"; sourceTree = "<group>"; };
+		B536811F1744C48400249BC7 /* Lato-BlackItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Lato-BlackItalic.ttf"; sourceTree = "<group>"; };
+		B53681201744C48400249BC7 /* Lato-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Lato-Bold.ttf"; sourceTree = "<group>"; };
+		B53681211744C48400249BC7 /* Lato-BoldItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Lato-BoldItalic.ttf"; sourceTree = "<group>"; };
+		B53681221744C48400249BC7 /* Lato-Hairline.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Lato-Hairline.ttf"; sourceTree = "<group>"; };
+		B53681231744C48400249BC7 /* Lato-HairlineItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Lato-HairlineItalic.ttf"; sourceTree = "<group>"; };
+		B53681241744C48400249BC7 /* Lato-Italic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Lato-Italic.ttf"; sourceTree = "<group>"; };
+		B53681251744C48400249BC7 /* Lato-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Lato-Light.ttf"; sourceTree = "<group>"; };
+		B53681261744C48400249BC7 /* Lato-LightItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Lato-LightItalic.ttf"; sourceTree = "<group>"; };
+		B53681271744C48400249BC7 /* Lato-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Lato-Regular.ttf"; sourceTree = "<group>"; };
+		B53681321744C4ED00249BC7 /* CoreText.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreText.framework; path = System/Library/Frameworks/CoreText.framework; sourceTree = SDKROOT; };
 		B542274016CCB15D0020F300 /* Commit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Commit.h; sourceTree = "<group>"; };
 		B542274116CCB15D0020F300 /* Commit.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Commit.m; sourceTree = "<group>"; };
 		B542274D16CCBBD30020F300 /* CommitCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CommitCell.h; sourceTree = "<group>"; };
@@ -802,6 +857,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B53681331744C4ED00249BC7 /* CoreText.framework in Frameworks */,
 				B54603A616C101FD007D4FB3 /* ImageIO.framework in Frameworks */,
 				B54603A416C101CC007D4FB3 /* MapKit.framework in Frameworks */,
 				B55D90EE16B7AB67009CB90F /* MessageUI.framework in Frameworks */,
@@ -1003,6 +1059,52 @@
 			path = Commit;
 			sourceTree = "<group>";
 		};
+		B53680FB1744C43500249BC7 /* FlatUI */ = {
+			isa = PBXGroup;
+			children = (
+				B53680FC1744C44500249BC7 /* FUIAlertView.h */,
+				B53680FD1744C44500249BC7 /* FUIAlertView.m */,
+				B53680FE1744C44500249BC7 /* FUIButton.h */,
+				B53680FF1744C44500249BC7 /* FUIButton.m */,
+				B53681001744C44500249BC7 /* FUISwitch.h */,
+				B53681011744C44500249BC7 /* FUISwitch.m */,
+				B53681021744C44500249BC7 /* UIBarButtonItem+FlatUI.h */,
+				B53681031744C44500249BC7 /* UIBarButtonItem+FlatUI.m */,
+				B53681041744C44500249BC7 /* UIColor+FlatUI.h */,
+				B53681051744C44500249BC7 /* UIColor+FlatUI.m */,
+				B53681061744C44500249BC7 /* UIFont+FlatUI.h */,
+				B53681071744C44500249BC7 /* UIFont+FlatUI.m */,
+				B53681081744C44500249BC7 /* UIImage+FlatUI.h */,
+				B53681091744C44500249BC7 /* UIImage+FlatUI.m */,
+				B536810A1744C44500249BC7 /* UINavigationBar+FlatUI.h */,
+				B536810B1744C44500249BC7 /* UINavigationBar+FlatUI.m */,
+				B536810C1744C44500249BC7 /* UISlider+FlatUI.h */,
+				B536810D1744C44500249BC7 /* UISlider+FlatUI.m */,
+				B536810E1744C44500249BC7 /* UIStepper+FlatUI.h */,
+				B536810F1744C44500249BC7 /* UIStepper+FlatUI.m */,
+				B53681101744C44500249BC7 /* UITabBar+FlatUI.h */,
+				B53681111744C44500249BC7 /* UITabBar+FlatUI.m */,
+			);
+			path = FlatUI;
+			sourceTree = "<group>";
+		};
+		B536811D1744C47900249BC7 /* Fonts */ = {
+			isa = PBXGroup;
+			children = (
+				B536811E1744C48400249BC7 /* Lato-Black.ttf */,
+				B536811F1744C48400249BC7 /* Lato-BlackItalic.ttf */,
+				B53681201744C48400249BC7 /* Lato-Bold.ttf */,
+				B53681211744C48400249BC7 /* Lato-BoldItalic.ttf */,
+				B53681221744C48400249BC7 /* Lato-Hairline.ttf */,
+				B53681231744C48400249BC7 /* Lato-HairlineItalic.ttf */,
+				B53681241744C48400249BC7 /* Lato-Italic.ttf */,
+				B53681251744C48400249BC7 /* Lato-Light.ttf */,
+				B53681261744C48400249BC7 /* Lato-LightItalic.ttf */,
+				B53681271744C48400249BC7 /* Lato-Regular.ttf */,
+			);
+			path = Fonts;
+			sourceTree = "<group>";
+		};
 		B546038316C0FFA8007D4FB3 /* SDWebImage */ = {
 			isa = PBXGroup;
 			children = (
@@ -1097,6 +1199,7 @@
 		B55D909D16B7AA27009CB90F /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				B53681321744C4ED00249BC7 /* CoreText.framework */,
 				B54603A516C101FD007D4FB3 /* ImageIO.framework */,
 				B54603A316C101CC007D4FB3 /* MapKit.framework */,
 				B55D90ED16B7AB67009CB90F /* MessageUI.framework */,
@@ -1113,6 +1216,7 @@
 		B55D90A616B7AA27009CB90F /* Gitos-iPad */ = {
 			isa = PBXGroup;
 			children = (
+				B536811D1744C47900249BC7 /* Fonts */,
 				B5836C8D170BFC870012CC61 /* Helpers */,
 				B5BC451A16BA5DFC00434848 /* Html */,
 				B516539916B7C1AA003F0DFA /* Images */,
@@ -1209,6 +1313,7 @@
 				B54F69EE16D30B3B00978DD9 /* Events */,
 				B55D90F316B7ABE2009CB90F /* AppConfig.h */,
 				B54603CA16C4D0DD007D4FB3 /* MBProgressHUD.h */,
+				B53680FB1744C43500249BC7 /* FlatUI */,
 				B54603CB16C4D0DD007D4FB3 /* MBProgressHUD.m */,
 				B5D8D78C173DFC7C00B68FA2 /* NSData+Base64.m */,
 				B5D8D78D173DFC7C00B68FA2 /* NSData+Base64.h */,
@@ -1786,6 +1891,16 @@
 				B5F10F8B173F83AE00263242 /* GistCommentsViewController.xib in Resources */,
 				B5F10F8D173F850800263242 /* gist_comments.html in Resources */,
 				B5F10F981740ACB500263242 /* NewIssueCommentViewController.xib in Resources */,
+				B53681281744C48400249BC7 /* Lato-Black.ttf in Resources */,
+				B53681291744C48400249BC7 /* Lato-BlackItalic.ttf in Resources */,
+				B536812A1744C48400249BC7 /* Lato-Bold.ttf in Resources */,
+				B536812B1744C48400249BC7 /* Lato-BoldItalic.ttf in Resources */,
+				B536812C1744C48400249BC7 /* Lato-Hairline.ttf in Resources */,
+				B536812D1744C48400249BC7 /* Lato-HairlineItalic.ttf in Resources */,
+				B536812E1744C48400249BC7 /* Lato-Italic.ttf in Resources */,
+				B536812F1744C48400249BC7 /* Lato-Light.ttf in Resources */,
+				B53681301744C48400249BC7 /* Lato-LightItalic.ttf in Resources */,
+				B53681311744C48400249BC7 /* Lato-Regular.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1921,6 +2036,17 @@
 				B5F10F8A173F83AE00263242 /* GistCommentsViewController.m in Sources */,
 				B5F10F90173F863900263242 /* GistComment.m in Sources */,
 				B5F10F971740ACB500263242 /* NewIssueCommentViewController.m in Sources */,
+				B53681121744C44500249BC7 /* FUIAlertView.m in Sources */,
+				B53681131744C44500249BC7 /* FUIButton.m in Sources */,
+				B53681141744C44500249BC7 /* FUISwitch.m in Sources */,
+				B53681151744C44500249BC7 /* UIBarButtonItem+FlatUI.m in Sources */,
+				B53681161744C44500249BC7 /* UIColor+FlatUI.m in Sources */,
+				B53681171744C44500249BC7 /* UIFont+FlatUI.m in Sources */,
+				B53681181744C44500249BC7 /* UIImage+FlatUI.m in Sources */,
+				B53681191744C44500249BC7 /* UINavigationBar+FlatUI.m in Sources */,
+				B536811A1744C44500249BC7 /* UISlider+FlatUI.m in Sources */,
+				B536811B1744C44500249BC7 /* UIStepper+FlatUI.m in Sources */,
+				B536811C1744C44500249BC7 /* UITabBar+FlatUI.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

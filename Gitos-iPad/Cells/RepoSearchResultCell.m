@@ -58,6 +58,11 @@
     //    [self.repoDetailsLabel setNumberOfLines:0];
     //    [self.repoDetailsLabel setLineBreakMode:NSLineBreakByWordWrapping];
     //    [self.repoDetailsLabel sizeToFit];
+
+    UIView *backgroundView = [[UIView alloc] initWithFrame:self.frame];
+    backgroundView.backgroundColor = [UIColor peterRiverColor];
+
+    self.selectedBackgroundView = backgroundView;
 }
 
 - (void)renderName

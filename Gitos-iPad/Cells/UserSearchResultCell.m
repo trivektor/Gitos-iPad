@@ -34,6 +34,11 @@
     avatar.image  = [UIImage imageWithData:data];
     name.text     = [user getName];
     username.text = [user getLogin];
+
+    UIView *backgroundView = [[UIView alloc] initWithFrame:self.frame];
+    backgroundView.backgroundColor = [UIColor peterRiverColor];
+
+    self.selectedBackgroundView = backgroundView;
 }
 
 @end

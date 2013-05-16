@@ -37,6 +37,11 @@
     titleLabel.text = [NSString stringWithFormat:@"#%i %@", [issue getNumber], title];
     overviewLabel.text = [NSString stringWithFormat:@"by %@ %@", [user getLogin], [issue getCreatedAt]];
     commentsLabel.text = [NSString stringWithFormat:@"%i comments", [self.issue getNumberOfComments]];
+
+    UIView *backgroundView = [[UIView alloc] initWithFrame:self.frame];
+    backgroundView.backgroundColor = [UIColor peterRiverColor];
+
+    self.selectedBackgroundView = backgroundView;
 }
 
 @end

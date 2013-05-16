@@ -37,6 +37,12 @@
     gistDescription.text  = [gist getDescription];
     gistCreatedAt.text    = [gist getCreatedAt];
     self.accessoryType         = UITableViewCellAccessoryDisclosureIndicator;
+
+    UIView *backgroundView = [[UIView alloc] initWithFrame:self.frame];
+    backgroundView.backgroundColor = [UIColor peterRiverColor];
+
+    self.selectedBackgroundView = backgroundView;
+
 }
 
 @end

@@ -37,4 +37,5 @@
     #import "AppHelper.h"
     #import "GitosViewController.h"
     #import "CurrentUserManager.h"
+    #import "UIColor+FlatUI.h"
 #endif

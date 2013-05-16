@@ -35,6 +35,12 @@
     self.accessoryType               = UITableViewCellAccessoryDisclosureIndicator;
     fontAwesomeLabel.font            = [UIFont fontWithName:kFontAwesomeFamilyName size:15.0];
     fontAwesomeLabel.text            = [NSString fontAwesomeIconStringForIconIdentifier:[self.event getFontAwesomeIcon]];
+
+    UIView *backgroundView = [[UIView alloc] initWithFrame:self.frame];
+    backgroundView.backgroundColor = [UIColor peterRiverColor];
+
+    self.selectedBackgroundView = backgroundView;
+
 }
 
 @end
