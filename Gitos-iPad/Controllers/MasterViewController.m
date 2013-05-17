@@ -277,9 +277,10 @@
     usernameLabel.text = [currentUser getLogin];
     usernameLabel.textColor = [UIColor whiteColor];
 
-    UIView *selectedBackgroundView  = [[UIView alloc] init];
-    [selectedBackgroundView setBackgroundColor:[UIColor colorWithPatternImage:[UIImage imageNamed:@"selected_cell_bg.png"]]];
-    profileCell.selectedBackgroundView = selectedBackgroundView;
+    UIView *backgroundView = [[UIView alloc] initWithFrame:profileCell.frame];
+    backgroundView.backgroundColor = [UIColor alizarinColor];
+
+    profileCell.selectedBackgroundView = backgroundView;
 }
 
 @end

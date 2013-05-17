@@ -190,6 +190,11 @@
     cell.backgroundColor = [UIColor whiteColor];
     cell.textLabel.textAlignment = NSTextAlignmentCenter;
 
+    UIView *backgroundView = [[UIView alloc] initWithFrame:cell.frame];
+    backgroundView.backgroundColor = [UIColor peterRiverColor];
+
+    cell.selectedBackgroundView = backgroundView;
+
     return cell;
 }
 

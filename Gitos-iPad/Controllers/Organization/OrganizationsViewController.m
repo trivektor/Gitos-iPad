@@ -97,7 +97,12 @@
     cell.imageView.image = [UIImage imageWithData:data];
     cell.textLabel.text = [org getLogin];
     cell.textLabel.font = [UIFont fontWithName:@"Arial" size:12.0];
-    
+
+    UIView *backgroundView = [[UIView alloc] initWithFrame:cell.frame];
+    backgroundView.backgroundColor = [UIColor peterRiverColor];
+
+    cell.selectedBackgroundView = backgroundView;
+
     return cell;
 }
 
