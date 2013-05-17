@@ -37,4 +37,8 @@
     #import "AppHelper.h"
     #import "GitosViewController.h"
     #import "CurrentUserManager.h"
+    #import "NUIAppearance.h"
+    #import "UIBarButtonItem+NUI.h"
+    #import "UINavigationBar+NUI.h"
+    #import "NUIRenderer.h"
 #endif
