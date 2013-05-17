@@ -1,9 +1,10 @@
-NavigationBar {
-    background-color: #2c3e50;
-    font-color: #ffffff;
+VanillaCell {
+    background-color-top: #ffffff;
+    background-color-bottom: #f5f5f5;
+    border-width: 1;
+    border-color: #e5e5e5;
 }
-BarButton {
-    background-tint-color: #3498db;
-    background-color-top: #3498db;
-    background-color-bottom: #3498db;
+NavItemLabel {
+    text-shadow-color: #282828;
+    text-shadow-offset: 2, 2;
 }
