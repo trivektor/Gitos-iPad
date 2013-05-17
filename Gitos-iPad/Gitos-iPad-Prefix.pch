@@ -41,5 +41,6 @@
     #import "NUIAppearance.h"
     #import "UIBarButtonItem+NUI.h"
     #import "UINavigationBar+NUI.h"
+    #import "UILabel+NUI.h"
     #import "NUIRenderer.h"
 #endif

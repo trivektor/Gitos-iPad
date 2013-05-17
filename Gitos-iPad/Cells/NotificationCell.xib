@@ -111,6 +111,7 @@
 								<string key="NSFrame">{{49, 32}, {955, 21}}</string>
 								<reference key="NSSuperview" ref="33625399"/>
 								<reference key="NSWindow"/>
+								<reference key="NSNextKeyView"/>
 								<string key="NSReuseIdentifierKey">_NS:9</string>
 								<bool key="IBUIOpaque">NO</bool>
 								<bool key="IBUIClipsSubviews">YES</bool>
@@ -253,7 +254,7 @@
 						<array key="userDefinedRuntimeAttributes">
 							<object class="IBUserDefinedRuntimeAttribute">
 								<string key="typeIdentifier">com.apple.InterfaceBuilder.userDefinedRuntimeAttributeType.string</string>
-								<string key="keyPath">keyPath</string>
+								<string key="keyPath">nuiClass</string>
 								<string key="value">VanillaCell</string>
 							</object>
 						</array>
