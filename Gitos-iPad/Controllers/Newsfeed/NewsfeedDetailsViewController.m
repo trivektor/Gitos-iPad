@@ -60,6 +60,8 @@
                                                                     target:self
                                                                     action:@selector(reloadNewsfeedDetails)];
 
+    [NUIRenderer renderBarButtonItem:self.navigationItem.leftBarButtonItem withClass:@"BarButton"];
+
     [self.navigationItem setRightBarButtonItem:reloadButton];
 }
 

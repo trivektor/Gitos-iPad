@@ -13,6 +13,7 @@
 int main(int argc, char *argv[])
 {
     @autoreleasepool {
+        [NUISettings initWithStylesheet:@"Style.NUI"];
         return UIApplicationMain(argc, argv, nil, NSStringFromClass([AppDelegate class]));
     }
 }

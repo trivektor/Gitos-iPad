@@ -41,10 +41,12 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
+    [NUIAppearance init];
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     // Override point for customization after application launch.
     self.window.backgroundColor = [UIColor whiteColor];
     [self.window makeKeyAndVisible];
+
 
     [UIBarButtonItem configureFlatButtonsWithColor:[UIColor peterRiverColor]
                                   highlightedColor:[UIColor belizeHoleColor]
