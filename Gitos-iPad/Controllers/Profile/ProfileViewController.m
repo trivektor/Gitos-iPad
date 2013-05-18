@@ -105,6 +105,7 @@
 
     [profileTable setBackgroundView:nil];
     [profileTable setScrollEnabled:NO];
+    [profileTable drawShadow];
 }
 
 // Adjust the frame size of UIScrollView

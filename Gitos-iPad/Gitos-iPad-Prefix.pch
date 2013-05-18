@@ -43,4 +43,5 @@
     #import "UINavigationBar+NUI.h"
     #import "UILabel+NUI.h"
     #import "NUIRenderer.h"
+    #import "UITableView+Shadow.h"
 #endif

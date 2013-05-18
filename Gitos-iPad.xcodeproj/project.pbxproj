@@ -372,6 +372,7 @@
 		B5A72FDF17476036004F73FB /* UIToolbar+NUI.m in Sources */ = {isa = PBXBuildFile; fileRef = B5A72FA717476036004F73FB /* UIToolbar+NUI.m */; };
 		B5A72FE017476036004F73FB /* UIView+NUI.m in Sources */ = {isa = PBXBuildFile; fileRef = B5A72FA917476036004F73FB /* UIView+NUI.m */; };
 		B5A72FE117476036004F73FB /* UIWindow+NUI.m in Sources */ = {isa = PBXBuildFile; fileRef = B5A72FAB17476036004F73FB /* UIWindow+NUI.m */; };
+		B5A72FE7174768C4004F73FB /* UITableView+Shadow.m in Sources */ = {isa = PBXBuildFile; fileRef = B5A72FE6174768C4004F73FB /* UITableView+Shadow.m */; };
 		B5BC452116BA5E3F00434848 /* prettify.js in Resources */ = {isa = PBXBuildFile; fileRef = B5BC451C16BA5DFD00434848 /* prettify.js */; };
 		B5BC452516BCEE7100434848 /* MasterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B5BC452316BCEE7000434848 /* MasterViewController.m */; };
 		B5BC452616BCEE7100434848 /* MasterViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B5BC452416BCEE7000434848 /* MasterViewController.xib */; };
@@ -948,6 +949,8 @@
 		B5A72FA917476036004F73FB /* UIView+NUI.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+NUI.m"; sourceTree = "<group>"; };
 		B5A72FAA17476036004F73FB /* UIWindow+NUI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIWindow+NUI.h"; sourceTree = "<group>"; };
 		B5A72FAB17476036004F73FB /* UIWindow+NUI.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIWindow+NUI.m"; sourceTree = "<group>"; };
+		B5A72FE5174768C4004F73FB /* UITableView+Shadow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UITableView+Shadow.h"; sourceTree = "<group>"; };
+		B5A72FE6174768C4004F73FB /* UITableView+Shadow.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UITableView+Shadow.m"; sourceTree = "<group>"; };
 		B5BC451C16BA5DFD00434848 /* prettify.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = prettify.js; sourceTree = "<group>"; };
 		B5BC452216BCEE6F00434848 /* MasterViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MasterViewController.h; sourceTree = "<group>"; };
 		B5BC452316BCEE7000434848 /* MasterViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MasterViewController.m; sourceTree = "<group>"; };
@@ -1527,6 +1530,8 @@
 				B5D8D78A173DF81D00B68FA2 /* Readme.m */,
 				B5F10F8E173F863900263242 /* GistComment.h */,
 				B5F10F8F173F863900263242 /* GistComment.m */,
+				B5A72FE5174768C4004F73FB /* UITableView+Shadow.h */,
+				B5A72FE6174768C4004F73FB /* UITableView+Shadow.m */,
 			);
 			path = Classes;
 			sourceTree = "<group>";
@@ -2409,6 +2414,7 @@
 				B5A72FDF17476036004F73FB /* UIToolbar+NUI.m in Sources */,
 				B5A72FE017476036004F73FB /* UIView+NUI.m in Sources */,
 				B5A72FE117476036004F73FB /* UIWindow+NUI.m in Sources */,
+				B5A72FE7174768C4004F73FB /* UITableView+Shadow.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
