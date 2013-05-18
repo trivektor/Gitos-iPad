@@ -48,6 +48,13 @@
     hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
     hud.mode = MBProgressHUDAnimationFade;
     hud.labelText = LOADING_MESSAGE;
+
+    [self.view setBackgroundColor:[UIColor colorWithRed:230/255.0
+                                                       green:230/255.0
+                                                        blue:237/255.0
+                                                       alpha:1.0]];
+    [detailsTable drawShadow];
+    [filesTable drawShadow];
 }
 
 - (void)registerNib
@@ -63,7 +70,10 @@
         [table registerNib:nib forCellReuseIdentifier:@"GistDetailsCell"];
         [table setBackgroundView:nil];
         [table setSeparatorStyle:UITableViewCellSeparatorStyleSingleLine];
-        [table setSeparatorColor:[UIColor colorWithRed:200/255.0 green:200/255.0 blue:200/255.0 alpha:1.0]];
+        [table setSeparatorColor:[UIColor colorWithRed:200/255.0
+                                                 green:200/255.0
+                                                  blue:200/255.0
+                                                 alpha:1.0]];
         [table setScrollEnabled:NO];
     }
 }

@@ -40,10 +40,20 @@
     self.hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
     self.hud.mode = MBProgressHUDAnimationFade;
     self.hud.labelText = @"Loading";
+
     [organizationTable setAutoresizingMask:(UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight)];
-    [organizationTable setBackgroundView:nil];
     [organizationTable setSeparatorStyle:UITableViewCellSeparatorStyleSingleLine];
-    [organizationTable setSeparatorColor:[UIColor colorWithRed:200/255.0 green:200/255.0 blue:200/255.0 alpha:1.0]];
+    [organizationTable setSeparatorColor:[UIColor colorWithRed:200/255.0
+                                                         green:200/255.0
+                                                          blue:200/255.0
+                                                         alpha:1.0]];
+    [organizationTable setBackgroundView:nil];
+    [organizationTable drawShadow];
+
+    [self.view setBackgroundColor:[UIColor colorWithRed:230/255.0
+                                                  green:230/255.0
+                                                   blue:237/255.0
+                                                  alpha:1.0]];
 }
 
 - (void)fetchOrganizationInfo

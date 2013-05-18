@@ -148,7 +148,6 @@
 				<reference key="NSWindow"/>
 				<reference key="NSNextKeyView" ref="355414093"/>
 				<string key="NSReuseIdentifierKey">_NS:9</string>
-				<reference key="IBUIBackgroundColor" ref="685914826"/>
 				<string key="targetRuntimeIdentifier">IBIPadFramework</string>
 				<int key="IBUISelectionStyle">0</int>
 				<reference key="IBUIContentView" ref="355414093"/>
@@ -207,7 +206,6 @@
 				<reference key="NSWindow"/>
 				<reference key="NSNextKeyView" ref="424273142"/>
 				<string key="NSReuseIdentifierKey">_NS:9</string>
-				<reference key="IBUIBackgroundColor" ref="685914826"/>
 				<string key="targetRuntimeIdentifier">IBIPadFramework</string>
 				<int key="IBUISelectionStyle">0</int>
 				<reference key="IBUIContentView" ref="424273142"/>
@@ -267,7 +265,6 @@
 				<reference key="NSWindow"/>
 				<reference key="NSNextKeyView" ref="495836234"/>
 				<string key="NSReuseIdentifierKey">_NS:9</string>
-				<reference key="IBUIBackgroundColor" ref="685914826"/>
 				<string key="targetRuntimeIdentifier">IBIPadFramework</string>
 				<int key="IBUISelectionStyle">0</int>
 				<reference key="IBUIContentView" ref="495836234"/>
@@ -296,7 +293,6 @@
 				<reference key="NSWindow"/>
 				<reference key="NSNextKeyView" ref="342664761"/>
 				<string key="NSReuseIdentifierKey">_NS:9</string>
-				<reference key="IBUIBackgroundColor" ref="685914826"/>
 				<string key="targetRuntimeIdentifier">IBIPadFramework</string>
 				<int key="IBUISelectionStyle">0</int>
 				<reference key="IBUIContentView" ref="342664761"/>

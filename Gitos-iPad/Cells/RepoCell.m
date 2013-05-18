@@ -88,7 +88,7 @@
     backgroundView.backgroundColor = [UIColor peterRiverColor];
 
     self.selectedBackgroundView = backgroundView;
-
+    self.backgroundColor = [UIColor whiteColor];
 }
 
 @end

@@ -54,6 +54,7 @@
     }
     
     [repoScrollView setContentSize:(CGSizeMake(self.view.frame.size.width, scrollViewHeight + 35))];
+    [repoScrollView setBackgroundColor:[UIColor clearColor]];
 }
 
 - (void)didReceiveMemoryWarning
@@ -76,6 +77,16 @@
                           delegate:self
                           cancelButtonTitle:@"Never mind"
                           otherButtonTitles:@"Go ahead", nil];
+
+    [detailsTable setBackgroundView:nil];
+    [detailsTable drawShadow];
+    [branchesTable setBackgroundView:nil];
+    [branchesTable drawShadow];
+
+    [self.view setBackgroundColor:[UIColor colorWithRed:230/255.0
+                                                       green:230/255.0
+                                                        blue:237/255.0
+                                                       alpha:1.0]];
 }
 
 - (void)registerNib
