@@ -55,7 +55,6 @@
         [super performHousekeepingTasks];
     }
 
-    [scrollView setContentSize:self.view.frame.size];
     [self adjustFrameHeight];
 
     hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
@@ -65,20 +64,22 @@
 
 - (void)registerEvents
 {
-    [[NSNotificationCenter defaultCenter] addObserver:self
-                                             selector:@selector(displayUserInfo:)
-                                                 name:@"ProfileInfoFetched"
-                                               object:nil];
+    NSNotificationCenter *center = [NSNotificationCenter defaultCenter];
 
-    [[NSNotificationCenter defaultCenter] addObserver:self
-                                             selector:@selector(prepareProfileOptions:)
-                                                 name:@"UserFollowingChecked"
-                                               object:nil];
+    [center addObserver:self
+               selector:@selector(displayUserInfo:)
+                   name:@"ProfileInfoFetched"
+                 object:nil];
 
-    [[NSNotificationCenter defaultCenter] addObserver:self
-                                             selector:@selector(respondToFollowingEvents:)
-                                                 name:@"UserFollowingEvent"
-                                               object:nil];
+    [center addObserver:self
+               selector:@selector(prepareProfileOptions:)
+                   name:@"UserFollowingChecked"
+                 object:nil];
+
+    [center addObserver:self
+               selector:@selector(respondToFollowingEvents:)
+                   name:@"UserFollowingEvent"
+                 object:nil];
 }
 
 - (void)addOptionsButton
@@ -101,6 +102,7 @@
                                                     green:200/255.0
                                                      blue:200/255.0
                                                     alpha:1.0]];
+
     [profileTable setBackgroundView:nil];
     [profileTable setScrollEnabled:NO];
 }
@@ -114,8 +116,12 @@
     {
         scrollViewHeight += view.frame.size.height;
     }
-    
-    [scrollView setContentSize:(CGSizeMake(320, scrollViewHeight + 75))];
+
+    [scrollView setContentSize:(CGSizeMake(self.view.frame.size.width, scrollViewHeight + 80))];
+    [scrollView setBackgroundColor:[UIColor colorWithRed:230/255.0
+                                                  green:230/255.0
+                                                   blue:227/255.0
+                                                  alpha:1.0]];
 }
 
 - (void)didReceiveMemoryWarning
@@ -169,7 +175,7 @@
     }
     
     [cell displayByIndexPath:indexPath forUser:user];
-    
+
     return cell;
 }
 
