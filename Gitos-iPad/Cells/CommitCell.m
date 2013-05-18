@@ -10,7 +10,7 @@
 
 @implementation CommitCell
 
-@synthesize commentLabel, dateLabel, shaLabel;
+@synthesize commentLabel, dateLabel, shaLabel, commit;
 
 - (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
 {
@@ -31,9 +31,9 @@
 
 - (void)render
 {
-    commentLabel.text  = [self.commit getMessage];
-    dateLabel.text     = [self.commit getCommittedAt];
-    shaLabel.text      = [[self.commit getSha] substringToIndex:10];
+    commentLabel.text  = [commit getMessage];
+    dateLabel.text     = [commit getCommittedAt];
+    shaLabel.text      = [[commit getSha] substringToIndex:10];
 
     UIView *backgroundView = [[UIView alloc] initWithFrame:self.frame];
     backgroundView.backgroundColor = [UIColor peterRiverColor];
