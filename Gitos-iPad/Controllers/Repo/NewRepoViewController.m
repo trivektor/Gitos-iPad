@@ -57,13 +57,8 @@ homePageCell, homePageTextField, visibilityCell, hud;
                                                         blue:237/255.0
                                                        alpha:1.0]];
 
-    [repoFormTable setSeparatorStyle:UITableViewCellSeparatorStyleSingleLine];
-    [repoFormTable setSeparatorColor:[UIColor colorWithRed:200/255.0
-                                                  green:200/255.0
-                                                   blue:200/255.0
-                                                  alpha:1.0]];
-
     [repoFormTable drawShadow];
+    [repoFormTable drawSeparator];
 }
 
 - (void)didReceiveMemoryWarning

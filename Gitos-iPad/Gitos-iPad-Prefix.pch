@@ -38,6 +38,7 @@
     #import "GitosViewController.h"
     #import "CurrentUserManager.h"
     #import "UIColor+FlatUI.h"
+    #import "FUIAlertView.h"
     #import "NUIAppearance.h"
     #import "UIBarButtonItem+NUI.h"
     #import "UINavigationBar+NUI.h"

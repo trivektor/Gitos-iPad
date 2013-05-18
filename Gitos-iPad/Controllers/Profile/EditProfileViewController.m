@@ -79,13 +79,19 @@ nameTextField, emailTextField, websiteTextField, companyTextField, locationTextF
 - (void)performHousekeepingTasks
 {
     self.navigationItem.title = @"Edit Profile";
-    [profileTableForm setBackgroundView:nil];
+    [profileTableForm drawSeparator];
+    [profileTableForm drawShadow];
 
-    [profileTableForm setSeparatorStyle:UITableViewCellSeparatorStyleSingleLine];
-    [profileTableForm setSeparatorColor:[UIColor colorWithRed:200/255.0 green:200/255.0 blue:200/255.0 alpha:1.0]];
-
-    UIBarButtonItem *submitButton = [[UIBarButtonItem alloc] initWithTitle:@"Submit" style:UIBarButtonItemStyleBordered target:self action:@selector(updateInfo)];
+    UIBarButtonItem *submitButton = [[UIBarButtonItem alloc] initWithTitle:@"Submit"
+                                                                     style:UIBarButtonItemStyleBordered
+                                                                    target:self
+                                                                    action:@selector(updateInfo)];
     [self.navigationItem setRightBarButtonItem:submitButton];
+
+    [self.view setBackgroundColor:[UIColor colorWithRed:230/255.0
+                                                  green:230/255.0
+                                                   blue:230/255.0
+                                                  alpha:1.0]];
 }
 
 - (void)updateInfo

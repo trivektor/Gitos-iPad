@@ -78,10 +78,10 @@
                           cancelButtonTitle:@"Never mind"
                           otherButtonTitles:@"Go ahead", nil];
 
-    [detailsTable setBackgroundView:nil];
     [detailsTable drawShadow];
-    [branchesTable setBackgroundView:nil];
+    [detailsTable drawSeparator];
     [branchesTable drawShadow];
+    [branchesTable drawSeparator];
 
     [self.view setBackgroundColor:[UIColor colorWithRed:230/255.0
                                                        green:230/255.0

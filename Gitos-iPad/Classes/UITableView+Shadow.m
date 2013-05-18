@@ -23,6 +23,16 @@
     [layer setShadowRadius:1.0];
     [layer setShadowOpacity:0.1];
     [layer setRasterizationScale:[[UIScreen mainScreen] scale]];
+    [self setBackgroundView:nil];
+}
+
+- (void)drawSeparator
+{
+    [self setSeparatorStyle:UITableViewCellSeparatorStyleSingleLine];
+    [self setSeparatorColor:[UIColor colorWithRed:200/255.0
+                                            green:200/255.0
+                                             blue:200/255.0
+                                            alpha:1.0]];
 }
 
 @end

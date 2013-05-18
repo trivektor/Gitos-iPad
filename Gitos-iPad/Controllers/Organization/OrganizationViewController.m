@@ -41,14 +41,9 @@
     self.hud.mode = MBProgressHUDAnimationFade;
     self.hud.labelText = @"Loading";
 
-    [organizationTable setAutoresizingMask:(UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight)];
-    [organizationTable setSeparatorStyle:UITableViewCellSeparatorStyleSingleLine];
-    [organizationTable setSeparatorColor:[UIColor colorWithRed:200/255.0
-                                                         green:200/255.0
-                                                          blue:200/255.0
-                                                         alpha:1.0]];
-    [organizationTable setBackgroundView:nil];
     [organizationTable drawShadow];
+    [organizationTable drawSeparator];
+    [organizationTable setBackgroundView:nil];
 
     [self.view setBackgroundColor:[UIColor colorWithRed:230/255.0
                                                   green:230/255.0
@@ -116,31 +111,31 @@
     switch (indexPath.row) {
         case 0:
             textLabel = @"Name";
-            textDetail = [self.organization getName];
+            textDetail = [organization getName];
             break;
         case 1:
             textLabel = @"Location";
-            textDetail = [self.organization getLocation];
+            textDetail = [organization getLocation];
             break;
         case 2:
             textLabel = @"Created";
-            textDetail = [self.organization getCreatedAt];
+            textDetail = [organization getCreatedAt];
             break;
         case 3:
             textLabel = @"Last updated";
-            textDetail = [self.organization getUpdatedAt];
+            textDetail = [organization getUpdatedAt];
             break;
         case 4:
             textLabel = @"Website";
-            textDetail = [self.organization getWebsite];
+            textDetail = [organization getWebsite];
             break;
         case 5:
             textLabel = @"Followers";
-            textDetail = [NSString stringWithFormat:@"%i", [self.organization getNumberOfFollowers]];
+            textDetail = [NSString stringWithFormat:@"%i", [organization getNumberOfFollowers]];
             break;
         case 6:
             textLabel = @"Following";
-            textDetail = [NSString stringWithFormat:@"%i", [self.organization getNumberOfFollowing]];
+            textDetail = [NSString stringWithFormat:@"%i", [organization getNumberOfFollowing]];
             break;
         default:
             break;

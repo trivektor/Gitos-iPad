@@ -97,14 +97,8 @@
     UINib *nib = [UINib nibWithNibName:@"ProfileCell" bundle:nil];
 
     [profileTable registerNib:nib forCellReuseIdentifier:@"ProfileCell"];
-    [profileTable setSeparatorStyle:UITableViewCellSeparatorStyleSingleLine];
-    [profileTable setSeparatorColor:[UIColor colorWithRed:200/255.0
-                                                    green:200/255.0
-                                                     blue:200/255.0
-                                                    alpha:1.0]];
-
-    [profileTable setBackgroundView:nil];
     [profileTable setScrollEnabled:NO];
+    [profileTable drawSeparator];
     [profileTable drawShadow];
 }
 
