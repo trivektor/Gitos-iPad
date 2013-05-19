@@ -23,6 +23,7 @@
     [layer setShadowRadius:1.0];
     [layer setShadowOpacity:0.1];
     [layer setRasterizationScale:[[UIScreen mainScreen] scale]];
+    [self setBackgroundColor:[UIColor clearColor]];
     [self setBackgroundView:nil];
 }
 

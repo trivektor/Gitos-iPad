@@ -117,6 +117,8 @@
                                                   green:230/255.0
                                                    blue:227/255.0
                                                   alpha:1.0]];
+
+    [self.view setBackgroundColor:[UIColor clearColor]];
 }
 
 - (void)didReceiveMemoryWarning

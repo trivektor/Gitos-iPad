@@ -41,14 +41,13 @@
     self.hud.mode = MBProgressHUDAnimationFade;
     self.hud.labelText = @"Loading";
 
-    [organizationTable drawShadow];
-    [organizationTable drawSeparator];
-    [organizationTable setBackgroundView:nil];
-
     [self.view setBackgroundColor:[UIColor colorWithRed:230/255.0
                                                   green:230/255.0
                                                    blue:237/255.0
                                                   alpha:1.0]];
+
+    [organizationTable drawShadow];
+    [organizationTable drawSeparator];
 }
 
 - (void)fetchOrganizationInfo
@@ -147,6 +146,7 @@
     cell.detailTextLabel.text = textDetail;
     cell.backgroundColor      = [UIColor whiteColor];
     cell.selectionStyle       = UITableViewCellSelectionStyleNone;
+    cell.backgroundColor      = [UIColor whiteColor];
 
     return cell;
 }
