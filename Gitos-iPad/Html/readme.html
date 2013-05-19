@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <link rel='stylesheet' href='bootstrap.css' />
+        <script src='showdown.js'></script>
+    </head>
+    <body>
+        <div id='readme-content'>
+            %@
+        </div>
+        <script>
+            var converter = new Showdown.converter();
+            var content = document.getElementById('readme-content');
+            var html = converter.makeHtml(content.innerHTML);
+            content.innerHTML = html;
+        </script>
+    </body>
+</html>

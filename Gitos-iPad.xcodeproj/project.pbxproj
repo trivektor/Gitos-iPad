@@ -373,6 +373,8 @@
 		B5A72FE017476036004F73FB /* UIView+NUI.m in Sources */ = {isa = PBXBuildFile; fileRef = B5A72FA917476036004F73FB /* UIView+NUI.m */; };
 		B5A72FE117476036004F73FB /* UIWindow+NUI.m in Sources */ = {isa = PBXBuildFile; fileRef = B5A72FAB17476036004F73FB /* UIWindow+NUI.m */; };
 		B5A72FE7174768C4004F73FB /* UITableView+Shadow.m in Sources */ = {isa = PBXBuildFile; fileRef = B5A72FE6174768C4004F73FB /* UITableView+Shadow.m */; };
+		B5A72FE9174873B7004F73FB /* readme.html in Resources */ = {isa = PBXBuildFile; fileRef = B5A72FE8174873B7004F73FB /* readme.html */; };
+		B5A72FEB174874C5004F73FB /* showdown.js in Resources */ = {isa = PBXBuildFile; fileRef = B5A72FEA174874C5004F73FB /* showdown.js */; };
 		B5BC452116BA5E3F00434848 /* prettify.js in Resources */ = {isa = PBXBuildFile; fileRef = B5BC451C16BA5DFD00434848 /* prettify.js */; };
 		B5BC452516BCEE7100434848 /* MasterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B5BC452316BCEE7000434848 /* MasterViewController.m */; };
 		B5BC452616BCEE7100434848 /* MasterViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B5BC452416BCEE7000434848 /* MasterViewController.xib */; };
@@ -951,6 +953,8 @@
 		B5A72FAB17476036004F73FB /* UIWindow+NUI.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIWindow+NUI.m"; sourceTree = "<group>"; };
 		B5A72FE5174768C4004F73FB /* UITableView+Shadow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UITableView+Shadow.h"; sourceTree = "<group>"; };
 		B5A72FE6174768C4004F73FB /* UITableView+Shadow.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UITableView+Shadow.m"; sourceTree = "<group>"; };
+		B5A72FE8174873B7004F73FB /* readme.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = readme.html; sourceTree = "<group>"; };
+		B5A72FEA174874C5004F73FB /* showdown.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = showdown.js; sourceTree = "<group>"; };
 		B5BC451C16BA5DFD00434848 /* prettify.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = prettify.js; sourceTree = "<group>"; };
 		B5BC452216BCEE6F00434848 /* MasterViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MasterViewController.h; sourceTree = "<group>"; };
 		B5BC452316BCEE7000434848 /* MasterViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MasterViewController.m; sourceTree = "<group>"; };
@@ -1926,6 +1930,8 @@
 				B511D43616D9A81C00DD0ED5 /* contributions.html */,
 				B511D45216DB3D0800DD0ED5 /* pull_request.html */,
 				B5F10F8C173F850800263242 /* gist_comments.html */,
+				B5A72FE8174873B7004F73FB /* readme.html */,
+				B5A72FEA174874C5004F73FB /* showdown.js */,
 			);
 			path = Html;
 			sourceTree = "<group>";
@@ -2012,6 +2018,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B5A72FEB174874C5004F73FB /* showdown.js in Resources */,
 				B511D43A16D9C6FD00DD0ED5 /* underscore.js in Resources */,
 				B5BC452116BA5E3F00434848 /* prettify.js in Resources */,
 				B542275B16CDF86E0020F300 /* diff.js in Resources */,
@@ -2223,6 +2230,7 @@
 				B5A72FCD17476036004F73FB /* Route.NUI.nss in Resources */,
 				B5A72FCE17476036004F73FB /* SkyBlue.NUI.nss in Resources */,
 				B5A72FCF17476036004F73FB /* Switchboard.NUI.nss in Resources */,
+				B5A72FE9174873B7004F73FB /* readme.html in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

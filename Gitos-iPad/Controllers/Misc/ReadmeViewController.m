@@ -43,7 +43,22 @@
 - (void)displayReadmeContent
 {
     NSData *data = [readme getContent];
-    [fileView loadData:data MIMEType:@"text/plain" textEncodingName:nil baseURL:nil];
+
+    NSString *readmeFilePath = [[NSBundle mainBundle] pathForResource:@"readme"
+                                                               ofType:@"html"];
+
+    NSString *readmeFileContent = [NSString stringWithContentsOfFile:readmeFilePath
+                                                            encoding:NSUTF8StringEncoding
+                                                               error:nil];
+
+    NSString *content = [[NSString alloc] initWithData:data
+                                              encoding:NSUTF8StringEncoding];
+
+    NSURL *baseURL = [NSURL fileURLWithPath:[[NSBundle mainBundle] bundlePath]];
+
+    NSString *htmlString = [NSString stringWithFormat:readmeFileContent, content];
+
+    [fileView loadHTMLString:htmlString baseURL:baseURL];
 }
 
 @end
