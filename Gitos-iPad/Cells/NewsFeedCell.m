@@ -32,16 +32,9 @@
 {
     actionDescription.attributedText = [event toString];
     actionDate.text                  = [event toDateString];
-    self.accessoryType               = UITableViewCellAccessoryDisclosureIndicator;
     fontAwesomeLabel.font            = [UIFont fontWithName:kFontAwesomeFamilyName size:15.0];
-    fontAwesomeLabel.text            = [NSString fontAwesomeIconStringForIconIdentifier:[self.event getFontAwesomeIcon]];
-    fontAwesomeLabel.highlightedTextColor = [UIColor whiteColor];
-
-    UIView *backgroundView = [[UIView alloc] initWithFrame:self.frame];
-    backgroundView.backgroundColor = [UIColor peterRiverColor];
-
-    self.selectedBackgroundView = backgroundView;
-
+    fontAwesomeLabel.text            = [NSString fontAwesomeIconStringForIconIdentifier:[event getFontAwesomeIcon]];
+    self.accessoryType               = UITableViewCellAccessoryDisclosureIndicator;
 }
 
 @end

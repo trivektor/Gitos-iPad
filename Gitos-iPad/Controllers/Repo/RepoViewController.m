@@ -176,7 +176,8 @@
     RepoDetailsCell *cell = [detailsTable dequeueReusableCellWithIdentifier:cellIdentifier];
     
     if (!cell) {
-        cell = [[RepoDetailsCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellIdentifier];
+        cell = [[RepoDetailsCell alloc] initWithStyle:UITableViewCellStyleDefault
+                                      reuseIdentifier:cellIdentifier];
     }
     
     [cell setRepo:self.repo];
@@ -191,7 +192,8 @@
     UITableViewCell *cell = [branchesTable dequeueReusableCellWithIdentifier:cellIdentifier];
 
     if (!cell) {
-        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellIdentifier];
+        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault
+                                      reuseIdentifier:cellIdentifier];
     }
 
     Branch *branch = [repoBranches objectAtIndex:indexPath.row];
@@ -200,11 +202,10 @@
     cell.textLabel.text  = [branch getName];
     cell.backgroundColor = [UIColor whiteColor];
     cell.textLabel.textAlignment = NSTextAlignmentCenter;
-
-    UIView *backgroundView = [[UIView alloc] initWithFrame:cell.frame];
-    backgroundView.backgroundColor = [UIColor peterRiverColor];
-
-    cell.selectedBackgroundView = backgroundView;
+    cell.textLabel.nuiClass = @"AsbestosColor";
+    [cell defineSelectedColor:[UIColor cloudsColor]
+            forRowAtIndexPath:indexPath
+                withTotalRows:repoBranches.count];
 
     return cell;
 }

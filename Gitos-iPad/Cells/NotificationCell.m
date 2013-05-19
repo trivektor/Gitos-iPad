@@ -43,11 +43,6 @@
     titleLabel.text       = [notification getTitle];
     updatedAtLabel.text   = [notification getUpdatedAt];
     self.accessoryType    = UITableViewCellAccessoryDisclosureIndicator;
-
-    UIView *backgroundView = [[UIView alloc] initWithFrame:self.frame];
-    backgroundView.backgroundColor = [UIColor peterRiverColor];
-
-    self.selectedBackgroundView = backgroundView;
 }
 
 @end

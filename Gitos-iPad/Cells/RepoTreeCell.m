@@ -45,12 +45,6 @@
 
     nameLabel.text = [node getPath];
     self.accessoryType  = UITableViewCellAccessoryDisclosureIndicator;
-
-    UIView *backgroundView = [[UIView alloc] initWithFrame:self.frame];
-    backgroundView.backgroundColor = [UIColor peterRiverColor];
-
-    self.selectedBackgroundView = backgroundView;
-
 }
 
 @end

@@ -79,8 +79,6 @@
     [gistsTable registerNib:nib forCellReuseIdentifier:@"GistCell"];
     [gistsTable setAutoresizingMask:(UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight)];
     [gistsTable setBackgroundView:nil];
-    [gistsTable setSeparatorStyle:UITableViewCellSeparatorStyleSingleLine];
-    [gistsTable setSeparatorColor:[UIColor colorWithRed:200/255.0 green:200/255.0 blue:200/255.0 alpha:1.0]];
 }
 
 - (void)registerEvents

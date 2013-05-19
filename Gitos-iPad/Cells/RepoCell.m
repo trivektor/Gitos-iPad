@@ -81,14 +81,7 @@
 
     descriptionLabel.text = [repo getDescription];
 
-    self.backgroundColor = [UIColor whiteColor];
     self.accessoryType   = UITableViewCellAccessoryDisclosureIndicator;
-    UIView *backgroundView = [[UIView alloc] initWithFrame:self.frame];
-
-    backgroundView.backgroundColor = [UIColor peterRiverColor];
-
-    self.selectedBackgroundView = backgroundView;
-    self.backgroundColor = [UIColor whiteColor];
 }
 
 @end

@@ -1,8 +1,7 @@
 VanillaCell {
-    background-color-top: #ffffff;
-    background-color-bottom: #f5f5f5;
     border-width: 1;
     border-color: #e5e5e5;
+    background-color-selected: #f4f4f4;
 }
 NavHeaderLabel1 {
     padding: 3;
@@ -36,4 +35,9 @@ SegmentedControl {
     font-color-selected: #ffffff;
     text-shadow-offset: 0, 0;
     corner-radius: 4;
+}
+AsbestosColor {
+    font-color: #7f8c8d;
+    font-color-highlighted: #7f8c8d;
+    font-color-selected: #7f8c8d;
 }

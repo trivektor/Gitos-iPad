@@ -88,6 +88,6 @@
     fieldLabel.text        = labelText;
     fieldDetails.text      = detailsText;
     self.selectionStyle    = UITableViewCellSelectionStyleNone;
-    self.backgroundColor   = [UIColor whiteColor];}
+}
 
 @end

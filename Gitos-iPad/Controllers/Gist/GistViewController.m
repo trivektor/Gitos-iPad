@@ -165,7 +165,12 @@
     GistFile *file = [files objectAtIndex:indexPath.row];
     cell.textLabel.text  = [file getName];
     cell.textLabel.font  = [UIFont fontWithName:@"Arial" size:12.0];
+    cell.textLabel.nuiClass = @"AsbestosColor";
     cell.backgroundColor = [UIColor whiteColor];
+    cell.layer.masksToBounds = YES;
+    [cell defineSelectedColor:[UIColor cloudsColor]
+            forRowAtIndexPath:indexPath
+                withTotalRows:files.count];
 
     return cell;
 }

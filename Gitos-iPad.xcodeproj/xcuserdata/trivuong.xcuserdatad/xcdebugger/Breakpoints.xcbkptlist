@@ -60,11 +60,11 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "Gitos-iPad/Cells/NewsFeedCell.m"
-         timestampString = "390470638.183734"
+         timestampString = "390688277.551914"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "69"
-         endingLineNumber = "69"
+         startingLineNumber = "62"
+         endingLineNumber = "62"
          landmarkName = "@implementation NewsFeedCell"
          landmarkType = "3">
       </FileBreakpoint>
@@ -73,7 +73,7 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "Gitos-iPad/Cells/NewsFeedCell.m"
-         timestampString = "389522049.475179"
+         timestampString = "390687074.785818"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
          startingLineNumber = "33"

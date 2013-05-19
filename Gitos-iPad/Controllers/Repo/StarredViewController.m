@@ -66,8 +66,6 @@
     [starredReposTable registerNib:nib forCellReuseIdentifier:@"RepoCell"];
     [starredReposTable setAutoresizingMask:(UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight)];
     [starredReposTable setBackgroundView:nil];
-    [starredReposTable setSeparatorStyle:UITableViewCellSeparatorStyleSingleLine];
-    [starredReposTable setSeparatorColor:[UIColor colorWithRed:200/255.0 green:200/255.0 blue:200/255.0 alpha:1.0]];
 }
 
 - (void)registerEvents

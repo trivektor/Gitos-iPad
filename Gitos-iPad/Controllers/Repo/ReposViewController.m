@@ -80,8 +80,6 @@
     [reposTable setDataSource:self];
     [reposTable setAutoresizingMask:(UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight)];
     [reposTable setBackgroundView:nil];
-    [reposTable setSeparatorStyle:UITableViewCellSeparatorStyleSingleLine];
-    [reposTable setSeparatorColor:[UIColor colorWithRed:200/255.0 green:200/255.0 blue:200/255.0 alpha:1.0]];
 }
 
 - (void)registerEvents
