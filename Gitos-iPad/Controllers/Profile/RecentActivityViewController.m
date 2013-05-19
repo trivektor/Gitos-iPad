@@ -10,6 +10,7 @@
 #import "NewsFeedCell.h"
 #import "TimelineEvent.h"
 #import <objc/message.h>
+#import "NewsfeedDetailsViewController.h"
 
 @interface RecentActivityViewController ()
 
@@ -107,6 +108,14 @@
     return cell;
 }
 
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    NewsfeedDetailsViewController *newsfeedDetailsController = [[NewsfeedDetailsViewController alloc] init];
+    newsfeedDetailsController.event = [activities objectAtIndex:indexPath.row];
+    [self.navigationController pushViewController:newsfeedDetailsController
+                                         animated:YES];
+}
+
 - (void)displayRecentActivity:(NSNotification *)notification
 {
     [activities addObjectsFromArray:notification.object];
@@ -116,7 +125,7 @@
 
 - (void)reloadActivities
 {
-    self.currentPage = 1;
+    currentPage = 1;
     [hud show:YES];
     [activities removeAllObjects];
 }
