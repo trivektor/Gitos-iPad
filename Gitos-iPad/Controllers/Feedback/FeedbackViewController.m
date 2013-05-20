@@ -31,10 +31,13 @@
     // Do any additional setup after loading the view from its nib.
     [self performHouseKeepingTasks];
     
-    UIBarButtonItem *submitButton = [[UIBarButtonItem alloc] initWithTitle:@"Send"
+    UIBarButtonItem *submitButton = [[UIBarButtonItem alloc] initWithTitle:[NSString fontAwesomeIconStringForIconIdentifier:@"icon-ok-sign"]
                                                                      style:UIBarButtonItemStyleBordered
                                                                     target:self
                                                                     action:@selector(sendFeedback)];
+
+    [submitButton setTitleTextAttributes:[NSDictionary dictionaryWithObjectsAndKeys:[UIFont fontWithName:kFontAwesomeFamilyName size:17], UITextAttributeFont, nil] forState:UIControlStateNormal];
+
     [self.navigationItem setRightBarButtonItem:submitButton];
 }
 
@@ -50,13 +53,8 @@
     hud.labelText = LOADING_MESSAGE;
     [hud hide:YES];
 
-    [feedbackTable setBackgroundView:nil];
     [feedbackTable setScrollEnabled:NO];
-    [feedbackTable setSeparatorStyle:UITableViewCellSeparatorStyleSingleLine];
-    [feedbackTable setSeparatorColor:[UIColor colorWithRed:200/255.0
-                                                     green:200/255.0
-                                                      blue:200/255.0
-                                                     alpha:1.0]];
+    [feedbackTable drawSeparator];
     [feedbackTable drawShadow];
 
     [self.view setBackgroundColor:[UIColor colorWithRed:230/255.0

@@ -40,17 +40,19 @@ homePageCell, homePageTextField, visibilityCell, hud;
 
     self.navigationItem.title = @"New Repository";
 
-    UIBarButtonItem *submitButton = [[UIBarButtonItem alloc] initWithTitle:@"Create"
+    UIBarButtonItem *submitButton = [[UIBarButtonItem alloc] initWithTitle:[NSString fontAwesomeIconStringForIconIdentifier:@"icon-ok-sign"]
                                                                      style:UIBarButtonItemStyleBordered
                                                                     target:self
                                                                     action:@selector(submitNewRepo)];
+
+    [submitButton setTitleTextAttributes:[NSDictionary dictionaryWithObjectsAndKeys:[UIFont fontWithName:kFontAwesomeFamilyName size:17], UITextAttributeFont, nil] forState:UIControlStateNormal];
+
+    [self.navigationItem setRightBarButtonItem:submitButton];
 
     hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
     hud.mode = MBProgressHUDAnimationFade;
     hud.labelText = LOADING_MESSAGE;
     hud.hidden = YES;
-
-    [self.navigationItem setRightBarButtonItem:submitButton];
 
     [self.view setBackgroundColor:[UIColor colorWithRed:230/255.0
                                                        green:230/255.0

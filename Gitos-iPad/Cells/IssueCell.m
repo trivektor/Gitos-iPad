@@ -38,7 +38,6 @@
     overviewLabel.text = [NSString stringWithFormat:@"by %@ %@", [user getLogin], [issue getCreatedAt]];
     commentsLabel.text = [NSString stringWithFormat:@"%i comments", [self.issue getNumberOfComments]];
     [self defineSelectedColor:[UIColor asbestosColor]];
-    [self defineAccessoryType];
 }
 
 @end

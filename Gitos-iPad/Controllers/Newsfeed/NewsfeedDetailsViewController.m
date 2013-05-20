@@ -54,13 +54,11 @@
     [self.navigationItem setTitle:@"Details"];
     [webView setDelegate:self];
 
-    UIBarButtonItem *reloadButton = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"glyphicons_081_refresh"]
-                                                       landscapeImagePhone:nil
-                                                                     style:UIBarButtonItemStyleBordered
+    UIBarButtonItem *reloadButton = [[UIBarButtonItem alloc] initWithTitle:[NSString fontAwesomeIconStringForIconIdentifier:@"icon-repeat"] style:UIBarButtonItemStyleBordered
                                                                     target:self
-                                                                    action:@selector(reloadNewsfeedDetails)];
+                                                                    action:@selector(reloadNewsfeed)];
 
-    [NUIRenderer renderBarButtonItem:self.navigationItem.leftBarButtonItem withClass:@"BarButton"];
+    [reloadButton setTitleTextAttributes:[NSDictionary dictionaryWithObjectsAndKeys:[UIFont fontWithName:kFontAwesomeFamilyName size:17], UITextAttributeFont, nil] forState:UIControlStateNormal];
 
     [self.navigationItem setRightBarButtonItem:reloadButton];
 }

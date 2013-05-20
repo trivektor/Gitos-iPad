@@ -82,10 +82,13 @@ nameTextField, emailTextField, websiteTextField, companyTextField, locationTextF
     [profileTableForm drawSeparator];
     [profileTableForm drawShadow];
 
-    UIBarButtonItem *submitButton = [[UIBarButtonItem alloc] initWithTitle:@"Submit"
+    UIBarButtonItem *submitButton = [[UIBarButtonItem alloc] initWithTitle:[NSString fontAwesomeIconStringForIconIdentifier:@"icon-ok-sign"]
                                                                      style:UIBarButtonItemStyleBordered
                                                                     target:self
                                                                     action:@selector(updateInfo)];
+
+    [submitButton setTitleTextAttributes:[NSDictionary dictionaryWithObjectsAndKeys:[UIFont fontWithName:kFontAwesomeFamilyName size:17], UITextAttributeFont, nil] forState:UIControlStateNormal];
+
     [self.navigationItem setRightBarButtonItem:submitButton];
 
     [self.view setBackgroundColor:[UIColor colorWithRed:230/255.0

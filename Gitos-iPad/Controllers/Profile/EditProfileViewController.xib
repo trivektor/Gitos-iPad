@@ -810,16 +810,72 @@
 				<string key="12.IBPluginDependency">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 				<string key="13.IBPluginDependency">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 				<string key="15.IBPluginDependency">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
+				<object class="NSMutableDictionary" key="16.IBAttributePlaceholdersKey">
+					<string key="NS.key.0">IBUserDefinedRuntimeAttributesPlaceholderName</string>
+					<object class="IBUIUserDefinedRuntimeAttributesPlaceholder" key="NS.object.0">
+						<string key="name">IBUserDefinedRuntimeAttributesPlaceholderName</string>
+						<reference key="object" ref="11472355"/>
+						<array key="userDefinedRuntimeAttributes">
+							<object class="IBUserDefinedRuntimeAttribute">
+								<string key="typeIdentifier">com.apple.InterfaceBuilder.userDefinedRuntimeAttributeType.string</string>
+								<string key="keyPath">nuiClass</string>
+								<string key="value">AsbestosColor</string>
+							</object>
+						</array>
+					</object>
+				</object>
 				<string key="16.IBPluginDependency">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 				<string key="18.IBPluginDependency">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 				<string key="2.IBPluginDependency">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 				<string key="20.IBPluginDependency">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
+				<object class="NSMutableDictionary" key="21.IBAttributePlaceholdersKey">
+					<string key="NS.key.0">IBUserDefinedRuntimeAttributesPlaceholderName</string>
+					<object class="IBUIUserDefinedRuntimeAttributesPlaceholder" key="NS.object.0">
+						<string key="name">IBUserDefinedRuntimeAttributesPlaceholderName</string>
+						<reference key="object" ref="414184936"/>
+						<array key="userDefinedRuntimeAttributes">
+							<object class="IBUserDefinedRuntimeAttribute">
+								<string key="typeIdentifier">com.apple.InterfaceBuilder.userDefinedRuntimeAttributeType.string</string>
+								<string key="keyPath">nuiClass</string>
+								<string key="value">AsbestosColor</string>
+							</object>
+						</array>
+					</object>
+				</object>
 				<string key="21.IBPluginDependency">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 				<string key="22.IBPluginDependency">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 				<string key="24.IBPluginDependency">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
+				<object class="NSMutableDictionary" key="25.IBAttributePlaceholdersKey">
+					<string key="NS.key.0">IBUserDefinedRuntimeAttributesPlaceholderName</string>
+					<object class="IBUIUserDefinedRuntimeAttributesPlaceholder" key="NS.object.0">
+						<string key="name">IBUserDefinedRuntimeAttributesPlaceholderName</string>
+						<reference key="object" ref="904785756"/>
+						<array key="userDefinedRuntimeAttributes">
+							<object class="IBUserDefinedRuntimeAttribute">
+								<string key="typeIdentifier">com.apple.InterfaceBuilder.userDefinedRuntimeAttributeType.string</string>
+								<string key="keyPath">nuiClass</string>
+								<string key="value">AsbestosColor</string>
+							</object>
+						</array>
+					</object>
+				</object>
 				<string key="25.IBPluginDependency">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 				<string key="26.IBPluginDependency">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 				<string key="28.IBPluginDependency">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
+				<object class="NSMutableDictionary" key="30.IBAttributePlaceholdersKey">
+					<string key="NS.key.0">IBUserDefinedRuntimeAttributesPlaceholderName</string>
+					<object class="IBUIUserDefinedRuntimeAttributesPlaceholder" key="NS.object.0">
+						<string key="name">IBUserDefinedRuntimeAttributesPlaceholderName</string>
+						<reference key="object" ref="960831278"/>
+						<array key="userDefinedRuntimeAttributes">
+							<object class="IBUserDefinedRuntimeAttribute">
+								<string key="typeIdentifier">com.apple.InterfaceBuilder.userDefinedRuntimeAttributeType.string</string>
+								<string key="keyPath">nuiClass</string>
+								<string key="value">AsbestosColor</string>
+							</object>
+						</array>
+					</object>
+				</object>
 				<string key="30.IBPluginDependency">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 				<string key="37.IBPluginDependency">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 				<string key="4.IBPluginDependency">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>

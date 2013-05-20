@@ -66,10 +66,13 @@
 {
     [super performHousekeepingTasks];
 
-    UIBarButtonItem *newGistButton = [[UIBarButtonItem alloc] initWithTitle:@"New gist"
+    UIBarButtonItem *newGistButton = [[UIBarButtonItem alloc] initWithTitle:[NSString fontAwesomeIconStringForIconIdentifier:@"icon-plus"]
                                                                       style:UIBarButtonItemStyleBordered
                                                                      target:self
                                                                      action:@selector(createNewGist)];
+
+    [newGistButton setTitleTextAttributes:[NSDictionary dictionaryWithObjectsAndKeys:[UIFont fontWithName:kFontAwesomeFamilyName size:17], UITextAttributeFont, nil] forState:UIControlStateNormal];
+
     [self.navigationItem setRightBarButtonItem:newGistButton];
 }
 

@@ -55,14 +55,16 @@
     hud.mode = MBProgressHUDAnimationFade;
     hud.labelText = LOADING_MESSAGE;
 
-    UIBarButtonItem *commitButton = [[UIBarButtonItem alloc] initWithTitle:@"Commits"
+    UIBarButtonItem *commitButton = [[UIBarButtonItem alloc] initWithTitle:[NSString fontAwesomeIconStringForIconIdentifier:@"icon-upload-alt"]
                                                                      style:UIBarButtonItemStyleBordered
                                                                     target:self
                                                                     action:@selector(showCommitForBranch)];
 
-    [treeTable registerNib:[UINib nibWithNibName:@"RepoTreeCell" bundle:nil] forCellReuseIdentifier:@"RepoTreeCell"];
+    [commitButton setTitleTextAttributes:[NSDictionary dictionaryWithObjectsAndKeys:[UIFont fontWithName:kFontAwesomeFamilyName size:17], UITextAttributeFont, nil] forState:UIControlStateNormal];
 
     [self.navigationItem setRightBarButtonItem:commitButton];
+
+    [treeTable registerNib:[UINib nibWithNibName:@"RepoTreeCell" bundle:nil] forCellReuseIdentifier:@"RepoTreeCell"];
 }
 
 - (void)registerEvents

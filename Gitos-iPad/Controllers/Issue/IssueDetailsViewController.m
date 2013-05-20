@@ -52,10 +52,12 @@
     hud.mode = MBProgressHUDAnimationFade;
     hud.labelText = @"Loading";
 
-    UIBarButtonItem *addCommentButton = [[UIBarButtonItem alloc] initWithTitle:@"Add Comment"
+    UIBarButtonItem *addCommentButton = [[UIBarButtonItem alloc] initWithTitle:[NSString fontAwesomeIconStringForIconIdentifier:@"icon-plus"]
                                                                          style:UIBarButtonItemStyleBordered
                                                                         target:self
                                                                         action:@selector(addComment)];
+
+    [addCommentButton setTitleTextAttributes:[NSDictionary dictionaryWithObjectsAndKeys:[UIFont fontWithName:kFontAwesomeFamilyName size:17], UITextAttributeFont, nil] forState:UIControlStateNormal];
 
     self.navigationItem.rightBarButtonItem = addCommentButton;
 }
