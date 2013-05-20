@@ -377,6 +377,7 @@
 		B5A72FEB174874C5004F73FB /* showdown.js in Resources */ = {isa = PBXBuildFile; fileRef = B5A72FEA174874C5004F73FB /* showdown.js */; };
 		B5A72FEE174969E8004F73FB /* UITableViewCell+Customizations.m in Sources */ = {isa = PBXBuildFile; fileRef = B5A72FED174969E8004F73FB /* UITableViewCell+Customizations.m */; };
 		B5A72FF117498071004F73FB /* CustomCellBackgroundView.m in Sources */ = {isa = PBXBuildFile; fileRef = B5A72FF017498070004F73FB /* CustomCellBackgroundView.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		B5A72FF417499CDD004F73FB /* DTCustomColoredAccessory.m in Sources */ = {isa = PBXBuildFile; fileRef = B5A72FF317499CDD004F73FB /* DTCustomColoredAccessory.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		B5BC452116BA5E3F00434848 /* prettify.js in Resources */ = {isa = PBXBuildFile; fileRef = B5BC451C16BA5DFD00434848 /* prettify.js */; };
 		B5BC452516BCEE7100434848 /* MasterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B5BC452316BCEE7000434848 /* MasterViewController.m */; };
 		B5BC452616BCEE7100434848 /* MasterViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B5BC452416BCEE7000434848 /* MasterViewController.xib */; };
@@ -961,6 +962,8 @@
 		B5A72FED174969E8004F73FB /* UITableViewCell+Customizations.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UITableViewCell+Customizations.m"; sourceTree = "<group>"; };
 		B5A72FEF17498070004F73FB /* CustomCellBackgroundView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomCellBackgroundView.h; sourceTree = "<group>"; };
 		B5A72FF017498070004F73FB /* CustomCellBackgroundView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomCellBackgroundView.m; sourceTree = "<group>"; };
+		B5A72FF217499CDC004F73FB /* DTCustomColoredAccessory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DTCustomColoredAccessory.h; sourceTree = "<group>"; };
+		B5A72FF317499CDD004F73FB /* DTCustomColoredAccessory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DTCustomColoredAccessory.m; sourceTree = "<group>"; };
 		B5BC451C16BA5DFD00434848 /* prettify.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = prettify.js; sourceTree = "<group>"; };
 		B5BC452216BCEE6F00434848 /* MasterViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MasterViewController.h; sourceTree = "<group>"; };
 		B5BC452316BCEE7000434848 /* MasterViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MasterViewController.m; sourceTree = "<group>"; };
@@ -1546,6 +1549,8 @@
 				B5A72FED174969E8004F73FB /* UITableViewCell+Customizations.m */,
 				B5A72FEF17498070004F73FB /* CustomCellBackgroundView.h */,
 				B5A72FF017498070004F73FB /* CustomCellBackgroundView.m */,
+				B5A72FF217499CDC004F73FB /* DTCustomColoredAccessory.h */,
+				B5A72FF317499CDD004F73FB /* DTCustomColoredAccessory.m */,
 			);
 			path = Classes;
 			sourceTree = "<group>";
@@ -2435,6 +2440,7 @@
 				B5A72FE7174768C4004F73FB /* UITableView+Shadow.m in Sources */,
 				B5A72FEE174969E8004F73FB /* UITableViewCell+Customizations.m in Sources */,
 				B5A72FF117498071004F73FB /* CustomCellBackgroundView.m in Sources */,
+				B5A72FF417499CDD004F73FB /* DTCustomColoredAccessory.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

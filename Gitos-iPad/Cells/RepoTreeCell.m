@@ -34,17 +34,12 @@
 
     if ([node isTree]) {
         iconLabel.text      = [NSString fontAwesomeIconStringForIconIdentifier:@"icon-folder-close"];
-        iconLabel.textColor = [UIColor colorWithRed:148/255.0
-                                              green:148/255.0
-                                               blue:148/255.0
-                                              alpha:1.0];
     } else if ([node isBlob]) {
         iconLabel.text      = [NSString fontAwesomeIconStringForIconIdentifier:@"icon-file"];
-        iconLabel.textColor = [UIColor blackColor];
     }
 
     nameLabel.text = [node getPath];
-    self.accessoryType  = UITableViewCellAccessoryDisclosureIndicator;
+    [self defineAccessoryType];
 }
 
 @end

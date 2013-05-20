@@ -42,7 +42,7 @@
     fontAwesomeLabel.text = [NSString fontAwesomeIconStringForIconIdentifier:iconIdentifier];
     titleLabel.text       = [notification getTitle];
     updatedAtLabel.text   = [notification getUpdatedAt];
-    self.accessoryType    = UITableViewCellAccessoryDisclosureIndicator;
+    [self defineAccessoryType];
 }
 
 @end

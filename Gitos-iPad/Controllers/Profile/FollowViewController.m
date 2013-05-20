@@ -84,10 +84,11 @@
     User *_user = [users objectAtIndex:indexPath.row];
 
     [cell.imageView setImageWithURL:[NSURL URLWithString:[_user getAvatarUrl]] placeholderImage:[UIImage imageNamed:@"avatar-placeholder.png"]];
-    cell.accessoryType  = UITableViewCellAccessoryDisclosureIndicator;
     cell.textLabel.text = [_user getLogin];
+    cell.textLabel.font = [UIFont fontWithName:@"Arial-BoldMT" size:12.0];
     cell.textLabel.nuiClass = @"AsbestosColor";
-    cell.nuiClass = @"VanilaCell";
+    [cell defineSelectedColor:[UIColor asbestosColor]];
+    [cell defineAccessoryType];
     return cell;
 }
 

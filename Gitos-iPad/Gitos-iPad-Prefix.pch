@@ -46,4 +46,5 @@
     #import "NUIRenderer.h"
     #import "UITableView+Shadow.h"
     #import "UITableViewCell+Customizations.h"
+    #import "DTCustomColoredAccessory.h"
 #endif

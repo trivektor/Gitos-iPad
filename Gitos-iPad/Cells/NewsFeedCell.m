@@ -34,7 +34,7 @@
     actionDate.text                  = [event toDateString];
     fontAwesomeLabel.font            = [UIFont fontWithName:kFontAwesomeFamilyName size:15.0];
     fontAwesomeLabel.text            = [NSString fontAwesomeIconStringForIconIdentifier:[event getFontAwesomeIcon]];
-    self.accessoryType               = UITableViewCellAccessoryDisclosureIndicator;
+    [self defineAccessoryType];
 }
 
 @end

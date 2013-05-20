@@ -36,7 +36,7 @@
     gistName.text         = [gist getName];
     gistDescription.text  = [gist getDescription];
     gistCreatedAt.text    = [gist getCreatedAt];
-    self.accessoryType         = UITableViewCellAccessoryDisclosureIndicator;
+    [self defineAccessoryType];
 }
 
 @end

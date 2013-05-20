@@ -111,7 +111,6 @@
 								<string key="NSFrame">{{49, 32}, {955, 21}}</string>
 								<reference key="NSSuperview" ref="33625399"/>
 								<reference key="NSWindow"/>
-								<reference key="NSNextKeyView"/>
 								<string key="NSReuseIdentifierKey">_NS:9</string>
 								<bool key="IBUIOpaque">NO</bool>
 								<bool key="IBUIClipsSubviews">YES</bool>
@@ -161,6 +160,7 @@
 				<reference key="NSNextKeyView" ref="33625399"/>
 				<string key="NSReuseIdentifierKey">_NS:9</string>
 				<string key="targetRuntimeIdentifier">IBIPadFramework</string>
+				<int key="IBUISelectionStyle">0</int>
 				<reference key="IBUIContentView" ref="33625399"/>
 				<real value="66" key="IBUIRowHeight"/>
 			</object>

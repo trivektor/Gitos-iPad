@@ -80,8 +80,8 @@
                                       watchersSize.height);
 
     descriptionLabel.text = [repo getDescription];
-
-    self.accessoryType   = UITableViewCellAccessoryDisclosureIndicator;
+    [self defineSelectedColor:[UIColor asbestosColor]];
+    [self defineAccessoryType];
 }
 
 @end

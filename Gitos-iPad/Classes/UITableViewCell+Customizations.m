@@ -13,7 +13,7 @@
 
 - (void)defineSelectedColor:(UIColor *)color
 {
-    CustomCellBackgroundView *backgroundView = [[CustomCellBackgroundView alloc] initWithFrame:self.frame];
+    UIView *backgroundView = [[UIView alloc] initWithFrame:self.frame];
     backgroundView.backgroundColor = [UIColor colorWithRed:244/255.0
                                                      green:244/255.0
                                                       blue:244/255.0
@@ -50,6 +50,14 @@
     backgroundView.layer.masksToBounds = YES;
     backgroundView.clipsToBounds = YES;
     self.selectedBackgroundView = backgroundView;
+}
+
+- (void)defineAccessoryType
+{
+    DTCustomColoredAccessory *accessory = [DTCustomColoredAccessory accessoryWithColor:[UIColor asbestosColor]];
+    accessory.highlightedColor = [UIColor asbestosColor];
+    self.accessoryView = accessory;
+    self.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
 }
 
 @end
