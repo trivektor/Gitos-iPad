@@ -16,7 +16,7 @@
 
 @implementation LoginViewController
 
-@synthesize usernameCell, passwordCell, oauthParams, hud;
+@synthesize usernameCell, passwordCell, oauthParams, hud, signinButton;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -56,17 +56,17 @@
 
     [self.navigationItem setTitle:@"Sign in to Github"];
     
-    UIBarButtonItem *submitButton = [[UIBarButtonItem alloc] initWithTitle:@"Sign in"
-                                                                     style:UIBarButtonItemStyleBordered
-                                                                    target:self
-                                                                    action:@selector(deleteExistingAuthorizations)];
-
-    [submitButton setTintColor:[UIColor colorWithRed:202/255.0
-                                               green:0
-                                                blue:0
-                                               alpha:1]];
-
-    [self.navigationItem setRightBarButtonItem:submitButton];
+//    UIBarButtonItem *submitButton = [[UIBarButtonItem alloc] initWithTitle:@"Sign in"
+//                                                                     style:UIBarButtonItemStyleBordered
+//                                                                    target:self
+//                                                                    action:@selector(deleteExistingAuthorizations)];
+//
+//    [submitButton setTintColor:[UIColor colorWithRed:202/255.0
+//                                               green:0
+//                                                blue:0
+//                                               alpha:1]];
+//
+//    [self.navigationItem setRightBarButtonItem:submitButton];
 
     [loginTable setBackgroundView:nil];
     [loginTable setScrollEnabled:NO];
@@ -75,6 +75,17 @@
                                                   green:200/255.0
                                                    blue:200/255.0
                                                   alpha:1.0]];
+    
+    signinButton.buttonColor = [UIColor turquoiseColor];
+    signinButton.shadowColor = [UIColor greenSeaColor];
+    signinButton.shadowHeight = 3.0f;
+    signinButton.cornerRadius = 6.0f;
+    signinButton.titleLabel.font = [UIFont boldFlatFontOfSize:16];
+    [signinButton setTitleColor:[UIColor cloudsColor] forState:UIControlStateNormal];
+    [signinButton setTitleColor:[UIColor cloudsColor] forState:UIControlStateHighlighted];
+    [signinButton addTarget:self
+                     action:@selector(deleteExistingAuthorizations)
+           forControlEvents:UIControlEventTouchDown];
 }
 
 - (void)setDelegates

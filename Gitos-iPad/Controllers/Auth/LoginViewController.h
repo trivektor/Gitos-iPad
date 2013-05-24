@@ -20,6 +20,8 @@
 @property(nonatomic, strong) IBOutlet UITableViewCell *passwordCell;
 @property(nonatomic, strong) MBProgressHUD *hud;
 @property(nonatomic, strong) NSMutableDictionary *oauthParams;
+@property (weak, nonatomic) IBOutlet FUIButton *signinButton;
+
 
 - (void)performHousekeepingTasks;
 - (void)registerEvents;
