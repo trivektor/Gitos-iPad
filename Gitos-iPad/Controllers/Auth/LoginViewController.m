@@ -9,6 +9,7 @@
 #import "LoginViewController.h"
 #import "AppInitialization.h"
 #import "Authorization.h"
+#import "AccountViewController.h"
 
 @interface LoginViewController ()
 
@@ -16,7 +17,7 @@
 
 @implementation LoginViewController
 
-@synthesize usernameCell, passwordCell, oauthParams, hud, signinButton;
+@synthesize usernameCell, passwordCell, oauthParams, hud, signinButton, optionsSheet;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -56,18 +57,12 @@
 
     [self.navigationItem setTitle:@"Sign in to Github"];
     
-//    UIBarButtonItem *submitButton = [[UIBarButtonItem alloc] initWithTitle:@"Sign in"
-//                                                                     style:UIBarButtonItemStyleBordered
-//                                                                    target:self
-//                                                                    action:@selector(deleteExistingAuthorizations)];
-//
-//    [submitButton setTintColor:[UIColor colorWithRed:202/255.0
-//                                               green:0
-//                                                blue:0
-//                                               alpha:1]];
-//
-//    [self.navigationItem setRightBarButtonItem:submitButton];
+    [self prepLoginTable];
+    [self prepAccountOptions];
+}
 
+- (void)prepLoginTable
+{
     [loginTable setBackgroundView:nil];
     [loginTable setScrollEnabled:NO];
     [loginTable setSeparatorStyle:UITableViewCellSeparatorStyleSingleLine];
@@ -75,7 +70,7 @@
                                                   green:200/255.0
                                                    blue:200/255.0
                                                   alpha:1.0]];
-    
+
     signinButton.buttonColor = [UIColor turquoiseColor];
     signinButton.shadowColor = [UIColor greenSeaColor];
     signinButton.shadowHeight = 3.0f;
@@ -86,6 +81,29 @@
     [signinButton addTarget:self
                      action:@selector(deleteExistingAuthorizations)
            forControlEvents:UIControlEventTouchDown];
+}
+
+- (void)prepAccountOptions
+{
+    optionsSheet = [[UIActionSheet alloc] initWithTitle:@"Options"
+                                               delegate:self
+                                      cancelButtonTitle:@"Cancel"
+                                 destructiveButtonTitle:nil
+                                      otherButtonTitles:@"Forgot Password", @"Sign Up", nil];
+
+    UIBarButtonItem *optionsButton = [[UIBarButtonItem alloc] initWithTitle:@""
+                                                                      style:UIBarButtonItemStyleBordered
+                                                                     target:self
+                                                                     action:@selector(showAccountOptions)];
+
+    [optionsButton setTintColor:[UIColor colorWithRed:202/255.0
+                                                green:0
+                                                 blue:0
+                                                alpha:1]];
+
+    [optionsButton setImage:[UIImage imageNamed:@"211-action.png"]];
+
+    [self.navigationItem setRightBarButtonItem:optionsButton];
 }
 
 - (void)setDelegates
@@ -113,15 +131,17 @@
 
 - (void)registerEvents
 {
-    [[NSNotificationCenter defaultCenter] addObserver:self
-                                             selector:@selector(authenticate)
-                                                 name:@"ExistingAuthorizationsDeleted"
-                                               object:nil];
+    NSNotificationCenter *center = [NSNotificationCenter defaultCenter];
 
-    [[NSNotificationCenter defaultCenter] addObserver:self
-                                             selector:@selector(fetchUser)
-                                                 name:@"UserAutheticated"
-                                               object:nil];
+    [center addObserver:self
+               selector:@selector(authenticate)
+                   name:@"ExistingAuthorizationsDeleted"
+                 object:nil];
+
+    [center addObserver:self
+               selector:@selector(fetchUser)
+                   name:@"UserAutheticated"
+                 object:nil];
 }
 
 - (void)authenticate
@@ -266,6 +286,11 @@
     [AppHelper flashError:@"Invalid username or password" inView:self.view];
 }
 
+- (void)showAccountOptions
+{
+    [optionsSheet showInView:self.view];
+}
+
 - (BOOL)textFieldShouldEndEditing:(UITextField *)textField
 {
     return YES;
@@ -281,6 +306,27 @@
 {
     if ([usernameField isFirstResponder]) [usernameField resignFirstResponder];
     if ([passwordField isFirstResponder]) [passwordField resignFirstResponder];
+}
+
+- (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex
+{
+    AccountViewController *accountController = [[AccountViewController alloc] init];
+
+    if (buttonIndex == 0) {
+        accountController.url = [AppConfig getConfigValue:@"ForgotPasswordUrl"];
+        accountController.pageTitle = @"Forgot Password";
+    } else {
+        accountController.url = [AppConfig getConfigValue:@"SignupUrl"];
+        accountController.pageTitle = @"Sign Up";
+    }
+
+    UINavigationController *navController = [[UINavigationController alloc] initWithRootViewController:accountController];
+
+    navController.modalPresentationStyle = UIModalPresentationFullScreen;
+
+    [self.navigationController presentViewController:navController
+                                            animated:YES
+                                          completion:nil];
 }
 
 @end

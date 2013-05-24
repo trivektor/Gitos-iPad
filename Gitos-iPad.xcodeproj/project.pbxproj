@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		B501D937174F36B600D947E9 /* AccountViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B501D935174F36B600D947E9 /* AccountViewController.m */; };
+		B501D938174F36B600D947E9 /* AccountViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B501D936174F36B600D947E9 /* AccountViewController.xib */; };
 		B511D43716D9A81C00DD0ED5 /* contributions.html in Resources */ = {isa = PBXBuildFile; fileRef = B511D43616D9A81C00DD0ED5 /* contributions.html */; };
 		B511D43A16D9C6FD00DD0ED5 /* underscore.js in Resources */ = {isa = PBXBuildFile; fileRef = B511D43816D9C6A600DD0ED5 /* underscore.js */; };
 		B511D44216DAF68200DD0ED5 /* DeleteEvent.m in Sources */ = {isa = PBXBuildFile; fileRef = B511D44116DAF68000DD0ED5 /* DeleteEvent.m */; };
@@ -419,6 +421,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		B501D934174F36B600D947E9 /* AccountViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AccountViewController.h; sourceTree = "<group>"; };
+		B501D935174F36B600D947E9 /* AccountViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AccountViewController.m; sourceTree = "<group>"; };
+		B501D936174F36B600D947E9 /* AccountViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AccountViewController.xib; sourceTree = "<group>"; };
 		B511D43616D9A81C00DD0ED5 /* contributions.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = contributions.html; sourceTree = "<group>"; };
 		B511D43816D9C6A600DD0ED5 /* underscore.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = underscore.js; sourceTree = "<group>"; };
 		B511D44016DAF67F00DD0ED5 /* DeleteEvent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DeleteEvent.h; sourceTree = "<group>"; };
@@ -1752,6 +1757,9 @@
 				B5A1048A1723C49B00487A47 /* LoginViewController.h */,
 				B5A1048B1723C49B00487A47 /* LoginViewController.m */,
 				B5A1048C1723C49B00487A47 /* LoginViewController.xib */,
+				B501D934174F36B600D947E9 /* AccountViewController.h */,
+				B501D935174F36B600D947E9 /* AccountViewController.m */,
+				B501D936174F36B600D947E9 /* AccountViewController.xib */,
 			);
 			path = Auth;
 			sourceTree = "<group>";
@@ -2246,6 +2254,7 @@
 				B5A72FCE17476036004F73FB /* SkyBlue.NUI.nss in Resources */,
 				B5A72FCF17476036004F73FB /* Switchboard.NUI.nss in Resources */,
 				B5A72FE9174873B7004F73FB /* readme.html in Resources */,
+				B501D938174F36B600D947E9 /* AccountViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2441,6 +2450,7 @@
 				B5A72FEE174969E8004F73FB /* UITableViewCell+Customizations.m in Sources */,
 				B5A72FF117498071004F73FB /* CustomCellBackgroundView.m in Sources */,
 				B5A72FF417499CDD004F73FB /* DTCustomColoredAccessory.m in Sources */,
+				B501D937174F36B600D947E9 /* AccountViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

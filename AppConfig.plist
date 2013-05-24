@@ -14,5 +14,9 @@
 	<string>GitosKeychain</string>
 	<key>KeychainAccountName</key>
 	<string>gitos</string>
+	<key>SignupUrl</key>
+	<string>https://github.com/signup/free</string>
+	<key>ForgotPasswordUrl</key>
+	<string>https://github.com/sessions/forgot_password</string>
 </dict>
 </plist>

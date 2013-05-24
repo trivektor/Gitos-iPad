@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 #import <QuartzCore/QuartzCore.h>
 
-@interface LoginViewController : UIViewController <UITableViewDataSource, UITableViewDelegate, UITextFieldDelegate>
+@interface LoginViewController : UIViewController <UITableViewDataSource, UITableViewDelegate, UITextFieldDelegate, UIActionSheetDelegate>
 {
     __weak IBOutlet UITableView *loginTable;
     __weak IBOutlet UITextField *usernameField;
@@ -21,9 +21,12 @@
 @property(nonatomic, strong) MBProgressHUD *hud;
 @property(nonatomic, strong) NSMutableDictionary *oauthParams;
 @property (weak, nonatomic) IBOutlet FUIButton *signinButton;
+@property (nonatomic, strong) UIActionSheet *optionsSheet;
 
 
 - (void)performHousekeepingTasks;
+- (void)prepLoginTable;
+- (void)prepAccountOptions;
 - (void)registerEvents;
 - (void)authenticate;
 - (void)fetchUser;
@@ -31,5 +34,6 @@
 - (void)setDelegates;
 - (void)handleInvalidCredentials;
 - (void)blurFields;
+- (void)showAccountOptions;
 
 @end
