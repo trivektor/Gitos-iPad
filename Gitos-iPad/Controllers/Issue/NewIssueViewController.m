@@ -74,6 +74,15 @@
     return 2;
 }
 
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    if (indexPath.row == 1) {
+        return 211;
+    } else {
+        return 44;
+    }
+}
+
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     if (indexPath.row == 0) return titleCell;
@@ -83,7 +92,11 @@
 
 - (void)submitIssue
 {
-
+    if (titleField.text.length == 0 || descriptionField.text.length == 0) {
+        [AppHelper flashError:@"Please fill in all the fields"
+                       inView:self.view];
+        return;
+    }
 }
 
 - (void)didReceiveMemoryWarning
