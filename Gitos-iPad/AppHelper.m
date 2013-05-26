@@ -63,4 +63,13 @@
     return [NSURL URLWithString:[[AppConfig getConfigValue:@"GithubApiHost"] stringByAppendingString:endpoint]];
 }
 
++ (MBProgressHUD *)loadHudInView:(UIView *)view withAnimation:(BOOL)animation
+{
+    MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:view animated:animation];
+    hud.mode = MBProgressHUDAnimationFade;
+    hud.labelText = @"Loading";
+
+    return hud;
+}
+
 @end

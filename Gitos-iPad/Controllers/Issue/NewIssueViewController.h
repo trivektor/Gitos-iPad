@@ -15,10 +15,14 @@
 @property (strong, nonatomic) IBOutlet UITableViewCell *descriptionCell;
 @property (weak, nonatomic) IBOutlet UITextField *titleField;
 @property (weak, nonatomic) IBOutlet UITextView *descriptionField;
+@property (nonatomic, strong) MBProgressHUD *hud;
+@property (nonatomic, strong) Repo *repo;
 
 - (void)performHouseKeepingTasks;
 - (void)prepIssueFormTable;
 - (void)registerEvents;
 - (void)submitIssue;
+- (void)handleIssueSubmittedEvent:(NSNotification *)notification;
+- (void)blurFields;
 
 @end

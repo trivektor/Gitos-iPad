@@ -38,6 +38,7 @@
     [self performHouseKeepingTasks];
     [self registerNib];
     [self registerEvents];
+    [self setupPullToRefresh];
     [repo fetchIssuesForPage:currentPage++];
 }
 
@@ -70,6 +71,14 @@
                                              selector:@selector(displayIssues:)
                                                  name:@"IssuesFetched"
                                                object:nil];
+}
+
+- (void)setupPullToRefresh
+{
+    [issuesTable addPullToRefreshWithActionHandler:^{
+        currentPage = 1;
+        [repo fetchIssuesForPage:currentPage++];
+    }];
 }
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
@@ -128,11 +137,13 @@
     issues = notification.object;
     [issuesTable reloadData];
     [hud hide:YES];
+    [issuesTable.pullToRefreshView stopAnimating];
 }
 
 - (void)createIssue
 {
     NewIssueViewController *newIssueController = [[NewIssueViewController alloc] init];
+    newIssueController.repo = repo;
     [self.navigationController pushViewController:newIssueController
                                          animated:YES];
 }

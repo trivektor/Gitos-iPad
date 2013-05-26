@@ -21,6 +21,7 @@
 - (void)performHouseKeepingTasks;
 - (void)registerNib;
 - (void)registerEvents;
+- (void)setupPullToRefresh;
 - (void)displayIssues:(NSNotification *)notification;
 - (void)createIssue;
 

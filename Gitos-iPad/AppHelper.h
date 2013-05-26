@@ -7,6 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "MBProgressHUD.h"
 
 @interface AppHelper : NSObject
 
@@ -17,6 +18,7 @@
 + (NSString *)getDateFormat;
 + (void)flashAlert:(NSString *)message inView:(UIView *)view;
 + (void)flashError:(NSString *)message inView:(UIView *)view;
++ (MBProgressHUD *)loadHudInView:(UIView *)view withAnimation:(BOOL)animation;
 
 + (NSURL *)prepUrlForApiCall:(NSString *)endpoint;
 

@@ -469,7 +469,7 @@
 
 - (void)createIssueWithData:(NSDictionary *)issueData
 {
-    NSURL *newIssueUrl = [AppHelper prepUrlForApiCall:[NSString stringWithFormat:@"/user/repos/%@/issues?access_token=%@", [self getFullName], [AppHelper getAccessToken]]];
+    NSURL *newIssueUrl = [AppHelper prepUrlForApiCall:[NSString stringWithFormat:@"/repos/%@/issues?access_token=%@", [self getFullName], [AppHelper getAccessToken]]];
 
     AFHTTPClient *httpClient = [[AFHTTPClient alloc] initWithBaseURL:newIssueUrl];
     [httpClient setParameterEncoding:AFJSONParameterEncoding];

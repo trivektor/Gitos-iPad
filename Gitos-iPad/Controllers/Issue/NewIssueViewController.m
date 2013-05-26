@@ -14,7 +14,7 @@
 
 @implementation NewIssueViewController
 
-@synthesize issueFormTable, titleCell, descriptionCell, titleField, descriptionField;
+@synthesize issueFormTable, titleCell, descriptionCell, titleField, descriptionField, hud, repo;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -31,6 +31,7 @@
     // Do any additional setup after loading the view from its nib.
     [self performHouseKeepingTasks];
     [self prepIssueFormTable];
+    [self registerEvents];
 }
 
 - (void)performHouseKeepingTasks
@@ -43,6 +44,10 @@
                                                                     action:@selector(submitIssue)];
 
     [submitButton setTitleTextAttributes:[NSDictionary dictionaryWithObjectsAndKeys:[UIFont fontWithName:kFontAwesomeFamilyName size:17], UITextAttributeFont, nil] forState:UIControlStateNormal];
+
+    hud = [AppHelper loadHudInView:self.view
+                     withAnimation:YES];
+    [hud hide:YES];
 
     [self.navigationItem setRightBarButtonItem:submitButton];
 }
@@ -61,7 +66,10 @@
 
 - (void)registerEvents
 {
-
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(handleIssueSubmittedEvent:)
+                                                 name:@"IssueSubmitted"
+                                               object:nil];
 }
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
@@ -92,17 +100,42 @@
 
 - (void)submitIssue
 {
+    [self blurFields];
+
     if (titleField.text.length == 0 || descriptionField.text.length == 0) {
         [AppHelper flashError:@"Please fill in all the fields"
                        inView:self.view];
         return;
     }
+
+    [hud show:YES];
+    [repo createIssueWithData:@{
+        @"title"        :   titleField.text,
+        @"description"  :   descriptionField.text
+     }];
+}
+
+- (void)handleIssueSubmittedEvent:(NSNotification *)notification
+{
+    AFHTTPRequestOperation *operation = (AFHTTPRequestOperation *) notification.object;
+
+    if (operation.response.statusCode == 201) {
+        [AppHelper flashAlert:@"Issue has been created"
+                       inView:self.view];
+    }
+    [hud hide:YES];
 }
 
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+- (void)blurFields
+{
+    [titleField resignFirstResponder];
+    [descriptionField resignFirstResponder];
 }
 
 @end
