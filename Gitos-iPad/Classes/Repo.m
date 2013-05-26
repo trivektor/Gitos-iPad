@@ -160,6 +160,11 @@
     return [data valueForKey:@"owner"];
 }
 
+- (BOOL)hasIssues
+{
+    return [[data valueForKey:@"has_issues"] boolValue];
+}
+
 - (BOOL)isForked
 {
     return [[data valueForKey:@"fork"] integerValue] == 1;

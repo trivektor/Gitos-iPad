@@ -40,6 +40,7 @@
 - (NSString *)getAuthorName;
 - (NSString *)convertToRelativeDate:(NSString *)originalDateString;
 - (NSString *)getOwner;
+- (BOOL)hasIssues;
 - (BOOL)isForked;
 - (NSString *)getGithubUrl;
 - (void)checkStar;

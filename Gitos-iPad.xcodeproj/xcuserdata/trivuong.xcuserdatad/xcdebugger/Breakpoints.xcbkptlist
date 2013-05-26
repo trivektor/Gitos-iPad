@@ -86,11 +86,11 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "Gitos-iPad/Classes/Repo.m"
-         timestampString = "389949195.349671"
+         timestampString = "391228573.206323"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "225"
-         endingLineNumber = "225"
+         startingLineNumber = "230"
+         endingLineNumber = "230"
          landmarkName = "-checkStar"
          landmarkType = "5">
       </FileBreakpoint>

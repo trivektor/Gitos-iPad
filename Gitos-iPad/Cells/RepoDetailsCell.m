@@ -48,11 +48,13 @@
             break;
         case 2:
             fieldLabelText = @"Watchers";
-            fieldValueText = [NSNumberFormatter localizedStringFromNumber:@([repo getWatchers]) numberStyle:NSNumberFormatterDecimalStyle];
+            fieldValueText = [NSNumberFormatter localizedStringFromNumber:@([repo getWatchers])
+                                                              numberStyle:NSNumberFormatterDecimalStyle];
             break;
         case 3:
             fieldLabelText = @"Forks";
-            fieldValueText = [NSNumberFormatter localizedStringFromNumber:@([repo getForks]) numberStyle:NSNumberFormatterDecimalStyle];
+            fieldValueText = [NSNumberFormatter localizedStringFromNumber:@([repo getForks])
+                                                              numberStyle:NSNumberFormatterDecimalStyle];
             break;
         case 4:
             fieldLabelText = @"Language";
@@ -72,7 +74,12 @@
             break;
         case 8:
             fieldLabelText = @"Issues";
-            fieldValueText = [NSNumberFormatter localizedStringFromNumber:@([repo getOpenIssues]) numberStyle:NSNumberFormatterDecimalStyle];
+            if ([repo hasIssues]) {
+                fieldValueText = [NSNumberFormatter localizedStringFromNumber:@([repo getOpenIssues])
+                                                                  numberStyle:NSNumberFormatterDecimalStyle];
+            } else {
+                fieldValueText = @"Issues are disabled for this repo";
+            }
             break;
         case 9:
             fieldLabelText = @"Other";

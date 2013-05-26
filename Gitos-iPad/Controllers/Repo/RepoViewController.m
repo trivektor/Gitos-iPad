@@ -234,6 +234,7 @@
             [self.navigationController pushViewController:repoLanguagesController
                                                  animated:YES];
         } else if (indexPath.row == 8) {
+            if (![repo hasIssues]) return;
             IssuesViewController *issuesController = [[IssuesViewController alloc] init];
             issuesController.repo = repo;
             [self.navigationController pushViewController:issuesController
