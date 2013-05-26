@@ -15,7 +15,9 @@
 @property (nonatomic, strong) Issue *issue;
 
 - (void)performHouseKeepingTasks;
+- (void)registerEvents;
 - (void)dismiss;
 - (void)submitComment;
+- (void)handleCommentSubmittedEvent:(NSNotification *)notification;
 
 @end

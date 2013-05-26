@@ -147,6 +147,8 @@
 
     [operation setCompletionBlockWithSuccess:
      ^(AFHTTPRequestOperation *operation, id responseObject){
+         [[NSNotificationCenter defaultCenter] postNotificationName:@"IssueCommentSubmitted"
+                                                             object:operation];
      }
      failure:^(AFHTTPRequestOperation *operation, NSError *error) {
          NSLog(@"%@", error);
