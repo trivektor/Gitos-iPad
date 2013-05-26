@@ -467,6 +467,32 @@
     [operation start];
 }
 
+- (void)createIssueWithData:(NSDictionary *)issueData
+{
+    NSURL *newIssueUrl = [AppHelper prepUrlForApiCall:[NSString stringWithFormat:@"/user/repos/%@/issues?access_token=%@", [self getFullName], [AppHelper getAccessToken]]];
+
+    AFHTTPClient *httpClient = [[AFHTTPClient alloc] initWithBaseURL:newIssueUrl];
+    [httpClient setParameterEncoding:AFJSONParameterEncoding];
+
+    NSMutableURLRequest *postRequest = [httpClient requestWithMethod:@"POST"
+                                                                path:newIssueUrl.absoluteString
+                                                          parameters:issueData];
+
+    AFHTTPRequestOperation *operation = [[AFHTTPRequestOperation alloc] initWithRequest:postRequest];
+
+    [operation setCompletionBlockWithSuccess:
+     ^(AFHTTPRequestOperation *operation, id responseObject){
+         [[NSNotificationCenter defaultCenter] postNotificationName:@"IssueSubmitted"
+                                                             object:operation];
+     }
+     failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+         [[NSNotificationCenter defaultCenter] postNotificationName:@"IssueSubmitted"
+                                                             object:operation];
+     }];
+
+    [operation start];
+}
+
 - (BOOL)isDestroyable
 {
     return [[AppHelper getAccountUsername] isEqualToString:[self getAuthorName]];

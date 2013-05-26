@@ -53,6 +53,8 @@
 - (BOOL)isDestroyable;
 - (void)destroy;
 
+- (void)createIssueWithData:(NSDictionary *)issueData;
+
 - (void)fetchTopLayerForBranch:(Branch *)branch;
 + (void)createNewWithData:(NSDictionary *)data;
 
