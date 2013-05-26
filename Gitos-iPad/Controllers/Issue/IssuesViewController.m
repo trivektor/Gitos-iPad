@@ -8,6 +8,7 @@
 
 #import "IssuesViewController.h"
 #import "IssueDetailsViewController.h"
+#import "NewIssueViewController.h"
 #import "Issue.h"
 #import "IssueCell.h"
 
@@ -46,6 +47,15 @@
     hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
     hud.mode = MBProgressHUDAnimationFade;
     hud.labelText = @"Loading";
+
+    UIBarButtonItem *createIssueButton = [[UIBarButtonItem alloc] initWithTitle:[NSString fontAwesomeIconStringForIconIdentifier:@"icon-plus-sign"]
+                                                                          style:UIBarButtonItemStyleBordered
+                                                                         target:self
+                                                                         action:@selector(createIssue)];
+
+    [createIssueButton setTitleTextAttributes:[NSDictionary dictionaryWithObjectsAndKeys:[UIFont fontWithName:kFontAwesomeFamilyName size:17], UITextAttributeFont, nil] forState:UIControlStateNormal];
+
+    [self.navigationItem setRightBarButtonItem:createIssueButton];
 }
 
 - (void)registerNib
@@ -118,6 +128,13 @@
     issues = notification.object;
     [issuesTable reloadData];
     [hud hide:YES];
+}
+
+- (void)createIssue
+{
+    NewIssueViewController *newIssueController = [[NewIssueViewController alloc] init];
+    [self.navigationController pushViewController:newIssueController
+                                         animated:YES];
 }
 
 @end

@@ -22,5 +22,6 @@
 - (void)registerNib;
 - (void)registerEvents;
 - (void)displayIssues:(NSNotification *)notification;
+- (void)createIssue;
 
 @end
