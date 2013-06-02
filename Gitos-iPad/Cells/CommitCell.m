@@ -34,11 +34,6 @@
     commentLabel.text  = [commit getMessage];
     dateLabel.text     = [commit getCommittedAt];
     shaLabel.text      = [[commit getSha] substringToIndex:10];
-
-    UIView *backgroundView = [[UIView alloc] initWithFrame:self.frame];
-    backgroundView.backgroundColor = [UIColor peterRiverColor];
-
-    self.selectedBackgroundView = backgroundView;
 }
 
 @end

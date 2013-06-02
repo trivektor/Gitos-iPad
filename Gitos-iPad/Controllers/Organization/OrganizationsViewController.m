@@ -85,7 +85,7 @@
     static NSString *cellIdentifier = @"Cell";
 
     UITableViewCell *cell = [organizationsTable dequeueReusableCellWithIdentifier:cellIdentifier];
-    
+
     if (!cell) {
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellIdentifier];
     }
@@ -97,11 +97,7 @@
     cell.imageView.image = [UIImage imageWithData:data];
     cell.textLabel.text = [org getLogin];
     cell.textLabel.font = [UIFont fontWithName:@"Arial" size:12.0];
-
-    UIView *backgroundView = [[UIView alloc] initWithFrame:cell.frame];
-    backgroundView.backgroundColor = [UIColor peterRiverColor];
-
-    cell.selectedBackgroundView = backgroundView;
+    cell.selectionStyle = UITableViewCellSelectionStyleNone;
 
     return cell;
 }
