@@ -23,10 +23,6 @@ NavHeaderLabel4 {
     font-color: #ffffff;
     background-color: #95a5a6;
 }
-NavItemLabel {
-    text-shadow-color: #282828;
-    text-shadow-offset: 2, 2;
-}
 SegmentedControl {
     border-width: 0;
     background-color: #ffffff;

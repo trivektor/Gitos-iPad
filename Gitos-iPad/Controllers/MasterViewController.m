@@ -48,7 +48,6 @@
 
 - (void)performHouseKeepingTasks
 {
-    self.navigationItem.title = @"Gitos";
     [menuTable setScrollEnabled:NO];
 
     UINib *nib = [UINib nibWithNibName:@"MasterControllerCell" bundle:nil];
