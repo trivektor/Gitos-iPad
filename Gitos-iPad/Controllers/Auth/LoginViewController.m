@@ -150,7 +150,9 @@
     NSString *password = [passwordField text];
 
     NSURL *url = [NSURL URLWithString:[AppConfig getConfigValue:@"GithubApiHost"]];
-    
+
+    //NSLog(@"creating new authentication token");
+
     AFHTTPClient *httpClient = [[AFHTTPClient alloc] initWithBaseURL:url];
     [httpClient setParameterEncoding:AFJSONParameterEncoding];
     [httpClient setAuthorizationHeaderWithUsername:username password:password];
@@ -171,11 +173,12 @@
          Authorization *authorization = [[Authorization alloc] initWithData:json];
 
          NSString *token = [authorization getToken];
-         NSString *authorizationId = [authorization getId];
          NSString *account = [AppConfig getConfigValue:@"KeychainAccountName"];
 
+         // Delete old access_token and store new one
+         [SSKeychain deletePasswordForService:@"access_token" account:account];
          [SSKeychain setPassword:token forService:@"access_token" account:account];
-         [SSKeychain setPassword:authorizationId forService:@"authorization_id" account:account];
+
          [[NSNotificationCenter defaultCenter] postNotificationName:@"UserAutheticated" object:nil];
      }
      failure:^(AFHTTPRequestOperation *operation, NSError *error) {
@@ -198,50 +201,52 @@
     }
 
     [self blurFields];
+    [hud show:YES];
 
-    NSURL *url = [NSURL URLWithString:[AppConfig getConfigValue:@"GithubApiHost"]];
-
-    AFHTTPClient *httpClient = [[AFHTTPClient alloc] initWithBaseURL:url];
+    AFHTTPClient *httpClient = [[AFHTTPClient alloc] initWithBaseURL:[NSURL URLWithString:[AppConfig getConfigValue:@"GithubApiHost"]]];
     [httpClient setParameterEncoding:AFJSONParameterEncoding];
     [httpClient setAuthorizationHeaderWithUsername:username password:password];
 
-    NSMutableURLRequest *postRequest = [httpClient requestWithMethod:@"GET"
+    NSMutableURLRequest *getRequest = [httpClient requestWithMethod:@"GET"
                                                                 path:@"/authorizations"
                                                           parameters:oauthParams];
 
-    AFHTTPRequestOperation *operation = [[AFHTTPRequestOperation alloc] initWithRequest:postRequest];
+    AFHTTPRequestOperation *operation = [[AFHTTPRequestOperation alloc] initWithRequest:getRequest];
+
     [operation setCompletionBlockWithSuccess:^(AFHTTPRequestOperation *operation, id responseObject) {
         NSString *response = [operation responseString];
 
         NSArray *json = [NSJSONSerialization JSONObjectWithData:[response dataUsingEncoding:NSUTF8StringEncoding] options:NSJSONReadingMutableContainers error:nil];
-
-        NSString *account = [AppConfig getConfigValue:@"KeychainAccountName"];
-        NSString *storedAuthorizationId = [SSKeychain passwordForService:@"authorization_id" account:account];
 
         for (int i=0; i < [json count]; i++) {
             Authorization *authorization = [[Authorization alloc] initWithData:[json objectAtIndex:i]];
 
             NSString *authorizationId = [authorization getId];
 
-            if ([[authorization getName] isEqualToString:@"Gitos"] && [authorizationId isEqualToString:storedAuthorizationId]) {
+            if ([[authorization getName] isEqualToString:@"Gitos"]) {
 
-                //NSLog(@"deleting existing authorization id: %@", storedAuthorizationId);
+                NSLog(@"deleting existing authorization id: %@", authorizationId);
 
-                NSMutableURLRequest *deleteRequest = [httpClient requestWithMethod:@"DELETE" path:[NSString stringWithFormat:@"/authorizations/%@", storedAuthorizationId] parameters:nil];
+                AFHTTPClient *httpClient = [[AFHTTPClient alloc] initWithBaseURL:[NSURL URLWithString:[AppConfig getConfigValue:@"GithubApiHost"]]];
+                [httpClient setAuthorizationHeaderWithUsername:username password:password];
+
+                NSMutableURLRequest *deleteRequest = [httpClient requestWithMethod:@"DELETE"
+                                                                              path:[authorization getUrl]
+                                                                        parameters:nil];
+
                 AFHTTPRequestOperation *deleteOperation = [[AFHTTPRequestOperation alloc] initWithRequest:deleteRequest];
 
                 [deleteOperation setCompletionBlockWithSuccess:^(AFHTTPRequestOperation *operation, id responseObject) {
-                    [[NSNotificationCenter defaultCenter] postNotificationName:@"ExistingAuthorizationsDeleted" object:nil];
+                    // TBD
                 } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
                     NSLog(@"%@", error);
                 }];
                 [deleteOperation start];
-                [hud setHidden:NO];
-                return;
             }
         }
         [[NSNotificationCenter defaultCenter] postNotificationName:@"ExistingAuthorizationsDeleted" object:nil];
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        NSLog(@"%@", [error localizedDescription]);
         if ([operation.response statusCode] == 403) {
             [self handleInvalidCredentials];
         }
