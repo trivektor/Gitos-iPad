@@ -8,10 +8,12 @@
 
 #import <UIKit/UIKit.h>
 
-@interface LoadingViewController : UIViewController
+@interface LoadingViewController : UIViewController <UIAlertViewDelegate>
 
 @property (nonatomic, strong) MBProgressHUD *hud;
 
+- (void)registerEvents;
+- (void)handleRevokedToken;
 - (void)enterMainStage:(NSNotification *)notification;
 
 @end

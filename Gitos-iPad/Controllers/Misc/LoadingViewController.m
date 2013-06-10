@@ -7,6 +7,7 @@
 //
 
 #import "LoadingViewController.h"
+#import "LoginViewController.h"
 #import "AppInitialization.h"
 
 @interface LoadingViewController ()
@@ -38,7 +39,40 @@
     hud.mode = MBProgressHUDAnimationFade;
     hud.labelText = LOADING_MESSAGE;
 
+    [self registerEvents];
+
     [User fetchInfoForUserWithToken:[AppHelper getAccessToken]];
+}
+
+- (void)registerEvents
+{
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(handleRevokedToken)
+                                                 name:@"AccessTokenRevoked"
+                                               object:nil];
+}
+
+- (void)handleRevokedToken
+{
+    NSLog(@"Access token revoked");
+    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Alert"
+                                                    message:@"Looks like your access has been revoked. Please relogin" delegate:self
+                                          cancelButtonTitle:@"OK"
+                                          otherButtonTitles:nil];
+    [alert show];
+}
+
+- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
+{
+    if (buttonIndex == 0) {
+        //'OK' was clicked
+        [SSKeychain deletePasswordForService:@"access_token"
+                                     account:@"gitos"];
+
+        LoginViewController *loginController = [[LoginViewController alloc] init];
+        UINavigationController *navController = [[UINavigationController alloc] initWithRootViewController:loginController];
+        [self.view.window setRootViewController:navController];
+    }
 }
 
 - (void)enterMainStage:(NSNotification *)notification

@@ -307,6 +307,8 @@
      }
      failure:^(AFHTTPRequestOperation *operation, NSError *error) {
          NSLog(@"%@", error);
+         [[NSNotificationCenter defaultCenter] postNotificationName:@"AccessTokenRevoked"
+                                                             object:nil];
      }];
 
     [operation start];
