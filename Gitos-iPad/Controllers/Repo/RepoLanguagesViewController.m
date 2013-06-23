@@ -8,19 +8,48 @@
 
 #import "RepoLanguagesViewController.h"
 
+@interface NSMutableArray (Shuffling)
+- (void)shuffle;
+@end
+
+// Copied from http://stackoverflow.com/questions/56648/whats-the-best-way-to-shuffle-an-nsmutablearray
+@implementation NSMutableArray (Shuffling)
+
+- (void)shuffle
+{
+    NSUInteger count = [self count];
+    for (NSUInteger i = 0; i < count; ++i) {
+        // Select a random element between i and end of array to swap with.
+        NSInteger nElements = count - i;
+        NSInteger n = (arc4random() % nElements) + i;
+        [self exchangeObjectAtIndex:i withObjectAtIndex:n];
+    }
+}
+
+@end
+
 @interface RepoLanguagesViewController ()
 
 @end
 
 @implementation RepoLanguagesViewController
 
-@synthesize repo, languages, languagesTable;
+@synthesize repo, languages, languagesTable, colorNames;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
         // Custom initialization
+        colorNames = [[NSMutableArray alloc] initWithObjects:
+            @"turquoise", @"greenSea",
+            @"emerlandColor", @"nephritis",
+            @"peterRiver", @"belizeHole",
+            @"amethyst", @"wisteria",
+            @"sunflower", @"orange",
+            @"carrot", @"pumpkin",
+            @"alizarin", @"pomegranate", nil
+        ];
     }
     return self;
 }
@@ -96,6 +125,20 @@
     float percentage = 100.0 * ([[values objectAtIndex:indexPath.row] floatValue] / total);
     cell.textLabel.text = [NSString stringWithFormat:@"%@ (%.01f %%)", key, percentage];
     cell.textLabel.font = [UIFont fontWithName:@"Arial-BoldMT" size:14.0];
+    //cell.textLabel.textColor = [UIColor whiteColor];
+    cell.selectionStyle = UITableViewCellEditingStyleNone;
+
+    UIView *barView = [[UIView alloc] initWithFrame:CGRectMake(0, 41, 1024*percentage/100, 3)];
+
+    [colorNames shuffle];
+    NSString *color = [[colorNames objectAtIndex:indexPath.row] stringByAppendingString:@"Color"];
+
+    SEL s = NSSelectorFromString(color);
+
+    barView.backgroundColor = [UIColor performSelector:s];
+
+    [cell addSubview:barView];
+    [cell sendSubviewToBack:barView];
 
     return cell;
 }

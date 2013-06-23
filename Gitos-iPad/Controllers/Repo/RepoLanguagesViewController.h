@@ -13,6 +13,7 @@
 @property (nonatomic, strong) Repo *repo;
 @property (nonatomic, strong) NSMutableDictionary *languages;
 @property (weak, nonatomic) IBOutlet UITableView *languagesTable;
+@property (nonatomic, strong) NSMutableArray *colorNames;
 
 - (void)performHouseKeepingTasks;
 - (void)registerEvents;
