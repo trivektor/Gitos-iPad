@@ -33,5 +33,6 @@
 - (void)displayRepoInfo:(NSNotification *)notification;
 - (void)showReadme:(NSNotification *)notification;
 - (void)handlePostDestroyEvent:(NSNotification *)notification;
+- (void)handlePostForkEvent:(NSNotification *)notification;
 
 @end

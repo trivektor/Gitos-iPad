@@ -429,6 +429,29 @@
     [operation start];
 }
 
+- (void)forkForAuthenticatedUser
+{
+    NSURL *forkUrl = [AppHelper prepUrlForApiCall:[NSString stringWithFormat:@"/repos/%@/forks?access_token=%@", [self getFullName], [AppHelper getAccessToken]]];
+
+    AFHTTPClient *httpClient = [[AFHTTPClient alloc] initWithBaseURL:forkUrl];
+
+    NSMutableURLRequest *postRequest = [httpClient requestWithMethod:@"GET"
+                                                               path:forkUrl.absoluteString
+                                                         parameters:nil];
+
+    AFHTTPRequestOperation *operation = [[AFHTTPRequestOperation alloc] initWithRequest:postRequest];
+
+    [operation setCompletionBlockWithSuccess:^(AFHTTPRequestOperation *operation, id responseObject) {
+        [[NSNotificationCenter defaultCenter] postNotificationName:@"RepoForked"
+                                                            object:operation];
+    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        [[NSNotificationCenter defaultCenter] postNotificationName:@"RepoForked"
+                                                            object:operation];
+    }];
+
+    [operation start];
+}
+
 + (void)createNewWithData:(NSDictionary *)data
 {
     NSURL *newRepoUrl = [AppHelper prepUrlForApiCall:[NSString stringWithFormat:@"/user/repos?access_token=%@", [AppHelper getAccessToken]]];

@@ -84,9 +84,9 @@
     [branchesTable drawSeparator];
 
     [self.view setBackgroundColor:[UIColor colorWithRed:230/255.0
-                                                       green:230/255.0
-                                                        blue:237/255.0
-                                                       alpha:1.0]];
+                                                  green:230/255.0
+                                                   blue:237/255.0
+                                                  alpha:1.0]];
 }
 
 - (void)registerNib
@@ -138,10 +138,15 @@
                selector:@selector(showReadme:)
                    name:@"ReadmeFetched"
                  object:nil];
-    
+
     [center addObserver:self
                selector:@selector(handlePostDestroyEvent:)
                    name:@"RepoDestroyed"
+                 object:nil];
+
+    [center addObserver:self
+               selector:@selector(handlePostForkEvent:)
+                   name:@"RepoForked"
                  object:nil];
 }
 
@@ -277,7 +282,7 @@
                                                 delegate:self
                                        cancelButtonTitle:nil
                                   destructiveButtonTitle:nil
-                                       otherButtonTitles:starOption, @"View on Github", nil];
+                                       otherButtonTitles:starOption, @"Fork", @"View on Github", nil];
 
     if ([repo isDestroyable]) {
         [actionOptions addButtonWithTitle:@"Delete"];
@@ -340,6 +345,8 @@
             [self.navigationController pushViewController:websiteController animated:YES];
         } else if ([[actionOptions buttonTitleAtIndex:buttonIndex] isEqualToString:@"Delete"]) {
             [deleteConfirmation show];
+        } else if ([[actionOptions buttonTitleAtIndex:buttonIndex] isEqualToString:@"Fork"]) {
+            [repo forkForAuthenticatedUser];
         }
     }
 }
@@ -380,6 +387,12 @@
                                           [self.navigationController popViewControllerAnimated:YES];
                                       }
                                     repeats:NO];
+}
+
+- (void)handlePostForkEvent:(NSNotification *)notification
+{
+    [AppHelper flashAlert:@"Repo has been forked. You may have to wait a short period before it shows up"
+                   inView:self.view];
 }
 
 @end

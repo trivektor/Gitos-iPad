@@ -49,6 +49,7 @@
 - (void)fetchFullInfo;
 - (void)fetchReadme;
 - (void)fetchLanguages;
+- (void)forkForAuthenticatedUser;
 - (void)save:(NSDictionary *)info;
 - (BOOL)isDestroyable;
 - (void)destroy;
