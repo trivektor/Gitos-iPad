@@ -63,7 +63,7 @@
         labelText   = @"Repos";
         detailsText = [NSString stringWithFormat:@"%i", [user getNumberOfRepos]];
     } else if (indexPath.row == 7) {
-        fontAwesome = [NSString fontAwesomeIconStringForIconIdentifier:@"icon-pushpin"];
+        fontAwesome = [NSString fontAwesomeIconStringForIconIdentifier:@"icon-code"];
         labelText   = @"Gists";
         detailsText = [NSString stringWithFormat:@"%i", [user getNumberOfGists]];
     } else if (indexPath.row == 8) {
@@ -79,7 +79,7 @@
         labelText   = @"Recent Activity";
         detailsText = @"view all";
     } else if (indexPath.row == 11) {
-        fontAwesome = [NSString fontAwesomeIconStringForIconIdentifier:@"icon-exchange"];
+        fontAwesome = [NSString fontAwesomeIconStringForIconIdentifier:@"icon-trophy"];
         labelText   = @"Contributions";
         detailsText = @"view all";
     }

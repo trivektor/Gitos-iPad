@@ -272,6 +272,7 @@
 		B5836C961710C8B60012CC61 /* RepoTreeCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B5836C951710C8B60012CC61 /* RepoTreeCell.m */; };
 		B5836C981710C8C90012CC61 /* RepoTreeCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B5836C971710C8C90012CC61 /* RepoTreeCell.xib */; };
 		B5845773172DC72A00DB13B7 /* CurrentUserManager.m in Sources */ = {isa = PBXBuildFile; fileRef = B5845772172DC72A00DB13B7 /* CurrentUserManager.m */; };
+		B5864AF31777B7D20056B0DE /* FontAwesome.ttf in Resources */ = {isa = PBXBuildFile; fileRef = B5864AF21777B7D20056B0DE /* FontAwesome.ttf */; };
 		B5A104281723C10200487A47 /* GistRawFileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B5A104201723C10200487A47 /* GistRawFileViewController.m */; };
 		B5A104291723C10200487A47 /* GistRawFileViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B5A104211723C10200487A47 /* GistRawFileViewController.xib */; };
 		B5A1042A1723C10200487A47 /* GistsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B5A104231723C10200487A47 /* GistsViewController.m */; };
@@ -387,7 +388,6 @@
 		B5BC452616BCEE7100434848 /* MasterViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B5BC452416BCEE7000434848 /* MasterViewController.xib */; };
 		B5BC457516BE6C1A00434848 /* magma_border.png in Resources */ = {isa = PBXBuildFile; fileRef = B5BC457416BE6C1A00434848 /* magma_border.png */; };
 		B5BC457716BE6C4500434848 /* magma.png in Resources */ = {isa = PBXBuildFile; fileRef = B5BC457616BE6C4500434848 /* magma.png */; };
-		B5BC457B16BEE21700434848 /* FontAwesome.ttf in Resources */ = {isa = PBXBuildFile; fileRef = B5BC457A16BEE21700434848 /* FontAwesome.ttf */; };
 		B5BC457E16BEE28900434848 /* NSString+FontAwesome.m in Sources */ = {isa = PBXBuildFile; fileRef = B5BC457D16BEE28900434848 /* NSString+FontAwesome.m */; };
 		B5BC458116BEE55100434848 /* MasterControllerCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B5BC458016BEE55100434848 /* MasterControllerCell.m */; };
 		B5BC458316BEE56000434848 /* MasterControllerCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B5BC458216BEE56000434848 /* MasterControllerCell.xib */; };
@@ -790,6 +790,7 @@
 		B5836C971710C8C90012CC61 /* RepoTreeCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RepoTreeCell.xib; sourceTree = "<group>"; };
 		B5845771172DC72A00DB13B7 /* CurrentUserManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CurrentUserManager.h; sourceTree = "<group>"; };
 		B5845772172DC72A00DB13B7 /* CurrentUserManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CurrentUserManager.m; sourceTree = "<group>"; };
+		B5864AF21777B7D20056B0DE /* FontAwesome.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = FontAwesome.ttf; sourceTree = "<group>"; };
 		B5A1041F1723C10200487A47 /* GistRawFileViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GistRawFileViewController.h; sourceTree = "<group>"; };
 		B5A104201723C10200487A47 /* GistRawFileViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GistRawFileViewController.m; sourceTree = "<group>"; };
 		B5A104211723C10200487A47 /* GistRawFileViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GistRawFileViewController.xib; sourceTree = "<group>"; };
@@ -980,7 +981,6 @@
 		B5BC452416BCEE7000434848 /* MasterViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MasterViewController.xib; sourceTree = "<group>"; };
 		B5BC457416BE6C1A00434848 /* magma_border.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = magma_border.png; sourceTree = "<group>"; };
 		B5BC457616BE6C4500434848 /* magma.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = magma.png; sourceTree = "<group>"; };
-		B5BC457A16BEE21700434848 /* FontAwesome.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = FontAwesome.ttf; sourceTree = "<group>"; };
 		B5BC457C16BEE28900434848 /* NSString+FontAwesome.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+FontAwesome.h"; sourceTree = "<group>"; };
 		B5BC457D16BEE28900434848 /* NSString+FontAwesome.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+FontAwesome.m"; sourceTree = "<group>"; };
 		B5BC457F16BEE55100434848 /* MasterControllerCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MasterControllerCell.h; sourceTree = "<group>"; };
@@ -1278,6 +1278,7 @@
 				B536811E1744C48400249BC7 /* Lato-Black.ttf */,
 				B536811F1744C48400249BC7 /* Lato-BlackItalic.ttf */,
 				B53681201744C48400249BC7 /* Lato-Bold.ttf */,
+				B5864AF21777B7D20056B0DE /* FontAwesome.ttf */,
 				B53681211744C48400249BC7 /* Lato-BoldItalic.ttf */,
 				B53681221744C48400249BC7 /* Lato-Hairline.ttf */,
 				B53681231744C48400249BC7 /* Lato-HairlineItalic.ttf */,
@@ -1945,7 +1946,6 @@
 			children = (
 				B5C6130E1725174F0039FDD5 /* newsfeed.html */,
 				B574CF2F16FFAAA00077D353 /* prettify_themes */,
-				B5BC457A16BEE21700434848 /* FontAwesome.ttf */,
 				B5BC451C16BA5DFD00434848 /* prettify.js */,
 				B542275916CDF86E0020F300 /* diff.js */,
 				B5C6130917250BB90039FDD5 /* templates */,
@@ -2164,7 +2164,6 @@
 				B5BC452616BCEE7100434848 /* MasterViewController.xib in Resources */,
 				B5BC457516BE6C1A00434848 /* magma_border.png in Resources */,
 				B5BC457716BE6C4500434848 /* magma.png in Resources */,
-				B5BC457B16BEE21700434848 /* FontAwesome.ttf in Resources */,
 				B5BC458316BEE56000434848 /* MasterControllerCell.xib in Resources */,
 				B54603BA16C37B14007D4FB3 /* icon.png in Resources */,
 				B54603BC16C37B60007D4FB3 /* icon@2x.png in Resources */,
@@ -2264,6 +2263,7 @@
 				B5A72FE9174873B7004F73FB /* readme.html in Resources */,
 				B501D938174F36B600D947E9 /* AccountViewController.xib in Resources */,
 				B501D93D1751B01C00D947E9 /* NewIssueViewController.xib in Resources */,
+				B5864AF31777B7D20056B0DE /* FontAwesome.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

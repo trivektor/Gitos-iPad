@@ -32,7 +32,7 @@
 - (void)render
 {
     fontAwesomeLabel.font = [UIFont fontWithName:kFontAwesomeFamilyName size:15];
-    fontAwesomeLabel.text = [NSString fontAwesomeIconStringForIconIdentifier:@"icon-pushpin"];
+    fontAwesomeLabel.text = [NSString fontAwesomeIconStringForIconIdentifier:@"icon-code"];
     gistName.text         = [gist getName];
     gistDescription.text  = [gist getDescription];
     gistCreatedAt.text    = [gist getCreatedAt];

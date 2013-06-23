@@ -37,17 +37,17 @@
     dateFormatter = [[NSDateFormatter alloc] init];
     [dateFormatter setDateFormat:@"yyyy-MM-dd'T'HH:mm:ssZZ"];
     fontAwesomeIcons = @{
-        @"ForkEvent"          : @"icon-random",
+        @"ForkEvent"          : @"icon-code-fork",
         @"WatchEvent"         : @"icon-star",
-        @"CreateEvent"        : @"icon-plus",
+        @"CreateEvent"        : @"icon-keyboard",
         @"FollowEvent"        : @"icon-user",
-        @"GistEvent"          : @"icon-file-alt",
+        @"GistEvent"          : @"icon-code",
         @"IssuesEvent"        : @"icon-warning-sign",
-        @"MemberEvent"        : @"icon-user-md",
-        @"IssueCommentEvent"  : @"icon-comment-alt",
+        @"MemberEvent"        : @"icon-plus",
+        @"IssueCommentEvent"  : @"icon-comment",
         @"PushEvent"          : @"icon-upload",
         @"PullRequestEvent"   : @"icon-retweet",
-        @"PublicEvent"        : @"icon-folder-open-alt",
+        @"PublicEvent"        : @"icon-folder-open",
         @"CommitCommentEvent" : @"icon-comments",
         @"GollumnEvent"       : @"icon-book"
     };

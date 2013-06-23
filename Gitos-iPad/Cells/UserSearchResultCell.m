@@ -34,6 +34,7 @@
     avatar.image  = [UIImage imageWithData:data];
     name.text     = [user getName];
     username.text = [user getLogin];
+    self.nuiClass = @"AsbestosColor";
 }
 
 @end

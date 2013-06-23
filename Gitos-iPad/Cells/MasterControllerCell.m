@@ -42,7 +42,7 @@
     } else if (indexPath.section == 2) {
         switch (indexPath.row) {
             case 0:
-                fontAwesome      = [NSString fontAwesomeIconStringForIconIdentifier:@"icon-github-alt"];
+                fontAwesome      = [NSString fontAwesomeIconStringForIconIdentifier:@"icon-github"];
                 optionLabelText  = @"Personal";
                 break;
             case 1:
@@ -50,14 +50,14 @@
                 optionLabelText  = @"Starred";
                 break;
             case 2:
-                fontAwesome      = [NSString fontAwesomeIconStringForIconIdentifier:@"icon-plus"];
+                fontAwesome      = [NSString fontAwesomeIconStringForIconIdentifier:@"icon-plus-sign"];
                 optionLabelText  = @"New Repository";
                 break;
         }
     } else if (indexPath.section == 3) {
         switch (indexPath.row) {
             case 0:
-                fontAwesome      = [NSString fontAwesomeIconStringForIconIdentifier:@"icon-file-alt"];
+                fontAwesome      = [NSString fontAwesomeIconStringForIconIdentifier:@"icon-code"];
                 optionLabelText  = @"Gists";
                 break;
             case 1:
@@ -73,7 +73,7 @@
                 optionLabelText  = @"Feedback";
                 break;
             case 4:
-                fontAwesome      = [NSString fontAwesomeIconStringForIconIdentifier:@"icon-signout"];
+                fontAwesome      = [NSString fontAwesomeIconStringForIconIdentifier:@"icon-off"];
                 optionLabelText  = @"Sign out";
                 break;
         }

@@ -338,7 +338,7 @@
 - (void)showEditButtonIfEditable
 {
     if (user.isMyself) {
-        UIBarButtonItem *editButton = [[UIBarButtonItem alloc] initWithTitle:[NSString fontAwesomeIconStringForIconIdentifier:@"icon-edit"]
+        UIBarButtonItem *editButton = [[UIBarButtonItem alloc] initWithTitle:[NSString fontAwesomeIconStringForIconIdentifier:@"icon-pencil"]
                                                                        style:UIBarButtonItemStyleBordered
                                                                       target:self
                                                                       action:@selector(editProfile)];
