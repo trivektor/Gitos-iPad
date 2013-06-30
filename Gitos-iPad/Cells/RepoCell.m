@@ -10,7 +10,7 @@
 
 @implementation RepoCell
 
-@synthesize repo, fontAwesomeLabel, repoNameLabel, starLabel, forkLabel, descriptionLabel;
+@synthesize repo, fontAwesomeLabel, repoNameLabel, starLabel, starIconLabel, forkLabel, forkIconLabel, descriptionLabel;
 
 - (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
 {
@@ -30,13 +30,21 @@
 
 - (void)render
 {
-    fontAwesomeLabel.font = [UIFont fontWithName:kFontAwesomeFamilyName size:14];
+    UIFont *fontAwesome = [UIFont fontWithName:kFontAwesomeFamilyName size:14];
+
+    fontAwesomeLabel.font = fontAwesome;
 
     if ([repo isForked]) {
         fontAwesomeLabel.text = [NSString fontAwesomeIconStringForIconIdentifier:@"icon-random"];
     } else {
         fontAwesomeLabel.text = [NSString fontAwesomeIconStringForIconIdentifier:@"icon-book"];
     }
+
+    starIconLabel.font = fontAwesome;
+    starIconLabel.text = [NSString fontAwesomeIconStringForIconIdentifier:@"icon-star"];
+
+    forkIconLabel.font = fontAwesome;
+    forkIconLabel.text = [NSString fontAwesomeIconStringForIconIdentifier:@"icon-code-fork"];
 
     repoNameLabel.text = [repo getName];
 

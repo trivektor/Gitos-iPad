@@ -14,7 +14,9 @@
 @property (nonatomic, strong) Repo *repo;
 @property (nonatomic, weak) IBOutlet UILabel *fontAwesomeLabel;
 @property (nonatomic, weak) IBOutlet UILabel *repoNameLabel;
+@property (weak, nonatomic) IBOutlet UILabel *forkIconLabel;
 @property (nonatomic, weak) IBOutlet UILabel *forkLabel;
+@property (weak, nonatomic) IBOutlet UILabel *starIconLabel;
 @property (nonatomic, weak) IBOutlet UILabel *starLabel;
 @property (nonatomic, weak) IBOutlet UILabel *descriptionLabel;
 
