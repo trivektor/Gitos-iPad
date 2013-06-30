@@ -76,6 +76,10 @@
                 fontAwesome      = [NSString fontAwesomeIconStringForIconIdentifier:@"icon-off"];
                 optionLabelText  = @"Sign out";
                 break;
+            case 5:
+                fontAwesome      = [NSString fontAwesomeIconStringForIconIdentifier:@"icon-legal"];
+                optionLabelText  = @"Attributions";
+                break;
         }
     }
 

@@ -19,6 +19,7 @@
 #import "SearchViewController.h"
 #import "FeedbackViewController.h"
 #import "NotificationsViewController.h"
+#import "AttributionsViewController.h"
 #import "IIViewDeckController.h"
 #import "UIColor+FlatUI.h"
 
@@ -220,6 +221,8 @@
             } else if (indexPath.row == 4) {
                 [self signout];
                 return;
+            } else if (indexPath.row == 5) {
+                selectedController = [[UINavigationController alloc] initWithRootViewController:[[AttributionsViewController alloc] init]];
             }
             break;
     }

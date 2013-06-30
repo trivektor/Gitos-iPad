@@ -274,6 +274,9 @@
 		B5845773172DC72A00DB13B7 /* CurrentUserManager.m in Sources */ = {isa = PBXBuildFile; fileRef = B5845772172DC72A00DB13B7 /* CurrentUserManager.m */; };
 		B5864AF31777B7D20056B0DE /* FontAwesome.ttf in Resources */ = {isa = PBXBuildFile; fileRef = B5864AF21777B7D20056B0DE /* FontAwesome.ttf */; };
 		B5864B77177FC8800056B0DE /* SAMBadgeView.m in Sources */ = {isa = PBXBuildFile; fileRef = B5864B76177FC87F0056B0DE /* SAMBadgeView.m */; };
+		B5864B86177FF63A0056B0DE /* attributions.html in Resources */ = {isa = PBXBuildFile; fileRef = B5864B85177FF63A0056B0DE /* attributions.html */; };
+		B5864B8A177FF6A10056B0DE /* AttributionsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B5864B88177FF6A00056B0DE /* AttributionsViewController.m */; };
+		B5864B8B177FF6A10056B0DE /* AttributionsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B5864B89177FF6A00056B0DE /* AttributionsViewController.xib */; };
 		B5A104281723C10200487A47 /* GistRawFileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B5A104201723C10200487A47 /* GistRawFileViewController.m */; };
 		B5A104291723C10200487A47 /* GistRawFileViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B5A104211723C10200487A47 /* GistRawFileViewController.xib */; };
 		B5A1042A1723C10200487A47 /* GistsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B5A104231723C10200487A47 /* GistsViewController.m */; };
@@ -794,6 +797,10 @@
 		B5864AF21777B7D20056B0DE /* FontAwesome.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = FontAwesome.ttf; sourceTree = "<group>"; };
 		B5864B75177FC87F0056B0DE /* SAMBadgeView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SAMBadgeView.h; sourceTree = "<group>"; };
 		B5864B76177FC87F0056B0DE /* SAMBadgeView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SAMBadgeView.m; sourceTree = "<group>"; };
+		B5864B85177FF63A0056B0DE /* attributions.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = attributions.html; sourceTree = "<group>"; };
+		B5864B87177FF6A00056B0DE /* AttributionsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AttributionsViewController.h; sourceTree = "<group>"; };
+		B5864B88177FF6A00056B0DE /* AttributionsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AttributionsViewController.m; sourceTree = "<group>"; };
+		B5864B89177FF6A00056B0DE /* AttributionsViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AttributionsViewController.xib; sourceTree = "<group>"; };
 		B5A1041F1723C10200487A47 /* GistRawFileViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GistRawFileViewController.h; sourceTree = "<group>"; };
 		B5A104201723C10200487A47 /* GistRawFileViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GistRawFileViewController.m; sourceTree = "<group>"; };
 		B5A104211723C10200487A47 /* GistRawFileViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GistRawFileViewController.xib; sourceTree = "<group>"; };
@@ -1796,6 +1803,9 @@
 				B5D8D784173DF77000B68FA2 /* ReadmeViewController.h */,
 				B5D8D785173DF77000B68FA2 /* ReadmeViewController.m */,
 				B5D8D786173DF77000B68FA2 /* ReadmeViewController.xib */,
+				B5864B87177FF6A00056B0DE /* AttributionsViewController.h */,
+				B5864B88177FF6A00056B0DE /* AttributionsViewController.m */,
+				B5864B89177FF6A00056B0DE /* AttributionsViewController.xib */,
 			);
 			path = Misc;
 			sourceTree = "<group>";
@@ -1968,6 +1978,7 @@
 				B5F10F8C173F850800263242 /* gist_comments.html */,
 				B5A72FE8174873B7004F73FB /* readme.html */,
 				B5A72FEA174874C5004F73FB /* showdown.js */,
+				B5864B85177FF63A0056B0DE /* attributions.html */,
 			);
 			path = Html;
 			sourceTree = "<group>";
@@ -2269,6 +2280,8 @@
 				B501D938174F36B600D947E9 /* AccountViewController.xib in Resources */,
 				B501D93D1751B01C00D947E9 /* NewIssueViewController.xib in Resources */,
 				B5864AF31777B7D20056B0DE /* FontAwesome.ttf in Resources */,
+				B5864B86177FF63A0056B0DE /* attributions.html in Resources */,
+				B5864B8B177FF6A10056B0DE /* AttributionsViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2467,6 +2480,7 @@
 				B501D937174F36B600D947E9 /* AccountViewController.m in Sources */,
 				B501D93C1751B01C00D947E9 /* NewIssueViewController.m in Sources */,
 				B5864B77177FC8800056B0DE /* SAMBadgeView.m in Sources */,
+				B5864B8A177FF6A10056B0DE /* AttributionsViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
