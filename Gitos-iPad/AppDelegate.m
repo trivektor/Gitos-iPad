@@ -47,16 +47,16 @@
     self.window.backgroundColor = [UIColor whiteColor];
     [self.window makeKeyAndVisible];
 
-
     [UIBarButtonItem configureFlatButtonsWithColor:[UIColor peterRiverColor]
                                   highlightedColor:[UIColor belizeHoleColor]
                                       cornerRadius:4.0];
 
-    [[UINavigationBar appearance] configureFlatNavigationBarWithColor:[UIColor midnightBlueColor]];
+    [[UINavigationBar appearance] configureFlatNavigationBarWithColor:[UIColor whiteColor]];
 
     [[UINavigationBar appearance] setTitleTextAttributes:
      [NSDictionary dictionaryWithObjectsAndKeys:
-      [UIColor whiteColor],UITextAttributeTextColor,nil]];
+      [UIColor colorWithRed:131/255.0 green:131/255.0 blue:131/255.0 alpha:1.0],
+      UITextAttributeTextColor,nil]];
     
     [self validateAuthenticationToken];
     return YES;
