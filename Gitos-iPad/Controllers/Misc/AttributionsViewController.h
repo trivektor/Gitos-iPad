@@ -8,6 +8,10 @@
 
 #import <UIKit/UIKit.h>
 
-@interface AttributionsViewController : UIViewController
+@interface AttributionsViewController : GitosViewController
+
+@property (weak, nonatomic) IBOutlet UIWebView *fileWebView;
+
+- (void)loadAttributions;
 
 @end
