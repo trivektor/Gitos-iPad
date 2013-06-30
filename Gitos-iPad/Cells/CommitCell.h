@@ -16,8 +16,8 @@
 @property (nonatomic, strong) Commit *commit;
 @property (nonatomic, weak) IBOutlet UILabel *commentLabel;
 @property (nonatomic, weak) IBOutlet UILabel *dateLabel;
-@property (nonatomic, weak) IBOutlet UILabel *shaLabel;
 
 - (void)render;
+- (void)addShaLabel;
 
 @end
