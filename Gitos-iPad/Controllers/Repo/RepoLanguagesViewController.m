@@ -43,7 +43,7 @@
         // Custom initialization
         colorNames = [[NSMutableArray alloc] initWithObjects:
             @"turquoise", @"greenSea",
-            @"emerlandColor", @"nephritis",
+            @"emerland", @"nephritis",
             @"peterRiver", @"belizeHole",
             @"amethyst", @"wisteria",
             @"sunflower", @"orange",

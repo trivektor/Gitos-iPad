@@ -7,6 +7,7 @@
 //
 
 #import "Repo.h"
+#import "RepoMiscViewController.h"
 
 @interface RepoViewController : UIViewController <UITableViewDataSource, UITableViewDelegate, UIActionSheetDelegate, UIAlertViewDelegate>
 
@@ -19,6 +20,7 @@
 @property (nonatomic, strong) UIActionSheet *actionOptions;
 @property (nonatomic, strong) UIAlertView *deleteConfirmation;
 @property (nonatomic) BOOL *isWatching;
+@property (nonatomic) RepoMiscViewController *repoMiscController;
 
 - (void)performHouseKeepingTasks;
 - (void)registerNib;
@@ -34,5 +36,6 @@
 - (void)showReadme:(NSNotification *)notification;
 - (void)handlePostDestroyEvent:(NSNotification *)notification;
 - (void)handlePostForkEvent:(NSNotification *)notification;
+- (void)closeRepoMiscModal;
 
 @end

@@ -424,6 +424,10 @@
 		B5F10F90173F863900263242 /* GistComment.m in Sources */ = {isa = PBXBuildFile; fileRef = B5F10F8F173F863900263242 /* GistComment.m */; };
 		B5F10F971740ACB500263242 /* NewIssueCommentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B5F10F951740ACB500263242 /* NewIssueCommentViewController.m */; };
 		B5F10F981740ACB500263242 /* NewIssueCommentViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B5F10F961740ACB500263242 /* NewIssueCommentViewController.xib */; };
+		B5F7146F17852FCC00CBC1A3 /* TDSemiModalViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B5F7146E17852FCC00CBC1A3 /* TDSemiModalViewController.m */; };
+		B5F7147217852FEF00CBC1A3 /* UIViewController+TDSemiModalExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = B5F7147117852FEF00CBC1A3 /* UIViewController+TDSemiModalExtension.m */; };
+		B5F7147E17855C0B00CBC1A3 /* RepoMiscViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B5F7147C17855C0A00CBC1A3 /* RepoMiscViewController.m */; };
+		B5F7147F17855C0B00CBC1A3 /* RepoMiscViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B5F7147D17855C0A00CBC1A3 /* RepoMiscViewController.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -1043,6 +1047,15 @@
 		B5F10F941740ACB400263242 /* NewIssueCommentViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NewIssueCommentViewController.h; sourceTree = "<group>"; };
 		B5F10F951740ACB500263242 /* NewIssueCommentViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NewIssueCommentViewController.m; sourceTree = "<group>"; };
 		B5F10F961740ACB500263242 /* NewIssueCommentViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NewIssueCommentViewController.xib; sourceTree = "<group>"; };
+		B5F7145C17852C1200CBC1A3 /* RepoMiscViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RepoMiscViewController.h; sourceTree = "<group>"; };
+		B5F7146C17852FCC00CBC1A3 /* TDSemiModal.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TDSemiModal.h; sourceTree = "<group>"; };
+		B5F7146D17852FCC00CBC1A3 /* TDSemiModalViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TDSemiModalViewController.h; sourceTree = "<group>"; };
+		B5F7146E17852FCC00CBC1A3 /* TDSemiModalViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TDSemiModalViewController.m; sourceTree = "<group>"; };
+		B5F7147017852FEF00CBC1A3 /* UIViewController+TDSemiModalExtension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIViewController+TDSemiModalExtension.h"; sourceTree = "<group>"; };
+		B5F7147117852FEF00CBC1A3 /* UIViewController+TDSemiModalExtension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+TDSemiModalExtension.m"; sourceTree = "<group>"; };
+		B5F7147B17855C0A00CBC1A3 /* RepoMiscViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RepoMiscViewController.h; sourceTree = "<group>"; };
+		B5F7147C17855C0A00CBC1A3 /* RepoMiscViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RepoMiscViewController.m; sourceTree = "<group>"; };
+		B5F7147D17855C0A00CBC1A3 /* RepoMiscViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RepoMiscViewController.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -1508,6 +1521,7 @@
 		B55D90F216B7ABD6009CB90F /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				B5F7146B17852F9B00CBC1A3 /* TDSemiModal */,
 				B54F69EE16D30B3B00978DD9 /* Events */,
 				B55D90F316B7ABE2009CB90F /* AppConfig.h */,
 				B54603CA16C4D0DD007D4FB3 /* MBProgressHUD.h */,
@@ -1713,6 +1727,10 @@
 				B5D8D792173E26C600B68FA2 /* RepoLanguagesViewController.h */,
 				B5D8D793173E26C600B68FA2 /* RepoLanguagesViewController.m */,
 				B5D8D794173E26C600B68FA2 /* RepoLanguagesViewController.xib */,
+				B5F7145C17852C1200CBC1A3 /* RepoMiscViewController.h */,
+				B5F7147B17855C0A00CBC1A3 /* RepoMiscViewController.h */,
+				B5F7147C17855C0A00CBC1A3 /* RepoMiscViewController.m */,
+				B5F7147D17855C0A00CBC1A3 /* RepoMiscViewController.xib */,
 			);
 			path = Repo;
 			sourceTree = "<group>";
@@ -2009,6 +2027,18 @@
 			path = templates;
 			sourceTree = "<group>";
 		};
+		B5F7146B17852F9B00CBC1A3 /* TDSemiModal */ = {
+			isa = PBXGroup;
+			children = (
+				B5F7146C17852FCC00CBC1A3 /* TDSemiModal.h */,
+				B5F7147017852FEF00CBC1A3 /* UIViewController+TDSemiModalExtension.h */,
+				B5F7147117852FEF00CBC1A3 /* UIViewController+TDSemiModalExtension.m */,
+				B5F7146D17852FCC00CBC1A3 /* TDSemiModalViewController.h */,
+				B5F7146E17852FCC00CBC1A3 /* TDSemiModalViewController.m */,
+			);
+			path = TDSemiModal;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -2282,6 +2312,7 @@
 				B5864AF31777B7D20056B0DE /* FontAwesome.ttf in Resources */,
 				B5864B86177FF63A0056B0DE /* attributions.html in Resources */,
 				B5864B8B177FF6A10056B0DE /* AttributionsViewController.xib in Resources */,
+				B5F7147F17855C0B00CBC1A3 /* RepoMiscViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2481,6 +2512,9 @@
 				B501D93C1751B01C00D947E9 /* NewIssueViewController.m in Sources */,
 				B5864B77177FC8800056B0DE /* SAMBadgeView.m in Sources */,
 				B5864B8A177FF6A10056B0DE /* AttributionsViewController.m in Sources */,
+				B5F7146F17852FCC00CBC1A3 /* TDSemiModalViewController.m in Sources */,
+				B5F7147217852FEF00CBC1A3 /* UIViewController+TDSemiModalExtension.m in Sources */,
+				B5F7147E17855C0B00CBC1A3 /* RepoMiscViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

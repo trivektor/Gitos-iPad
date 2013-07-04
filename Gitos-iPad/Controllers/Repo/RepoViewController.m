@@ -13,8 +13,8 @@
 #import "RepoTreeViewController.h"
 #import "RepoLanguagesViewController.h"
 #import "ReadmeViewController.h"
-#import "Branch.h"
 #import "NSTimer+Blocks.h"
+#import "TDSemiModal.h"
 
 @interface RepoViewController ()
 
@@ -22,7 +22,7 @@
 
 @implementation RepoViewController
 
-@synthesize repo, hud, repoScrollView, detailsTable, branchesTable, repoBranches, actionOptions, isWatching, deleteConfirmation;
+@synthesize repo, hud, repoScrollView, detailsTable, branchesTable, repoBranches, actionOptions, isWatching, deleteConfirmation, repoMiscController;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -148,6 +148,11 @@
                selector:@selector(handlePostForkEvent:)
                    name:@"RepoForked"
                  object:nil];
+    
+    [center addObserver:self
+               selector:@selector(closeRepoMiscModal)
+                   name:@"CloseRepoMiscModal"
+                 object:nil];
 }
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
@@ -247,6 +252,9 @@
         } else if (indexPath.row == 9) {
             [hud show:YES];
             [repo fetchReadme];
+        } else if (indexPath.row == 10) {
+            repoMiscController = [[RepoMiscViewController alloc] init];
+            [self presentSemiModalViewController:repoMiscController];
         }
     }
 }
@@ -393,6 +401,11 @@
 {
     [AppHelper flashAlert:@"Repo has been forked. You may have to wait a short period before it shows up"
                    inView:self.view];
+}
+
+- (void)closeRepoMiscModal
+{
+    [self dismissSemiModalViewController:repoMiscController];
 }
 
 @end
