@@ -43,17 +43,17 @@
 
 - (void)setupOptions
 {
-    UIFont *arialBoldMT = [UIFont fontWithName:@"Arial-BoldMT" size:14];
+    UIFont *arialBoldMT = [UIFont fontWithName:@"Arial-BoldMT" size:16];
     // Contributors
     NSString *iconGroup = [NSString fontAwesomeIconStringForIconIdentifier:@"icon-group"];
-    contributorsBtn.titleLabel.font = [UIFont fontWithName:kFontAwesomeFamilyName size:20];
+    contributorsBtn.titleLabel.font = [UIFont fontWithName:kFontAwesomeFamilyName size:24];
     [contributorsBtn setTitle:iconGroup forState:UIControlStateNormal];
     [contributorsBtn setTitle:iconGroup forState:UIControlEventTouchDown];
     [contributorsBtn setTitleColor:[UIColor alizarinColor] forState:UIControlStateNormal];
     [contributorsBtn setTitleColor:[UIColor alizarinColor] forState:UIControlEventTouchDown];
     [contributorsBtn setContentHorizontalAlignment:UIControlContentHorizontalAlignmentLeft];
     
-    UILabel *label1 = [[UILabel alloc] initWithFrame:CGRectMake(29, 11, 90, 21)];
+    UILabel *label1 = [[UILabel alloc] initWithFrame:CGRectMake(31, 11, 110, 21)];
     label1.font = arialBoldMT;
     label1.textColor = [UIColor alizarinColor];
     label1.text = @"Contributors";
@@ -62,14 +62,14 @@
     
     // Commits Activity
     NSString *iconBarChart = [NSString fontAwesomeIconStringForIconIdentifier:@"icon-bar-chart"];
-    commitsActivityBtn.titleLabel.font = [UIFont fontWithName:kFontAwesomeFamilyName size:20];
+    commitsActivityBtn.titleLabel.font = [UIFont fontWithName:kFontAwesomeFamilyName size:24];
     [commitsActivityBtn setTitle:iconBarChart forState:UIControlStateNormal];
     [commitsActivityBtn setTitle:iconBarChart forState:UIControlEventTouchDown];
     [commitsActivityBtn setTitleColor:[UIColor peterRiverColor] forState:UIControlStateNormal];
     [commitsActivityBtn setTitleColor:[UIColor peterRiverColor] forState:UIControlEventTouchDown];
     [commitsActivityBtn setContentHorizontalAlignment:UIControlContentHorizontalAlignmentLeft];
     
-    UILabel *label2 = [[UILabel alloc] initWithFrame:CGRectMake(29, 11, 130, 21)];
+    UILabel *label2 = [[UILabel alloc] initWithFrame:CGRectMake(31, 11, 150, 21)];
     label2.font = arialBoldMT;
     label2.textColor = [UIColor peterRiverColor];
     label2.text = @"Commits Activity";
@@ -78,15 +78,15 @@
     
     // Punch Card
     NSString *iconTime = [NSString fontAwesomeIconStringForIconIdentifier:@"icon-time"];
-    punchCardBtn.titleLabel.font = [UIFont fontWithName:kFontAwesomeFamilyName size:20];
+    punchCardBtn.titleLabel.font = [UIFont fontWithName:kFontAwesomeFamilyName size:24];
     [punchCardBtn setTitle:iconTime forState:UIControlStateNormal];
     [punchCardBtn setTitle:iconTime forState:UIControlEventTouchDown];
     [punchCardBtn setTitleColor:[UIColor emerlandColor] forState:UIControlStateNormal];
     [punchCardBtn setTitleColor:[UIColor emerlandColor] forState:UIControlEventTouchDown];
     [punchCardBtn setContentHorizontalAlignment:UIControlContentHorizontalAlignmentLeft];
     
-    UILabel *label3 = [[UILabel alloc] initWithFrame:CGRectMake(29, 11, 90, 21)];
-    label3.font = [UIFont fontWithName:@"Arial-BoldMT" size:14];
+    UILabel *label3 = [[UILabel alloc] initWithFrame:CGRectMake(31, 11, 90, 21)];
+    label3.font = arialBoldMT;
     label3.textColor = [UIColor emerlandColor];
     label3.text = @"Punch Card";
     
@@ -94,7 +94,7 @@
     
     // Close button
     NSString *iconRemoveCircle = [NSString fontAwesomeIconStringForIconIdentifier:@"icon-remove-circle"];
-    closeModalBtn.titleLabel.font = [UIFont fontWithName:kFontAwesomeFamilyName size:28];
+    closeModalBtn.titleLabel.font = [UIFont fontWithName:kFontAwesomeFamilyName size:35];
     [closeModalBtn setTitle:iconRemoveCircle forState:UIControlStateNormal];
     [closeModalBtn setTitle:iconRemoveCircle forState:UIControlEventTouchDown];
     [closeModalBtn setTitleColor:[UIColor pomegranateColor] forState:UIControlStateNormal];

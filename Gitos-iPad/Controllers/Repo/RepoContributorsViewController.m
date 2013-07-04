@@ -81,6 +81,7 @@
     cell.textLabel.font = [UIFont fontWithName:@"Arial" size:14];
     [cell.imageView setImageWithURL:[NSURL URLWithString:[contributor getAvatarUrl]]
                    placeholderImage:[UIImage imageNamed:@"avatar-placeholder.png"]];
+    cell.selectionStyle = UITableViewCellSelectionStyleNone;
 
     return cell;
 }
