@@ -13,6 +13,7 @@
 @property (weak, nonatomic) IBOutlet UITableView *contributorsTable;
 @property (nonatomic, strong) NSMutableArray *contributors;
 @property (nonatomic, strong) Repo *repo;
+@property (nonatomic, strong) MBProgressHUD *hud;
 
 - (void)performHouseKeepingTasks;
 - (void)registerEvents;

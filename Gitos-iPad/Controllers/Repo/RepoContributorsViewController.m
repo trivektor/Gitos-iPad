@@ -15,7 +15,7 @@
 
 @implementation RepoContributorsViewController
 
-@synthesize contributorsTable, contributors, repo;
+@synthesize contributorsTable, contributors, repo, hud;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -39,6 +39,10 @@
 - (void)performHouseKeepingTasks
 {
     self.navigationItem.title = @"Contributors";
+    hud = [MBProgressHUD showHUDAddedTo:self.view
+                               animated:YES];
+    hud.mode = MBProgressHUDAnimationFade;
+    hud.labelText = @"Loading";
 }
 
 - (void)registerEvents
@@ -88,9 +92,9 @@
 
 - (void)displayContributors:(NSNotification *)notification
 {
-    NSLog(@"displaying contributors");
     [contributors addObjectsFromArray:notification.object];
     [contributorsTable reloadData];
+    [hud hide:YES];
 }
 
 @end
