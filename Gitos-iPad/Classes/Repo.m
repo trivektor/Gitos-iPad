@@ -429,6 +429,36 @@
     [operation start];
 }
 
+- (void)fetchContributors
+{
+    NSURL *contributorsUrl = [AppHelper prepUrlForApiCall:[NSString stringWithFormat:@"/repos/%@/stats/contributors", [self getFullName]]];
+
+    AFHTTPClient *httpClient = [[AFHTTPClient alloc] initWithBaseURL:contributorsUrl];
+
+    NSMutableURLRequest *getRequest = [httpClient requestWithMethod:@"GET"
+                                                               path:contributorsUrl.absoluteString
+                                                         parameters:[AppHelper getAccessTokenParams]];
+
+    AFHTTPRequestOperation *operation = [[AFHTTPRequestOperation alloc] initWithRequest:getRequest];
+
+    [operation setCompletionBlockWithSuccess:^(AFHTTPRequestOperation *operation, id responseObject) {
+        NSDictionary *json = [NSJSONSerialization JSONObjectWithData:[operation.responseString dataUsingEncoding:NSUTF8StringEncoding] options:NSJSONReadingMutableContainers error:nil];
+
+        NSMutableArray *contributors = [NSMutableArray arrayWithCapacity:0];
+
+        for (NSDictionary *userData in json) {
+            [contributors addObject:[[User alloc] initWithData:userData]];
+        }
+
+        [[NSNotificationCenter defaultCenter] postNotificationName:@"RepoContributorsFetched"
+                                                            object:contributors];
+    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        NSLog(@"%@", error);
+    }];
+
+    [operation start];
+}
+
 - (void)forkForAuthenticatedUser
 {
     NSURL *forkUrl = [AppHelper prepUrlForApiCall:[NSString stringWithFormat:@"/repos/%@/forks?access_token=%@", [self getFullName], [AppHelper getAccessToken]]];
