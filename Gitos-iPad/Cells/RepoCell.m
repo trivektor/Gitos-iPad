@@ -30,15 +30,20 @@
 
 - (void)render
 {
+    NSString *fontAwesomeIcon;
     UIFont *fontAwesome = [UIFont fontWithName:kFontAwesomeFamilyName size:14];
 
     fontAwesomeLabel.font = fontAwesome;
 
     if ([repo isForked]) {
-        fontAwesomeLabel.text = [NSString fontAwesomeIconStringForIconIdentifier:@"icon-random"];
+        fontAwesomeIcon = @"icon-code-fork";
+    } else if ([repo isPrivate]) {
+        fontAwesomeIcon = @"icon-lock";
     } else {
-        fontAwesomeLabel.text = [NSString fontAwesomeIconStringForIconIdentifier:@"icon-book"];
+        fontAwesomeIcon = @"icon-github";
     }
+
+    fontAwesomeLabel.text = [NSString fontAwesomeIconStringForIconIdentifier:fontAwesomeIcon];
 
     starIconLabel.font = fontAwesome;
     starIconLabel.text = [NSString fontAwesomeIconStringForIconIdentifier:@"icon-star"];
