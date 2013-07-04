@@ -442,12 +442,12 @@
     AFHTTPRequestOperation *operation = [[AFHTTPRequestOperation alloc] initWithRequest:getRequest];
 
     [operation setCompletionBlockWithSuccess:^(AFHTTPRequestOperation *operation, id responseObject) {
-        NSDictionary *json = [NSJSONSerialization JSONObjectWithData:[operation.responseString dataUsingEncoding:NSUTF8StringEncoding] options:NSJSONReadingMutableContainers error:nil];
+        NSArray *json = [NSJSONSerialization JSONObjectWithData:[operation.responseString dataUsingEncoding:NSUTF8StringEncoding] options:NSJSONReadingMutableContainers error:nil];
 
         NSMutableArray *contributors = [NSMutableArray arrayWithCapacity:0];
 
-        for (NSDictionary *userData in json) {
-            [contributors addObject:[[User alloc] initWithData:userData]];
+        for (NSDictionary *contributorData in json) {
+            [contributors addObject:[[Contribution alloc] initWithData:contributorData]];
         }
 
         [[NSNotificationCenter defaultCenter] postNotificationName:@"RepoContributorsFetched"
