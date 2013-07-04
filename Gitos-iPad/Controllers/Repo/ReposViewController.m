@@ -99,7 +99,7 @@
 
 - (void)displayUserRepos:(NSNotification *)notification
 {
-    repos = notification.object;
+    [repos addObjectsFromArray:notification.object];
     [reposTable reloadData];
     [hud hide:YES];
 }
@@ -146,6 +146,15 @@
 {
     NewRepoViewController *newRepoController = [[NewRepoViewController alloc] init];
     [self.navigationController pushViewController:newRepoController animated:YES];
+}
+
+- (void)scrollViewDidScroll:(UIScrollView *)scrollView
+{
+    if (([scrollView contentOffset].y + scrollView.frame.size.height) == scrollView.contentSize.height) {
+        // Bottom of UITableView reached
+        [hud show:YES];
+        [user fetchReposForPage:currentPage++];
+    }
 }
 
 @end
