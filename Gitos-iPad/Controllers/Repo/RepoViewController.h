@@ -37,5 +37,6 @@
 - (void)handlePostDestroyEvent:(NSNotification *)notification;
 - (void)handlePostForkEvent:(NSNotification *)notification;
 - (void)closeRepoMiscModal;
+- (void)showRepoMiscInfo:(NSNotification *)notification;
 
 @end

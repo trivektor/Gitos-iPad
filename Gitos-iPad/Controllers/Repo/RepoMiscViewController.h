@@ -18,4 +18,9 @@
 @property (weak, nonatomic) IBOutlet UIButton *punchCardBtn;
 @property (weak, nonatomic) IBOutlet UIButton *closeModalBtn;
 
+- (IBAction)showContributors:(id)sender;
+- (IBAction)showCommitsActivity:(id)sender;
+- (IBAction)showPunchCard:(id)sender;
+- (void)postCloseMiscModalNotification;
+
 @end

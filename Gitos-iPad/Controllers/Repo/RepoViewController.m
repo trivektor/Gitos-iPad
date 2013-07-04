@@ -153,6 +153,11 @@
                selector:@selector(closeRepoMiscModal)
                    name:@"CloseRepoMiscModal"
                  object:nil];
+
+    [center addObserver:self
+               selector:@selector(showRepoMiscInfo:)
+                   name:@"ShowRepoMiscInfo"
+                 object:nil];
 }
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
@@ -406,6 +411,16 @@
 - (void)closeRepoMiscModal
 {
     [self dismissSemiModalViewController:repoMiscController];
+}
+
+- (void)showRepoMiscInfo:(NSNotification *)notification
+{
+    NSString *name = (NSString *)notification.object;
+    NSString *controllerName = [NSString stringWithFormat:@"%@ViewController", name];
+    id viewController = [[NSClassFromString(controllerName) alloc] init];
+    [viewController setValuesForKeysWithDictionary:@{@"repo": repo}];
+    [self.navigationController pushViewController:viewController
+                                         animated:YES];
 }
 
 @end

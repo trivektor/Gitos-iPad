@@ -101,7 +101,27 @@
     [closeModalBtn setTitleColor:[UIColor pomegranateColor] forState:UIControlEventTouchDown];
 }
 
+- (void)showContributors:(id)sender
+{
+    [self postCloseMiscModalNotification];
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"ShowRepoMiscInfo"
+                                                        object:@"RepoContributors"];
+}
+
+- (void)showCommitsActivity:(id)sender
+{
+}
+
+- (void)showPunchCard:(id)sender
+{
+}
+
 - (IBAction)closeModal:(id)sender
+{
+    [self postCloseMiscModalNotification];
+}
+
+- (void)postCloseMiscModalNotification
 {
     [[NSNotificationCenter defaultCenter] postNotificationName:@"CloseRepoMiscModal"
                                                         object:nil];
