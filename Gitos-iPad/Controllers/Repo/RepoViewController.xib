@@ -44,7 +44,7 @@
 							<object class="IBUITableView" id="706630801">
 								<reference key="NSNextResponder" ref="737185003"/>
 								<int key="NSvFlags">292</int>
-								<string key="NSFrameSize">{1024, 494}</string>
+								<string key="NSFrameSize">{1024, 530}</string>
 								<reference key="NSSuperview" ref="737185003"/>
 								<reference key="NSWindow"/>
 								<reference key="NSNextKeyView" ref="286138785"/>
@@ -68,9 +68,10 @@
 							<object class="IBUITableView" id="150029749">
 								<reference key="NSNextResponder" ref="737185003"/>
 								<int key="NSvFlags">292</int>
-								<string key="NSFrame">{{0, 547}, {1024, 193}}</string>
+								<string key="NSFrame">{{0, 600}, {1024, 140}}</string>
 								<reference key="NSSuperview" ref="737185003"/>
 								<reference key="NSWindow"/>
+								<reference key="NSNextKeyView"/>
 								<string key="NSReuseIdentifierKey">_NS:9</string>
 								<reference key="IBUIBackgroundColor" ref="44261808"/>
 								<bool key="IBUIClipsSubviews">YES</bool>
@@ -87,7 +88,7 @@
 							<object class="IBUILabel" id="286138785">
 								<reference key="NSNextResponder" ref="737185003"/>
 								<int key="NSvFlags">292</int>
-								<string key="NSFrame">{{0, 509}, {1024, 24}}</string>
+								<string key="NSFrame">{{0, 552}, {1024, 24}}</string>
 								<reference key="NSSuperview" ref="737185003"/>
 								<reference key="NSWindow"/>
 								<reference key="NSNextKeyView" ref="150029749"/>

@@ -11,6 +11,7 @@
 
 @interface RepoDetailsCell : UITableViewCell
 
+@property (weak, nonatomic) IBOutlet UILabel *fontAwesomeLabel;
 @property (nonatomic, strong) IBOutlet UILabel *fieldLabel;
 @property (nonatomic, strong) IBOutlet UILabel *fieldValue;
 @property (nonatomic, strong) Repo *repo;

@@ -158,7 +158,7 @@
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     if (tableView == detailsTable) {
-        return 10;
+        return 11;
     } else if (tableView == branchesTable) {
         return [repoBranches count];
     } else {
