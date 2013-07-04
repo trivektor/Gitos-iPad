@@ -42,6 +42,7 @@
 - (NSString *)getOwner;
 - (BOOL)hasIssues;
 - (BOOL)isForked;
+- (BOOL)isPrivate;
 - (NSString *)getGithubUrl;
 - (void)checkStar;
 - (void)fetchBranches;

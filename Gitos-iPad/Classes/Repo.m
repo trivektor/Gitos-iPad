@@ -170,6 +170,11 @@
     return [[data valueForKey:@"fork"] integerValue] == 1;
 }
 
+- (BOOL)isPrivate
+{
+    return [[data valueForKey:@"private"] integerValue] == 1;
+}
+
 - (NSString *)getUrl
 {
     return [data valueForKey:@"url"];

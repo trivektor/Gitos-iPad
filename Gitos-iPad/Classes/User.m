@@ -316,16 +316,23 @@
 
 - (void)fetchReposForPage:(int)page
 {
-    NSString *userReposURL = [[AppConfig getConfigValue:@"GithubApiHost"] stringByAppendingFormat:@"/users/%@/repos", [self getLogin]];
+    NSURL *reposURL;
 
-    NSURL *reposURL = [NSURL URLWithString:userReposURL];
+    if ([self isMyself]) {
+        reposURL = [AppHelper prepUrlForApiCall:@"/user/repos"];
+    } else {
+        reposURL = [AppHelper prepUrlForApiCall:[NSString stringWithFormat:@"/users/%@/repos", [self getLogin]]];
+    }
 
     AFHTTPClient *httpClient = [[AFHTTPClient alloc] initWithBaseURL:reposURL];
 
     NSMutableDictionary *params = [[NSMutableDictionary alloc] initWithDictionary:[AppHelper getAccessTokenParams]];
-    [params addEntriesFromDictionary:[NSDictionary dictionaryWithObjectsAndKeys:[NSString stringWithFormat:@"%i", page], @"page", nil]];
 
-    NSMutableURLRequest *getRequest = [httpClient requestWithMethod:@"GET" path:reposURL.absoluteString parameters:params];
+    [params addEntriesFromDictionary:@{@"page": [NSString stringWithFormat:@"%i", page], @"private": @"true"}];
+
+    NSMutableURLRequest *getRequest = [httpClient requestWithMethod:@"GET"
+                                                               path:reposURL.absoluteString
+                                                         parameters:params];
 
     AFHTTPRequestOperation *operation = [[AFHTTPRequestOperation alloc] initWithRequest:getRequest];
 
@@ -336,8 +343,8 @@
 
         NSMutableArray *repos = [[NSMutableArray alloc] initWithCapacity:0];
 
-        for (int i=0; i < [json count]; i++) {
-            [repos addObject:[[Repo alloc] initWithData:[json objectAtIndex:i]]];
+        for (NSDictionary *repoData in json) {
+            [repos addObject:[[Repo alloc] initWithData:repoData]];
         }
 
         [[NSNotificationCenter defaultCenter] postNotificationName:@"UserReposFetched" object:repos];
