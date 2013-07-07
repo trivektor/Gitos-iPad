@@ -2,6 +2,16 @@
 <html>
   <head>
     <title>Commit Activity</title>
+    <style>
+      .chart div {
+          font: 12px Arial;
+          background-color: #e74c3c;
+          text-align: right;
+          padding: 3px;
+          margin: 2px;
+          color: white;
+      }
+    </style>
   </head>
   <body>
     <script src="http://d3js.org/d3.v3.min.js" charset="utf-8"></script>
@@ -10,12 +20,23 @@
         , xhr = new XMLHttpRequest;
 
       xhr.open('GET', commitActivityUrl, true);
-
-      xhr.onload = function() {
-        var activities = JSON.parse(xhr.responseText);
-      }
-
+      xhr.onload = drawChart;
       xhr.send();
+
+      function drawChart() {
+        var activities = JSON.parse(xhr.responseText);
+
+        var chart = d3.select('body')
+                      .append('div')
+                      .attr('class', 'chart');
+
+        chart.selectAll('div')
+             .data(activities)
+             .enter()
+             .append('div')
+             .style('width', function(d) { return d.total * 50 + 'px' })
+             .text(function(d) { return d.total });
+      }
     </script>
   </body>
 </html>
