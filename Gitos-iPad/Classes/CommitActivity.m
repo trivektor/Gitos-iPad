@@ -19,4 +19,14 @@
     return self;
 }
 
+- (int)getTotal
+{
+    return [data valueForKey:@"total"];
+}
+
+- (int)getWeek
+{
+    return [data valueForKey:@"week"];
+}
+
 @end

@@ -13,5 +13,7 @@
 @property (nonatomic, strong) NSDictionary *data;
 
 - (id)initWithCommitActivityData:(NSDictionary *)commitActivityData;
+- (int)getTotal;
+- (int)getWeek;
 
 @end
