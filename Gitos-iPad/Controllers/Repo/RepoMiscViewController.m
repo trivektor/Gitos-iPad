@@ -110,6 +110,9 @@
 
 - (void)showCommitsActivity:(id)sender
 {
+    [self postCloseMiscModalNotification];
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"ShowRepoMiscInfo"
+                                                        object:@"RepoCommitActivity"];
 }
 
 - (void)showPunchCard:(id)sender
