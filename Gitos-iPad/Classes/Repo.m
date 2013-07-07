@@ -464,6 +464,36 @@
     [operation start];
 }
 
+- (void)fetchCommitActivity
+{
+    NSURL *commitActivityUrl = [AppHelper prepUrlForApiCall:[NSString stringWithFormat:@"/repos/%@/stats/commit_activity", [self getFullName]]];
+
+    AFHTTPClient *httpClient = [[AFHTTPClient alloc] initWithBaseURL:commitActivityUrl];
+
+    NSMutableURLRequest *getRequest = [httpClient requestWithMethod:@"GET"
+                                                               path:commitActivityUrl.absoluteString
+                                                         parameters:[AppHelper getAccessTokenParams]];
+
+    AFHTTPRequestOperation *operation = [[AFHTTPRequestOperation alloc] initWithRequest:getRequest];
+
+    [operation setCompletionBlockWithSuccess:^(AFHTTPRequestOperation *operation, id responseObject) {
+        NSArray *json = [NSJSONSerialization JSONObjectWithData:[operation.responseString dataUsingEncoding:NSUTF8StringEncoding] options:NSJSONReadingMutableContainers error:nil];
+
+        NSMutableArray *commitActivity = [NSMutableArray arrayWithCapacity:0];
+
+        for (NSDictionary *commitActivityData in json) {
+            [commitActivity addObject:[[CommitActivity alloc] initWithCommitActivityData:commitActivityData]];
+        }
+
+        [[NSNotificationCenter defaultCenter] postNotificationName:@"RepoCommitActivityDataFetched"
+                                                            object:commitActivity];
+    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        NSLog(@"%@", error);
+    }];
+
+    [operation start];
+}
+
 - (void)forkForAuthenticatedUser
 {
     NSURL *forkUrl = [AppHelper prepUrlForApiCall:[NSString stringWithFormat:@"/repos/%@/forks?access_token=%@", [self getFullName], [AppHelper getAccessToken]]];

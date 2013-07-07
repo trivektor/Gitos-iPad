@@ -431,6 +431,7 @@
 		B5F71483178560D900CBC1A3 /* RepoContributorsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B5F71481178560D900CBC1A3 /* RepoContributorsViewController.m */; };
 		B5F71484178560D900CBC1A3 /* RepoContributorsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B5F71482178560D900CBC1A3 /* RepoContributorsViewController.xib */; };
 		B5F7148717856A0C00CBC1A3 /* Contribution.m in Sources */ = {isa = PBXBuildFile; fileRef = B5F7148617856A0C00CBC1A3 /* Contribution.m */; };
+		B5F7148A17892C6B00CBC1A3 /* CommitActivity.m in Sources */ = {isa = PBXBuildFile; fileRef = B5F7148917892C6B00CBC1A3 /* CommitActivity.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -1064,6 +1065,8 @@
 		B5F71482178560D900CBC1A3 /* RepoContributorsViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RepoContributorsViewController.xib; sourceTree = "<group>"; };
 		B5F7148517856A0B00CBC1A3 /* Contribution.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Contribution.h; sourceTree = "<group>"; };
 		B5F7148617856A0C00CBC1A3 /* Contribution.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Contribution.m; sourceTree = "<group>"; };
+		B5F7148817892C6A00CBC1A3 /* CommitActivity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CommitActivity.h; sourceTree = "<group>"; };
+		B5F7148917892C6B00CBC1A3 /* CommitActivity.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CommitActivity.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -1598,6 +1601,8 @@
 				B5A72FF317499CDD004F73FB /* DTCustomColoredAccessory.m */,
 				B5F7148517856A0B00CBC1A3 /* Contribution.h */,
 				B5F7148617856A0C00CBC1A3 /* Contribution.m */,
+				B5F7148817892C6A00CBC1A3 /* CommitActivity.h */,
+				B5F7148917892C6B00CBC1A3 /* CommitActivity.m */,
 			);
 			path = Classes;
 			sourceTree = "<group>";
@@ -2531,6 +2536,7 @@
 				B5F7147E17855C0B00CBC1A3 /* RepoMiscViewController.m in Sources */,
 				B5F71483178560D900CBC1A3 /* RepoContributorsViewController.m in Sources */,
 				B5F7148717856A0C00CBC1A3 /* Contribution.m in Sources */,
+				B5F7148A17892C6B00CBC1A3 /* CommitActivity.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

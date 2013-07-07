@@ -51,6 +51,7 @@
 - (void)fetchReadme;
 - (void)fetchLanguages;
 - (void)fetchContributors;
+- (void)fetchCommitActivity;
 - (void)forkForAuthenticatedUser;
 - (void)save:(NSDictionary *)info;
 - (BOOL)isDestroyable;

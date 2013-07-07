@@ -33,6 +33,7 @@
     #import "Comment.h"
     #import "Organization.h"
     #import "Contribution.h"
+    #import "CommitActivity.h"
     #import "Readme.h"
     #import "YRDropdownView.h"
     #import "AppHelper.h"
