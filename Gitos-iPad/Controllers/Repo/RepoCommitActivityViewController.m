@@ -14,7 +14,7 @@
 
 @implementation RepoCommitActivityViewController
 
-@synthesize repo;
+@synthesize repo, dataWebView;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -30,6 +30,7 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
     [self performHouseKeepingTasks];
+    [self displayCommitActivity];
 }
 
 - (void)didReceiveMemoryWarning
@@ -41,6 +42,23 @@
 - (void)performHouseKeepingTasks
 {
     self.navigationItem.title = @"Commit Activity";
+}
+
+- (void)displayCommitActivity
+{
+    NSString *commitActivity = [[NSBundle mainBundle] pathForResource:@"commit_activity"
+                                                               ofType:@"html"];
+
+    NSString *html = [NSString stringWithContentsOfFile:commitActivity
+                                               encoding:NSUTF8StringEncoding
+                                                  error:nil];
+
+    html = [html stringByReplacingOccurrencesOfString:@"%@"
+                                    withString:[NSString stringWithFormat:@"https://api.github.com/repos/%@/stats/commit_activity?access_token=%@", [repo getFullName], [AppHelper getAccessToken]]];
+
+    NSURL *baseUrl = [NSURL fileURLWithPath:[[NSBundle mainBundle] bundlePath]];
+    [dataWebView loadHTMLString:html
+                        baseURL:baseUrl];
 }
 
 @end

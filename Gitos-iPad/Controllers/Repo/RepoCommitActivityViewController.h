@@ -11,7 +11,9 @@
 @interface RepoCommitActivityViewController : UIViewController
 
 @property (nonatomic, strong) Repo *repo;
+@property (weak, nonatomic) IBOutlet UIWebView *dataWebView;
 
 - (void)performHouseKeepingTasks;
+- (void)displayCommitActivity;
 
 @end

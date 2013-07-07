@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Commit Activity</title>
+  </head>
+  <body>
+    <script src="http://d3js.org/d3.v3.min.js" charset="utf-8"></script>
+    <script>
+      var commitActivityUrl = '%@'
+        , xhr = new XMLHttpRequest;
+
+      xhr.open('GET', commitActivityUrl, true);
+
+      xhr.onload = function() {
+        var activities = JSON.parse(xhr.responseText);
+      }
+
+      xhr.send();
+    </script>
+  </body>
+</html>

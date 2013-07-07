@@ -434,6 +434,7 @@
 		B5F7148A17892C6B00CBC1A3 /* CommitActivity.m in Sources */ = {isa = PBXBuildFile; fileRef = B5F7148917892C6B00CBC1A3 /* CommitActivity.m */; };
 		B5F7148E17892FE300CBC1A3 /* RepoCommitActivityViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B5F7148C17892FE100CBC1A3 /* RepoCommitActivityViewController.m */; };
 		B5F7148F17892FE300CBC1A3 /* RepoCommitActivityViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B5F7148D17892FE200CBC1A3 /* RepoCommitActivityViewController.xib */; };
+		B5F71491178938F200CBC1A3 /* commit_activity.html in Resources */ = {isa = PBXBuildFile; fileRef = B5F71490178938F200CBC1A3 /* commit_activity.html */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -1072,6 +1073,7 @@
 		B5F7148B17892FE100CBC1A3 /* RepoCommitActivityViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RepoCommitActivityViewController.h; sourceTree = "<group>"; };
 		B5F7148C17892FE100CBC1A3 /* RepoCommitActivityViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RepoCommitActivityViewController.m; sourceTree = "<group>"; };
 		B5F7148D17892FE200CBC1A3 /* RepoCommitActivityViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RepoCommitActivityViewController.xib; sourceTree = "<group>"; };
+		B5F71490178938F200CBC1A3 /* commit_activity.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = commit_activity.html; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -2023,6 +2025,7 @@
 				B5A72FE8174873B7004F73FB /* readme.html */,
 				B5A72FEA174874C5004F73FB /* showdown.js */,
 				B5864B85177FF63A0056B0DE /* attributions.html */,
+				B5F71490178938F200CBC1A3 /* commit_activity.html */,
 			);
 			path = Html;
 			sourceTree = "<group>";
@@ -2341,6 +2344,7 @@
 				B5F7147F17855C0B00CBC1A3 /* RepoMiscViewController.xib in Resources */,
 				B5F71484178560D900CBC1A3 /* RepoContributorsViewController.xib in Resources */,
 				B5F7148F17892FE300CBC1A3 /* RepoCommitActivityViewController.xib in Resources */,
+				B5F71491178938F200CBC1A3 /* commit_activity.html in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
