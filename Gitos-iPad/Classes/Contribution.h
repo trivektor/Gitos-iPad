@@ -15,5 +15,6 @@
 - (id)initWithData:(NSDictionary *)contributionData;
 
 - (User *)getAuthor;
+- (NSArray *)getWeeksData;
 
 @end

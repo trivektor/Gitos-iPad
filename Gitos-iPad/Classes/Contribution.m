@@ -24,4 +24,9 @@
     return [[User alloc] initWithData:[data valueForKey:@"author"]];
 }
 
+- (NSArray *)getWeeksData
+{
+    return [data valueForKey:@"weeks"];
+}
+
 @end
