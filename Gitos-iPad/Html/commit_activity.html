@@ -29,7 +29,7 @@
         z-index: 10;
       }
 
-      .x-axis-group {
+      .axis-group path, .axis-group line {
         fill: none;
         stroke: #bbb;
         stroke-width: 1;
@@ -59,7 +59,7 @@
     <script src="http://d3js.org/d3.v3.min.js"></script>
     <script src="http://cdnjs.cloudflare.com/ajax/libs/lodash.js/1.3.1/lodash.min.js"></script>
     <script>
-      var commitActivityUrl = 'https://api.github.com/repos/twitter/bootstrap/stats/commit_activity?access_token=529a1c476ca62b47eb8a73aff555cf8bbac91677'
+      var commitActivityUrl = '%@'
         , xhr = new XMLHttpRequest;
 
       xhr.open('GET', commitActivityUrl, true);
@@ -67,32 +67,42 @@
       xhr.send();
 
       function drawChart() {
-        var activities = JSON.parse(xhr.responseText)
+        var width = 900
+          , height = 270
+          , activities = JSON.parse(xhr.responseText)
           , commits = _.pluck(activities, 'total')
           , maxCommit = _.max(commits)
-          , x = d3.scale.linear().range([0, 1000])
-          , y = d3.scale.linear().range([270, 0]);
+          , minCommit = _.min(commits)
+          , x = d3.scale.linear().range([0, width])
+          , y = d3.scale.linear().range([height, 0]);
 
         var weeks = _.pluck(activities, 'week');
         var minDate = new Date(_.first(weeks) * 1000);
         var maxDate = new Date(_.last(weeks) * 1000);
 
-        var xScale = d3.time
-                      .scale()
-                      .domain([minDate, maxDate])
-                      .range([0, 1000]);
+        var xScale = d3.time.scale().domain([minDate, maxDate]).range([0, width]),
+            yScale = d3.scale.linear().domain([0, 100]).range([height, 0]);
 
         var xAxis = d3.svg
                       .axis()
                       .orient('bottom')
                       .scale(xScale);
 
+        var yAxis = d3.svg
+                      .axis()
+                      .orient('left')
+                      .scale(yScale);
+
         var chart = d3.select('body')
                       .append('svg')
                       .attr({
                         class: 'chart',
-                        width: 1000,
-                        height: 300
+                        width: width,
+                        height: height
+                      })
+                      .append('g')
+                      .attr({
+                        transform: 'translate(50, 10)'
                       });
 
         function make_x_axis() {
@@ -109,13 +119,13 @@
                        .ticks(5)
         }
 
-        chart.append('g')
-             .attr({class: 'grid', transform: 'translate(0, 270)'})
-             .call(make_x_axis().tickSize(-270, 0, 0).tickFormat(''));
+        // chart.append('g')
+        //      .attr({class: 'grid', transform: 'translate(0, 270)'})
+        //      .call(make_x_axis().tickSize(-height, 0, 0).tickFormat(''));
 
         chart.append('g')
              .attr('class', 'grid')
-             .call(make_y_axis().tickSize(-1000, 0, 0).tickFormat(''));
+             .call(make_y_axis().tickSize(-width, 0, 0).tickFormat(''));
 
         chart.selectAll('rect')
              .data(activities)
@@ -126,15 +136,30 @@
                height: function(d) { return Math.ceil(100 * d.total/maxCommit) },
                width: 20,
                x: function(d, i) { return i * 20 + 1 },
-               y: function(d) { return 270 - Math.ceil(100 * d.total/maxCommit) }
+               y: function(d) { return height - Math.ceil(100 * d.total/maxCommit) }
              })
 
         chart.append('g')
              .attr({
-               class: 'x-axis-group',
-               transform: 'translate(0, 270)'
+               class: 'axis-group',
+               transform: 'translate(0, ' + height + ')'
               })
              .call(xAxis);
+
+        chart.append('g')
+             .attr({
+               class: 'axis-group',
+               translate: 'translate(' + width + ', 0)'
+             })
+             .call(yAxis);
+
+        chart.append('text')
+             .attr({
+               transform: 'rotate(-90)',
+               y: -40,
+               x: -180
+             })
+             .text('Number of commits')
       }
     </script>
   </body>
