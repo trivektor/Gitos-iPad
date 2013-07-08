@@ -17,10 +17,11 @@
         top: 50%;
         left: 50%;
         width: 1000px;
-        height: 500px;
-        margin-left: -500px;
-        margin-top: -250px;
-        display: block;
+        height: 300px;
+        margin-left: -511px;
+        margin-top: -161px;
+        padding: 10px;
+        border: 1px solid #ccc;
       }
 
       .chart rect {
@@ -28,18 +29,20 @@
         stroke: white;
       }
 
-      .x-axis-group path {
+      .x-axis-group {
+        fill: none;
+        stroke: #bbb;
         stroke-width: 1;
-      }
-
-      .x-axis-group g {
-        margin-top: 5px;
+        shape-rendering: crispEdges;
       }
 
       text {
         font-family: Arial;
         font-size: 11px;
         display: block;
+        stroke: none;
+        fill: #a1a1a1;
+        text-rendering: optimizeLegibility;
       }
     </style>
   </head>
@@ -70,13 +73,17 @@
                       .scale()
                       .domain([minDate, maxDate])
                       .range([0, 1000]);
-        var xAxis = d3.svg.axis().orient('bottom').scale(xScale);
+
+        var xAxis = d3.svg
+                      .axis()
+                      .orient('bottom')
+                      .scale(xScale);
 
         var chart = d3.select('body')
                       .append('svg')
                       .attr('class', 'chart')
                       .attr('width', 1000)
-                      .attr('height', 500);
+                      .attr('height', 300);
 
         chart.selectAll('rect')
              .data(activities)
@@ -84,12 +91,12 @@
              .append('rect')
              .attr('height', function(d) { return d.total * 20 + 'px' })
              .attr('width', 20)
-             .attr('y', function(d) { return 470 - d.total * 20 })
+             .attr('y', function(d) { return 270 - d.total * 20 })
              .attr('x', function(d, i) { return i * 20 + 1 });
 
         chart.append('g')
              .attr('class', 'x-axis-group')
-             .attr('transform', 'translate(0, 470)')
+             .attr('transform', 'translate(0, 270)')
              .call(xAxis);
       }
     </script>
