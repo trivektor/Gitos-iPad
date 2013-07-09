@@ -76,7 +76,7 @@
             fieldValueText = [repo getUpdatedAt];
             break;
         case 7:
-            fontAwesome    = @"icon-male";
+            fontAwesome    = @"icon-user";
             fieldLabelText = @"Author";
             fieldValueText = [repo getAuthorName];
             break;
