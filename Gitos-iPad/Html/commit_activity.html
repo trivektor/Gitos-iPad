@@ -63,6 +63,7 @@
         , xhr = new XMLHttpRequest;
 
       xhr.open('GET', commitActivityUrl, true);
+      xhr.setRequestHeader('User-Agent', 'Gitos');
       xhr.onload = drawChart;
       xhr.send();
 
