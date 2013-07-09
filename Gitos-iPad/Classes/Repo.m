@@ -261,8 +261,8 @@
 
          NSMutableArray *branches = [[NSMutableArray alloc] initWithCapacity:0];
 
-         for (int i=0; i < json.count; i++) {
-             [branches addObject:[[Branch alloc] initWithData:[json objectAtIndex:i]]];
+         for (NSDictionary *branchData in json) {
+             [branches addObject:[[Branch alloc] initWithData:branchData]];
          }
 
          NSDictionary *userInfo = [NSDictionary dictionaryWithObject:branches forKey:@"Branches"];
@@ -337,8 +337,8 @@
 
          NSMutableArray *issues = [[NSMutableArray alloc] initWithCapacity:0];
 
-         for (int i=0; i < json.count; i++) {
-             [issues addObject:[[Issue alloc] initWithData:[json objectAtIndex:i]]];
+         for (NSDictionary *issueData in json) {
+             [issues addObject:[[Issue alloc] initWithData:issueData]];
          }
 
         [[NSNotificationCenter defaultCenter] postNotificationName:@"IssuesFetched"

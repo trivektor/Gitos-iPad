@@ -232,12 +232,9 @@
 
          NSArray *json = [NSJSONSerialization JSONObjectWithData:[response dataUsingEncoding:NSUTF8StringEncoding] options:NSJSONReadingMutableContainers error:nil];
 
-         NSDictionary *_data;
-
          NSMutableArray *activities = [[NSMutableArray alloc] initWithCapacity:0];
 
-         for (int i=0; i < json.count; i++) {
-             _data = [json objectAtIndex:i];
+         for (NSDictionary *_data in json) {
              id klass = [NSClassFromString([_data valueForKey
                                             :@"type"]) alloc];
              id obj = objc_msgSend(klass, sel_getUid("initWithData:"), _data);
@@ -377,8 +374,8 @@
 
          NSMutableArray *repos = [[NSMutableArray alloc] initWithCapacity:0];
 
-         for (int i=0; i < [json count]; i++) {
-             [repos addObject:[[Repo alloc] initWithData:[json objectAtIndex:i]]];
+         for (NSDictionary *repoData in json) {
+             [repos addObject:[[Repo alloc] initWithData:repoData]];
          }
 
          [[NSNotificationCenter defaultCenter] postNotificationName:@"StarredReposFetched" object:repos];
@@ -413,8 +410,8 @@
 
          NSMutableArray *gists = [[NSMutableArray alloc] initWithCapacity:0];
 
-         for (int i=0; i < [gistsArray count]; i++) {
-             [gists addObject:[[Gist alloc] initWithData:[gistsArray objectAtIndex:i]]];
+         for (NSDictionary *gistData in gistsArray) {
+             [gists addObject:[[Gist alloc] initWithData:gistData]];
          }
 
          [[NSNotificationCenter defaultCenter] postNotificationName:@"UserGistsFetched" object:gists];
@@ -499,8 +496,8 @@
 
          NSMutableArray *organizations = [[NSMutableArray alloc] initWithCapacity:0];
 
-         for (int i=0; i < json.count; i++) {
-             [organizations addObject:[[Organization alloc] initWithData:[json objectAtIndex:i]]];
+         for (NSDictionary *organizationData in json) {
+             [organizations addObject:[[Organization alloc] initWithData:organizationData]];
          }
 
          [[NSNotificationCenter defaultCenter] postNotificationName:@"OrganizationsFetched"

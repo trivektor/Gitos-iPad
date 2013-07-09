@@ -177,8 +177,8 @@
 
         NSMutableArray *comments = [[NSMutableArray alloc] initWithCapacity:0];
 
-        for (int i=0; i < json.count; i++) {
-            [comments addObject:[[GistComment alloc] initWithData:[json objectAtIndex:i]]];
+        for (NSDictionary *gistCommentData in json) {
+            [comments addObject:[[GistComment alloc] initWithData:gistCommentData]];
         }
 
         [[NSNotificationCenter defaultCenter] postNotificationName:@"GistCommentsFetched"

@@ -79,8 +79,8 @@
 
          NSMutableArray *nodes = [[NSMutableArray alloc] initWithCapacity:0];
 
-         for (int i=0; i < treeNodes.count; i++) {
-             [nodes addObject:[[RepoTreeNode alloc] initWithData:[treeNodes objectAtIndex:i]]];
+         for (NSDictionary *treeNodeData in treeNodes) {
+             [nodes addObject:[[RepoTreeNode alloc] initWithData:treeNodeData]];
          }
 
          [[NSNotificationCenter defaultCenter] postNotificationName:@"TreeFetched" object:nodes];

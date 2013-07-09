@@ -167,8 +167,8 @@ static NSString *DATE_FORMAT = @"yyyy-MM-dd'T'HH:mm:ssZZ";
     </td> \
     </tr>";
 
-    for (int i=0; i < files.count; i++) {
-        CommitFile *file = [[CommitFile alloc] initWithData:[files objectAtIndex:i]];
+    for (NSDictionary *fileData in files) {
+        CommitFile *file = [[CommitFile alloc] initWithData:fileData];
         NSInteger additions = [file getAdditions], deletions = [file getDeletions];
 
         commitHtmlString = [commitHtmlString stringByAppendingFormat:markupString,

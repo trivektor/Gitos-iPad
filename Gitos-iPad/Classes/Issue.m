@@ -114,8 +114,8 @@
 
          NSMutableArray *comments = [[NSMutableArray alloc] initWithCapacity:0];
 
-         for (int i=0; i < json.count; i++) {
-             [comments addObject:[[Comment alloc] initWithData:[json objectAtIndex:i]]];
+         for (NSDictionary *commentData in json) {
+             [comments addObject:[[Comment alloc] initWithData:commentData]];
          }
 
          [[NSNotificationCenter defaultCenter] postNotificationName:@"IssueCommentsFetched"
