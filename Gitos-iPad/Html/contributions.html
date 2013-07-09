@@ -1,14 +1,13 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <link rel='stylesheet' href='bootstrap.css'></link>
-        <link rel='stylesheet' href='gitos.css'></link>
-        <link rel='stylesheet' href='github.css'></link>
+        <link href='http://netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/css/bootstrap-combined.min.css' rel='stylesheet' />
+        <link rel='stylesheet' href='gitos.css' />
+        <link rel='stylesheet' href='github.css' />
     </head>
     <body>
         <ul id='contributions' class='unstyled'>
         </ul>
-        <script src='underscore.js'></script>
         <script>
             var CONTRIBUTIONS_URL = 'https://github.com/users/%@/contributions_calendar_data?_=' + (new Date).getTime();
             var MONTH_MAPPINGS = {
