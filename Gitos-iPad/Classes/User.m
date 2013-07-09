@@ -448,8 +448,8 @@
 
          NSMutableArray *users = [[NSMutableArray alloc] initWithCapacity:0];
 
-         for (int i=0; i < json.count; i++) {
-             [users addObject:[[User alloc] initWithData:[json objectAtIndex:i]]];
+         for (NSDictionary *userData in json) {
+             [users addObject:[[User alloc] initWithData:userData]];
          }
 
          [[NSNotificationCenter defaultCenter] postNotificationName:@"FollowUsersFetched" object:users];

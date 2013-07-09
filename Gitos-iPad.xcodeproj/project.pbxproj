@@ -12,7 +12,6 @@
 		B501D93C1751B01C00D947E9 /* NewIssueViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B501D93A1751B01C00D947E9 /* NewIssueViewController.m */; };
 		B501D93D1751B01C00D947E9 /* NewIssueViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B501D93B1751B01C00D947E9 /* NewIssueViewController.xib */; };
 		B511D43716D9A81C00DD0ED5 /* contributions.html in Resources */ = {isa = PBXBuildFile; fileRef = B511D43616D9A81C00DD0ED5 /* contributions.html */; };
-		B511D43A16D9C6FD00DD0ED5 /* underscore.js in Resources */ = {isa = PBXBuildFile; fileRef = B511D43816D9C6A600DD0ED5 /* underscore.js */; };
 		B511D44216DAF68200DD0ED5 /* DeleteEvent.m in Sources */ = {isa = PBXBuildFile; fileRef = B511D44116DAF68000DD0ED5 /* DeleteEvent.m */; };
 		B511D44C16DB36B000DD0ED5 /* PullRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = B511D44B16DB36AF00DD0ED5 /* PullRequest.m */; };
 		B511D45316DB3D0900DD0ED5 /* pull_request.html in Resources */ = {isa = PBXBuildFile; fileRef = B511D45216DB3D0800DD0ED5 /* pull_request.html */; };
@@ -157,7 +156,6 @@
 		B542275316CCC8D00020F300 /* commit_details.html in Resources */ = {isa = PBXBuildFile; fileRef = B542275216CCC8D00020F300 /* commit_details.html */; };
 		B542275616CDEA580020F300 /* CommitFile.m in Sources */ = {isa = PBXBuildFile; fileRef = B542275516CDEA580020F300 /* CommitFile.m */; };
 		B542275B16CDF86E0020F300 /* diff.js in Resources */ = {isa = PBXBuildFile; fileRef = B542275916CDF86E0020F300 /* diff.js */; };
-		B542275C16CDF86E0020F300 /* highlight.js in Resources */ = {isa = PBXBuildFile; fileRef = B542275A16CDF86E0020F300 /* highlight.js */; };
 		B542275E16CDFB390020F300 /* github.css in Resources */ = {isa = PBXBuildFile; fileRef = B542275D16CDFB390020F300 /* github.css */; };
 		B542276616CF6F980020F300 /* raw_file.html in Resources */ = {isa = PBXBuildFile; fileRef = B542276516CF6F980020F300 /* raw_file.html */; };
 		B542276E16D06A3D0020F300 /* UserSearchResultCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B542276D16D06A3D0020F300 /* UserSearchResultCell.m */; };
@@ -202,7 +200,6 @@
 		B552948116C7A23D0010D56A /* Issue.m in Sources */ = {isa = PBXBuildFile; fileRef = B552948016C7A23D0010D56A /* Issue.m */; };
 		B552948416C818DC0010D56A /* IssueCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B552948316C818DC0010D56A /* IssueCell.m */; };
 		B552948616C818F50010D56A /* IssueCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B552948516C818F50010D56A /* IssueCell.xib */; };
-		B552949416C85FEB0010D56A /* bootstrap.css in Resources */ = {isa = PBXBuildFile; fileRef = B552949316C85FEB0010D56A /* bootstrap.css */; };
 		B552949716C862FD0010D56A /* Comment.m in Sources */ = {isa = PBXBuildFile; fileRef = B552949616C862FD0010D56A /* Comment.m */; };
 		B552949916C866380010D56A /* issue_details.html in Resources */ = {isa = PBXBuildFile; fileRef = B552949816C866380010D56A /* issue_details.html */; };
 		B552949B16C8705B0010D56A /* gitos.css in Resources */ = {isa = PBXBuildFile; fileRef = B552949A16C8705B0010D56A /* gitos.css */; };
@@ -383,11 +380,9 @@
 		B5A72FE117476036004F73FB /* UIWindow+NUI.m in Sources */ = {isa = PBXBuildFile; fileRef = B5A72FAB17476036004F73FB /* UIWindow+NUI.m */; };
 		B5A72FE7174768C4004F73FB /* UITableView+Shadow.m in Sources */ = {isa = PBXBuildFile; fileRef = B5A72FE6174768C4004F73FB /* UITableView+Shadow.m */; };
 		B5A72FE9174873B7004F73FB /* readme.html in Resources */ = {isa = PBXBuildFile; fileRef = B5A72FE8174873B7004F73FB /* readme.html */; };
-		B5A72FEB174874C5004F73FB /* showdown.js in Resources */ = {isa = PBXBuildFile; fileRef = B5A72FEA174874C5004F73FB /* showdown.js */; };
 		B5A72FEE174969E8004F73FB /* UITableViewCell+Customizations.m in Sources */ = {isa = PBXBuildFile; fileRef = B5A72FED174969E8004F73FB /* UITableViewCell+Customizations.m */; };
 		B5A72FF117498071004F73FB /* CustomCellBackgroundView.m in Sources */ = {isa = PBXBuildFile; fileRef = B5A72FF017498070004F73FB /* CustomCellBackgroundView.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		B5A72FF417499CDD004F73FB /* DTCustomColoredAccessory.m in Sources */ = {isa = PBXBuildFile; fileRef = B5A72FF317499CDD004F73FB /* DTCustomColoredAccessory.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
-		B5BC452116BA5E3F00434848 /* prettify.js in Resources */ = {isa = PBXBuildFile; fileRef = B5BC451C16BA5DFD00434848 /* prettify.js */; };
 		B5BC452516BCEE7100434848 /* MasterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B5BC452316BCEE7000434848 /* MasterViewController.m */; };
 		B5BC452616BCEE7100434848 /* MasterViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B5BC452416BCEE7000434848 /* MasterViewController.xib */; };
 		B5BC457516BE6C1A00434848 /* magma_border.png in Resources */ = {isa = PBXBuildFile; fileRef = B5BC457416BE6C1A00434848 /* magma_border.png */; };
@@ -445,7 +440,6 @@
 		B501D93A1751B01C00D947E9 /* NewIssueViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NewIssueViewController.m; sourceTree = "<group>"; };
 		B501D93B1751B01C00D947E9 /* NewIssueViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NewIssueViewController.xib; sourceTree = "<group>"; };
 		B511D43616D9A81C00DD0ED5 /* contributions.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = contributions.html; sourceTree = "<group>"; };
-		B511D43816D9C6A600DD0ED5 /* underscore.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = underscore.js; sourceTree = "<group>"; };
 		B511D44016DAF67F00DD0ED5 /* DeleteEvent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DeleteEvent.h; sourceTree = "<group>"; };
 		B511D44116DAF68000DD0ED5 /* DeleteEvent.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DeleteEvent.m; sourceTree = "<group>"; };
 		B511D44A16DB36AE00DD0ED5 /* PullRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PullRequest.h; sourceTree = "<group>"; };
@@ -613,7 +607,6 @@
 		B542275416CDEA580020F300 /* CommitFile.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CommitFile.h; sourceTree = "<group>"; };
 		B542275516CDEA580020F300 /* CommitFile.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CommitFile.m; sourceTree = "<group>"; };
 		B542275916CDF86E0020F300 /* diff.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = diff.js; sourceTree = "<group>"; };
-		B542275A16CDF86E0020F300 /* highlight.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = highlight.js; sourceTree = "<group>"; };
 		B542275D16CDFB390020F300 /* github.css */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.css; path = github.css; sourceTree = "<group>"; };
 		B542276516CF6F980020F300 /* raw_file.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = raw_file.html; sourceTree = "<group>"; };
 		B542276C16D06A3D0020F300 /* UserSearchResultCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserSearchResultCell.h; sourceTree = "<group>"; };
@@ -690,7 +683,6 @@
 		B552948216C818DC0010D56A /* IssueCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IssueCell.h; sourceTree = "<group>"; };
 		B552948316C818DC0010D56A /* IssueCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IssueCell.m; sourceTree = "<group>"; };
 		B552948516C818F50010D56A /* IssueCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = IssueCell.xib; sourceTree = "<group>"; };
-		B552949316C85FEB0010D56A /* bootstrap.css */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.css; path = bootstrap.css; sourceTree = "<group>"; };
 		B552949516C862FD0010D56A /* Comment.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Comment.h; sourceTree = "<group>"; };
 		B552949616C862FD0010D56A /* Comment.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Comment.m; sourceTree = "<group>"; };
 		B552949816C866380010D56A /* issue_details.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = issue_details.html; sourceTree = "<group>"; };
@@ -989,14 +981,12 @@
 		B5A72FE5174768C4004F73FB /* UITableView+Shadow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UITableView+Shadow.h"; sourceTree = "<group>"; };
 		B5A72FE6174768C4004F73FB /* UITableView+Shadow.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UITableView+Shadow.m"; sourceTree = "<group>"; };
 		B5A72FE8174873B7004F73FB /* readme.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = readme.html; sourceTree = "<group>"; };
-		B5A72FEA174874C5004F73FB /* showdown.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = showdown.js; sourceTree = "<group>"; };
 		B5A72FEC174969E8004F73FB /* UITableViewCell+Customizations.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UITableViewCell+Customizations.h"; sourceTree = "<group>"; };
 		B5A72FED174969E8004F73FB /* UITableViewCell+Customizations.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UITableViewCell+Customizations.m"; sourceTree = "<group>"; };
 		B5A72FEF17498070004F73FB /* CustomCellBackgroundView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomCellBackgroundView.h; sourceTree = "<group>"; };
 		B5A72FF017498070004F73FB /* CustomCellBackgroundView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomCellBackgroundView.m; sourceTree = "<group>"; };
 		B5A72FF217499CDC004F73FB /* DTCustomColoredAccessory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DTCustomColoredAccessory.h; sourceTree = "<group>"; };
 		B5A72FF317499CDD004F73FB /* DTCustomColoredAccessory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DTCustomColoredAccessory.m; sourceTree = "<group>"; };
-		B5BC451C16BA5DFD00434848 /* prettify.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = prettify.js; sourceTree = "<group>"; };
 		B5BC452216BCEE6F00434848 /* MasterViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MasterViewController.h; sourceTree = "<group>"; };
 		B5BC452316BCEE7000434848 /* MasterViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MasterViewController.m; sourceTree = "<group>"; };
 		B5BC452416BCEE7000434848 /* MasterViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MasterViewController.xib; sourceTree = "<group>"; };
@@ -2007,12 +1997,8 @@
 			children = (
 				B5C6130E1725174F0039FDD5 /* newsfeed.html */,
 				B574CF2F16FFAAA00077D353 /* prettify_themes */,
-				B5BC451C16BA5DFD00434848 /* prettify.js */,
 				B542275916CDF86E0020F300 /* diff.js */,
 				B5C6130917250BB90039FDD5 /* templates */,
-				B511D43816D9C6A600DD0ED5 /* underscore.js */,
-				B542275A16CDF86E0020F300 /* highlight.js */,
-				B552949316C85FEB0010D56A /* bootstrap.css */,
 				B552949816C866380010D56A /* issue_details.html */,
 				B552949A16C8705B0010D56A /* gitos.css */,
 				B542275216CCC8D00020F300 /* commit_details.html */,
@@ -2023,7 +2009,6 @@
 				B511D45216DB3D0800DD0ED5 /* pull_request.html */,
 				B5F10F8C173F850800263242 /* gist_comments.html */,
 				B5A72FE8174873B7004F73FB /* readme.html */,
-				B5A72FEA174874C5004F73FB /* showdown.js */,
 				B5864B85177FF63A0056B0DE /* attributions.html */,
 				B5F71490178938F200CBC1A3 /* commit_activity.html */,
 			);
@@ -2124,11 +2109,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B5A72FEB174874C5004F73FB /* showdown.js in Resources */,
-				B511D43A16D9C6FD00DD0ED5 /* underscore.js in Resources */,
-				B5BC452116BA5E3F00434848 /* prettify.js in Resources */,
 				B542275B16CDF86E0020F300 /* diff.js in Resources */,
-				B542275C16CDF86E0020F300 /* highlight.js in Resources */,
 				B55D90AB16B7AA27009CB90F /* InfoPlist.strings in Resources */,
 				B55D90B316B7AA27009CB90F /* Default.png in Resources */,
 				B55D90B516B7AA27009CB90F /* Default@2x.png in Resources */,
@@ -2243,7 +2224,6 @@
 				B54603BA16C37B14007D4FB3 /* icon.png in Resources */,
 				B54603BC16C37B60007D4FB3 /* icon@2x.png in Resources */,
 				B552948616C818F50010D56A /* IssueCell.xib in Resources */,
-				B552949416C85FEB0010D56A /* bootstrap.css in Resources */,
 				B552949916C866380010D56A /* issue_details.html in Resources */,
 				B552949B16C8705B0010D56A /* gitos.css in Resources */,
 				B542275116CCBBDF0020F300 /* CommitCell.xib in Resources */,
