@@ -42,6 +42,16 @@
 - (void)performHouseKeepingTasks
 {
     self.navigationItem.title = @"Commit Activity";
+
+    UIBarButtonItem *reloadBtn = [[UIBarButtonItem alloc] initWithTitle:[NSString fontAwesomeIconStringForIconIdentifier:@"icon-repeat"]
+                                                                  style:UIBarButtonItemStyleBordered
+                                                                 target:self
+                                                                 action:@selector(reload)];
+
+    [reloadBtn setTitleTextAttributes:[NSDictionary dictionaryWithObjectsAndKeys:[UIFont fontWithName:kFontAwesomeFamilyName size:17], UITextAttributeFont, nil]
+                             forState:UIControlStateNormal];
+
+    [self.navigationItem setRightBarButtonItem:reloadBtn];
 }
 
 - (void)displayCommitActivity

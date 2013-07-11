@@ -15,5 +15,6 @@
 
 - (void)performHouseKeepingTasks;
 - (void)displayCommitActivity;
+- (void)reload;
 
 @end
