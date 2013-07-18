@@ -46,7 +46,7 @@
     UIBarButtonItem *reloadBtn = [[UIBarButtonItem alloc] initWithTitle:[NSString fontAwesomeIconStringForIconIdentifier:@"icon-repeat"]
                                                                   style:UIBarButtonItemStyleBordered
                                                                  target:self
-                                                                 action:@selector(reload)];
+                                                                 action:@selector(displayCommitActivity)];
 
     [reloadBtn setTitleTextAttributes:[NSDictionary dictionaryWithObjectsAndKeys:[UIFont fontWithName:kFontAwesomeFamilyName size:17], UITextAttributeFont, nil]
                              forState:UIControlStateNormal];

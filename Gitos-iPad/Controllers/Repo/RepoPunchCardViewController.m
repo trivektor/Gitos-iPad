@@ -30,6 +30,17 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
     self.navigationItem.title = @"Punch Card";
+
+    UIBarButtonItem *reloadBtn = [[UIBarButtonItem alloc] initWithTitle:[NSString fontAwesomeIconStringForIconIdentifier:@"icon-repeat"]
+                                                                  style:UIBarButtonItemStyleBordered
+                                                                 target:self
+                                                                 action:@selector(displayPunchCard)];
+
+    [reloadBtn setTitleTextAttributes:[NSDictionary dictionaryWithObjectsAndKeys:[UIFont fontWithName:kFontAwesomeFamilyName size:17], UITextAttributeFont, nil]
+                             forState:UIControlStateNormal];
+
+    [self.navigationItem setRightBarButtonItem:reloadBtn];
+
     [self displayPunchCard];
 }
 

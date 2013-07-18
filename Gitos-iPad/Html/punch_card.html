@@ -22,13 +22,15 @@
       }
       .axis path, .axis line {
         fill: none;
-        stroke: #eee;
+        stroke: #bbb;
         shape-rendering: crispEdges;
       }
 
       .axis text {
         font-family: sans-serif;
         font-size: 11px;
+        stroke: none;
+        fill: #a1a1a1;
       }
 
       .loading {
@@ -49,7 +51,7 @@
     var w = 940,
         h = 300,
         pad = 20,
-        left_pad = 100,
+        left_pad = 102,
         Data_url = '%@';
 
     var svg = d3.select("#punch-card")
