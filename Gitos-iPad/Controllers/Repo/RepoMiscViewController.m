@@ -117,6 +117,9 @@
 
 - (void)showPunchCard:(id)sender
 {
+    [self postCloseMiscModalNotification];
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"ShowRepoMiscInfo"
+                                                        object:@"RepoPunchCard"];
 }
 
 - (IBAction)closeModal:(id)sender

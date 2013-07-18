@@ -274,6 +274,9 @@
 		B5864B86177FF63A0056B0DE /* attributions.html in Resources */ = {isa = PBXBuildFile; fileRef = B5864B85177FF63A0056B0DE /* attributions.html */; };
 		B5864B8A177FF6A10056B0DE /* AttributionsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B5864B88177FF6A00056B0DE /* AttributionsViewController.m */; };
 		B5864B8B177FF6A10056B0DE /* AttributionsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B5864B89177FF6A00056B0DE /* AttributionsViewController.xib */; };
+		B59D1EF51797B5100063DC44 /* punch_card.html in Resources */ = {isa = PBXBuildFile; fileRef = B59D1EF41797B5100063DC44 /* punch_card.html */; };
+		B59D1EF91797B6E00063DC44 /* RepoPunchCardViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B59D1EF71797B6E00063DC44 /* RepoPunchCardViewController.m */; };
+		B59D1EFA1797B6E00063DC44 /* RepoPunchCardViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B59D1EF81797B6E00063DC44 /* RepoPunchCardViewController.xib */; };
 		B5A104281723C10200487A47 /* GistRawFileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B5A104201723C10200487A47 /* GistRawFileViewController.m */; };
 		B5A104291723C10200487A47 /* GistRawFileViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B5A104211723C10200487A47 /* GistRawFileViewController.xib */; };
 		B5A1042A1723C10200487A47 /* GistsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B5A104231723C10200487A47 /* GistsViewController.m */; };
@@ -804,6 +807,10 @@
 		B5864B87177FF6A00056B0DE /* AttributionsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AttributionsViewController.h; sourceTree = "<group>"; };
 		B5864B88177FF6A00056B0DE /* AttributionsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AttributionsViewController.m; sourceTree = "<group>"; };
 		B5864B89177FF6A00056B0DE /* AttributionsViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AttributionsViewController.xib; sourceTree = "<group>"; };
+		B59D1EF41797B5100063DC44 /* punch_card.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = punch_card.html; sourceTree = "<group>"; };
+		B59D1EF61797B6E00063DC44 /* RepoPunchCardViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RepoPunchCardViewController.h; sourceTree = "<group>"; };
+		B59D1EF71797B6E00063DC44 /* RepoPunchCardViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RepoPunchCardViewController.m; sourceTree = "<group>"; };
+		B59D1EF81797B6E00063DC44 /* RepoPunchCardViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RepoPunchCardViewController.xib; sourceTree = "<group>"; };
 		B5A1041F1723C10200487A47 /* GistRawFileViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GistRawFileViewController.h; sourceTree = "<group>"; };
 		B5A104201723C10200487A47 /* GistRawFileViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GistRawFileViewController.m; sourceTree = "<group>"; };
 		B5A104211723C10200487A47 /* GistRawFileViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GistRawFileViewController.xib; sourceTree = "<group>"; };
@@ -1749,6 +1756,9 @@
 				B5F7148B17892FE100CBC1A3 /* RepoCommitActivityViewController.h */,
 				B5F7148C17892FE100CBC1A3 /* RepoCommitActivityViewController.m */,
 				B5F7148D17892FE200CBC1A3 /* RepoCommitActivityViewController.xib */,
+				B59D1EF61797B6E00063DC44 /* RepoPunchCardViewController.h */,
+				B59D1EF71797B6E00063DC44 /* RepoPunchCardViewController.m */,
+				B59D1EF81797B6E00063DC44 /* RepoPunchCardViewController.xib */,
 			);
 			path = Repo;
 			sourceTree = "<group>";
@@ -2011,6 +2021,7 @@
 				B5A72FE8174873B7004F73FB /* readme.html */,
 				B5864B85177FF63A0056B0DE /* attributions.html */,
 				B5F71490178938F200CBC1A3 /* commit_activity.html */,
+				B59D1EF41797B5100063DC44 /* punch_card.html */,
 			);
 			path = Html;
 			sourceTree = "<group>";
@@ -2325,6 +2336,8 @@
 				B5F71484178560D900CBC1A3 /* RepoContributorsViewController.xib in Resources */,
 				B5F7148F17892FE300CBC1A3 /* RepoCommitActivityViewController.xib in Resources */,
 				B5F71491178938F200CBC1A3 /* commit_activity.html in Resources */,
+				B59D1EF51797B5100063DC44 /* punch_card.html in Resources */,
+				B59D1EFA1797B6E00063DC44 /* RepoPunchCardViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2531,6 +2544,7 @@
 				B5F7148717856A0C00CBC1A3 /* Contribution.m in Sources */,
 				B5F7148A17892C6B00CBC1A3 /* CommitActivity.m in Sources */,
 				B5F7148E17892FE300CBC1A3 /* RepoCommitActivityViewController.m in Sources */,
+				B59D1EF91797B6E00063DC44 /* RepoPunchCardViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
