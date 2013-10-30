@@ -93,7 +93,6 @@
                                       watchersSize.height);
 
     descriptionLabel.text = [repo getDescription];
-    [self defineSelectedColor:[UIColor asbestosColor]];
     [self defineAccessoryType];
 }
 
