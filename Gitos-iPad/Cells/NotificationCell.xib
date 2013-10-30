@@ -36,9 +36,6 @@
                     </label>
                 </subviews>
             </tableViewCellContentView>
-            <userDefinedRuntimeAttributes>
-                <userDefinedRuntimeAttribute type="string" keyPath="nuiClass" value="VanillaCell"/>
-            </userDefinedRuntimeAttributes>
             <connections>
                 <outlet property="fontAwesomeLabel" destination="4" id="12"/>
                 <outlet property="titleLabel" destination="8" id="13"/>

@@ -26,15 +26,9 @@
                         <fontDescription key="fontDescription" name="HelveticaNeue-Thin" family="Helvetica Neue" pointSize="13"/>
                         <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                         <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <userDefinedRuntimeAttributes>
-                            <userDefinedRuntimeAttribute type="string" keyPath="nuiClass" value="AsbestosColor"/>
-                        </userDefinedRuntimeAttributes>
                     </label>
                 </subviews>
             </tableViewCellContentView>
-            <userDefinedRuntimeAttributes>
-                <userDefinedRuntimeAttribute type="string" keyPath="nuiClass" value="VanillaCell"/>
-            </userDefinedRuntimeAttributes>
             <connections>
                 <outlet property="commentLabel" destination="4" id="8"/>
                 <outlet property="dateLabel" destination="5" id="9"/>

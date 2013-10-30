@@ -25,9 +25,6 @@
                         <fontDescription key="fontDescription" name="HelveticaNeue-Thin" family="Helvetica Neue" pointSize="13"/>
                         <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                         <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <userDefinedRuntimeAttributes>
-                            <userDefinedRuntimeAttribute type="string" keyPath="nuiClass" value="AsbestosColor"/>
-                        </userDefinedRuntimeAttributes>
                     </label>
                     <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="13">
                         <rect key="frame" x="12" y="10" width="30" height="21"/>
@@ -45,9 +42,6 @@
                     </label>
                 </subviews>
             </tableViewCellContentView>
-            <userDefinedRuntimeAttributes>
-                <userDefinedRuntimeAttribute type="string" keyPath="nuiClass" value="VanillaCell"/>
-            </userDefinedRuntimeAttributes>
             <connections>
                 <outlet property="fontAwesomeLabel" destination="13" id="15"/>
                 <outlet property="gistCreatedAt" destination="16" id="17"/>

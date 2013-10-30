@@ -278,7 +278,6 @@
 
     usernameLabel.text = [currentUser getLogin];
     usernameLabel.textColor = [UIColor whiteColor];
-    usernameLabel.nuiClass = @"NavItemLabel";
 
     UIView *backgroundView = [[UIView alloc] initWithFrame:profileCell.frame];
     backgroundView.backgroundColor = [UIColor alizarinColor];

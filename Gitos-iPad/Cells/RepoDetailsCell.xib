@@ -36,9 +36,6 @@
                     </label>
                 </subviews>
             </tableViewCellContentView>
-            <userDefinedRuntimeAttributes>
-                <userDefinedRuntimeAttribute type="string" keyPath="nuiClass" value="VanillaCell"/>
-            </userDefinedRuntimeAttributes>
             <connections>
                 <outlet property="fieldLabel" destination="4" id="8"/>
                 <outlet property="fieldValue" destination="9" id="10"/>

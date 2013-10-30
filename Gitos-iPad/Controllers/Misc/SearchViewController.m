@@ -118,12 +118,9 @@
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:cellIdentifier];
     }
 
-    cell.textLabel.nuiClass   = @"AsbestosColor";
-    cell.textLabel.font       = [UIFont fontWithName:@"Arial-BoldMT" size:14.0];
-    cell.detailTextLabel.nuiClass = @"AsbestosColor";
-    cell.detailTextLabel.font = [UIFont fontWithName:@"Arial" size:12.0];
+    cell.textLabel.font       = [UIFont fontWithName:@"HelveticaNeue-Light" size:14.0];
+    cell.detailTextLabel.font = [UIFont fontWithName:@"HelveticaNeue-Thin" size:13.0];
     cell.accessoryType        = UITableViewCellAccessoryDisclosureIndicator;
-    cell.nuiClass             = @"VanillaCell";
 
     NSObject *object = [results objectAtIndex:indexPath.row];
 
