@@ -206,11 +206,10 @@
 
     Branch *branch = [repoBranches objectAtIndex:indexPath.row];
 
-    cell.textLabel.font  = [UIFont fontWithName:@"Arial" size:14.0];
+    cell.textLabel.font  = [UIFont fontWithName:@"HelveticaNeue-Light" size:14.0];
     cell.textLabel.text  = [branch getName];
     cell.backgroundColor = [UIColor whiteColor];
     cell.textLabel.textAlignment = NSTextAlignmentCenter;
-    cell.textLabel.nuiClass = @"AsbestosColor";
     [cell defineSelectedColor:[UIColor cloudsColor]
             forRowAtIndexPath:indexPath
                 withTotalRows:repoBranches.count];

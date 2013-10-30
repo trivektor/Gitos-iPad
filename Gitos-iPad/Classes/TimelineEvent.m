@@ -180,7 +180,8 @@
 {
     NSMutableAttributedString *attributedString = [[NSMutableAttributedString alloc] initWithString:rawString];
     [attributedString setAttributes:@{
-                NSFontAttributeName:[UIFont fontWithName:@"HelveticaNeue-Light" size:14.0]
+                NSFontAttributeName:[UIFont fontWithName:@"HelveticaNeue-Light"
+                                                    size:14.0]
      } range:NSMakeRange(0, attributedString.length)];
     return attributedString;
 }

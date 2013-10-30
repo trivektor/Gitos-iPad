@@ -111,7 +111,7 @@
                                              blue:179/255.0
                                             alpha:1.0];
 
-    headerLabel.font = [UIFont fontWithName:@"Arial-BoldMT" size:12.0];
+    headerLabel.font = [UIFont fontWithName:@"HelveticaNeue-Light" size:13.0];
 
     UIView *backgroundView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 300, 25)];
 

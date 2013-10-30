@@ -48,13 +48,6 @@
     hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
     hud.mode = MBProgressHUDAnimationFade;
     hud.labelText = LOADING_MESSAGE;
-
-    [self.view setBackgroundColor:[UIColor colorWithRed:230/255.0
-                                                       green:230/255.0
-                                                        blue:237/255.0
-                                                       alpha:1.0]];
-    [detailsTable drawShadow];
-    [filesTable drawShadow];
 }
 
 - (void)registerNib
@@ -164,8 +157,7 @@
 
     GistFile *file = [files objectAtIndex:indexPath.row];
     cell.textLabel.text  = [file getName];
-    cell.textLabel.font  = [UIFont fontWithName:@"Arial" size:12.0];
-    cell.textLabel.nuiClass = @"AsbestosColor";
+    cell.textLabel.font  = [UIFont fontWithName:@"HelveticaNeue-Thin" size:13.0];
     cell.backgroundColor = [UIColor whiteColor];
     cell.layer.masksToBounds = YES;
     [cell defineSelectedColor:[UIColor cloudsColor]
