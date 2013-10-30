@@ -124,7 +124,7 @@
 
     float percentage = 100.0 * ([[values objectAtIndex:indexPath.row] floatValue] / total);
     cell.textLabel.text = [NSString stringWithFormat:@"%@ (%.01f %%)", key, percentage];
-    cell.textLabel.font = [UIFont fontWithName:@"Arial-BoldMT" size:14.0];
+    cell.textLabel.font = [UIFont fontWithName:@"HelveticaNeue-Light" size:14.0];
     //cell.textLabel.textColor = [UIColor whiteColor];
     cell.selectionStyle = UITableViewCellEditingStyleNone;
 

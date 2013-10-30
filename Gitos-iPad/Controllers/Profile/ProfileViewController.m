@@ -99,6 +99,7 @@
 
     [profileTable registerNib:nib forCellReuseIdentifier:@"ProfileCell"];
     [profileTable setScrollEnabled:NO];
+    [profileTable setBackgroundColor:[UIColor clearColor]];
     [profileTable drawSeparator];
 }
 
@@ -113,11 +114,7 @@
     }
 
     [scrollView setContentSize:(CGSizeMake(self.view.frame.size.width, scrollViewHeight + 80))];
-    [scrollView setBackgroundColor:[UIColor colorWithRed:230/255.0
-                                                  green:230/255.0
-                                                   blue:227/255.0
-                                                  alpha:1.0]];
-
+    [scrollView setBackgroundColor:[UIColor colorWithRed:242/255.0 green:242/255.0 blue:242/255.0 alpha:1.0]];
     [self.view setBackgroundColor:[UIColor clearColor]];
 }
 

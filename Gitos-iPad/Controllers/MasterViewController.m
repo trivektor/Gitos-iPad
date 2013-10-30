@@ -278,6 +278,7 @@
 
     usernameLabel.text = [currentUser getLogin];
     usernameLabel.textColor = [UIColor whiteColor];
+    usernameLabel.font = [UIFont fontWithName:@"HelveticaNeue-Light" size:14.0];
 
     UIView *backgroundView = [[UIView alloc] initWithFrame:profileCell.frame];
     backgroundView.backgroundColor = [UIColor alizarinColor];

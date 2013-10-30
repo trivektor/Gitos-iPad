@@ -80,6 +80,9 @@
 
     [detailsTable drawSeparator];
     [branchesTable drawSeparator];
+    [detailsTable setBackgroundColor:[UIColor clearColor]];
+    [branchesTable setBackgroundColor:[UIColor clearColor]];
+    [self.view setBackgroundColor:[UIColor colorWithRed:242/255.0 green:242/255.0 blue:242/255.0 alpha:1.0]];
 }
 
 - (void)registerNib
@@ -210,9 +213,7 @@
     cell.textLabel.text  = [branch getName];
     cell.backgroundColor = [UIColor whiteColor];
     cell.textLabel.textAlignment = NSTextAlignmentCenter;
-    [cell defineSelectedColor:[UIColor cloudsColor]
-            forRowAtIndexPath:indexPath
-                withTotalRows:repoBranches.count];
+    [cell defineAccessoryType];
 
     return cell;
 }

@@ -61,13 +61,10 @@
     for (int i=0; i < tables.count; i++) {
         table = [tables objectAtIndex:i];
         [table registerNib:nib forCellReuseIdentifier:@"GistDetailsCell"];
-        [table setBackgroundView:nil];
-        [table setSeparatorStyle:UITableViewCellSeparatorStyleSingleLine];
-        [table setSeparatorColor:[UIColor colorWithRed:200/255.0
-                                                 green:200/255.0
-                                                  blue:200/255.0
-                                                 alpha:1.0]];
+        [table setBackgroundColor:[UIColor clearColor]];
+        [table drawSeparator];
         [table setScrollEnabled:NO];
+        [self.view setBackgroundColor:[UIColor colorWithRed:242/255.0 green:242/255.0 blue:242/255.0 alpha:1.0]];
     }
 }
 
@@ -160,9 +157,7 @@
     cell.textLabel.font  = [UIFont fontWithName:@"HelveticaNeue-Thin" size:13.0];
     cell.backgroundColor = [UIColor whiteColor];
     cell.layer.masksToBounds = YES;
-    [cell defineSelectedColor:[UIColor cloudsColor]
-            forRowAtIndexPath:indexPath
-                withTotalRows:files.count];
+    [cell defineAccessoryType];
 
     return cell;
 }
