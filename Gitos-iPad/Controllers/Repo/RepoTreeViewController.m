@@ -60,7 +60,7 @@
                                                                     target:self
                                                                     action:@selector(showCommitForBranch)];
 
-    [commitButton setTitleTextAttributes:[NSDictionary dictionaryWithObjectsAndKeys:[UIFont fontWithName:kFontAwesomeFamilyName size:17], UITextAttributeFont, nil] forState:UIControlStateNormal];
+    [commitButton setTitleTextAttributes:[NSDictionary dictionaryWithObjectsAndKeys:[UIFont fontWithName:kFontAwesomeFamilyName size:17], NSFontAttributeName, nil] forState:UIControlStateNormal];
 
     [self.navigationItem setRightBarButtonItem:commitButton];
 

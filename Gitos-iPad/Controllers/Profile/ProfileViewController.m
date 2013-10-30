@@ -343,7 +343,7 @@
                                                                       target:self
                                                                       action:@selector(editProfile)];
 
-        [editButton setTitleTextAttributes:[NSDictionary dictionaryWithObjectsAndKeys:[UIFont fontWithName:kFontAwesomeFamilyName size:17], UITextAttributeFont, nil] forState:UIControlStateNormal];
+        [editButton setTitleTextAttributes:[NSDictionary dictionaryWithObjectsAndKeys:[UIFont fontWithName:kFontAwesomeFamilyName size:17], NSFontAttributeName, nil] forState:UIControlStateNormal];
 
         [self.navigationItem setRightBarButtonItem:editButton];
     }

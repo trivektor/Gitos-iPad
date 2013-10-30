@@ -41,7 +41,6 @@
     // Set background tint color
     if ([NUISettings hasProperty:@"background-tint-color" withClass:className]) {
         // UISegmentedControlStyleBar is necessary for setTintColor to take effect
-        control.segmentedControlStyle = UISegmentedControlStyleBar;
         [control setTintColor:[NUISettings getColor:@"background-tint-color" withClass:className]];
     }
     

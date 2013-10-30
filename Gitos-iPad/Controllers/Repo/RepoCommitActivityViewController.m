@@ -48,7 +48,7 @@
                                                                  target:self
                                                                  action:@selector(displayCommitActivity)];
 
-    [reloadBtn setTitleTextAttributes:[NSDictionary dictionaryWithObjectsAndKeys:[UIFont fontWithName:kFontAwesomeFamilyName size:17], UITextAttributeFont, nil]
+    [reloadBtn setTitleTextAttributes:[NSDictionary dictionaryWithObjectsAndKeys:[UIFont fontWithName:kFontAwesomeFamilyName size:17], NSFontAttributeName, nil]
                              forState:UIControlStateNormal];
 
     [self.navigationItem setRightBarButtonItem:reloadBtn];

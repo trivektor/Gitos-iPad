@@ -47,7 +47,7 @@
                                                                      target:self
                                                                      action:@selector(dismiss)];
 
-    [dismissButton setTitleTextAttributes:[NSDictionary dictionaryWithObjectsAndKeys:[UIFont fontWithName:kFontAwesomeFamilyName size:17], UITextAttributeFont, nil] forState:UIControlStateNormal];
+    [dismissButton setTitleTextAttributes:[NSDictionary dictionaryWithObjectsAndKeys:[UIFont fontWithName:kFontAwesomeFamilyName size:17], NSFontAttributeName, nil] forState:UIControlStateNormal];
 
     self.navigationItem.leftBarButtonItem = dismissButton;
 
@@ -56,7 +56,7 @@
                                                                     target:self
                                                                     action:@selector(submitComment)];
 
-    [submitButton setTitleTextAttributes:[NSDictionary dictionaryWithObjectsAndKeys:[UIFont fontWithName:kFontAwesomeFamilyName size:17], UITextAttributeFont, nil] forState:UIControlStateNormal];
+    [submitButton setTitleTextAttributes:[NSDictionary dictionaryWithObjectsAndKeys:[UIFont fontWithName:kFontAwesomeFamilyName size:17], NSFontAttributeName, nil] forState:UIControlStateNormal];
 
     self.navigationItem.rightBarButtonItem = submitButton;
 }

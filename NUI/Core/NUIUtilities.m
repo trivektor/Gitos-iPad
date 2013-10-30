@@ -27,19 +27,19 @@
         fontSize = fontSize ? fontSize : [UIFont systemFontSize];
         UIFont *font = fontName ? [UIFont fontWithName:fontName size:fontSize] : [UIFont systemFontOfSize:fontSize];
 
-        [titleTextAttributes setObject:font forKey:UITextAttributeFont];
+        [titleTextAttributes setObject:font forKey:NSFontAttributeName];
     }
 
     if ([NUISettings hasProperty:fontColorSelector withClass:className]) {
-        [titleTextAttributes setObject:[NUISettings getColor:fontColorSelector withClass:className] forKey:UITextAttributeTextColor];
+        [titleTextAttributes setObject:[NUISettings getColor:fontColorSelector withClass:className] forKey:NSForegroundColorAttributeName];
     }
 
     if ([NUISettings hasProperty:textShadowColorSelector withClass:className]) {
-        [titleTextAttributes setObject:[NUISettings getColor:textShadowColorSelector withClass:className] forKey:UITextAttributeTextShadowColor];
+        [titleTextAttributes setObject:[NUISettings getColor:textShadowColorSelector withClass:className] forKey:NSShadowAttributeName];
     }
 
     if ([NUISettings hasProperty:textShadowOffsetSelector withClass:className]) {
-        [titleTextAttributes setObject:[NSValue valueWithUIOffset:[NUISettings getOffset:textShadowOffsetSelector withClass:className]] forKey:UITextAttributeTextShadowOffset];
+        [titleTextAttributes setObject:[NSValue valueWithUIOffset:[NUISettings getOffset:textShadowOffsetSelector withClass:className]] forKey:NSShadowAttributeName];
     }
 
     return titleTextAttributes;

@@ -43,7 +43,7 @@
                                                                     target:self
                                                                     action:@selector(submitIssue)];
 
-    [submitButton setTitleTextAttributes:[NSDictionary dictionaryWithObjectsAndKeys:[UIFont fontWithName:kFontAwesomeFamilyName size:17], UITextAttributeFont, nil] forState:UIControlStateNormal];
+    [submitButton setTitleTextAttributes:[NSDictionary dictionaryWithObjectsAndKeys:[UIFont fontWithName:kFontAwesomeFamilyName size:17], NSFontAttributeName, nil] forState:UIControlStateNormal];
 
     hud = [AppHelper loadHudInView:self.view
                      withAnimation:YES];

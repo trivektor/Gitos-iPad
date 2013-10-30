@@ -73,7 +73,7 @@
                                                                     target:self
                                                                     action:@selector(reloadNewsfeed)];
 
-    [reloadButton setTitleTextAttributes:[NSDictionary dictionaryWithObjectsAndKeys:[UIFont fontWithName:kFontAwesomeFamilyName size:17], UITextAttributeFont, nil] forState:UIControlStateNormal];
+    [reloadButton setTitleTextAttributes:[NSDictionary dictionaryWithObjectsAndKeys:[UIFont fontWithName:kFontAwesomeFamilyName size:17], NSFontAttributeName, nil] forState:UIControlStateNormal];
     [self.navigationItem setRightBarButtonItem:reloadButton];
 
     hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];

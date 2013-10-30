@@ -76,8 +76,8 @@
         watchers = [NSString stringWithFormat:@"%i", _watchers];
     }
 
-    CGSize forksSize = [forks sizeWithFont:forkLabel.font];
-    CGSize watchersSize = [watchers sizeWithFont:starLabel.font];
+    CGSize forksSize = [forks sizeWithAttributes:@{NSFontAttributeName: forkLabel.font}];
+    CGSize watchersSize = [watchers sizeWithAttributes:@{NSFontAttributeName: starLabel.font}];
 
     forkLabel.text = forks;
     starLabel.text = watchers;

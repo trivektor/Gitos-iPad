@@ -12,7 +12,6 @@
 
 @interface FUIAlertView : UIView
 
-
 - (id)initWithTitle:(NSString *)title
             message:(NSString *)message
            delegate:(id<FUIAlertViewDelegate>)delegate
@@ -24,11 +23,14 @@
 @property(nonatomic,copy) NSString *message;   // secondary explanation text
 
 // adds a button with the title. returns the index (0 based) of where it was added. buttons are displayed in the order added except for the
-// cancel button which will be positioned based on HI requirements. buttons cannot be customized.
+// cancel button which will be positioned based on HI requirements. Buttons cannot be customized. If you pass nil as a title no button will be added.
 - (NSInteger)addButtonWithTitle:(NSString *)title;    // returns index of button. 0 based.
 - (NSString *)buttonTitleAtIndex:(NSInteger)buttonIndex;
 @property(nonatomic,readonly) NSInteger numberOfButtons;
 @property(nonatomic) NSInteger cancelButtonIndex;      // if the delegate does not implement -alertViewCancel:, we pretend this button was clicked on. default is -1
+
+//max height of the alert, if set
+@property(nonatomic) NSInteger maxHeight;
 
 // TODO: not implemented
 //@property(nonatomic,readonly) NSInteger firstOtherButtonIndex;	// -1 if no otherButtonTitles or initWithTitle:... not used
@@ -42,20 +44,24 @@
 // it does not need to be called if the user presses on a button
 - (void)dismissWithClickedButtonIndex:(NSInteger)buttonIndex animated:(BOOL)animated;
 
+- (void)clickButtonAtIndex:(NSInteger)buttonIndex;
 
 @property(nonatomic, strong) NSMutableArray *buttons;
 @property(nonatomic, weak, readonly) UILabel *titleLabel;
 @property(nonatomic, weak, readonly) UILabel *messageLabel;
 @property(nonatomic, weak, readonly) UIView *backgroundOverlay;
 @property(nonatomic, weak, readonly) UIView *alertContainer;
-@property(nonatomic) CGFloat buttonSpacing;
-@property(nonatomic) CGFloat animationDuration;
+@property(nonatomic) CGFloat buttonSpacing UI_APPEARANCE_SELECTOR;
+@property(nonatomic) CGFloat animationDuration UI_APPEARANCE_SELECTOR;
+@property(nonatomic) BOOL hasCancelButton;
 
 //setting these properties overwrites any other button colors/fonts that have already been set
-@property(nonatomic, strong) UIFont *defaultButtonFont;
-@property(nonatomic, strong) UIColor *defaultButtonTitleColor;
-@property(nonatomic, strong) UIColor *defaultButtonColor;
-@property(nonatomic, strong) UIColor *defaultButtonShadowColor;
+@property(nonatomic, strong) UIFont *defaultButtonFont UI_APPEARANCE_SELECTOR;
+@property(nonatomic, strong) UIColor *defaultButtonTitleColor UI_APPEARANCE_SELECTOR;
+@property(nonatomic, strong) UIColor *defaultButtonColor UI_APPEARANCE_SELECTOR;
+@property(nonatomic, strong) UIColor *defaultButtonShadowColor UI_APPEARANCE_SELECTOR;
+@property(nonatomic, readwrite) CGFloat defaultButtonCornerRadius UI_APPEARANCE_SELECTOR;
+@property(nonatomic, readwrite) CGFloat defaultButtonShadowHeight UI_APPEARANCE_SELECTOR;
 
 @end
 

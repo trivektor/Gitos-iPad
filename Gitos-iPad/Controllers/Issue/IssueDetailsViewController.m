@@ -57,7 +57,7 @@
                                                                         target:self
                                                                         action:@selector(addComment)];
 
-    [addCommentButton setTitleTextAttributes:[NSDictionary dictionaryWithObjectsAndKeys:[UIFont fontWithName:kFontAwesomeFamilyName size:17], UITextAttributeFont, nil] forState:UIControlStateNormal];
+    [addCommentButton setTitleTextAttributes:[NSDictionary dictionaryWithObjectsAndKeys:[UIFont fontWithName:kFontAwesomeFamilyName size:17], NSFontAttributeName, nil] forState:UIControlStateNormal];
 
     self.navigationItem.rightBarButtonItem = addCommentButton;
 }

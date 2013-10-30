@@ -58,7 +58,6 @@
     NSArray *criteria = [[NSArray alloc] initWithObjects:@"Repo", @"User", nil];
 
     searchCriteria = [[UISegmentedControl alloc] initWithItems:criteria];
-    searchCriteria.segmentedControlStyle = UISegmentedControlStyleBar;
     searchCriteria.momentary = NO;
     searchCriteria.selectedSegmentIndex = 0;
     [searchCriteria addTarget:self

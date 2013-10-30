@@ -63,7 +63,7 @@
                                                                      target:self
                                                                      action:@selector(createNewRepo)];
 
-    [newRepoButton setTitleTextAttributes:[NSDictionary dictionaryWithObjectsAndKeys:[UIFont fontWithName:kFontAwesomeFamilyName size:17], UITextAttributeFont, nil] forState:UIControlStateNormal];
+    [newRepoButton setTitleTextAttributes:[NSDictionary dictionaryWithObjectsAndKeys:[UIFont fontWithName:kFontAwesomeFamilyName size:17], NSFontAttributeName, nil] forState:UIControlStateNormal];
 
     self.navigationItem.rightBarButtonItem = newRepoButton;
 }
