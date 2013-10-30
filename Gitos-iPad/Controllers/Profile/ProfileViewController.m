@@ -60,6 +60,7 @@
     hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
     hud.mode = MBProgressHUDAnimationFade;
     hud.labelText = LOADING_MESSAGE;
+    [self.view setBackgroundColor:[UIColor whiteColor]];
 }
 
 - (void)registerEvents
@@ -99,7 +100,6 @@
     [profileTable registerNib:nib forCellReuseIdentifier:@"ProfileCell"];
     [profileTable setScrollEnabled:NO];
     [profileTable drawSeparator];
-    [profileTable drawShadow];
 }
 
 // Adjust the frame size of UIScrollView

@@ -85,9 +85,7 @@
 
     [cell.imageView setImageWithURL:[NSURL URLWithString:[_user getAvatarUrl]] placeholderImage:[UIImage imageNamed:@"avatar-placeholder.png"]];
     cell.textLabel.text = [_user getLogin];
-    cell.textLabel.font = [UIFont fontWithName:@"Arial-BoldMT" size:12.0];
-    cell.textLabel.nuiClass = @"AsbestosColor";
-    [cell defineSelectedColor:[UIColor asbestosColor]];
+    cell.textLabel.font = [UIFont fontWithName:@"HelveticaNeue-Thin" size:14.0];
     [cell defineAccessoryType];
     return cell;
 }

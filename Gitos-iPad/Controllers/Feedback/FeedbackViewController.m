@@ -55,12 +55,6 @@
 
     [feedbackTable setScrollEnabled:NO];
     [feedbackTable drawSeparator];
-    [feedbackTable drawShadow];
-
-    [self.view setBackgroundColor:[UIColor colorWithRed:230/255.0
-                                                  green:230/255.0
-                                                   blue:237/255.0
-                                                  alpha:1.0]];
 }
 
 - (void)sendFeedback

@@ -168,10 +168,10 @@
 - (NSMutableAttributedString *)decorateEmphasizedText:(NSString *)rawString
 {
     NSMutableAttributedString *decoratedString = [[NSMutableAttributedString alloc] initWithString:rawString];
-//    [decoratedString setAttributes:@{
-//               NSFontAttributeName:[UIFont fontWithName:@"Helvetica"
-//                                                   size:13.0],
-//     } range:NSMakeRange(0, decoratedString.length)];
+    [decoratedString setAttributes:@{
+               NSFontAttributeName:[UIFont fontWithName:@"HelveticaNeue-Light"
+                                                   size:14.0],
+     } range:NSMakeRange(0, decoratedString.length)];
 
     return decoratedString;
 }
@@ -179,9 +179,9 @@
 - (NSMutableAttributedString *)toAttributedString:(NSString *)rawString
 {
     NSMutableAttributedString *attributedString = [[NSMutableAttributedString alloc] initWithString:rawString];
-//    [attributedString setAttributes:@{
-//                NSFontAttributeName:[UIFont fontWithName:@"Arial" size:13.0]
-//     } range:NSMakeRange(0, attributedString.length)];
+    [attributedString setAttributes:@{
+                NSFontAttributeName:[UIFont fontWithName:@"HelveticaNeue-Light" size:14.0]
+     } range:NSMakeRange(0, attributedString.length)];
     return attributedString;
 }
 
