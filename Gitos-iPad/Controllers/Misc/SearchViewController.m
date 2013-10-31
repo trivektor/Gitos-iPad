@@ -37,12 +37,15 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
     [self performHouseKeepingTasks];
-    [self prepareSearchBar];
+    //[self prepareSearchBar];
 
     hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
     hud.mode = MBProgressHUDAnimationFade;
     hud.labelText = LOADING_MESSAGE;
     [hud hide:YES];
+
+    //http://stackoverflow.com/questions/17074365/status-bar-and-navigation-bar-appear-over-my-views-bounds-in-ios-7
+    self.navigationController.navigationBar.translucent = NO;
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -66,26 +69,6 @@
 
     UIBarButtonItem *criteriaButton = [[UIBarButtonItem alloc] initWithCustomView:searchCriteria];
     self.navigationItem.rightBarButtonItem = criteriaButton;
-}
-
-- (void)prepareSearchBar
-{
-    [searchBar setTintColor:[UIColor colorWithRed:220/255.0 green:220/255.0 blue:220/255.0 alpha:1]];
-
-    for (UIView *v in searchBar.subviews) {
-        if ([v isKindOfClass:[UITextField class]]) {
-            UITextField *searchField = (UITextField *)v;
-            [searchField setBorderStyle:UITextBorderStyleNone];
-            [searchField.layer setBorderWidth:1.0f];
-            [searchField.layer setBorderColor:[[UIColor colorWithRed:178/255.0 green:178/255.0 blue:178/255.0 alpha:1] CGColor]];
-            [searchField.layer setCornerRadius:3.0f];
-            [searchField.layer setShadowOpacity:0.0f];
-            [searchField.layer setMasksToBounds:YES];
-            [searchField setBackgroundColor:[UIColor whiteColor]];
-            [searchField setBackground:nil];
-            break;
-        }
-    }
 }
 
 - (BOOL)isUserSearch

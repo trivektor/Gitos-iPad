@@ -16,7 +16,6 @@
 @property (nonatomic, strong) User *user;
 
 - (void)performHouseKeepingTasks;
-- (void)prepareSearchBar;
 - (BOOL)isUserSearch;
 - (BOOL)isRepoSearch;
 - (void)searchUsers:(NSString *)term;
