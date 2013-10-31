@@ -40,14 +40,8 @@
     self.hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
     self.hud.mode = MBProgressHUDAnimationFade;
     self.hud.labelText = @"Loading";
-
-    [self.view setBackgroundColor:[UIColor colorWithRed:230/255.0
-                                                  green:230/255.0
-                                                   blue:237/255.0
-                                                  alpha:1.0]];
-
-    [organizationTable drawShadow];
     [organizationTable drawSeparator];
+    [self.view setBackgroundColor:[UIColor colorWithRed:242/255.0 green:242/255.0 blue:242/255.0 alpha:1.0]];
 }
 
 - (void)fetchOrganizationInfo
@@ -140,9 +134,9 @@
             break;
     }
 
-    cell.textLabel.font       = [UIFont fontWithName:@"Arial" size:14];
+    cell.textLabel.font       = [UIFont fontWithName:@"HelveticaNeue-Light" size:14];
     cell.textLabel.text       = textLabel;
-    cell.detailTextLabel.font = [UIFont fontWithName:@"Arial" size:14];
+    cell.detailTextLabel.font = [UIFont fontWithName:@"HelveticaNeue-Light" size:13];
     cell.detailTextLabel.text = textDetail;
     cell.backgroundColor      = [UIColor whiteColor];
     cell.selectionStyle       = UITableViewCellSelectionStyleNone;

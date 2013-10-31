@@ -154,7 +154,7 @@
 
     GistFile *file = [files objectAtIndex:indexPath.row];
     cell.textLabel.text  = [file getName];
-    cell.textLabel.font  = [UIFont fontWithName:@"HelveticaNeue-Thin" size:13.0];
+    cell.textLabel.font  = [UIFont fontWithName:@"HelveticaNeue-Light" size:14.0];
     cell.backgroundColor = [UIColor whiteColor];
     cell.layer.masksToBounds = YES;
     [cell defineAccessoryType];

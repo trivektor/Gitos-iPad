@@ -80,7 +80,6 @@ nameTextField, emailTextField, websiteTextField, companyTextField, locationTextF
 {
     self.navigationItem.title = @"Edit Profile";
     [profileTableForm drawSeparator];
-    [profileTableForm drawShadow];
 
     UIBarButtonItem *submitButton = [[UIBarButtonItem alloc] initWithTitle:[NSString fontAwesomeIconStringForIconIdentifier:@"icon-ok-sign"]
                                                                      style:UIBarButtonItemStyleBordered
