@@ -82,7 +82,7 @@
 
     User *contributor = [[contributors objectAtIndex:indexPath.row] getAuthor];
     cell.textLabel.text = [contributor getLogin];
-    cell.textLabel.font = [UIFont fontWithName:@"Arial" size:14];
+    cell.textLabel.font = [UIFont fontWithName:@"HelveticaNeue-Light" size:14];
     [cell.imageView setImageWithURL:[NSURL URLWithString:[contributor getAvatarUrl]]
                    placeholderImage:[UIImage imageNamed:@"avatar-placeholder.png"]];
     cell.selectionStyle = UITableViewCellSelectionStyleNone;

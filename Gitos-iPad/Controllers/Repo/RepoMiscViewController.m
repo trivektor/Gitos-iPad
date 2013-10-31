@@ -43,7 +43,7 @@
 
 - (void)setupOptions
 {
-    UIFont *arialBoldMT = [UIFont fontWithName:@"Arial-BoldMT" size:16];
+    UIFont *font = [UIFont fontWithName:@"HelveticaNeue-Light" size:14];
     // Contributors
     NSString *iconGroup = [NSString fontAwesomeIconStringForIconIdentifier:@"icon-group"];
     contributorsBtn.titleLabel.font = [UIFont fontWithName:kFontAwesomeFamilyName size:24];
@@ -54,14 +54,14 @@
     [contributorsBtn setContentHorizontalAlignment:UIControlContentHorizontalAlignmentLeft];
     
     UILabel *label1 = [[UILabel alloc] initWithFrame:CGRectMake(31, 11, 110, 21)];
-    label1.font = arialBoldMT;
+    label1.font = font;
     label1.textColor = [UIColor alizarinColor];
     label1.text = @"Contributors";
     
     [contributorsBtn addSubview:label1];
     
     // Commits Activity
-    NSString *iconBarChart = [NSString fontAwesomeIconStringForIconIdentifier:@"icon-bar-chart"];
+    NSString *iconBarChart = [NSString fontAwesomeIconStringForIconIdentifier:@"icon-upload"];
     commitsActivityBtn.titleLabel.font = [UIFont fontWithName:kFontAwesomeFamilyName size:24];
     [commitsActivityBtn setTitle:iconBarChart forState:UIControlStateNormal];
     [commitsActivityBtn setTitle:iconBarChart forState:UIControlEventTouchDown];
@@ -70,7 +70,7 @@
     [commitsActivityBtn setContentHorizontalAlignment:UIControlContentHorizontalAlignmentLeft];
     
     UILabel *label2 = [[UILabel alloc] initWithFrame:CGRectMake(31, 11, 150, 21)];
-    label2.font = arialBoldMT;
+    label2.font = font;
     label2.textColor = [UIColor peterRiverColor];
     label2.text = @"Commits Activity";
     
@@ -86,7 +86,7 @@
     [punchCardBtn setContentHorizontalAlignment:UIControlContentHorizontalAlignmentLeft];
     
     UILabel *label3 = [[UILabel alloc] initWithFrame:CGRectMake(31, 11, 90, 21)];
-    label3.font = arialBoldMT;
+    label3.font = font;
     label3.textColor = [UIColor emerlandColor];
     label3.text = @"Punch Card";
     
@@ -94,7 +94,7 @@
     
     // Close button
     NSString *iconRemoveCircle = [NSString fontAwesomeIconStringForIconIdentifier:@"icon-remove-circle"];
-    closeModalBtn.titleLabel.font = [UIFont fontWithName:kFontAwesomeFamilyName size:35];
+    closeModalBtn.titleLabel.font = [UIFont fontWithName:kFontAwesomeFamilyName size:24];
     [closeModalBtn setTitle:iconRemoveCircle forState:UIControlStateNormal];
     [closeModalBtn setTitle:iconRemoveCircle forState:UIControlEventTouchDown];
     [closeModalBtn setTitleColor:[UIColor pomegranateColor] forState:UIControlStateNormal];

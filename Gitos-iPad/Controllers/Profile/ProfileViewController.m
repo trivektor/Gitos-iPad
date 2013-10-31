@@ -246,10 +246,8 @@
 - (void)displayUsernameAndAvatar
 {
     NSData *avatarData = [[NSData alloc] initWithContentsOfURL:[NSURL URLWithString:[user getAvatarUrl]]];
-    
+
     avatar.image = [UIImage imageWithData:avatarData];
-    avatar.layer.cornerRadius = 5.0;
-    avatar.layer.masksToBounds = YES;
     
     if ([user getName] == (id)[NSNull null] || [user getName] == nil) {
         nameLabel.text = [user getLogin];
