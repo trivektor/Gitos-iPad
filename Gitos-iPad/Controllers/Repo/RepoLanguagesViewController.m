@@ -34,7 +34,7 @@
 
 @implementation RepoLanguagesViewController
 
-@synthesize repo, languages, languagesTable, colorNames;
+@synthesize repo, distributions, languages, colorNames, pieChart;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -42,13 +42,21 @@
     if (self) {
         // Custom initialization
         colorNames = [[NSMutableArray alloc] initWithObjects:
-            @"turquoise", @"greenSea",
-            @"emerland", @"nephritis",
-            @"peterRiver", @"belizeHole",
-            @"amethyst", @"wisteria",
-            @"sunflower", @"orange",
-            @"carrot", @"pumpkin",
-            @"alizarin", @"pomegranate", nil
+            @"orange",
+            @"alizarin",
+            @"turquoise",
+            @"pomegranate",
+            @"belizeHole",
+            @"greenSea",
+            @"emerland",
+            @"pumpkin",
+            @"nephritis",
+            @"peterRiver",
+            @"amethyst",
+            @"wisteria",
+            @"sunflower",
+            @"carrot",
+            nil
         ];
     }
     return self;
@@ -72,6 +80,12 @@
 - (void)performHouseKeepingTasks
 {
     self.navigationItem.title = @"Languages";
+    pieChart = [[XYPieChart alloc] initWithFrame:CGRectMake(312, 162, 400, 400)];
+    pieChart.pieRadius = 200;
+    pieChart.delegate = self;
+    pieChart.dataSource = self;
+    pieChart.showPercentage = false;
+    [self.view addSubview:pieChart];
 }
 
 - (void)registerEvents
@@ -89,58 +103,30 @@
 
 - (void)displayLanguages:(NSNotification *)notification
 {
-    languages = (NSMutableDictionary *)notification.object;
-    [languagesTable reloadData];
+    distributions = (NSMutableArray *) notification.object;
+    [pieChart reloadData];
 }
 
-- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
+- (NSUInteger)numberOfSlicesInPieChart:(XYPieChart *)pieChart
 {
-    return 1;
+    return distributions.count;
 }
 
-- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+- (CGFloat)pieChart:(XYPieChart *)pieChart valueForSliceAtIndex:(NSUInteger)index
 {
-    return languages.allKeys.count;
+    return [[[distributions objectAtIndex:index] valueForKey:@"percentage"] floatValue];
 }
 
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+- (UIColor *)pieChart:(XYPieChart *)pieChart colorForSliceAtIndex:(NSUInteger)index
 {
-    static NSString *cellIdentifier = @"Cell";
-
-    UITableViewCell *cell = [languagesTable dequeueReusableCellWithIdentifier:cellIdentifier];
-
-    if (!cell) {
-        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault
-                                      reuseIdentifier:cellIdentifier];
-    }
-
-    NSString *key = [[languages allKeys] objectAtIndex:indexPath.row];
-    NSArray *values = [languages allValues];
-
-    int total = 0;
-    for (int i=0; i < values.count; i++) {
-        total += [[values objectAtIndex:i] intValue];
-    }
-
-    float percentage = 100.0 * ([[values objectAtIndex:indexPath.row] floatValue] / total);
-    cell.textLabel.text = [NSString stringWithFormat:@"%@ (%.01f %%)", key, percentage];
-    cell.textLabel.font = [UIFont fontWithName:@"HelveticaNeue-Light" size:14.0];
-    //cell.textLabel.textColor = [UIColor whiteColor];
-    cell.selectionStyle = UITableViewCellEditingStyleNone;
-
-    UIView *barView = [[UIView alloc] initWithFrame:CGRectMake(0, 41, 1024*percentage/100, 3)];
-
-    [colorNames shuffle];
-    NSString *color = [[colorNames objectAtIndex:indexPath.row] stringByAppendingString:@"Color"];
-
-    SEL s = NSSelectorFromString(color);
-
-    barView.backgroundColor = [UIColor performSelector:s];
-
-    [cell addSubview:barView];
-    [cell sendSubviewToBack:barView];
-
-    return cell;
+    NSString *color = [NSString stringWithFormat:@"%@Color", [colorNames objectAtIndex:index]];
+    return [UIColor performSelector:NSSelectorFromString(color)];
 }
+
+- (NSString *)pieChart:(XYPieChart *)pieChart textForSliceAtIndex:(NSUInteger)index
+{
+    return [[distributions objectAtIndex:index] valueForKey:@"name"];
+}
+
 
 @end

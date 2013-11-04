@@ -253,6 +253,7 @@
 		B55D918316B7B6D4009CB90F /* RepoSearchResultCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B55D918216B7B6D2009CB90F /* RepoSearchResultCell.xib */; };
 		B55D918616B7B6E9009CB90F /* ProfileCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B55D918516B7B6E7009CB90F /* ProfileCell.m */; };
 		B55D918816B7B70D009CB90F /* ProfileCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B55D918716B7B70B009CB90F /* ProfileCell.xib */; };
+		B5615F8B182387BE0058F794 /* XYPieChart.m in Sources */ = {isa = PBXBuildFile; fileRef = B5615F8A182387BE0058F794 /* XYPieChart.m */; };
 		B569D0C416FE6496002216DD /* glyphicons_078_warning_sign.png in Resources */ = {isa = PBXBuildFile; fileRef = B569D0C016FE6496002216DD /* glyphicons_078_warning_sign.png */; };
 		B569D0C516FE6496002216DD /* glyphicons_078_warning_sign@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B569D0C116FE6496002216DD /* glyphicons_078_warning_sign@2x.png */; };
 		B569D0C616FE6496002216DD /* glyphicons_198_ok.png in Resources */ = {isa = PBXBuildFile; fileRef = B569D0C216FE6496002216DD /* glyphicons_198_ok.png */; };
@@ -720,6 +721,8 @@
 		B55D918416B7B6E5009CB90F /* ProfileCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProfileCell.h; sourceTree = "<group>"; };
 		B55D918516B7B6E7009CB90F /* ProfileCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProfileCell.m; sourceTree = "<group>"; };
 		B55D918716B7B70B009CB90F /* ProfileCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ProfileCell.xib; sourceTree = "<group>"; };
+		B5615F89182387BE0058F794 /* XYPieChart.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XYPieChart.h; sourceTree = "<group>"; };
+		B5615F8A182387BE0058F794 /* XYPieChart.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XYPieChart.m; sourceTree = "<group>"; };
 		B569D0C016FE6496002216DD /* glyphicons_078_warning_sign.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = glyphicons_078_warning_sign.png; sourceTree = "<group>"; };
 		B569D0C116FE6496002216DD /* glyphicons_078_warning_sign@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "glyphicons_078_warning_sign@2x.png"; sourceTree = "<group>"; };
 		B569D0C216FE6496002216DD /* glyphicons_198_ok.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = glyphicons_198_ok.png; sourceTree = "<group>"; };
@@ -1393,6 +1396,8 @@
 				B55D90F416B7ABE2009CB90F /* AppConfig.m */,
 				B55D90F616B7AC11009CB90F /* AppInitialization.h */,
 				B5864B75177FC87F0056B0DE /* SAMBadgeView.h */,
+				B5615F89182387BE0058F794 /* XYPieChart.h */,
+				B5615F8A182387BE0058F794 /* XYPieChart.m */,
 				B5864B76177FC87F0056B0DE /* SAMBadgeView.m */,
 				B55D90F716B7AC11009CB90F /* AppInitialization.m */,
 				B55D90F916B7AC4B009CB90F /* SSKeychain.h */,
@@ -2072,6 +2077,7 @@
 				B55D918116B7B6AE009CB90F /* RepoSearchResultCell.m in Sources */,
 				B55D918616B7B6E9009CB90F /* ProfileCell.m in Sources */,
 				B5BC452516BCEE7100434848 /* MasterViewController.m in Sources */,
+				B5615F8B182387BE0058F794 /* XYPieChart.m in Sources */,
 				B5BC457E16BEE28900434848 /* NSString+FontAwesome.m in Sources */,
 				B5BC458116BEE55100434848 /* MasterControllerCell.m in Sources */,
 				B546039916C0FFA8007D4FB3 /* MKAnnotationView+WebCache.m in Sources */,

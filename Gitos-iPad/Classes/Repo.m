@@ -422,8 +422,26 @@
      ^(AFHTTPRequestOperation *operation, id responseObject){
          NSDictionary *json = [NSJSONSerialization JSONObjectWithData:[operation.responseString dataUsingEncoding:NSUTF8StringEncoding] options:NSJSONReadingMutableContainers error:nil];
 
+         int total = 0;
+         NSArray *values = [json allValues];
+
+         for (int i=0; i < values.count; i++) {
+             total = total + [[values objectAtIndex:i] integerValue];
+         }
+
+         NSMutableArray *distributions = [[NSMutableArray alloc] initWithCapacity:0];
+
+         for (id key in json) {
+            int value = [[json objectForKey:key] integerValue];
+            NSDictionary *d = @{
+                @"name": [NSString stringWithFormat:@"%@", key],
+                @"percentage": [NSNumber numberWithFloat:value * 100.0 / total]
+            };
+            [distributions addObject:d];
+         }
+
          [[NSNotificationCenter defaultCenter] postNotificationName:@"RepoLanguagesFetched"
-                                                             object:json];
+                                                             object:distributions];
      }
      failure:^(AFHTTPRequestOperation *operation, NSError *error) {
          [[NSNotificationCenter defaultCenter] postNotificationName:@"RepoLanguagesFetched"
