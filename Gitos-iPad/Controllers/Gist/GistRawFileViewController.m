@@ -38,10 +38,6 @@
 - (void)performHouseKeepingTasks
 {
     [self.navigationItem setTitle:[self.gistFile getName]];
-
-    hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
-    hud.mode = MBProgressHUDAnimationFade;
-    hud.labelText = LOADING_MESSAGE;
 }
 
 - (void)fetchRawFile
@@ -65,7 +61,7 @@
     NSString *htmlString = [NSString stringWithFormat:rawFileContent, theme, [self encodeHtmlEntities:content]];
     [fileWebView loadHTMLString:htmlString baseURL:baseURL];
     [fileWebView loadHTMLString:htmlString baseURL:baseURL];
-    [hud hide:YES];
+    [MRProgressOverlayView showOverlayAddedTo:self.view animated:NO];
 }
 
 - (NSString *)encodeHtmlEntities:(NSString *)rawHtmlString
@@ -77,7 +73,7 @@
 
 - (void)webViewDidFinishLoad:(UIWebView *)webView
 {
-    [self.hud hide:YES];
+    [MRProgressOverlayView dismissOverlayForView:self.view animated:NO];
 }
 
 - (void)switchTheme

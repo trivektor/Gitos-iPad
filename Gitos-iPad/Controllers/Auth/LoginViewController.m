@@ -50,11 +50,6 @@
 
 - (void)performHousekeepingTasks
 {
-    hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
-    hud.mode = MBProgressHUDAnimationFade;
-    hud.labelText = LOADING_MESSAGE;
-    hud.hidden = YES;
-
     [self.navigationItem setTitle:@"Sign in to Github"];
     
     [self prepLoginTable];
@@ -165,7 +160,7 @@
     
     [operation setCompletionBlockWithSuccess:
      ^(AFHTTPRequestOperation *operation, id responseObject) {
-         [hud setHidden:NO];
+         [MRProgressOverlayView showOverlayAddedTo:self.view animated:NO];
          NSString *response = [operation responseString];
 
          NSDictionary *json = [NSJSONSerialization JSONObjectWithData:[response dataUsingEncoding:NSUTF8StringEncoding] options:NSJSONReadingMutableContainers error:nil];
@@ -201,7 +196,7 @@
     }
 
     [self blurFields];
-    [hud show:YES];
+    [MRProgressOverlayView showOverlayAddedTo:self.view animated:NO];
 
     AFHTTPClient *httpClient = [[AFHTTPClient alloc] initWithBaseURL:[NSURL URLWithString:[AppConfig getConfigValue:@"GithubApiHost"]]];
     [httpClient setParameterEncoding:AFJSONParameterEncoding];
@@ -269,7 +264,7 @@
 
     [operation setCompletionBlockWithSuccess:
      ^(AFHTTPRequestOperation *operation, id responseObject) {
-         [hud setHidden:NO];
+         [MRProgressOverlayView showOverlayAddedTo:self.view animated:NO];
          NSString *response = [operation responseString];
 
          NSDictionary *json = [NSJSONSerialization JSONObjectWithData:[response dataUsingEncoding:NSUTF8StringEncoding] options:NSJSONReadingMutableContainers error:nil];

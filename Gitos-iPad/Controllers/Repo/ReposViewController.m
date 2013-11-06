@@ -54,10 +54,6 @@
 
     self.navigationItem.title = @"Repositories";
 
-    hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
-    hud.mode = MBProgressHUDAnimationFade;
-    hud.labelText = LOADING_MESSAGE;
-
     UIBarButtonItem *newRepoButton = [[UIBarButtonItem alloc] initWithTitle:[NSString fontAwesomeIconStringForIconIdentifier:@"icon-plus"]
                                                                       style:UIBarButtonItemStyleBordered
                                                                      target:self
@@ -101,7 +97,7 @@
 {
     [repos addObjectsFromArray:notification.object];
     [reposTable reloadData];
-    [hud hide:YES];
+    [MRProgressOverlayView dismissOverlayForView:self.view animated:NO];
 }
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
@@ -152,7 +148,7 @@
 {
     if (([scrollView contentOffset].y + scrollView.frame.size.height) == scrollView.contentSize.height) {
         // Bottom of UITableView reached
-        [hud show:YES];
+        [MRProgressOverlayView showOverlayAddedTo:self.view animated:NO];
         [user fetchReposForPage:currentPage++];
     }
 }

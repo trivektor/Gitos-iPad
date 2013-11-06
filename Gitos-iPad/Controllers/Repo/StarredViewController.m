@@ -38,11 +38,6 @@
 
     // Do any additional setup after loading the view from its nib.
     [self.navigationItem setTitle:@"Starred Repositories"];
-
-    hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
-    hud.mode = MBProgressHUDAnimationFade;
-    hud.labelText = LOADING_MESSAGE;
-
     [self registerNib];
     [self registerEvents];
     [self setupPullToRefresh];
@@ -81,7 +76,7 @@
     [starredRepos addObjectsFromArray:notification.object];
     [starredReposTable reloadData];
     [starredReposTable.pullToRefreshView stopAnimating];
-    [hud hide:YES];
+    [MRProgressOverlayView dismissOverlayForView:self.view animated:NO];
 }
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
@@ -126,7 +121,7 @@
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView
 {
     if (([scrollView contentOffset].y + scrollView.frame.size.height) == scrollView.contentSize.height) {
-        [hud show:YES];
+        [MRProgressOverlayView showOverlayAddedTo:self.view animated:NO];
         [user fetchStarredReposForPage:currentPage++];
     }
 }

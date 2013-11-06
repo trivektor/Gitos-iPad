@@ -37,9 +37,6 @@
 
 - (void)performHouseKeepingTasks
 {
-    self.hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
-    self.hud.mode = MBProgressHUDAnimationFade;
-    self.hud.labelText = @"Loading";
     [organizationTable drawSeparator];
     [self.view setBackgroundColor:[UIColor colorWithRed:242/255.0 green:242/255.0 blue:242/255.0 alpha:1.0]];
 }
@@ -67,11 +64,11 @@
          self.organization = [[Organization alloc] initWithData:json];
          self.navigationItem.title = [self.organization getName];
          [organizationTable reloadData];
-         [self.hud hide:YES];
+         [MRProgressOverlayView dismissOverlayForView:self.view animated:NO];
      }
      failure:^(AFHTTPRequestOperation *operation, NSError *error) {
          NSLog(@"%@", error);
-         [self.hud hide:YES];
+         [MRProgressOverlayView dismissOverlayForView:self.view animated:NO];
      }];
     
     [operation start];

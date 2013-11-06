@@ -46,4 +46,5 @@
     #import "UITableView+Shadow.h"
     #import "UITableViewCell+Customizations.h"
     #import "DTCustomColoredAccessory.h"
+    #import "MRProgress.h"
 #endif

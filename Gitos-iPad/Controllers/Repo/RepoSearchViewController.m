@@ -121,12 +121,7 @@
 
 - (void)searchBarSearchButtonClicked:(UISearchBar *)_searchBar
 {
-    if (self.hud == nil) {
-        self.hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
-        self.hud.mode = MBProgressHUDAnimationFade;
-        self.hud.labelText = @"Searching";
-    }
-    [self.hud show:YES];
+    [MRProgressOverlayView showOverlayAddedTo:self.view animated:NO];
     [searchBar resignFirstResponder];
     NSString *term = [_searchBar text];
     
@@ -158,11 +153,11 @@
          }
          [searchResultsTable reloadData];
          [searchBar resignFirstResponder];
-         [self.hud hide:YES];
+         [MRProgressOverlayView dismissOverlayForView:self.view animated:NO];
      }
      failure:^(AFHTTPRequestOperation *operation, NSError *error) {
          NSLog(@"%@", error);
-         [self.hud hide:YES];
+         [MRProgressOverlayView dismissOverlayForView:self.view animated:NO];
      }];
     
     [operation start];

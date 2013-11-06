@@ -45,9 +45,6 @@
 - (void)performHouseKeepingTasks
 {
     self.navigationItem.title = @"Issues";
-    hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
-    hud.mode = MBProgressHUDAnimationFade;
-    hud.labelText = @"Loading";
 
     UIBarButtonItem *createIssueButton = [[UIBarButtonItem alloc] initWithTitle:[NSString fontAwesomeIconStringForIconIdentifier:@"icon-plus-sign"]
                                                                           style:UIBarButtonItemStyleBordered
@@ -121,7 +118,7 @@
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView
 {
     if (([scrollView contentOffset].y + scrollView.frame.size.height) == scrollView.contentSize.height) {
-        [hud show:YES];
+        [MRProgressOverlayView showOverlayAddedTo:self.view animated:NO];
         [repo fetchIssuesForPage:currentPage++];
     }
 }
@@ -136,7 +133,7 @@
 {
     issues = notification.object;
     [issuesTable reloadData];
-    [hud hide:YES];
+    [MRProgressOverlayView dismissOverlayForView:self.view animated:NO];
     [issuesTable.pullToRefreshView stopAnimating];
 }
 

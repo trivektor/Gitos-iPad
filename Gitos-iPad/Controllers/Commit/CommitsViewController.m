@@ -41,9 +41,6 @@
 - (void)performHouseKeepingTasks
 {
     self.navigationItem.title = @"Commits";
-    hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
-    hud.mode = MBProgressHUDAnimationFade;
-    hud.labelText = LOADING_MESSAGE;
 }
 
 - (void)registerNib
@@ -61,7 +58,7 @@
 {
     [commits addObjectsFromArray:notification.object];
     [commitsTable reloadData];
-    [hud hide:YES];
+    [MRProgressOverlayView dismissOverlayForView:self.view animated:NO];
 }
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
@@ -105,13 +102,13 @@
 - (void)fetchCommits
 {
     [branch fetchCommits];
-    [hud show:YES];
+    [MRProgressOverlayView showOverlayAddedTo:self.view animated:NO];
 }
 
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView
 {
     if (([scrollView contentOffset].y + scrollView.frame.size.height) == scrollView.contentSize.height) {
-        [hud show:YES];
+        [MRProgressOverlayView showOverlayAddedTo:self.view animated:NO];
         [self fetchCommits];
     }
 }

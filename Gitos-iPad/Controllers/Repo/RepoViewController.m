@@ -67,10 +67,6 @@
 {
     [self.navigationItem setTitle:[self.repo getName]];
 
-    hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
-    hud.mode = MBProgressHUDAnimationFade;
-    hud.labelText = LOADING_MESSAGE;
-
     deleteConfirmation = [[UIAlertView alloc]
                           initWithTitle:@"Confirm"
                           message:@"Are you sure you want to delete this repo? This action cannot be undone."
@@ -248,7 +244,7 @@
             [self.navigationController pushViewController:issuesController
                                                  animated:YES];
         } else if (indexPath.row == 9) {
-            [hud show:YES];
+            [MRProgressOverlayView showOverlayAddedTo:self.view animated:NO];
             [repo fetchReadme];
         } else if (indexPath.row == 10) {
             repoMiscController = [[RepoMiscViewController alloc] init];
@@ -263,7 +259,7 @@
 
     [branchesTable setFrame:CGRectMake(0, detailsTable.frame.size.height + 46, self.view.frame.size.width, [self.repoBranches count]*44 + 155)];
     [branchesTable reloadData];
-    [hud hide:YES];
+    [MRProgressOverlayView dismissOverlayForView:self.view animated:NO];
     [self adjustFrameHeight];
     
 }
@@ -367,7 +363,7 @@
 
 - (void)showReadme:(NSNotification *)notification
 {
-    [hud hide:YES];
+    [MRProgressOverlayView dismissOverlayForView:self.view animated:NO];
     if (notification.object) {
         ReadmeViewController *readmeController = [[ReadmeViewController alloc] init];
         readmeController.readme = (Readme *) notification.object;

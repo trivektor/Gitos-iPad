@@ -45,10 +45,6 @@
 
     [submitButton setTitleTextAttributes:[NSDictionary dictionaryWithObjectsAndKeys:[UIFont fontWithName:kFontAwesomeFamilyName size:17], NSFontAttributeName, nil] forState:UIControlStateNormal];
 
-    hud = [AppHelper loadHudInView:self.view
-                     withAnimation:YES];
-    [hud hide:YES];
-
     [self.navigationItem setRightBarButtonItem:submitButton];
 }
 
@@ -102,7 +98,7 @@
         return;
     }
 
-    [hud show:YES];
+    [MRProgressOverlayView showOverlayAddedTo:self.view animated:NO];
     [repo createIssueWithData:@{
         @"title"        :   titleField.text,
         @"description"  :   descriptionField.text
@@ -117,7 +113,7 @@
         [AppHelper flashAlert:@"Issue has been created"
                        inView:self.view];
     }
-    [hud hide:YES];
+    [MRProgressOverlayView dismissOverlayForView:self.view animated:NO];
 }
 
 - (void)didReceiveMemoryWarning

@@ -39,10 +39,6 @@
 - (void)performHouseKeepingTasks
 {
     self.navigationItem.title = @"Contributors";
-    hud = [MBProgressHUD showHUDAddedTo:self.view
-                               animated:YES];
-    hud.mode = MBProgressHUDAnimationFade;
-    hud.labelText = @"Loading";
 }
 
 - (void)registerEvents
@@ -94,7 +90,7 @@
 {
     [contributors addObjectsFromArray:notification.object];
     [contributorsTable reloadData];
-    [hud hide:YES];
+    [MRProgressOverlayView dismissOverlayForView:self.view animated:NO];
 }
 
 @end

@@ -41,10 +41,6 @@
 - (void)performHouseKeepingTasks
 {
     self.navigationItem.title = self.controllerTitle;
-
-    hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
-    hud.mode = MBProgressHUDAnimationFade;
-    hud.labelText = @"Loading";
 }
 
 - (void)registerEvents
@@ -110,14 +106,14 @@
 {
     [users addObjectsFromArray:notification.object];
     [usersTable reloadData];
-    [hud hide:YES];
+    [MRProgressOverlayView dismissOverlayForView:self.view animated:NO];
 }
 
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView
 {
     if (([scrollView contentOffset].y + scrollView.frame.size.height) == scrollView.contentSize.height) {
         // Bottom of UITableView reached
-        [hud show:YES];
+        [MRProgressOverlayView showOverlayAddedTo:self.view animated:NO];
         [self fetchUsers:currentPage++];
     }
 }

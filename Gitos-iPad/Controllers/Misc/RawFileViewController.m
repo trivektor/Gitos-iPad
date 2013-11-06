@@ -34,11 +34,6 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
     [self.navigationItem setTitle:self.fileName];
-
-    hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
-    hud.mode = MBProgressHUDAnimationFade;
-    hud.labelText = LOADING_MESSAGE;
-
     [self fetchRawFile];
 }
 
@@ -87,7 +82,7 @@
     
     NSURLConnection *rawFileConnection = [NSURLConnection connectionWithRequest:self.rawFileRequest delegate:self];
     [rawFileConnection start];
-    [self.hud show:YES];
+    [MRProgressOverlayView showOverlayAddedTo:self.view animated:NO];
 }
 
 - (void)connection:(NSURLConnection *)connection didReceiveResponse:(NSURLResponse *)response
@@ -119,7 +114,7 @@
         NSString *htmlString = [NSString stringWithFormat:rawFileContent, theme, [self encodeHtmlEntities:content]];
         [fileWebView loadHTMLString:htmlString baseURL:baseURL];
     }
-    [self.hud hide:YES];
+    [MRProgressOverlayView dismissOverlayForView:self.view animated:NO];
 }
 
 - (void)switchTheme
@@ -146,7 +141,7 @@
 
 - (void)webViewDidFinishLoad:(UIWebView *)webView
 {
-    [self.hud hide:YES];
+    [MRProgressOverlayView dismissOverlayForView:self.view animated:NO];
 }
 
 @end

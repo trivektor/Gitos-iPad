@@ -45,9 +45,6 @@
     [self performHousekeepingTasks];
 
     self.navigationItem.title = @"Notifications";
-    self.hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
-    self.hud.mode = MBProgressHUDAnimationFade;
-    self.hud.labelText = LOADING_MESSAGE;
 }
 
 - (void)registerNib
@@ -116,7 +113,7 @@
 
     [operation setCompletionBlockWithSuccess:
      ^(AFHTTPRequestOperation *operation, id responseObject){
-         [self.hud hide:YES];
+         [MRProgressOverlayView dismissOverlayForView:self.view animated:NO];
          [self.notificationsTable.pullToRefreshView stopAnimating];
          NSString *response = [operation responseString];
 
@@ -129,7 +126,7 @@
          [self.notificationsTable reloadData];
      }
      failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-         [self.hud hide:YES];
+         [MRProgressOverlayView dismissOverlayForView:self.view animated:NO];
          [self.notificationsTable.pullToRefreshView stopAnimating];
          NSLog(@"%@", error);
      }];
@@ -150,7 +147,7 @@
 {
     if (([scrollView contentOffset].y + scrollView.frame.size.height) == scrollView.contentSize.height) {
         // Bottom of UITableView reached
-        [self.hud show:YES];
+        [MRProgressOverlayView showOverlayAddedTo:self.view animated:NO];
         [self fetchNotificationsForPage:self.currentPage++];
     }
 }
@@ -171,7 +168,7 @@
 
     [operation setCompletionBlockWithSuccess:
      ^(AFHTTPRequestOperation *operation, id responseObject){
-         [self.hud hide:YES];
+         [MRProgressOverlayView dismissOverlayForView:self.view animated:NO];
 
          NSString *response = [operation responseString];
 
@@ -182,7 +179,7 @@
          [self.navigationController pushViewController:issueDetailsController animated:YES];
      }
      failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-         [self.hud hide:YES];
+         [MRProgressOverlayView dismissOverlayForView:self.view animated:NO];
          NSLog(@"%@", error);
      }];
 
@@ -205,7 +202,7 @@
 
     [operation setCompletionBlockWithSuccess:
      ^(AFHTTPRequestOperation *operation, id responseObject){
-         [self.hud hide:YES];
+         [MRProgressOverlayView dismissOverlayForView:self.view animated:NO];
 
          NSString *response = [operation responseString];
 
@@ -216,7 +213,7 @@
          [self.navigationController pushViewController:pullRequestDetailsController animated:YES];
      }
      failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-         [self.hud hide:YES];
+         [MRProgressOverlayView dismissOverlayForView:self.view animated:NO];
          NSLog(@"%@", error);
      }];
 

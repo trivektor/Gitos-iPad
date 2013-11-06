@@ -49,10 +49,6 @@ homePageCell, homePageTextField, visibilityCell, hud;
 
     [self.navigationItem setRightBarButtonItem:submitButton];
 
-    hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
-    hud.mode = MBProgressHUDAnimationFade;
-    hud.labelText = LOADING_MESSAGE;
-    hud.hidden = YES;
     [repoFormTable drawSeparator];
 }
 
@@ -103,7 +99,7 @@ homePageCell, homePageTextField, visibilityCell, hud;
                        inView:self.view];
         return;
     } else {
-        [hud show:YES];
+        [MRProgressOverlayView showOverlayAddedTo:self.view animated:NO];
 
         NSDictionary *repoData = @{
             @"name": nameTextField.text,
@@ -118,7 +114,7 @@ homePageCell, homePageTextField, visibilityCell, hud;
 {
     [AppHelper flashAlert:@"Repo created successfully"
                    inView:self.view];
-    [hud hide:YES];
+    [MRProgressOverlayView dismissOverlayForView:self.view animated:NO];
 }
 
 - (void)handleCreationFailure:(NSNotification *)notification
@@ -126,7 +122,7 @@ homePageCell, homePageTextField, visibilityCell, hud;
     NSMutableArray *errors = (NSMutableArray *) notification.object;
     [AppHelper flashError:[errors componentsJoinedByString:@", "]
                    inView:self.view];
-    [hud hide:YES];
+    [MRProgressOverlayView dismissOverlayForView:self.view animated:NO];
 }
 
 - (void)blurFields

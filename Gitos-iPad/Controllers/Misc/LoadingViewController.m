@@ -35,12 +35,8 @@
 {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
-    hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
-    hud.mode = MBProgressHUDAnimationFade;
-    hud.labelText = LOADING_MESSAGE;
-
     [self registerEvents];
-
+    [MRProgressOverlayView showOverlayAddedTo:self.view animated:NO];
     [User fetchInfoForUserWithToken:[AppHelper getAccessToken]];
 }
 

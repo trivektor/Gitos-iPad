@@ -35,9 +35,6 @@
 
 - (void)performHouseKeepingTasks
 {
-    self.hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
-    self.hud.mode = MBProgressHUDAnimationFade;
-    self.hud.labelText = @"Loading";
 }
 
 - (void)showOptions
@@ -62,7 +59,7 @@
 
 - (void)webViewDidFinishLoad:(UIWebView *)webView
 {
-    [self.hud hide:YES];
+    [MRProgressOverlayView dismissOverlayForView:self.view animated:NO];
     self.navigationItem.title = [websiteView stringByEvaluatingJavaScriptFromString:@"document.title"];
     UIBarButtonItem *optionsButton = [[UIBarButtonItem alloc] initWithTitle:@"" style:UIBarButtonItemStyleBordered target:self action:@selector(showOptions)];
     optionsButton.image = [UIImage imageNamed:@"211-action.png"];
@@ -71,7 +68,7 @@
 
 - (void)webView:(UIWebView *)webView didFailLoadWithError:(NSError *)error
 {
-    [self.hud hide:YES];
+    [MRProgressOverlayView dismissOverlayForView:self.view animated:NO];
 }
 
 - (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex

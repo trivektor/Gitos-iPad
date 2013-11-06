@@ -363,6 +363,16 @@
 		B5D8D791173E1CA300B68FA2 /* NSTimer+Blocks.m in Sources */ = {isa = PBXBuildFile; fileRef = B5D8D790173E1CA300B68FA2 /* NSTimer+Blocks.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		B5D8D795173E26C600B68FA2 /* RepoLanguagesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B5D8D793173E26C600B68FA2 /* RepoLanguagesViewController.m */; };
 		B5D8D796173E26C600B68FA2 /* RepoLanguagesViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B5D8D794173E26C600B68FA2 /* RepoLanguagesViewController.xib */; };
+		B5DE1699182A32D6008A659B /* MRBlurView.m in Sources */ = {isa = PBXBuildFile; fileRef = B5DE1684182A32D6008A659B /* MRBlurView.m */; };
+		B5DE169A182A32D6008A659B /* UIImage+MRImageEffects.m in Sources */ = {isa = PBXBuildFile; fileRef = B5DE1686182A32D6008A659B /* UIImage+MRImageEffects.m */; };
+		B5DE169B182A32D6008A659B /* MRActivityIndicatorView.m in Sources */ = {isa = PBXBuildFile; fileRef = B5DE1689182A32D6008A659B /* MRActivityIndicatorView.m */; };
+		B5DE169C182A32D6008A659B /* MRCircularProgressView.m in Sources */ = {isa = PBXBuildFile; fileRef = B5DE168B182A32D6008A659B /* MRCircularProgressView.m */; };
+		B5DE169D182A32D6008A659B /* MRIconView.m in Sources */ = {isa = PBXBuildFile; fileRef = B5DE168D182A32D6008A659B /* MRIconView.m */; };
+		B5DE169E182A32D6008A659B /* MRNavigationBarProgressView.m in Sources */ = {isa = PBXBuildFile; fileRef = B5DE168F182A32D6008A659B /* MRNavigationBarProgressView.m */; };
+		B5DE169F182A32D6008A659B /* MRProgressOverlayView.m in Sources */ = {isa = PBXBuildFile; fileRef = B5DE1691182A32D6008A659B /* MRProgressOverlayView.m */; };
+		B5DE16A0182A32D6008A659B /* MRMessageInterceptor.m in Sources */ = {isa = PBXBuildFile; fileRef = B5DE1695182A32D6008A659B /* MRMessageInterceptor.m */; };
+		B5DE16A1182A32D6008A659B /* MRWeakProxy.m in Sources */ = {isa = PBXBuildFile; fileRef = B5DE1698182A32D6008A659B /* MRWeakProxy.m */; };
+		B5DE16A3182A3392008A659B /* Accelerate.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B5DE16A2182A3392008A659B /* Accelerate.framework */; };
 		B5F10F8A173F83AE00263242 /* GistCommentsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B5F10F88173F83AE00263242 /* GistCommentsViewController.m */; };
 		B5F10F8B173F83AE00263242 /* GistCommentsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B5F10F89173F83AE00263242 /* GistCommentsViewController.xib */; };
 		B5F10F8D173F850800263242 /* gist_comments.html in Resources */ = {isa = PBXBuildFile; fileRef = B5F10F8C173F850800263242 /* gist_comments.html */; };
@@ -892,6 +902,27 @@
 		B5D8D792173E26C600B68FA2 /* RepoLanguagesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RepoLanguagesViewController.h; sourceTree = "<group>"; };
 		B5D8D793173E26C600B68FA2 /* RepoLanguagesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RepoLanguagesViewController.m; sourceTree = "<group>"; };
 		B5D8D794173E26C600B68FA2 /* RepoLanguagesViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RepoLanguagesViewController.xib; sourceTree = "<group>"; };
+		B5DE1683182A32D6008A659B /* MRBlurView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MRBlurView.h; sourceTree = "<group>"; };
+		B5DE1684182A32D6008A659B /* MRBlurView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MRBlurView.m; sourceTree = "<group>"; };
+		B5DE1685182A32D6008A659B /* UIImage+MRImageEffects.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+MRImageEffects.h"; sourceTree = "<group>"; };
+		B5DE1686182A32D6008A659B /* UIImage+MRImageEffects.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+MRImageEffects.m"; sourceTree = "<group>"; };
+		B5DE1688182A32D6008A659B /* MRActivityIndicatorView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MRActivityIndicatorView.h; sourceTree = "<group>"; };
+		B5DE1689182A32D6008A659B /* MRActivityIndicatorView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MRActivityIndicatorView.m; sourceTree = "<group>"; };
+		B5DE168A182A32D6008A659B /* MRCircularProgressView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MRCircularProgressView.h; sourceTree = "<group>"; };
+		B5DE168B182A32D6008A659B /* MRCircularProgressView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MRCircularProgressView.m; sourceTree = "<group>"; };
+		B5DE168C182A32D6008A659B /* MRIconView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MRIconView.h; sourceTree = "<group>"; };
+		B5DE168D182A32D6008A659B /* MRIconView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MRIconView.m; sourceTree = "<group>"; };
+		B5DE168E182A32D6008A659B /* MRNavigationBarProgressView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MRNavigationBarProgressView.h; sourceTree = "<group>"; };
+		B5DE168F182A32D6008A659B /* MRNavigationBarProgressView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MRNavigationBarProgressView.m; sourceTree = "<group>"; };
+		B5DE1690182A32D6008A659B /* MRProgressOverlayView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MRProgressOverlayView.h; sourceTree = "<group>"; };
+		B5DE1691182A32D6008A659B /* MRProgressOverlayView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MRProgressOverlayView.m; sourceTree = "<group>"; };
+		B5DE1692182A32D6008A659B /* MRProgress.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MRProgress.h; sourceTree = "<group>"; };
+		B5DE1694182A32D6008A659B /* MRMessageInterceptor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MRMessageInterceptor.h; sourceTree = "<group>"; };
+		B5DE1695182A32D6008A659B /* MRMessageInterceptor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MRMessageInterceptor.m; sourceTree = "<group>"; };
+		B5DE1696182A32D6008A659B /* MRProgressHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MRProgressHelper.h; sourceTree = "<group>"; };
+		B5DE1697182A32D6008A659B /* MRWeakProxy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MRWeakProxy.h; sourceTree = "<group>"; };
+		B5DE1698182A32D6008A659B /* MRWeakProxy.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MRWeakProxy.m; sourceTree = "<group>"; };
+		B5DE16A2182A3392008A659B /* Accelerate.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accelerate.framework; path = System/Library/Frameworks/Accelerate.framework; sourceTree = SDKROOT; };
 		B5F10F87173F83AE00263242 /* GistCommentsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GistCommentsViewController.h; sourceTree = "<group>"; };
 		B5F10F88173F83AE00263242 /* GistCommentsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GistCommentsViewController.m; sourceTree = "<group>"; };
 		B5F10F89173F83AE00263242 /* GistCommentsViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GistCommentsViewController.xib; sourceTree = "<group>"; };
@@ -928,6 +959,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B5DE16A3182A3392008A659B /* Accelerate.framework in Frameworks */,
 				B53681331744C4ED00249BC7 /* CoreText.framework in Frameworks */,
 				B518969F17460CF400656BAB /* CoreImage.framework in Frameworks */,
 				B54603A616C101FD007D4FB3 /* ImageIO.framework in Frameworks */,
@@ -1272,6 +1304,7 @@
 		B55D909D16B7AA27009CB90F /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				B5DE16A2182A3392008A659B /* Accelerate.framework */,
 				B53681321744C4ED00249BC7 /* CoreText.framework */,
 				B518969E17460CF400656BAB /* CoreImage.framework */,
 				B54603A516C101FD007D4FB3 /* ImageIO.framework */,
@@ -1385,6 +1418,7 @@
 		B55D90F216B7ABD6009CB90F /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				B5DE1681182A32D6008A659B /* MRProgress */,
 				B5F7146B17852F9B00CBC1A3 /* TDSemiModal */,
 				B54F69EE16D30B3B00978DD9 /* Events */,
 				B55D90F316B7ABE2009CB90F /* AppConfig.h */,
@@ -1757,6 +1791,57 @@
 			path = templates;
 			sourceTree = "<group>";
 		};
+		B5DE1681182A32D6008A659B /* MRProgress */ = {
+			isa = PBXGroup;
+			children = (
+				B5DE1682182A32D6008A659B /* Blur */,
+				B5DE1687182A32D6008A659B /* Components */,
+				B5DE1692182A32D6008A659B /* MRProgress.h */,
+				B5DE1693182A32D6008A659B /* Utils */,
+			);
+			path = MRProgress;
+			sourceTree = "<group>";
+		};
+		B5DE1682182A32D6008A659B /* Blur */ = {
+			isa = PBXGroup;
+			children = (
+				B5DE1683182A32D6008A659B /* MRBlurView.h */,
+				B5DE1684182A32D6008A659B /* MRBlurView.m */,
+				B5DE1685182A32D6008A659B /* UIImage+MRImageEffects.h */,
+				B5DE1686182A32D6008A659B /* UIImage+MRImageEffects.m */,
+			);
+			path = Blur;
+			sourceTree = "<group>";
+		};
+		B5DE1687182A32D6008A659B /* Components */ = {
+			isa = PBXGroup;
+			children = (
+				B5DE1688182A32D6008A659B /* MRActivityIndicatorView.h */,
+				B5DE1689182A32D6008A659B /* MRActivityIndicatorView.m */,
+				B5DE168A182A32D6008A659B /* MRCircularProgressView.h */,
+				B5DE168B182A32D6008A659B /* MRCircularProgressView.m */,
+				B5DE168C182A32D6008A659B /* MRIconView.h */,
+				B5DE168D182A32D6008A659B /* MRIconView.m */,
+				B5DE168E182A32D6008A659B /* MRNavigationBarProgressView.h */,
+				B5DE168F182A32D6008A659B /* MRNavigationBarProgressView.m */,
+				B5DE1690182A32D6008A659B /* MRProgressOverlayView.h */,
+				B5DE1691182A32D6008A659B /* MRProgressOverlayView.m */,
+			);
+			path = Components;
+			sourceTree = "<group>";
+		};
+		B5DE1693182A32D6008A659B /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				B5DE1694182A32D6008A659B /* MRMessageInterceptor.h */,
+				B5DE1695182A32D6008A659B /* MRMessageInterceptor.m */,
+				B5DE1696182A32D6008A659B /* MRProgressHelper.h */,
+				B5DE1697182A32D6008A659B /* MRWeakProxy.h */,
+				B5DE1698182A32D6008A659B /* MRWeakProxy.m */,
+			);
+			path = Utils;
+			sourceTree = "<group>";
+		};
 		B5F7146B17852F9B00CBC1A3 /* TDSemiModal */ = {
 			isa = PBXGroup;
 			children = (
@@ -2092,6 +2177,8 @@
 				B54603A216C0FFA8007D4FB3 /* UIImageView+WebCache.m in Sources */,
 				B54603BF16C37D53007D4FB3 /* Organization.m in Sources */,
 				B54603CC16C4D0DD007D4FB3 /* MBProgressHUD.m in Sources */,
+				B5DE16A0182A32D6008A659B /* MRMessageInterceptor.m in Sources */,
+				B5DE169C182A32D6008A659B /* MRCircularProgressView.m in Sources */,
 				B552948116C7A23D0010D56A /* Issue.m in Sources */,
 				B552948416C818DC0010D56A /* IssueCell.m in Sources */,
 				B552949716C862FD0010D56A /* Comment.m in Sources */,
@@ -2107,7 +2194,9 @@
 				B54F69FA16D30FAB00978DD9 /* FollowEvent.m in Sources */,
 				B54F69FD16D3118900978DD9 /* GistEvent.m in Sources */,
 				B54F6A0016D3180000978DD9 /* IssuesEvent.m in Sources */,
+				B5DE169E182A32D6008A659B /* MRNavigationBarProgressView.m in Sources */,
 				B54F6A0316D3194300978DD9 /* IssueCommentEvent.m in Sources */,
+				B5DE1699182A32D6008A659B /* MRBlurView.m in Sources */,
 				B54F6A0616D31A5400978DD9 /* MemberEvent.m in Sources */,
 				B54F6A0916D31B4300978DD9 /* PushEvent.m in Sources */,
 				B54F6A0C16D31BE200978DD9 /* PullRequestEvent.m in Sources */,
@@ -2139,6 +2228,8 @@
 				B5A1044C1723C1BC00487A47 /* RepoViewController.m in Sources */,
 				B5A104551723C1C900487A47 /* NewsfeedDetailsViewController.m in Sources */,
 				B5A104571723C1C900487A47 /* NewsfeedViewController.m in Sources */,
+				B5DE169B182A32D6008A659B /* MRActivityIndicatorView.m in Sources */,
+				B5DE169F182A32D6008A659B /* MRProgressOverlayView.m in Sources */,
 				B5A104601723C1ED00487A47 /* IssueDetailsViewController.m in Sources */,
 				B5A104621723C1ED00487A47 /* IssuesViewController.m in Sources */,
 				B5A104671723C26300487A47 /* StarredViewController.m in Sources */,
@@ -2166,6 +2257,7 @@
 				B5D8D78B173DF81D00B68FA2 /* Readme.m in Sources */,
 				B5D8D78E173DFC7D00B68FA2 /* NSData+Base64.m in Sources */,
 				B5D8D791173E1CA300B68FA2 /* NSTimer+Blocks.m in Sources */,
+				B5DE169A182A32D6008A659B /* UIImage+MRImageEffects.m in Sources */,
 				B5D8D795173E26C600B68FA2 /* RepoLanguagesViewController.m in Sources */,
 				B5F10F8A173F83AE00263242 /* GistCommentsViewController.m in Sources */,
 				B5F10F90173F863900263242 /* GistComment.m in Sources */,
@@ -2176,9 +2268,11 @@
 				B53681151744C44500249BC7 /* UIBarButtonItem+FlatUI.m in Sources */,
 				B53681161744C44500249BC7 /* UIColor+FlatUI.m in Sources */,
 				B53681171744C44500249BC7 /* UIFont+FlatUI.m in Sources */,
+				B5DE169D182A32D6008A659B /* MRIconView.m in Sources */,
 				B53681181744C44500249BC7 /* UIImage+FlatUI.m in Sources */,
 				B53681191744C44500249BC7 /* UINavigationBar+FlatUI.m in Sources */,
 				B536811A1744C44500249BC7 /* UISlider+FlatUI.m in Sources */,
+				B5DE16A1182A32D6008A659B /* MRWeakProxy.m in Sources */,
 				B536811B1744C44500249BC7 /* UIStepper+FlatUI.m in Sources */,
 				B536811C1744C44500249BC7 /* UITabBar+FlatUI.m in Sources */,
 				B5A72FE7174768C4004F73FB /* UITableView+Shadow.m in Sources */,

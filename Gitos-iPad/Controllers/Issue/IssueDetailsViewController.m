@@ -48,10 +48,6 @@
 
 - (void)performHouseKeepingTasks
 {
-    hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
-    hud.mode = MBProgressHUDAnimationFade;
-    hud.labelText = @"Loading";
-
     UIBarButtonItem *addCommentButton = [[UIBarButtonItem alloc] initWithTitle:[NSString fontAwesomeIconStringForIconIdentifier:@"icon-plus"]
                                                                          style:UIBarButtonItemStyleBordered
                                                                         target:self
@@ -104,7 +100,7 @@
     NSURL *baseUrl = [NSURL fileURLWithPath:[[NSBundle mainBundle] bundlePath]];
     [detailsView loadHTMLString:contentHtml baseURL:baseUrl];
 
-    [hud hide:YES];
+    [MRProgressOverlayView dismissOverlayForView:self.view animated:NO];
 }
 
 - (void)didReceiveMemoryWarning

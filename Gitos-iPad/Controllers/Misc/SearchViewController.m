@@ -38,12 +38,6 @@
     // Do any additional setup after loading the view from its nib.
     [self performHouseKeepingTasks];
     //[self prepareSearchBar];
-
-    hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
-    hud.mode = MBProgressHUDAnimationFade;
-    hud.labelText = LOADING_MESSAGE;
-    [hud hide:YES];
-
     //http://stackoverflow.com/questions/17074365/status-bar-and-navigation-bar-appear-over-my-views-bounds-in-ios-7
     self.navigationController.navigationBar.translucent = NO;
 }
@@ -134,7 +128,7 @@
 - (void)searchBarSearchButtonClicked:(UISearchBar *)_searchBar
 {
     [_searchBar resignFirstResponder];
-    [hud show:YES];
+    [MRProgressOverlayView showOverlayAddedTo:self.view animated:NO];
 
     NSString *term = [searchBar text];
 
@@ -174,11 +168,11 @@
          [searchBar resignFirstResponder];
          [resultsTable reloadData];
          [resultsTable scrollRectToVisible:CGRectMake(0, 0, 1, 1) animated:YES];
-         [hud hide:YES];
+         [MRProgressOverlayView dismissOverlayForView:self.view animated:NO];
      }
      failure:^(AFHTTPRequestOperation *operation, NSError *error) {
          NSLog(@"%@", error);
-         [hud hide:YES];
+         [MRProgressOverlayView dismissOverlayForView:self.view animated:NO];
      }];
     
     [operation start];
@@ -213,15 +207,15 @@
          [resultsTable reloadData];
          [resultsTable scrollRectToVisible:CGRectMake(0, 0, 1, 1) animated:YES];
          [searchBar resignFirstResponder];
-         [hud hide:YES];
+         [MRProgressOverlayView dismissOverlayForView:self.view animated:NO];
      }
      failure:^(AFHTTPRequestOperation *operation, NSError *error) {
          NSLog(@"%@", error);
-         [hud hide:YES];
+         [MRProgressOverlayView dismissOverlayForView:self.view animated:NO];
      }];
 
     [operation start];
-    [hud show:YES];
+    [MRProgressOverlayView showOverlayAddedTo:self.view animated:NO];
 }
 
 - (BOOL)searchBarShouldBeginEditing:(UISearchBar *)_searchBar
@@ -264,7 +258,7 @@
     
     [operation setCompletionBlockWithSuccess:
      ^(AFHTTPRequestOperation *operation, id responseObject){
-         [hud hide:YES];
+         [MRProgressOverlayView dismissOverlayForView:self.view animated:NO];
          NSString *response = [operation responseString];
 
          NSDictionary *json = [NSJSONSerialization JSONObjectWithData:[response dataUsingEncoding:NSUTF8StringEncoding] options:NSJSONReadingMutableContainers error:nil];
@@ -275,11 +269,11 @@
      }
      failure:^(AFHTTPRequestOperation *operation, NSError *error) {
          NSLog(@"%@", error);
-         [hud hide:YES];
+         [MRProgressOverlayView dismissOverlayForView:self.view animated:NO];
      }];
 
     [operation start];
-    [hud show:YES];
+    [MRProgressOverlayView showOverlayAddedTo:self.view animated:YES];
 }
 
 - (void)fetchUserAtIndexPath:(NSIndexPath *)indexPath
@@ -298,7 +292,7 @@
 
     [operation setCompletionBlockWithSuccess:
      ^(AFHTTPRequestOperation *operation, id responseObject){
-         [hud hide:YES];
+         [MRProgressOverlayView dismissOverlayForView:self.view animated:NO];
          NSString *response = [operation responseString];
 
          NSDictionary *json = [NSJSONSerialization JSONObjectWithData:[response dataUsingEncoding:NSUTF8StringEncoding] options:NSJSONReadingMutableContainers error:nil];
@@ -309,7 +303,7 @@
      }
      failure:^(AFHTTPRequestOperation *operation, NSError *error) {
          NSLog(@"%@", error);
-         [hud hide:YES];
+         [MRProgressOverlayView dismissOverlayForView:self.view animated:NO];
      }];
 
     [operation start];

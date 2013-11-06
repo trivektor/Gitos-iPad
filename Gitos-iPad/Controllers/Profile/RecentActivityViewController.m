@@ -51,10 +51,6 @@
     [reloadButton setTitleTextAttributes:[NSDictionary dictionaryWithObjectsAndKeys:[UIFont fontWithName:kFontAwesomeFamilyName size:17], NSFontAttributeName, nil] forState:UIControlStateNormal];
 
     [self.navigationItem setRightBarButtonItem:reloadButton];
-    
-    hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
-    hud.mode = MBProgressHUDAnimationFade;
-    hud.labelText = @"Loading";
 }
 
 - (void)registerNib
@@ -120,13 +116,13 @@
 {
     [activities addObjectsFromArray:notification.object];
     [activityTable reloadData];
-    [hud hide:YES];
+    [MRProgressOverlayView dismissOverlayForView:self.view animated:NO];
 }
 
 - (void)reloadActivities
 {
     currentPage = 1;
-    [hud show:YES];
+    [MRProgressOverlayView showOverlayAddedTo:self.view animated:NO];
     [activities removeAllObjects];
 }
 
@@ -142,7 +138,7 @@
 {
     if (([scrollView contentOffset].y + scrollView.frame.size.height) == scrollView.contentSize.height) {
         // Bottom of UITableView reached
-        [hud show:YES];
+        [MRProgressOverlayView showOverlayAddedTo:self.view animated:NO];
         [user fetchRecentActivityForPage:currentPage++];
     }
 }

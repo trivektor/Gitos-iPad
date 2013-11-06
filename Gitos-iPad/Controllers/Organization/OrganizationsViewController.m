@@ -41,9 +41,6 @@
 - (void)performHouseKeepingTasks
 {
     self.navigationItem.title = @"Organizations";
-    hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
-    hud.mode = MBProgressHUDAnimationFade;
-    hud.labelText = @"Loading";
 }
 
 - (void)registerEvents
@@ -53,7 +50,7 @@
 
 - (void)fetchOrganizations
 {
-    [hud show:YES];
+    [MRProgressOverlayView showOverlayAddedTo:self.view animated:NO];
     [user fetchOrganizationsForPage:currentPage++];
 }
 
@@ -61,7 +58,7 @@
 {
     [organizations addObjectsFromArray:notification.object];
     [organizationsTable reloadData];
-    [hud hide:YES];
+    [MRProgressOverlayView dismissOverlayForView:self.view animated:NO];
 }
 
 - (void)didReceiveMemoryWarning

@@ -48,11 +48,6 @@
     self.navigationItem.title = @"Feedback";
     self.navigationItem.hidesBackButton = YES;
 
-    hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
-    hud.mode = MBProgressHUDAnimationFade;
-    hud.labelText = LOADING_MESSAGE;
-    [hud hide:YES];
-
     [feedbackTable setScrollEnabled:NO];
     [feedbackTable drawSeparator];
 }
@@ -72,7 +67,7 @@
         [messageField resignFirstResponder];
     }
 
-    [hud show:YES];
+    [MRProgressOverlayView showOverlayAddedTo:self.view animated:NO];
 
     NSURL *url = [NSURL URLWithString:[AppConfig getConfigValue:@"GitosHost"]];
 
@@ -90,7 +85,7 @@
 
     [operation setCompletionBlockWithSuccess:
      ^(AFHTTPRequestOperation *operation, id responseObject) {
-         [self.hud setHidden:YES];
+         [MRProgressOverlayView dismissOverlayForView:self.view animated:NO];
          NSString *response = [operation responseString];
 
          NSDictionary *json = [NSJSONSerialization JSONObjectWithData:[response dataUsingEncoding:NSUTF8StringEncoding] options:NSJSONReadingMutableContainers error:nil];
@@ -100,12 +95,12 @@
          }
      }
      failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-         [hud setHidden:YES];
+         [MRProgressOverlayView dismissOverlayForView:self.view animated:NO];
          NSLog(@"%@", error);
      }];
 
     [operation start];
-    [hud setHidden:NO];
+    [MRProgressOverlayView showOverlayAddedTo:self.view animated:YES];
 }
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView

@@ -56,6 +56,7 @@
     [self setupPullToRefresh];
     [self registerEvents];
     [self fetchUserNewsFeed];
+    [MRProgressOverlayView showOverlayAddedTo:self.view animated:NO];
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -75,10 +76,6 @@
 
     [reloadButton setTitleTextAttributes:[NSDictionary dictionaryWithObjectsAndKeys:[UIFont fontWithName:kFontAwesomeFamilyName size:17], NSFontAttributeName, nil] forState:UIControlStateNormal];
     [self.navigationItem setRightBarButtonItem:reloadButton];
-
-    hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
-    hud.mode = MBProgressHUDAnimationFade;
-    hud.labelText = LOADING_MESSAGE;
 }
 
 - (void)registerEvents
@@ -161,7 +158,7 @@
 {
     if (([scrollView contentOffset].y + scrollView.frame.size.height) == scrollView.contentSize.height) {
         // Bottom of UITableView reached
-        [hud show:YES];
+        [MRProgressOverlayView showOverlayAddedTo:self.view animated:NO];
         [self fetchUserNewsFeed];
     }
 }
@@ -171,7 +168,7 @@
     [newsFeed addObjectsFromArray:notication.object];
     [newsFeedTable.pullToRefreshView stopAnimating];
     [newsFeedTable reloadData];
-    [hud hide:YES];
+    [MRProgressOverlayView dismissOverlayForView:self.view animated:NO];
 }
 
 - (void)setupPullToRefresh
@@ -184,7 +181,7 @@
 
 - (void)reloadNewsfeed
 {
-    [hud show:YES];
+    [MRProgressOverlayView showOverlayAddedTo:self.view animated:NO];
     currentPage = 1;
     [newsFeed removeAllObjects];
     [newsFeedTable reloadData];

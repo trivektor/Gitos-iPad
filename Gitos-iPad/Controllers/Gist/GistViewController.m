@@ -45,9 +45,6 @@
 
 - (void)performHouseKeepingTasks
 {
-    hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
-    hud.mode = MBProgressHUDAnimationFade;
-    hud.labelText = LOADING_MESSAGE;
 }
 
 - (void)registerNib
@@ -90,7 +87,7 @@
 
 - (void)getGistStats
 {
-    [hud show:YES];
+    [MRProgressOverlayView showOverlayAddedTo:self.view animated:NO];
     [gist fetchStats];
 }
 
@@ -98,7 +95,7 @@
 {
     files = [NSMutableArray arrayWithArray:[gist getGistFiles]];
     [filesTable reloadData];
-    [hud hide:YES];
+    [MRProgressOverlayView dismissOverlayForView:self.view animated:NO];
 }
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView

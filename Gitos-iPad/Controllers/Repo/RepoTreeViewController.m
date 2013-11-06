@@ -51,10 +51,6 @@
         self.navigationItem.title = [node getPath];
     }
 
-    hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
-    hud.mode = MBProgressHUDAnimationFade;
-    hud.labelText = LOADING_MESSAGE;
-
     UIBarButtonItem *commitButton = [[UIBarButtonItem alloc] initWithTitle:[NSString fontAwesomeIconStringForIconIdentifier:@"icon-cloud-upload"]
                                                                      style:UIBarButtonItemStyleBordered
                                                                     target:self
@@ -98,7 +94,7 @@
 {
     treeNodes = notification.object;
     [treeTable reloadData];
-    [hud setHidden:YES];
+    [MRProgressOverlayView dismissOverlayForView:self.view animated:NO];
 }
 
 - (void)didReceiveMemoryWarning

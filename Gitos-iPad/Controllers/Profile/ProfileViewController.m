@@ -56,10 +56,7 @@
     }
 
     [self adjustFrameHeight];
-
-    hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
-    hud.mode = MBProgressHUDAnimationFade;
-    hud.labelText = LOADING_MESSAGE;
+    [MRProgressOverlayView showOverlayAddedTo:self.view animated:NO];
     [self.view setBackgroundColor:[UIColor whiteColor]];
 }
 
@@ -138,7 +135,7 @@
     [self displayUsernameAndAvatar];
 
     [profileTable reloadData];
-    [hud hide:YES];
+    [MRProgressOverlayView dismissOverlayForView:self.view animated:NO];
     [self showEditButtonIfEditable];
 }
 

@@ -38,10 +38,6 @@
     // Do any additional setup after loading the view from its nib.
     self.navigationItem.title = @"Gists";
 
-    hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
-    hud.mode = MBProgressHUDAnimationFade;
-    hud.labelText = @"Loading";
-
     [self registerNib];
     [self registerEvents];
 
@@ -132,7 +128,7 @@
 {
     if (([scrollView contentOffset].y + scrollView.frame.size.height) == scrollView.contentSize.height) {
         // Bottom of UITableView reached
-        [hud show:YES];
+        [MRProgressOverlayView showOverlayAddedTo:self.view animated:NO];
         [user fetchGistsForPage:currentPage++];
     }
 }
@@ -142,12 +138,12 @@
     [gists addObjectsFromArray:notification.object];
     [gistsTable reloadData];
     [gistsTable.pullToRefreshView stopAnimating];
-    [hud hide:YES];
+    [MRProgressOverlayView dismissOverlayForView:self.view animated:NO];
 }
 
 - (void)setupPullToRefresh
 {
-    [hud show:YES];
+    [MRProgressOverlayView showOverlayAddedTo:self.view animated:NO];
     currentPage = 1;
     [gistsTable addPullToRefreshWithActionHandler:^{
         [user fetchGistsForPage:currentPage++];
