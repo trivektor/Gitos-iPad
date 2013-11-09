@@ -14,7 +14,6 @@
     #import <CoreData/CoreData.h>
     #import <MessageUI/MessageUI.h>
     #import <QuartzCore/QuartzCore.h>
-    #import "Underscore+Functional.h"
     #import "GitosConstants.h"
     #import "AFHTTPClient.h"
     #import "AFHTTPRequestOperation.h"
