@@ -18,14 +18,15 @@
 
 @implementation NotificationsViewController
 
+@synthesize notifications, notificationsTable, currentPage;
+
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
         // Custom initialization
-        self.notifications = [[NSMutableArray alloc] initWithCapacity:0];
-        self.accessToken = [SSKeychain passwordForService:@"access_token" account:@"gitos"];
-        self.currentPage = 1;
+        notifications = [NSMutableDictionary dictionaryWithDictionary:@{}];
+        currentPage = 1;
     }
     return self;
 }
@@ -50,7 +51,7 @@
 - (void)registerNib
 {
     UINib *nib = [UINib nibWithNibName:@"NotificationCell" bundle:nil];
-    [self.notificationsTable registerNib:nib forCellReuseIdentifier:@"NotificationCell"];
+    [notificationsTable registerNib:nib forCellReuseIdentifier:@"NotificationCell"];
 }
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
@@ -60,7 +61,10 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return self.notifications.count;
+    NSArray *allKeys = [notifications allKeys];
+    if (allKeys.count == 0) return 0;
+    NSString *repoName = [allKeys objectAtIndex:section];
+    return [[notifications valueForKey:repoName] count];
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -68,31 +72,53 @@
     return 67;
 }
 
+- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
+{
+    return 30;
+}
+
+- (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section
+{
+    NSArray *keys = [notifications allKeys];
+    if (keys.count == 0) return @"";
+    return [keys objectAtIndex:section];
+}
+
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     static NSString *cellIdentifier = @"NotificationCell";
 
-    NotificationCell *cell = [self.notificationsTable dequeueReusableCellWithIdentifier:cellIdentifier];
+    NotificationCell *cell = [notificationsTable dequeueReusableCellWithIdentifier:cellIdentifier];
 
     if (!cell) {
         cell = [[NotificationCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellIdentifier];
     }
 
-    cell.notification = [self.notifications objectAtIndex:indexPath.row];
+    //cell.notification = [self.notifications objectAtIndex:indexPath.row];
+    NSArray *allKeys = [notifications allKeys];
+
+    if (allKeys.count == 0) return nil;
+
+    NSString *repoName = [allKeys objectAtIndex:indexPath.section];
+    NSArray *repoNotifications = [notifications objectForKey:repoName];
+
+    if (repoNotifications.count == 0) return nil;
+
+    cell.notification = [repoNotifications objectAtIndex:indexPath.row];
     [cell render];
     return cell;
 }
 
-- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    Notification *notification = [self.notifications objectAtIndex:indexPath.row];
-
-    if (notification.isIssue) {
-        [self fetchIssue:notification];
-    } else if (notification.isPullRequest) {
-        [self fetchPullRequest:notification];
-    }
-}
+//- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+//{
+//    Notification *notification = [self.notifications objectAtIndex:indexPath.row];
+//
+//    if (notification.isIssue) {
+//        [self fetchIssue:notification];
+//    } else if (notification.isPullRequest) {
+//        [self fetchPullRequest:notification];
+//    }
+//}
 
 - (void)fetchNotificationsForPage:(NSInteger)page
 {
@@ -102,32 +128,45 @@
     AFHTTPClient *httpClient = [[AFHTTPClient alloc] initWithBaseURL:notificationsUrl];
 
     NSMutableDictionary *params = [NSMutableDictionary dictionaryWithObjectsAndKeys:
-                                   self.accessToken, @"access_token",
+                                   [AppHelper getAccessToken], @"access_token",
                                    @"true", @"all",
                                    [NSString stringWithFormat:@"%i", page], @"page",
                                    nil];
 
-    NSMutableURLRequest *getRequest = [httpClient requestWithMethod:@"GET" path:notificationsUrl.absoluteString parameters:params];
+    NSMutableURLRequest *getRequest = [httpClient requestWithMethod:@"GET"
+                                                               path:notificationsUrl.absoluteString
+                                                         parameters:params];
 
     AFHTTPRequestOperation *operation = [[AFHTTPRequestOperation alloc] initWithRequest:getRequest];
 
     [operation setCompletionBlockWithSuccess:
      ^(AFHTTPRequestOperation *operation, id responseObject){
          [MRProgressOverlayView dismissOverlayForView:self.view animated:NO];
-         [self.notificationsTable.pullToRefreshView stopAnimating];
+         [notificationsTable.pullToRefreshView stopAnimating];
          NSString *response = [operation responseString];
 
          NSArray *json = [NSJSONSerialization JSONObjectWithData:[response dataUsingEncoding:NSUTF8StringEncoding] options:NSJSONReadingMutableContainers error:nil];
+         
+         NSMutableArray *notificationsArray = [NSMutableArray arrayWithCapacity:0];
 
          for (int i=0; i < json.count; i++) {
-             [self.notifications addObject:[[Notification alloc] initWithData:[json objectAtIndex:i]]];
+             [notificationsArray addObject:[[Notification alloc] initWithData:[json objectAtIndex:i]]];
          }
 
-         [self.notificationsTable reloadData];
+         NSMutableDictionary *notificationGroups = [NSMutableDictionary dictionaryWithDictionary:@{}];
+
+         for (int i=0; i < notificationsArray.count; i++) {
+             Notification *n = (Notification *) [notificationsArray objectAtIndex:i];
+             NSString *key = [[n getRepo] getFullName];
+             if (!notifications[key]) notifications[key] = @[n];
+             [notificationGroups[key] addObject:n];
+         }
+
+         [notificationsTable reloadData];
      }
      failure:^(AFHTTPRequestOperation *operation, NSError *error) {
          [MRProgressOverlayView dismissOverlayForView:self.view animated:NO];
-         [self.notificationsTable.pullToRefreshView stopAnimating];
+         [notificationsTable.pullToRefreshView stopAnimating];
          NSLog(@"%@", error);
      }];
     
@@ -136,9 +175,9 @@
 
 - (void)setupPullToRefresh
 {
-    self.currentPage = 1;
-    [self.notifications removeAllObjects];
-    [self.notificationsTable addPullToRefreshWithActionHandler:^{
+    currentPage = 1;
+    [notifications removeAllObjects];
+    [notificationsTable addPullToRefreshWithActionHandler:^{
         [self fetchNotificationsForPage:self.currentPage++];
     }];
 }

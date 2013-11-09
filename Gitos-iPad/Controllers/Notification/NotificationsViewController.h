@@ -11,7 +11,7 @@
 @interface NotificationsViewController : GitosViewController <UITableViewDataSource, UITableViewDelegate>
 
 @property (nonatomic, weak) IBOutlet UITableView *notificationsTable;
-@property (nonatomic, strong) NSMutableArray *notifications;
+@property (nonatomic, strong) NSMutableDictionary *notifications;
 @property (nonatomic, strong) MBProgressHUD *hud;
 @property (nonatomic) NSInteger *currentPage;
 @property (nonatomic, strong) NSString *accessToken;

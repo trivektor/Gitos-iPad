@@ -128,6 +128,7 @@
 		B51FCB291723C025003A75A6 /* CommitsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B51FCB241723C025003A75A6 /* CommitsViewController.xib */; };
 		B51FCB2A1723C025003A75A6 /* CommitViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B51FCB261723C025003A75A6 /* CommitViewController.m */; };
 		B51FCB2B1723C025003A75A6 /* CommitViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B51FCB271723C025003A75A6 /* CommitViewController.xib */; };
+		B52AEB27182E34FB00E536DC /* chrome_bg.png in Resources */ = {isa = PBXBuildFile; fileRef = B52AEB26182E34FB00E536DC /* chrome_bg.png */; };
 		B53681121744C44500249BC7 /* FUIAlertView.m in Sources */ = {isa = PBXBuildFile; fileRef = B53680FD1744C44500249BC7 /* FUIAlertView.m */; };
 		B53681131744C44500249BC7 /* FUIButton.m in Sources */ = {isa = PBXBuildFile; fileRef = B53680FF1744C44500249BC7 /* FUIButton.m */; };
 		B53681141744C44500249BC7 /* FUISwitch.m in Sources */ = {isa = PBXBuildFile; fileRef = B53681011744C44500249BC7 /* FUISwitch.m */; };
@@ -520,6 +521,7 @@
 		B51FCB251723C025003A75A6 /* CommitViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CommitViewController.h; sourceTree = "<group>"; };
 		B51FCB261723C025003A75A6 /* CommitViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CommitViewController.m; sourceTree = "<group>"; };
 		B51FCB271723C025003A75A6 /* CommitViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CommitViewController.xib; sourceTree = "<group>"; };
+		B52AEB26182E34FB00E536DC /* chrome_bg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = chrome_bg.png; sourceTree = "<group>"; };
 		B53680FC1744C44500249BC7 /* FUIAlertView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FUIAlertView.h; sourceTree = "<group>"; };
 		B53680FD1744C44500249BC7 /* FUIAlertView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FUIAlertView.m; sourceTree = "<group>"; };
 		B53680FE1744C44500249BC7 /* FUIButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FUIButton.h; sourceTree = "<group>"; };
@@ -976,6 +978,7 @@
 				B51FCB191723881B003A75A6 /* selected_cell_bg.png */,
 				B516539D16B7C1B9003F0DFA /* 06-magnify@2x.png */,
 				B54F69D916D2C5CA00978DD9 /* 04-squiggle.png */,
+				B52AEB26182E34FB00E536DC /* chrome_bg.png */,
 				B54F69DA16D2C5CA00978DD9 /* 04-squiggle@2x.png */,
 				B516539E16B7C1B9003F0DFA /* 07-map-marker.png */,
 				B511D45416E08F7700DD0ED5 /* 122-stats.png */,
@@ -1993,6 +1996,7 @@
 				B54F69DE16D2DF1E00978DD9 /* avatar-placeholder.png in Resources */,
 				B54F69ED16D2FB4400978DD9 /* NotificationCell.xib in Resources */,
 				B54F6A1C16D3617600978DD9 /* feedback.html in Resources */,
+				B52AEB27182E34FB00E536DC /* chrome_bg.png in Resources */,
 				B511D43716D9A81C00DD0ED5 /* contributions.html in Resources */,
 				B511D45316DB3D0900DD0ED5 /* pull_request.html in Resources */,
 				B511D45616E08F7700DD0ED5 /* 122-stats.png in Resources */,
