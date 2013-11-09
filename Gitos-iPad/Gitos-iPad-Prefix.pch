@@ -44,6 +44,4 @@
     #import "UITableViewCell+Customizations.h"
     #import "DTCustomColoredAccessory.h"
     #import "MRProgress.h"
-    #import "PXAlertView.h"
-    #import "PXAlertView+Customization.h"
 #endif

@@ -7,9 +7,6 @@
 //
 
 #import "Repo.h"
-#import "Underscore-Prefix.pch"
-#import "Underscore+Functional.h"
-#import "Underscore.h"
 
 @implementation Repo
 

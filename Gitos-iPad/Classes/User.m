@@ -7,7 +7,6 @@
 //
 
 #import "User.h"
-#import "Underscore.h"
 #import <objc/message.h>
 
 @implementation User
