@@ -24,7 +24,7 @@
     #import "AppConfig.h"
     #import "NSString+FontAwesome.h"
     #import "RelativeDateDescriptor.h"
-    #import "SVPullToRefresh.h"
+    #import "UIScrollView+SVPullToRefresh.h"
     #import "TimelineEvent.h"
     #import "User.h"
     #import "Repo.h"

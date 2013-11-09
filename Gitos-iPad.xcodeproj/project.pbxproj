@@ -214,7 +214,6 @@
 		B55D90B516B7AA27009CB90F /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B55D90B416B7AA27009CB90F /* Default@2x.png */; };
 		B55D90B716B7AA27009CB90F /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B55D90B616B7AA27009CB90F /* Default-568h@2x.png */; };
 		B55D90BA16B7AA27009CB90F /* Gitos_iPad.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = B55D90B816B7AA27009CB90F /* Gitos_iPad.xcdatamodeld */; };
-		B55D90C316B7AA3C009CB90F /* SVPullToRefresh.m in Sources */ = {isa = PBXBuildFile; fileRef = B55D90C216B7AA3C009CB90F /* SVPullToRefresh.m */; };
 		B55D90DA16B7AA48009CB90F /* AFHTTPClient.m in Sources */ = {isa = PBXBuildFile; fileRef = B55D90C616B7AA48009CB90F /* AFHTTPClient.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		B55D90DB16B7AA48009CB90F /* AFHTTPRequestOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = B55D90C816B7AA48009CB90F /* AFHTTPRequestOperation.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		B55D90DC16B7AA48009CB90F /* AFImageRequestOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = B55D90CA16B7AA48009CB90F /* AFImageRequestOperation.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
@@ -373,6 +372,7 @@
 		B5DE16A0182A32D6008A659B /* MRMessageInterceptor.m in Sources */ = {isa = PBXBuildFile; fileRef = B5DE1695182A32D6008A659B /* MRMessageInterceptor.m */; };
 		B5DE16A1182A32D6008A659B /* MRWeakProxy.m in Sources */ = {isa = PBXBuildFile; fileRef = B5DE1698182A32D6008A659B /* MRWeakProxy.m */; };
 		B5DE16A3182A3392008A659B /* Accelerate.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B5DE16A2182A3392008A659B /* Accelerate.framework */; };
+		B5DE16A6182E26E1008A659B /* UIScrollView+SVPullToRefresh.m in Sources */ = {isa = PBXBuildFile; fileRef = B5DE16A5182E26E1008A659B /* UIScrollView+SVPullToRefresh.m */; };
 		B5F10F8A173F83AE00263242 /* GistCommentsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B5F10F88173F83AE00263242 /* GistCommentsViewController.m */; };
 		B5F10F8B173F83AE00263242 /* GistCommentsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B5F10F89173F83AE00263242 /* GistCommentsViewController.xib */; };
 		B5F10F8D173F850800263242 /* gist_comments.html in Resources */ = {isa = PBXBuildFile; fileRef = B5F10F8C173F850800263242 /* gist_comments.html */; };
@@ -662,8 +662,6 @@
 		B55D90B416B7AA27009CB90F /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.png"; sourceTree = "<group>"; };
 		B55D90B616B7AA27009CB90F /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
 		B55D90B916B7AA27009CB90F /* Gitos_iPad.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Gitos_iPad.xcdatamodel; sourceTree = "<group>"; };
-		B55D90C116B7AA3C009CB90F /* SVPullToRefresh.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SVPullToRefresh.h; sourceTree = "<group>"; };
-		B55D90C216B7AA3C009CB90F /* SVPullToRefresh.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SVPullToRefresh.m; sourceTree = "<group>"; };
 		B55D90C516B7AA48009CB90F /* AFHTTPClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFHTTPClient.h; sourceTree = "<group>"; };
 		B55D90C616B7AA48009CB90F /* AFHTTPClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFHTTPClient.m; sourceTree = "<group>"; };
 		B55D90C716B7AA48009CB90F /* AFHTTPRequestOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFHTTPRequestOperation.h; sourceTree = "<group>"; };
@@ -923,6 +921,8 @@
 		B5DE1697182A32D6008A659B /* MRWeakProxy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MRWeakProxy.h; sourceTree = "<group>"; };
 		B5DE1698182A32D6008A659B /* MRWeakProxy.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MRWeakProxy.m; sourceTree = "<group>"; };
 		B5DE16A2182A3392008A659B /* Accelerate.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accelerate.framework; path = System/Library/Frameworks/Accelerate.framework; sourceTree = SDKROOT; };
+		B5DE16A4182E26E1008A659B /* UIScrollView+SVPullToRefresh.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIScrollView+SVPullToRefresh.h"; sourceTree = "<group>"; };
+		B5DE16A5182E26E1008A659B /* UIScrollView+SVPullToRefresh.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIScrollView+SVPullToRefresh.m"; sourceTree = "<group>"; };
 		B5F10F87173F83AE00263242 /* GistCommentsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GistCommentsViewController.h; sourceTree = "<group>"; };
 		B5F10F88173F83AE00263242 /* GistCommentsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GistCommentsViewController.m; sourceTree = "<group>"; };
 		B5F10F89173F83AE00263242 /* GistCommentsViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GistCommentsViewController.xib; sourceTree = "<group>"; };
@@ -1357,8 +1357,8 @@
 		B55D90C016B7AA3C009CB90F /* SVPullToRefresh */ = {
 			isa = PBXGroup;
 			children = (
-				B55D90C116B7AA3C009CB90F /* SVPullToRefresh.h */,
-				B55D90C216B7AA3C009CB90F /* SVPullToRefresh.m */,
+				B5DE16A4182E26E1008A659B /* UIScrollView+SVPullToRefresh.h */,
+				B5DE16A5182E26E1008A659B /* UIScrollView+SVPullToRefresh.m */,
 			);
 			path = SVPullToRefresh;
 			sourceTree = "<group>";
@@ -2132,7 +2132,6 @@
 				B55D90AD16B7AA27009CB90F /* main.m in Sources */,
 				B55D90B116B7AA27009CB90F /* AppDelegate.m in Sources */,
 				B55D90BA16B7AA27009CB90F /* Gitos_iPad.xcdatamodeld in Sources */,
-				B55D90C316B7AA3C009CB90F /* SVPullToRefresh.m in Sources */,
 				B55D90DA16B7AA48009CB90F /* AFHTTPClient.m in Sources */,
 				B55D90DB16B7AA48009CB90F /* AFHTTPRequestOperation.m in Sources */,
 				B55D90DC16B7AA48009CB90F /* AFImageRequestOperation.m in Sources */,
@@ -2209,6 +2208,7 @@
 				B569D0D216FE6F0F002216DD /* Authorization.m in Sources */,
 				B569D0D516FE7923002216DD /* GitosConstants.m in Sources */,
 				B5836C90170BFCA40012CC61 /* AppHelper.m in Sources */,
+				B5DE16A6182E26E1008A659B /* UIScrollView+SVPullToRefresh.m in Sources */,
 				B5836C961710C8B60012CC61 /* RepoTreeCell.m in Sources */,
 				B51FCB0F17235DDA003A75A6 /* IISideController.m in Sources */,
 				B51FCB1017235DDA003A75A6 /* IIViewDeckController.m in Sources */,
