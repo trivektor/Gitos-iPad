@@ -8,6 +8,7 @@
 
 #import "RepoContributorsViewController.h"
 #import "UIImageView+WebCache.h"
+#import "ProfileViewController.h"
 
 @interface RepoContributorsViewController ()
 
@@ -81,9 +82,18 @@
     cell.textLabel.font = [UIFont fontWithName:@"HelveticaNeue-Light" size:14];
     [cell.imageView setImageWithURL:[NSURL URLWithString:[contributor getAvatarUrl]]
                    placeholderImage:[UIImage imageNamed:@"avatar-placeholder.png"]];
-    cell.selectionStyle = UITableViewCellSelectionStyleNone;
+    [cell defineAccessoryType];
+    [cell defineHighlightedColorsForLabels:@[]];
 
     return cell;
+}
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    User *contributor = [[contributors objectAtIndex:indexPath.row] getAuthor];
+    ProfileViewController *profileController = [[ProfileViewController alloc] init];
+    profileController.user = contributor;
+    [self.navigationController pushViewController:profileController animated:YES];
 }
 
 - (void)displayContributors:(NSNotification *)notification

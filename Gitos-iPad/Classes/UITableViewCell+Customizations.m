@@ -54,9 +54,9 @@
 
 - (void)defineAccessoryType
 {
-    UIColor *color = [UIColor peterRiverColor];
+    UIColor *color = [UIColor grayColor];
     DTCustomColoredAccessory *accessory = [DTCustomColoredAccessory accessoryWithColor:color];
-    accessory.highlightedColor = [UIColor whiteColor];
+    accessory.highlightedColor = [UIColor silverColor];
     self.accessoryView = accessory;
     self.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
 }
@@ -65,8 +65,14 @@
 {
     UIColor *whiteColor = [UIColor whiteColor];
 
-    for (int i=0; i < labels.count; i++) {
-        ((UILabel *)labels[i]).highlightedTextColor = whiteColor;
+    if (labels.count == 0) {
+        if (self.textLabel) self.textLabel.highlightedTextColor = whiteColor;
+    } else {
+        for (int i=0; i < labels.count; i++) {
+            if ([labels[i] isKindOfClass:[UILabel class]]) {
+                ((UILabel *)labels[i]).highlightedTextColor = whiteColor;
+            }
+        }
     }
 
     self.selectedBackgroundView = [[UIView alloc] initWithFrame:self.bounds];

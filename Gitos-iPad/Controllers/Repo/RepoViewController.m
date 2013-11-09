@@ -210,6 +210,7 @@
     cell.backgroundColor = [UIColor whiteColor];
     cell.textLabel.textAlignment = NSTextAlignmentCenter;
     [cell defineAccessoryType];
+    [cell defineHighlightedColorsForLabels:@[]];
 
     return cell;
 }

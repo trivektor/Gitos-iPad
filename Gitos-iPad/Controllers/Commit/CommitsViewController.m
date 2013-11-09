@@ -36,6 +36,7 @@
     [self registerNib];
     [self registerEvents];
     [self fetchCommits];
+    [MRProgressOverlayView showOverlayAddedTo:self.view animated:NO];
 }
 
 - (void)performHouseKeepingTasks
@@ -51,7 +52,10 @@
 
 - (void)registerEvents
 {
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(displayCommits:) name:@"CommitsFetched" object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(displayCommits:)
+                                                 name:@"CommitsFetched"
+                                               object:nil];
 }
 
 - (void)displayCommits:(NSNotification *)notification
@@ -102,7 +106,6 @@
 - (void)fetchCommits
 {
     [branch fetchCommits];
-    [MRProgressOverlayView showOverlayAddedTo:self.view animated:NO];
 }
 
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView

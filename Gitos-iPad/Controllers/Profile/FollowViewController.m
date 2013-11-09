@@ -83,6 +83,7 @@
     cell.textLabel.text = [_user getLogin];
     cell.textLabel.font = [UIFont fontWithName:@"HelveticaNeue-Light" size:14.0];
     [cell defineAccessoryType];
+    [cell defineHighlightedColorsForLabels:@[]];
     return cell;
 }
 
