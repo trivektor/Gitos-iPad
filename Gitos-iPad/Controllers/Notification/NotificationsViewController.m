@@ -109,16 +109,17 @@
     return cell;
 }
 
-//- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
-//{
-//    Notification *notification = [self.notifications objectAtIndex:indexPath.row];
-//
-//    if (notification.isIssue) {
-//        [self fetchIssue:notification];
-//    } else if (notification.isPullRequest) {
-//        [self fetchPullRequest:notification];
-//    }
-//}
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    NSString *repoName = [[notifications allKeys] objectAtIndex:indexPath.section];
+    Notification *notification = [[notifications valueForKey:repoName] objectAtIndex:indexPath.row];
+
+    if (notification.isIssue) {
+        [self fetchIssue:notification];
+    } else if (notification.isPullRequest) {
+        [self fetchPullRequest:notification];
+    }
+}
 
 - (void)fetchNotificationsForPage:(NSInteger)page
 {
