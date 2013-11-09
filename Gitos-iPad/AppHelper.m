@@ -37,21 +37,22 @@
 
 + (void)flashAlert:(NSString *)message inView:(UIView *)view
 {
-    [PXAlertView showAlertWithTitle:@"Alert"
-                            message:message
-                        cancelTitle:nil
-                         otherTitle:nil
-                         completion:nil];
+    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Alert"
+                                                    message:message
+                                                   delegate:self
+                                          cancelButtonTitle:@"OK"
+                                          otherButtonTitles:nil];
+    [alert show];
 }
 
 + (void)flashError:(NSString *)message inView:(UIView *)view
 {
-    [PXAlertView showAlertWithTitle:@"Error"
-                            message:message
-                        cancelTitle:nil
-                         otherTitle:nil
-                         completion:nil];
-
+    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Error"
+                                                    message:message
+                                                   delegate:self
+                                          cancelButtonTitle:@"OK"
+                                          otherButtonTitles:nil];
+    [alert show];
 }
 
 + (NSURL *)prepUrlForApiCall:(NSString *)endpoint

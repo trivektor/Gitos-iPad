@@ -128,8 +128,6 @@
 		B51FCB291723C025003A75A6 /* CommitsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B51FCB241723C025003A75A6 /* CommitsViewController.xib */; };
 		B51FCB2A1723C025003A75A6 /* CommitViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B51FCB261723C025003A75A6 /* CommitViewController.m */; };
 		B51FCB2B1723C025003A75A6 /* CommitViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B51FCB271723C025003A75A6 /* CommitViewController.xib */; };
-		B52AEB24182E2E5500E536DC /* PXAlertView+Customization.m in Sources */ = {isa = PBXBuildFile; fileRef = B52AEB21182E2E5500E536DC /* PXAlertView+Customization.m */; };
-		B52AEB25182E2E5500E536DC /* PXAlertView.m in Sources */ = {isa = PBXBuildFile; fileRef = B52AEB23182E2E5500E536DC /* PXAlertView.m */; };
 		B53681121744C44500249BC7 /* FUIAlertView.m in Sources */ = {isa = PBXBuildFile; fileRef = B53680FD1744C44500249BC7 /* FUIAlertView.m */; };
 		B53681131744C44500249BC7 /* FUIButton.m in Sources */ = {isa = PBXBuildFile; fileRef = B53680FF1744C44500249BC7 /* FUIButton.m */; };
 		B53681141744C44500249BC7 /* FUISwitch.m in Sources */ = {isa = PBXBuildFile; fileRef = B53681011744C44500249BC7 /* FUISwitch.m */; };
@@ -340,10 +338,6 @@
 		B5BC457E16BEE28900434848 /* NSString+FontAwesome.m in Sources */ = {isa = PBXBuildFile; fileRef = B5BC457D16BEE28900434848 /* NSString+FontAwesome.m */; };
 		B5BC458116BEE55100434848 /* MasterControllerCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B5BC458016BEE55100434848 /* MasterControllerCell.m */; };
 		B5BC458316BEE56000434848 /* MasterControllerCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B5BC458216BEE56000434848 /* MasterControllerCell.xib */; };
-		B5C61303172469420039FDD5 /* Underscore+Functional.m in Sources */ = {isa = PBXBuildFile; fileRef = B5C612FA172469420039FDD5 /* Underscore+Functional.m */; };
-		B5C61304172469420039FDD5 /* Underscore.m in Sources */ = {isa = PBXBuildFile; fileRef = B5C612FD172469420039FDD5 /* Underscore.m */; };
-		B5C61305172469420039FDD5 /* USArrayWrapper.m in Sources */ = {isa = PBXBuildFile; fileRef = B5C612FF172469420039FDD5 /* USArrayWrapper.m */; };
-		B5C61306172469420039FDD5 /* USDictionaryWrapper.m in Sources */ = {isa = PBXBuildFile; fileRef = B5C61302172469420039FDD5 /* USDictionaryWrapper.m */; };
 		B5C6130B17250BEE0039FDD5 /* eventActor.html in Resources */ = {isa = PBXBuildFile; fileRef = B5C6130A17250BEE0039FDD5 /* eventActor.html */; };
 		B5C6130D17250C310039FDD5 /* eventAction.html in Resources */ = {isa = PBXBuildFile; fileRef = B5C6130C17250C310039FDD5 /* eventAction.html */; };
 		B5C6130F1725174F0039FDD5 /* newsfeed.html in Resources */ = {isa = PBXBuildFile; fileRef = B5C6130E1725174F0039FDD5 /* newsfeed.html */; };
@@ -526,10 +520,6 @@
 		B51FCB251723C025003A75A6 /* CommitViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CommitViewController.h; sourceTree = "<group>"; };
 		B51FCB261723C025003A75A6 /* CommitViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CommitViewController.m; sourceTree = "<group>"; };
 		B51FCB271723C025003A75A6 /* CommitViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CommitViewController.xib; sourceTree = "<group>"; };
-		B52AEB20182E2E5500E536DC /* PXAlertView+Customization.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "PXAlertView+Customization.h"; sourceTree = "<group>"; };
-		B52AEB21182E2E5500E536DC /* PXAlertView+Customization.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "PXAlertView+Customization.m"; sourceTree = "<group>"; };
-		B52AEB22182E2E5500E536DC /* PXAlertView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PXAlertView.h; sourceTree = "<group>"; };
-		B52AEB23182E2E5500E536DC /* PXAlertView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PXAlertView.m; sourceTree = "<group>"; };
 		B53680FC1744C44500249BC7 /* FUIAlertView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FUIAlertView.h; sourceTree = "<group>"; };
 		B53680FD1744C44500249BC7 /* FUIAlertView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FUIAlertView.m; sourceTree = "<group>"; };
 		B53680FE1744C44500249BC7 /* FUIButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FUIButton.h; sourceTree = "<group>"; };
@@ -865,16 +855,6 @@
 		B5BC457F16BEE55100434848 /* MasterControllerCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MasterControllerCell.h; sourceTree = "<group>"; };
 		B5BC458016BEE55100434848 /* MasterControllerCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MasterControllerCell.m; sourceTree = "<group>"; };
 		B5BC458216BEE56000434848 /* MasterControllerCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MasterControllerCell.xib; sourceTree = "<group>"; };
-		B5C612F9172469420039FDD5 /* Underscore+Functional.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Underscore+Functional.h"; sourceTree = "<group>"; };
-		B5C612FA172469420039FDD5 /* Underscore+Functional.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "Underscore+Functional.m"; sourceTree = "<group>"; };
-		B5C612FB172469420039FDD5 /* Underscore-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Underscore-Prefix.pch"; sourceTree = "<group>"; };
-		B5C612FC172469420039FDD5 /* Underscore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Underscore.h; sourceTree = "<group>"; };
-		B5C612FD172469420039FDD5 /* Underscore.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Underscore.m; sourceTree = "<group>"; };
-		B5C612FE172469420039FDD5 /* USArrayWrapper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = USArrayWrapper.h; sourceTree = "<group>"; };
-		B5C612FF172469420039FDD5 /* USArrayWrapper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = USArrayWrapper.m; sourceTree = "<group>"; };
-		B5C61300172469420039FDD5 /* USConstants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = USConstants.h; sourceTree = "<group>"; };
-		B5C61301172469420039FDD5 /* USDictionaryWrapper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = USDictionaryWrapper.h; sourceTree = "<group>"; };
-		B5C61302172469420039FDD5 /* USDictionaryWrapper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = USDictionaryWrapper.m; sourceTree = "<group>"; };
 		B5C6130A17250BEE0039FDD5 /* eventActor.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = eventActor.html; sourceTree = "<group>"; };
 		B5C6130C17250C310039FDD5 /* eventAction.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = eventAction.html; sourceTree = "<group>"; };
 		B5C6130E1725174F0039FDD5 /* newsfeed.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = newsfeed.html; sourceTree = "<group>"; };
@@ -1166,17 +1146,6 @@
 			path = Commit;
 			sourceTree = "<group>";
 		};
-		B52AEB1F182E2E5500E536DC /* PXAlertView */ = {
-			isa = PBXGroup;
-			children = (
-				B52AEB20182E2E5500E536DC /* PXAlertView+Customization.h */,
-				B52AEB21182E2E5500E536DC /* PXAlertView+Customization.m */,
-				B52AEB22182E2E5500E536DC /* PXAlertView.h */,
-				B52AEB23182E2E5500E536DC /* PXAlertView.m */,
-			);
-			path = PXAlertView;
-			sourceTree = "<group>";
-		};
 		B53680FB1744C43500249BC7 /* FlatUI */ = {
 			isa = PBXGroup;
 			children = (
@@ -1294,7 +1263,6 @@
 			children = (
 				B5C818791735E64E00FF26AB /* Default-Landscape@2x~ipad.png */,
 				B5C818771735E64500FF26AB /* Default-Landscape~ipad.png */,
-				B5C612F8172469420039FDD5 /* Underscore */,
 				B54603BB16C37B5F007D4FB3 /* icon@2x.png */,
 				B54603B916C37B13007D4FB3 /* icon.png */,
 				B546038316C0FFA8007D4FB3 /* SDWebImage */,
@@ -1439,7 +1407,6 @@
 				B53680FB1744C43500249BC7 /* FlatUI */,
 				B54603CB16C4D0DD007D4FB3 /* MBProgressHUD.m */,
 				B5D8D78C173DFC7C00B68FA2 /* NSData+Base64.m */,
-				B52AEB1F182E2E5500E536DC /* PXAlertView */,
 				B5D8D78D173DFC7C00B68FA2 /* NSData+Base64.h */,
 				B55D90F416B7ABE2009CB90F /* AppConfig.m */,
 				B55D90F616B7AC11009CB90F /* AppInitialization.h */,
@@ -1768,23 +1735,6 @@
 				B59D1EF41797B5100063DC44 /* punch_card.html */,
 			);
 			path = Html;
-			sourceTree = "<group>";
-		};
-		B5C612F8172469420039FDD5 /* Underscore */ = {
-			isa = PBXGroup;
-			children = (
-				B5C612F9172469420039FDD5 /* Underscore+Functional.h */,
-				B5C612FA172469420039FDD5 /* Underscore+Functional.m */,
-				B5C612FB172469420039FDD5 /* Underscore-Prefix.pch */,
-				B5C612FC172469420039FDD5 /* Underscore.h */,
-				B5C612FD172469420039FDD5 /* Underscore.m */,
-				B5C612FE172469420039FDD5 /* USArrayWrapper.h */,
-				B5C612FF172469420039FDD5 /* USArrayWrapper.m */,
-				B5C61300172469420039FDD5 /* USConstants.h */,
-				B5C61301172469420039FDD5 /* USDictionaryWrapper.h */,
-				B5C61302172469420039FDD5 /* USDictionaryWrapper.m */,
-			);
-			path = Underscore;
 			sourceTree = "<group>";
 		};
 		B5C6130917250BB90039FDD5 /* templates */ = {
@@ -2192,7 +2142,6 @@
 				B542276E16D06A3D0020F300 /* UserSearchResultCell.m in Sources */,
 				B54F69E316D2F69C00978DD9 /* Notification.m in Sources */,
 				B54F69EB16D2FB3600978DD9 /* NotificationCell.m in Sources */,
-				B52AEB24182E2E5500E536DC /* PXAlertView+Customization.m in Sources */,
 				B54F69F116D30B5400978DD9 /* ForkEvent.m in Sources */,
 				B54F69F416D30E5100978DD9 /* WatchEvent.m in Sources */,
 				B54F69F716D30F3000978DD9 /* CreateEvent.m in Sources */,
@@ -2249,10 +2198,6 @@
 				B5A1049B1723C4D300487A47 /* SearchViewController.m in Sources */,
 				B5A1049D1723C4D300487A47 /* WebsiteViewController.m in Sources */,
 				B5A104A21723C57A00487A47 /* EditProfileViewController.m in Sources */,
-				B5C61303172469420039FDD5 /* Underscore+Functional.m in Sources */,
-				B5C61304172469420039FDD5 /* Underscore.m in Sources */,
-				B5C61305172469420039FDD5 /* USArrayWrapper.m in Sources */,
-				B5C61306172469420039FDD5 /* USDictionaryWrapper.m in Sources */,
 				B5C613131727AC740039FDD5 /* NewGistViewController.m in Sources */,
 				B5C61318172BA05E0039FDD5 /* LoadingViewController.m in Sources */,
 				B5845773172DC72A00DB13B7 /* CurrentUserManager.m in Sources */,
@@ -2284,7 +2229,6 @@
 				B5A72FEE174969E8004F73FB /* UITableViewCell+Customizations.m in Sources */,
 				B5A72FF117498071004F73FB /* CustomCellBackgroundView.m in Sources */,
 				B5A72FF417499CDD004F73FB /* DTCustomColoredAccessory.m in Sources */,
-				B52AEB25182E2E5500E536DC /* PXAlertView.m in Sources */,
 				B501D937174F36B600D947E9 /* AccountViewController.m in Sources */,
 				B501D93C1751B01C00D947E9 /* NewIssueViewController.m in Sources */,
 				B5864B77177FC8800056B0DE /* SAMBadgeView.m in Sources */,
