@@ -274,21 +274,24 @@ static char UIScrollViewPullToRefreshView;
         CGFloat margin = 10;
         CGFloat marginY = 2;
         CGFloat labelMaxWidth = self.bounds.size.width - margin - leftViewWidth;
-        
+
         self.titleLabel.text = [self.titles objectAtIndex:self.state];
-        
+
         NSString *subtitle = [self.subtitles objectAtIndex:self.state];
         self.subtitleLabel.text = subtitle.length > 0 ? subtitle : nil;
-        
-        
-        CGSize titleSize = [self.titleLabel.text sizeWithFont:self.titleLabel.font
-                                            constrainedToSize:CGSizeMake(labelMaxWidth,self.titleLabel.font.lineHeight)
-                                                lineBreakMode:self.titleLabel.lineBreakMode];
-        
-        
-        CGSize subtitleSize = [self.subtitleLabel.text sizeWithFont:self.subtitleLabel.font
-                                                  constrainedToSize:CGSizeMake(labelMaxWidth,self.subtitleLabel.font.lineHeight)
-                                                      lineBreakMode:self.subtitleLabel.lineBreakMode];
+
+        CGRect titleRect = [self.titleLabel.text boundingRectWithSize:CGSizeMake(labelMaxWidth,self.titleLabel.font.lineHeight)
+                                                              options:nil
+                                                           attributes:@{NSFontAttributeName: self.titleLabel.font}
+                                                              context:nil];
+
+        CGRect subtitleRect = [self.subtitleLabel.text boundingRectWithSize:CGSizeMake(labelMaxWidth,self.subtitleLabel.font.lineHeight)
+                                                                    options:nil
+                                                                 attributes:@{NSFontAttributeName: self.subtitleLabel.font}
+                                                                    context:nil];
+
+        CGSize titleSize = titleRect.size;
+        CGSize subtitleSize = subtitleRect.size;
         
         CGFloat maxLabelWidth = MAX(titleSize.width,subtitleSize.width);
         
