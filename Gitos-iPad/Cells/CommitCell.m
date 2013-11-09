@@ -46,6 +46,7 @@
     shaLabel.badgeColor = [UIColor silverColor];
     shaLabel.cornerRadius = 4.0;
     [self addSubview:shaLabel];
+    [self defineHighlightedColorsForLabels:@[shaLabel]];
 }
 
 @end

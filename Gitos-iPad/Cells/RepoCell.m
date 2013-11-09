@@ -94,6 +94,7 @@
 
     descriptionLabel.text = [repo getDescription];
     [self defineAccessoryType];
+    [self defineHighlightedColorsForLabels:@[forkLabel, starLabel, forkIconLabel, starIconLabel, fontAwesomeLabel]];
 }
 
 @end

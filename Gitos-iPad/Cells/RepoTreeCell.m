@@ -40,6 +40,7 @@
 
     nameLabel.text = [node getPath];
     [self defineAccessoryType];
+    [self defineHighlightedColorsForLabels:@[iconLabel, nameLabel]];
 }
 
 @end

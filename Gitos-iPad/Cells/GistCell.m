@@ -37,6 +37,7 @@
     gistDescription.text  = [gist getDescription];
     gistCreatedAt.text    = [gist getCreatedAt];
     [self defineAccessoryType];
+    [self defineHighlightedColorsForLabels:@[fontAwesomeLabel, gistName, gistDescription, gistCreatedAt]];
 }
 
 @end

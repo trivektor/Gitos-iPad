@@ -54,10 +54,23 @@
 
 - (void)defineAccessoryType
 {
-    DTCustomColoredAccessory *accessory = [DTCustomColoredAccessory accessoryWithColor:[UIColor asbestosColor]];
-    accessory.highlightedColor = [UIColor asbestosColor];
+    UIColor *color = [UIColor peterRiverColor];
+    DTCustomColoredAccessory *accessory = [DTCustomColoredAccessory accessoryWithColor:color];
+    accessory.highlightedColor = [UIColor whiteColor];
     self.accessoryView = accessory;
     self.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+}
+
+- (void)defineHighlightedColorsForLabels:(NSArray *)labels
+{
+    UIColor *whiteColor = [UIColor whiteColor];
+
+    for (int i=0; i < labels.count; i++) {
+        ((UILabel *)labels[i]).highlightedTextColor = whiteColor;
+    }
+
+    self.selectedBackgroundView = [[UIView alloc] initWithFrame:self.bounds];
+    self.selectedBackgroundView.backgroundColor = [UIColor peterRiverColor];
 }
 
 @end

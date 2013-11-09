@@ -13,5 +13,6 @@
 - (void)defineSelectedColor:(UIColor *)color;
 - (void)defineSelectedColor:(UIColor *)color forRowAtIndexPath:(NSIndexPath *)indexPath withTotalRows:(int)rows;
 - (void)defineAccessoryType;
+- (void)defineHighlightedColorsForLabels:(NSArray *)labels;
 
 @end
