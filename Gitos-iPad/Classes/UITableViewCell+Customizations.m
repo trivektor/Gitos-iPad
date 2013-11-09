@@ -67,6 +67,7 @@
 
     if (labels.count == 0) {
         if (self.textLabel) self.textLabel.highlightedTextColor = whiteColor;
+        if (self.detailTextLabel) self.detailTextLabel.highlightedTextColor = whiteColor;
     } else {
         for (int i=0; i < labels.count; i++) {
             if ([labels[i] isKindOfClass:[UILabel class]]) {

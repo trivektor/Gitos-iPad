@@ -165,10 +165,10 @@
 
 - (void)displayUserNewsFeed:(NSNotification *)notication
 {
+    [MRProgressOverlayView dismissOverlayForView:self.view animated:NO];
     [newsFeed addObjectsFromArray:notication.object];
     [newsFeedTable.pullToRefreshView stopAnimating];
     [newsFeedTable reloadData];
-    [MRProgressOverlayView dismissOverlayForView:self.view animated:NO];
 }
 
 - (void)setupPullToRefresh

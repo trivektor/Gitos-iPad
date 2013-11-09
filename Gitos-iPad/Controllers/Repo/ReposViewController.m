@@ -39,6 +39,7 @@
     [self registerNib];
     [self registerEvents];
     [self getUserRepos];
+    [MRProgressOverlayView showOverlayAddedTo:self.view animated:YES];
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -95,9 +96,9 @@
 
 - (void)displayUserRepos:(NSNotification *)notification
 {
+    [MRProgressOverlayView dismissOverlayForView:self.view animated:NO];
     [repos addObjectsFromArray:notification.object];
     [reposTable reloadData];
-    [MRProgressOverlayView dismissOverlayForView:self.view animated:NO];
 }
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView

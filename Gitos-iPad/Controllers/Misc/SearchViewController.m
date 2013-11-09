@@ -97,7 +97,8 @@
 
     cell.textLabel.font       = [UIFont fontWithName:@"HelveticaNeue-Light" size:14.0];
     cell.detailTextLabel.font = [UIFont fontWithName:@"HelveticaNeue-Thin" size:13.0];
-    cell.accessoryType        = UITableViewCellAccessoryDisclosureIndicator;
+    [cell defineAccessoryType];
+    [cell defineHighlightedColorsForLabels:@[]];
 
     NSObject *object = [results objectAtIndex:indexPath.row];
 
@@ -204,10 +205,10 @@
              [results addObject:[[Repo alloc] initWithData:[repos objectAtIndex:i]]];
          }
 
+         [MRProgressOverlayView dismissOverlayForView:self.view animated:NO];
          [resultsTable reloadData];
          [resultsTable scrollRectToVisible:CGRectMake(0, 0, 1, 1) animated:YES];
          [searchBar resignFirstResponder];
-         [MRProgressOverlayView dismissOverlayForView:self.view animated:NO];
      }
      failure:^(AFHTTPRequestOperation *operation, NSError *error) {
          NSLog(@"%@", error);
@@ -215,7 +216,6 @@
      }];
 
     [operation start];
-    [MRProgressOverlayView showOverlayAddedTo:self.view animated:NO];
 }
 
 - (BOOL)searchBarShouldBeginEditing:(UISearchBar *)_searchBar

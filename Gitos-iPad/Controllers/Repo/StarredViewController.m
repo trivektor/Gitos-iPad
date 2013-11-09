@@ -42,6 +42,7 @@
     [self registerEvents];
     [self setupPullToRefresh];
     [user fetchStarredReposForPage:currentPage++];
+    [MRProgressOverlayView showOverlayAddedTo:self.view animated:YES];
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -73,10 +74,10 @@
 
 - (void)displayStarredRepos:(NSNotification *)notification
 {
+    [MRProgressOverlayView dismissOverlayForView:self.view animated:NO];
+    [starredReposTable.pullToRefreshView stopAnimating];
     [starredRepos addObjectsFromArray:notification.object];
     [starredReposTable reloadData];
-    [starredReposTable.pullToRefreshView stopAnimating];
-    [MRProgressOverlayView dismissOverlayForView:self.view animated:NO];
 }
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView

@@ -43,7 +43,7 @@
     titleLabel.text       = [notification getTitle];
     updatedAtLabel.text   = [notification getUpdatedAt];
     [self defineAccessoryType];
-    [self defineHighlightedColorsForLabels:@[]];
+    [self defineHighlightedColorsForLabels:@[fontAwesomeLabel, titleLabel, updatedAtLabel]];
 }
 
 @end
