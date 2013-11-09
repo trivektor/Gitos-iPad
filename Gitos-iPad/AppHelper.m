@@ -37,25 +37,21 @@
 
 + (void)flashAlert:(NSString *)message inView:(UIView *)view
 {
-    [YRDropdownView showDropdownInView:view
-                                 title:@"Alert"
-                                detail:message
-                                 image:[UIImage imageNamed:@"glyphicons_198_ok.png"]
-                             textColor:[UIColor whiteColor]
-                       backgroundColor:[UIColor colorWithRed:87/255.0 green:153/255.0 blue:38/255.0 alpha:1.0]
-                              animated:YES
-                             hideAfter:HIDE_AFTER];
+    [PXAlertView showAlertWithTitle:@"Alert"
+                            message:message
+                        cancelTitle:nil
+                         otherTitle:nil
+                         completion:nil];
 }
 
 + (void)flashError:(NSString *)message inView:(UIView *)view
 {
-    [YRDropdownView showDropdownInView:view
-                                 title:@"Error"
-                                detail:message
-                                 image:[UIImage imageNamed:@"glyphicons_078_warning_sign.png"]
-                             textColor:[UIColor colorWithRed:186/255.0 green:12/255.0 blue:12/255.0 alpha:1.0] backgroundColor:[UIColor whiteColor]
-                              animated:YES
-                             hideAfter:HIDE_AFTER];
+    [PXAlertView showAlertWithTitle:@"Error"
+                            message:message
+                        cancelTitle:nil
+                         otherTitle:nil
+                         completion:nil];
+
 }
 
 + (NSURL *)prepUrlForApiCall:(NSString *)endpoint

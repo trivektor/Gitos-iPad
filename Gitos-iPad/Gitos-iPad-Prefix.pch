@@ -35,7 +35,6 @@
     #import "Contribution.h"
     #import "CommitActivity.h"
     #import "Readme.h"
-    #import "YRDropdownView.h"
     #import "AppHelper.h"
     #import "GitosViewController.h"
     #import "CurrentUserManager.h"
@@ -47,4 +46,6 @@
     #import "UITableViewCell+Customizations.h"
     #import "DTCustomColoredAccessory.h"
     #import "MRProgress.h"
+    #import "PXAlertView.h"
+    #import "PXAlertView+Customization.h"
 #endif

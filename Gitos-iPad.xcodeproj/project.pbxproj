@@ -128,6 +128,8 @@
 		B51FCB291723C025003A75A6 /* CommitsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B51FCB241723C025003A75A6 /* CommitsViewController.xib */; };
 		B51FCB2A1723C025003A75A6 /* CommitViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B51FCB261723C025003A75A6 /* CommitViewController.m */; };
 		B51FCB2B1723C025003A75A6 /* CommitViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B51FCB271723C025003A75A6 /* CommitViewController.xib */; };
+		B52AEB24182E2E5500E536DC /* PXAlertView+Customization.m in Sources */ = {isa = PBXBuildFile; fileRef = B52AEB21182E2E5500E536DC /* PXAlertView+Customization.m */; };
+		B52AEB25182E2E5500E536DC /* PXAlertView.m in Sources */ = {isa = PBXBuildFile; fileRef = B52AEB23182E2E5500E536DC /* PXAlertView.m */; };
 		B53681121744C44500249BC7 /* FUIAlertView.m in Sources */ = {isa = PBXBuildFile; fileRef = B53680FD1744C44500249BC7 /* FUIAlertView.m */; };
 		B53681131744C44500249BC7 /* FUIButton.m in Sources */ = {isa = PBXBuildFile; fileRef = B53680FF1744C44500249BC7 /* FUIButton.m */; };
 		B53681141744C44500249BC7 /* FUISwitch.m in Sources */ = {isa = PBXBuildFile; fileRef = B53681011744C44500249BC7 /* FUISwitch.m */; };
@@ -264,7 +266,6 @@
 		B574CF3616FFAAA00077D353 /* sons-of-obsidian.css in Resources */ = {isa = PBXBuildFile; fileRef = B574CF3216FFAAA00077D353 /* sons-of-obsidian.css */; };
 		B574CF3716FFAAA00077D353 /* sunburst.css in Resources */ = {isa = PBXBuildFile; fileRef = B574CF3316FFAAA00077D353 /* sunburst.css */; };
 		B574CF3916FFB28C0077D353 /* doxy.css in Resources */ = {isa = PBXBuildFile; fileRef = B574CF3816FFB28C0077D353 /* doxy.css */; };
-		B57E39AA16FE5CBB006C2BD1 /* YRDropdownView.m in Sources */ = {isa = PBXBuildFile; fileRef = B57E39A916FE5CBB006C2BD1 /* YRDropdownView.m */; };
 		B5836C90170BFCA40012CC61 /* AppHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = B5836C8F170BFCA40012CC61 /* AppHelper.m */; };
 		B5836C961710C8B60012CC61 /* RepoTreeCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B5836C951710C8B60012CC61 /* RepoTreeCell.m */; };
 		B5836C981710C8C90012CC61 /* RepoTreeCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B5836C971710C8C90012CC61 /* RepoTreeCell.xib */; };
@@ -525,6 +526,10 @@
 		B51FCB251723C025003A75A6 /* CommitViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CommitViewController.h; sourceTree = "<group>"; };
 		B51FCB261723C025003A75A6 /* CommitViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CommitViewController.m; sourceTree = "<group>"; };
 		B51FCB271723C025003A75A6 /* CommitViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CommitViewController.xib; sourceTree = "<group>"; };
+		B52AEB20182E2E5500E536DC /* PXAlertView+Customization.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "PXAlertView+Customization.h"; sourceTree = "<group>"; };
+		B52AEB21182E2E5500E536DC /* PXAlertView+Customization.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "PXAlertView+Customization.m"; sourceTree = "<group>"; };
+		B52AEB22182E2E5500E536DC /* PXAlertView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PXAlertView.h; sourceTree = "<group>"; };
+		B52AEB23182E2E5500E536DC /* PXAlertView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PXAlertView.m; sourceTree = "<group>"; };
 		B53680FC1744C44500249BC7 /* FUIAlertView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FUIAlertView.h; sourceTree = "<group>"; };
 		B53680FD1744C44500249BC7 /* FUIAlertView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FUIAlertView.m; sourceTree = "<group>"; };
 		B53680FE1744C44500249BC7 /* FUIButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FUIButton.h; sourceTree = "<group>"; };
@@ -748,8 +753,6 @@
 		B574CF3216FFAAA00077D353 /* sons-of-obsidian.css */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.css; path = "sons-of-obsidian.css"; sourceTree = "<group>"; };
 		B574CF3316FFAAA00077D353 /* sunburst.css */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.css; path = sunburst.css; sourceTree = "<group>"; };
 		B574CF3816FFB28C0077D353 /* doxy.css */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.css; path = doxy.css; sourceTree = "<group>"; };
-		B57E39A816FE5CBB006C2BD1 /* YRDropdownView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YRDropdownView.h; sourceTree = "<group>"; };
-		B57E39A916FE5CBB006C2BD1 /* YRDropdownView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YRDropdownView.m; sourceTree = "<group>"; };
 		B5836C8E170BFCA40012CC61 /* AppHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppHelper.h; sourceTree = "<group>"; };
 		B5836C8F170BFCA40012CC61 /* AppHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppHelper.m; sourceTree = "<group>"; };
 		B5836C941710C8B60012CC61 /* RepoTreeCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RepoTreeCell.h; sourceTree = "<group>"; };
@@ -1163,6 +1166,17 @@
 			path = Commit;
 			sourceTree = "<group>";
 		};
+		B52AEB1F182E2E5500E536DC /* PXAlertView */ = {
+			isa = PBXGroup;
+			children = (
+				B52AEB20182E2E5500E536DC /* PXAlertView+Customization.h */,
+				B52AEB21182E2E5500E536DC /* PXAlertView+Customization.m */,
+				B52AEB22182E2E5500E536DC /* PXAlertView.h */,
+				B52AEB23182E2E5500E536DC /* PXAlertView.m */,
+			);
+			path = PXAlertView;
+			sourceTree = "<group>";
+		};
 		B53680FB1744C43500249BC7 /* FlatUI */ = {
 			isa = PBXGroup;
 			children = (
@@ -1281,7 +1295,6 @@
 				B5C818791735E64E00FF26AB /* Default-Landscape@2x~ipad.png */,
 				B5C818771735E64500FF26AB /* Default-Landscape~ipad.png */,
 				B5C612F8172469420039FDD5 /* Underscore */,
-				B57E39A716FE5CBB006C2BD1 /* YRDropdownView */,
 				B54603BB16C37B5F007D4FB3 /* icon@2x.png */,
 				B54603B916C37B13007D4FB3 /* icon.png */,
 				B546038316C0FFA8007D4FB3 /* SDWebImage */,
@@ -1426,6 +1439,7 @@
 				B53680FB1744C43500249BC7 /* FlatUI */,
 				B54603CB16C4D0DD007D4FB3 /* MBProgressHUD.m */,
 				B5D8D78C173DFC7C00B68FA2 /* NSData+Base64.m */,
+				B52AEB1F182E2E5500E536DC /* PXAlertView */,
 				B5D8D78D173DFC7C00B68FA2 /* NSData+Base64.h */,
 				B55D90F416B7ABE2009CB90F /* AppConfig.m */,
 				B55D90F616B7AC11009CB90F /* AppInitialization.h */,
@@ -1552,15 +1566,6 @@
 				B574CF3816FFB28C0077D353 /* doxy.css */,
 			);
 			path = prettify_themes;
-			sourceTree = "<group>";
-		};
-		B57E39A716FE5CBB006C2BD1 /* YRDropdownView */ = {
-			isa = PBXGroup;
-			children = (
-				B57E39A816FE5CBB006C2BD1 /* YRDropdownView.h */,
-				B57E39A916FE5CBB006C2BD1 /* YRDropdownView.m */,
-			);
-			path = YRDropdownView;
 			sourceTree = "<group>";
 		};
 		B5836C8D170BFC870012CC61 /* Helpers */ = {
@@ -2187,6 +2192,7 @@
 				B542276E16D06A3D0020F300 /* UserSearchResultCell.m in Sources */,
 				B54F69E316D2F69C00978DD9 /* Notification.m in Sources */,
 				B54F69EB16D2FB3600978DD9 /* NotificationCell.m in Sources */,
+				B52AEB24182E2E5500E536DC /* PXAlertView+Customization.m in Sources */,
 				B54F69F116D30B5400978DD9 /* ForkEvent.m in Sources */,
 				B54F69F416D30E5100978DD9 /* WatchEvent.m in Sources */,
 				B54F69F716D30F3000978DD9 /* CreateEvent.m in Sources */,
@@ -2204,7 +2210,6 @@
 				B54F6A1516D31DDC00978DD9 /* GollumEvent.m in Sources */,
 				B511D44216DAF68200DD0ED5 /* DeleteEvent.m in Sources */,
 				B511D44C16DB36B000DD0ED5 /* PullRequest.m in Sources */,
-				B57E39AA16FE5CBB006C2BD1 /* YRDropdownView.m in Sources */,
 				B569D0D216FE6F0F002216DD /* Authorization.m in Sources */,
 				B569D0D516FE7923002216DD /* GitosConstants.m in Sources */,
 				B5836C90170BFCA40012CC61 /* AppHelper.m in Sources */,
@@ -2279,6 +2284,7 @@
 				B5A72FEE174969E8004F73FB /* UITableViewCell+Customizations.m in Sources */,
 				B5A72FF117498071004F73FB /* CustomCellBackgroundView.m in Sources */,
 				B5A72FF417499CDD004F73FB /* DTCustomColoredAccessory.m in Sources */,
+				B52AEB25182E2E5500E536DC /* PXAlertView.m in Sources */,
 				B501D937174F36B600D947E9 /* AccountViewController.m in Sources */,
 				B501D93C1751B01C00D947E9 /* NewIssueViewController.m in Sources */,
 				B5864B77177FC8800056B0DE /* SAMBadgeView.m in Sources */,
