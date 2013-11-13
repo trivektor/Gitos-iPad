@@ -33,7 +33,7 @@
 
 - (void)performHouseKeepingTasks
 {
-    self.navigationItem.title = [NSString stringWithFormat:@"%@'s contributions", [self.user getLogin]];
+    self.navigationItem.title = [NSString stringWithFormat:@"%@'s Contributions", [self.user getLogin]];
 }
 
 - (void)fetchContributions

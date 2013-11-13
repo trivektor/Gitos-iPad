@@ -45,7 +45,7 @@
     // Override point for customization after application launch.
     self.window.backgroundColor = [UIColor whiteColor];
 
-    [[UINavigationBar appearance] setTitleTextAttributes:@{NSForegroundColorAttributeName: [UIColor alizarinColor], NSFontAttributeName: [UIFont fontWithName:@"HelveticaNeue-Light" size:21.0]}];
+    [[UINavigationBar appearance] setTitleTextAttributes:@{NSForegroundColorAttributeName: [UIColor alizarinColor], NSFontAttributeName: [UIFont fontWithName:@"HelveticaNeue" size:21.0]}];
 
     [self.window makeKeyAndVisible];
     [self validateAuthenticationToken];

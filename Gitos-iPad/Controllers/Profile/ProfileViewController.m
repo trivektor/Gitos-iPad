@@ -130,7 +130,7 @@
 {
     user = notification.object;
 
-    self.navigationItem.title = [user getLogin];
+    self.navigationItem.title = [NSString stringWithFormat:@"%@'s Profile", [user getLogin]];
     
     [self displayUsernameAndAvatar];
 
