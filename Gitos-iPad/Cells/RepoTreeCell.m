@@ -30,12 +30,12 @@
 
 - (void)render
 {
-    iconLabel.font = [UIFont fontWithName:kFontAwesomeFamilyName size:19];
+    iconLabel.font = [UIFont fontWithName:kFontAwesomeFamilyName size:15.0];
 
     if ([node isTree]) {
         iconLabel.text      = [NSString fontAwesomeIconStringForIconIdentifier:@"icon-folder-close"];
     } else if ([node isBlob]) {
-        iconLabel.text      = [NSString fontAwesomeIconStringForIconIdentifier:@"icon-file"];
+        iconLabel.text      = [NSString fontAwesomeIconStringForIconIdentifier:@"icon-file-alt"];
     }
 
     nameLabel.text = [node getPath];

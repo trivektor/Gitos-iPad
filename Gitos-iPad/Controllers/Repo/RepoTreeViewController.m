@@ -51,12 +51,13 @@
         self.navigationItem.title = [node getPath];
     }
 
-    UIBarButtonItem *commitButton = [[UIBarButtonItem alloc] initWithTitle:[NSString fontAwesomeIconStringForIconIdentifier:@"icon-cloud-upload"]
+    UIBarButtonItem *commitButton = [[UIBarButtonItem alloc] initWithTitle:[NSString fontAwesomeIconStringForIconIdentifier:@"icon-upload-alt"]
                                                                      style:UIBarButtonItemStyleBordered
                                                                     target:self
                                                                     action:@selector(showCommitForBranch)];
-
-    [commitButton setTitleTextAttributes:[NSDictionary dictionaryWithObjectsAndKeys:[UIFont fontWithName:kFontAwesomeFamilyName size:17], NSFontAttributeName, nil] forState:UIControlStateNormal];
+    [commitButton setTitleTextAttributes:@{
+        NSFontAttributeName: [UIFont fontWithName:kFontAwesomeFamilyName size:23]
+    } forState:UIControlStateNormal];
 
     [self.navigationItem setRightBarButtonItem:commitButton];
 

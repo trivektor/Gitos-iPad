@@ -291,11 +291,14 @@
         [actionOptions addButtonWithTitle:@"Delete"];
     }
 
-    UIBarButtonItem *actionsButton = [[UIBarButtonItem alloc] initWithTitle:@""
+    UIBarButtonItem *actionsButton = [[UIBarButtonItem new] initWithTitle:[NSString fontAwesomeIconStringForIconIdentifier:@"icon-share"]
                                                                       style:UIBarButtonItemStyleBordered
                                                                      target:self
                                                                      action:@selector(showAvailableActions)];
-    actionsButton.image = [UIImage imageNamed:@"211-action.png"];
+
+    [actionsButton setTitleTextAttributes:@{
+        NSFontAttributeName: [UIFont fontWithName:kFontAwesomeFamilyName size:23]
+    } forState:UIControlStateNormal];
     self.navigationItem.rightBarButtonItem = actionsButton;
 }
 

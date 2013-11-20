@@ -98,12 +98,14 @@
         // Raw file is an image
         [fileWebView loadRequest:self.rawFileRequest];
     } else if ([self.mimeType isEqualToString:@"text/plain"]) {
-        UIBarButtonItem *switchThemeButton = [[UIBarButtonItem alloc] initWithTitle:[NSString fontAwesomeIconStringForIconIdentifier:@"icon-magic"]
+        UIBarButtonItem *switchThemeButton = [[UIBarButtonItem alloc] initWithTitle:[NSString fontAwesomeIconStringForIconIdentifier:@"icon-share"]
                                                                               style:UIBarButtonItemStyleBordered
                                                                              target:self
                                                                              action:@selector(switchTheme)];
 
-        [switchThemeButton setTitleTextAttributes:[NSDictionary dictionaryWithObjectsAndKeys:[UIFont fontWithName:kFontAwesomeFamilyName size:17], NSFontAttributeName, nil] forState:UIControlStateNormal];
+        [switchThemeButton setTitleTextAttributes:@{
+            NSFontAttributeName:[UIFont fontWithName:kFontAwesomeFamilyName size:23]
+        } forState:UIControlStateNormal];
 
         self.navigationItem.rightBarButtonItem = switchThemeButton;
 
