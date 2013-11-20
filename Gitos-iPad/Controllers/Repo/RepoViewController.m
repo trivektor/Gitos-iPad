@@ -13,6 +13,7 @@
 #import "RepoTreeViewController.h"
 #import "RepoLanguagesViewController.h"
 #import "ReadmeViewController.h"
+#import "RepoCodeSearchViewController.h"
 #import "NSTimer+Blocks.h"
 #import "TDSemiModal.h"
 
@@ -285,7 +286,7 @@
                                                 delegate:self
                                        cancelButtonTitle:nil
                                   destructiveButtonTitle:nil
-                                       otherButtonTitles:starOption, @"Fork", @"View on Github", nil];
+                                       otherButtonTitles:starOption, @"Fork", @"View on Github", @"Search This Repository", nil];
 
     if ([repo isDestroyable]) {
         [actionOptions addButtonWithTitle:@"Delete"];
@@ -320,7 +321,7 @@
                                                 delegate:self
                                        cancelButtonTitle:nil
                                   destructiveButtonTitle:nil
-                                       otherButtonTitles:starOption, @"View on Github", nil];
+                                       otherButtonTitles:starOption, @"View on Github", "Search This Repository", nil];
 
     if ([repo isDestroyable]) {
         [actionOptions addButtonWithTitle:@"Delete"];
@@ -346,9 +347,13 @@
         }
     } else if (buttonIndex != -1) {
         if ([[actionOptions buttonTitleAtIndex:buttonIndex] isEqualToString:@"View on Github"]) {
-            WebsiteViewController *websiteController = [[WebsiteViewController alloc] init];
+            WebsiteViewController *websiteController = [WebsiteViewController new];
             websiteController.requestedUrl = [repo getGithubUrl];
             [self.navigationController pushViewController:websiteController animated:YES];
+        } else if ([[actionOptions buttonTitleAtIndex:buttonIndex] isEqualToString:@"Search This Repository"]) {
+            RepoCodeSearchViewController *repoCodeSearchController = [RepoCodeSearchViewController new];
+            repoCodeSearchController.repo = repo;
+            [self.navigationController pushViewController:repoCodeSearchController animated:YES];
         } else if ([[actionOptions buttonTitleAtIndex:buttonIndex] isEqualToString:@"Delete"]) {
             [deleteConfirmation show];
         } else if ([[actionOptions buttonTitleAtIndex:buttonIndex] isEqualToString:@"Fork"]) {

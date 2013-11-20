@@ -350,6 +350,8 @@
 		B5C8187E1736506300FF26AB /* NewRepoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B5C8187C1736506300FF26AB /* NewRepoViewController.m */; };
 		B5C8187F1736506300FF26AB /* NewRepoViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B5C8187D1736506300FF26AB /* NewRepoViewController.xib */; };
 		B5C8188217365B3F00FF26AB /* PullRequestReviewCommentEvent.m in Sources */ = {isa = PBXBuildFile; fileRef = B5C8188117365B3F00FF26AB /* PullRequestReviewCommentEvent.m */; };
+		B5D4D754183C8C4D0050A1FE /* RepoCodeSearchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B5D4D752183C8C4D0050A1FE /* RepoCodeSearchViewController.m */; };
+		B5D4D755183C8C4D0050A1FE /* RepoCodeSearchViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B5D4D753183C8C4D0050A1FE /* RepoCodeSearchViewController.xib */; };
 		B5D8D787173DF77000B68FA2 /* ReadmeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B5D8D785173DF77000B68FA2 /* ReadmeViewController.m */; };
 		B5D8D788173DF77000B68FA2 /* ReadmeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B5D8D786173DF77000B68FA2 /* ReadmeViewController.xib */; };
 		B5D8D78B173DF81D00B68FA2 /* Readme.m in Sources */ = {isa = PBXBuildFile; fileRef = B5D8D78A173DF81D00B68FA2 /* Readme.m */; };
@@ -871,6 +873,9 @@
 		B5C8187D1736506300FF26AB /* NewRepoViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NewRepoViewController.xib; sourceTree = "<group>"; };
 		B5C8188017365B3F00FF26AB /* PullRequestReviewCommentEvent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PullRequestReviewCommentEvent.h; sourceTree = "<group>"; };
 		B5C8188117365B3F00FF26AB /* PullRequestReviewCommentEvent.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PullRequestReviewCommentEvent.m; sourceTree = "<group>"; };
+		B5D4D751183C8C4D0050A1FE /* RepoCodeSearchViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RepoCodeSearchViewController.h; sourceTree = "<group>"; };
+		B5D4D752183C8C4D0050A1FE /* RepoCodeSearchViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RepoCodeSearchViewController.m; sourceTree = "<group>"; };
+		B5D4D753183C8C4D0050A1FE /* RepoCodeSearchViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RepoCodeSearchViewController.xib; sourceTree = "<group>"; };
 		B5D8D784173DF77000B68FA2 /* ReadmeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ReadmeViewController.h; sourceTree = "<group>"; };
 		B5D8D785173DF77000B68FA2 /* ReadmeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ReadmeViewController.m; sourceTree = "<group>"; };
 		B5D8D786173DF77000B68FA2 /* ReadmeViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ReadmeViewController.xib; sourceTree = "<group>"; };
@@ -1616,6 +1621,9 @@
 				B59D1EF61797B6E00063DC44 /* RepoPunchCardViewController.h */,
 				B59D1EF71797B6E00063DC44 /* RepoPunchCardViewController.m */,
 				B59D1EF81797B6E00063DC44 /* RepoPunchCardViewController.xib */,
+				B5D4D751183C8C4D0050A1FE /* RepoCodeSearchViewController.h */,
+				B5D4D752183C8C4D0050A1FE /* RepoCodeSearchViewController.m */,
+				B5D4D753183C8C4D0050A1FE /* RepoCodeSearchViewController.xib */,
 			);
 			path = Repo;
 			sourceTree = "<group>";
@@ -1961,6 +1969,7 @@
 				B516544C16B7C1B9003F0DFA /* barButtonPressed@2x.png in Resources */,
 				B516544D16B7C1B9003F0DFA /* barButton.idraw in Resources */,
 				B516544E16B7C1B9003F0DFA /* barButton.svg in Resources */,
+				B5D4D755183C8C4D0050A1FE /* RepoCodeSearchViewController.xib in Resources */,
 				B516544F16B7C1B9003F0DFA /* barButtonBack.idraw in Resources */,
 				B516545016B7C1B9003F0DFA /* barButtonBack.svg in Resources */,
 				B516545116B7C1B9003F0DFA /* barButtonBackDisabled.idraw in Resources */,
@@ -2093,6 +2102,7 @@
 				B55D90DD16B7AA48009CB90F /* AFJSONRequestOperation.m in Sources */,
 				B55D90DE16B7AA48009CB90F /* AFJSONUtilities.m in Sources */,
 				B55D90DF16B7AA48009CB90F /* AFNetworkActivityIndicatorManager.m in Sources */,
+				B5D4D754183C8C4D0050A1FE /* RepoCodeSearchViewController.m in Sources */,
 				B55D90E016B7AA48009CB90F /* AFPropertyListRequestOperation.m in Sources */,
 				B55D90E116B7AA48009CB90F /* AFURLConnectionOperation.m in Sources */,
 				B55D90E216B7AA48009CB90F /* AFXMLRequestOperation.m in Sources */,
