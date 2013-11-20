@@ -138,11 +138,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Gitos-iPad/Controllers/Gist/NewGistViewController.m"
-            timestampString = "390714786.071245"
+            timestampString = "406611999.187504"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "112"
-            endingLineNumber = "112"
+            startingLineNumber = "113"
+            endingLineNumber = "113"
             landmarkName = "-handleServerResponse:"
             landmarkType = "5">
          </BreakpointContent>

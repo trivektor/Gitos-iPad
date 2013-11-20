@@ -48,7 +48,9 @@
 
     UIBarButtonItem *reloadButton = [[UIBarButtonItem alloc] initWithTitle:[NSString fontAwesomeIconStringForIconIdentifier:@"icon-repeat"] style:UIBarButtonItemStyleBordered target:self action:@selector(reloadActivities)];
 
-    [reloadButton setTitleTextAttributes:[NSDictionary dictionaryWithObjectsAndKeys:[UIFont fontWithName:kFontAwesomeFamilyName size:17], NSFontAttributeName, nil] forState:UIControlStateNormal];
+    [reloadButton setTitleTextAttributes:@{
+        NSFontAttributeName:[UIFont fontWithName:kFontAwesomeFamilyName size:20]
+    } forState:UIControlStateNormal];
 
     [self.navigationItem setRightBarButtonItem:reloadButton];
 }
@@ -114,9 +116,9 @@
 
 - (void)displayRecentActivity:(NSNotification *)notification
 {
+    [MRProgressOverlayView dismissOverlayForView:self.view animated:NO];
     [activities addObjectsFromArray:notification.object];
     [activityTable reloadData];
-    [MRProgressOverlayView dismissOverlayForView:self.view animated:NO];
 }
 
 - (void)reloadActivities
@@ -124,6 +126,7 @@
     currentPage = 1;
     [MRProgressOverlayView showOverlayAddedTo:self.view animated:NO];
     [activities removeAllObjects];
+    [user fetchRecentActivityForPage:currentPage++];
 }
 
 - (void)setupPullToRefresh

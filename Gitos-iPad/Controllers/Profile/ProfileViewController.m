@@ -330,12 +330,14 @@
 - (void)showEditButtonIfEditable
 {
     if (user.isMyself) {
-        UIBarButtonItem *editButton = [[UIBarButtonItem alloc] initWithTitle:[NSString fontAwesomeIconStringForIconIdentifier:@"icon-pencil"]
+        UIBarButtonItem *editButton = [[UIBarButtonItem alloc] initWithTitle:[NSString fontAwesomeIconStringForIconIdentifier:@"icon-edit"]
                                                                        style:UIBarButtonItemStyleBordered
                                                                       target:self
                                                                       action:@selector(editProfile)];
 
-        [editButton setTitleTextAttributes:[NSDictionary dictionaryWithObjectsAndKeys:[UIFont fontWithName:kFontAwesomeFamilyName size:17], NSFontAttributeName, nil] forState:UIControlStateNormal];
+        [editButton setTitleTextAttributes:@{
+            NSFontAttributeName: [UIFont fontWithName:kFontAwesomeFamilyName size:23]
+        } forState:UIControlStateNormal];
 
         [self.navigationItem setRightBarButtonItem:editButton];
     }

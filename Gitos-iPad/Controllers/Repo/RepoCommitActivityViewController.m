@@ -47,9 +47,9 @@
                                                                   style:UIBarButtonItemStyleBordered
                                                                  target:self
                                                                  action:@selector(displayCommitActivity)];
-
-    [reloadBtn setTitleTextAttributes:[NSDictionary dictionaryWithObjectsAndKeys:[UIFont fontWithName:kFontAwesomeFamilyName size:17], NSFontAttributeName, nil]
-                             forState:UIControlStateNormal];
+    [reloadBtn setTitleTextAttributes:@{
+        NSFontAttributeName:[UIFont fontWithName:kFontAwesomeFamilyName size:20]
+    } forState:UIControlStateNormal];
 
     [self.navigationItem setRightBarButtonItem:reloadBtn];
 }

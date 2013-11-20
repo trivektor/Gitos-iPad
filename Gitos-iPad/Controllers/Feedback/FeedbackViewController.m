@@ -36,7 +36,9 @@
                                                                     target:self
                                                                     action:@selector(sendFeedback)];
 
-    [submitButton setTitleTextAttributes:[NSDictionary dictionaryWithObjectsAndKeys:[UIFont fontWithName:kFontAwesomeFamilyName size:17], NSFontAttributeName, nil] forState:UIControlStateNormal];
+    [submitButton setTitleTextAttributes:@{
+        NSFontAttributeName: [UIFont fontWithName:kFontAwesomeFamilyName size:23]
+    } forState:UIControlStateNormal];
 
     [self.navigationItem setRightBarButtonItem:submitButton];
 }
