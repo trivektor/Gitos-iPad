@@ -607,6 +607,7 @@
     NSMutableURLRequest *getRequest = [httpClient requestWithMethod:@"GET"
                                                                path:searchUrl.absoluteString
                                                          parameters:nil];
+    [getRequest setValue:@"application/vnd.github.v3.text-match+json" forHTTPHeaderField:@"Accept"];
 
     AFHTTPRequestOperation *operation = [[AFHTTPRequestOperation alloc] initWithRequest:getRequest];
 

@@ -7,6 +7,7 @@
 //
 
 #import "RepoContentSearchResult.h"
+#import "TextMatch.h"
 
 @implementation RepoContentSearchResult
 
@@ -34,9 +35,14 @@
     return [[data valueForKey:@"score"] doubleValue];
 }
 
-- (NSDictionary *)getTextMatches
+- (NSArray *)getTextMatches
 {
-    return [data valueForKey:@"text_matches"];
+    NSArray *textMatches = [data valueForKey:@"text_matches"];
+    NSMutableArray *textMatchesArray = [NSMutableArray arrayWithCapacity:0];
+    for (int i=0; i < textMatches.count; i++) {
+        [textMatchesArray addObject:[[TextMatch alloc] initWithData:[textMatches objectAtIndex:i]]];
+    }
+    return textMatchesArray;
 }
 
 @end

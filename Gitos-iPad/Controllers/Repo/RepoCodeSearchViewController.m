@@ -8,6 +8,7 @@
 
 #import "RepoCodeSearchViewController.h"
 #import "RepoContentSearchResult.h"
+#import "RepoContentSearchResultCell.h"
 
 @interface RepoCodeSearchViewController ()
 
@@ -33,6 +34,8 @@
     // Do any additional setup after loading the view from its nib.
     self.navigationItem.title = [NSString stringWithFormat:@"Search within %@", [repo getName]];
     [resultsTable setTableHeaderView:searchBar];
+    UINib *nib = [UINib nibWithNibName:@"RepoContentSearchResultCell" bundle:nil];
+    [resultsTable registerNib:nib forCellReuseIdentifier:@"RepoContentSearchResultCell"];
     [self registerEvents];
 }
 
@@ -54,7 +57,7 @@
 {
     NSString *term = [searchBar text];
     if (term.length == 0) return;
-    NSLog(@"searching");
+    [searchBar resignFirstResponder];
     [repo searchFor:term];
 }
 
@@ -68,19 +71,22 @@
     return searchResults.count;
 }
 
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    return 100;
+}
+
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    static NSString *cellIdentifier = @"Cell";
-    UITableViewCell *cell = [resultsTable dequeueReusableCellWithIdentifier:cellIdentifier];
+    RepoContentSearchResultCell *cell = [resultsTable dequeueReusableCellWithIdentifier:@"RepoContentSearchResultCell"];
 
     if (!cell) {
-        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault
-                                      reuseIdentifier:cellIdentifier];
+        cell = [[RepoContentSearchResultCell alloc] initWithStyle:UITableViewCellStyleDefault
+                                      reuseIdentifier:@"RepoContentSearchResultCell"];
     }
 
-    RepoContentSearchResult *result = [searchResults objectAtIndex:indexPath.row];
-    cell.textLabel.font = [UIFont fontWithName:@"HelveticaNeue-Light" size:14];
-    cell.textLabel.text = [result getName];
+    cell.result = [searchResults objectAtIndex:indexPath.row];
+    [cell render];
 
     return cell;
 }

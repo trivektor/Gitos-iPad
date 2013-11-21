@@ -17,6 +17,6 @@
 - (NSString *)getName;
 - (NSString *)getPath;
 - (double)getScore;
-- (NSDictionary *)getTextMatches;
+- (NSArray *)getTextMatches;
 
 @end
