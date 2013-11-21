@@ -7,6 +7,7 @@
 //
 
 #import "Repo.h"
+#import "RepoContentSearchResult.h"
 
 @implementation Repo
 
@@ -593,6 +594,37 @@
                                                              object:operation];
      }];
 
+    [operation start];
+}
+
+- (void)searchFor:(NSString *)term
+{
+    NSURL *searchUrl = [AppHelper prepUrlForApiCall:[NSString stringWithFormat:@"/search/code?q=%@+repo:%@", term, [self getFullName]]];
+
+    AFHTTPClient *httpClient = [[AFHTTPClient alloc] initWithBaseURL:searchUrl];
+    [httpClient setParameterEncoding:AFJSONParameterEncoding];
+
+    NSMutableURLRequest *getRequest = [httpClient requestWithMethod:@"GET"
+                                                               path:searchUrl.absoluteString
+                                                         parameters:nil];
+
+    AFHTTPRequestOperation *operation = [[AFHTTPRequestOperation alloc] initWithRequest:getRequest];
+
+    [operation setCompletionBlockWithSuccess:^(AFHTTPRequestOperation *operation, id responseObject) {
+        NSDictionary *json = [NSJSONSerialization JSONObjectWithData:[operation.responseString dataUsingEncoding:NSUTF8StringEncoding] options:NSJSONReadingMutableContainers error:nil];
+
+        NSArray *items = [json valueForKey:@"items"];
+
+        NSMutableArray *results = [NSMutableArray arrayWithCapacity:0];
+
+        for (int i=0; i < items.count; i++) {
+            [results addObject:[[RepoContentSearchResult alloc] initWithData:[items objectAtIndex:i]]];
+        }
+
+        [[NSNotificationCenter defaultCenter] postNotificationName:@"RepoCodeSearchCompleted"
+                                                            object:results];
+    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+    }];
     [operation start];
 }
 

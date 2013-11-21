@@ -13,5 +13,9 @@
 @property (nonatomic, strong) Repo *repo;
 @property (weak, nonatomic) IBOutlet UISearchBar *searchBar;
 @property (weak, nonatomic) IBOutlet UITableView *resultsTable;
+@property (nonatomic, strong) NSMutableArray *searchResults;
+
+- (void)registerEvents;
+- (void)displaySearchResults:(NSNotification *)notification;
 
 @end

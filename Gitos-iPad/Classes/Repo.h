@@ -54,6 +54,7 @@
 - (void)fetchCommitActivity;
 - (void)forkForAuthenticatedUser;
 - (void)save:(NSDictionary *)info;
+- (void)searchFor:(NSString *)term;
 - (BOOL)isDestroyable;
 - (void)destroy;
 
