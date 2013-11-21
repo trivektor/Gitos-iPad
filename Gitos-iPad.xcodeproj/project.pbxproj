@@ -352,6 +352,10 @@
 		B5C8188217365B3F00FF26AB /* PullRequestReviewCommentEvent.m in Sources */ = {isa = PBXBuildFile; fileRef = B5C8188117365B3F00FF26AB /* PullRequestReviewCommentEvent.m */; };
 		B5D4D754183C8C4D0050A1FE /* RepoCodeSearchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B5D4D752183C8C4D0050A1FE /* RepoCodeSearchViewController.m */; };
 		B5D4D755183C8C4D0050A1FE /* RepoCodeSearchViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B5D4D753183C8C4D0050A1FE /* RepoCodeSearchViewController.xib */; };
+		B5D4D75B183C9AC90050A1FE /* RepoContentSearchResult.m in Sources */ = {isa = PBXBuildFile; fileRef = B5D4D75A183C9AC90050A1FE /* RepoContentSearchResult.m */; };
+		B5D4D75E183C9C240050A1FE /* TextMatch.m in Sources */ = {isa = PBXBuildFile; fileRef = B5D4D75D183C9C240050A1FE /* TextMatch.m */; };
+		B5D4D763183DFB660050A1FE /* RepoContentSearchResultCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B5D4D762183DFB660050A1FE /* RepoContentSearchResultCell.m */; };
+		B5D4D765183DFB840050A1FE /* RepoContentSearchResultCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B5D4D764183DFB840050A1FE /* RepoContentSearchResultCell.xib */; };
 		B5D8D787173DF77000B68FA2 /* ReadmeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B5D8D785173DF77000B68FA2 /* ReadmeViewController.m */; };
 		B5D8D788173DF77000B68FA2 /* ReadmeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B5D8D786173DF77000B68FA2 /* ReadmeViewController.xib */; };
 		B5D8D78B173DF81D00B68FA2 /* Readme.m in Sources */ = {isa = PBXBuildFile; fileRef = B5D8D78A173DF81D00B68FA2 /* Readme.m */; };
@@ -876,6 +880,13 @@
 		B5D4D751183C8C4D0050A1FE /* RepoCodeSearchViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RepoCodeSearchViewController.h; sourceTree = "<group>"; };
 		B5D4D752183C8C4D0050A1FE /* RepoCodeSearchViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RepoCodeSearchViewController.m; sourceTree = "<group>"; };
 		B5D4D753183C8C4D0050A1FE /* RepoCodeSearchViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RepoCodeSearchViewController.xib; sourceTree = "<group>"; };
+		B5D4D759183C9AC90050A1FE /* RepoContentSearchResult.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RepoContentSearchResult.h; sourceTree = "<group>"; };
+		B5D4D75A183C9AC90050A1FE /* RepoContentSearchResult.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RepoContentSearchResult.m; sourceTree = "<group>"; };
+		B5D4D75C183C9C240050A1FE /* TextMatch.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TextMatch.h; sourceTree = "<group>"; };
+		B5D4D75D183C9C240050A1FE /* TextMatch.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TextMatch.m; sourceTree = "<group>"; };
+		B5D4D761183DFB660050A1FE /* RepoContentSearchResultCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RepoContentSearchResultCell.h; sourceTree = "<group>"; };
+		B5D4D762183DFB660050A1FE /* RepoContentSearchResultCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RepoContentSearchResultCell.m; sourceTree = "<group>"; };
+		B5D4D764183DFB840050A1FE /* RepoContentSearchResultCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RepoContentSearchResultCell.xib; sourceTree = "<group>"; };
 		B5D8D784173DF77000B68FA2 /* ReadmeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ReadmeViewController.h; sourceTree = "<group>"; };
 		B5D8D785173DF77000B68FA2 /* ReadmeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ReadmeViewController.m; sourceTree = "<group>"; };
 		B5D8D786173DF77000B68FA2 /* ReadmeViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ReadmeViewController.xib; sourceTree = "<group>"; };
@@ -1478,6 +1489,10 @@
 				B5F7148617856A0C00CBC1A3 /* Contribution.m */,
 				B5F7148817892C6A00CBC1A3 /* CommitActivity.h */,
 				B5F7148917892C6B00CBC1A3 /* CommitActivity.m */,
+				B5D4D759183C9AC90050A1FE /* RepoContentSearchResult.h */,
+				B5D4D75A183C9AC90050A1FE /* RepoContentSearchResult.m */,
+				B5D4D75C183C9C240050A1FE /* TextMatch.h */,
+				B5D4D75D183C9C240050A1FE /* TextMatch.m */,
 			);
 			path = Classes;
 			sourceTree = "<group>";
@@ -1524,6 +1539,9 @@
 				B5836C941710C8B60012CC61 /* RepoTreeCell.h */,
 				B5836C951710C8B60012CC61 /* RepoTreeCell.m */,
 				B5836C971710C8C90012CC61 /* RepoTreeCell.xib */,
+				B5D4D761183DFB660050A1FE /* RepoContentSearchResultCell.h */,
+				B5D4D762183DFB660050A1FE /* RepoContentSearchResultCell.m */,
+				B5D4D764183DFB840050A1FE /* RepoContentSearchResultCell.xib */,
 			);
 			path = Cells;
 			sourceTree = "<group>";
@@ -1923,6 +1941,7 @@
 				B516541E16B7C1B9003F0DFA /* 255-box@2x.png in Resources */,
 				B516541F16B7C1B9003F0DFA /* 256-box2.png in Resources */,
 				B516542016B7C1B9003F0DFA /* 256-box2@2x.png in Resources */,
+				B5D4D765183DFB840050A1FE /* RepoContentSearchResultCell.xib in Resources */,
 				B516542116B7C1B9003F0DFA /* 259-list.png in Resources */,
 				B516542216B7C1B9003F0DFA /* 259-list@2x.png in Resources */,
 				B516542316B7C1B9003F0DFA /* 275-broadcast.png in Resources */,
@@ -2149,7 +2168,9 @@
 				B542274216CCB15D0020F300 /* Commit.m in Sources */,
 				B542274F16CCBBD30020F300 /* CommitCell.m in Sources */,
 				B542275616CDEA580020F300 /* CommitFile.m in Sources */,
+				B5D4D75E183C9C240050A1FE /* TextMatch.m in Sources */,
 				B542276E16D06A3D0020F300 /* UserSearchResultCell.m in Sources */,
+				B5D4D75B183C9AC90050A1FE /* RepoContentSearchResult.m in Sources */,
 				B54F69E316D2F69C00978DD9 /* Notification.m in Sources */,
 				B54F69EB16D2FB3600978DD9 /* NotificationCell.m in Sources */,
 				B54F69F116D30B5400978DD9 /* ForkEvent.m in Sources */,
@@ -2188,6 +2209,7 @@
 				B5A104371723C19E00487A47 /* OrganizationViewController.m in Sources */,
 				B5A104461723C1BC00487A47 /* RepoSearchViewController.m in Sources */,
 				B5A104481723C1BC00487A47 /* ReposViewController.m in Sources */,
+				B5D4D763183DFB660050A1FE /* RepoContentSearchResultCell.m in Sources */,
 				B5A1044A1723C1BC00487A47 /* RepoTreeViewController.m in Sources */,
 				B5A1044C1723C1BC00487A47 /* RepoViewController.m in Sources */,
 				B5A104551723C1C900487A47 /* NewsfeedDetailsViewController.m in Sources */,

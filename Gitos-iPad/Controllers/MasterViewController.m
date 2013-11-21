@@ -177,7 +177,7 @@
     switch (indexPath.section) {
         case 0:
             if (indexPath.row == 0) {
-                ProfileViewController *profileController = [[ProfileViewController alloc] init];
+                ProfileViewController *profileController = [ProfileViewController new];
                 profileController.user = user;
                 profileController.hideOptionsButton = YES;
                 selectedController = [[UINavigationController alloc] initWithRootViewController:profileController];
@@ -185,44 +185,44 @@
             break;
         case 1:
             if (indexPath.row == 0) {
-                NewsfeedViewController *newsfeedController = [[NewsfeedViewController alloc] init];
+                NewsfeedViewController *newsfeedController = [NewsfeedViewController new];
                 selectedController = [[UINavigationController alloc] initWithRootViewController:newsfeedController];
             }
             break;
         case 2:
             if (indexPath.row == 0) {
-                ReposViewController *reposController = [[ReposViewController alloc] init];
+                ReposViewController *reposController = [ReposViewController new];
                 reposController.user = user;
                 reposController.hideBackButton = YES;
                 selectedController = [[UINavigationController alloc] initWithRootViewController:reposController];
             } else if (indexPath.row == 1) {
-                StarredViewController *starredController = [[StarredViewController alloc] init];
+                StarredViewController *starredController = [StarredViewController new];
                 starredController.user = user;
                 selectedController = [[UINavigationController alloc] initWithRootViewController:starredController];
             } else if (indexPath.row == 2) {
-                NewRepoViewController *newRepoController = [[NewRepoViewController alloc] init];
+                NewRepoViewController *newRepoController = [NewRepoViewController new];
                 selectedController = [[UINavigationController alloc] initWithRootViewController:newRepoController];
             }
             break;
         case 3:
             if (indexPath.row == 0) {
-                GistsViewController *gistsController = [[GistsViewController alloc] init];
+                GistsViewController *gistsController = [GistsViewController new];
                 gistsController.user = user;
                 gistsController.hideBackButton = YES;
                 selectedController = [[UINavigationController alloc] initWithRootViewController:gistsController];
             } else if (indexPath.row == 1) {
-                SearchViewController *searchController = [[SearchViewController alloc] init];
+                SearchViewController *searchController = [SearchViewController new];
                 searchController.user = user;
                 selectedController = [[UINavigationController alloc] initWithRootViewController:searchController];
             } else if (indexPath.row == 2) {
-                selectedController = [[UINavigationController alloc] initWithRootViewController:[[NotificationsViewController alloc] init]];
+                selectedController = [[UINavigationController alloc] initWithRootViewController:[NotificationsViewController new]];
             } else if (indexPath.row == 3) {
-                selectedController = [[UINavigationController alloc] initWithRootViewController:[[FeedbackViewController alloc] init]];
+                selectedController = [[UINavigationController alloc] initWithRootViewController:[FeedbackViewController new]];
             } else if (indexPath.row == 4) {
                 [self signout];
                 return;
             } else if (indexPath.row == 5) {
-                selectedController = [[UINavigationController alloc] initWithRootViewController:[[AttributionsViewController alloc] init]];
+                selectedController = [[UINavigationController alloc] initWithRootViewController:[AttributionsViewController new]];
             }
             break;
     }
