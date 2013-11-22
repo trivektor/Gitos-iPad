@@ -45,4 +45,9 @@
     return textMatchesArray;
 }
 
+- (NSString *)getHtmlUrl
+{
+    return [data valueForKey:@"html_url"];
+}
+
 @end

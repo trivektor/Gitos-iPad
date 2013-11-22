@@ -9,6 +9,7 @@
 #import "RepoCodeSearchViewController.h"
 #import "RepoContentSearchResult.h"
 #import "RepoContentSearchResultCell.h"
+#import "WebsiteViewController.h"
 
 @interface RepoCodeSearchViewController ()
 
@@ -73,7 +74,7 @@
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    return 100;
+    return 160;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -89,6 +90,15 @@
     [cell render];
 
     return cell;
+}
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    RepoContentSearchResult *result = [searchResults objectAtIndex:indexPath.row];
+    WebsiteViewController *websiteController = [WebsiteViewController new];
+    websiteController.requestedUrl = [NSString stringWithFormat:@"https://rawgithub.com/%@/master/%@", [repo getFullName], [result getPath]];
+    [self.navigationController pushViewController:websiteController
+                                         animated:YES];
 }
 
 - (void)displaySearchResults:(NSNotification *)notification

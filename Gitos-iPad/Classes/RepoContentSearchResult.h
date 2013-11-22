@@ -18,5 +18,6 @@
 - (NSString *)getPath;
 - (double)getScore;
 - (NSArray *)getTextMatches;
+- (NSString *)getHtmlUrl;
 
 @end

@@ -24,6 +24,12 @@
 
 - (void)render
 {
+    textMatchField.layer.borderWidth = 1;
+    textMatchField.layer.borderColor = [[UIColor colorWithRed:187/255.0
+                                                       green:187/255.0
+                                                        blue:187/255.0
+                                                       alpha:1.0] CGColor];
+
     pathLabel.text = [result getPath];
     NSArray *textMatches = [result getTextMatches];
     if (textMatches.count) {
