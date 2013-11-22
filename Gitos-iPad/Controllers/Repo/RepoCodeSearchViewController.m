@@ -33,8 +33,7 @@
 {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
-    self.navigationItem.title = [NSString stringWithFormat:@"Search within %@", [repo getName]];
-    [resultsTable setTableHeaderView:searchBar];
+    self.navigationItem.title = [NSString stringWithFormat:@"Search %@", [repo getName]];
     UINib *nib = [UINib nibWithNibName:@"RepoContentSearchResultCell" bundle:nil];
     [resultsTable registerNib:nib forCellReuseIdentifier:@"RepoContentSearchResultCell"];
     [self registerEvents];

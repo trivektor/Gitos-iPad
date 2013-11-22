@@ -60,7 +60,6 @@
     [searchCriteria addTarget:self
                        action:nil
              forControlEvents:UIControlEventValueChanged];
-
     UIBarButtonItem *criteriaButton = [[UIBarButtonItem alloc] initWithCustomView:searchCriteria];
     self.navigationItem.rightBarButtonItem = criteriaButton;
 }
@@ -83,6 +82,11 @@
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     return results.count;
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    return 68;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
