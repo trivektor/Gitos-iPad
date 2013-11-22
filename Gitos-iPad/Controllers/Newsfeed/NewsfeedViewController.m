@@ -53,7 +53,7 @@
     // Do any additional setup after loading the view from its nib.
     [self performHouseKeepingTasks];
     [self prepareTableView];
-    [self setupPullToRefresh];
+    //self setupPullToRefresh];
     [self registerEvents];
     [self fetchUserNewsFeed];
     [MRProgressOverlayView showOverlayAddedTo:self.view animated:NO];

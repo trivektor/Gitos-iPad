@@ -40,7 +40,7 @@
     [self.navigationItem setTitle:@"Starred Repositories"];
     [self registerNib];
     [self registerEvents];
-    [self setupPullToRefresh];
+    // [self setupPullToRefresh];
     [user fetchStarredReposForPage:currentPage++];
     [MRProgressOverlayView showOverlayAddedTo:self.view animated:YES];
 }
