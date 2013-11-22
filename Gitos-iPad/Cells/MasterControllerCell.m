@@ -87,7 +87,10 @@
     optionLabel.text      = optionLabelText;
 
     UIView *backgroundView = [[UIView alloc] initWithFrame:self.frame];
-    backgroundView.backgroundColor = [UIColor alizarinColor];
+    backgroundView.backgroundColor = [UIColor colorWithRed:229/255.0
+                                                     green:34/255.0
+                                                      blue:34/255.0
+                                                     alpha:1];
 
     self.selectedBackgroundView = backgroundView;
 }
