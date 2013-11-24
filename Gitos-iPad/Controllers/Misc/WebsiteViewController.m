@@ -52,7 +52,7 @@
 
 - (void)loadWebsite
 {
-    NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:self.requestedUrl]];
+    NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:requestedUrl]];
     
     [websiteView loadRequest:request];
 }
@@ -61,8 +61,13 @@
 {
     [MRProgressOverlayView dismissOverlayForView:self.view animated:NO];
     self.navigationItem.title = [websiteView stringByEvaluatingJavaScriptFromString:@"document.title"];
-    UIBarButtonItem *optionsButton = [[UIBarButtonItem alloc] initWithTitle:@"" style:UIBarButtonItemStyleBordered target:self action:@selector(showOptions)];
-    optionsButton.image = [UIImage imageNamed:@"211-action.png"];
+    UIBarButtonItem *optionsButton = [[UIBarButtonItem alloc] initWithTitle:[NSString fontAwesomeIconStringForIconIdentifier:@"icon-share"] style:UIBarButtonItemStyleBordered
+                                                                     target:self
+                                                                     action:@selector(showOptions)];
+    [optionsButton setTitleTextAttributes:@{
+        NSFontAttributeName:[UIFont fontWithName:kFontAwesomeFamilyName size:23]
+    } forState:UIControlStateNormal];
+
     self.navigationItem.rightBarButtonItem = optionsButton;
 }
 
@@ -89,7 +94,7 @@
 
 - (void)openInSafari
 {
-    [[UIApplication sharedApplication] openURL:[NSURL URLWithString:self.requestedUrl]];
+    [[UIApplication sharedApplication] openURL:[NSURL URLWithString:requestedUrl]];
 }
 
 - (void)mailLink
@@ -97,14 +102,14 @@
     MFMailComposeViewController *mailViewController = [[MFMailComposeViewController alloc] init];
     mailViewController.mailComposeDelegate = self;
     [mailViewController setSubject:@"Profile website link"];
-    [mailViewController setMessageBody:self.requestedUrl isHTML:YES];
+    [mailViewController setMessageBody:requestedUrl isHTML:YES];
     [self presentViewController:mailViewController animated:YES completion:nil];
 }
 
 - (void)copyLink
 {
     UIPasteboard *pasteboard = [UIPasteboard generalPasteboard];
-    pasteboard.string = self.requestedUrl;
+    pasteboard.string = requestedUrl;
 }
 
 @end
