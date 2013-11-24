@@ -59,10 +59,10 @@
     NSInteger _forks = [repo getForks];
     NSString *forks;
 
-    NSInteger MAX_COUNT = 1000.0;
+    int MAX_COUNT = 1000;
 
     if (_forks > MAX_COUNT) {
-        forks = [NSString stringWithFormat:@"%.1fk", _forks/MAX_COUNT*1.0];
+        forks = [NSString stringWithFormat:@"%dk", _forks/MAX_COUNT];
     } else {
         forks = [NSString stringWithFormat:@"%i", _forks];
     }
@@ -71,7 +71,7 @@
     NSString *watchers;
 
     if (_watchers > MAX_COUNT) {
-        watchers = [NSString stringWithFormat:@"%.1fk", _watchers/MAX_COUNT*1.0];
+        watchers = [NSString stringWithFormat:@"%dk", _watchers/MAX_COUNT];
     } else {
         watchers = [NSString stringWithFormat:@"%i", _watchers];
     }
