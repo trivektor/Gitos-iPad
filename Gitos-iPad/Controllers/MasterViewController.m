@@ -281,10 +281,7 @@
     usernameLabel.font = [UIFont fontWithName:@"HelveticaNeue-Light" size:14.0];
 
     UIView *backgroundView = [[UIView alloc] initWithFrame:profileCell.frame];
-    backgroundView.backgroundColor = [UIColor colorWithRed:229/255.0
-                                                     green:34/255.0
-                                                      blue:34/255.0
-                                                     alpha:1];
+    backgroundView.backgroundColor = [UIColor peterRiverColor];
 
     profileCell.selectedBackgroundView = backgroundView;
 }
