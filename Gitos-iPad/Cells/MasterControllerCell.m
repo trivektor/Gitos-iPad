@@ -85,11 +85,8 @@
 
     fontAwesomeLabel.text = fontAwesome;
     optionLabel.text      = optionLabelText;
-
-    UIView *backgroundView = [[UIView alloc] initWithFrame:self.frame];
-    backgroundView.backgroundColor = [UIColor peterRiverColor];
-
-    self.selectedBackgroundView = backgroundView;
+    self.selectionStyle = UITableViewCellSelectionStyleNone;
+    self.backgroundColor = [UIColor clearColor];
 }
 
 @end

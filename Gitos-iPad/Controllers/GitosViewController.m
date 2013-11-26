@@ -51,7 +51,7 @@
 
 - (void)showMenu
 {
-    [[NSNotificationCenter defaultCenter] postNotificationName:@"ToggleViewDeck" object:nil];
+    [self.sideMenuViewController presentMenuViewController];
 }
 
 @end

@@ -9,24 +9,22 @@
 #import "AppInitialization.h"
 #import "NewsfeedViewController.h"
 #import "MasterViewController.h"
-#import "IIViewDeckController.h"
 
 @implementation AppInitialization
 
 + (void)run:(UIWindow *)window withUser:(User *)user
 {
-    MasterViewController *masterController = [[MasterViewController alloc] init];
+    MasterViewController *masterController = [MasterViewController new];
     masterController.user = user;
 
-    NewsfeedViewController *newsfeedController = [[NewsfeedViewController alloc] init];
+    UINavigationController *mainNavController = [[UINavigationController alloc] initWithRootViewController:[NewsfeedViewController new]];
 
-    UINavigationController *mainNavController = [[UINavigationController alloc] initWithRootViewController:newsfeedController];
+    RESideMenu *sideMenuController = [[RESideMenu alloc] initWithContentViewController:mainNavController
+                                                                    menuViewController:masterController];
 
-    IIViewDeckController *deckController = [[IIViewDeckController alloc] initWithCenterViewController:mainNavController leftViewController:masterController];
-    deckController.sizeMode = IIViewDeckViewSizeMode;
-    deckController.leftSize = -20;
+    sideMenuController.backgroundImage = [UIImage imageNamed:@"side_menu_bg.png"];
 
-    [window setRootViewController:deckController];
+    [window setRootViewController:sideMenuController];
 }
 
 @end

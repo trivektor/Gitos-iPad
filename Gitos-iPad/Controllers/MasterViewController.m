@@ -20,7 +20,6 @@
 #import "FeedbackViewController.h"
 #import "NotificationsViewController.h"
 #import "AttributionsViewController.h"
-#import "IIViewDeckController.h"
 #import "UIColor+FlatUI.h"
 
 @interface MasterViewController ()
@@ -54,15 +53,8 @@
     UINib *nib = [UINib nibWithNibName:@"MasterControllerCell" bundle:nil];
 
     [menuTable registerNib:nib forCellReuseIdentifier:@"MasterControllerCell"];
-    [menuTable setBackgroundColor:[UIColor colorWithRed:55/255.0
-                                                  green:55/255.0
-                                                   blue:55/255.0
-                                                  alpha:1.0]];
+    [menuTable setBackgroundColor:[UIColor colorWithPatternImage:[UIImage imageNamed:@"side_menu_bg.png"]]];
     [menuTable setSeparatorColor:[UIColor clearColor]];
-
-    [[NSNotificationCenter defaultCenter] addObserver:self
-                                             selector:@selector(toggleViewDeck)
-                                                 name:@"ToggleViewDeck" object:nil];
 }
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
@@ -97,28 +89,19 @@
 
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
 {
-    return 25;
+    return 32;
 }
 
 - (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
 {
     UILabel *headerLabel = [[UILabel alloc] initWithFrame:CGRectMake(8, 1, 300, 25)];
     headerLabel.backgroundColor = [UIColor clearColor];
-    headerLabel.text = [self tableView:tableView titleForHeaderInSection:section];
-
-    headerLabel.textColor = [UIColor colorWithRed:179/255.0
-                                            green:179/255.0
-                                             blue:179/255.0
-                                            alpha:1.0];
-
-    headerLabel.font = [UIFont fontWithName:@"HelveticaNeue-Light" size:13.0];
+    headerLabel.text = [[self tableView:tableView titleForHeaderInSection:section] uppercaseString];
+    headerLabel.textColor = [UIColor whiteColor];
+    headerLabel.font = [UIFont fontWithName:@"HelveticaNeue-Medium" size:12.0];
 
     UIView *backgroundView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 300, 25)];
 
-    backgroundView.backgroundColor = [UIColor colorWithRed:49/255.0
-                                                     green:49/255.0
-                                                      blue:49/255.0
-                                                     alpha:0.9];
     [backgroundView addSubview:headerLabel];
 
     return backgroundView;
@@ -146,10 +129,6 @@
     return headerTitle;
 }
 
-- (void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    [cell setBackgroundColor:[UIColor colorWithPatternImage:[UIImage imageNamed:@"magma_border.png"]]];
-}
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
@@ -232,14 +211,17 @@
 
 - (void)navigateToSelectedController:(UINavigationController *)selectedController
 {
-    [self.viewDeckController closeLeftViewAnimated:YES completion:^(IIViewDeckController *controller, BOOL success) {
-        controller.centerController = selectedController;
-    }];
+    [self.sideMenuViewController setContentViewController:selectedController];
+    [self.sideMenuViewController hideMenuViewController];
 }
 
 - (void)signout
 {
-    self.actionSheet = [[UIActionSheet alloc] initWithTitle:@"Are you sure?" delegate:self cancelButtonTitle:@"Cancel" destructiveButtonTitle:@"Sign out" otherButtonTitles:nil];
+    self.actionSheet = [[UIActionSheet alloc] initWithTitle:@"Are you sure?"
+                                                   delegate:self
+                                          cancelButtonTitle:@"Cancel"
+                                     destructiveButtonTitle:@"Sign out"
+                                          otherButtonTitles:nil];
     self.actionSheet.actionSheetStyle = UIActionSheetStyleBlackOpaque;
     [self.actionSheet showInView:[UIApplication sharedApplication].keyWindow];
 }
@@ -263,27 +245,17 @@
     // Dispose of any resources that can be recreated.
 }
 
-- (void)toggleViewDeck
-{
-    [self.viewDeckController toggleLeftViewAnimated:YES];
-}
-
 - (void)displayAvatarAndUsername
 {
     User *currentUser = [CurrentUserManager getUser];
     NSData *userImageData = [NSData dataWithContentsOfURL:[NSURL URLWithString:[currentUser getAvatarUrl]]];
     avatar.image = [UIImage imageWithData:userImageData];
-    avatar.layer.masksToBounds  = YES;
-    avatar.layer.cornerRadius   = 3;
 
     usernameLabel.text = [currentUser getLogin];
     usernameLabel.textColor = [UIColor whiteColor];
     usernameLabel.font = [UIFont fontWithName:@"HelveticaNeue-Light" size:14.0];
-
-    UIView *backgroundView = [[UIView alloc] initWithFrame:profileCell.frame];
-    backgroundView.backgroundColor = [UIColor peterRiverColor];
-
-    profileCell.selectedBackgroundView = backgroundView;
+    profileCell.backgroundColor = [UIColor clearColor];
+    profileCell.selectionStyle = UITableViewCellSelectionStyleNone;
 }
 
 @end

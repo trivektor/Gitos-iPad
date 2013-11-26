@@ -115,9 +115,6 @@
 		B516545B16B7C558003F0DFA /* AppConfig.plist in Resources */ = {isa = PBXBuildFile; fileRef = B516545A16B7C558003F0DFA /* AppConfig.plist */; };
 		B518969F17460CF400656BAB /* CoreImage.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B518969E17460CF400656BAB /* CoreImage.framework */; };
 		B518974017460D7500656BAB /* Style.NUI.nss in Resources */ = {isa = PBXBuildFile; fileRef = B518973F17460D7500656BAB /* Style.NUI.nss */; };
-		B51FCB0F17235DDA003A75A6 /* IISideController.m in Sources */ = {isa = PBXBuildFile; fileRef = B51FCB0A17235DDA003A75A6 /* IISideController.m */; };
-		B51FCB1017235DDA003A75A6 /* IIViewDeckController.m in Sources */ = {isa = PBXBuildFile; fileRef = B51FCB0C17235DDA003A75A6 /* IIViewDeckController.m */; };
-		B51FCB1117235DDA003A75A6 /* IIWrapController.m in Sources */ = {isa = PBXBuildFile; fileRef = B51FCB0E17235DDA003A75A6 /* IIWrapController.m */; };
 		B51FCB1417237E15003A75A6 /* 399-list1.png in Resources */ = {isa = PBXBuildFile; fileRef = B51FCB1217237E15003A75A6 /* 399-list1.png */; };
 		B51FCB1517237E15003A75A6 /* 399-list1@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B51FCB1317237E15003A75A6 /* 399-list1@2x.png */; };
 		B51FCB181723834D003A75A6 /* GitosViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B51FCB171723834A003A75A6 /* GitosViewController.m */; };
@@ -331,6 +328,10 @@
 		B5A72FEE174969E8004F73FB /* UITableViewCell+Customizations.m in Sources */ = {isa = PBXBuildFile; fileRef = B5A72FED174969E8004F73FB /* UITableViewCell+Customizations.m */; };
 		B5A72FF117498071004F73FB /* CustomCellBackgroundView.m in Sources */ = {isa = PBXBuildFile; fileRef = B5A72FF017498070004F73FB /* CustomCellBackgroundView.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		B5A72FF417499CDD004F73FB /* DTCustomColoredAccessory.m in Sources */ = {isa = PBXBuildFile; fileRef = B5A72FF317499CDD004F73FB /* DTCustomColoredAccessory.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		B5B920EA18447DB8002FC175 /* RECommonFunctions.m in Sources */ = {isa = PBXBuildFile; fileRef = B5B920E518447DB8002FC175 /* RECommonFunctions.m */; };
+		B5B920EB18447DB8002FC175 /* RESideMenu.m in Sources */ = {isa = PBXBuildFile; fileRef = B5B920E718447DB8002FC175 /* RESideMenu.m */; };
+		B5B920EC18447DB8002FC175 /* UIViewController+RESideMenu.m in Sources */ = {isa = PBXBuildFile; fileRef = B5B920E918447DB8002FC175 /* UIViewController+RESideMenu.m */; };
+		B5B920EE18448079002FC175 /* side_menu_bg.png in Resources */ = {isa = PBXBuildFile; fileRef = B5B920ED18448079002FC175 /* side_menu_bg.png */; };
 		B5BC452516BCEE7100434848 /* MasterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B5BC452316BCEE7000434848 /* MasterViewController.m */; };
 		B5BC452616BCEE7100434848 /* MasterViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B5BC452416BCEE7000434848 /* MasterViewController.xib */; };
 		B5BC457516BE6C1A00434848 /* magma_border.png in Resources */ = {isa = PBXBuildFile; fileRef = B5BC457416BE6C1A00434848 /* magma_border.png */; };
@@ -506,12 +507,6 @@
 		B516545A16B7C558003F0DFA /* AppConfig.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = AppConfig.plist; path = ../AppConfig.plist; sourceTree = "<group>"; };
 		B518969E17460CF400656BAB /* CoreImage.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreImage.framework; path = System/Library/Frameworks/CoreImage.framework; sourceTree = SDKROOT; };
 		B518973F17460D7500656BAB /* Style.NUI.nss */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Style.NUI.nss; sourceTree = "<group>"; };
-		B51FCB0917235DDA003A75A6 /* IISideController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IISideController.h; sourceTree = "<group>"; };
-		B51FCB0A17235DDA003A75A6 /* IISideController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IISideController.m; sourceTree = "<group>"; };
-		B51FCB0B17235DDA003A75A6 /* IIViewDeckController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IIViewDeckController.h; sourceTree = "<group>"; };
-		B51FCB0C17235DDA003A75A6 /* IIViewDeckController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IIViewDeckController.m; sourceTree = "<group>"; };
-		B51FCB0D17235DDA003A75A6 /* IIWrapController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IIWrapController.h; sourceTree = "<group>"; };
-		B51FCB0E17235DDA003A75A6 /* IIWrapController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IIWrapController.m; sourceTree = "<group>"; };
 		B51FCB1217237E15003A75A6 /* 399-list1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "399-list1.png"; sourceTree = "<group>"; };
 		B51FCB1317237E15003A75A6 /* 399-list1@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "399-list1@2x.png"; sourceTree = "<group>"; };
 		B51FCB1617238346003A75A6 /* GitosViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GitosViewController.h; sourceTree = "<group>"; };
@@ -851,6 +846,13 @@
 		B5A72FF017498070004F73FB /* CustomCellBackgroundView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomCellBackgroundView.m; sourceTree = "<group>"; };
 		B5A72FF217499CDC004F73FB /* DTCustomColoredAccessory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DTCustomColoredAccessory.h; sourceTree = "<group>"; };
 		B5A72FF317499CDD004F73FB /* DTCustomColoredAccessory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DTCustomColoredAccessory.m; sourceTree = "<group>"; };
+		B5B920E418447DB8002FC175 /* RECommonFunctions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RECommonFunctions.h; sourceTree = "<group>"; };
+		B5B920E518447DB8002FC175 /* RECommonFunctions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RECommonFunctions.m; sourceTree = "<group>"; };
+		B5B920E618447DB8002FC175 /* RESideMenu.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RESideMenu.h; sourceTree = "<group>"; };
+		B5B920E718447DB8002FC175 /* RESideMenu.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RESideMenu.m; sourceTree = "<group>"; };
+		B5B920E818447DB8002FC175 /* UIViewController+RESideMenu.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIViewController+RESideMenu.h"; sourceTree = "<group>"; };
+		B5B920E918447DB8002FC175 /* UIViewController+RESideMenu.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+RESideMenu.m"; sourceTree = "<group>"; };
+		B5B920ED18448079002FC175 /* side_menu_bg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = side_menu_bg.png; sourceTree = "<group>"; };
 		B5BC452216BCEE6F00434848 /* MasterViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MasterViewController.h; sourceTree = "<group>"; };
 		B5BC452316BCEE7000434848 /* MasterViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MasterViewController.m; sourceTree = "<group>"; };
 		B5BC452416BCEE7000434848 /* MasterViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MasterViewController.xib; sourceTree = "<group>"; };
@@ -988,6 +990,7 @@
 				B569D0C916FE6861002216DD /* glyphicons_078_warning_sign@2x.png */,
 				B569D0CA16FE6861002216DD /* glyphicons_198_ok.png */,
 				B569D0CB16FE6861002216DD /* glyphicons_198_ok@2x.png */,
+				B5B920ED18448079002FC175 /* side_menu_bg.png */,
 				B54F69DD16D2DF1E00978DD9 /* avatar-placeholder.png */,
 				B51FCB191723881B003A75A6 /* selected_cell_bg.png */,
 				B516539D16B7C1B9003F0DFA /* 06-magnify@2x.png */,
@@ -1112,19 +1115,6 @@
 				B51653F916B7C1B9003F0DFA /* barButtonPressed.svg */,
 			);
 			path = vector;
-			sourceTree = "<group>";
-		};
-		B51FCB0817235DDA003A75A6 /* ViewDeck */ = {
-			isa = PBXGroup;
-			children = (
-				B51FCB0917235DDA003A75A6 /* IISideController.h */,
-				B51FCB0A17235DDA003A75A6 /* IISideController.m */,
-				B51FCB0B17235DDA003A75A6 /* IIViewDeckController.h */,
-				B51FCB0C17235DDA003A75A6 /* IIViewDeckController.m */,
-				B51FCB0D17235DDA003A75A6 /* IIWrapController.h */,
-				B51FCB0E17235DDA003A75A6 /* IIWrapController.m */,
-			);
-			path = ViewDeck;
 			sourceTree = "<group>";
 		};
 		B51FCB1B1723BF7B003A75A6 /* Profile */ = {
@@ -1320,6 +1310,7 @@
 		B55D90A616B7AA27009CB90F /* Gitos-iPad */ = {
 			isa = PBXGroup;
 			children = (
+				B5B920E318447DB8002FC175 /* RESideMenu */,
 				B536811D1744C47900249BC7 /* Fonts */,
 				B5836C8D170BFC870012CC61 /* Helpers */,
 				B5BC451A16BA5DFC00434848 /* Html */,
@@ -1397,7 +1388,6 @@
 				B5A1041E1723C10200487A47 /* Gist */,
 				B51FCB211723BFEF003A75A6 /* Commit */,
 				B51FCB1B1723BF7B003A75A6 /* Profile */,
-				B51FCB0817235DDA003A75A6 /* ViewDeck */,
 				B5A1042E1723C19E00487A47 /* Organization */,
 				B5A104691723C32B00487A47 /* Notification */,
 				B5BC452216BCEE6F00434848 /* MasterViewController.h */,
@@ -1739,6 +1729,20 @@
 			path = Misc;
 			sourceTree = "<group>";
 		};
+		B5B920E318447DB8002FC175 /* RESideMenu */ = {
+			isa = PBXGroup;
+			children = (
+				B5B920E418447DB8002FC175 /* RECommonFunctions.h */,
+				B5B920E518447DB8002FC175 /* RECommonFunctions.m */,
+				B5B920E618447DB8002FC175 /* RESideMenu.h */,
+				B5B920E718447DB8002FC175 /* RESideMenu.m */,
+				B5B920E818447DB8002FC175 /* UIViewController+RESideMenu.h */,
+				B5B920E918447DB8002FC175 /* UIViewController+RESideMenu.m */,
+			);
+			name = RESideMenu;
+			path = Classes/RESideMenu;
+			sourceTree = "<group>";
+		};
 		B5BC451A16BA5DFC00434848 /* Html */ = {
 			isa = PBXGroup;
 			children = (
@@ -2015,6 +2019,7 @@
 				B542275E16CDFB390020F300 /* github.css in Resources */,
 				B542276616CF6F980020F300 /* raw_file.html in Resources */,
 				B542277016D06A4D0020F300 /* UserSearchResultCell.xib in Resources */,
+				B5B920EE18448079002FC175 /* side_menu_bg.png in Resources */,
 				B54F69D816D158C300978DD9 /* 211-action@2x.png in Resources */,
 				B54F69DB16D2C5CA00978DD9 /* 04-squiggle.png in Resources */,
 				B54F69DC16D2C5CA00978DD9 /* 04-squiggle@2x.png in Resources */,
@@ -2123,6 +2128,7 @@
 				B55D90DF16B7AA48009CB90F /* AFNetworkActivityIndicatorManager.m in Sources */,
 				B5D4D754183C8C4D0050A1FE /* RepoCodeSearchViewController.m in Sources */,
 				B55D90E016B7AA48009CB90F /* AFPropertyListRequestOperation.m in Sources */,
+				B5B920EB18447DB8002FC175 /* RESideMenu.m in Sources */,
 				B55D90E116B7AA48009CB90F /* AFURLConnectionOperation.m in Sources */,
 				B55D90E216B7AA48009CB90F /* AFXMLRequestOperation.m in Sources */,
 				B55D90E316B7AA48009CB90F /* UIImageView+AFNetworking.m in Sources */,
@@ -2131,6 +2137,7 @@
 				B55D90FB16B7AC4C009CB90F /* SSKeychain.m in Sources */,
 				B55D90FE16B7AC8B009CB90F /* Branch.m in Sources */,
 				B55D910116B7ACC9009CB90F /* Gist.m in Sources */,
+				B5B920EA18447DB8002FC175 /* RECommonFunctions.m in Sources */,
 				B55D910416B7ACEF009CB90F /* GistFile.m in Sources */,
 				B55D910716B7AD2B009CB90F /* RelativeDateDescriptor.m in Sources */,
 				B55D910A16B7AD47009CB90F /* Repo.m in Sources */,
@@ -2195,9 +2202,6 @@
 				B5836C90170BFCA40012CC61 /* AppHelper.m in Sources */,
 				B5DE16A6182E26E1008A659B /* UIScrollView+SVPullToRefresh.m in Sources */,
 				B5836C961710C8B60012CC61 /* RepoTreeCell.m in Sources */,
-				B51FCB0F17235DDA003A75A6 /* IISideController.m in Sources */,
-				B51FCB1017235DDA003A75A6 /* IIViewDeckController.m in Sources */,
-				B51FCB1117235DDA003A75A6 /* IIWrapController.m in Sources */,
 				B51FCB181723834D003A75A6 /* GitosViewController.m in Sources */,
 				B51FCB1F1723BF81003A75A6 /* ProfileViewController.m in Sources */,
 				B51FCB281723C025003A75A6 /* CommitsViewController.m in Sources */,
@@ -2267,6 +2271,7 @@
 				B5864B8A177FF6A10056B0DE /* AttributionsViewController.m in Sources */,
 				B5F7146F17852FCC00CBC1A3 /* TDSemiModalViewController.m in Sources */,
 				B5F7147217852FEF00CBC1A3 /* UIViewController+TDSemiModalExtension.m in Sources */,
+				B5B920EC18447DB8002FC175 /* UIViewController+RESideMenu.m in Sources */,
 				B5F7147E17855C0B00CBC1A3 /* RepoMiscViewController.m in Sources */,
 				B5F71483178560D900CBC1A3 /* RepoContributorsViewController.m in Sources */,
 				B5F7148717856A0C00CBC1A3 /* Contribution.m in Sources */,

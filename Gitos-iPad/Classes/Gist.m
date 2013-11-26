@@ -37,11 +37,9 @@
 
 - (NSString *)getDescription
 {
-    if ([data valueForKey:@"description"] != [NSNull null]) {
-        return [data valueForKey:@"description"];
-    } else {
-        return @"n/a";
-    }
+    if ([data valueForKey:@"description"] == (id)[NSNull null]) return @"no description available";
+    if ([[data valueForKey:@"description"] length] == 0) return @"no description available";
+    return [data valueForKey:@"description"];
 }
 
 - (NSString *)getCreatedAt

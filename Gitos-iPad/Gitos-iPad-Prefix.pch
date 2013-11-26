@@ -44,4 +44,5 @@
     #import "UITableViewCell+Customizations.h"
     #import "DTCustomColoredAccessory.h"
     #import "MRProgress.h"
+    #import "RESideMenu.h"
 #endif
