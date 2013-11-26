@@ -43,11 +43,11 @@
         labelText   = @"Website";
         detailsText = [user getWebsite] == (id)[NSNull null] ? @"n/a" : [user getWebsite];
     } else if (indexPath.row == 2) {
-        fontAwesome = @"icon-envelope";
+        fontAwesome = @"icon-envelope-alt";
         labelText   = @"Email";
         detailsText = [user getEmail] == (id)[NSNull null] ? @"n/a" : [user getEmail];
     } else if (indexPath.row == 3) {
-        fontAwesome = @"icon-briefcase";
+        fontAwesome = @"icon-building";
         labelText   = @"Company";
         detailsText = [user getCompany] == (id)[NSNull null] ? @"n/a" : [user getCompany];
     } else if (indexPath.row == 4) {
@@ -59,7 +59,7 @@
         labelText   = @"Following";
         detailsText = [NSNumberFormatter localizedStringFromNumber:@([user getFollowing]) numberStyle:NSNumberFormatterDecimalStyle];
     } else if (indexPath.row == 6) {
-        fontAwesome = @"icon-folder-open";
+        fontAwesome = @"icon-github-alt";
         labelText   = @"Repos";
         detailsText = [NSString stringWithFormat:@"%i", [user getNumberOfRepos]];
     } else if (indexPath.row == 7) {
@@ -67,7 +67,7 @@
         labelText   = @"Gists";
         detailsText = [NSString stringWithFormat:@"%i", [user getNumberOfGists]];
     } else if (indexPath.row == 8) {
-        fontAwesome = @"icon-calendar";
+        fontAwesome = @"icon-time";
         labelText   = @"Joined";
         detailsText = [user getCreatedAt];
     } else if (indexPath.row == 9) {
@@ -82,6 +82,10 @@
         fontAwesome = @"icon-trophy";
         labelText   = @"Contributions";
         detailsText = @"view all";
+    } else if (indexPath.row == 12) {
+        fontAwesome = @"icon-bar-chart";
+        labelText = @"Report Card";
+        detailsText = @"view";
     }
 
     fontAwesomeLabel.text  = [NSString fontAwesomeIconStringForIconIdentifier:fontAwesome];

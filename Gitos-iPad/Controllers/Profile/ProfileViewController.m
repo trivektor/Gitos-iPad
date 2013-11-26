@@ -82,11 +82,14 @@
 
 - (void)addOptionsButton
 {
-    UIBarButtonItem *optionsButton = [[UIBarButtonItem alloc] initWithTitle:@""
+    UIBarButtonItem *optionsButton = [[UIBarButtonItem alloc] initWithTitle:[NSString fontAwesomeIconStringForIconIdentifier:@"icon-share"]
                                                                       style:UIBarButtonItemStyleBordered
                                                                      target:self
                                                                      action:@selector(showProfileOptions)];
-    optionsButton.image = [UIImage imageNamed:@"211-action.png"];
+    [optionsButton setTitleTextAttributes:@{
+        NSFontAttributeName:[UIFont fontWithName:kFontAwesomeFamilyName size:23]
+    } forState:UIControlStateNormal];
+
     self.navigationItem.rightBarButtonItem = optionsButton;
 }
 
@@ -146,7 +149,7 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return 12;
+    return 13;
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -188,7 +191,7 @@
 
     } else if (indexPath.row == 4) {
 
-        FollowViewController *followController = [[FollowViewController alloc] init];
+        FollowViewController *followController = [FollowViewController new];
         followController.user = user;
         followController.userType = @"followers";
         followController.controllerTitle = @"Followers";
@@ -196,7 +199,7 @@
 
     } else if (indexPath.row == 5) {
 
-        FollowViewController *followController = [[FollowViewController alloc] init];
+        FollowViewController *followController = [FollowViewController new];
         followController.user = user;
         followController.userType = @"following";
         followController.controllerTitle = @"Following";
@@ -204,33 +207,39 @@
 
     } else if (indexPath.row == 6) {
 
-        ReposViewController *reposController = [[ReposViewController alloc] init];
+        ReposViewController *reposController = [ReposViewController new];
         reposController.user = user;
         [self.navigationController pushViewController:reposController animated:YES];
 
     } else if (indexPath.row == 7) {
 
-        GistsViewController *gistsController = [[GistsViewController alloc] init];
+        GistsViewController *gistsController = [GistsViewController new];
         gistsController.user = user;
         [self.navigationController pushViewController:gistsController animated:YES];
 
     } else if (indexPath.row == 9) {
 
-        OrganizationsViewController *organizationsController = [[OrganizationsViewController alloc] init];
+        OrganizationsViewController *organizationsController = [OrganizationsViewController new];
         organizationsController.user = user;
         [self.navigationController pushViewController:organizationsController animated:YES];
 
     } else if (indexPath.row == 10) {
 
-        RecentActivityViewController *recentActivityController = [[RecentActivityViewController alloc] init];
+        RecentActivityViewController *recentActivityController = [RecentActivityViewController new];
         recentActivityController.user = user;
         [self.navigationController pushViewController:recentActivityController animated:YES];
 
     } else if (indexPath.row == 11) {
 
-        ContributionsViewController *contributionsController = [[ContributionsViewController alloc] init];
+        ContributionsViewController *contributionsController = [ContributionsViewController new];
         contributionsController.user = user;
         [self.navigationController pushViewController:contributionsController animated:YES];
+
+    } else if (indexPath.row == 12) {
+
+        WebsiteViewController *websiteController = [WebsiteViewController new];
+        websiteController.requestedUrl = [NSString stringWithFormat:@"%@/%@", [AppConfig getConfigValue:@"ReportCardHost"], [user getLogin]];
+        [self.navigationController pushViewController:websiteController animated:YES];
 
     }
 }

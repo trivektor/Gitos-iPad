@@ -2,6 +2,8 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
+	<key>ReportCardHost</key>
+	<string>http://osrc.dfm.io</string>
 	<key>GitosHost</key>
 	<string>http://thawing-crag-8872.herokuapp.com</string>
 	<key>GithubHost</key>
