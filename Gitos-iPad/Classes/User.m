@@ -11,6 +11,8 @@
 
 @implementation User
 
+static const int AVATAR_SIZE = 184;
+
 @synthesize data;
 
 - (id)initWithData:(NSDictionary *)userData
@@ -22,7 +24,7 @@
 
 - (NSString *)getAvatarUrl
 {
-    return [data valueForKey:@"avatar_url"];
+    return [NSString stringWithFormat:@"%@&s=%d", [data valueForKey:@"avatar_url"], AVATAR_SIZE];
 }
 
 - (NSString *)getGravatarId
