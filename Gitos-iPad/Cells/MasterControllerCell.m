@@ -28,7 +28,7 @@
     // Configure the view for the selected state
 }
 
-- (void)renderForIndexPath:(NSIndexPath *)indexPath
+- (void)renderForIndexPath:(NSIndexPath *)indexPath withNumRows:(int)numRows
 {
     fontAwesomeLabel.font      = [UIFont fontWithName:kFontAwesomeFamilyName size:15];
     fontAwesomeLabel.textColor = [UIColor whiteColor];
@@ -85,6 +85,16 @@
 
     fontAwesomeLabel.text = fontAwesome;
     optionLabel.text      = optionLabelText;
+
+    if (indexPath.row < numRows - 1) {
+        UIView *bottomBorder = [[UIView alloc] initWithFrame:CGRectMake(0, 43, 190, 1)];
+        bottomBorder.backgroundColor = [UIColor colorWithRed:255/255.0
+                                                       green:255/255.0
+                                                        blue:255/255.0
+                                                       alpha:0.3];
+        [self.contentView addSubview:bottomBorder];
+    }
+
     self.selectionStyle = UITableViewCellSelectionStyleNone;
     self.backgroundColor = [UIColor clearColor];
 }

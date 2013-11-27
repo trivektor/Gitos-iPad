@@ -13,6 +13,6 @@
 @property (nonatomic, weak) IBOutlet UILabel *fontAwesomeLabel;
 @property (nonatomic, weak) IBOutlet UILabel *optionLabel;
 
-- (void)renderForIndexPath:(NSIndexPath *)indexPath;
+- (void)renderForIndexPath:(NSIndexPath *)indexPath withNumRows:(int)numRows;
 
 @end

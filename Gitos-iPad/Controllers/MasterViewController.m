@@ -143,7 +143,7 @@
             cell = [[MasterControllerCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellIdentifier];
         }
 
-        [cell renderForIndexPath:indexPath];
+        [cell renderForIndexPath:indexPath withNumRows:[tableView numberOfRowsInSection:indexPath.section]];
 
         return cell;
     }
