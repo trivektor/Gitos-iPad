@@ -86,17 +86,13 @@
                                  destructiveButtonTitle:nil
                                       otherButtonTitles:@"Forgot Password", @"Sign Up", nil];
 
-    UIBarButtonItem *optionsButton = [[UIBarButtonItem alloc] initWithTitle:@""
+    UIBarButtonItem *optionsButton = [[UIBarButtonItem alloc] initWithTitle:[NSString fontAwesomeIconStringForIconIdentifier:@"icon-share"]
                                                                       style:UIBarButtonItemStyleBordered
                                                                      target:self
                                                                      action:@selector(showAccountOptions)];
-
-    [optionsButton setTintColor:[UIColor colorWithRed:202/255.0
-                                                green:0
-                                                 blue:0
-                                                alpha:1]];
-
-    [optionsButton setImage:[UIImage imageNamed:@"211-action.png"]];
+    [optionsButton setTitleTextAttributes:@{
+        NSFontAttributeName: [UIFont fontWithName:kFontAwesomeFamilyName size:23]
+    } forState:UIControlStateNormal];
 
     [self.navigationItem setRightBarButtonItem:optionsButton];
 }
