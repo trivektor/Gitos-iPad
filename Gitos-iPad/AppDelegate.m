@@ -14,6 +14,7 @@
 #import "UINavigationBar+FlatUI.h"
 #import "UIColor+FlatUI.h"
 #import "UIBarButtonItem+FlatUI.h"
+#import <NewRelicAgent/NewRelicAgent.h>
 
 @interface UINavigationController (autorotate)
 
@@ -53,6 +54,7 @@
 
     [self.window makeKeyAndVisible];
     [self validateAuthenticationToken];
+    [NewRelicAgent startWithApplicationToken:@"AAc37dc03fd020078b9b91e6c60275a697287b4ac1"];
     return YES;
 }
 

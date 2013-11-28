@@ -17,6 +17,7 @@
 		B511D45316DB3D0900DD0ED5 /* pull_request.html in Resources */ = {isa = PBXBuildFile; fileRef = B511D45216DB3D0800DD0ED5 /* pull_request.html */; };
 		B511D45616E08F7700DD0ED5 /* 122-stats.png in Resources */ = {isa = PBXBuildFile; fileRef = B511D45416E08F7700DD0ED5 /* 122-stats.png */; };
 		B511D45716E08F7700DD0ED5 /* 122-stats@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B511D45516E08F7700DD0ED5 /* 122-stats@2x.png */; };
+		B51382F91846F65F004058C8 /* NewRelicAgent.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B51382F81846F65F004058C8 /* NewRelicAgent.framework */; };
 		B51653FB16B7C1B9003F0DFA /* 01-refresh.png in Resources */ = {isa = PBXBuildFile; fileRef = B516539A16B7C1B9003F0DFA /* 01-refresh.png */; };
 		B51653FC16B7C1B9003F0DFA /* 01-refresh@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B516539B16B7C1B9003F0DFA /* 01-refresh@2x.png */; };
 		B51653FD16B7C1B9003F0DFA /* 06-magnify.png in Resources */ = {isa = PBXBuildFile; fileRef = B516539C16B7C1B9003F0DFA /* 06-magnify.png */; };
@@ -270,6 +271,9 @@
 		B5864B86177FF63A0056B0DE /* attributions.html in Resources */ = {isa = PBXBuildFile; fileRef = B5864B85177FF63A0056B0DE /* attributions.html */; };
 		B5864B8A177FF6A10056B0DE /* AttributionsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B5864B88177FF6A00056B0DE /* AttributionsViewController.m */; };
 		B5864B8B177FF6A10056B0DE /* AttributionsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B5864B89177FF6A00056B0DE /* AttributionsViewController.xib */; };
+		B58DAB8D1846F69A00F8A109 /* CoreTelephony.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B58DAB8C1846F69A00F8A109 /* CoreTelephony.framework */; };
+		B58DAB8F1846F6FE00F8A109 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B58DAB8E1846F6FE00F8A109 /* SystemConfiguration.framework */; };
+		B58DAB911846F70A00F8A109 /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = B58DAB901846F70A00F8A109 /* libz.dylib */; };
 		B59D1EF51797B5100063DC44 /* punch_card.html in Resources */ = {isa = PBXBuildFile; fileRef = B59D1EF41797B5100063DC44 /* punch_card.html */; };
 		B59D1EF91797B6E00063DC44 /* RepoPunchCardViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B59D1EF71797B6E00063DC44 /* RepoPunchCardViewController.m */; };
 		B59D1EFA1797B6E00063DC44 /* RepoPunchCardViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B59D1EF81797B6E00063DC44 /* RepoPunchCardViewController.xib */; };
@@ -409,6 +413,7 @@
 		B511D45216DB3D0800DD0ED5 /* pull_request.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = pull_request.html; sourceTree = "<group>"; };
 		B511D45416E08F7700DD0ED5 /* 122-stats.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "122-stats.png"; sourceTree = "<group>"; };
 		B511D45516E08F7700DD0ED5 /* 122-stats@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "122-stats@2x.png"; sourceTree = "<group>"; };
+		B51382F81846F65F004058C8 /* NewRelicAgent.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = NewRelicAgent.framework; sourceTree = "<group>"; };
 		B516539A16B7C1B9003F0DFA /* 01-refresh.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "01-refresh.png"; sourceTree = "<group>"; };
 		B516539B16B7C1B9003F0DFA /* 01-refresh@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "01-refresh@2x.png"; sourceTree = "<group>"; };
 		B516539C16B7C1B9003F0DFA /* 06-magnify.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "06-magnify.png"; sourceTree = "<group>"; };
@@ -758,6 +763,9 @@
 		B5864B87177FF6A00056B0DE /* AttributionsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AttributionsViewController.h; sourceTree = "<group>"; };
 		B5864B88177FF6A00056B0DE /* AttributionsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AttributionsViewController.m; sourceTree = "<group>"; };
 		B5864B89177FF6A00056B0DE /* AttributionsViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AttributionsViewController.xib; sourceTree = "<group>"; };
+		B58DAB8C1846F69A00F8A109 /* CoreTelephony.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreTelephony.framework; path = System/Library/Frameworks/CoreTelephony.framework; sourceTree = SDKROOT; };
+		B58DAB8E1846F6FE00F8A109 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
+		B58DAB901846F70A00F8A109 /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
 		B59D1EF41797B5100063DC44 /* punch_card.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = punch_card.html; sourceTree = "<group>"; };
 		B59D1EF61797B6E00063DC44 /* RepoPunchCardViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RepoPunchCardViewController.h; sourceTree = "<group>"; };
 		B59D1EF71797B6E00063DC44 /* RepoPunchCardViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RepoPunchCardViewController.m; sourceTree = "<group>"; };
@@ -960,7 +968,11 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B58DAB911846F70A00F8A109 /* libz.dylib in Frameworks */,
+				B58DAB8F1846F6FE00F8A109 /* SystemConfiguration.framework in Frameworks */,
+				B58DAB8D1846F69A00F8A109 /* CoreTelephony.framework in Frameworks */,
 				B5DE16A3182A3392008A659B /* Accelerate.framework in Frameworks */,
+				B51382F91846F65F004058C8 /* NewRelicAgent.framework in Frameworks */,
 				B53681331744C4ED00249BC7 /* CoreText.framework in Frameworks */,
 				B518969F17460CF400656BAB /* CoreImage.framework in Frameworks */,
 				B54603A616C101FD007D4FB3 /* ImageIO.framework in Frameworks */,
@@ -1291,6 +1303,10 @@
 		B55D909D16B7AA27009CB90F /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				B58DAB901846F70A00F8A109 /* libz.dylib */,
+				B58DAB8E1846F6FE00F8A109 /* SystemConfiguration.framework */,
+				B58DAB8C1846F69A00F8A109 /* CoreTelephony.framework */,
+				B51382F81846F65F004058C8 /* NewRelicAgent.framework */,
 				B5DE16A2182A3392008A659B /* Accelerate.framework */,
 				B53681321744C4ED00249BC7 /* CoreText.framework */,
 				B518969E17460CF400656BAB /* CoreImage.framework */,
@@ -2356,7 +2372,8 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Tri Vuong (57ZS6Q6FE7)";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
-					"\"$(SRCROOT)\"",
+					"$(SRCROOT)",
+					"/Users/trivuong/Projects/Gitos-iPad",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Gitos-iPad/Gitos-iPad-Prefix.pch";
@@ -2378,7 +2395,8 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Tri Vuong (S8W7N6M49B)";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
-					"\"$(SRCROOT)\"",
+					"$(SRCROOT)",
+					"/Users/trivuong/Projects/Gitos-iPad",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Gitos-iPad/Gitos-iPad-Prefix.pch";
