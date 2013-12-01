@@ -60,19 +60,11 @@
 {
     [loginTable setBackgroundView:nil];
     [loginTable setScrollEnabled:NO];
-    [loginTable setSeparatorStyle:UITableViewCellSeparatorStyleSingleLine];
-    [loginTable setSeparatorColor:[UIColor colorWithRed:200/255.0
-                                                  green:200/255.0
-                                                   blue:200/255.0
-                                                  alpha:1.0]];
-
-    signinButton.buttonColor = [UIColor turquoiseColor];
-    signinButton.shadowColor = [UIColor greenSeaColor];
-    signinButton.shadowHeight = 3.0f;
     signinButton.cornerRadius = 6.0f;
-    signinButton.titleLabel.font = [UIFont boldFlatFontOfSize:16];
-    [signinButton setTitleColor:[UIColor cloudsColor] forState:UIControlStateNormal];
-    [signinButton setTitleColor:[UIColor cloudsColor] forState:UIControlStateHighlighted];
+    signinButton.titleLabel.font = [UIFont fontWithName:@"HelveticaNeue Thin" size:20];
+    [signinButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+    [signinButton setTitleColor:[UIColor whiteColor] forState:UIControlStateHighlighted];
+    [signinButton setButtonColor:[UIColor peterRiverColor]];
     [signinButton addTarget:self
                      action:@selector(deleteExistingAuthorizations)
            forControlEvents:UIControlEventTouchDown];
@@ -238,7 +230,7 @@
         [[NSNotificationCenter defaultCenter] postNotificationName:@"ExistingAuthorizationsDeleted" object:nil];
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
         NSLog(@"%@", [error localizedDescription]);
-        if ([operation.response statusCode] == 403) {
+        if ([operation.response statusCode] == 401) {
             [self handleInvalidCredentials];
         }
     }];
@@ -271,7 +263,8 @@
          [AppInitialization run:self.view.window withUser:currentUser];
      }
      failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-
+         [MRProgressOverlayView dismissOverlayForView:self.view animated:YES];
+         [AppHelper flashError:[error localizedDescription] inView:self.view];
      }];
 
     [operation start];
@@ -280,6 +273,7 @@
 - (void)handleInvalidCredentials
 {
     [AppHelper flashError:@"Invalid username or password" inView:self.view];
+    [MRProgressOverlayView dismissOverlayForView:self.view animated:YES];
 }
 
 - (void)showAccountOptions
@@ -300,8 +294,7 @@
 
 - (void)blurFields
 {
-    if ([usernameField isFirstResponder]) [usernameField resignFirstResponder];
-    if ([passwordField isFirstResponder]) [passwordField resignFirstResponder];
+    [self.view endEditing:YES];
 }
 
 - (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex
