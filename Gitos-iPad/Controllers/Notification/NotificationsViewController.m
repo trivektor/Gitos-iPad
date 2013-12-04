@@ -37,7 +37,6 @@
     // Do any additional setup after loading the view from its nib.
     [self performHouseKeepingTasks];
     [self registerNib];
-    [self setupPullToRefresh];
     [self fetchNotificationsForPage:self.currentPage++];
 }
 
@@ -143,7 +142,6 @@
     [operation setCompletionBlockWithSuccess:
      ^(AFHTTPRequestOperation *operation, id responseObject){
          [MRProgressOverlayView dismissOverlayForView:self.view animated:NO];
-         [notificationsTable.pullToRefreshView stopAnimating];
          NSString *response = [operation responseString];
 
          NSArray *json = [NSJSONSerialization JSONObjectWithData:[response dataUsingEncoding:NSUTF8StringEncoding] options:NSJSONReadingMutableContainers error:nil];
@@ -167,20 +165,10 @@
      }
      failure:^(AFHTTPRequestOperation *operation, NSError *error) {
          [MRProgressOverlayView dismissOverlayForView:self.view animated:NO];
-         [notificationsTable.pullToRefreshView stopAnimating];
          NSLog(@"%@", error);
      }];
     
     [operation start];
-}
-
-- (void)setupPullToRefresh
-{
-    currentPage = 1;
-    [notifications removeAllObjects];
-    [notificationsTable addPullToRefreshWithActionHandler:^{
-        [self fetchNotificationsForPage:self.currentPage++];
-    }];
 }
 
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView

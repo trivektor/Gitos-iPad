@@ -169,16 +169,12 @@
 {
     [MRProgressOverlayView dismissOverlayForView:self.view animated:NO];
     [newsFeed addObjectsFromArray:notication.object];
-    [newsFeedTable.pullToRefreshView stopAnimating];
     [newsFeedTable reloadData];
 }
 
 - (void)setupPullToRefresh
 {
     currentPage = 1;
-    [newsFeedTable addPullToRefreshWithActionHandler:^{
-        [self fetchUserNewsFeed];
-    }];
 }
 
 - (void)reloadNewsfeed

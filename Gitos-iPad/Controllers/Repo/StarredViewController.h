@@ -19,6 +19,5 @@
 - (void)registerNib;
 - (void)registerEvents;
 - (void)displayStarredRepos:(NSNotification *)notification;
-- (void)setupPullToRefresh;
 
 @end

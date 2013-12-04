@@ -38,7 +38,6 @@
     [self performHouseKeepingTasks];
     [self registerNib];
     [self registerEvents];
-    [self setupPullToRefresh];
     [user fetchRecentActivityForPage:currentPage++];
 }
 
@@ -127,14 +126,6 @@
     [MRProgressOverlayView showOverlayAddedTo:self.view animated:NO];
     [activities removeAllObjects];
     [user fetchRecentActivityForPage:currentPage++];
-}
-
-- (void)setupPullToRefresh
-{
-    currentPage = 1;
-    [activityTable addPullToRefreshWithActionHandler:^{
-        [user fetchRecentActivityForPage:currentPage++];
-    }];
 }
 
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView

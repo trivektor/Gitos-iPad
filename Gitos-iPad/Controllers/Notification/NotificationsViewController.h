@@ -18,7 +18,6 @@
 
 - (void)performHouseKeepingTasks;
 - (void)registerNib;
-- (void)setupPullToRefresh;
 - (void)fetchNotificationsForPage:(NSInteger)page;
 - (void)fetchIssue:(Notification *)notification;
 - (void)fetchPullRequest:(Notification *)notification;

@@ -21,6 +21,5 @@
 - (void)registerEvents;
 - (void)displayRecentActivity:(NSNotification *)notification;
 - (void)reloadActivities;
-- (void)setupPullToRefresh;
 
 @end

@@ -75,7 +75,6 @@
 - (void)displayStarredRepos:(NSNotification *)notification
 {
     [MRProgressOverlayView dismissOverlayForView:self.view animated:NO];
-    [starredReposTable.pullToRefreshView stopAnimating];
     [starredRepos addObjectsFromArray:notification.object];
     [starredReposTable reloadData];
 }
@@ -125,14 +124,6 @@
         [MRProgressOverlayView showOverlayAddedTo:self.view animated:NO];
         [user fetchStarredReposForPage:currentPage++];
     }
-}
-
-- (void)setupPullToRefresh
-{
-    self.currentPage = 1;
-    [starredReposTable addPullToRefreshWithActionHandler:^{
-        [user fetchStarredReposForPage:currentPage++];
-    }];
 }
 
 @end

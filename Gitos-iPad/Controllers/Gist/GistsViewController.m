@@ -138,7 +138,6 @@
 {
     [gists addObjectsFromArray:notification.object];
     [gistsTable reloadData];
-    [gistsTable.pullToRefreshView stopAnimating];
     [MRProgressOverlayView dismissOverlayForView:self.view animated:NO];
 }
 
@@ -146,9 +145,6 @@
 {
     [MRProgressOverlayView showOverlayAddedTo:self.view animated:NO];
     currentPage = 1;
-    [gistsTable addPullToRefreshWithActionHandler:^{
-        [user fetchGistsForPage:currentPage++];
-    }];
 }
 
 - (void)createNewGist
