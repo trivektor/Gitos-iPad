@@ -13,8 +13,30 @@
 typedef enum
 {
     SDWebImageDownloaderLowPriority = 1 << 0,
-    SDWebImageDownloaderProgressiveDownload = 1 << 1
+    SDWebImageDownloaderProgressiveDownload = 1 << 1,
+    /**
+     * By default, request prevent the of NSURLCache. With this flag, NSURLCache
+     * is used with default policies.
+     */
+    SDWebImageDownloaderUseNSURLCache = 1 << 2,
+    /**
+     * Call completion block with nil image/imageData if the image was read from NSURLCache
+     * (to be combined with `SDWebImageDownloaderUseNSURLCache`).
+     */
+    SDWebImageDownloaderIgnoreCachedResponse = 1 << 3
 } SDWebImageDownloaderOptions;
+
+typedef enum
+{
+    SDWebImageDownloaderFIFOExecutionOrder,
+    /**
+     * Default value. All download operations will execute in queue style (first-in-first-out).
+     */
+    SDWebImageDownloaderLIFOExecutionOrder
+    /**
+     * All download operations will execute in stack style (last-in-first-out).
+     */
+} SDWebImageDownloaderExecutionOrder;
 
 extern NSString *const SDWebImageDownloadStartNotification;
 extern NSString *const SDWebImageDownloadStopNotification;
@@ -29,7 +51,27 @@ typedef void(^SDWebImageDownloaderCompletedBlock)(UIImage *image, NSData *data, 
 
 @property (assign, nonatomic) NSInteger maxConcurrentDownloads;
 
+/**
+ * Changes download operations execution order. Default value is `SDWebImageDownloaderFIFOExecutionOrder`.
+ */
+@property (assign, nonatomic) SDWebImageDownloaderExecutionOrder executionOrder;
+
 + (SDWebImageDownloader *)sharedDownloader;
+
+/**
+ * Set a value for a HTTP header to be appended to each download HTTP request.
+ *
+ * @param value The value for the header field. Use `nil` value to remove the header.
+ * @param field The name of the header field to set.
+ */
+- (void)setValue:(NSString *)value forHTTPHeaderField:(NSString *)field;
+
+/**
+ * Returns the value of the specified HTTP header field.
+ *
+ * @return The value associated with the header field field, or `nil` if there is no corresponding header field.
+ */
+- (NSString *)valueForHTTPHeaderField:(NSString *)field;
 
 /**
  * Creates a SDWebImageDownloader async downloader instance with a given URL
@@ -40,8 +82,8 @@ typedef void(^SDWebImageDownloaderCompletedBlock)(UIImage *image, NSData *data, 
  *
  * @param url The URL to the image to download
  * @param options The options to be used for this download
- * @param progress A block called repeatedly while the image is downloading
- * @param completed A block called once the download is completed.
+ * @param progressBlock A block called repeatedly while the image is downloading
+ * @param completedBlock A block called once the download is completed.
  *                  If the download succeeded, the image parameter is set, in case of error,
  *                  error parameter is set with the error. The last parameter is always YES
  *                  if SDWebImageDownloaderProgressiveDownload isn't use. With the
