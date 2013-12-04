@@ -369,6 +369,8 @@
 		B5DE16A0182A32D6008A659B /* MRMessageInterceptor.m in Sources */ = {isa = PBXBuildFile; fileRef = B5DE1695182A32D6008A659B /* MRMessageInterceptor.m */; };
 		B5DE16A1182A32D6008A659B /* MRWeakProxy.m in Sources */ = {isa = PBXBuildFile; fileRef = B5DE1698182A32D6008A659B /* MRWeakProxy.m */; };
 		B5DE16A3182A3392008A659B /* Accelerate.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B5DE16A2182A3392008A659B /* Accelerate.framework */; };
+		B5EF832C184F178F008A9577 /* NewRelicAgent.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B5EF832B184F178F008A9577 /* NewRelicAgent.framework */; };
+		B5EF832E184F179E008A9577 /* SDWebImage.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B5EF832D184F179E008A9577 /* SDWebImage.framework */; };
 		B5F10F8A173F83AE00263242 /* GistCommentsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B5F10F88173F83AE00263242 /* GistCommentsViewController.m */; };
 		B5F10F8B173F83AE00263242 /* GistCommentsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B5F10F89173F83AE00263242 /* GistCommentsViewController.xib */; };
 		B5F10F8D173F850800263242 /* gist_comments.html in Resources */ = {isa = PBXBuildFile; fileRef = B5F10F8C173F850800263242 /* gist_comments.html */; };
@@ -900,6 +902,8 @@
 		B5DE1697182A32D6008A659B /* MRWeakProxy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MRWeakProxy.h; sourceTree = "<group>"; };
 		B5DE1698182A32D6008A659B /* MRWeakProxy.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MRWeakProxy.m; sourceTree = "<group>"; };
 		B5DE16A2182A3392008A659B /* Accelerate.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accelerate.framework; path = System/Library/Frameworks/Accelerate.framework; sourceTree = SDKROOT; };
+		B5EF832B184F178F008A9577 /* NewRelicAgent.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = NewRelicAgent.framework; path = ../../Desktop/NewRelic_iOS_Agent_1.396/NewRelicAgent.framework; sourceTree = "<group>"; };
+		B5EF832D184F179E008A9577 /* SDWebImage.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SDWebImage.framework; path = ../../Desktop/SDWebImage.framework; sourceTree = "<group>"; };
 		B5F10F87173F83AE00263242 /* GistCommentsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GistCommentsViewController.h; sourceTree = "<group>"; };
 		B5F10F88173F83AE00263242 /* GistCommentsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GistCommentsViewController.m; sourceTree = "<group>"; };
 		B5F10F89173F83AE00263242 /* GistCommentsViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GistCommentsViewController.xib; sourceTree = "<group>"; };
@@ -936,6 +940,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B5EF832E184F179E008A9577 /* SDWebImage.framework in Frameworks */,
+				B5EF832C184F178F008A9577 /* NewRelicAgent.framework in Frameworks */,
 				B58DAB911846F70A00F8A109 /* libz.dylib in Frameworks */,
 				B58DAB8F1846F6FE00F8A109 /* SystemConfiguration.framework in Frameworks */,
 				B58DAB8D1846F69A00F8A109 /* CoreTelephony.framework in Frameworks */,
@@ -1269,6 +1275,8 @@
 		B55D909D16B7AA27009CB90F /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				B5EF832D184F179E008A9577 /* SDWebImage.framework */,
+				B5EF832B184F178F008A9577 /* NewRelicAgent.framework */,
 				B553E8D9184F0B2900D29BB6 /* SDWebImage.framework */,
 				B58DAB901846F70A00F8A109 /* libz.dylib */,
 				B58DAB8E1846F6FE00F8A109 /* SystemConfiguration.framework */,
@@ -2294,6 +2302,8 @@
 					"$(inherited)",
 					"$(SRCROOT)",
 					"/Users/trivuong/Projects/Gitos-iPad",
+					/Users/trivuong/Desktop/NewRelic_iOS_Agent_1.396,
+					/Users/trivuong/Desktop,
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Gitos-iPad/Gitos-iPad-Prefix.pch";
@@ -2317,6 +2327,8 @@
 					"$(inherited)",
 					"$(SRCROOT)",
 					"/Users/trivuong/Projects/Gitos-iPad",
+					/Users/trivuong/Desktop/NewRelic_iOS_Agent_1.396,
+					/Users/trivuong/Desktop,
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Gitos-iPad/Gitos-iPad-Prefix.pch";
