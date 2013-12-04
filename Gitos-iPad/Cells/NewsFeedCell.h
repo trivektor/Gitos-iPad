@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <SDWebImage/UIImageView+WebCache.h>
 #import "TimelineEvent.h"
 
 @interface NewsFeedCell : UITableViewCell
@@ -14,6 +15,7 @@
 @property (nonatomic, weak) IBOutlet UILabel *fontAwesomeLabel;
 @property (nonatomic, weak) IBOutlet UILabel *actionDescription;
 @property (nonatomic, weak) IBOutlet UILabel *actionDate;
+@property (weak, nonatomic) IBOutlet UIImageView *avatar;
 @property (nonatomic, strong) TimelineEvent *event;
 
 - (void)displayEvent;

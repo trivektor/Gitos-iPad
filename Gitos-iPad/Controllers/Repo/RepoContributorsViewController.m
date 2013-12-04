@@ -7,7 +7,6 @@
 //
 
 #import "RepoContributorsViewController.h"
-#import "UIImageView+WebCache.h"
 #import "ProfileViewController.h"
 
 @interface RepoContributorsViewController ()

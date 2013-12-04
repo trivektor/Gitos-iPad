@@ -8,7 +8,6 @@
 
 #import "FollowViewController.h"
 #import "ProfileViewController.h"
-#import "UIImageView+WebCache.h"
 
 @interface FollowViewController ()
 

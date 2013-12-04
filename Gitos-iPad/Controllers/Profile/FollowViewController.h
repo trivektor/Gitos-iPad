@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <SDWebImage/UIImageView+WebCache.h>
 #import "User.h"
 
 @interface FollowViewController : UIViewController <UITableViewDataSource, UITableViewDelegate>
