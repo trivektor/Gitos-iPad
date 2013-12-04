@@ -53,8 +53,9 @@
     UINib *nib = [UINib nibWithNibName:@"MasterControllerCell" bundle:nil];
 
     [menuTable registerNib:nib forCellReuseIdentifier:@"MasterControllerCell"];
-    [menuTable setBackgroundColor:[UIColor colorWithPatternImage:[UIImage imageNamed:@"side_menu_bg.png"]]];
+    [menuTable setBackgroundColor:[UIColor clearColor]];
     [menuTable setSeparatorColor:[UIColor clearColor]];
+    [self.view setBackgroundColor:[UIColor colorWithPatternImage:[UIImage imageNamed:@"side_menu_bg.png"]]];
 }
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
@@ -99,6 +100,8 @@
     headerLabel.text = [[self tableView:tableView titleForHeaderInSection:section] uppercaseString];
     headerLabel.textColor = [UIColor whiteColor];
     headerLabel.font = [UIFont fontWithName:@"HelveticaNeue-Medium" size:12.0];
+    headerLabel.shadowColor = [UIColor colorWithRed:0 green:0 blue:0 alpha:0.1];
+    headerLabel.shadowOffset = CGSizeMake(1, 1);
 
     UIView *backgroundView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 300, 25)];
 
@@ -254,6 +257,8 @@
     usernameLabel.text = [currentUser getLogin];
     usernameLabel.textColor = [UIColor whiteColor];
     usernameLabel.font = [UIFont fontWithName:@"HelveticaNeue-Light" size:14.0];
+    usernameLabel.shadowColor = [UIColor colorWithRed:0 green:0 blue:0 alpha:0.1];
+    usernameLabel.shadowOffset = CGSizeMake(1, 1);
     profileCell.backgroundColor = [UIColor clearColor];
     profileCell.selectionStyle = UITableViewCellSelectionStyleNone;
 }

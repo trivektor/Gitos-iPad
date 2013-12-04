@@ -21,8 +21,8 @@
 
     RESideMenu *sideMenuController = [[RESideMenu alloc] initWithContentViewController:mainNavController
                                                                     menuViewController:masterController];
-
-    //sideMenuController.backgroundImage = [UIImage imageNamed:@"side_menu_bg.png"];
+    [sideMenuController setParallaxEnabled:NO];
+    [sideMenuController setPanGestureEnabled:NO];
 
     [window setRootViewController:sideMenuController];
 }

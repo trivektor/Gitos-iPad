@@ -10,6 +10,8 @@
 
 @implementation MasterControllerCell
 
+static const int WIDTH = 240;
+
 @synthesize fontAwesomeLabel, optionLabel;
 
 - (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
@@ -26,6 +28,12 @@
     [super setSelected:selected animated:animated];
 
     // Configure the view for the selected state
+}
+
+- (void)setFrame:(CGRect)frame
+{
+    frame.size.width = WIDTH;
+    [super setFrame:frame];
 }
 
 - (void)renderForIndexPath:(NSIndexPath *)indexPath withNumRows:(int)numRows
@@ -83,11 +91,19 @@
         }
     }
 
+    UIColor *shadowColor = [UIColor colorWithRed:0 green:0 blue:0 alpha:0.1];
+    CGSize shadowOffset = CGSizeMake(1, 1);
+
     fontAwesomeLabel.text = fontAwesome;
-    optionLabel.text      = optionLabelText;
+    fontAwesomeLabel.shadowColor = shadowColor;
+    fontAwesomeLabel.shadowOffset = shadowOffset;
+
+    optionLabel.text = optionLabelText;
+    optionLabel.shadowColor = shadowColor;
+    optionLabel.shadowOffset = shadowOffset;
 
     if (indexPath.row < numRows - 1) {
-        UIView *bottomBorder = [[UIView alloc] initWithFrame:CGRectMake(0, 43, 190, 1)];
+        UIView *bottomBorder = [[UIView alloc] initWithFrame:CGRectMake(0, 43, WIDTH, 0.4f)];
         bottomBorder.backgroundColor = [UIColor colorWithRed:255/255.0
                                                        green:255/255.0
                                                         blue:255/255.0
