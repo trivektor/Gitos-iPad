@@ -20,6 +20,7 @@
 #import "FeedbackViewController.h"
 #import "NotificationsViewController.h"
 #import "AttributionsViewController.h"
+#import "JobsViewController.h"
 #import "UIColor+FlatUI.h"
 
 @interface MasterViewController ()
@@ -215,7 +216,7 @@
             break;
         case 4:
             if (indexPath.row == 0) {
-                
+                selectedController = [[UINavigationController alloc] initWithRootViewController:[JobsViewController new]];
             } else if (indexPath.row == 1)
             break;
     }
