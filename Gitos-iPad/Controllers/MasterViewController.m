@@ -60,7 +60,7 @@
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-    return 4;
+    return 5;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
@@ -79,6 +79,9 @@
             break;
         case 3:
             rows = 6;
+            break;
+        case 4:
+            rows = 2;
             break;
         default:
             rows = 0;
@@ -126,6 +129,9 @@
             break;
         case 3:
             headerTitle = @"Others";
+            break;
+        case 4:
+            headerTitle = @"Jobs";
             break;
     }
 
@@ -206,6 +212,11 @@
             } else if (indexPath.row == 5) {
                 selectedController = [[UINavigationController alloc] initWithRootViewController:[AttributionsViewController new]];
             }
+            break;
+        case 4:
+            if (indexPath.row == 0) {
+                
+            } else if (indexPath.row == 1)
             break;
     }
 

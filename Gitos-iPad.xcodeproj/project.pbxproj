@@ -371,6 +371,7 @@
 		B5DE16A3182A3392008A659B /* Accelerate.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B5DE16A2182A3392008A659B /* Accelerate.framework */; };
 		B5EF832C184F178F008A9577 /* NewRelicAgent.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B5EF832B184F178F008A9577 /* NewRelicAgent.framework */; };
 		B5EF832E184F179E008A9577 /* SDWebImage.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B5EF832D184F179E008A9577 /* SDWebImage.framework */; };
+		B5EFE12D1850296A0094E99D /* Job.m in Sources */ = {isa = PBXBuildFile; fileRef = B5EFE12C1850296A0094E99D /* Job.m */; };
 		B5F10F8A173F83AE00263242 /* GistCommentsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B5F10F88173F83AE00263242 /* GistCommentsViewController.m */; };
 		B5F10F8B173F83AE00263242 /* GistCommentsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B5F10F89173F83AE00263242 /* GistCommentsViewController.xib */; };
 		B5F10F8D173F850800263242 /* gist_comments.html in Resources */ = {isa = PBXBuildFile; fileRef = B5F10F8C173F850800263242 /* gist_comments.html */; };
@@ -904,6 +905,8 @@
 		B5DE16A2182A3392008A659B /* Accelerate.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accelerate.framework; path = System/Library/Frameworks/Accelerate.framework; sourceTree = SDKROOT; };
 		B5EF832B184F178F008A9577 /* NewRelicAgent.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = NewRelicAgent.framework; path = ../../Desktop/NewRelic_iOS_Agent_1.396/NewRelicAgent.framework; sourceTree = "<group>"; };
 		B5EF832D184F179E008A9577 /* SDWebImage.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SDWebImage.framework; path = ../../Desktop/SDWebImage.framework; sourceTree = "<group>"; };
+		B5EFE12B1850296A0094E99D /* Job.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Job.h; sourceTree = "<group>"; };
+		B5EFE12C1850296A0094E99D /* Job.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Job.m; sourceTree = "<group>"; };
 		B5F10F87173F83AE00263242 /* GistCommentsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GistCommentsViewController.h; sourceTree = "<group>"; };
 		B5F10F88173F83AE00263242 /* GistCommentsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GistCommentsViewController.m; sourceTree = "<group>"; };
 		B5F10F89173F83AE00263242 /* GistCommentsViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GistCommentsViewController.xib; sourceTree = "<group>"; };
@@ -1438,6 +1441,8 @@
 				B5D4D75A183C9AC90050A1FE /* RepoContentSearchResult.m */,
 				B5D4D75C183C9C240050A1FE /* TextMatch.h */,
 				B5D4D75D183C9C240050A1FE /* TextMatch.m */,
+				B5EFE12B1850296A0094E99D /* Job.h */,
+				B5EFE12C1850296A0094E99D /* Job.m */,
 			);
 			path = Classes;
 			sourceTree = "<group>";
@@ -2132,6 +2137,7 @@
 				B54F6A0C16D31BE200978DD9 /* PullRequestEvent.m in Sources */,
 				B54F6A0F16D31C8900978DD9 /* PublicEvent.m in Sources */,
 				B54F6A1216D31D4300978DD9 /* CommitCommentEvent.m in Sources */,
+				B5EFE12D1850296A0094E99D /* Job.m in Sources */,
 				B54F6A1516D31DDC00978DD9 /* GollumEvent.m in Sources */,
 				B511D44216DAF68200DD0ED5 /* DeleteEvent.m in Sources */,
 				B511D44C16DB36B000DD0ED5 /* PullRequest.m in Sources */,
