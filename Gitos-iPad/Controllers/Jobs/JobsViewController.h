@@ -7,7 +7,15 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "Job.h"
 
-@interface JobsViewController : UIViewController
+@interface JobsViewController : GitosViewController <UITableViewDataSource, UITableViewDelegate>
+
+@property (nonatomic, strong) NSMutableArray *jobs;
+@property (weak, nonatomic) IBOutlet UITableView *jobsTable;
+
+- (void)performHousekeepingTasks;
+- (void)registerEvents;
+- (void)displayJobs:(NSNotification *)notification;
 
 @end

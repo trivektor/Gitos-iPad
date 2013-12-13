@@ -71,4 +71,36 @@
     return [data valueForKey:@"url"];
 }
 
++ (void)fetchAll
+{
+    NSURL *positionsUrl = [NSURL URLWithString:[NSString stringWithFormat:@"%@/positions.json", [AppConfig getConfigValue:@"GithubJobsApiHost"]]];
+
+    AFHTTPClient *httpClient = [[AFHTTPClient alloc] initWithBaseURL:positionsUrl];
+
+    NSMutableURLRequest *positionsRequest = [httpClient requestWithMethod:@"GET"
+                                                                  path:positionsUrl.absoluteString
+                                                            parameters:nil];
+
+    AFHTTPRequestOperation *operation = [[AFHTTPRequestOperation alloc] initWithRequest:positionsRequest];
+
+    [operation setCompletionBlockWithSuccess:
+     ^(AFHTTPRequestOperation *operation, id responseObject){
+         NSArray *json = [NSJSONSerialization JSONObjectWithData:[operation.responseString dataUsingEncoding:NSUTF8StringEncoding] options:NSJSONReadingMutableContainers error:nil];
+
+         NSMutableArray *jobs = [NSMutableArray arrayWithCapacity:0];
+
+         for (int i=0; i < json.count; i++) {
+             [jobs addObject:[[Job alloc] initWithData:[json objectAtIndex:i]]];
+         }
+
+         [[NSNotificationCenter defaultCenter] postNotificationName:@"JobsFetched"
+                                                             object:jobs];
+     }
+     failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+         NSLog(@"%@", error);
+     }];
+
+    [operation start];
+}
+
 @end

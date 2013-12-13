@@ -25,4 +25,6 @@
 - (NSString *)getCompanyUrl;
 - (NSString *)getUrl;
 
++ (void)fetchAll;
+
 @end
