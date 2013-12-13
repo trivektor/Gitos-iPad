@@ -263,6 +263,8 @@
 		B58DAB8D1846F69A00F8A109 /* CoreTelephony.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B58DAB8C1846F69A00F8A109 /* CoreTelephony.framework */; };
 		B58DAB8F1846F6FE00F8A109 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B58DAB8E1846F6FE00F8A109 /* SystemConfiguration.framework */; };
 		B58DAB911846F70A00F8A109 /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = B58DAB901846F70A00F8A109 /* libz.dylib */; };
+		B5976FF4185AFB12003173B2 /* JobCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B5976FF3185AFB12003173B2 /* JobCell.m */; };
+		B5976FF6185AFB35003173B2 /* JobCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B5976FF5185AFB35003173B2 /* JobCell.xib */; };
 		B59D1EF51797B5100063DC44 /* punch_card.html in Resources */ = {isa = PBXBuildFile; fileRef = B59D1EF41797B5100063DC44 /* punch_card.html */; };
 		B59D1EF91797B6E00063DC44 /* RepoPunchCardViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B59D1EF71797B6E00063DC44 /* RepoPunchCardViewController.m */; };
 		B59D1EFA1797B6E00063DC44 /* RepoPunchCardViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B59D1EF81797B6E00063DC44 /* RepoPunchCardViewController.xib */; };
@@ -737,6 +739,9 @@
 		B58DAB8C1846F69A00F8A109 /* CoreTelephony.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreTelephony.framework; path = System/Library/Frameworks/CoreTelephony.framework; sourceTree = SDKROOT; };
 		B58DAB8E1846F6FE00F8A109 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		B58DAB901846F70A00F8A109 /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
+		B5976FF2185AFB12003173B2 /* JobCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JobCell.h; sourceTree = "<group>"; };
+		B5976FF3185AFB12003173B2 /* JobCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JobCell.m; sourceTree = "<group>"; };
+		B5976FF5185AFB35003173B2 /* JobCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = JobCell.xib; sourceTree = "<group>"; };
 		B59D1EF41797B5100063DC44 /* punch_card.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = punch_card.html; sourceTree = "<group>"; };
 		B59D1EF61797B6E00063DC44 /* RepoPunchCardViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RepoPunchCardViewController.h; sourceTree = "<group>"; };
 		B59D1EF71797B6E00063DC44 /* RepoPunchCardViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RepoPunchCardViewController.m; sourceTree = "<group>"; };
@@ -1490,6 +1495,9 @@
 				B5D4D761183DFB660050A1FE /* RepoContentSearchResultCell.h */,
 				B5D4D762183DFB660050A1FE /* RepoContentSearchResultCell.m */,
 				B5D4D764183DFB840050A1FE /* RepoContentSearchResultCell.xib */,
+				B5976FF2185AFB12003173B2 /* JobCell.h */,
+				B5976FF3185AFB12003173B2 /* JobCell.m */,
+				B5976FF5185AFB35003173B2 /* JobCell.xib */,
 			);
 			path = Cells;
 			sourceTree = "<group>";
@@ -2002,6 +2010,7 @@
 				B569D0C516FE6496002216DD /* glyphicons_078_warning_sign@2x.png in Resources */,
 				B569D0C616FE6496002216DD /* glyphicons_198_ok.png in Resources */,
 				B569D0C716FE6496002216DD /* glyphicons_198_ok@2x.png in Resources */,
+				B5976FF6185AFB35003173B2 /* JobCell.xib in Resources */,
 				B574CF3416FFAAA00077D353 /* desert.css in Resources */,
 				B574CF3516FFAAA00077D353 /* prettify.css in Resources */,
 				B574CF3616FFAAA00077D353 /* sons-of-obsidian.css in Resources */,
@@ -2189,6 +2198,7 @@
 				B5A104811723C42300487A47 /* FollowViewController.m in Sources */,
 				B5A104871723C47B00487A47 /* FeedbackViewController.m in Sources */,
 				B5A1048D1723C49B00487A47 /* LoginViewController.m in Sources */,
+				B5976FF4185AFB12003173B2 /* JobCell.m in Sources */,
 				B5A104991723C4D300487A47 /* RawFileViewController.m in Sources */,
 				B5A1049B1723C4D300487A47 /* SearchViewController.m in Sources */,
 				B5A1049D1723C4D300487A47 /* WebsiteViewController.m in Sources */,
