@@ -10,7 +10,7 @@
 
 @implementation MasterControllerCell
 
-static const int WIDTH = 240;
+static const int WIDTH = 250;
 
 @synthesize fontAwesomeLabel, optionLabel;
 
@@ -101,7 +101,7 @@ static const int WIDTH = 240;
         }
     }
 
-    UIColor *shadowColor = [UIColor colorWithRed:0 green:0 blue:0 alpha:0.1];
+    UIColor *shadowColor = [UIColor colorWithRed:0 green:0 blue:0 alpha:0.18];
     CGSize shadowOffset = CGSizeMake(1, 1);
 
     fontAwesomeLabel.text = fontAwesome;
@@ -113,11 +113,11 @@ static const int WIDTH = 240;
     optionLabel.shadowOffset = shadowOffset;
 
     if (indexPath.row < numRows - 1) {
-        UIView *bottomBorder = [[UIView alloc] initWithFrame:CGRectMake(0, 43, WIDTH, 0.4f)];
+        UIView *bottomBorder = [[UIView alloc] initWithFrame:CGRectMake(0, 43, WIDTH, 0.5f)];
         bottomBorder.backgroundColor = [UIColor colorWithRed:255/255.0
                                                        green:255/255.0
                                                         blue:255/255.0
-                                                       alpha:0.3];
+                                                       alpha:0.4];
         [self.contentView addSubview:bottomBorder];
     }
 

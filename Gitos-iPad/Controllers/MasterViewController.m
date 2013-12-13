@@ -56,7 +56,7 @@
     [menuTable registerNib:nib forCellReuseIdentifier:@"MasterControllerCell"];
     [menuTable setBackgroundColor:[UIColor clearColor]];
     [menuTable setSeparatorColor:[UIColor clearColor]];
-    [self.view setBackgroundColor:[UIColor colorWithPatternImage:[UIImage imageNamed:@"side_menu_bg.png"]]];
+    [self.view setBackgroundColor:[UIColor peterRiverColor]];
 }
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
@@ -268,7 +268,7 @@
 
     usernameLabel.text = [currentUser getLogin];
     usernameLabel.textColor = [UIColor whiteColor];
-    usernameLabel.font = [UIFont fontWithName:@"HelveticaNeue-Light" size:14.0];
+    usernameLabel.font = [UIFont fontWithName:@"HelveticaNeue-Light" size:15.0];
     usernameLabel.shadowColor = [UIColor colorWithRed:0 green:0 blue:0 alpha:0.1];
     usernameLabel.shadowOffset = CGSizeMake(1, 1);
     profileCell.backgroundColor = [UIColor clearColor];

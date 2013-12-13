@@ -23,6 +23,8 @@
                                                                     menuViewController:masterController];
     [sideMenuController setParallaxEnabled:NO];
     [sideMenuController setPanGestureEnabled:NO];
+    [sideMenuController setContentViewScaleValue:0.9f];
+    [sideMenuController setContentViewInLandscapeOffsetCenterX:800];
 
     [window setRootViewController:sideMenuController];
 }
