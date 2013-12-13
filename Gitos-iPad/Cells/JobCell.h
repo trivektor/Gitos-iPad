@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import "Job.h"
+#import <SDWebImage/UIImageView+WebCache.h>
 
 @interface JobCell : UITableViewCell
 

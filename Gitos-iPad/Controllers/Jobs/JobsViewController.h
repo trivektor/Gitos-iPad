@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import "Job.h"
+#import "JobCell.h"
 
 @interface JobsViewController : GitosViewController <UITableViewDataSource, UITableViewDelegate>
 
@@ -15,6 +16,7 @@
 @property (weak, nonatomic) IBOutlet UITableView *jobsTable;
 
 - (void)performHousekeepingTasks;
+- (void)registerNib;
 - (void)registerEvents;
 - (void)displayJobs:(NSNotification *)notification;
 

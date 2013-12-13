@@ -32,6 +32,9 @@
 {
     titleLabel.text = [job getTitle];
     locationLabel.text = [job getLocation];
+    if ((id)[job getCompanyLogo] != [NSNull null]) {
+        [companyLogo setImageWithURL:[NSURL URLWithString:[job getCompanyLogo]] placeholderImage:[UIImage imageNamed:@"avatar-placeholder.png"]];
+    }
 }
 
 @end

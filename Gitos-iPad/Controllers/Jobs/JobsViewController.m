@@ -31,6 +31,7 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
     [self performHousekeepingTasks];
+    [self registerNib];
     [self registerEvents];
     [Job fetchAll];
 }
@@ -39,6 +40,12 @@
 {
     [super performHousekeepingTasks];
     self.navigationItem.title = @"Jobs";
+}
+
+- (void)registerNib
+{
+    UINib *nib = [UINib nibWithNibName:@"JobCell" bundle:nil];
+    [jobsTable registerNib:nib forCellReuseIdentifier:@"JobCell"];
 }
 
 - (void)registerEvents
@@ -65,21 +72,23 @@
     return jobs.count;
 }
 
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    return 67;
+}
+
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    static NSString *cellIdentifier = @"Cell";
+    static NSString *cellIdentifier = @"JobCell";
 
-    UITableViewCell *cell = [jobsTable dequeueReusableCellWithIdentifier:cellIdentifier];
+    JobCell *cell = [jobsTable dequeueReusableCellWithIdentifier:cellIdentifier];
 
     if (!cell) {
-        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle
-                                      reuseIdentifier:cellIdentifier];
+        cell = [[JobCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellIdentifier];
     }
 
-    Job *job = [jobs objectAtIndex:indexPath.row];
-
-    cell.textLabel.text = [job getTitle];
-    cell.detailTextLabel.text = [job getLocation];
+    cell.job = [jobs objectAtIndex:indexPath.row];
+    [cell render];
 
     return cell;
 }
