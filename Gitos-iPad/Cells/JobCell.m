@@ -38,8 +38,12 @@
     [self defineAccessoryType];
     [self defineHighlightedColorsForLabels:@[titleLabel, locationLabel, createdAtLabel, typeLabel]];
 
+    companyLogo.contentMode = UIViewContentModeScaleAspectFit;
+
     if ((id)[job getCompanyLogo] != [NSNull null]) {
-        [companyLogo setImageWithURL:[NSURL URLWithString:[job getCompanyLogo]] placeholderImage:[UIImage imageNamed:@"avatar-placeholder.png"]];
+        [companyLogo setImageWithURL:[NSURL URLWithString:[job getCompanyLogo]] placeholderImage:[UIImage imageNamed:@"briefcase.png"]];
+    } else {
+        [companyLogo setImage:[UIImage imageNamed:@"briefcase.png"]];
     }
 }
 

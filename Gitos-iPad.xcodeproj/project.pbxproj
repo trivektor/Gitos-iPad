@@ -265,6 +265,7 @@
 		B58DAB911846F70A00F8A109 /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = B58DAB901846F70A00F8A109 /* libz.dylib */; };
 		B5976FF4185AFB12003173B2 /* JobCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B5976FF3185AFB12003173B2 /* JobCell.m */; };
 		B5976FF6185AFB35003173B2 /* JobCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B5976FF5185AFB35003173B2 /* JobCell.xib */; };
+		B5976FF8185C61AD003173B2 /* briefcase.png in Resources */ = {isa = PBXBuildFile; fileRef = B5976FF7185C61AD003173B2 /* briefcase.png */; };
 		B59D1EF51797B5100063DC44 /* punch_card.html in Resources */ = {isa = PBXBuildFile; fileRef = B59D1EF41797B5100063DC44 /* punch_card.html */; };
 		B59D1EF91797B6E00063DC44 /* RepoPunchCardViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B59D1EF71797B6E00063DC44 /* RepoPunchCardViewController.m */; };
 		B59D1EFA1797B6E00063DC44 /* RepoPunchCardViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B59D1EF81797B6E00063DC44 /* RepoPunchCardViewController.xib */; };
@@ -742,6 +743,7 @@
 		B5976FF2185AFB12003173B2 /* JobCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JobCell.h; sourceTree = "<group>"; };
 		B5976FF3185AFB12003173B2 /* JobCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JobCell.m; sourceTree = "<group>"; };
 		B5976FF5185AFB35003173B2 /* JobCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = JobCell.xib; sourceTree = "<group>"; };
+		B5976FF7185C61AD003173B2 /* briefcase.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = briefcase.png; sourceTree = "<group>"; };
 		B59D1EF41797B5100063DC44 /* punch_card.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = punch_card.html; sourceTree = "<group>"; };
 		B59D1EF61797B6E00063DC44 /* RepoPunchCardViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RepoPunchCardViewController.h; sourceTree = "<group>"; };
 		B59D1EF71797B6E00063DC44 /* RepoPunchCardViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RepoPunchCardViewController.m; sourceTree = "<group>"; };
@@ -980,6 +982,7 @@
 				B516539C16B7C1B9003F0DFA /* 06-magnify.png */,
 				B51FCB1217237E15003A75A6 /* 399-list1.png */,
 				B51FCB1317237E15003A75A6 /* 399-list1@2x.png */,
+				B5976FF7185C61AD003173B2 /* briefcase.png */,
 				B569D0C816FE6861002216DD /* glyphicons_078_warning_sign.png */,
 				B569D0C916FE6861002216DD /* glyphicons_078_warning_sign@2x.png */,
 				B569D0CA16FE6861002216DD /* glyphicons_198_ok.png */,
@@ -2060,6 +2063,7 @@
 				B5D8D788173DF77000B68FA2 /* ReadmeViewController.xib in Resources */,
 				B5D8D796173E26C600B68FA2 /* RepoLanguagesViewController.xib in Resources */,
 				B5F10F8B173F83AE00263242 /* GistCommentsViewController.xib in Resources */,
+				B5976FF8185C61AD003173B2 /* briefcase.png in Resources */,
 				B5F10F8D173F850800263242 /* gist_comments.html in Resources */,
 				B5F10F981740ACB500263242 /* NewIssueCommentViewController.xib in Resources */,
 				B53681281744C48400249BC7 /* Lato-Black.ttf in Resources */,
