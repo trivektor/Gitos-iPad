@@ -26,6 +26,6 @@
 - (NSString *)getUrl;
 - (NSString *)getRelativeCreatedAt;
 
-+ (void)fetchAll;
++ (void)fetchJobsForPage:(int)page;
 
 @end

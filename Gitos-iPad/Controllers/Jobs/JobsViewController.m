@@ -16,7 +16,7 @@
 
 @implementation JobsViewController
 
-@synthesize jobs, jobsTable;
+@synthesize jobs, jobsTable, currentPage;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -24,6 +24,7 @@
     if (self) {
         // Custom initialization
         jobs = [NSMutableArray arrayWithCapacity:0];
+        currentPage = 1;
     }
     return self;
 }
@@ -35,7 +36,8 @@
     [self performHousekeepingTasks];
     [self registerNib];
     [self registerEvents];
-    [Job fetchAll];
+    [Job fetchJobsForPage:currentPage++];
+    [MRProgressOverlayView showOverlayAddedTo:self.view animated:NO];
 }
 
 - (void)performHousekeepingTasks
@@ -106,8 +108,18 @@
 
 - (void)displayJobs:(NSNotification *)notification
 {
+    [MRProgressOverlayView dismissOverlayForView:self.view animated:YES];
     [jobs addObjectsFromArray:notification.object];
     [jobsTable reloadData];
+}
+
+- (void)scrollViewDidScroll:(UIScrollView *)scrollView
+{
+    if (([scrollView contentOffset].y + scrollView.frame.size.height) == scrollView.contentSize.height) {
+        // Bottom of UITableView reached
+        [MRProgressOverlayView showOverlayAddedTo:self.view animated:NO];
+        [Job fetchJobsForPage:currentPage++];
+    }
 }
 
 @end

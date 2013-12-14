@@ -77,15 +77,17 @@
     return [relativeDateDescriptor describeDate:date relativeTo:[NSDate date]];
 }
 
-+ (void)fetchAll
++ (void)fetchJobsForPage:(int)page
 {
     NSURL *positionsUrl = [NSURL URLWithString:[NSString stringWithFormat:@"%@/positions.json", [AppConfig getConfigValue:@"GithubJobsApiHost"]]];
 
     AFHTTPClient *httpClient = [[AFHTTPClient alloc] initWithBaseURL:positionsUrl];
 
+    NSDictionary *params = @{@"page": [NSString stringWithFormat:@"%i", page]};
+
     NSMutableURLRequest *positionsRequest = [httpClient requestWithMethod:@"GET"
                                                                   path:positionsUrl.absoluteString
-                                                            parameters:nil];
+                                                               parameters:params];
 
     AFHTTPRequestOperation *operation = [[AFHTTPRequestOperation alloc] initWithRequest:positionsRequest];
 

@@ -266,6 +266,7 @@
 		B5976FF4185AFB12003173B2 /* JobCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B5976FF3185AFB12003173B2 /* JobCell.m */; };
 		B5976FF6185AFB35003173B2 /* JobCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B5976FF5185AFB35003173B2 /* JobCell.xib */; };
 		B5976FF8185C61AD003173B2 /* briefcase.png in Resources */ = {isa = PBXBuildFile; fileRef = B5976FF7185C61AD003173B2 /* briefcase.png */; };
+		B5976FFA185C6F27003173B2 /* JobsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B5976FF9185C6F27003173B2 /* JobsViewController.xib */; };
 		B59D1EF51797B5100063DC44 /* punch_card.html in Resources */ = {isa = PBXBuildFile; fileRef = B59D1EF41797B5100063DC44 /* punch_card.html */; };
 		B59D1EF91797B6E00063DC44 /* RepoPunchCardViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B59D1EF71797B6E00063DC44 /* RepoPunchCardViewController.m */; };
 		B59D1EFA1797B6E00063DC44 /* RepoPunchCardViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B59D1EF81797B6E00063DC44 /* RepoPunchCardViewController.xib */; };
@@ -374,7 +375,6 @@
 		B5EF832E184F179E008A9577 /* SDWebImage.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B5EF832D184F179E008A9577 /* SDWebImage.framework */; };
 		B5EFE12D1850296A0094E99D /* Job.m in Sources */ = {isa = PBXBuildFile; fileRef = B5EFE12C1850296A0094E99D /* Job.m */; };
 		B5EFE13318502CCE0094E99D /* JobsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B5EFE13118502CCE0094E99D /* JobsViewController.m */; };
-		B5EFE13418502CCE0094E99D /* JobsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B5EFE13218502CCE0094E99D /* JobsViewController.xib */; };
 		B5F10F8A173F83AE00263242 /* GistCommentsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B5F10F88173F83AE00263242 /* GistCommentsViewController.m */; };
 		B5F10F8B173F83AE00263242 /* GistCommentsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B5F10F89173F83AE00263242 /* GistCommentsViewController.xib */; };
 		B5F10F8D173F850800263242 /* gist_comments.html in Resources */ = {isa = PBXBuildFile; fileRef = B5F10F8C173F850800263242 /* gist_comments.html */; };
@@ -744,6 +744,7 @@
 		B5976FF3185AFB12003173B2 /* JobCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JobCell.m; sourceTree = "<group>"; };
 		B5976FF5185AFB35003173B2 /* JobCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = JobCell.xib; sourceTree = "<group>"; };
 		B5976FF7185C61AD003173B2 /* briefcase.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = briefcase.png; sourceTree = "<group>"; };
+		B5976FF9185C6F27003173B2 /* JobsViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = JobsViewController.xib; sourceTree = "<group>"; };
 		B59D1EF41797B5100063DC44 /* punch_card.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = punch_card.html; sourceTree = "<group>"; };
 		B59D1EF61797B6E00063DC44 /* RepoPunchCardViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RepoPunchCardViewController.h; sourceTree = "<group>"; };
 		B59D1EF71797B6E00063DC44 /* RepoPunchCardViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RepoPunchCardViewController.m; sourceTree = "<group>"; };
@@ -914,7 +915,6 @@
 		B5EFE12C1850296A0094E99D /* Job.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Job.m; sourceTree = "<group>"; };
 		B5EFE13018502CCE0094E99D /* JobsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JobsViewController.h; sourceTree = "<group>"; };
 		B5EFE13118502CCE0094E99D /* JobsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JobsViewController.m; sourceTree = "<group>"; };
-		B5EFE13218502CCE0094E99D /* JobsViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = JobsViewController.xib; sourceTree = "<group>"; };
 		B5F10F87173F83AE00263242 /* GistCommentsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GistCommentsViewController.h; sourceTree = "<group>"; };
 		B5F10F88173F83AE00263242 /* GistCommentsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GistCommentsViewController.m; sourceTree = "<group>"; };
 		B5F10F89173F83AE00263242 /* GistCommentsViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GistCommentsViewController.xib; sourceTree = "<group>"; };
@@ -1801,7 +1801,7 @@
 			children = (
 				B5EFE13018502CCE0094E99D /* JobsViewController.h */,
 				B5EFE13118502CCE0094E99D /* JobsViewController.m */,
-				B5EFE13218502CCE0094E99D /* JobsViewController.xib */,
+				B5976FF9185C6F27003173B2 /* JobsViewController.xib */,
 			);
 			path = Jobs;
 			sourceTree = "<group>";
@@ -1984,6 +1984,7 @@
 				B516545816B7C1B9003F0DFA /* barButtonPressed.svg in Resources */,
 				B516545916B7C1B9003F0DFA /* Untitled-2.png in Resources */,
 				B516545B16B7C558003F0DFA /* AppConfig.plist in Resources */,
+				B5976FFA185C6F27003173B2 /* JobsViewController.xib in Resources */,
 				B5BC452616BCEE7100434848 /* MasterViewController.xib in Resources */,
 				B5BC457516BE6C1A00434848 /* magma_border.png in Resources */,
 				B5BC457716BE6C4500434848 /* magma.png in Resources */,
@@ -2033,7 +2034,6 @@
 				B5A104381723C19E00487A47 /* OrganizationViewController.xib in Resources */,
 				B5A104471723C1BC00487A47 /* RepoSearchViewController.xib in Resources */,
 				B5A104491723C1BC00487A47 /* ReposViewController.xib in Resources */,
-				B5EFE13418502CCE0094E99D /* JobsViewController.xib in Resources */,
 				B5A1044B1723C1BC00487A47 /* RepoTreeViewController.xib in Resources */,
 				B5A1044D1723C1BC00487A47 /* RepoViewController.xib in Resources */,
 				B5A104561723C1C900487A47 /* NewsfeedDetailsViewController.xib in Resources */,

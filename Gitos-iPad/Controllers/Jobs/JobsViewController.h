@@ -14,6 +14,8 @@
 
 @property (nonatomic, strong) NSMutableArray *jobs;
 @property (weak, nonatomic) IBOutlet UITableView *jobsTable;
+@property (nonatomic, strong) MBProgressHUD *hud;
+@property (nonatomic) int currentPage;
 
 - (void)performHousekeepingTasks;
 - (void)registerNib;
