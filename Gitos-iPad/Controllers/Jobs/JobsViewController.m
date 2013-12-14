@@ -7,6 +7,8 @@
 //
 
 #import "JobsViewController.h"
+#import "WebsiteViewController.h"
+#import "Job.h"
 
 @interface JobsViewController ()
 
@@ -75,6 +77,15 @@
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     return 67;
+}
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    Job *job = [jobs objectAtIndex:indexPath.row];
+    WebsiteViewController *websiteController = [WebsiteViewController new];
+    websiteController.requestedUrl = [job getUrl];
+    [self.navigationController pushViewController:websiteController
+                                         animated:YES];
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
