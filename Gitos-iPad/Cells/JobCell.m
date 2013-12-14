@@ -10,7 +10,7 @@
 
 @implementation JobCell
 
-@synthesize titleLabel, locationLabel, companyLogo, job;
+@synthesize titleLabel, locationLabel, createdAtLabel, typeLabel, companyLogo, job;
 
 - (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
 {
@@ -32,6 +32,12 @@
 {
     titleLabel.text = [job getTitle];
     locationLabel.text = [job getLocation];
+    createdAtLabel.text = [job getRelativeCreatedAt];
+    typeLabel.text = [job getType];
+
+    [self defineAccessoryType];
+    [self defineHighlightedColorsForLabels:@[titleLabel, locationLabel, createdAtLabel, typeLabel]];
+
     if ((id)[job getCompanyLogo] != [NSNull null]) {
         [companyLogo setImageWithURL:[NSURL URLWithString:[job getCompanyLogo]] placeholderImage:[UIImage imageNamed:@"avatar-placeholder.png"]];
     }

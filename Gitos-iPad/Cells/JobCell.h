@@ -15,6 +15,9 @@
 @property (weak, nonatomic) IBOutlet UIImageView *companyLogo;
 @property (weak, nonatomic) IBOutlet UILabel *titleLabel;
 @property (weak, nonatomic) IBOutlet UILabel *locationLabel;
+@property (weak, nonatomic) IBOutlet UILabel *createdAtLabel;
+@property (weak, nonatomic) IBOutlet UILabel *typeLabel;
+
 @property (nonatomic, strong) Job *job;
 
 - (void)render;

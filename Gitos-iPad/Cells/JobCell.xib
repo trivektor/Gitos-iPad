@@ -31,12 +31,28 @@
                         <color key="textColor" red="0.52033132260000003" green="0.5232382015" blue="0.51742444369999996" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
+                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nTw-PR-oQz">
+                        <rect key="frame" x="788" y="8" width="183" height="21"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="14"/>
+                        <color key="textColor" red="0.72572256769999999" green="0.71756838150000002" blue="0.73387675379999995" alpha="1" colorSpace="calibratedRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="D9q-KM-3Ij">
+                        <rect key="frame" x="788" y="34" width="183" height="21"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="14"/>
+                        <color key="textColor" red="0.2477259730712269" green="0.68022560586734693" blue="0.16180765687769372" alpha="1" colorSpace="calibratedRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
                 </subviews>
             </tableViewCellContentView>
             <connections>
                 <outlet property="companyLogo" destination="hAl-CL-eFp" id="icV-Kc-AzP"/>
+                <outlet property="createdAtLabel" destination="nTw-PR-oQz" id="3Ix-0B-FQT"/>
                 <outlet property="locationLabel" destination="sqY-cQ-UGg" id="EaZ-T5-JDc"/>
                 <outlet property="titleLabel" destination="CEB-B3-uNQ" id="U4h-Uk-t5y"/>
+                <outlet property="typeLabel" destination="D9q-KM-3Ij" id="PWC-4I-Uuh"/>
             </connections>
         </tableViewCell>
     </objects>

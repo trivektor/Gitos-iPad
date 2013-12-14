@@ -24,6 +24,7 @@
 - (NSString *)getCompanyLogo;
 - (NSString *)getCompanyUrl;
 - (NSString *)getUrl;
+- (NSString *)getRelativeCreatedAt;
 
 + (void)fetchAll;
 

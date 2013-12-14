@@ -21,7 +21,7 @@
                               postDateDescriptionFormat:@"in %@"];
 
     dateFormatter = [[NSDateFormatter alloc] init];
-    [dateFormatter setDateFormat:[AppHelper getDateFormat]];
+    [dateFormatter setDateFormat:@"EEE LLL d HH:mm:ss zzz yyy"];
 
     return self;
 }
@@ -69,6 +69,12 @@
 - (NSString *)getUrl
 {
     return [data valueForKey:@"url"];
+}
+
+- (NSString *)getRelativeCreatedAt
+{
+    NSDate *date  = [dateFormatter dateFromString:[data valueForKey:@"created_at"]];
+    return [relativeDateDescriptor describeDate:date relativeTo:[NSDate date]];
 }
 
 + (void)fetchAll
