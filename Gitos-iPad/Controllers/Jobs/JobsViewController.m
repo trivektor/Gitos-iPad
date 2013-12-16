@@ -9,6 +9,8 @@
 #import "JobsViewController.h"
 #import "WebsiteViewController.h"
 #import "Job.h"
+#import "MZFormSheetController.h"
+#import "JobSearchViewController.h"
 
 @interface JobsViewController ()
 
@@ -44,6 +46,16 @@
 {
     [super performHousekeepingTasks];
     self.navigationItem.title = @"Jobs";
+
+    UIBarButtonItem *searchBtn = [[UIBarButtonItem alloc] initWithTitle:[NSString fontAwesomeIconStringForIconIdentifier:@"icon-search"]
+                                                                  style:UIBarButtonItemStyleBordered
+                                                                 target:self
+                                                                    action:@selector(searchJobs)];
+
+    [searchBtn setTitleTextAttributes:@{
+        NSFontAttributeName:[UIFont fontWithName:kFontAwesomeFamilyName size:20]
+    } forState:UIControlStateNormal];
+    [self.navigationItem setRightBarButtonItem:searchBtn];
 }
 
 - (void)registerNib
@@ -120,6 +132,16 @@
         [MRProgressOverlayView showOverlayAddedTo:self.view animated:NO];
         [Job fetchJobsForPage:currentPage++];
     }
+}
+
+- (void)searchJobs
+{
+    UIViewController *vc = [JobSearchViewController new];
+
+    [self presentFormSheetWithViewController:vc
+                                    animated:YES
+                           completionHandler:^(MZFormSheetController *formSheetController) {
+    }];
 }
 
 @end

@@ -21,5 +21,6 @@
 - (void)registerNib;
 - (void)registerEvents;
 - (void)displayJobs:(NSNotification *)notification;
+- (void)searchJobs;
 
 @end

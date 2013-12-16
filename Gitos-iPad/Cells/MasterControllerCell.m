@@ -90,15 +90,8 @@ static const int WIDTH = 250;
                 break;
         }
     } else if (indexPath.section == 4) {
-        switch (indexPath.row) {
-            case 0:
-                fontAwesome = [NSString fontAwesomeIconStringForIconIdentifier:@"icon-briefcase"];
-                optionLabelText = @"All Positions";
-                break;
-            case 1:
-                fontAwesome = [NSString fontAwesomeIconStringForIconIdentifier:@"icon-laptop"];
-                optionLabelText = @"Search";
-        }
+        fontAwesome = [NSString fontAwesomeIconStringForIconIdentifier:@"icon-briefcase"];
+        optionLabelText = @"All Positions";
     }
 
     UIColor *shadowColor = [UIColor colorWithRed:0 green:0 blue:0 alpha:0.18];

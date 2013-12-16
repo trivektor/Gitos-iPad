@@ -82,7 +82,7 @@
             rows = 6;
             break;
         case 4:
-            rows = 2;
+            rows = 1;
             break;
         default:
             rows = 0;
