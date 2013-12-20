@@ -9,7 +9,6 @@
 #import "JobsViewController.h"
 #import "WebsiteViewController.h"
 #import "Job.h"
-#import "MZFormSheetController.h"
 #import "JobSearchViewController.h"
 
 @interface JobsViewController ()
@@ -126,12 +125,6 @@
 
 - (void)searchJobs
 {
-    UIViewController *vc = [JobSearchViewController new];
-
-    [self presentFormSheetWithViewController:vc
-                                    animated:YES
-                           completionHandler:^(MZFormSheetController *formSheetController) {
-    }];
 }
 
 @end

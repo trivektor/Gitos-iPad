@@ -7,12 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		B500BF01185DA030000541B2 /* MZFormSheetBackgroundWindow.m in Sources */ = {isa = PBXBuildFile; fileRef = B500BEFA185DA030000541B2 /* MZFormSheetBackgroundWindow.m */; };
-		B500BF02185DA030000541B2 /* MZFormSheetController.m in Sources */ = {isa = PBXBuildFile; fileRef = B500BEFC185DA030000541B2 /* MZFormSheetController.m */; };
-		B500BF03185DA030000541B2 /* MZFormSheetSegue.m in Sources */ = {isa = PBXBuildFile; fileRef = B500BEFE185DA030000541B2 /* MZFormSheetSegue.m */; };
-		B500BF04185DA030000541B2 /* UIImage+Additional.m in Sources */ = {isa = PBXBuildFile; fileRef = B500BF00185DA030000541B2 /* UIImage+Additional.m */; };
-		B500BF07185DA142000541B2 /* MZAppearance.m in Sources */ = {isa = PBXBuildFile; fileRef = B500BF06185DA142000541B2 /* MZAppearance.m */; };
-		B500BF0A185DA14B000541B2 /* NSInvocation+Copy.m in Sources */ = {isa = PBXBuildFile; fileRef = B500BF09185DA14B000541B2 /* NSInvocation+Copy.m */; };
 		B500BF13185DA3F7000541B2 /* JobSearchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B500BF11185DA3F7000541B2 /* JobSearchViewController.m */; };
 		B500BF14185DA3F7000541B2 /* JobSearchViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B500BF12185DA3F7000541B2 /* JobSearchViewController.xib */; };
 		B501D937174F36B600D947E9 /* AccountViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B501D935174F36B600D947E9 /* AccountViewController.m */; };
@@ -403,18 +397,6 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		B500BEF9185DA030000541B2 /* MZFormSheetBackgroundWindow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MZFormSheetBackgroundWindow.h; sourceTree = "<group>"; };
-		B500BEFA185DA030000541B2 /* MZFormSheetBackgroundWindow.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MZFormSheetBackgroundWindow.m; sourceTree = "<group>"; };
-		B500BEFB185DA030000541B2 /* MZFormSheetController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MZFormSheetController.h; sourceTree = "<group>"; };
-		B500BEFC185DA030000541B2 /* MZFormSheetController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MZFormSheetController.m; sourceTree = "<group>"; };
-		B500BEFD185DA030000541B2 /* MZFormSheetSegue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MZFormSheetSegue.h; sourceTree = "<group>"; };
-		B500BEFE185DA030000541B2 /* MZFormSheetSegue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MZFormSheetSegue.m; sourceTree = "<group>"; };
-		B500BEFF185DA030000541B2 /* UIImage+Additional.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+Additional.h"; sourceTree = "<group>"; };
-		B500BF00185DA030000541B2 /* UIImage+Additional.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+Additional.m"; sourceTree = "<group>"; };
-		B500BF05185DA142000541B2 /* MZAppearance.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MZAppearance.h; sourceTree = "<group>"; };
-		B500BF06185DA142000541B2 /* MZAppearance.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MZAppearance.m; sourceTree = "<group>"; };
-		B500BF08185DA14B000541B2 /* NSInvocation+Copy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSInvocation+Copy.h"; sourceTree = "<group>"; };
-		B500BF09185DA14B000541B2 /* NSInvocation+Copy.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSInvocation+Copy.m"; sourceTree = "<group>"; };
 		B500BF10185DA3F7000541B2 /* JobSearchViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JobSearchViewController.h; sourceTree = "<group>"; };
 		B500BF11185DA3F7000541B2 /* JobSearchViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JobSearchViewController.m; sourceTree = "<group>"; };
 		B500BF12185DA3F7000541B2 /* JobSearchViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = JobSearchViewController.xib; sourceTree = "<group>"; };
@@ -997,25 +979,6 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		B500BEF8185DA030000541B2 /* MZFormSheetController */ = {
-			isa = PBXGroup;
-			children = (
-				B500BEF9185DA030000541B2 /* MZFormSheetBackgroundWindow.h */,
-				B500BEFA185DA030000541B2 /* MZFormSheetBackgroundWindow.m */,
-				B500BF05185DA142000541B2 /* MZAppearance.h */,
-				B500BF06185DA142000541B2 /* MZAppearance.m */,
-				B500BF08185DA14B000541B2 /* NSInvocation+Copy.h */,
-				B500BF09185DA14B000541B2 /* NSInvocation+Copy.m */,
-				B500BEFB185DA030000541B2 /* MZFormSheetController.h */,
-				B500BEFC185DA030000541B2 /* MZFormSheetController.m */,
-				B500BEFD185DA030000541B2 /* MZFormSheetSegue.h */,
-				B500BEFE185DA030000541B2 /* MZFormSheetSegue.m */,
-				B500BEFF185DA030000541B2 /* UIImage+Additional.h */,
-				B500BF00185DA030000541B2 /* UIImage+Additional.m */,
-			);
-			path = MZFormSheetController;
-			sourceTree = "<group>";
-		};
 		B516539916B7C1AA003F0DFA /* Images */ = {
 			isa = PBXGroup;
 			children = (
@@ -1351,7 +1314,6 @@
 		B55D90A616B7AA27009CB90F /* Gitos-iPad */ = {
 			isa = PBXGroup;
 			children = (
-				B500BEF8185DA030000541B2 /* MZFormSheetController */,
 				B553E8F8184F118000D29BB6 /* AFNetworking */,
 				B5B920E318447DB8002FC175 /* RESideMenu */,
 				B536811D1744C47900249BC7 /* Fonts */,
@@ -2164,7 +2126,6 @@
 				B55D910D16B7AD79009CB90F /* RepoTreeNode.m in Sources */,
 				B55D911316B7ADCE009CB90F /* TimelineEvent.m in Sources */,
 				B553E916184F118000D29BB6 /* AFXMLRequestOperation.m in Sources */,
-				B500BF04185DA030000541B2 /* UIImage+Additional.m in Sources */,
 				B55D911616B7ADF0009CB90F /* User.m in Sources */,
 				B553E912184F118000D29BB6 /* AFJSONUtilities.m in Sources */,
 				B55D913616B7AF86009CB90F /* GistCell.m in Sources */,
@@ -2217,7 +2178,6 @@
 				B569D0D516FE7923002216DD /* GitosConstants.m in Sources */,
 				B5836C90170BFCA40012CC61 /* AppHelper.m in Sources */,
 				B5836C961710C8B60012CC61 /* RepoTreeCell.m in Sources */,
-				B500BF07185DA142000541B2 /* MZAppearance.m in Sources */,
 				B553E90F184F118000D29BB6 /* AFHTTPRequestOperation.m in Sources */,
 				B553E913184F118000D29BB6 /* AFNetworkActivityIndicatorManager.m in Sources */,
 				B553E90E184F118000D29BB6 /* AFHTTPClient.m in Sources */,
@@ -2237,7 +2197,6 @@
 				B5A104481723C1BC00487A47 /* ReposViewController.m in Sources */,
 				B5D4D763183DFB660050A1FE /* RepoContentSearchResultCell.m in Sources */,
 				B5A1044A1723C1BC00487A47 /* RepoTreeViewController.m in Sources */,
-				B500BF01185DA030000541B2 /* MZFormSheetBackgroundWindow.m in Sources */,
 				B5A1044C1723C1BC00487A47 /* RepoViewController.m in Sources */,
 				B5A104551723C1C900487A47 /* NewsfeedDetailsViewController.m in Sources */,
 				B5A104571723C1C900487A47 /* NewsfeedViewController.m in Sources */,
@@ -2269,13 +2228,10 @@
 				B5D8D78E173DFC7D00B68FA2 /* NSData+Base64.m in Sources */,
 				B5D8D791173E1CA300B68FA2 /* NSTimer+Blocks.m in Sources */,
 				B5DE169A182A32D6008A659B /* UIImage+MRImageEffects.m in Sources */,
-				B500BF02185DA030000541B2 /* MZFormSheetController.m in Sources */,
 				B5D8D795173E26C600B68FA2 /* RepoLanguagesViewController.m in Sources */,
-				B500BF03185DA030000541B2 /* MZFormSheetSegue.m in Sources */,
 				B5F10F8A173F83AE00263242 /* GistCommentsViewController.m in Sources */,
 				B5F10F90173F863900263242 /* GistComment.m in Sources */,
 				B5F10F971740ACB500263242 /* NewIssueCommentViewController.m in Sources */,
-				B500BF0A185DA14B000541B2 /* NSInvocation+Copy.m in Sources */,
 				B53681121744C44500249BC7 /* FUIAlertView.m in Sources */,
 				B53681131744C44500249BC7 /* FUIButton.m in Sources */,
 				B53681141744C44500249BC7 /* FUISwitch.m in Sources */,
