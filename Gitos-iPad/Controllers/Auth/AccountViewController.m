@@ -37,7 +37,9 @@
                                                                     target:self
                                                                     action:@selector(cancel)];
 
-    [cancelButton setTitleTextAttributes:[NSDictionary dictionaryWithObjectsAndKeys:[UIFont fontWithName:kFontAwesomeFamilyName size:17], NSFontAttributeName, nil] forState:UIControlStateNormal];
+    [cancelButton setTitleTextAttributes:@{
+        NSFontAttributeName: [UIFont fontWithName:kFontAwesomeFamilyName size:21]
+    } forState:UIControlStateNormal];
 
     [self.navigationItem setLeftBarButtonItem:cancelButton];
 }

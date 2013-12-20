@@ -300,13 +300,16 @@
 - (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex
 {
     AccountViewController *accountController = [[AccountViewController alloc] init];
+    NSString *buttonTitleAtIndex = [actionSheet buttonTitleAtIndex:buttonIndex];
 
-    if (buttonIndex == 0) {
+    if ([buttonTitleAtIndex isEqualToString:@"Forgot Password"]) {
         accountController.url = [AppConfig getConfigValue:@"ForgotPasswordUrl"];
         accountController.pageTitle = @"Forgot Password";
-    } else {
+    } else if ([buttonTitleAtIndex isEqualToString:@"Sign Up"]) {
         accountController.url = [AppConfig getConfigValue:@"SignupUrl"];
         accountController.pageTitle = @"Sign Up";
+    } else {
+        return;
     }
 
     UINavigationController *navController = [[UINavigationController alloc] initWithRootViewController:accountController];
