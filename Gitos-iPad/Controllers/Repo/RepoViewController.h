@@ -21,6 +21,7 @@
 @property (nonatomic, strong) UIAlertView *deleteConfirmation;
 @property (nonatomic) BOOL *isWatching;
 @property (nonatomic) RepoMiscViewController *repoMiscController;
+@property (nonatomic, strong) NSString *starOption;
 
 - (void)performHouseKeepingTasks;
 - (void)registerNib;

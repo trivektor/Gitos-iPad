@@ -23,7 +23,7 @@
 
 @implementation RepoViewController
 
-@synthesize repo, hud, repoScrollView, detailsTable, branchesTable, repoBranches, actionOptions, isWatching, deleteConfirmation, repoMiscController;
+@synthesize repo, hud, repoScrollView, detailsTable, branchesTable, repoBranches, actionOptions, isWatching, deleteConfirmation, repoMiscController, starOption;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -272,8 +272,6 @@
 
     int statusCode = [operation.response statusCode];
 
-    NSString *starOption = nil;
-
     if (statusCode == 204) {
         starOption = @"Unstar";
         isWatching = YES;
@@ -281,12 +279,6 @@
         starOption = @"Star";
         isWatching = NO;
     }
-
-    actionOptions = [[UIActionSheet alloc] initWithTitle:@"Actions"
-                                                delegate:self
-                                       cancelButtonTitle:nil
-                                  destructiveButtonTitle:nil
-                                       otherButtonTitles:starOption, @"Fork", @"View on Github", @"Search This Repository", nil];
 
     if ([repo isDestroyable]) {
         [actionOptions addButtonWithTitle:@"Delete"];
@@ -305,8 +297,6 @@
 
 - (void)updateStarredStatus
 {
-    NSString *starOption = nil;
-
     isWatching = !isWatching;
 
     if (isWatching) {
@@ -317,12 +307,6 @@
         [AppHelper flashAlert:@"Repository unstarred" inView:self.view];
     }
 
-    actionOptions = [[UIActionSheet alloc] initWithTitle:@"Actions"
-                                                delegate:self
-                                       cancelButtonTitle:nil
-                                  destructiveButtonTitle:nil
-                                       otherButtonTitles:starOption, @"View on Github", "Search This Repository", nil];
-
     if ([repo isDestroyable]) {
         [actionOptions addButtonWithTitle:@"Delete"];
     }
@@ -330,6 +314,12 @@
 
 - (void)showAvailableActions
 {
+    actionOptions = [[UIActionSheet alloc] initWithTitle:@"Actions"
+                                                delegate:self
+                                       cancelButtonTitle:nil
+                                  destructiveButtonTitle:nil
+                                       otherButtonTitles:starOption, @"Fork", @"View on Github", @"Search This Repository", nil];
+
     [actionOptions showInView:[UIApplication sharedApplication].keyWindow];
 }
 
