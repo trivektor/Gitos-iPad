@@ -232,4 +232,24 @@
 {
 }
 
+- (void)sideMenu:(RESideMenu *)sideMenu willShowMenuViewController:(UIViewController *)menuViewController
+{
+    [self updateStatusTextColor];
+}
+
+- (void)sideMenu:(RESideMenu *)sideMenu willHideMenuViewController:(UIViewController *)menuViewController
+{
+    [self updateStatusTextColor];
+}
+
+- (void)updateStatusTextColor
+{
+    UIApplication *app = [UIApplication sharedApplication];
+    if ([app statusBarStyle] == UIStatusBarStyleLightContent) {
+        [app setStatusBarStyle:UIStatusBarStyleDefault];
+    } else {
+        [app setStatusBarStyle:UIStatusBarStyleLightContent];
+    }
+}
+
 @end

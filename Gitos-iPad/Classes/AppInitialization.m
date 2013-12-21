@@ -25,6 +25,7 @@
     [sideMenuController setPanGestureEnabled:NO];
     [sideMenuController setContentViewScaleValue:0.9f];
     [sideMenuController setContentViewInLandscapeOffsetCenterX:800];
+    [sideMenuController setDelegate:(id)[[UIApplication sharedApplication] delegate]];
 
     [window setRootViewController:sideMenuController];
 }

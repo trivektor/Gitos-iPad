@@ -10,11 +10,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Gitos-iPad/Controllers/MasterViewController.h"
-            timestampString = "408866606.382908"
+            timestampString = "409307596.647918"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "16"
-            endingLineNumber = "16"
+            startingLineNumber = "15"
+            endingLineNumber = "15"
             landmarkName = "menuTable"
             landmarkType = "19">
          </BreakpointContent>

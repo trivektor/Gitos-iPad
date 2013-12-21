@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface AppDelegate : UIResponder <UIApplicationDelegate>
+@interface AppDelegate : UIResponder <UIApplicationDelegate, RESideMenuDelegate>
 
 @property (strong, nonatomic) UIWindow *window;
 
@@ -22,6 +22,7 @@
 - (void)sendDeviceTokenToServer:(NSData *)deviceToken;
 - (NSString *)stringWithDeviceToken:(NSData *)deviceToken;
 - (void)start:(NSNotification *)notification;
+- (void)updateStatusTextColor;
 
 @end
 
