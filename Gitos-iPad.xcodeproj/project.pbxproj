@@ -265,6 +265,9 @@
 		B58DAB8D1846F69A00F8A109 /* CoreTelephony.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B58DAB8C1846F69A00F8A109 /* CoreTelephony.framework */; };
 		B58DAB8F1846F6FE00F8A109 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B58DAB8E1846F6FE00F8A109 /* SystemConfiguration.framework */; };
 		B58DAB911846F70A00F8A109 /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = B58DAB901846F70A00F8A109 /* libz.dylib */; };
+		B5921E711865A8B0005E571F /* NewRelicAgent.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B5921E701865A8B0005E571F /* NewRelicAgent.framework */; };
+		B5921E731865A8B7005E571F /* SDWebImage.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B5921E721865A8B7005E571F /* SDWebImage.framework */; };
+		B5921E771865A8E9005E571F /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B5921E761865A8E9005E571F /* CFNetwork.framework */; };
 		B5976FF4185AFB12003173B2 /* JobCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B5976FF3185AFB12003173B2 /* JobCell.m */; };
 		B5976FF6185AFB35003173B2 /* JobCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B5976FF5185AFB35003173B2 /* JobCell.xib */; };
 		B5976FF8185C61AD003173B2 /* briefcase.png in Resources */ = {isa = PBXBuildFile; fileRef = B5976FF7185C61AD003173B2 /* briefcase.png */; };
@@ -373,8 +376,6 @@
 		B5DE16A0182A32D6008A659B /* MRMessageInterceptor.m in Sources */ = {isa = PBXBuildFile; fileRef = B5DE1695182A32D6008A659B /* MRMessageInterceptor.m */; };
 		B5DE16A1182A32D6008A659B /* MRWeakProxy.m in Sources */ = {isa = PBXBuildFile; fileRef = B5DE1698182A32D6008A659B /* MRWeakProxy.m */; };
 		B5DE16A3182A3392008A659B /* Accelerate.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B5DE16A2182A3392008A659B /* Accelerate.framework */; };
-		B5EF832C184F178F008A9577 /* NewRelicAgent.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B5EF832B184F178F008A9577 /* NewRelicAgent.framework */; };
-		B5EF832E184F179E008A9577 /* SDWebImage.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B5EF832D184F179E008A9577 /* SDWebImage.framework */; };
 		B5EFE12D1850296A0094E99D /* Job.m in Sources */ = {isa = PBXBuildFile; fileRef = B5EFE12C1850296A0094E99D /* Job.m */; };
 		B5EFE13318502CCE0094E99D /* JobsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B5EFE13118502CCE0094E99D /* JobsViewController.m */; };
 		B5F10F8A173F83AE00263242 /* GistCommentsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B5F10F88173F83AE00263242 /* GistCommentsViewController.m */; };
@@ -745,6 +746,9 @@
 		B58DAB8C1846F69A00F8A109 /* CoreTelephony.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreTelephony.framework; path = System/Library/Frameworks/CoreTelephony.framework; sourceTree = SDKROOT; };
 		B58DAB8E1846F6FE00F8A109 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		B58DAB901846F70A00F8A109 /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
+		B5921E701865A8B0005E571F /* NewRelicAgent.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = NewRelicAgent.framework; sourceTree = "<group>"; };
+		B5921E721865A8B7005E571F /* SDWebImage.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = SDWebImage.framework; sourceTree = "<group>"; };
+		B5921E761865A8E9005E571F /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
 		B5976FF2185AFB12003173B2 /* JobCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JobCell.h; sourceTree = "<group>"; };
 		B5976FF3185AFB12003173B2 /* JobCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JobCell.m; sourceTree = "<group>"; };
 		B5976FF5185AFB35003173B2 /* JobCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = JobCell.xib; sourceTree = "<group>"; };
@@ -914,8 +918,6 @@
 		B5DE1697182A32D6008A659B /* MRWeakProxy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MRWeakProxy.h; sourceTree = "<group>"; };
 		B5DE1698182A32D6008A659B /* MRWeakProxy.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MRWeakProxy.m; sourceTree = "<group>"; };
 		B5DE16A2182A3392008A659B /* Accelerate.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accelerate.framework; path = System/Library/Frameworks/Accelerate.framework; sourceTree = SDKROOT; };
-		B5EF832B184F178F008A9577 /* NewRelicAgent.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = NewRelicAgent.framework; path = ../../Desktop/NewRelic_iOS_Agent_1.396/NewRelicAgent.framework; sourceTree = "<group>"; };
-		B5EF832D184F179E008A9577 /* SDWebImage.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SDWebImage.framework; path = ../../Desktop/SDWebImage.framework; sourceTree = "<group>"; };
 		B5EFE12B1850296A0094E99D /* Job.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Job.h; sourceTree = "<group>"; };
 		B5EFE12C1850296A0094E99D /* Job.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Job.m; sourceTree = "<group>"; };
 		B5EFE13018502CCE0094E99D /* JobsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JobsViewController.h; sourceTree = "<group>"; };
@@ -956,12 +958,12 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B5EF832E184F179E008A9577 /* SDWebImage.framework in Frameworks */,
-				B5EF832C184F178F008A9577 /* NewRelicAgent.framework in Frameworks */,
+				B5921E771865A8E9005E571F /* CFNetwork.framework in Frameworks */,
 				B58DAB911846F70A00F8A109 /* libz.dylib in Frameworks */,
 				B58DAB8F1846F6FE00F8A109 /* SystemConfiguration.framework in Frameworks */,
 				B58DAB8D1846F69A00F8A109 /* CoreTelephony.framework in Frameworks */,
 				B5DE16A3182A3392008A659B /* Accelerate.framework in Frameworks */,
+				B5921E731865A8B7005E571F /* SDWebImage.framework in Frameworks */,
 				B53681331744C4ED00249BC7 /* CoreText.framework in Frameworks */,
 				B518969F17460CF400656BAB /* CoreImage.framework in Frameworks */,
 				B54603A616C101FD007D4FB3 /* ImageIO.framework in Frameworks */,
@@ -969,6 +971,7 @@
 				B55D90EE16B7AB67009CB90F /* MessageUI.framework in Frameworks */,
 				B55D90EC16B7AB5A009CB90F /* Security.framework in Frameworks */,
 				B55D90EA16B7AB4D009CB90F /* QuartzCore.framework in Frameworks */,
+				B5921E711865A8B0005E571F /* NewRelicAgent.framework in Frameworks */,
 				B55D909F16B7AA27009CB90F /* UIKit.framework in Frameworks */,
 				B55D90A116B7AA27009CB90F /* Foundation.framework in Frameworks */,
 				B55D90A316B7AA27009CB90F /* CoreGraphics.framework in Frameworks */,
@@ -1290,8 +1293,9 @@
 		B55D909D16B7AA27009CB90F /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				B5EF832D184F179E008A9577 /* SDWebImage.framework */,
-				B5EF832B184F178F008A9577 /* NewRelicAgent.framework */,
+				B5921E761865A8E9005E571F /* CFNetwork.framework */,
+				B5921E721865A8B7005E571F /* SDWebImage.framework */,
+				B5921E701865A8B0005E571F /* NewRelicAgent.framework */,
 				B58DAB901846F70A00F8A109 /* libz.dylib */,
 				B58DAB8E1846F6FE00F8A109 /* SystemConfiguration.framework */,
 				B58DAB8C1846F69A00F8A109 /* CoreTelephony.framework */,
@@ -2341,9 +2345,6 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(SRCROOT)",
-					"/Users/trivuong/Projects/Gitos-iPad",
-					/Users/trivuong/Desktop/NewRelic_iOS_Agent_1.396,
-					/Users/trivuong/Desktop,
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Gitos-iPad/Gitos-iPad-Prefix.pch";
@@ -2366,9 +2367,6 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(SRCROOT)",
-					"/Users/trivuong/Projects/Gitos-iPad",
-					/Users/trivuong/Desktop/NewRelic_iOS_Agent_1.396,
-					/Users/trivuong/Desktop,
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Gitos-iPad/Gitos-iPad-Prefix.pch";
