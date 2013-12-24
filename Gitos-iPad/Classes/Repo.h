@@ -25,6 +25,7 @@
 - (NSInteger)getWatchers;
 - (NSString *)getLanguage;
 - (NSString *)getUrl;
+- (NSString *)getHtmlUrl;
 - (NSString *)getBranchesUrl;
 - (NSString *)getTreeUrl;
 - (NSString *)getStarredUrl;

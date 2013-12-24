@@ -117,6 +117,8 @@
 		B516545B16B7C558003F0DFA /* AppConfig.plist in Resources */ = {isa = PBXBuildFile; fileRef = B516545A16B7C558003F0DFA /* AppConfig.plist */; };
 		B518969F17460CF400656BAB /* CoreImage.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B518969E17460CF400656BAB /* CoreImage.framework */; };
 		B518974017460D7500656BAB /* Style.NUI.nss in Resources */ = {isa = PBXBuildFile; fileRef = B518973F17460D7500656BAB /* Style.NUI.nss */; };
+		B51983B718692CA700A02D1B /* twitter-logo.png in Resources */ = {isa = PBXBuildFile; fileRef = B51983B518692CA700A02D1B /* twitter-logo.png */; };
+		B51983B818692CA700A02D1B /* twitter-logo@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B51983B618692CA700A02D1B /* twitter-logo@2x.png */; };
 		B51FCB1417237E15003A75A6 /* 399-list1.png in Resources */ = {isa = PBXBuildFile; fileRef = B51FCB1217237E15003A75A6 /* 399-list1.png */; };
 		B51FCB1517237E15003A75A6 /* 399-list1@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B51FCB1317237E15003A75A6 /* 399-list1@2x.png */; };
 		B51FCB181723834D003A75A6 /* GitosViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B51FCB171723834A003A75A6 /* GitosViewController.m */; };
@@ -376,6 +378,7 @@
 		B5DE16A0182A32D6008A659B /* MRMessageInterceptor.m in Sources */ = {isa = PBXBuildFile; fileRef = B5DE1695182A32D6008A659B /* MRMessageInterceptor.m */; };
 		B5DE16A1182A32D6008A659B /* MRWeakProxy.m in Sources */ = {isa = PBXBuildFile; fileRef = B5DE1698182A32D6008A659B /* MRWeakProxy.m */; };
 		B5DE16A3182A3392008A659B /* Accelerate.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B5DE16A2182A3392008A659B /* Accelerate.framework */; };
+		B5E41B1F186921D700C68BAF /* Social.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B5E41B1E186921D700C68BAF /* Social.framework */; };
 		B5EFE12D1850296A0094E99D /* Job.m in Sources */ = {isa = PBXBuildFile; fileRef = B5EFE12C1850296A0094E99D /* Job.m */; };
 		B5EFE13318502CCE0094E99D /* JobsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B5EFE13118502CCE0094E99D /* JobsViewController.m */; };
 		B5F10F8A173F83AE00263242 /* GistCommentsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B5F10F88173F83AE00263242 /* GistCommentsViewController.m */; };
@@ -513,6 +516,8 @@
 		B516545A16B7C558003F0DFA /* AppConfig.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = AppConfig.plist; path = ../AppConfig.plist; sourceTree = "<group>"; };
 		B518969E17460CF400656BAB /* CoreImage.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreImage.framework; path = System/Library/Frameworks/CoreImage.framework; sourceTree = SDKROOT; };
 		B518973F17460D7500656BAB /* Style.NUI.nss */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Style.NUI.nss; sourceTree = "<group>"; };
+		B51983B518692CA700A02D1B /* twitter-logo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "twitter-logo.png"; sourceTree = "<group>"; };
+		B51983B618692CA700A02D1B /* twitter-logo@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "twitter-logo@2x.png"; sourceTree = "<group>"; };
 		B51FCB1217237E15003A75A6 /* 399-list1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "399-list1.png"; sourceTree = "<group>"; };
 		B51FCB1317237E15003A75A6 /* 399-list1@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "399-list1@2x.png"; sourceTree = "<group>"; };
 		B51FCB1617238346003A75A6 /* GitosViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GitosViewController.h; sourceTree = "<group>"; };
@@ -918,6 +923,7 @@
 		B5DE1697182A32D6008A659B /* MRWeakProxy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MRWeakProxy.h; sourceTree = "<group>"; };
 		B5DE1698182A32D6008A659B /* MRWeakProxy.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MRWeakProxy.m; sourceTree = "<group>"; };
 		B5DE16A2182A3392008A659B /* Accelerate.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accelerate.framework; path = System/Library/Frameworks/Accelerate.framework; sourceTree = SDKROOT; };
+		B5E41B1E186921D700C68BAF /* Social.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Social.framework; path = System/Library/Frameworks/Social.framework; sourceTree = SDKROOT; };
 		B5EFE12B1850296A0094E99D /* Job.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Job.h; sourceTree = "<group>"; };
 		B5EFE12C1850296A0094E99D /* Job.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Job.m; sourceTree = "<group>"; };
 		B5EFE13018502CCE0094E99D /* JobsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JobsViewController.h; sourceTree = "<group>"; };
@@ -958,6 +964,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B5E41B1F186921D700C68BAF /* Social.framework in Frameworks */,
 				B5921E771865A8E9005E571F /* CFNetwork.framework in Frameworks */,
 				B58DAB911846F70A00F8A109 /* libz.dylib in Frameworks */,
 				B58DAB8F1846F6FE00F8A109 /* SystemConfiguration.framework in Frameworks */,
@@ -985,6 +992,8 @@
 		B516539916B7C1AA003F0DFA /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				B51983B518692CA700A02D1B /* twitter-logo.png */,
+				B51983B618692CA700A02D1B /* twitter-logo@2x.png */,
 				B516539A16B7C1B9003F0DFA /* 01-refresh.png */,
 				B516539B16B7C1B9003F0DFA /* 01-refresh@2x.png */,
 				B516539C16B7C1B9003F0DFA /* 06-magnify.png */,
@@ -1293,6 +1302,7 @@
 		B55D909D16B7AA27009CB90F /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				B5E41B1E186921D700C68BAF /* Social.framework */,
 				B5921E761865A8E9005E571F /* CFNetwork.framework */,
 				B5921E721865A8B7005E571F /* SDWebImage.framework */,
 				B5921E701865A8B0005E571F /* NewRelicAgent.framework */,
@@ -1949,6 +1959,7 @@
 				B516542A16B7C1B9003F0DFA /* 300-orgchart@2x.png in Resources */,
 				B516542B16B7C1B9003F0DFA /* 351-bankers-box.png in Resources */,
 				B516542C16B7C1B9003F0DFA /* 351-bankers-box@2x.png in Resources */,
+				B51983B718692CA700A02D1B /* twitter-logo.png in Resources */,
 				B516542D16B7C1B9003F0DFA /* blue_btn.png in Resources */,
 				B516542E16B7C1B9003F0DFA /* company_icon.png in Resources */,
 				B516542F16B7C1B9003F0DFA /* email_icon.png in Resources */,
@@ -2048,6 +2059,7 @@
 				B5A104471723C1BC00487A47 /* RepoSearchViewController.xib in Resources */,
 				B5A104491723C1BC00487A47 /* ReposViewController.xib in Resources */,
 				B5A1044B1723C1BC00487A47 /* RepoTreeViewController.xib in Resources */,
+				B51983B818692CA700A02D1B /* twitter-logo@2x.png in Resources */,
 				B5A1044D1723C1BC00487A47 /* RepoViewController.xib in Resources */,
 				B5A104561723C1C900487A47 /* NewsfeedDetailsViewController.xib in Resources */,
 				B5A104581723C1C900487A47 /* NewsfeedViewController.xib in Resources */,

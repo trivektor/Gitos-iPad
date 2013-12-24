@@ -318,7 +318,7 @@
                                                 delegate:self
                                        cancelButtonTitle:nil
                                   destructiveButtonTitle:nil
-                                       otherButtonTitles:starOption, @"Fork", @"View on Github", @"Search This Repository", nil];
+                                       otherButtonTitles:starOption, @"Fork", @"View on Github", @"Search This Repository", @"Tweet This Repo", nil];
 
     [actionOptions showInView:[UIApplication sharedApplication].keyWindow];
 }
@@ -344,6 +344,11 @@
             RepoCodeSearchViewController *repoCodeSearchController = [RepoCodeSearchViewController new];
             repoCodeSearchController.repo = repo;
             [self.navigationController pushViewController:repoCodeSearchController animated:YES];
+        } else if ([[actionOptions buttonTitleAtIndex:buttonIndex] isEqualToString:@"Tweet This Repo"]) {
+            SLComposeViewController *tweetSheet = [SLComposeViewController composeViewControllerForServiceType:SLServiceTypeTwitter];
+            [tweetSheet setInitialText:[NSString stringWithFormat:@"%@ %@", [repo getName], [repo getHtmlUrl]]];
+            [tweetSheet addImage:[UIImage imageNamed:@"twitter-logo"]];
+            [self presentViewController:tweetSheet animated:YES completion:nil];
         } else if ([[actionOptions buttonTitleAtIndex:buttonIndex] isEqualToString:@"Delete"]) {
             [deleteConfirmation show];
         } else if ([[actionOptions buttonTitleAtIndex:buttonIndex] isEqualToString:@"Fork"]) {

@@ -179,6 +179,11 @@
     return [data valueForKey:@"url"];
 }
 
+- (NSString *)getHtmlUrl
+{
+    return [data valueForKey:@"html_url"];
+}
+
 - (NSString *)getSubscriptionUrl
 {
     NSString *githubApiHost = [AppConfig getConfigValue:@"GithubApiHost"];

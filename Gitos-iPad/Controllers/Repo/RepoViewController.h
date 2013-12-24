@@ -8,6 +8,7 @@
 
 #import "Repo.h"
 #import "RepoMiscViewController.h"
+#import <Social/Social.h>
 
 @interface RepoViewController : UIViewController <UITableViewDataSource, UITableViewDelegate, UIActionSheetDelegate, UIAlertViewDelegate>
 
