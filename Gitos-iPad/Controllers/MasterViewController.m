@@ -1,3 +1,4 @@
+
 //
 //  MasterViewController.m
 //  Gitos-iPad
@@ -250,6 +251,7 @@
         LoginViewController *loginController = [[LoginViewController alloc] init];
         UINavigationController *navController = [[UINavigationController alloc] initWithRootViewController:loginController];
         [self.view.window setRootViewController:navController];
+        [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleDefault];
     }
 }
 
