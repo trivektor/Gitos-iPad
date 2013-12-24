@@ -200,7 +200,7 @@
                                                 delegate:self
                                        cancelButtonTitle:@""
                                   destructiveButtonTitle:nil
-                                       otherButtonTitles:starOption, @"Fork", @"View on Github", nil];
+                                       otherButtonTitles:starOption, @"Fork", @"View on Github", @"Tweet This Gist", nil];
 
     UIBarButtonItem *actionsButton = [[UIBarButtonItem alloc] initWithTitle:[NSString fontAwesomeIconStringForIconIdentifier:@"icon-share"]
                                                                       style:UIBarButtonItemStyleBordered
@@ -236,7 +236,7 @@
                                                 delegate:self
                                        cancelButtonTitle:@""
                                   destructiveButtonTitle:nil
-                                       otherButtonTitles:starOption, @"View on Github", nil];
+                                       otherButtonTitles:starOption, @"View on Github", @"Tweet This Gist", nil];
 }
 
 - (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex
@@ -251,10 +251,15 @@
             // Star a gist
             [currentUser starGist:gist];
         }
-    } else if (buttonIndex == 2) {
+    } else if ([[actionOptions buttonTitleAtIndex:buttonIndex] isEqualToString:@"View on Github"]) {
         WebsiteViewController *websiteController = [[WebsiteViewController alloc] init];
         websiteController.requestedUrl = [gist getHtmlUrl];
         [self.navigationController pushViewController:websiteController animated:YES];
+    } else if ([[actionOptions buttonTitleAtIndex:buttonIndex] isEqualToString:@"Tweet This Gist"]) {
+        SLComposeViewController *tweetSheet = [SLComposeViewController composeViewControllerForServiceType:SLServiceTypeTwitter];
+        [tweetSheet setInitialText:[gist getHtmlUrl]];
+        [tweetSheet addImage:[UIImage imageNamed:@"twitter-logo"]];
+        [self presentViewController:tweetSheet animated:YES completion:nil];
     }
 }
 

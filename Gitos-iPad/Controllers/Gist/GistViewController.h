@@ -7,10 +7,11 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <Social/Social.h>
 #import "Gist.h"
 #import "User.h"
 
-@interface GistViewController : UIViewController <UITableViewDataSource, UITableViewDelegate, UIActionSheetDelegate>
+@interface GistViewController : GitosViewController <UITableViewDataSource, UITableViewDelegate, UIActionSheetDelegate>
 
 @property (nonatomic, strong) IBOutlet UITableView *detailsTable;
 @property (nonatomic, strong) IBOutlet UITableView *filesTable;
@@ -30,5 +31,6 @@
 - (void)prepareActionOptionsForStatus:(NSNotification *)notification;
 - (void)showAvailableActions;
 - (void)updateStarredStatus;
+- (void)postToTwitter:(NSObject *)object;
 
 @end
